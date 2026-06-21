@@ -1,0 +1,60 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  title?: string;
+  /** e.g. "25 min". */
+  time?: string;
+  /** e.g. "Pairs", "Individual", "Groups of 3". */
+  grouping?: string;
+  /** Optional materials list. */
+  materials?: string[];
+}
+
+const { title = 'Activity', time, grouping, materials } = Astro.props;
+---
+
+<Section title={title} navLabel="Activity" icon="🛠️" id="activity">
+  {(time || grouping) && (
+    <div class="meta">
+      {time && <span class="chip">⏱ {time}</span>}
+      {grouping && <span class="chip">👥 {grouping}</span>}
+    </div>
+  )}
+  <div class="activity-body">
+    <slot />
+  </div>
+  {materials && materials.length > 0 && (
+    <div class="materials">
+      <span class="eyebrow">You'll need</span>
+      <ul>
+        {materials.map((m) => <li>{m}</li>)}
+      </ul>
+    </div>
+  )}
+</Section>
+
+<style>
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+  .materials {
+    margin-top: 1rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+  }
+  .materials ul { margin: 0.4rem 0 0; }
+</style>

@@ -1,0 +1,77 @@
+---
+/**
+ * The five forces acting on a structural member.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'The five forces: tension pulls apart, compression squeezes, shear slides one part past another, bending curves the member, and torsion twists it.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 540 150" role="img" aria-labelledby="frc-t frc-d" class="dg">
+    <title id="frc-t">The five forces</title>
+    <desc id="frc-d">{caption}</desc>
+    <defs>
+      <marker id="frc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- Tension: arrows pointing outward -->
+    <g>
+      <rect x="40" y="50" width="44" height="16" class="bar" />
+      <line x1="40" y1="58" x2="8" y2="58" class="arrow" marker-end="url(#frc-arrow)" />
+      <line x1="84" y1="58" x2="116" y2="58" class="arrow" marker-end="url(#frc-arrow)" />
+      <text x="62" y="100" text-anchor="middle">Tension</text>
+    </g>
+
+    <!-- Compression: arrows pointing inward -->
+    <g>
+      <rect x="148" y="50" width="44" height="16" class="bar" />
+      <line x1="118" y1="58" x2="146" y2="58" class="arrow" marker-end="url(#frc-arrow)" />
+      <line x1="222" y1="58" x2="194" y2="58" class="arrow" marker-end="url(#frc-arrow)" />
+      <text x="170" y="100" text-anchor="middle">Compression</text>
+    </g>
+
+    <!-- Shear: opposing offset arrows -->
+    <g>
+      <rect x="256" y="50" width="44" height="16" class="bar" />
+      <line x1="252" y1="46" x2="296" y2="46" class="arrow" marker-end="url(#frc-arrow)" />
+      <line x1="304" y1="70" x2="260" y2="70" class="arrow" marker-end="url(#frc-arrow)" />
+      <text x="278" y="100" text-anchor="middle">Shear</text>
+    </g>
+
+    <!-- Bending: sagging bar + downward load -->
+    <g>
+      <path d="M336,52 Q382,86 428,52" class="member" />
+      <line x1="382" y1="22" x2="382" y2="58" class="arrow" marker-end="url(#frc-arrow)" />
+      <text x="382" y="100" text-anchor="middle">Bending</text>
+    </g>
+
+    <!-- Torsion: twisting arrow -->
+    <g>
+      <rect x="468" y="50" width="44" height="16" class="bar" />
+      <path d="M474,44 A 16 12 0 1 1 506,46" class="arrow" marker-end="url(#frc-arrow)" />
+      <text x="490" y="100" text-anchor="middle">Torsion</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 540px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .bar { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .member { fill: none; stroke: var(--text); stroke-width: 3; }
+  .arrow { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .fill-accent { fill: var(--accent); }
+  text { fill: var(--text-dim); font-family: var(--font-body); font-size: 13px; }
+</style>

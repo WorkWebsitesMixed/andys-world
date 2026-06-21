@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Callout from '../../../components/Callout.astro';
+import Section from '../../../components/Section.astro';
+import ProjectExamples from '../../../components/ProjectExamples.astro';
+import { getGrade } from '../../../lib/curriculum';
+import { routes } from '../../../lib/url';
+
+const grade = getGrade(11)!;
+
+// Component 2 mark scheme (2027) — the 7 criteria.
+const criteria = [
+  { id: 'C1', name: 'Identifying & investigating a need', marks: 5, what: 'Spot a real need and write a clear design brief for a real user.' },
+  { id: 'C2', name: 'Research & specification', marks: 10, what: 'Research the need and turn it into a measurable, justified specification.' },
+  { id: 'C3', name: 'Generation of ideas', marks: 20, what: 'Produce several genuinely different annotated design ideas.' },
+  { id: 'C4', name: 'Development of ideas', marks: 15, what: 'Model, trial and refine your chosen idea — including load tests and the circuit.' },
+  { id: 'C5', name: 'Planning for production', marks: 10, what: 'Working drawings, a production plan and a materials/cutting list.' },
+  { id: 'C6', name: 'Product realisation', marks: 30, what: 'Make a precise, functioning product from the kit — the biggest single chunk of marks.' },
+  { id: 'C7', name: 'Testing & evaluation', marks: 10, what: 'Test the product objectively (load held? rigid? light works?) and evaluate honestly.' },
+];
+const total = criteria.reduce((s, c) => s + c.marks, 0);
+
+const phases = [
+  {
+    term: 'Term 1',
+    name: 'Launch & Foundations',
+    body: 'Kick off the project (need, research, specification — C1–C2) and begin idea generation (C3). Build your Structures knowledge for Paper 4, and start the Paper 1 sketching routine.',
+    crits: ['C1', 'C2', 'C3'],
+  },
+  {
+    term: 'Term 2',
+    name: 'Design & Develop',
+    body: 'Idea generation → development → planning (C3–C5 — the biggest folder marks). Learn CAD/CAM through the project. Finish with working drawings and a production plan.',
+    crits: ['C3', 'C4', 'C5'],
+  },
+  {
+    term: 'Term 3',
+    name: 'Make & Evaluate',
+    body: 'Build your product in the makerspace (C6) and test & evaluate it (C7). Complete your folder for marking.',
+    crits: ['C6', 'C7'],
+  },
+];
+---
+
+<BaseLayout title={`The Project — ${grade.name}`} description="Your IGCSE Design & Technology coursework project — the brief, the theme, and how the 100 marks are earned.">
+  <div class="page container">
+    <Breadcrumbs items={[{ label: grade.name, href: routes.grade(11) }, { label: 'The Project' }]} />
+
+    <header class="head">
+      <span class="eyebrow">Grade 11 · Component 2</span>
+      <h1 class="glow-text">The Project</h1>
+      <p class="lede muted">
+        This is your coursework — one product you design and build across the whole
+        year. It's worth <strong>100 marks, 50% of your IGCSE</strong>. Read this
+        once; every weekly class links back to a stage of it.
+      </p>
+    </header>
+
+    <Section title="What you're making" icon="🎯">
+      <p>
+        This is an <strong>open brief</strong>: you design a <strong>structural
+        product for a real person you know</strong> — a family member, a friend, a
+        classmate, a neighbour. <strong>Start with the person, not the product.</strong>
+        Find out what they do, what they care about, and what frustrates them about how
+        they store, access or display the things that matter to them. Your product
+        comes from understanding that person — not from copying what already exists.
+      </p>
+
+      <p>Your product <strong>must</strong>:</p>
+      <ul>
+        <li><strong>Carry a defined load</strong> — it holds, supports or displays something with a weight you state, measure and test.</li>
+        <li>Include a <strong>working low-voltage, switch-operated circuit</strong> (a light, indicator or similar).</li>
+        <li>Be made from the <strong>workshop material palette</strong> using the school makerspace.</li>
+        <li>Fit within a <strong>400 × 400 mm</strong> footprint, with at least one dimension <strong>≥ 150 mm</strong>.</li>
+        <li>Be a <strong>real, finished product — not a model</strong> — made to a standard your user would be proud to own.</li>
+      </ul>
+
+      <p>
+        <strong>You decide:</strong> who your user is and their context; what problem
+        your product solves; what your product is, what it does and what form it takes;
+        its dimensions, structure, joints, finish, and how the circuit fits it.
+      </p>
+
+      <Callout type="warn" title="Keep the circuit simple">
+        The circuit is a <strong>category bound</strong>, not a single component: choose
+        your <strong>switch</strong> (push-button, toggle, reed, tilt…) and your
+        <strong>indicator</strong> (one or more LEDs, a buzzer, and so on). It must stay a
+        simple <strong>on/off, battery-powered</strong> circuit — <strong>no PICs, logic
+        gates, PCBs, motors or sensors</strong>. This keeps Criterion&nbsp;7 testing
+        objective and the build manageable across the class.
+        <br /><br />
+        <span class="faint">
+          <strong>Skills-enrichment students only:</strong> you may use a DC motor
+          instead of an LED, if your working motor on a breadboard is signed off by
+          the HOD at the end of Term&nbsp;2. If it isn't passed, you revert to an LED.
+        </span>
+      </Callout>
+
+      <Callout type="tip" title="Constrain the HOW, open the WHAT">
+        The <em>making requirements are fixed</em> — the materials palette, the size
+        limits, the stated load and the circuit — so making stays fair for the whole
+        class. But your <em>user, problem, product, form, dimensions, joints and finish
+        are completely yours.</em> That freedom is where the marks live.
+      </Callout>
+
+      <p class="faint">
+        <strong>Make-palette:</strong> laser-cut sheet · timber / strip stock ·
+        a few small 3D-printed parts.
+      </p>
+    </Section>
+
+    <Section title="Three examples — the pattern, not a menu" icon="🧭">
+      <p>
+        These show how a <strong>person → need → product</strong> becomes a brief.
+        They're deliberately different from one another (and not desk products) — your
+        job is to follow the <em>pattern</em>, not pick from this list.
+      </p>
+      <ProjectExamples />
+    </Section>
+
+    <Section title="How the 100 marks are earned" icon="📊">
+      <p>
+        Your work is marked against <strong>seven criteria (C1–C7)</strong>. Most
+        marks come from your <strong>folder and design work (60)</strong>, then
+        <strong>making (30)</strong>, then <strong>evaluation (10)</strong> — so
+        the thinking you record matters as much as the finished object.
+      </p>
+      <ul class="criteria">
+        {criteria.map((c) => (
+          <li class="crit">
+            <span class="cid">{c.id}</span>
+            <div class="cmain">
+              <p class="cname">{c.name}</p>
+              <p class="cwhat faint">{c.what}</p>
+            </div>
+            <span class="cmarks">{c.marks}<span class="cmarks-u"> marks</span></span>
+          </li>
+        ))}
+        <li class="crit total">
+          <span class="cid">∑</span>
+          <div class="cmain"><p class="cname">Total</p></div>
+          <span class="cmarks">{total}<span class="cmarks-u"> marks</span></span>
+        </li>
+      </ul>
+      <Callout type="info" title="Good to know">
+        Your <strong>made product is not posted to Cambridge</strong> — your folder
+        and photographs are. But the product must be <strong>real and testable</strong>
+        (not a model), because Criterion 6 marks how well it's actually built.
+      </Callout>
+    </Section>
+
+    <Section title="The year, term by term" icon="🗺️">
+      <ol class="phases">
+        {phases.map((p) => (
+          <li class="phase">
+            <div class="ptop">
+              <span class="pterm">{p.term}</span>
+              <span class="pname">{p.name}</span>
+              <span class="pcrits">{p.crits.join(' · ')}</span>
+            </div>
+            <p class="muted">{p.body}</p>
+          </li>
+        ))}
+      </ol>
+    </Section>
+
+    <div class="back">
+      <a href={routes.grade(11)}>← Back to Grade 11</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { max-width: var(--readw); padding-block: 2rem 1rem; }
+  .head { margin: 1.5rem 0 0.5rem; }
+  .head h1 { margin: 0.4rem 0 0.8rem; }
+  .lede { font-size: 1.1rem; }
+
+  .criteria { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.5rem; }
+  .crit {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+  }
+  .cid {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.55rem;
+    min-width: 2.4rem;
+    text-align: center;
+  }
+  .cname { margin: 0; font-weight: 500; }
+  .cwhat { margin: 0.15rem 0 0; font-size: 0.85rem; }
+  .cmarks {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .cmarks-u { font-size: 0.72rem; color: var(--text-faint); font-weight: 400; }
+  .crit.total { background: var(--accent-wash); border-color: var(--line-strong); }
+  .crit.total .cid { color: var(--text); }
+
+  .phases { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.8rem; }
+  .phase {
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--bg-2);
+  }
+  .ptop { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem; margin-bottom: 0.4rem; }
+  .pterm { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .pname { font-family: var(--font-head); font-weight: 600; font-size: 1.1rem; }
+  .pcrits { margin-left: auto; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); }
+  .phase p { margin: 0; }
+
+  .back { margin-top: 2.5rem; }
+</style>

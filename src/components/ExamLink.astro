@@ -1,0 +1,25 @@
+---
+/**
+ * Inline link from a lesson to the relevant "Your IGCSE" reference page.
+ * Registered in LessonLayout's MDX map, so lessons use it without importing:
+ *   <ExamLink to="paper4">Paper 4 Section B</ExamLink>
+ */
+import { routes } from '../lib/url';
+
+interface Props {
+  to: 'paper1' | 'paper4' | 'project' | 'igcse';
+  /** Grade — defaults to 11 (the active cohort). */
+  grade?: number;
+}
+
+const { to, grade = 11 } = Astro.props;
+const href = routes[to](grade);
+---
+
+<a class="exam-link" href={href}><slot /></a>
+
+<style>
+  .exam-link {
+    border-bottom: 1px dashed currentColor;
+  }
+</style>

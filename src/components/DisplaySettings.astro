@@ -1,0 +1,204 @@
+---
+/**
+ * Display preferences popover: theme, text spacing, calm mode.
+ * Choices apply instantly to <html> data-attributes and persist in
+ * localStorage (device-local — no account, no data leaves the browser).
+ * Pre-paint application happens via the inline script in BaseLayout.
+ */
+---
+
+<div class="display-settings">
+  <button
+    class="ds-btn"
+    type="button"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="ds-panel"
+    data-ds-toggle
+  >
+    <span class="ds-aa" aria-hidden="true">Aa</span>
+    <span class="ds-label">Display</span>
+  </button>
+
+  <div class="ds-panel" id="ds-panel" role="dialog" aria-label="Display settings" hidden data-ds-panel>
+    <fieldset>
+      <legend>Theme</legend>
+      <div class="seg" role="group" aria-label="Theme">
+        <button type="button" data-pref="theme" data-value="dark">Dark</button>
+        <button type="button" data-pref="theme" data-value="light">Light</button>
+        <button type="button" data-pref="theme" data-value="contrast">High&nbsp;contrast</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Text spacing</legend>
+      <div class="seg" role="group" aria-label="Text spacing">
+        <button type="button" data-pref="spacing" data-value="normal">Normal</button>
+        <button type="button" data-pref="spacing" data-value="roomy">Roomy</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Calm mode</legend>
+      <div class="seg" role="group" aria-label="Calm mode">
+        <button type="button" data-pref="calm" data-value="0">Off</button>
+        <button type="button" data-pref="calm" data-value="1">On</button>
+      </div>
+      <p class="ds-hint">Hides the background grid, glow and motion.</p>
+    </fieldset>
+  </div>
+</div>
+
+<style>
+  .display-settings { position: relative; }
+
+  .ds-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-dim);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .ds-btn:hover { color: var(--text); border-color: var(--accent); }
+  .ds-aa { font-family: var(--font-head); font-weight: 600; }
+
+  .ds-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.6rem);
+    width: 16rem;
+    z-index: 60;
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--bg-1) 92%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow);
+  }
+  .ds-panel[hidden] { display: none; }
+
+  fieldset { border: none; padding: 0; margin: 0; }
+  legend {
+    padding: 0;
+    margin-bottom: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .seg {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .seg button {
+    flex: 1 1 auto;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg-2);
+    color: var(--text-dim);
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .seg button:hover { color: var(--text); }
+  .seg button[aria-pressed='true'] {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-wash);
+  }
+
+  .ds-hint { margin: 0.5rem 0 0; font-size: 0.78rem; color: var(--text-faint); }
+
+  @media (max-width: 680px) {
+    .ds-label { display: none; }
+  }
+</style>
+
+<script>
+  type PrefKey = 'theme' | 'spacing' | 'calm';
+  const DEFAULTS: Record<PrefKey, string> = { theme: 'dark', spacing: 'normal', calm: '0' };
+  const STORAGE: Record<PrefKey, string> = {
+    theme: 'aw:theme',
+    spacing: 'aw:spacing',
+    calm: 'aw:calm',
+  };
+
+  const root = document.documentElement;
+  const wrap = document.querySelector<HTMLElement>('.display-settings');
+  const toggle = document.querySelector<HTMLButtonElement>('[data-ds-toggle]');
+  const panel = document.querySelector<HTMLElement>('[data-ds-panel]');
+
+  if (wrap && toggle && panel) {
+    const current = (key: PrefKey): string =>
+      root.getAttribute(`data-${key}`) ?? DEFAULTS[key];
+
+    const reflect = () => {
+      panel.querySelectorAll<HTMLButtonElement>('button[data-pref]').forEach((btn) => {
+        const key = btn.dataset.pref as PrefKey;
+        btn.setAttribute('aria-pressed', String(btn.dataset.value === current(key)));
+      });
+    };
+
+    const apply = (key: PrefKey, value: string) => {
+      if (value === DEFAULTS[key] && key !== 'theme') {
+        root.removeAttribute(`data-${key}`);
+      } else {
+        root.setAttribute(`data-${key}`, value);
+      }
+      try {
+        localStorage.setItem(STORAGE[key], value);
+      } catch (e) {}
+      reflect();
+    };
+
+    panel.querySelectorAll<HTMLButtonElement>('button[data-pref]').forEach((btn) => {
+      btn.addEventListener('click', () =>
+        apply(btn.dataset.pref as PrefKey, btn.dataset.value as string),
+      );
+    });
+
+    const open = () => {
+      panel.hidden = false;
+      toggle.setAttribute('aria-expanded', 'true');
+      document.addEventListener('click', onOutside);
+      document.addEventListener('keydown', onKey);
+    };
+    const close = () => {
+      panel.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      document.removeEventListener('click', onOutside);
+      document.removeEventListener('keydown', onKey);
+    };
+    const onOutside = (e: MouseEvent) => {
+      if (!wrap.contains(e.target as Node)) close();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        close();
+        toggle.focus();
+      }
+    };
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      panel.hidden ? open() : close();
+    });
+
+    reflect();
+  }
+</script>

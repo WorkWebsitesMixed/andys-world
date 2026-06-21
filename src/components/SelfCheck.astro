@@ -1,0 +1,138 @@
+---
+import Section from './Section.astro';
+
+interface Question {
+  /** The question prompt. */
+  q: string;
+  /** Answer options. */
+  options: string[];
+  /** Index (0-based) of the correct option. */
+  answer: number;
+  /** Nudge shown after a wrong answer — does NOT give away the answer. */
+  hint?: string;
+  /** Full explanation, revealed only once the answer is correct. */
+  explain?: string;
+}
+
+interface Props {
+  title?: string;
+  questions: Question[];
+}
+
+const { title = 'Check your understanding', questions } = Astro.props;
+const DEFAULT_HINT = 'Not quite — look back at the lesson and try another option.';
+---
+
+<Section title={title} icon="✅" id="self-check">
+  <p class="formative-note faint">
+    Formative only — nothing is saved or graded. A wrong answer gives you a hint;
+    keep trying until it clicks.
+  </p>
+  <ol class="quiz">
+    {questions.map((item) => (
+      <li class="q" data-answer={item.answer}>
+        <p class="prompt">{item.q}</p>
+        <div class="options" role="group">
+          {item.options.map((opt, i) => (
+            <button type="button" class="opt" data-index={i}>
+              <span class="opt-marker" aria-hidden="true"></span>
+              <span class="opt-text">{opt}</span>
+            </button>
+          ))}
+        </div>
+        <p class="hint" hidden>{item.hint ?? DEFAULT_HINT}</p>
+        {item.explain && <p class="explain" hidden>{item.explain}</p>}
+      </li>
+    ))}
+  </ol>
+</Section>
+
+<style>
+  .formative-note { font-size: 0.85rem; margin-bottom: 1.2rem; }
+  .quiz { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; }
+  .q { margin: 0; }
+  .prompt { font-weight: 500; margin: 0 0 0.7rem; }
+  .options { display: grid; gap: 0.5rem; }
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-align: left;
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .opt:hover { border-color: var(--line-strong); background: var(--bg-3); }
+  .opt:disabled { cursor: default; }
+  .opt-marker {
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 2px solid var(--line-strong);
+    border-radius: 50%;
+  }
+  .opt.correct {
+    border-color: var(--ok);
+    background: color-mix(in srgb, var(--ok) 12%, transparent);
+  }
+  .opt.correct .opt-marker { border-color: var(--ok); background: var(--ok); }
+  .opt.incorrect {
+    border-color: var(--bad);
+    background: color-mix(in srgb, var(--bad) 12%, transparent);
+  }
+  .opt.incorrect .opt-marker { border-color: var(--bad); }
+
+  .hint {
+    margin-top: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    border-left: 3px solid var(--warn);
+    background: color-mix(in srgb, var(--warn) 9%, transparent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.92rem;
+  }
+  .explain {
+    margin-top: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    border-left: 3px solid var(--ok);
+    background: var(--accent-wash);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.92rem;
+  }
+</style>
+
+<script>
+  // Formative self-check: instant client-side feedback, nothing stored.
+  // Wrong answer -> hint, keep trying. Right answer -> reveal explanation + lock.
+  document.querySelectorAll<HTMLLIElement>('.quiz .q').forEach((q) => {
+    const answer = Number(q.dataset.answer);
+    const options = Array.from(q.querySelectorAll<HTMLButtonElement>('.opt'));
+    const hint = q.querySelector<HTMLElement>('.hint');
+    const explain = q.querySelector<HTMLElement>('.explain');
+
+    options.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const chosen = Number(btn.dataset.index);
+
+        // clear any previous "incorrect" marks before re-evaluating
+        options.forEach((b) => b.classList.remove('incorrect'));
+
+        if (chosen === answer) {
+          btn.classList.add('correct');
+          if (hint) hint.hidden = true;
+          if (explain) explain.hidden = false;
+          // lock the question once solved
+          options.forEach((b) => (b.disabled = true));
+        } else {
+          btn.classList.add('incorrect');
+          if (hint) hint.hidden = false; // nudge only — never reveal the answer
+        }
+      });
+    });
+  });
+</script>

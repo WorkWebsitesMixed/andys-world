@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { site } from '../lib/site';
+import { GRADES } from '../lib/curriculum';
+import { routes } from '../lib/url';
+---
+
+<BaseLayout>
+  <section class="hero container">
+    <span class="eyebrow">{site.tagline}</span>
+    <h1 class="glow-text">Andy's World</h1>
+    <p class="lede">
+      Design &amp; Technology lessons by {site.author}. Pick your grade to find
+      your term, week and class — goals, key terms, worked examples, activities
+      and a quick self-check.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href={routes.grade(11)}>Start with Grade 11 →</a>
+      <a class="btn ghost" href={site.examsUrl} target="_blank" rel="noopener">
+        {site.examsLabel} ↗
+      </a>
+    </div>
+  </section>
+
+  <section class="grades container">
+    <h2 class="section-h">Choose your grade</h2>
+    <div class="grid">
+      {GRADES.map((g) => (
+        <Card
+          href={routes.grade(g.id)}
+          eyebrow={g.subject}
+          title={g.name}
+          tag={g.status === 'active' ? 'Lessons live' : 'Coming soon'}
+          muted={g.status !== 'active'}
+        >
+          {g.blurb}
+        </Card>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 6rem) 2rem;
+    text-align: center;
+    max-width: 50rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 9vw, 5rem);
+    margin: 0.5rem 0 1rem;
+  }
+  .lede {
+    color: var(--text-dim);
+    font-size: 1.15rem;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+    box-shadow: 0 0 24px var(--accent-glow);
+  }
+  .btn.ghost {
+    border-color: var(--line-strong);
+    color: var(--text);
+  }
+  .btn.ghost:hover { border-color: var(--accent); }
+
+  .section-h {
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+</style>

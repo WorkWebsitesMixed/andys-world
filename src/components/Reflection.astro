@@ -1,0 +1,31 @@
+---
+import Section from './Section.astro';
+
+interface Props {
+  /** The one-line metacognition prompt. Falls back to slot content. */
+  prompt?: string;
+}
+
+const { prompt } = Astro.props;
+---
+
+<Section title="Reflection" icon="💭" id="reflection" variant="violet">
+  <blockquote class="reflect">
+    {prompt ? <p>{prompt}</p> : <slot />}
+  </blockquote>
+</Section>
+
+<style>
+  .reflect {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--accent-2-wash);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+  }
+  .reflect :global(p) { margin: 0; }
+</style>

@@ -1,0 +1,131 @@
+---
+grade: 11
+term: 2
+week: 7
+title: "CAD/CAM 2: 3D Modelling & Printing (C5)"
+topic: "CAD/CAM"
+learningGoal: "model at least one small part of my product in 3D CAD and set it up for 3D printing, and begin my orthographic working drawing."
+selGoal: "ask for and act on technical feedback on my CAD model rather than defending my first attempt."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Some parts of your product — brackets, connectors, feet — are better **3D printed**
+than laser-cut. This week you learn 3D CAD, set a part up to print, and start the
+**working drawing** that lets someone build your whole product.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is <a href={routes.project(11)}>Criterion 5</a> (planning), and 3D CAD rounds
+  out your CAD/CAM skills. The working drawing you begin is the same skill as
+  <ExamLink to="paper1">Paper 1 part (e)</ExamLink> (the full solution drawing).
+</Callout>
+
+<KeyTerms terms={[
+  { term: "3D CAD", definition: "Modelling a part in three dimensions: sketch → extrude → modify." },
+  { term: "Extrude", definition: "Pushing a 2D sketch into a 3D solid." },
+  { term: "Supports", definition: "Temporary printed scaffolding that holds up overhangs while printing." },
+  { term: "Orientation", definition: "How a part sits on the print bed — affects strength, supports and time." },
+  { term: "Orthographic drawing", definition: "Flat views (plan, front, end) of a product drawn to scale." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. 3D CAD basics
+
+Most parts follow the same path: **sketch a profile → extrude it into a solid →
+modify** (holes, fillets, cuts). Build your part from simple shapes.
+
+### 2. When to 3D print vs laser-cut
+
+- **3D print** small or complex parts: brackets, connectors, feet, housings.
+- **Laser-cut** flat parts from sheet: panels, plates, frames.
+
+### 3. Print considerations
+
+Think about **orientation** (affects strength and surface), **supports** (needed
+for overhangs), and **time/material** (smaller and flatter prints faster).
+
+<WatchSee items={[
+  { label: "How FDM 3D printing works", href: "https://www.youtube.com/watch?v=C7RowQYwADU", kind: "Video", note: "See how a printer builds a part up layer by layer." }
+]} />
+
+### 4. Begin your working drawing
+
+Start the **orthographic views** of your whole product — plan, front and end — which
+you'll dimension next week.
+
+</Section>
+
+<WorkedExample title="Worked example — a corner bracket, print-ready">
+1. **Sketch** the bracket's L-shaped profile.
+2. **Extrude** it to the right thickness.
+3. **Modify:** add fixing holes and a fillet for strength.
+4. **Orient** it flat on the bed so it needs **minimal supports** and prints quickly.
+</WorkedExample>
+
+<Activity title="Model and set up a print" time="50 min" grouping="Workstations (technician supports)" materials={["CAD workstation", "3D printer access", "3D CAD quick-reference"]}>
+1. **Model one part** of your product in 3D CAD.
+2. **Set up the print** — choose orientation and supports.
+3. **Begin the orthographic views** of your whole product.
+</Activity>
+
+<Support title="Need a hand? Quick-reference + starter model">
+Keep the **3D CAD quick-reference** open for the sketch → extrude → modify steps,
+and start from a **starter template model** if a blank screen feels daunting. Ask
+the technician for feedback early — then *act on it* rather than defending your
+first try.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Which part is best suited to 3D printing rather than laser-cutting?",
+    options: ["A flat side panel", "A small corner bracket", "A large flat base", "A sheet of acrylic"],
+    answer: 1,
+    hint: "3D printing suits small or complex shapes.",
+    explain: "A small, complex bracket suits 3D printing; flat sheet parts are better laser-cut."
+  },
+  {
+    q: "What is the usual order in basic 3D CAD?",
+    options: [
+      "Extrude → sketch → modify",
+      "Sketch → extrude → modify",
+      "Modify → sketch → extrude",
+      "Print → sketch → extrude"
+    ],
+    answer: 1,
+    hint: "You draw the profile before giving it depth.",
+    explain: "You sketch a 2D profile, extrude it into a solid, then modify it (holes, fillets)."
+  },
+  {
+    q: "Why does print orientation matter?",
+    options: [
+      "It changes the part's colour",
+      "It affects strength, supports needed and print time",
+      "It makes no difference",
+      "It changes the material"
+    ],
+    answer: 1,
+    hint: "Think about overhangs and how layers stack.",
+    explain: "Orientation affects strength, how many supports are needed, and how long the print takes."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** finish modelling any **small printed parts** of your product.
+
+<Extension title="Go deeper">
+Model a **second printed part** and compare two orientations — which needs fewer
+supports?
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criterion 5)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §1.6 Use of technology", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which parts of my product suit 3D printing, and why?" />

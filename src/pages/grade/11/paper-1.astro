@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Callout from '../../../components/Callout.astro';
+import Section from '../../../components/Section.astro';
+import { getGrade } from '../../../lib/curriculum';
+import { routes } from '../../../lib/url';
+
+const grade = getGrade(11)!;
+
+const parts = [
+  { id: 'a', task: 'List 4 function points (what the product must do)', marks: 4 },
+  { id: 'b', task: 'Sketch 2 possible methods', marks: 4 },
+  { id: 'c', task: 'Develop & sketch 3 separate, different ideas', marks: 12 },
+  { id: 'd', task: 'Evaluate the 3 ideas, choose one, justify the choice', marks: 8 },
+  { id: 'e', task: 'Full solution drawing + construction details + dimensions', marks: 12 },
+  { id: 'f', task: 'Name 2 specific materials + reasons', marks: 4 },
+  { id: 'g', task: 'Outline a manufacturing method + name tools', marks: 6 },
+];
+---
+
+<BaseLayout title={`Paper 1 — ${grade.name}`} description="Paper 1 (Product Design): the fixed 7-part question and how to approach it.">
+  <div class="page container">
+    <Breadcrumbs items={[
+      { label: grade.name, href: routes.grade(11) },
+      { label: 'Your IGCSE', href: routes.igcse(11) },
+      { label: 'Paper 1' },
+    ]} />
+
+    <header class="head">
+      <span class="eyebrow">Written paper · 25% of your IGCSE</span>
+      <h1 class="glow-text">Paper 1 — Product Design</h1>
+      <p class="lede muted">
+        1 hour 15 minutes · 50 marks. You choose <strong>one</strong> of three
+        everyday-product contexts — no specialist knowledge needed — then work through
+        the <strong>same seven parts every year</strong>. Because the format never
+        changes, it's highly trainable.
+      </p>
+    </header>
+
+    <Section title="The 7 parts (a–g)" icon="📝">
+      <p>Every Paper 1 follows this exact template:</p>
+      <table>
+        <thead>
+          <tr><th>Part</th><th>What you do</th><th>Marks</th></tr>
+        </thead>
+        <tbody>
+          {parts.map((p) => (
+            <tr>
+              <td><strong>{p.id}</strong></td>
+              <td>{p.task}</td>
+              <td>{p.marks}</td>
+            </tr>
+          ))}
+          <tr>
+            <td></td>
+            <td><strong>Total</strong></td>
+            <td><strong>50</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <Callout type="tip" title="Where the marks really are">
+        Parts <strong>(c) and (e) are 24 of the 50 marks</strong> — almost half — and
+        they're pure <strong>sketching and ideation</strong>. That's why we drill
+        sketching and the three-ideas routine all year.
+      </Callout>
+    </Section>
+
+    <Section title="What it's testing" icon="🎯">
+      <p>
+        Paper 1 is <strong>60% AO2 (Application)</strong> — it rewards designing and
+        communicating, not memorised facts. The examiner wants clear, labelled
+        sketches, genuinely <strong>different</strong> ideas, and reasons that are
+        <strong>specific</strong> (never "strong" or "cheap" on their own).
+      </p>
+      <ul>
+        <li>Sketch confidently and <strong>annotate</strong> every idea.</li>
+        <li>In part (c), make your three ideas <strong>conceptually different</strong>.</li>
+        <li>In part (d), <strong>justify</strong> your choice against the brief.</li>
+        <li>In (f) and (g), be <strong>specific</strong> about materials, tools and process.</li>
+      </ul>
+    </Section>
+
+    <Section title="How our lessons build it" icon="🧭">
+      <p>
+        The skills for Paper 1 are practised across the year — sketching and crating,
+        annotation, the seven-part routine, and idea generation (which doubles as
+        project <a href={routes.project(11)}>Criterion 3</a>). Idea generation is
+        introduced in <a href={routes.week(11, 1, 10)}>Term 1, Week 10</a>.
+      </p>
+    </Section>
+
+    <div class="back"><a href={routes.igcse(11)}>← Back to Your IGCSE</a></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { max-width: var(--readw); padding-block: 2rem 1rem; }
+  .head { margin: 1.5rem 0 0.5rem; }
+  .head h1 { margin: 0.4rem 0 0.8rem; }
+  .lede { font-size: 1.1rem; }
+  .back { margin-top: 2.5rem; }
+</style>

@@ -1,0 +1,88 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../../../../layouts/BaseLayout.astro';
+import LessonLayout from '../../../../../../layouts/LessonLayout.astro';
+import Breadcrumbs from '../../../../../../components/Breadcrumbs.astro';
+import {
+  GRADES,
+  TERMS,
+  getGrade,
+  termLabel,
+  weeksForTerm,
+  defaultWeekTitle,
+} from '../../../../../../lib/curriculum';
+import { routes } from '../../../../../../lib/url';
+import { getTermLessons } from '../../../../../../lib/lessons';
+
+export const getStaticPaths = (() => {
+  return GRADES.flatMap((g) =>
+    TERMS.flatMap((t) =>
+      weeksForTerm(t).map((w) => ({
+        params: { grade: String(g.id), term: String(t), week: String(w) },
+      })),
+    ),
+  );
+}) satisfies GetStaticPaths;
+
+const { grade, term, week } = Astro.params;
+const gradeNum = Number(grade);
+const termNum = Number(term);
+const weekNum = Number(week);
+const info = getGrade(gradeNum)!;
+
+const termLessons = await getTermLessons(gradeNum, termNum);
+const lesson = termLessons.find((l) => l.data.week === weekNum);
+
+// Prev / next link to adjacent authored lessons within the same term.
+function linkFor(l: (typeof termLessons)[number]) {
+  return {
+    href: routes.week(gradeNum, termNum, l.data.week),
+    label: `Week ${l.data.week} · ${l.data.title}`,
+  };
+}
+const idx = termLessons.findIndex((l) => l.data.week === weekNum);
+const prev = idx > 0 ? linkFor(termLessons[idx - 1]) : undefined;
+const next =
+  idx >= 0 && idx < termLessons.length - 1 ? linkFor(termLessons[idx + 1]) : undefined;
+---
+
+{
+  lesson ? (
+    <LessonLayout lesson={lesson} prev={prev} next={next} />
+  ) : (
+    <BaseLayout title={`${info.name} · ${termLabel(termNum)} · Week ${weekNum}`}>
+      <section class="container placeholder">
+        <Breadcrumbs
+          items={[
+            { label: info.name, href: routes.grade(gradeNum) },
+            { label: termLabel(termNum), href: routes.term(gradeNum, termNum) },
+            { label: `Week ${weekNum}` },
+          ]}
+        />
+        <span class="eyebrow">{info.name} · {termLabel(termNum)} · Week {weekNum}</span>
+        <h1>{defaultWeekTitle(termNum, weekNum)}</h1>
+        <div class="card">
+          <p>📝 <strong>This lesson is being prepared.</strong></p>
+          <p class="muted">
+            The page is ready and the navigation is wired up — the class content
+            will appear here once it's written.
+          </p>
+          <a class="back" href={routes.term(gradeNum, termNum)}>← Back to {termLabel(termNum)}</a>
+        </div>
+      </section>
+    </BaseLayout>
+  )
+}
+
+<style>
+  .placeholder { padding-block: 2rem; max-width: var(--readw); }
+  .placeholder h1 { margin: 0.4rem 0 1.2rem; }
+  .card {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--bg-1);
+    padding: 1.5rem;
+  }
+  .card p { margin: 0 0 0.5rem; }
+  .back { display: inline-block; margin-top: 1rem; }
+</style>

@@ -1,0 +1,125 @@
+---
+grade: 11
+term: 3
+week: 8
+title: "Testing & Evaluation (C7)"
+topic: "Project"
+learningGoal: "test my product objectively against my specification — load, rigidity, circuit — and write an evaluation that judges success against each spec point with evidence and suggests improvements."
+selGoal: "accept honest test results, including shortfalls, and frame them as learning."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Now you find out — honestly — how well your product meets the brief. You **test it
+objectively**, gather a little **user feedback**, and write an **evaluation** that
+judges each spec point with evidence. Honesty scores; spin doesn't.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is <a href={routes.project(11)}>Criterion 7</a> (testing & evaluation, 10
+  marks). The examiner rewards **measured evidence** and **justified improvements** —
+  and, just like the written paper, generic words ("strong", "good") score nothing on
+  their own.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Objective testing", definition: "Measuring a result, rather than giving an opinion." },
+  { term: "Test against the spec", definition: "Checking the product point by point against your specification." },
+  { term: "User feedback", definition: "What your real user says after trying the product." },
+  { term: "Justified improvement", definition: "A specific change with a reason — not just 'make it better'." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Test, don't guess
+
+Measure: how much **load** did it hold? Is it **rigid**? Does the **circuit** work
+every time? Numbers and observations, not opinions.
+
+### 2. Judge against the specification
+
+Go through your **spec point by point**: state the result, say whether it was **met**,
+and back it with evidence. Add brief **user feedback** — did it solve their problem?
+
+### 3. Suggest justified improvements
+
+For anything that fell short (or could be better), propose a **specific, justified**
+improvement. "Add a wider base **because** it tipped at 5 kg" — not "make it stronger".
+
+</Section>
+
+<WorkedExample title="Worked example — one spec point, evaluated">
+1. **Spec point:** "must hold 5 kg".
+2. **Test result:** loaded it to 6 kg before it started to flex.
+3. **Judgement:** **met**, with a margin — evidence: it held 1 kg over the target.
+4. **Improvement:** "a second brace would push the limit higher, *because* the flex started at the mid-rail."
+</WorkedExample>
+
+<Activity title="Test and evaluate" time="Full session" grouping="Individual (load rig shared)" materials={["Load rig & weights", "Test sheet", "User-feedback slip"]}>
+1. **Run objective tests** (load, rigidity, circuit) and record the data.
+2. **Gather brief user feedback** from the person you designed for, if you can.
+3. **Write your evaluation** against each spec point, with **justified improvements**.
+</Activity>
+
+<Support title="Need a hand? An evaluation frame">
+Use the writing frame for each point: **"Spec point → result → met? → improvement."**
+A **ready-made results table** keeps your data tidy and easy to judge against.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Which is an objective test result?",
+    options: [
+      "It feels really solid",
+      "It held 6 kg before flexing",
+      "Everyone thinks it's good",
+      "It looks strong"
+    ],
+    answer: 1,
+    hint: "Objective means measured.",
+    explain: "'Held 6 kg before flexing' is measured evidence; the rest are opinions."
+  },
+  {
+    q: "What makes a suggested improvement score marks?",
+    options: [
+      "It's vague, like 'make it better'",
+      "It's specific and justified with a reason",
+      "It's the longest",
+      "It uses the word 'strong'"
+    ],
+    answer: 1,
+    hint: "Reason, not just a wish.",
+    explain: "A justified improvement names a specific change and the evidence-based reason for it."
+  },
+  {
+    q: "What should you test your product against?",
+    options: [
+      "Other students' products",
+      "Your specification, point by point",
+      "How it looks only",
+      "Its cost"
+    ],
+    answer: 1,
+    hint: "Where did you set out what success looks like?",
+    explain: "You test against your specification — each point, with evidence of whether it was met."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** finalise your **evaluation write-up**.
+
+<Extension title="Go deeper">
+Present your results as a small **data table or graph** — clear evidence reads well to
+a moderator.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criterion 7)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook" },
+]} />
+
+<Reflection prompt="How well did my product meet my user's need — with evidence?" />

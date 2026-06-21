@@ -1,0 +1,60 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  prev?: Link;
+  next?: Link;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<nav class="prevnext" aria-label="Within this term">
+  {prev ? (
+    <a class="pn prev" href={prev.href}>
+      <span class="dir">← Previous</span>
+      <span class="lbl">{prev.label}</span>
+    </a>
+  ) : (
+    <span class="pn empty"></span>
+  )}
+  {next ? (
+    <a class="pn next" href={next.href}>
+      <span class="dir">Next →</span>
+      <span class="lbl">{next.label}</span>
+    </a>
+  ) : (
+    <span class="pn empty"></span>
+  )}
+</nav>
+
+<style>
+  .prevnext {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .pn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-2);
+    transition: border-color 0.15s ease;
+  }
+  .pn.next { text-align: right; }
+  .pn:hover { border-color: var(--accent); }
+  .pn.empty { border: none; background: none; }
+  .dir {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+  }
+  .lbl { color: var(--text); font-weight: 500; }
+</style>

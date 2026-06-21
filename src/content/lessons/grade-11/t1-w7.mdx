@@ -1,0 +1,136 @@
+---
+grade: 11
+term: 1
+week: 7
+title: "Loads, Moments, Stress & Factor of Safety"
+topic: "Structures"
+learningGoal: "calculate stress (force ÷ area) and a simple beam reaction using moments, showing full working with units, getting at least two of three questions right."
+selGoal: "stay with a multi-step calculation when it feels hard, finishing every step of at least one problem before I check the answer."
+draft: false
+---
+
+This is the one week with real calculations — and the good news is that the
+**formulae are printed on the exam paper**. Your job is to use them carefully:
+show every step and always add units. That habit alone earns marks.
+
+<Callout type="exam" title="Why this matters" id="why">
+  These calculations are the numerical part of <ExamLink to="paper4">**Paper 4 Section B**</ExamLink>. They're only a
+  few marks each, but they're very winnable — examiners give **method marks** for
+  correct working even if the final number is wrong. So *always show working*.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Equilibrium", definition: "When all forces and moments are balanced, so nothing moves." },
+  { term: "Moment", definition: "A turning effect = force × distance from the pivot." },
+  { term: "Reaction", definition: "The upward support force a beam pushes back with at each support." },
+  { term: "Stress", definition: "Force ÷ cross-sectional area, in N/m². How hard a material is being worked." },
+  { term: "Factor of Safety", definition: "Designing a structure stronger than the expected load, for safety." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Moments and equilibrium
+
+A **moment** is a turning effect: **moment = force × distance** from the pivot. A
+beam is in **equilibrium** when the turning effects balance:
+
+> total clockwise moments = total anticlockwise moments
+
+That single rule lets you find an unknown support **reaction**.
+
+### 2. Stress
+
+**Stress = force ÷ area** (units **N/m²**). For a round bar, the area is a circle:
+**area = π r²**. Watch your units — convert millimetres to metres first.
+
+### 3. Factor of Safety
+
+Real designs are built **stronger than the expected load** — that margin is the
+**Factor of Safety**. A hoist rated to lift 100 kg might be built to hold 500 kg: a
+factor of safety of 5.
+
+<Callout type="tip" title="The golden rules">
+  Show every step · keep the units with the numbers · convert mm → m before using
+  area · write the final answer with its unit.
+</Callout>
+
+</Section>
+
+<WorkedExample title="Worked example — stress, then a beam reaction">
+**(a) Stress in a round pillar.** Force = 3140 N, radius = 10 mm = 0.01 m.
+1. Area = π r² = π × (0.01)² = 3.14 × 10⁻⁴ m².
+2. Stress = force ÷ area = 3140 ÷ (3.14 × 10⁻⁴).
+3. Stress = **10 000 000 N/m² = 10 MPa.**
+
+**(b) Beam reaction.** A 2 m beam rests on a support at each end. A 200 N load sits 1.5 m from the left support (R₁).
+1. Take moments about R₁: clockwise = 200 × 1.5 = 300 N·m.
+2. Anticlockwise = R₂ × 2.
+3. Balance: R₂ × 2 = 300 → **R₂ = 150 N.**
+4. Total up = total down: R₁ + R₂ = 200 → **R₁ = 50 N.**
+</WorkedExample>
+
+<BeamReactionsDiagram />
+
+<Activity title="Show your working" time="35 min" grouping="Individual" materials={["Calculator", "Fill-in-the-steps sheet (formulae printed)", "Beam-balance demo"]}>
+1. **One stress calculation** for a circular section — show every step with units.
+2. **One beam-reaction calculation** using moments.
+3. **State two Factor-of-Safety measures** for a named piece of equipment (e.g. a
+   shelf bracket or a hoist).
+</Activity>
+
+<Support title="Need a hand? The steps, pre-laid-out">
+**Stress:** (1) change mm → m. (2) area = π r². (3) stress = force ÷ area. (4) write the unit (N/m²).
+
+**Reaction:** (1) pick one support as the pivot. (2) clockwise moment = force × distance. (3) set it equal to (other reaction × beam length). (4) solve. (5) the two reactions add up to the total load.
+
+Do the first one *with* the worked example beside you, copying the layout.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "What is the formula for stress?",
+    options: ["force × distance", "force ÷ area", "area ÷ force", "force × area"],
+    answer: 1,
+    hint: "Stress is measured in N/m² — newtons over an area.",
+    explain: "Stress = force ÷ area, with units N/m²."
+  },
+  {
+    q: "A beam balances when…",
+    options: [
+      "it is made of steel",
+      "clockwise moments equal anticlockwise moments",
+      "both supports are the same height",
+      "the load is exactly in the middle"
+    ],
+    answer: 1,
+    hint: "Equilibrium is about turning effects balancing.",
+    explain: "A beam is in equilibrium when total clockwise moments equal total anticlockwise moments."
+  },
+  {
+    q: "A hoist must lift 100 kg but is built to hold 400 kg. Its Factor of Safety is…",
+    options: ["1", "2", "4", "400"],
+    answer: 2,
+    hint: "Divide what it can hold by what it must lift.",
+    explain: "Factor of Safety = 400 ÷ 100 = 4 — it's built four times stronger than needed."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** two calculation questions — one **stress** and one **beam reaction** —
+with full working and units.
+
+<Extension title="Go deeper">
+Try a beam with **two** loads on it and find both reactions. Show each moment
+separately before you add them.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.2.5 Applied loads & reactions (p.245)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.2.6 Moments (p.248)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.2.10 Forces (p.258)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Where did I slip in a calculation, and how will I avoid it next time?" />

@@ -1,0 +1,79 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import Card from '../../../../components/Card.astro';
+import {
+  GRADES,
+  TERMS,
+  getGrade,
+  termLabel,
+  weeksForTerm,
+  defaultWeekTitle,
+  getTermFocus,
+} from '../../../../lib/curriculum';
+import { routes } from '../../../../lib/url';
+import { getTermLessons } from '../../../../lib/lessons';
+
+export const getStaticPaths = (() => {
+  return GRADES.flatMap((g) =>
+    TERMS.map((t) => ({ params: { grade: String(g.id), term: String(t) } })),
+  );
+}) satisfies GetStaticPaths;
+
+const { grade, term } = Astro.params;
+const gradeNum = Number(grade);
+const termNum = Number(term);
+const info = getGrade(gradeNum)!;
+
+const lessons = await getTermLessons(gradeNum, termNum);
+const byWeek = new Map(lessons.map((l) => [l.data.week, l]));
+const weeks = weeksForTerm(termNum);
+const focus = getTermFocus(gradeNum, termNum);
+---
+
+<BaseLayout title={`${info.name} · ${termLabel(termNum)}`}>
+  <section class="container head">
+    <Breadcrumbs
+      items={[
+        { label: info.name, href: routes.grade(gradeNum) },
+        { label: termLabel(termNum) },
+      ]}
+    />
+    <span class="eyebrow">{info.name} · {focus?.title ?? info.subject}</span>
+    <h1>{termLabel(termNum)}</h1>
+    <p class="muted">
+      {focus ? focus.blurb : 'Pick a week to open its class.'}
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="grid">
+      {weeks.map((w) => {
+        const lesson = byWeek.get(w);
+        const ready = Boolean(lesson);
+        return (
+          <Card
+            href={routes.week(gradeNum, termNum, w)}
+            eyebrow={`Week ${w}`}
+            title={lesson?.data.title ?? defaultWeekTitle(termNum, w)}
+            tag={ready ? lesson!.data.topic : 'Coming soon'}
+            muted={!ready}
+          >
+            {ready ? lesson!.data.learningGoal : 'This lesson is being prepared.'}
+          </Card>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { padding-block: 2rem 1rem; }
+  .head h1 { margin: 0.4rem 0 0.4rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+  }
+</style>

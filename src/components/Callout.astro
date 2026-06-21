@@ -1,0 +1,57 @@
+---
+interface Props {
+  /** Visual intent. */
+  type?: 'info' | 'tip' | 'warn' | 'exam';
+  title?: string;
+  /** Give a callout an id to make it a target in the section navigator. */
+  id?: string;
+}
+
+const { type = 'info', title, id } = Astro.props;
+
+const config: Record<string, { icon: string; label: string }> = {
+  info: { icon: 'ℹ️', label: 'Note' },
+  tip: { icon: '💡', label: 'Tip' },
+  warn: { icon: '⚠️', label: 'Watch out' },
+  exam: { icon: '🎯', label: 'Exam link' },
+};
+
+const { icon, label } = config[type] ?? config.info;
+const navLabel = id ? (title ?? label) : undefined;
+---
+
+<aside class:list={['callout', `c-${type}`]} id={id} data-section={navLabel}>
+  <p class="head">
+    <span class="ic" aria-hidden="true">{icon}</span>
+    <span class="lbl">{title ?? label}</span>
+  </p>
+  <div class="body"><slot /></div>
+</aside>
+
+<style>
+  .callout {
+    margin-block: 1.5rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-left-width: 3px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--bg-1);
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 0.4rem;
+    font-family: var(--font-head);
+    font-weight: 600;
+  }
+  .body :global(p:last-child) { margin-bottom: 0; }
+
+  .c-info { border-left-color: var(--accent); }
+  .c-tip { border-left-color: var(--ok); }
+  .c-warn { border-left-color: var(--warn); }
+  .c-exam {
+    border-left-color: var(--accent);
+    background: var(--accent-wash);
+  }
+</style>

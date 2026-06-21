@@ -1,0 +1,62 @@
+---
+/**
+ * A simply-supported beam with one load and two support reactions.
+ * Matches the Week 7 worked example (200 N load, R1 = 50 N, R2 = 150 N).
+ */
+const caption =
+  'A beam on two supports. The downward load is balanced by upward reactions R₁ and R₂. Taking moments about a support lets you find each reaction.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 400 200" role="img" aria-labelledby="bm-t bm-d" class="dg">
+    <title id="bm-t">A simply-supported beam with reactions</title>
+    <desc id="bm-d">{caption}</desc>
+    <defs>
+      <marker id="bm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- Beam -->
+    <rect x="60" y="70" width="280" height="10" class="beam" />
+
+    <!-- Supports -->
+    <polygon points="70,80 58,102 82,102" class="support" />
+    <polygon points="330,80 318,102 342,102" class="support" />
+
+    <!-- Load (down) at 1.5 m from left -->
+    <line x1="270" y1="22" x2="270" y2="66" class="arrow" marker-end="url(#bm-arrow)" />
+    <text x="278" y="30" text-anchor="start">200 N</text>
+
+    <!-- Reactions (up) -->
+    <line x1="70" y1="140" x2="70" y2="106" class="arrow" marker-end="url(#bm-arrow)" />
+    <text x="70" y="158" text-anchor="middle">R₁ = 50 N</text>
+
+    <line x1="330" y1="140" x2="330" y2="106" class="arrow" marker-end="url(#bm-arrow)" />
+    <text x="330" y="158" text-anchor="middle">R₂ = 150 N</text>
+
+    <!-- Distances -->
+    <text x="170" y="60" text-anchor="middle" class="dim">1.5 m</text>
+    <text x="300" y="60" text-anchor="middle" class="dim">0.5 m</text>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 420px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .beam { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .support { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  text { fill: var(--text-dim); font-family: var(--font-body); font-size: 13px; }
+  .dim { fill: var(--text-faint); font-size: 11px; }
+</style>

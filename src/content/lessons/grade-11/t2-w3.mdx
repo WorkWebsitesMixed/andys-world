@@ -1,0 +1,127 @@
+---
+grade: 11
+term: 2
+week: 3
+title: "CAD/CAM 1: 2D CAD & the Laser-Cut Workflow"
+topic: "CAD/CAM"
+learningGoal: "produce a dimensioned 2D CAD drawing of at least one laser-cut part of my product, ready to test-cut."
+selGoal: "persevere through learning new software, using the help handout and a classmate before asking the teacher."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Time to turn your design into something a machine can cut. This week you learn
+**2D CAD** and how a drawing on screen becomes a part on the **laser cutter** —
+the workflow you'll use to make most of your product.
+
+<Callout type="exam" title="Why this matters" id="why">
+  CAD/CAM feeds <a href={routes.project(11)}>Criteria 4 and 5</a> (development and
+  planning), and the accuracy you learn here transfers to Paper 1 drawing. It's also
+  a skill the course expects you to gain *through* the project.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "CAD", definition: "Computer-Aided Design — drawing a product accurately on a computer." },
+  { term: "CAM", definition: "Computer-Aided Manufacture — the CAD file drives the machine." },
+  { term: "Vector", definition: "Lines and paths defined by points — what a laser follows to cut. Scales without blurring." },
+  { term: "Raster", definition: "An image made of pixels — used for engraving, not clean cutting." },
+  { term: "Kerf", definition: "The thin width of material the laser burns away as it cuts." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Why CAD?
+
+CAD gives you **accuracy, easy editing, sharing, and a direct link to manufacture**.
+Change one dimension and the whole part updates — then the same file cuts the part.
+
+### 2. Vector vs raster
+
+The laser **cuts along vectors** (lines/paths) and **engraves rasters** (images).
+For parts you want cut out, everything must be **vector**.
+
+### 3. The laser-cut workflow
+
+- Separate **cut** lines from **engrave** areas (usually by colour or layer).
+- Allow for **kerf** — the laser removes a sliver of material, so tight-fitting
+  slots need adjusting.
+- Get the **material settings** right (power/speed), and follow safety: fume
+  extraction on, **never leave the machine unattended**.
+
+<WatchSee items={[
+  { label: "How a laser cutter works (basics)", href: "https://www.youtube.com/watch?v=SIjUVCho_xU", kind: "Video", note: "A short look at how the laser cuts along your vector lines." }
+]} />
+
+</Section>
+
+<WorkedExample title="Worked example — a laser-ready bracket plate">
+1. **Draw** a 100 × 60 mm plate in CAD.
+2. **Add** two fixing holes, dimensioned from an edge.
+3. **Assign layers:** outline + holes on the **cut** layer; a label on the **engrave** layer.
+4. **Export** the file ready for the cutter.
+</WorkedExample>
+
+<Activity title="CAD your first part" time="50 min" grouping="Paired workstations" materials={["CAD workstation", "Step-by-step CAD handout", "Sample sheet stock"]}>
+1. **CAD one part** of your product.
+2. **Add dimensions** so it's the right size.
+3. **Set up the cut file** — separate cut and engrave by layer/colour, ready to test-cut.
+</Activity>
+
+<Support title="Need a hand? Use the handout and a template">
+Work from the **step-by-step CAD handout** and open the **pre-built template file**
+— the layers and colours are already set, so you only draw your part. Stuck? Ask
+your workstation partner, then the handout, *then* the teacher.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "The laser cutter follows which kind of line to cut a shape out?",
+    options: ["Raster", "Vector", "Pixel", "Engrave"],
+    answer: 1,
+    hint: "Cutting needs a path, not an image.",
+    explain: "The laser cuts along vectors (paths). Rasters (pixel images) are used for engraving."
+  },
+  {
+    q: "What is 'kerf'?",
+    options: [
+      "A type of plastic",
+      "The width of material the laser burns away",
+      "A CAD shortcut",
+      "The engraving layer"
+    ],
+    answer: 1,
+    hint: "It's about the thin gap the cut leaves behind.",
+    explain: "Kerf is the sliver of material the laser removes — important for parts that must fit together."
+  },
+  {
+    q: "Why separate your cut and engrave lines onto different layers/colours?",
+    options: [
+      "To make the file bigger",
+      "So the machine knows what to cut and what to engrave",
+      "To use more ink",
+      "It makes no difference"
+    ],
+    answer: 1,
+    hint: "The machine needs to tell the two operations apart.",
+    explain: "Layers/colours tell the laser which lines to cut through and which areas to engrave."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** list **every part** of your product that could be laser-cut.
+
+<Extension title="Go deeper">
+**Nest** two of your parts close together on the sheet to save material — how much
+stock can you save?
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §1.6 Use of technology (CAD/CAM)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Where could CAD save me time compared with hand drawing?" />

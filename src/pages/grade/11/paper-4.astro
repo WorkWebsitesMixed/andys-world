@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Callout from '../../../components/Callout.astro';
+import Section from '../../../components/Section.astro';
+import { getGrade } from '../../../lib/curriculum';
+import { routes } from '../../../lib/url';
+
+const grade = getGrade(11)!;
+
+// Section B Structures content pattern → which week teaches it.
+const sectionB = [
+  { topic: 'Structure types & rigidity (triangulation)', week: 2 },
+  { topic: 'Forces & members (tie, strut, beam)', week: 3 },
+  { topic: 'Materials in structures', week: 4 },
+  { topic: 'Concrete, reinforcement & composites', week: 5 },
+  { topic: 'Loads, moments, stress & Factor of Safety', week: 7 },
+  { topic: 'Joining & reinforcing structures', week: 8 },
+];
+---
+
+<BaseLayout title={`Paper 4 — ${grade.name}`} description="Paper 4 (Systems & Control): Section A breadth and Section B Structures, and how to approach it.">
+  <div class="page container">
+    <Breadcrumbs items={[
+      { label: grade.name, href: routes.grade(11) },
+      { label: 'Your IGCSE', href: routes.igcse(11) },
+      { label: 'Paper 4' },
+    ]} />
+
+    <header class="head">
+      <span class="eyebrow">Written paper · 25% of your IGCSE</span>
+      <h1 class="glow-text">Paper 4 — Systems & Control</h1>
+      <p class="lede muted">
+        1 hour · 50 marks. Two sections: a broad <strong>Section A</strong> of short
+        questions, then <strong>Section B</strong>, where you answer <strong>one</strong>
+        in-depth question. We answer the <strong>Structures</strong> question.
+      </p>
+    </header>
+
+    <Section title="Section A — breadth (~25 marks)" icon="🔤">
+      <p>
+        Around 9–12 <strong>short, compulsory</strong> questions covering a little of
+        everything at "key content" level: structures basics, levers/gears and motion,
+        friction, basic electronics and switches, safety symbols, and materials. Mostly
+        <strong>recall</strong> — "name…", "state…", "give two reasons…".
+      </p>
+      <Callout type="tip" title="How to win Section A">
+        Answer <em>every</em> part (they're short), use <strong>precise vocabulary</strong>,
+        match the <strong>right unit</strong> to each quantity, and don't over-tick tables.
+      </Callout>
+    </Section>
+
+    <Section title="Section B — depth: answer Structures (25 marks)" icon="🏗️">
+      <p>
+        You choose <strong>one</strong> of three in-depth questions —
+        Q10 Structures, Q11 Mechanisms or Q12 Electronics — and <strong>we answer
+        Q10 Structures.</strong> (Answer only one: extra answers waste time.)
+      </p>
+      <p>The Structures question reliably draws on these topics — and exactly which week we teach each:</p>
+      <table>
+        <thead><tr><th>Structures topic</th><th>Taught in</th></tr></thead>
+        <tbody>
+          {sectionB.map((r) => (
+            <tr>
+              <td>{r.topic}</td>
+              <td><a href={routes.week(11, 1, r.week)}>Term 1, Week {r.week}</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <Callout type="info" title="About the maths">
+        Calculations are <strong>light</strong> (typically 3–7 of the 25 marks) and the
+        <strong>formulae are printed on the paper</strong> — stress = force/area, beam
+        reactions, lever advantage. Always <strong>show your working and add units</strong>;
+        you get method marks even if the final number is wrong.
+      </Callout>
+    </Section>
+
+    <Section title="What it's testing" icon="🎯">
+      <p>
+        Paper 4 is <strong>60% AO1 (Knowledge & understanding)</strong>. It rewards
+        <strong>precise vocabulary</strong> and <strong>clear annotated sketches</strong>,
+        not deep problem-solving — which suits the way we've learned it.
+      </p>
+    </Section>
+
+    <Section title="Examiner pitfalls to avoid" icon="⚠️">
+      <ul>
+        <li>Generic words ("strong / cheap / easy") score <strong>zero</strong> unless justified.</li>
+        <li>Answer <strong>only one</strong> Section B question.</li>
+        <li>Don't over-tick tables (extra ticks cancel the mark).</li>
+        <li>Always <strong>show working</strong> and <strong>add units</strong>.</li>
+        <li>"Using an example" means a <strong>specific</strong> example.</li>
+        <li>Write legibly and <strong>annotate</strong> your sketches.</li>
+      </ul>
+    </Section>
+
+    <div class="back"><a href={routes.igcse(11)}>← Back to Your IGCSE</a></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { max-width: var(--readw); padding-block: 2rem 1rem; }
+  .head { margin: 1.5rem 0 0.5rem; }
+  .head h1 { margin: 0.4rem 0 0.8rem; }
+  .lede { font-size: 1.1rem; }
+  .back { margin-top: 2.5rem; }
+</style>

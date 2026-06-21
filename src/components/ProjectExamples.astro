@@ -1,0 +1,88 @@
+---
+/**
+ * The three cross-category launch examples (person → need → product).
+ * Deliberately NOT desk products — they show the pattern without overlapping
+ * what students are likely to design. Text cards for now; each is a
+ * [PLACEHOLDER] to be replaced with a real image/case study later.
+ */
+const examples = [
+  {
+    icon: '🎸',
+    person: 'A musician',
+    frustration: 'Their instrument and accessories have no safe home between sessions.',
+    product: 'A freestanding instrument & cable rack',
+    load: 'Instrument weight',
+    circuit: '“Session ready” indicator',
+  },
+  {
+    icon: '🚲',
+    person: 'A cyclist',
+    frustration: 'They lose track of helmet, shoes and tools before a ride.',
+    product: 'A helmet, shoes & tool organiser',
+    load: 'Gear weight',
+    circuit: '“Ready to go” light',
+  },
+  {
+    icon: '🪴',
+    person: 'A collector',
+    frustration: 'They have no way to display books, plants or figures at height.',
+    product: 'A tiered display structure',
+    load: 'Collection weight',
+    circuit: 'Small spotlight / indicator',
+  },
+];
+---
+
+<div class="examples">
+  {examples.map((e) => (
+    <article class="ex">
+      <p class="ex-person"><span class="ex-ic" aria-hidden="true">{e.icon}</span> {e.person}</p>
+      <p class="ex-frus">{e.frustration}</p>
+      <p class="ex-prod"><span class="arrow" aria-hidden="true">→</span> {e.product}</p>
+      <div class="ex-chips">
+        <span class="chip"><span class="chip-k">Load</span> {e.load}</span>
+        <span class="chip"><span class="chip-k">Circuit</span> {e.circuit}</span>
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+  .examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+    margin-block: 1.5rem;
+  }
+  .ex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: 0 0 var(--radius) var(--radius);
+    background: var(--bg-2);
+  }
+  .ex-person { margin: 0; font-family: var(--font-head); font-weight: 600; font-size: 1.05rem; }
+  .ex-ic { font-size: 1.1rem; }
+  .ex-frus { margin: 0; color: var(--text-dim); font-size: 0.92rem; }
+  .ex-prod { margin: 0; font-weight: 500; }
+  .ex-prod .arrow { color: var(--accent); }
+  .ex-chips { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.4rem; padding-top: 0.4rem; }
+  .chip {
+    font-size: 0.76rem;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+  }
+  .chip-k {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-right: 0.3rem;
+  }
+</style>

@@ -1,0 +1,139 @@
+---
+grade: 11
+term: 1
+week: 9
+title: "The Required Project Circuit"
+topic: "Electronics"
+learningGoal: "draw a simple light circuit with correct symbols, build and test it, and calculate a current-limiting resistor with I = V/R — producing a working circuit and the three required circuit artefacts."
+selGoal: "work safely and patiently at the electronics bench, asking the technician before acting when I'm unsure."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Every project needs its **switch-operated circuit** — and this is the week you build
+one. Keep it simple: a battery, a switch, a resistor and an indicator. By the end
+you'll have a working circuit and the artefacts your folder needs.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Circuit symbols, switches and input–process–output are <ExamLink to="paper4">**Paper 4 Section A**</ExamLink> topics,
+  and a working circuit is a <a href={routes.project(11)}>required feature</a> of your
+  product. Remember the bound: a **simple on/off, battery-powered** circuit only — no
+  motors, sensors, PICs, gates or PCBs.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Circuit symbol", definition: "The standard drawing for a component — cell, switch, resistor, LED." },
+  { term: "Series / parallel", definition: "Series = one loop, components in a line; parallel = side-by-side branches." },
+  { term: "Input–Process–Output (IPO)", definition: "Switch (input) → circuit (process) → LED or buzzer (output)." },
+  { term: "Switch types", definition: "Toggle (latching on/off), push-to-make (momentary), reed (magnet-operated, contactless)." },
+  { term: "Current-limiting resistor", definition: "A resistor that protects the LED by limiting current; found with R = V / I." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Symbols and the IPO model
+
+Draw circuits with the **standard symbols** (cell, switch, resistor, LED) wired as a
+loop. Think in **input → process → output**: the **switch** is the input, the
+**circuit** is the process, the **LED (or buzzer)** is the output.
+
+<CircuitDiagram />
+
+<WatchSee items={[
+  { label: "Build a simple LED circuit (beginners)", href: "https://www.youtube.com/watch?v=yQ2-yVXFMeE", kind: "Video", note: "Follow a battery–switch–resistor–LED circuit built on a breadboard." }
+]} />
+
+### 2. Choosing your switch
+
+Your circuit must be **switch-operated**, and the **switch type is your choice**:
+
+- **Toggle** — latches on and stays on (good for a desk light).
+- **Push-to-make (PTM)** — on only while pressed (good for a momentary signal).
+- **Reed** — operated by a magnet, with no contact (good for "lid closed" sensing).
+
+Pick the one that matches **how your product is used**, and justify it.
+
+### 3. The current-limiting resistor
+
+An LED needs a resistor in series or it burns out. Using **I = V/R** (rearranged to
+**R = V/I**) with the supply voltage and the LED's voltage drop, you can size it.
+
+<Callout type="warn" title="At the bench">
+  Work patiently, follow the technician's instructions, and **ask before acting** if
+  you're unsure. No soldering today — the kit uses solderless terminals.
+</Callout>
+
+</Section>
+
+<WorkedExample title="Worked example — sizing the resistor">
+1. **Supply:** a 6 V battery. **LED:** drops about 2 V and needs about 20 mA (0.02 A).
+2. **Voltage across the resistor:** 6 V − 2 V = 4 V.
+3. **Apply R = V / I:** R = 4 ÷ 0.02.
+4. **Resistor:** **R = 200 Ω** — choose the nearest standard value.
+</WorkedExample>
+
+<Activity title="Build and test your circuit" time="45 min" grouping="Technician-supervised rotation" materials={["Circuit kit (battery, switch, resistor, LED)", "Pre-stripped leads", "Circuit-on-a-card template"]}>
+1. **Draw** the circuit with correct symbols and label the **IPO**.
+2. **Build and test** it with the kit — switch on, light on.
+3. **Justify your switch** choice for *your* product in one sentence.
+
+Your folder needs three artefacts: the **circuit diagram**, the **IPO label** and the
+**resistor calculation** — plus your tested circuit.
+</Activity>
+
+<Support title="Need a hand? Pre-made leads + a circuit card">
+Start from the **circuit-on-a-card** template — it shows where each component goes.
+Use the **pre-made jumper leads** so there's no stripping or soldering. Build it
+once exactly like the worked example, then change only the switch.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "In the input–process–output model, the switch is the…",
+    options: ["output", "process", "input", "resistor"],
+    answer: 2,
+    hint: "What starts the circuit working when you act on it?",
+    explain: "The switch is the input: you operate it to control the circuit (the process), which drives the LED (the output)."
+  },
+  {
+    q: "Why does an LED need a current-limiting resistor?",
+    options: [
+      "To make it brighter",
+      "To stop too much current burning it out",
+      "To change its colour",
+      "To make the circuit parallel"
+    ],
+    answer: 1,
+    hint: "What happens to an LED with too much current?",
+    explain: "Without a resistor the current is too high and the LED burns out; the resistor limits it to a safe level."
+  },
+  {
+    q: "A switch that stays on after you press it once is a…",
+    options: ["push-to-make", "reed switch", "toggle switch", "resistor"],
+    answer: 2,
+    hint: "Which switch latches rather than only working while pressed?",
+    explain: "A toggle switch latches on/off. A push-to-make is on only while held; a reed switch is magnet-operated."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** one **resistor-value calculation** (different supply or LED) using
+R = V / I.
+
+<Extension title="Go deeper">
+Wire **two LEDs in series**, then in **parallel**, and note what changes about their
+brightness and how the circuit behaves.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (required circuit feature)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §4.1 Systems / IPO (p.230)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building (p.305)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.4.3 Switches (p.311)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which switch suits how my product is used, and why?" />

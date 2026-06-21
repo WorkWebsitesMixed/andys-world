@@ -1,0 +1,138 @@
+---
+grade: 11
+term: 1
+week: 3
+title: "Forces & Structural Members"
+topic: "Structures"
+learningGoal: "identify and label the five forces — tension, compression, shear, bending and torsion — on everyday structures, and tell a tie from a strut, naming at least four of the five correctly."
+selGoal: "ask for help the moment I get stuck rather than going quiet, using our 'ask three, then me' routine."
+draft: false
+---
+
+Last week you learned the *types* of structure. Now we look at what's actually
+happening inside them: the **forces** trying to break them, and the **members**
+that resist those forces. This is the heart of the Structures exam question.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Naming forces and members is core <ExamLink to="paper4">**Paper 4 Section B**</ExamLink> content, and it appears in
+  Section A too. You'll also use it to predict which force most threatens your own
+  project — and design against it.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Tension", definition: "A pulling-apart force. A rope holding a weight is in tension." },
+  { term: "Compression", definition: "A squeezing force. A table leg is in compression." },
+  { term: "Shear", definition: "A sliding or cutting force, where two parts slide past each other (like scissors)." },
+  { term: "Bending", definition: "A force that curves a member — one face stretches (tension), the other squeezes (compression)." },
+  { term: "Torsion", definition: "A twisting force." },
+  { term: "Tie", definition: "A member in tension (being pulled)." },
+  { term: "Strut", definition: "A member in compression (being squeezed)." },
+  { term: "Beam", definition: "A member that resists bending." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. The five forces
+
+Every load puts one or more of these five forces into a structure:
+
+- **Tension** — pulling apart (a tow rope).
+- **Compression** — squeezing (a column under a roof).
+- **Shear** — sliding/cutting (the bolt in a pair of scissors).
+- **Bending** — a shelf sagging under books.
+- **Torsion** — twisting (turning a screwdriver).
+
+A clever tip: when something **bends**, the outer (stretched) face is in **tension**
+and the inner (squeezed) face is in **compression** at the same time.
+
+<ForcesDiagram />
+
+<WatchSee items={[
+  { label: "The five forces, animated (MIT)", href: "https://www.youtube.com/watch?v=hXlnFgWUpDA", kind: "Video", note: "A short animation showing all five forces in action." }
+]} />
+
+### 2. Members: tie, strut and beam
+
+The parts of a frame are **members**, and we name them by the force they carry:
+
+- a **tie** is in **tension** (pulled),
+- a **strut** is in **compression** (squeezed),
+- a **beam** resists **bending**.
+
+How well a member does its job depends on its **length, cross-sectional shape and
+material** — a deep, I-shaped steel beam resists bending far better than a thin flat
+bar of the same weight.
+
+</Section>
+
+<WorkedExample title="Worked example — a cantilever shelf">
+1. **Picture it.** A shelf is fixed to a wall at one end, with a heavy plant pot on the free end.
+2. **What does it do?** It **bends** downward.
+3. **Top face?** It is stretched → in **tension**.
+4. **Bottom face?** It is squeezed → in **compression**.
+
+→ A loaded cantilever **bends**, with **tension on top and compression underneath**.
+</WorkedExample>
+
+<Activity title="Spot the forces" time="30 min" grouping="Pairs" materials={["The three structure cards", "A truss diagram", "Coloured pencils"]}>
+1. **Label the forces.** On each of the three structures, mark where you see
+   tension, compression, shear, bending or torsion. Use a **consistent colour** for
+   each force.
+2. **Tie or strut?** On the truss diagram, mark every member as a **tie** or a
+   **strut**.
+
+If you get stuck, use **"ask three, then me"** — check with three classmates before
+calling the teacher.
+</Activity>
+
+<Support title="Need a hand? A colour key + sentence frame">
+**Colour key** (use the same colours every time): tension = blue, compression =
+red, shear = green, bending = orange, torsion = purple.
+
+**Sentence frame:** *"This member is in **[tension / compression]** because it is
+being **[pulled apart / squeezed]**, so it is a **[tie / strut]**."*
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A crane's cable lifting a load is mainly in which force?",
+    options: ["Compression", "Tension", "Torsion", "Shear"],
+    answer: 1,
+    hint: "Is the cable being pulled apart, or squeezed?",
+    explain: "The load pulls the cable apart, so it is in tension."
+  },
+  {
+    q: "A member that is being squeezed is called a…",
+    options: ["tie", "strut", "beam", "joint"],
+    answer: 1,
+    hint: "Squeezing is compression — which member name goes with compression?",
+    explain: "A strut is a member in compression. (A tie is in tension; a beam resists bending.)"
+  },
+  {
+    q: "A diving board with a person standing on the end mainly experiences…",
+    options: ["torsion", "shear", "bending", "tension only"],
+    answer: 2,
+    hint: "What shape does the board take when someone stands on the end?",
+    explain: "The board bends — its top face goes into tension and its bottom face into compression."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** complete the **Knowledge Check** for textbook §4.2 (forces and
+members).
+
+<Extension title="Go deeper">
+Find a real structure near you (a gate, a bridge, a climbing frame) and label
+**all five forces** you can find on it, plus every tie and strut. Or try the
+**Skills Activity** in §4.2.4.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.2.4 Nature of structural members (p.242)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.2.10 Forces (p.258)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which force will most threaten my product, and how will I resist it?" />

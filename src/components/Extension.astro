@@ -1,0 +1,66 @@
+---
+/**
+ * "Go deeper" — an optional stretch task for students who finish early or want
+ * more challenge. Differentiation by readiness. Clearly flagged as not required.
+ * Collapsed by default; not added to the section navigator.
+ */
+interface Props {
+  title?: string;
+}
+const { title = 'Go deeper' } = Astro.props;
+---
+
+<details class="aid extension">
+  <summary>
+    <span class="aid-ic" aria-hidden="true">🚀</span>
+    <span class="aid-title">{title}</span>
+    <span class="aid-flag">optional</span>
+    <span class="aid-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="aid-body">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .aid {
+    margin-block: 1.25rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--bg-1);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-head);
+    font-weight: 600;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .aid-title { flex: 1; }
+  .aid-flag {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+  .aid-chevron {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--text-faint);
+    border-bottom: 2px solid var(--text-faint);
+    transform: rotate(-45deg);
+    transition: transform 0.18s ease;
+  }
+  .aid[open] .aid-chevron { transform: rotate(45deg); }
+  .aid-body { padding: 0 1rem 1rem; }
+  .aid-body :global(p:first-child) { margin-top: 0; }
+  .aid-body :global(p:last-child) { margin-bottom: 0; }
+</style>

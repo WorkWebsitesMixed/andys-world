@@ -1,0 +1,72 @@
+---
+import Section from './Section.astro';
+
+interface Resource {
+  label: string;
+  /** Optional link; omit for offline/textbook references. */
+  href?: string;
+  /** e.g. "Textbook", "Past paper", "Video", "Download". */
+  type?: string;
+}
+
+interface Props {
+  title?: string;
+  items: Resource[];
+}
+
+const { title = 'Resources', items } = Astro.props;
+
+const icons: Record<string, string> = {
+  Textbook: '📘',
+  'Past paper': '📝',
+  Video: '🎬',
+  Download: '⬇️',
+  Link: '🔗',
+};
+---
+
+<Section title={title} icon="📚" id="resources">
+  <ul class="resources">
+    {items.map((r) => {
+      const icon = (r.type && icons[r.type]) || '🔗';
+      const isExternal = r.href?.startsWith('http');
+      return (
+        <li>
+          <span class="ricon" aria-hidden="true">{icon}</span>
+          {r.href ? (
+            <a href={r.href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined}>
+              {r.label}{isExternal && <span class="ext" aria-hidden="true"> ↗</span>}
+            </a>
+          ) : (
+            <span>{r.label}</span>
+          )}
+          {r.type && <span class="rtype">{r.type}</span>}
+        </li>
+      );
+    })}
+  </ul>
+</Section>
+
+<style>
+  .resources { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+  .resources li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+  }
+  .ricon { flex: none; }
+  .rtype {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+  .ext { color: var(--accent); }
+</style>

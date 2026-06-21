@@ -1,0 +1,59 @@
+---
+/**
+ * "Need a hand?" — a collapsible scaffold for students who want extra support
+ * (sentence frames, worked models, simplified steps). Differentiation by
+ * readiness/process. Collapsed by default so it never clutters the lesson.
+ * Not added to the section navigator (it's an aid, not a section).
+ */
+interface Props {
+  title?: string;
+}
+const { title = 'Need a hand?' } = Astro.props;
+---
+
+<details class="aid support">
+  <summary>
+    <span class="aid-ic" aria-hidden="true">🤝</span>
+    <span class="aid-title">{title}</span>
+    <span class="aid-chevron" aria-hidden="true"></span>
+  </summary>
+  <div class="aid-body">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .aid {
+    margin-block: 1.25rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent-2);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--accent-2-wash);
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-family: var(--font-head);
+    font-weight: 600;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .aid-title { flex: 1; }
+  .aid-chevron {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-right: 2px solid var(--text-faint);
+    border-bottom: 2px solid var(--text-faint);
+    transform: rotate(-45deg);
+    transition: transform 0.18s ease;
+  }
+  .aid[open] .aid-chevron { transform: rotate(45deg); }
+  .aid-body {
+    padding: 0 1rem 1rem;
+  }
+  .aid-body :global(p:first-child) { margin-top: 0; }
+  .aid-body :global(p:last-child) { margin-bottom: 0; }
+</style>

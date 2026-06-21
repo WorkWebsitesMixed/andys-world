@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Card from '../../../components/Card.astro';
+import { getGrade } from '../../../lib/curriculum';
+import { routes } from '../../../lib/url';
+
+const grade = getGrade(11)!;
+---
+
+<BaseLayout title={`Your IGCSE — ${grade.name}`} description="How your IGCSE Design & Technology (0445) is assessed: two written papers and your coursework project.">
+  <div class="page container">
+    <Breadcrumbs items={[{ label: grade.name, href: routes.grade(11) }, { label: 'Your IGCSE' }]} />
+
+    <header class="head">
+      <span class="eyebrow">Cambridge IGCSE Design & Technology · 0445</span>
+      <h1 class="glow-text">Your IGCSE</h1>
+      <p class="lede muted">
+        Your grade comes from three pieces: <strong>two written papers</strong> and
+        your <strong>coursework project</strong>. Whenever a lesson mentions "Paper 4
+        Section B" or "Criterion 3", come back here to see exactly what it means.
+      </p>
+    </header>
+
+    <div class="grid">
+      <Card
+        href={routes.paper1(11)}
+        eyebrow="Written paper · 25%"
+        title="Paper 1 — Product Design"
+        tag="1h 15m · 50 marks"
+      >
+        One everyday-product context, worked through the same seven parts (a–g) every
+        year. Mostly sketching and ideas.
+      </Card>
+
+      <Card
+        href={routes.paper4(11)}
+        eyebrow="Written paper · 25%"
+        title="Paper 4 — Systems & Control"
+        tag="1h · 50 marks"
+      >
+        Short Section A questions plus one in-depth Section B question — we answer
+        Structures.
+      </Card>
+
+      <Card
+        href={routes.project(11)}
+        eyebrow="Coursework · 50%"
+        title="The Project — Component 2"
+        tag="100 marks · all year"
+      >
+        The product you design and build across the year, marked on seven criteria
+        (C1–C7).
+      </Card>
+    </div>
+
+    <p class="note faint">
+      Together: Paper 1 (25%) + Paper 4 (25%) + the Project (50%) = your full IGCSE grade.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { max-width: var(--maxw); padding-block: 2rem 1rem; }
+  .head { margin: 1.5rem 0 1.5rem; max-width: var(--readw); }
+  .head h1 { margin: 0.4rem 0 0.8rem; }
+  .lede { font-size: 1.1rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+  }
+  .note { margin-top: 1.5rem; }
+</style>

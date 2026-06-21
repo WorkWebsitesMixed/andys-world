@@ -1,0 +1,48 @@
+---
+import { routes } from '../lib/url';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href={routes.home()}>Home</a></li>
+    {items.map((c) => (
+      <li>
+        <span class="sep" aria-hidden="true">/</span>
+        {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .crumbs ol {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+  }
+  .crumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .crumbs a { color: var(--text-faint); }
+  .crumbs a:hover { color: var(--accent); }
+  .crumbs [aria-current='page'] { color: var(--text-dim); }
+  .sep { color: var(--line-strong); }
+</style>

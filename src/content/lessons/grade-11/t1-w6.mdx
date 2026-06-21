@@ -1,0 +1,140 @@
+---
+grade: 11
+term: 1
+week: 6
+title: "Research → Specification (C2)"
+topic: "Project"
+learningGoal: "analyse my user research and write a justified, measurable specification of at least six points, each linked to a need and including one safety and one sustainability point."
+selGoal: "represent my user's needs fairly, basing at least two spec points on what the user actually told me."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Back to your project. You've met your user and gathered research — now you turn that
+into a **specification**: the precise, measurable list of what your product *must*
+do. A strong spec is the backbone of every mark that follows.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is <a href={routes.project(11)}>Criterion 2</a> of your coursework
+  (research → specification, 10 marks). A clear, justified spec also makes idea
+  generation and evaluation far easier later — and the analysis skill transfers
+  straight to Paper 1.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Primary research", definition: "Information you gather yourself (interviewing or observing your user)." },
+  { term: "Secondary research", definition: "Information from existing sources (books, websites, existing products)." },
+  { term: "Specification", definition: "A list of measurable, justified statements of what the product must do or be." },
+  { term: "Measurable", definition: "Written so you can test it — a number, a limit or a clear yes/no." },
+  { term: "ACCESS FM", definition: "A spec framework: Aesthetics, Cost, Customer, Environment, Size, Safety, Function, Materials." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Analyse, don't just collect
+
+Research only earns marks when you **analyse** it — say what each finding *means for
+your design*. "My user keeps heavy folders" → "the shelf must support at least 5 kg".
+
+### 2. ACCESS FM — a checklist for a complete spec
+
+Cover each heading so nothing is missed: **A**esthetics, **C**ost, **C**ustomer,
+**E**nvironment, **S**ize, **S**afety, **F**unction, **M**aterials. Your make-palette
+and the project's <a href={routes.project(11)}>size limits</a> already fix some of
+these for you.
+
+### 3. What a good spec point looks like
+
+Every point should be **measurable** *and* **justified**:
+
+> *"The product must support 5 kg **because** the user stores heavy folders
+> (**measured by** loading it with 5 kg without sagging)."*
+
+Include at least one **safety** point and one **sustainability** point.
+
+</Section>
+
+<WorkedExample title="Worked example — turning research into spec points">
+1. **Finding:** "My user's desk is only 60 cm deep and always cluttered."
+2. **Spec point:** *"Must take up no more than 25 cm of desk depth, because the desk is small and cluttered."*
+3. **Finding:** "They work late and the room is dark."
+4. **Spec point:** *"Must include a switch-operated light, because the user works in low light."*
+
+→ Each point traces back to something the **user actually said**.
+</WorkedExample>
+
+<Activity title="Draft your specification" time="40 min" grouping="Individual, with a peer check" materials={["ACCESS FM template", "Your Week 1 user research", "Your specification page"]}>
+1. **Write at least six spec points**, each **measurable and justified** and linked
+   to a real need.
+2. **Include** one **safety** point and one **sustainability** point.
+3. **Peer check:** swap with a partner — can they trace each of your points back to a
+   user need? Fix any that can't.
+</Activity>
+
+<Support title="Need a hand? A spec sentence frame">
+Use this frame for every point:
+
+> *"The product must **………** because **………** (measured by **………**)."*
+
+Start from your user's own words — that guarantees each point is justified.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Which is the strongest specification point?",
+    options: [
+      "Must be strong",
+      "Must look nice",
+      "Must support 5 kg without sagging, because the user stores heavy folders",
+      "Must be made of wood"
+    ],
+    answer: 2,
+    hint: "Which one is both measurable AND justified?",
+    explain: "It is measurable (5 kg, no sagging) and justified (the user stores heavy folders). The others are vague or unjustified."
+  },
+  {
+    q: "What does it mean to 'analyse' research?",
+    options: [
+      "Collect as much of it as possible",
+      "Say what each finding means for your design",
+      "Copy it from a website",
+      "Save it for the evaluation"
+    ],
+    answer: 1,
+    hint: "Marks come from what you DO with the findings.",
+    explain: "Analysing means interpreting each finding into a design implication — not just collecting data."
+  },
+  {
+    q: "In ACCESS FM, what does the 'S' for Safety remind you to do?",
+    options: [
+      "Choose a cheap material",
+      "Include at least one safety requirement in the spec",
+      "Make the product bigger",
+      "Skip the risky ideas"
+    ],
+    answer: 1,
+    hint: "ACCESS FM is a checklist of spec headings.",
+    explain: "Safety is one of the ACCESS FM headings — your spec should include at least one safety requirement."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** finalise your specification — at least six justified, measurable
+points, including safety and sustainability.
+
+<Extension title="Go deeper">
+Add a short **product analysis**: study one existing product like yours and note two
+things it does well and one weakness your design will fix.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (criteria & timeline)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §1.8 Product design application (p.78)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Does each spec point trace back to a real user need?" />

@@ -1,0 +1,152 @@
+---
+grade: 11
+term: 1
+week: 2
+title: "Structures: Types & Rigidity"
+topic: "Structures"
+learningGoal: "classify structures as shell, frame or mass (and as natural or man-made), and explain how triangulation makes a frame rigid — getting at least five of six examples right."
+selGoal: "add at least one example to my group's shared list, listening to and building on a classmate's idea."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Last week you launched your project. Now you start building the **structures
+knowledge** that sits underneath it. Today is about naming the kinds of structure
+around you and understanding the one idea that stops a frame from collapsing:
+**triangulation**.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Structure types and rigidity come up in <ExamLink to="paper4">**both sections of Paper 4**</ExamLink> — the short
+  Section A questions *and* the in-depth Structures question. You'll also use this
+  vocabulary to describe your own <a href={routes.project(11)}>project</a>'s
+  structure when you write your specification.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Shell structure", definition: "Gets its strength from its outer surface or skin. Examples: a plastic bottle, an egg, a car body." },
+  { term: "Frame structure", definition: "Made of rigid bars (members) joined together. Examples: a roof truss, a bike frame, scaffolding." },
+  { term: "Mass structure", definition: "Relies on its sheer bulk and weight. Examples: a dam, a thick brick wall." },
+  { term: "Member", definition: "One of the bars or parts that make up a frame structure." },
+  { term: "Triangulation", definition: "Adding a diagonal member to split a shape into triangles, making it rigid." },
+  { term: "Racking", definition: "When a square or rectangular frame leans over and collapses into a parallelogram." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Three families of structure
+
+Almost any structure you can name belongs to one of three families — or is a
+combination of them:
+
+- **Shell** — strength comes from the **outer surface**. A plastic bottle is
+  surprisingly strong for its weight because of its thin curved skin.
+- **Frame** — strength comes from **rigid bars (members) joined together**, like a
+  roof truss or scaffolding.
+- **Mass** — strength comes from **sheer bulk and weight**, like a dam or a
+  thick stone wall.
+
+### 2. Natural or man-made (a quick recap)
+
+Remember last week: every structure is also either **natural** (a spider's web, an
+eggshell) or **man-made** (a bridge, a crane). So each structure gets *two* labels
+— its family *and* whether it's natural or man-made.
+
+### 3. What keeps a frame rigid? Triangulation
+
+Here's the key idea for your project. A **square** frame is *not* rigid: push it
+sideways and it leans over into a parallelogram — it **racks**. That's because a
+four-sided shape can change its angles while its sides stay the same length.
+
+A **triangle can't do that.** It's the only polygon that can't be pushed out of
+shape unless you change the length of one of its sides. So if you add a
+**diagonal member** to a square, you split it into two triangles and it becomes
+rigid. That's **triangulation** — and you'll see it everywhere once you look:
+gates, bridges, shelves, bike frames.
+
+<TriangulationDiagram />
+
+<WatchSee items={[
+  { label: "Why triangles make structures strong", href: "https://www.youtube.com/watch?v=ZNwJFd_zlGc", kind: "Video", note: "See triangulation at work in real structural engineering." }
+]} />
+
+</Section>
+
+<WorkedExample title="Worked example — classify and explain a stepladder">
+1. **What is it made of?** Separate bars joined together — so it's a **frame** structure (not a shell or a mass).
+2. **Natural or man-made?** Man-made.
+3. **Could it rack?** On its own, the four-sided shapes between the bars could fold flat.
+4. **What stops it?** The A-shape and the spreader form **triangles** — triangulation keeps it rigid and safe to stand on.
+
+→ A stepladder is a **man-made frame structure, kept rigid by triangulation.**
+</WorkedExample>
+
+<Activity title="Sort and strengthen" time="30 min" grouping="Table groups" materials={["The six structure photos", "Paper strips & split pins (or straws & string)", "Your group's shared list"]}>
+1. **Sort the six photos.** As a group, agree on each one's **family**
+   (shell / frame / mass) and whether it's **natural or man-made**. Add your
+   answers to your group's **shared list** — make sure *your* voice adds at least
+   one example, and build on what a teammate says.
+2. **Strengthen a frame.** Build (or draw) a square from four strips. Push it —
+   watch it rack. Now add **members** until it's rigid, and be ready to explain
+   *why* your fix works.
+</Activity>
+
+<Support title="Need a hand? Sentence frames + a worked model">
+Use these frames to talk and write about structures:
+
+- *"This is a **[shell / frame / mass]** structure because **[its strength comes from its outer skin / it is made of joined bars / it relies on its bulk]**."*
+- *"I added a **diagonal** member, which splits the square into **triangles**, so it can no longer **rack**."*
+
+**Worked model:** *"A plastic bottle is a **shell** structure because its strength
+comes from its thin outer surface, not from bars or bulk."*
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A roof truss is built from straight bars joined at their ends. Which family is it?",
+    options: ["Shell", "Frame", "Mass", "None of these"],
+    answer: 1,
+    hint: "Where does its strength come from — a skin, its bulk, or its joined bars?",
+    explain: "Its strength comes from rigid bars (members) joined together, so it's a frame structure."
+  },
+  {
+    q: "Why does adding a diagonal make a square frame rigid?",
+    options: [
+      "It makes the frame much heavier",
+      "It splits the square into triangles, which can't be pushed out of shape",
+      "It uses up the spare material",
+      "It turns the frame into a shell structure"
+    ],
+    answer: 1,
+    hint: "Think about which shape can't change its angles without changing a side's length.",
+    explain: "A diagonal divides the square into two triangles. A triangle can't deform without changing a side length, so the frame can no longer rack."
+  },
+  {
+    q: "A concrete dam mainly holds back the water because of its…",
+    options: ["thin outer skin", "joined bars", "enormous bulk and weight", "triangulation"],
+    answer: 2,
+    hint: "A dam isn't hollow and isn't made of bars — what does it have a lot of?",
+    explain: "A dam is a mass structure: it relies on its sheer bulk and weight to resist the load."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** photograph **three structures** at home and label each one's family
+(shell / frame / mass) and whether it's natural or man-made. Bring them next class.
+
+<Extension title="Go deeper">
+Pick one structure that is a **combination** of two families (for example, a car —
+shell body on a frame chassis) and explain how each part does its job. Then try the
+**Knowledge Check** in textbook §4.2.1, or write your own tricky "name that
+structure" question to test a partner.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts (p.233)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.2.3 Strengthening frame structures (p.240)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which structure type will my project most likely be, and why?" />

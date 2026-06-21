@@ -1,0 +1,130 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Card from '../../components/Card.astro';
+import { GRADES, TERMS, getGrade, termLabel, getTermFocus } from '../../lib/curriculum';
+import { routes } from '../../lib/url';
+import { getTermLessons } from '../../lib/lessons';
+
+export const getStaticPaths = (() => {
+  return GRADES.map((g) => ({ params: { grade: String(g.id) } }));
+}) satisfies GetStaticPaths;
+
+const { grade } = Astro.params;
+const gradeNum = Number(grade);
+const info = getGrade(gradeNum)!;
+
+// How many lessons exist per term (to label cards).
+const counts = await Promise.all(
+  TERMS.map(async (t) => (await getTermLessons(gradeNum, t)).length),
+);
+---
+
+<BaseLayout title={`${info.name} — ${info.subject}`}>
+  <section class="container head">
+    <Breadcrumbs items={[{ label: info.name }]} />
+    <span class="eyebrow">{info.subject}</span>
+    <h1>{info.name}</h1>
+    <p class="lede muted">{info.blurb}</p>
+    {info.status !== 'active' && (
+      <p class="notice">📝 Lessons for this grade are coming soon — the structure is in place and pages will fill in.</p>
+    )}
+  </section>
+
+  {gradeNum === 11 && (
+    <section class="container">
+      <a class="project-banner" href={routes.igcse(11)}>
+        <div>
+          <span class="eyebrow">Start here</span>
+          <h2>Your IGCSE</h2>
+          <p class="muted">
+            How your grade works — Paper 1, Paper 4 and your year-long project.
+            Read this once, and come back whenever a lesson mentions a paper or a
+            criterion.
+          </p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  )}
+
+  <section class="container">
+    <h2 class="section-h">Terms</h2>
+    <div class="grid">
+      {TERMS.map((t, i) => {
+        const focus = getTermFocus(gradeNum, t);
+        const empty = focus?.planned === false;
+        return (
+          <Card
+            href={routes.term(gradeNum, t)}
+            eyebrow={
+              counts[i] > 0
+                ? `${counts[i]} lesson${counts[i] === 1 ? '' : 's'}`
+                : empty
+                  ? 'Not planned yet'
+                  : 'Coming soon'
+            }
+            title={focus?.title ?? termLabel(t)}
+            tag={t === 3 && info.status === 'active' ? '10 weeks · review' : '10 weeks'}
+            muted={counts[i] === 0}
+          >
+            {counts[i] > 0
+              ? 'Open the week-by-week lessons for this term.'
+              : (focus?.blurb ?? 'Weeks are ready to be filled in.')}
+          </Card>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { padding-block: 2rem 1rem; }
+  .head h1 { margin: 0.4rem 0 0.6rem; }
+  .lede { font-size: 1.1rem; max-width: 42rem; }
+  .notice {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .project-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-lg);
+    background:
+      linear-gradient(120deg, var(--accent-wash), transparent 60%),
+      var(--bg-2);
+    box-shadow: 0 0 30px var(--accent-wash);
+    color: var(--text);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .project-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px var(--accent-glow);
+  }
+  .project-banner h2 { margin: 0.2rem 0 0.4rem; }
+  .project-banner p { max-width: 46rem; }
+  .project-banner .arrow {
+    margin-left: auto;
+    font-size: 1.6rem;
+    color: var(--accent);
+    transition: transform 0.18s ease;
+  }
+  .project-banner:hover .arrow { transform: translateX(5px); }
+
+  .section-h { margin-bottom: 1.2rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+  }
+</style>

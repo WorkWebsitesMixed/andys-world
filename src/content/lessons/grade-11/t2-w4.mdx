@@ -1,0 +1,131 @@
+---
+grade: 11
+term: 2
+week: 4
+title: "Development by Testing (C4)"
+topic: "Project"
+learningGoal: "test my model against at least two specification points and build my low-voltage light circuit on a breadboard, recording objective results and one change I will make."
+selGoal: "record an unflattering test result honestly rather than hiding it, and treat it as data."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Last week you found problems by making. This week you **test on purpose** — with
+measurements, not guesses — and you breadboard your circuit before committing it.
+Honest test data is what turns a nice idea into a developed, evidence-backed design.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Objective testing is core <a href={routes.project(11)}>Criterion 4</a>
+  (development) and sets up **Criterion 7** (testing & evaluation). The examiner
+  rewards *measured* evidence — "held 5 kg", not "seemed strong".
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Objective test", definition: "A test that measures a result, rather than relying on opinion." },
+  { term: "Fair test", definition: "A test where you change one thing at a time, so the result is trustworthy." },
+  { term: "Load test", definition: "Measuring how much weight a structure carries before it fails." },
+  { term: "Breadboarding", definition: "Building a circuit on a solderless board to check it works before making it permanent." },
+  { term: "Iteration loop", definition: "Test → modify → re-test, repeated until the design works." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Test objectively
+
+**Measure, don't guess.** Design a **fair test**: change one thing at a time so you
+know what caused the result. For a structure, the key tests are **load** (how much
+weight before it fails) and **stability** (does it tip or wobble?).
+
+### 2. Breadboard before you build
+
+Before fixing your circuit into the product, build it on a **breadboard** — a
+solderless board for testing. Confirm the switch turns the LED on and off, then
+you can commit it with confidence.
+
+<CircuitDiagram />
+
+### 3. The iteration loop
+
+One test is rarely the end. Run the loop: **test → modify → re-test**, recording
+each result. Each turn of the loop is development evidence.
+
+</Section>
+
+<WorkedExample title="Worked example — test, modify, re-test">
+1. **Test:** a cyclist's gear organiser holds 3 kg, then **twists at a joint**.
+2. **Record:** note the exact load and what happened (a number, not "a bit").
+3. **Modify:** add a diagonal brace (triangulation) across the joint.
+4. **Re-test:** it now holds 5 kg with no twist — record the before and after.
+</WorkedExample>
+
+<Activity title="Test and breadboard" time="50 min" grouping="Pairs (technician supports)" materials={["Weights / load rig", "Breadboard kit & multimeter", "Test-results table"]}>
+1. **Run a load or stability test** and **record the data** (numbers and photos).
+2. **Breadboard your circuit** (switch → resistor → LED) and confirm it works.
+3. **Note the changes** your results call for.
+</Activity>
+
+<Support title="Need a hand? A results table + the circuit card">
+Use the **ready-made results table** — just fill in *what you tested*, *the
+measurement*, and *what you'll change*. For the circuit, reuse the
+**circuit-on-a-card** reference from Term 1, Week 9.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Which is an objective test result?",
+    options: [
+      "It felt pretty sturdy",
+      "It held 5 kg, then sagged 4 mm",
+      "It looks strong",
+      "Everyone liked it"
+    ],
+    answer: 1,
+    hint: "Objective means measured, with numbers.",
+    explain: "'Held 5 kg, sagged 4 mm' is measured data. The others are opinions."
+  },
+  {
+    q: "What makes a test 'fair'?",
+    options: [
+      "You change one thing at a time",
+      "You repeat it until you like the answer",
+      "You test only the strong parts",
+      "You guess the result first"
+    ],
+    answer: 0,
+    hint: "It's about isolating the cause of the result.",
+    explain: "Changing one variable at a time means you can trust what caused the result."
+  },
+  {
+    q: "Why breadboard a circuit before building it into the product?",
+    options: [
+      "To make it look professional",
+      "To check it works before committing it permanently",
+      "Because breadboards are required in the exam",
+      "To use more wire"
+    ],
+    answer: 1,
+    hint: "It's a try-before-you-commit step.",
+    explain: "Breadboarding lets you confirm the circuit works before fixing it permanently into the product."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** write up your **test-results table** (what you tested, the data, the
+change).
+
+<Extension title="Go deeper">
+Run a **second test** on a different specification point — for example, does the
+switch stay reliable after 20 presses?
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criteria 4 & 7)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.4 Electronics (p.299)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Did my product do what my spec promised — and what is my evidence?" />

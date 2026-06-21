@@ -1,0 +1,39 @@
+---
+/**
+ * A captioned image with required alt text (UDL). Use for photographs/diagrams
+ * hosted as image files. For inline SVG concept diagrams, use the components in
+ * components/diagrams/ instead.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  /** Optional max display width, e.g. "32rem". */
+  width?: string;
+}
+
+const { src, alt, caption, width } = Astro.props;
+---
+
+<figure class="figure" style={width ? `--fig-w:${width}` : undefined}>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .figure { margin-block: 1.75rem; }
+  .figure img {
+    display: block;
+    margin-inline: auto;
+    max-width: min(100%, var(--fig-w, 100%));
+    border: 1px solid var(--line);
+  }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+</style>

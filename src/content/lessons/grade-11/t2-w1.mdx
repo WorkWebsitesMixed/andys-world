@@ -1,0 +1,145 @@
+---
+grade: 11
+term: 2
+week: 1
+title: "Idea Development, Selection & Evaluation (close C3)"
+topic: "Project"
+learningGoal: "develop my Term 1 ideas further and select one to take forward, evaluating at least three ideas against my specification and justifying my choice in writing."
+selGoal: "decide under uncertainty and commit to one direction — accepting I can't pursue every idea, and noting why my choice is sound."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Welcome to Term 2. You ended last term with several different ideas; now you
+**develop** them, choose **one** to build, and — crucially — explain **why**. Making
+that choice *objectively*, against your specification, is what turns a nice sketch
+into a high-scoring design decision.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This **closes <a href={routes.project(11)}>Criterion 3</a>** (idea generation,
+  20 marks) and rehearses <ExamLink to="paper1">**Paper 1 part (d)**</ExamLink> — evaluate three ideas, choose one, and
+  justify it. The justification is the marks; "I just liked it" scores nothing.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Developing", definition: "Adding detail and resolving how an idea actually works — not just drawing more ideas." },
+  { term: "Evaluation matrix", definition: "A table that scores each idea against your specification points, so the choice is objective." },
+  { term: "Weighted criteria", definition: "Giving your most important spec points a higher score value, so they count more." },
+  { term: "Justification", definition: "A written reason why your chosen idea best meets the specification." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Develop, don't just generate
+
+Generating ideas (Term 1) was about *breadth*. **Developing** is about *depth*: add
+dimensions, show how parts join, resolve the structure and the circuit. A developed
+idea answers "but how would that actually work?"
+
+### 2. Choose objectively — the evaluation matrix
+
+Don't pick the one you *like*. Score each idea against your **specification** in a
+matrix. Give your most important spec points a **weighting** so they count for more.
+The highest total points you to the strongest design — fairly.
+
+### 3. Justify your choice
+
+State **why** the winner best meets the spec. This is the exact skill of **Paper 1
+part (d)**: "Idea B best meets the spec because it supports the load *and* fits the
+small desk, which the user said matters most."
+
+</Section>
+
+<WorkedExample title="Worked example — an evaluation matrix for a cyclist's gear organiser">
+1. **List your key spec points** and weight them (×2 for the most important).
+2. **Score each idea** out of 5 on each point.
+3. **Multiply by the weight, then total** each column.
+4. **Read off the winner** and justify it against the user's biggest need.
+
+| Spec point (weight) | Wall pegboard | Freestanding tower | Hanging frame |
+|---|---|---|---|
+| Holds gear weight (×2) | 4 → 8 | 5 → 10 | 3 → 6 |
+| Fast to grab (×2) | 5 → 10 | 3 → 6 | 5 → 10 |
+| Easy to make (×1) | 4 | 3 | 3 |
+| **Total** | **22** | **19** | **19** |
+
+→ *"The wall pegboard scores highest because it best balances the user's two
+priorities — holding the gear **and** being quick to grab before a ride."*
+</WorkedExample>
+
+<Activity title="Develop, evaluate, decide" time="50 min" grouping="Individual (teacher + drawing colleague circulate)" materials={["Your Term 1 idea pages", "Weighted evaluation-matrix template", "Your specification"]}>
+1. **Develop** each of your three ideas — add detail so each clearly *works*.
+2. **Build an evaluation matrix** scoring them against your weighted spec points.
+3. **Select one** and write a short **justification** of why it wins.
+
+This completes **C3** — developed ideas + matrix + justified chosen design.
+</Activity>
+
+<Support title="Need a hand? A pre-weighted matrix + justification frame">
+Start from the **pre-weighted template** — the spec points and weights are already
+filled in, so you only add scores.
+
+**Justification frame:** *"Idea **……** best meets the spec because **……**, which the
+user said matters most."*
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "What does it mean to 'develop' an idea (rather than generate more)?",
+    options: [
+      "Draw the same idea again",
+      "Add detail and resolve how it actually works",
+      "Pick the one you like best",
+      "Start a brand-new concept"
+    ],
+    answer: 1,
+    hint: "Development is about depth, not breadth.",
+    explain: "Developing means adding detail and working out how the idea functions — not producing more ideas."
+  },
+  {
+    q: "Why use an evaluation matrix to choose your design?",
+    options: [
+      "It makes the page look full",
+      "It scores each idea against the spec, so the choice is objective",
+      "It guarantees the cheapest idea wins",
+      "It removes the need for a specification"
+    ],
+    answer: 1,
+    hint: "What makes a choice fair instead of just personal taste?",
+    explain: "A matrix scores ideas against your spec points, so the decision is objective rather than 'which one I like'."
+  },
+  {
+    q: "What earns the marks in Paper 1 part (d)?",
+    options: [
+      "Choosing any idea quickly",
+      "Justifying why your chosen idea best meets the spec",
+      "Drawing the most ideas",
+      "Using the most colours"
+    ],
+    answer: 1,
+    hint: "It's not the choice itself — it's the reasoning.",
+    explain: "Part (d) rewards a clear justification of why the chosen idea best meets the specification."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** tidy your **chosen-design page**, and list everything you'll need to
+**test** during development (does it hold the load? is it rigid? does the circuit
+work?).
+
+<Extension title="Go deeper">
+Create a fourth **hybrid** idea that combines the strengths of two of your designs,
+and score it on your matrix — does it beat the original winner?
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criterion 3)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §1.2 Design ideas & techniques (p.20)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which idea did I let go, and am I at peace with why?" />

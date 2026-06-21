@@ -1,0 +1,121 @@
+---
+grade: 11
+term: 2
+week: 8
+title: "Working Drawings (C5)"
+topic: "Project"
+learningGoal: "produce a dimensioned third-angle orthographic working drawing — with scale and British-Standard conventions — that someone could build my product from."
+selGoal: "check a classmate's drawing against the British-Standard checklist and give precise, kind feedback."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+A **working drawing** is the instruction manual for your product: clear enough that
+someone *else* could build it. This week you produce a dimensioned, conventionally
+laid-out drawing to British Standards.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is <a href={routes.project(11)}>Criterion 5</a> (planning), and it's exactly
+  <ExamLink to="paper1">Paper 1 part (e)</ExamLink> — the full solution drawing with
+  construction details and dimensions (12 marks).
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Orthographic drawing", definition: "Flat 2D views of a product: plan (top), front and end elevations." },
+  { term: "Third-angle projection", definition: "The standard arrangement of those views used in most schools." },
+  { term: "Scale", definition: "The drawing's size compared to real life, e.g. 1:2 (half size)." },
+  { term: "Dimensioning", definition: "Adding measurements following British-Standard rules." },
+  { term: "Hidden detail", definition: "Edges you can't see, shown as dashed lines." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Three views, by convention
+
+A **third-angle orthographic** drawing lays out the **plan, front elevation and end
+elevation** in standard positions, so anyone reading it knows what they're looking at.
+
+<WatchSee items={[
+  { label: "Third-angle orthographic projection (beginners)", href: "https://www.youtube.com/watch?v=qzE9ZZYCfeY", kind: "Video", note: "How the plan, front and end views are arranged." }
+]} />
+
+### 2. Scale and dimensioning
+
+State a **scale** (e.g. 1:2) and dimension to **British Standards**: clear
+extension and dimension lines, the **diameter symbol (⌀)** for holes, centre lines,
+and **hidden detail** as dashed lines.
+
+### 3. Make it buildable
+
+Add a **title block** and an **assembly note**, and a **section or exploded view**
+where it helps. The test: could someone build it from this drawing alone?
+
+</Section>
+
+<WorkedExample title="Worked example — dimensioning a bracket">
+1. **Lay out** the plan, front and end elevations in third-angle positions.
+2. **State the scale** (say 1:2) in the title block.
+3. **Dimension** each view to British Standards — sizes, hole diameters (⌀), centre lines.
+4. **Show hidden detail** (a hole behind a face) as dashed lines.
+</WorkedExample>
+
+<Activity title="Draw it to standard" time="55 min" grouping="Individual (drawing colleague circulates)" materials={["CAD or drawing board", "BS dimensioning guide", "Your 3D model & parts"]}>
+1. **Complete** the plan and two elevations of your product.
+2. **Dimension** them to British Standards, with a stated scale.
+3. **Add an assembly note**, then **peer-check** a classmate's drawing against the
+   BS checklist — precise, kind feedback.
+</Activity>
+
+<Support title="Need a hand? A BS checklist + grid paper">
+Work through the **British-Standard dimensioning checklist** one line at a time, and
+use **grid paper** to keep views square and aligned. Copy the layout from the
+textbook's worked example (p.111).
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "In an orthographic working drawing, what are the three usual views?",
+    options: [
+      "Top, bottom, side",
+      "Plan, front elevation, end elevation",
+      "Left, right, back",
+      "Three random angles"
+    ],
+    answer: 1,
+    hint: "One looks down, two look from the sides/front.",
+    explain: "The standard views are the plan (from above), the front elevation and the end elevation."
+  },
+  {
+    q: "How is hidden detail shown on a working drawing?",
+    options: ["Thick solid lines", "Dashed lines", "Red lines", "It's left out"],
+    answer: 1,
+    hint: "Edges you can't directly see use a broken line.",
+    explain: "Hidden detail (edges behind a face) is drawn as dashed lines."
+  },
+  {
+    q: "A scale of 1:2 means the drawing is…",
+    options: ["twice real size", "half real size", "the same size", "in millimetres only"],
+    answer: 1,
+    hint: "The drawing number comes first, real life second.",
+    explain: "1:2 means one unit on the drawing equals two in real life — so the drawing is half size."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** finalise your **working drawing** so it's complete and dimensioned.
+
+<Extension title="Go deeper">
+Add an **exploded** or **sectional** view to show how the parts fit together or
+what's inside.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — Paper 1 (part e: solution drawing)", href: routes.paper1(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110–112)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Could someone else build my product from this drawing alone?" />

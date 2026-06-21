@@ -1,0 +1,327 @@
+/* ===========================================================================
+   Andy's World — design system
+   Dark, near-black surface · electric-cyan accent · technical sans-serif.
+   Aesthetic: innovation · physics · technology.
+   =========================================================================== */
+
+@import '@fontsource-variable/space-grotesk';
+@import '@fontsource-variable/inter';
+
+:root {
+  /* --- Type --------------------------------------------------------------- */
+  --font-head: 'Space Grotesk Variable', system-ui, sans-serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Code', monospace;
+
+  /* --- Surfaces (near-black, layered) ------------------------------------- */
+  --bg: #06090e;          /* page background */
+  --bg-1: #0b1018;        /* raised surface */
+  --bg-2: #111824;        /* card surface */
+  --bg-3: #18222f;        /* hover / inset */
+  --line: #1f2c3a;        /* hairline borders */
+  --line-strong: #2c3e52;
+
+  /* --- Text --------------------------------------------------------------- */
+  --text: #e7eef5;        /* primary body */
+  --text-dim: #9fb0c0;    /* secondary */
+  --text-faint: #7b8ca0;  /* captions, meta — kept ≥4.5:1 on --bg */
+
+  /* --- Accent: electric (blue) cyan --------------------------------------- */
+  --accent: #34e0ff;
+  --accent-bright: #7df0ff;
+  --accent-deep: #0bb6d6;
+  --accent-ink: #04222a;          /* text on accent fills */
+  --accent-glow: rgba(52, 224, 255, 0.35);
+  --accent-wash: rgba(52, 224, 255, 0.08);
+
+  /* secondary accent for SEL/affective notes — warm violet to pair with cyan */
+  --accent-2: #b98cff;
+  --accent-2-wash: rgba(185, 140, 255, 0.10);
+
+  /* --- Feedback ----------------------------------------------------------- */
+  --ok: #4ce0a6;
+  --warn: #ffcf6b;
+  --bad: #ff6b81;
+
+  /* --- Geometry ----------------------------------------------------------- */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+  --maxw: 72rem;
+  --readw: 52rem;         /* readable measure / unified lesson column */
+
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
+            0 8px 30px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
+}
+
+/* ===========================================================================
+   Display preferences (set on <html> via data-attributes; persisted in
+   localStorage by DisplaySettings; applied pre-paint by an inline script).
+   Dark is the default (the bare :root above).
+   =========================================================================== */
+
+/* Light theme — for readers who find dark backgrounds hard (e.g. astigmatism). */
+:root[data-theme='light'] {
+  --bg: #f5f7fa;
+  --bg-1: #ffffff;
+  --bg-2: #ffffff;
+  --bg-3: #eef2f7;
+  --line: #d8e0ea;
+  --line-strong: #b3c2d2;
+
+  --text: #0d1620;
+  --text-dim: #41525f;
+  --text-faint: #586978;
+
+  --accent: #0a7488;        /* deeper cyan: ≥4.5:1 on white for links/text */
+  --accent-bright: #0b91ab;
+  --accent-deep: #0a7488;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(10, 116, 136, 0.22);
+  --accent-wash: rgba(10, 116, 136, 0.08);
+
+  --accent-2: #6d3df0;
+  --accent-2-wash: rgba(109, 61, 240, 0.08);
+
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+            0 8px 24px rgba(13, 22, 32, 0.08);
+
+  color-scheme: light;
+}
+
+/* High-contrast (dark) — maximal legibility for low vision. */
+:root[data-theme='contrast'] {
+  --bg: #000000;
+  --bg-1: #000000;
+  --bg-2: #0a0a0a;
+  --bg-3: #1c1c1c;
+  --line: #5a5a5a;
+  --line-strong: #8a8a8a;
+
+  --text: #ffffff;
+  --text-dim: #ededed;
+  --text-faint: #cfcfcf;
+
+  --accent: #67f3ff;
+  --accent-bright: #b6f8ff;
+  --accent-deep: #67f3ff;
+  --accent-ink: #000000;
+  --accent-glow: rgba(103, 243, 255, 0.5);
+  --accent-wash: rgba(103, 243, 255, 0.16);
+
+  --accent-2: #e0bbff;
+  --accent-2-wash: rgba(224, 187, 255, 0.18);
+
+  color-scheme: dark;
+}
+/* Drop the decorative grid in high-contrast — keep it uncluttered. */
+:root[data-theme='contrast'] body::before { display: none; }
+
+/* Roomy text spacing — better tracking for dyslexia / reading difficulty. */
+:root[data-spacing='roomy'] body {
+  line-height: 1.95;
+  letter-spacing: 0.03em;
+  word-spacing: 0.06em;
+}
+:root[data-spacing='roomy'] p,
+:root[data-spacing='roomy'] li {
+  margin-block: 0.9rem;
+}
+
+/* Calm mode — remove the grid, glow and motion to reduce distraction. */
+:root[data-calm='1'] body::before,
+:root[data-calm='1'] body::after {
+  display: none;
+}
+:root[data-calm='1'] .glow-text {
+  text-shadow: none;
+}
+:root[data-calm='1'] *,
+:root[data-calm='1'] *::before,
+:root[data-calm='1'] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* --- Reset-ish ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Offset anchor jumps so sections clear the sticky header. */
+[id] {
+  scroll-margin-top: 84px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Faint physics grid + corner orbit glow, fixed behind everything. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+  opacity: 0.20;
+  -webkit-mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40rem 40rem at 85% -10%, var(--accent-wash), transparent 60%),
+    radial-gradient(36rem 36rem at -10% 10%, var(--accent-2-wash), transparent 60%);
+  pointer-events: none;
+}
+
+/* --- Headings ------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); }
+h3 { font-size: 1.25rem; }
+
+p, ul, ol { color: var(--text); }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--accent-bright); }
+
+code, kbd, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+:not(pre) > code {
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  color: var(--accent-bright);
+}
+
+pre {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 2rem 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* Tables (e.g. evaluation matrices in lessons) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.25rem;
+  font-size: 0.92rem;
+  display: block;
+  overflow-x: auto;
+}
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+}
+thead th {
+  background: var(--bg-2);
+  font-family: var(--font-head);
+  color: var(--text);
+}
+tbody tr:nth-child(even) {
+  background: var(--bg-1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent-glow);
+  color: #fff;
+}
+
+/* --- Layout helpers ------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.muted { color: var(--text-dim); }
+.faint { color: var(--text-faint); }
+
+.glow-text {
+  text-shadow: 0 0 24px var(--accent-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,45 @@
+---
+/**
+ * The dual goals — a Learning goal and an SEL goal.
+ * Both phrased "By the end of this class I will…" (Mager ABCD style).
+ */
+interface Props {
+  learningGoal: string;
+  selGoal: string;
+}
+
+const { learningGoal, selGoal } = Astro.props;
+const STEM = 'By the end of this class I will';
+---
+
+<div class="goals" id="goals" data-section="Goals">
+  <div class="goal learn">
+    <span class="eyebrow">Learning goal</span>
+    <p><span class="stem">{STEM}</span> {learningGoal}</p>
+  </div>
+  <div class="goal sel">
+    <span class="eyebrow sel-eyebrow">SEL goal</span>
+    <p><span class="stem">{STEM}</span> {selGoal}</p>
+  </div>
+</div>
+
+<style>
+  .goals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: 1rem;
+    margin-block: 1.5rem;
+  }
+  .goal {
+    border: 1px solid var(--line);
+    border-left-width: 3px;
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    background: var(--bg-2);
+  }
+  .goal.learn { border-left-color: var(--accent); }
+  .goal.sel { border-left-color: var(--accent-2); }
+  .sel-eyebrow { color: var(--accent-2); }
+  .goal p { margin: 0.4rem 0 0; }
+  .stem { color: var(--text-dim); }
+</style>

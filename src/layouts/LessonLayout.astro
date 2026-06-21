@@ -1,0 +1,129 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Goals from '../components/Goals.astro';
+import PrevNext from '../components/PrevNext.astro';
+import LessonNav from '../components/LessonNav.astro';
+import type { Lesson } from '../lib/lessons';
+import { routes } from '../lib/url';
+import { termLabel } from '../lib/curriculum';
+
+// Components made available inside lesson MDX bodies without an explicit import.
+import KeyTerms from '../components/KeyTerms.astro';
+import WorkedExample from '../components/WorkedExample.astro';
+import Activity from '../components/Activity.astro';
+import SelfCheck from '../components/SelfCheck.astro';
+import Resources from '../components/Resources.astro';
+import Reflection from '../components/Reflection.astro';
+import Callout from '../components/Callout.astro';
+import Section from '../components/Section.astro';
+import Support from '../components/Support.astro';
+import Extension from '../components/Extension.astro';
+import ExamLink from '../components/ExamLink.astro';
+import Figure from '../components/Figure.astro';
+import WatchSee from '../components/WatchSee.astro';
+import ProjectExamples from '../components/ProjectExamples.astro';
+import TriangulationDiagram from '../components/diagrams/TriangulationDiagram.astro';
+import ForcesDiagram from '../components/diagrams/ForcesDiagram.astro';
+import CircuitDiagram from '../components/diagrams/CircuitDiagram.astro';
+import BeamReactionsDiagram from '../components/diagrams/BeamReactionsDiagram.astro';
+
+interface Props {
+  lesson: Lesson;
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+}
+
+const { lesson, prev, next } = Astro.props;
+const { grade, term, week, title, topic, learningGoal, selGoal } = lesson.data;
+
+const { Content } = await render(lesson);
+
+const mdxComponents = {
+  KeyTerms,
+  WorkedExample,
+  Activity,
+  SelfCheck,
+  Resources,
+  Reflection,
+  Callout,
+  Section,
+  Support,
+  Extension,
+  ExamLink,
+  Figure,
+  WatchSee,
+  ProjectExamples,
+  TriangulationDiagram,
+  ForcesDiagram,
+  CircuitDiagram,
+  BeamReactionsDiagram,
+};
+
+const crumbs = [
+  { label: `Grade ${grade}`, href: routes.grade(grade) },
+  { label: termLabel(term), href: routes.term(grade, term) },
+  { label: `Week ${week}` },
+];
+---
+
+<BaseLayout title={title} description={`Grade ${grade} · ${termLabel(term)} · Week ${week} — ${title}`}>
+  <LessonNav />
+
+  <article class="lesson container" data-lesson-root>
+    <Breadcrumbs items={crumbs} />
+
+    <header class="lesson-head">
+      <div class="meta">
+        <span class="pill">Grade {grade}</span>
+        <span class="pill">{termLabel(term)}</span>
+        <span class="pill">Week {week}</span>
+        <span class="pill topic">{topic}</span>
+      </div>
+      <h1 class="glow-text">{title}</h1>
+    </header>
+
+    <Goals learningGoal={learningGoal} selGoal={selGoal} />
+
+    <div class="lesson-body">
+      <Content components={mdxComponents} />
+    </div>
+
+    <PrevNext prev={prev} next={next} />
+  </article>
+</BaseLayout>
+
+<style>
+  /* Unified, readable single column — header, goals and body all align. */
+  .lesson {
+    max-width: var(--readw);
+    padding-block: 2rem 1rem;
+  }
+  .lesson-head { margin: 1.5rem 0 0.5rem; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+  .pill.topic {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-wash);
+  }
+  /* Section 5 free prose & first body block ("Why this matters") get spacing. */
+  .lesson-body :global(> p:first-child) {
+    font-size: 1.08rem;
+    color: var(--text-dim);
+  }
+</style>

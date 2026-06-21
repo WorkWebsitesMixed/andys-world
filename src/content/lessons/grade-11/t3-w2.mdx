@@ -1,0 +1,121 @@
+---
+grade: 11
+term: 3
+week: 2
+title: "Manufacture of Parts 1 (C6)"
+topic: "Project"
+learningGoal: "manufacture the majority of my laser-cut and printed parts to my drawing dimensions, checking each one against my cutting list."
+selGoal: "share machine access fairly and help a classmate who's behind, while managing my own time well."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+This is a full making week: you cut and print most of your parts. The skill that
+separates a good product from a frustrating one is **accuracy** — every part made to
+your drawing, every part checked before you move on.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is the heart of <a href={routes.project(11)}>Criterion 6</a> (product
+  realisation). Marks come from parts made **to a good standard, to your drawing** —
+  so check every one against your cutting list.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Accuracy", definition: "Making each part to the exact size on your working drawing." },
+  { term: "Cutting list", definition: "Your list of every part, its material, size and quantity — check parts against it." },
+  { term: "Failed cut/print", definition: "A part that comes out wrong — usually a kerf, scale or orientation issue to fix." },
+  { term: "Marking out", definition: "Measuring and marking material accurately before any hand cutting." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Make it accurate
+
+Work to your **working drawing** dimensions, and **QC every part against your cutting
+list** as it comes off the machine. A part that's 2 mm out now becomes a joint that
+won't fit later.
+
+### 2. When a part comes out wrong
+
+It happens. Don't bin it in frustration — diagnose it. Usually it's **kerf** (the
+laser's cut width), the **scale** of the file, or the **orientation** of a print.
+Adjust the file and re-run.
+
+### 3. Marking out by hand
+
+For any hand-worked parts, **mark out** carefully first — measure twice, cut once.
+
+</Section>
+
+<WorkedExample title="Worked example — a part comes out undersized">
+1. **Measure** the finished part against the cutting list — it's 2 mm too small.
+2. **Diagnose:** the file didn't allow for **kerf**, so the laser removed extra.
+3. **Correct** the file (add the kerf allowance) — and double-check the scale.
+4. **Re-cut**, then QC again. Right this time? Move on.
+</WorkedExample>
+
+<Activity title="Make and check your parts" time="Full session (technician-managed rotation)" grouping="Staggered stations" materials={["Your production plan & cut files", "Cutting list", "QC log"]}>
+1. **Manufacture your parts** following your plan.
+2. **QC each part** against the cutting list and your drawing.
+3. **Log progress** and flag any parts you need to re-make.
+</Activity>
+
+<Support title="Need a hand? Spares and priority">
+**Pre-cut spares** of common parts are available so a failed cut doesn't stop you.
+If you're behind, you get **technician priority** at the machines — ask early, not at
+the end.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "When should you QC a part against the cutting list?",
+    options: [
+      "At the very end of the project",
+      "As each part comes off the machine, before moving on",
+      "Only if it looks wrong",
+      "Never — the machine is always right"
+    ],
+    answer: 1,
+    hint: "Catch errors before they become bad joints.",
+    explain: "Check each part as it's made — a small error now becomes a joint that won't fit later."
+  },
+  {
+    q: "A laser-cut part comes out slightly too small. The likely cause is…",
+    options: ["the wrong colour", "not allowing for kerf", "too much glue", "a blunt drill"],
+    answer: 1,
+    hint: "The laser burns away a thin width of material.",
+    explain: "Kerf is the material the laser removes; if the file doesn't allow for it, the part comes out undersized."
+  },
+  {
+    q: "What does 'marking out' mean?",
+    options: [
+      "Grading the part",
+      "Measuring and marking material accurately before cutting",
+      "Labelling the finished product",
+      "Choosing a finish"
+    ],
+    answer: 1,
+    hint: "Measure twice, cut once.",
+    explain: "Marking out is measuring and marking accurately before any hand cutting, so the part is the right size."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** list the **parts you still have to make** so you can plan next session.
+
+<Extension title="Go deeper">
+If a sub-assembly's parts are all ready, **begin assembling it** — getting ahead
+while a machine is busy.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criterion 6)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §3 Resistant Materials (processes)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook" },
+]} />
+
+<Reflection prompt="What went wrong with a part, and how did I fix it?" />

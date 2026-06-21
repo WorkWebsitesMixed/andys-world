@@ -1,0 +1,124 @@
+---
+grade: 11
+term: 3
+week: 4
+title: "Assembly 1 — Main Structure (C6)"
+topic: "Project"
+learningGoal: "assemble the main structure of my product using appropriate joining methods, producing a rigid body that holds together."
+selGoal: "accept that an assembly problem is normal and look for a solution calmly rather than giving up."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+This week your product becomes a real object: you assemble the **main structure**.
+The goal is a body that's **rigid and square** — and if a joint fights you, that's
+normal. Stay calm and solve it.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is <a href={routes.project(11)}>Criterion 6</a> (realisation). A rigid, square
+  structure is the backbone of a product that "functions well" — and it's also this
+  week's **making milestone** (see below).
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Temporary joint", definition: "One that can be undone — fixings, KD fittings." },
+  { term: "Permanent joint", definition: "One that can't — adhesive, rivet, weld." },
+  { term: "Rigidity", definition: "How well the structure resists bending or racking — often from triangulation." },
+  { term: "Square", definition: "Corners at a true 90°." },
+  { term: "Clamping & curing", definition: "Holding a glued joint still while the adhesive sets." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. Choose the right join
+
+Recap: **temporary** joints (fixings, KD fittings) can be undone; **permanent** ones
+(adhesive, rivet, weld) can't. Use what your design calls for.
+
+### 2. Rigid and square
+
+Assemble so the body is **square** (check the diagonals) and **rigid**. If it racks,
+the cure is **triangulation** — add a diagonal brace, exactly as you learned in
+Term 1.
+
+<TriangulationDiagram />
+
+### 3. Clamp and cure
+
+Glued joints need **clamping** while they **cure** — rushing this is how products come
+apart later.
+
+</Section>
+
+<WorkedExample title="Worked example — a square, rigid frame">
+1. **Dry-fit** the frame and check the diagonals are equal (square).
+2. **Glue and clamp** the joints, keeping it square while it cures.
+3. **Add a corner brace** (a small triangle) to stop the frame racking.
+4. **Test:** push it gently — rigid and square? The structure is sound.
+</WorkedExample>
+
+<Activity title="Assemble the main structure" time="Full session (technician supports)" grouping="Staggered stations" materials={["Your sub-assemblies", "Adhesives, clamps, fixings", "Jigs & a try-square"]}>
+1. **Assemble the main structure** with the right joining methods.
+2. **Check it's rigid and square** (diagonals, gentle push).
+3. **Note the steps that remain** for next session.
+</Activity>
+
+<Support title="Need a hand? Jigs and a steadying hand">
+Use the **clamping jigs** to hold things square while you work, and ask the technician
+to assist any tricky join. Fallback parts mean **everyone reaches assembly**.
+</Support>
+
+<Callout type="info" title="Making milestone this week">
+  Your teacher checks that **all parts are made and QC'd** and your **main structure is
+  assembled**. It's an honest schedule checkpoint — if you've slipped behind, flag it
+  now, while there's still time to catch up.
+</Callout>
+
+<SelfCheck questions={[
+  {
+    q: "Your assembled frame leans over (racks). The best fix is to…",
+    options: ["add more glue", "add a diagonal brace (triangulation)", "make it heavier", "paint it"],
+    answer: 1,
+    hint: "Which shape can't be pushed out of shape?",
+    explain: "A diagonal brace splits the frame into triangles, which are rigid — so it can no longer rack."
+  },
+  {
+    q: "Why clamp a glued joint?",
+    options: [
+      "To make it look nice",
+      "To hold it still and square while the adhesive cures",
+      "To make it temporary",
+      "To speed up cutting"
+    ],
+    answer: 1,
+    hint: "What does glue need to set properly?",
+    explain: "Clamping holds the joint still and square while the glue cures, so it sets strong and true."
+  },
+  {
+    q: "Which is a temporary joint?",
+    options: ["A weld", "An adhesive joint", "A KD fitting", "A rivet"],
+    answer: 2,
+    hint: "Which one can be undone?",
+    explain: "A knock-down (KD) fitting can be undone, so it's temporary. Welds, adhesives and rivets are permanent."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** none — keep your hands fresh for making.
+
+<Extension title="Go deeper">
+If your structure is solid, **begin fitting non-electronic features** (shelves, hooks,
+doors) ready for next week.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criterion 6)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §3.10 Joining & assembly (p.210)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook" },
+]} />
+
+<Reflection prompt="Is my structure rigid — and how do I know?" />

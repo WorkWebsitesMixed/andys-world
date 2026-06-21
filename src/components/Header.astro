@@ -1,0 +1,98 @@
+---
+import { site } from '../lib/site';
+import { routes } from '../lib/url';
+import { GRADES } from '../lib/curriculum';
+import DisplaySettings from './DisplaySettings.astro';
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={routes.home()}>
+      <span class="mark" aria-hidden="true"></span>
+      <span class="brand-name">{site.name}</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      {GRADES.map((g) => (
+        <a href={routes.grade(g.id)}>{g.name}</a>
+      ))}
+      <a class="exams" href={site.examsUrl} target="_blank" rel="noopener">
+        {site.examsLabel} <span aria-hidden="true">↗</span>
+      </a>
+      <DisplaySettings />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 64px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text);
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+  .brand:hover { color: var(--text); }
+  .mark {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow), inset 0 0 6px var(--accent-glow);
+    position: relative;
+  }
+  .mark::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--accent);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.6rem, 2vw, 1.4rem);
+    font-size: 0.95rem;
+  }
+  .nav a {
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .nav a:hover { color: var(--text); }
+  .nav .exams {
+    color: var(--accent);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+  }
+  .nav .exams:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-wash);
+  }
+  @media (max-width: 540px) {
+    .brand-name { display: none; }
+  }
+</style>

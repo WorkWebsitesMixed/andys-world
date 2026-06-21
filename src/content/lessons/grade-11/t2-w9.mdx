@@ -1,0 +1,127 @@
+---
+grade: 11
+term: 2
+week: 9
+title: "Production Planning (C5)"
+topic: "Project"
+learningGoal: "write a production plan for making my product — ordered steps, tools and machines, a cutting list, time estimates, and quality and safety checks."
+selGoal: "plan realistically, identifying one step likely to go wrong and a backup for it."
+draft: false
+---
+
+import { routes } from "../../../lib/url";
+
+Before you make anything in Term 3, you need a **plan**: the order of operations, the
+tools, the materials, and where things could go wrong. A good production plan is what
+lets 60 students share a makerspace and all finish.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This completes the planning for <a href={routes.project(11)}>Criterion 5</a> and
+  gets you makerspace-ready. We also keep <ExamLink to="paper4">Paper 4 Section A</ExamLink>
+  fresh with a quick warm-up.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Production plan", definition: "An ordered list of how you'll make your product, step by step." },
+  { term: "Cutting list", definition: "Every part with its material, size and quantity — your shopping list." },
+  { term: "Quality control (QC)", definition: "Checkpoints where you check a part is right before moving on." },
+  { term: "Critical step", definition: "A step that, if it goes wrong, holds everything else up." },
+  { term: "Contingency", definition: "A backup plan for when something goes wrong." },
+]} />
+
+<Section title="The lesson" icon="📋" id="lesson">
+
+### 1. What goes in a production plan
+
+- the **sequence of operations** (what you do, in order),
+- the **tools and machines** for each step,
+- a **cutting list** — materials, sizes and **quantities**,
+- **time estimates**, and
+- **quality-control** checkpoints and **safety** notes.
+
+### 2. Plan for things going wrong
+
+Spot your **critical steps** — the ones that hold everything up if they fail — and
+write a **contingency** (a plan B) for each. Match your plan to the **shared
+makerspace schedule** so the machines are free when you need them.
+
+</Section>
+
+<WorkedExample title="Worked example — a six-step plan for the gear organiser">
+1. **Cut** the sheet parts on the laser (QC: check sizes against the cutting list).
+2. **Print** the brackets (QC: check they fit the slots).
+3. **Dry-assemble** to check fit (QC checkpoint).
+4. **Fix** the joints (safety: glue-gun care).
+5. **Wire** the switch–LED circuit and test it.
+6. **Finish** and final-check against the spec.
+</WorkedExample>
+
+<Activity title="Write your production plan" time="50 min" grouping="Individual (technician advises)" materials={["Production-plan template", "Cutting-list template", "Machine-availability chart"]}>
+1. **Write your ordered production plan**, step by step.
+2. **Produce a cutting/materials list** with quantities.
+3. **Flag your QC and safety points**, and one **critical step** with a plan B.
+</Activity>
+
+<Support title="Need a hand? A writing frame + an exemplar">
+Use the **production-plan writing frame** ("Step N: I will ……, using ……, checking
+……") and the **worked exemplar plan** as a model. The **Section A reference strip**
+helps with the warm-up.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "What is a cutting list?",
+    options: [
+      "A list of tools only",
+      "Every part with its material, size and quantity",
+      "The order of assembly steps",
+      "A safety form"
+    ],
+    answer: 1,
+    hint: "It's your materials shopping list for the build.",
+    explain: "A cutting list states each part's material, size and quantity — what you need to make the product."
+  },
+  {
+    q: "What is a quality-control (QC) checkpoint for?",
+    options: [
+      "To slow you down",
+      "To check a part is correct before you move on",
+      "To choose colours",
+      "To order more material"
+    ],
+    answer: 1,
+    hint: "Catch mistakes before they're built in.",
+    explain: "A QC checkpoint catches a problem early, before it's permanently built into the product."
+  },
+  {
+    q: "Why identify a 'critical step' with a contingency?",
+    options: [
+      "To make the plan longer",
+      "So a likely problem doesn't stop the whole build",
+      "Because it's required colouring",
+      "To avoid using machines"
+    ],
+    answer: 1,
+    hint: "Plan B keeps you moving if step X fails.",
+    explain: "A critical step holds everything up if it fails, so a backup keeps your build on track."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Homework:** confirm the **quantities** on your materials/cutting list.
+
+<Extension title="Go deeper">
+Draw a simple **Gantt chart** spreading your steps across the Term 3 making weeks —
+when must each part be done?
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Grade 11 — The Project (Criterion 5)", href: routes.project(11), type: "Link" },
+  { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which making step worries me most, and what is my plan B?" />
