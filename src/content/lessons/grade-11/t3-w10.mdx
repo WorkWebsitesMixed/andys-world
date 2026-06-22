@@ -9,7 +9,6 @@ selGoal: "celebrate what I achieved and set one honest focus for the exam revisi
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 Your coursework is submitted — take a breath. This week is for **looking back** at the
 whole journey, and **looking forward**: the skills you built on this project are the
@@ -122,9 +121,9 @@ known in Week 1.
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (the seven criteria)", href: routes.project(11), type: "Link" },
-  { label: "Grade 11 — Paper 1 (Product Design)", href: routes.paper1(11), type: "Link" },
-  { label: "Grade 11 — Paper 4 (Systems & Control)", href: routes.paper4(11), type: "Link" },
+  { label: "Grade 11 — The Project (the seven criteria)", route: "project", type: "Link" },
+  { label: "Grade 11 — Paper 1 (Product Design)", route: "paper1", type: "Link" },
+  { label: "Grade 11 — Paper 4 (Systems & Control)", route: "paper4", type: "Link" },
 ]} />
 
 <Reflection prompt="What am I proudest of, and what will I do differently next time?" />

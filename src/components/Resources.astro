@@ -1,11 +1,20 @@
 ---
 import Section from './Section.astro';
+import { routes } from '../lib/url';
+
+type RouteTarget = 'paper1' | 'paper4' | 'project' | 'igcse';
 
 interface Resource {
   label: string;
-  /** Optional link; omit for offline/textbook references. */
+  /** Raw URL — use for external links or anything not in the routes helper. */
   href?: string;
-  /** e.g. "Textbook", "Past paper", "Video", "Download". */
+  /**
+   * Internal route shorthand. Resolves to the correct base-aware URL so MDX
+   * lesson files don't need to import routes themselves.
+   * e.g. route: "project"  →  /andys-world/grade/11/project
+   */
+  route?: RouteTarget;
+  /** e.g. "Textbook", "Past paper", "Video", "Download", "Link". */
   type?: string;
 }
 
@@ -29,12 +38,13 @@ const icons: Record<string, string> = {
   <ul class="resources">
     {items.map((r) => {
       const icon = (r.type && icons[r.type]) || '🔗';
-      const isExternal = r.href?.startsWith('http');
+      const href = r.href ?? (r.route ? routes[r.route](11) : undefined);
+      const isExternal = href?.startsWith('http');
       return (
         <li>
           <span class="ricon" aria-hidden="true">{icon}</span>
-          {r.href ? (
-            <a href={r.href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined}>
+          {href ? (
+            <a href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noopener' : undefined}>
               {r.label}{isExternal && <span class="ext" aria-hidden="true"> ↗</span>}
             </a>
           ) : (

@@ -50,8 +50,10 @@ callout `id="why"` to put it in the side navigator) ·
 `<WatchSee items={[{label,href,kind?,note?}]} />` (curated external video links) ·
 `<ExamLink to="paper1|paper4|project|igcse">…</ExamLink>` (Grade 11 reference pages).
 
-For links that respect the deploy base path, `import { routes } from "../../../lib/url";`
-then use `routes.project(11)`, `routes.week(11,1,2)`, etc. — never hard-code `/andys-world`.
+**Never import anything in lesson files** — all components and route helpers are injected automatically.
+For inline links to the exam hub pages, use `<ExamLink to="project|paper1|paper4|igcse">`.
+For Resources items that point to internal pages, use `route:` instead of `href:`:
+`{ label: "The Project", route: "project", type: "Link" }` — no import needed.
 
 ## House structure (the locked lesson pattern)
 

@@ -1,72 +1,130 @@
-# Andy's World — website rebuild brief
+# Andy's World — project handoff
 
 > Hand-off for a **fresh session** opened in this folder
-> (`/home/andresforero/Documents/Marymount/andys-world/`). It is self-contained:
-> read it fully, then start at **§7 Build plan, Phase 0**. Confirm the §8 open
-> items with the user early.
+> (`/home/andresforero/Documents/Marymount/andys-world/`). The site is **built and
+> live**; this document is the current state, architecture, and what remains.
 
-## 1. What we're building
-A **professional personal teaching website for Andrés Forero** ("**Andy's World**") — Design & Technology teacher / HOD at Marymount school, Bogotá. It replaces an old, sprawling hand-coded site. **Built from scratch** with a clean, data-driven architecture. The site hosts student-facing **class lessons** organised by grade → term → week.
+## 0. Status — BUILT & LIVE 🚀
+- **Live site:** https://workwebsitesmixed.github.io/andys-world/
+- **Repo:** `WorkWebsitesMixed/andys-world` (public; default branch `main`).
+- **Deploy:** every push to `main` triggers `.github/workflows/deploy.yml` (Astro
+  build → GitHub Pages). No manual step. First shipped 2026-06-21.
+- **Build check:** `npm run build` (runs `astro check` + build) — keep it at
+  **0 errors / 0 warnings / 0 hints**. `npm run dev` to preview locally.
 
-This is **not** Marymount-branded — it is Andy's own brand.
+## 1. What it is
+A **student-facing** teaching website for **Andrés Forero** ("Andy's World"),
+Head of Design & Technology at **Marymount School, Medellín**. Hosts D&T class
+lessons organised **Grade (10/11/12) → Term (1/2/3) → Week (1–10) → Class**. It is
+Andy's own brand (not Marymount-branded). Replaces an old hand-coded site.
 
-## 2. Locked decisions
-- **Stack:** **Astro** (static site), authored content in **MDX content collections**, deployed to **GitHub Pages** (brand-new repo = this folder; already `git init`-ed).
-- **Identity / look:** name **"Andy's World"**; **dark theme**, **electric cyan** accent; technical sans-serif (suggest **Space Grotesk** headings / **Inter** body); aesthetic = *innovation · physics · technology* — near-black background, thin vector grid, faint circuit/orbit motifs, subtle smooth motion. Formal but cool; fast; responsive.
-- **Content model:** `Grade (10/11/12) → Term (1/2/3) → Week (1–10) → Class`. Each class is **one `.mdx` file** (frontmatter + body). Navigation (home → grade → term → week) is generated from the collection.
-- **Scope now:** build the **architecture for ALL grades/terms/weeks**, but **populate Grade 11 only**. Grade 10 and Grade 12 get ready-to-fill **placeholder** pages.
-- **No grading on this site.** A configurable **"Exams" link** points out to Andy's separate grader project (see §6). In-lesson "Check your understanding" is **formative only** — client-side, instant feedback, **nothing stored, no backend, no grade**.
-- **Term 3 = 10 weeks**, where **Week 10 = "Project Review"** (consolidation). (The source plan's Term 3 has 9 taught weeks; week 10 is the added review.)
+## 2. Stack & architecture
+- **Astro 6** static site, **MDX content collections**, deployed to GitHub Pages.
+- **Project page** (GitHub Pages): `astro.config.mjs` sets `site` =
+  `https://WorkWebsitesMixed.github.io`, `base` = `/andys-world`. **Never hard-code
+  the base** — use `src/lib/url.ts` (`url()`, `routes.*`).
+- **Content model:** one `.mdx` per class in `src/content/lessons/`. **Routing is
+  derived from frontmatter** (`grade`/`term`/`week`), not file path. Schema in
+  `src/content.config.ts`. Convention: `grade-<n>/t<term>-w<week>.mdx`.
+- **Nav is generated** from the lessons collection + `src/lib/curriculum.ts`
+  (grades, terms, 10 weeks/term, per-term focus for placeholder grades).
+- A missing week renders a "being prepared" placeholder automatically.
+- **Drafts:** `draft: true` hides a lesson in production, shows it in `npm run dev`.
 
-## 3. The lesson page format (every class follows this)
-Frontmatter (per `.mdx`): `grade`, `term`, `week`, `title`, `topic` (tag), `learningGoal`, `selGoal`, `draft` (bool).
-Body sections, in order — each a reusable **component** where it makes sense:
-1. **Header** — grade · term · week · title · topic (rendered from frontmatter).
-2. **Goals** — **two**: a **Learning goal** and an **SEL goal**, both phrased *"By the end of this class I will…"* (Mager ABCD style, carried from the curriculum plan).
-3. **Why this matters** — short hook linking the class to the IGCSE exam / coursework.
-4. **Key terms** — `<KeyTerms>` (term → definition list).
-5. **Lesson content** — the actual teaching: clear sections, examples, diagrams/images.
-6. **Worked example** — `<WorkedExample>` step-by-step.
-7. **Activity** — `<Activity>` the in-class hands-on task.
-8. **Check your understanding** — `<SelfCheck>` formative quiz (client-side only, no storage).
-9. **Homework / extension** — optional further practice.
-10. **Resources** — `<Resources>` textbook pages, past papers, videos, downloads.
-11. **Reflection** — `<Reflection>` one-line metacognition prompt.
+## 3. Design system & UX
+- Dark, near-black surface · **electric blue-cyan accent** (`#34e0ff`) · Space
+  Grotesk + Inter (self-hosted) · faint physics grid + glow. Tokens in
+  `src/styles/global.css`.
+- **Display preferences** (header "Aa Display", saved in `localStorage`, applied
+  pre-paint): theme **Dark / Light / High-contrast**, text spacing **Normal /
+  Roomy**, **Calm mode** (hides grid/glow/motion). New components must look right in
+  all three themes.
+- **Floating section navigator** (`LessonNav.astro`), scroll-spy, ≥1280px only.
+- Accessibility baseline: alt text required on images, WCAG-checked contrast,
+  keyboard/`prefers-reduced-motion` support.
 
-Component library to build: `Goals` (dual), `KeyTerms`, `WorkedExample`, `Activity`, `SelfCheck`, `Resources`, `Reflection`, `Callout`, plus layout/nav/card components.
+## 4. Lesson format & component library
+Locked house structure per lesson: lead hook → `Callout type="exam" id="why"`
+(wrap first paper mention in `<ExamLink>`) → `KeyTerms` → `Section "The lesson"`
+(drop a diagram if a technical concept fits) → `WorkedExample` → `Activity` →
+`Support` → `SelfCheck` (3 Qs, each with `hint` + `explain`) → `Section "Homework &
+extension"` with `Extension` → `Resources` → `Reflection`.
 
-## 4. Content sources (where the lessons come from)
-- **Grade 11 (2026–27) = the Systems & Control scheme we built.** Expand each week's *main class* into a full student lesson using the §3 format. Sources:
-  - `/home/andresforero/Documents/Marymount/Curriculum/Term1.pdf`, `Term2.pdf`, `Term3.pdf`, `Overview.pdf` (LaTeX sources in `Curriculum/LaTeX_sources/`).
-  - Context / philosophy: `Curriculum/PLANNING_HANDOFF_Grade11_2027.md` (S&C route, **Structures** as Paper 4 Section B, the dual cognitive+SEL goals, the framed-structures coursework project, the per-week topics). **Read this for the teaching content and the goal style.**
-  - Per-term week topics are listed in those docs (e.g. Term 1: W1 project launch, W2 structures types/rigidity, W3 forces & members, W4 woods & metals, W5 concrete/plastics/composites + sustainability, W6 research→spec, W7 loads/moments/stress/FoS, W8 joining, W9 the project circuit, W10 idea generation). Term 2 and Term 3 likewise.
-  - The lessons must be **student-facing** (teach the student), not the teacher run-sheets — rewrite accordingly, keeping the dual goals.
-- **Grade 10 (2026–27) = the Materials cohort** — source is `Curriculum_2028-2030_Materials/` (static canonical + physics) plus pending transition bridges. **Leave as placeholders for now** (architecture only; do not populate).
-- **Grade 12 = ICT/Programming, populated by the user** — Term 1 *IGCSE ICT review*, Term 2 *empty*, Term 3 *Programming*. **Placeholders only.**
-- **Old site to mine for reusable material** (images, quiz content, explanations): `/home/andresforero/Documents/Marymount/D&T Classes/D-T-Classes/` (102 hand-coded HTML pages + `img/`). Archive, don't copy wholesale.
-- **SKILLS enrichment** (`Curriculum/Skills_2026-2027/`) is **out of initial scope** — possibly a later separate section.
+Components (all auto-available in MDX — **never add imports to lesson files**; see
+`src/layouts/LessonLayout.astro` for the map, and **`src/content/lessons/README.md`
+for the full authoring guide**):
+`Goals` (auto, from frontmatter), `KeyTerms`, `WorkedExample`, `Activity`,
+`SelfCheck` (formative only — instant client-side feedback, **nothing stored**;
+wrong → hint, correct → explanation + lock), `Resources`, `Reflection`, `Callout`,
+`Section`, `Support` (collapsible scaffold), `Extension` (optional stretch),
+`Figure` (image + required alt), `WatchSee` (curated external video links),
+`ExamLink`, `ProjectExamples`, and theme-aware SVG diagrams in
+`src/components/diagrams/` (Triangulation, Forces, Circuit, BeamReactions).
 
-## 5. Visual / UX targets
-- Dark background (near-black), electric-cyan accent, high-contrast readable body text.
-- Home → grade landing (10/11/12) → term → week grid → lesson page. Clean cards, breadcrumb nav, prev/next within a term.
-- Physics/tech motifs used tastefully (grid, faint circuitry/orbits, glow on the accent, micro-interactions). Must stay legible and professional.
-- Mobile-first responsive; fast (static).
+## 5. The coursework brief (CANONICAL — reworked June 2026)
+**Open, person-first.** Students design a structural product for **a real person
+they know** — no product category prescribed. Constraints are on what it must *do*
+and how it's *made*:
+- carry a **defined, tested load**;
+- a **low-voltage switch-operated circuit** (category bound: choose switch +
+  indicator; **no PICs/logic gates/PCBs/motors/sensors**; ~18 Skills-enrichment
+  students may use a DC motor with an end-of-Term-2 breadboard checkpoint);
+- the **make-palette** (laser sheet, timber/strip, minimal 3D print);
+- fit **400 × 400 mm**, ≥150 mm one dimension; a **real finished product**.
+Three launch examples (single source of truth, image-ready placeholders, in
+`src/lib/project-examples.ts` · rendered by `ProjectExamples.astro`): A musician
+rack · **B cyclist gear organiser (the running example in lessons)** · C collector
+display. Full brief lives on the **Project
+overview** page (`/grade/11/project`); the "Your IGCSE" hub (`/grade/11/igcse`)
+explains Paper 1, Paper 4 and the Project.
 
-## 6. Grader integration (do NOT rebuild grading)
-Andy has a separate, robust **exam-grader** project: `/home/andresforero/Documents/Marymount/D&T Classes/exam-grader/` (Google Apps Script JSON API + GitHub Pages frontend, **Claude-graded** IGCSE mocks; see its `handoff.md`). This site only needs a **configurable `examsUrl`** in site config that links students to that grader. Leave it as a placeholder/config value; **ask the user for the exact production URL** (a preview exists at `https://workwebsitesmixed.github.io/exam-grader-v2-preview/`).
+## 6. What's done
+- **Phase 0** foundation/design system · **Phase 1** exemplar · **Phase 2** **all 30
+  Grade 11 lessons** (Systems & Control; Terms 1–3 × 10) + the IGCSE hub (Paper 1 /
+  Paper 4 / Project pages) + curated diagrams & approved Watch/See videos ·
+  **Phase 3** Grade 10 & 12 placeholder structure + authoring README ·
+  **Phase 4** shipped to GitHub Pages.
+- **Phase 5** architectural refactoring (zero student-facing changes):
+  - **P1** MDX lesson files are now fully import-free — `routes.*` replaced by
+    `route:` prop on `Resources` items and `<ExamLink>` for inline prose links.
+  - **P2** Utility classes `page-narrow`, `lede`, `card-grid` extracted to
+    `global.css`; duplicate scoped rules removed from four pages.
+  - **P3** `DisclosureBlock.astro` base component; `Support` and `Extension` are
+    thin wrappers (~10 lines each).
+  - **P4** `GradeInfo.hub` data field in `curriculum.ts` drives the grade hub
+    banner; hardcoded `gradeNum === 11` guard removed from `[grade].astro`.
+  - **P5** `ProjectExamples` data moved to `src/lib/project-examples.ts`.
+  - **P6** `--header-h: 64px` CSS token in `:root`; header height and
+    `scroll-margin-top` both reference it.
+  - **P7** Inter font switched from the full multi-subset import to a single
+    Latin-only `@font-face` block (drops 6 unused subset declarations).
+  - **P8** `<link rel="preload">` for Inter in `BaseLayout.astro` using a Vite
+    `?url` import so the href matches the content-hashed filename in the CSS.
 
-## 7. Build plan (phased — review with the user between phases)
-- **Phase 0 — foundation:** scaffold Astro; set up the dark + electric-cyan theme, fonts, physics-motif design system, base layout, content-collection **schema** (§3 frontmatter), nav generation, and the **GitHub Pages deploy** (GitHub Actions). Build the **component library** (§3).
-- **Phase 1 — exemplar:** build **one fully-worked lesson** (Grade 11 · Term 1 · Week 1) end-to-end to lock the format, components and visual. **Get user sign-off** before scaling.
-- **Phase 2 — populate Grade 11:** generate all Grade 11 lessons — Term 1 (10), Term 2 (10), Term 3 (10, incl. Week 10 "Project Review") ≈ **30 lessons**, from the §4 sources. Build term-by-term, Term 1 first for review (mirrors how the curriculum was built).
-- **Phase 3 — placeholders:** stub Grade 10 (all terms/weeks) and Grade 12 (T1 ICT review, T2 empty, T3 Programming) so the user can fill them.
-- **Phase 4 — ship:** deploy to GitHub Pages; wire the `examsUrl`; archive the old site repo reference.
+## 7. Content sources (for populating more lessons)
+- **Grade 11 (done):** `../Curriculum/LaTeX_sources/Term{1,2,3}.tex` (each
+  `\section{Week N}` → the `W (90 min)` lesson; ignore `B` bonus sessions),
+  context in `../Curriculum/PLANNING_HANDOFF_Grade11_2027.md`, textbook
+  `../Curriculum/Book.pdf` (Collins, image-only).
+- **Grade 10 (Materials) — to populate:** `../Curriculum/Curriculum_2028-2030_Materials/`.
+- **Grade 12 (ICT/Programming) — user-populated:** T1 IGCSE ICT review, T2 empty,
+  T3 Programming. Structure/labels already stubbed in `curriculum.ts`.
+- Old site to mine for images/quizzes: `../D&T Classes/D-T-Classes/` (+ `img/`).
 
-## 8. Confirm with the user early
-1. **GitHub account/repo name** for Pages (and is the deploy to `username.github.io/andys-world` or a custom domain?).
-2. The **grader production URL** for `examsUrl`.
-3. Repo/folder name is `andys-world` — keep, or rename?
-4. Font choice (Space Grotesk/Inter ok?) and whether the cyan should be more blue-cyan or green-cyan.
+## 8. Open items / next steps
+1. **Grader URL:** `examsUrl` in `src/lib/site.ts` points at the grader **preview**
+   (`https://workwebsitesmixed.github.io/exam-grader-v2-preview/`) — swap for the
+   production URL when available.
+2. **Populate Grade 10 & Grade 12** lessons (architecture + README ready).
+3. **Media:** curated only — SVG diagrams (authored) for technical concepts; photos
+   only where real-world needed; Watch/See = web-searched candidates the user
+   approves (never auto-search, never fabricate URLs). Term 2 had videos added;
+   Term 2/3 more can be sourced on request.
+4. **CI nicety:** deploy workflow actions log a "Node 20 deprecated" warning — bump
+   `actions/checkout`, `setup-node`, `upload-pages-artifact` versions sometime.
 
 ## 9. Working style (the user's established preference)
-**Discuss before implementing** on significant decisions: propose + recommend, get an explicit go-ahead, then build; review phase-by-phase (Term 1 first). The user likes conversational discussion over multiple-choice prompts. Keep the curriculum context in mind — this site is the student-facing face of the plans in `../Curriculum/`.
+**Discuss before implementing** on significant decisions: propose + recommend, get
+an explicit go-ahead, then build; review phase-by-phase. The user likes
+conversational discussion over multiple-choice prompts. Honest reality-checks are
+valued over yes-man agreement.

@@ -25,7 +25,7 @@ import { routes } from '../lib/url';
 
   <section class="grades container">
     <h2 class="section-h">Choose your grade</h2>
-    <div class="grid">
+    <div class="card-grid">
       {GRADES.map((g) => (
         <Card
           href={routes.grade(g.id)}
@@ -90,10 +90,5 @@ import { routes } from '../lib/url';
     margin-bottom: 1.2rem;
     font-size: 1.4rem;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    gap: 1rem;
-    padding-bottom: 1rem;
-  }
+  .card-grid { padding-bottom: 1rem; }
 </style>

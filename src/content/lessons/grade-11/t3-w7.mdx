@@ -9,14 +9,13 @@ selGoal: "evaluate my own product honestly against what I set out to make."
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 Your product is finished — now you **prove it works** and **capture it well**. Because
 the made product isn't sent to the examiner, your **photographs are the evidence** of
 all your making. This is the week your realisation is complete.
 
 <Callout type="exam" title="Why this matters" id="why">
-  This completes <a href={routes.project(11)}>Criterion 6</a> (realisation, **30 marks
+  This completes <ExamLink to="project">Criterion 6</ExamLink> (realisation, **30 marks
   — the biggest single criterion**). The moderator marks from your **photos and folder**,
   not the object, so the photographs really matter.
 </Callout>
@@ -126,7 +125,7 @@ evidence of a working product.
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 6)", href: routes.project(11), type: "Link" },
+  { label: "Grade 11 — The Project (Criterion 6)", route: "project", type: "Link" },
   { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook" },
   { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook" },
 ]} />

@@ -5,7 +5,16 @@
    =========================================================================== */
 
 @import '@fontsource-variable/space-grotesk';
-@import '@fontsource-variable/inter';
+
+/* Latin subset only — avoids loading cyrillic/greek/vietnamese @font-face rules. */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
 
 :root {
   /* --- Type --------------------------------------------------------------- */
@@ -49,6 +58,7 @@
   --radius-lg: 18px;
   --maxw: 72rem;
   --readw: 52rem;         /* readable measure / unified lesson column */
+  --header-h: 64px;       /* sticky header height — used for scroll-margin-top and .bar */
 
   --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
             0 8px 30px rgba(0, 0, 0, 0.45);
@@ -163,7 +173,7 @@ html {
 
 /* Offset anchor jumps so sections clear the sticky header. */
 [id] {
-  scroll-margin-top: 84px;
+  scroll-margin-top: calc(var(--header-h) + 20px);
 }
 
 body {
@@ -316,6 +326,22 @@ tbody tr:nth-child(even) {
 
 .glow-text {
   text-shadow: 0 0 24px var(--accent-glow);
+}
+
+/* Shared page-layout utilities — used across content pages. */
+.page-narrow {
+  max-width: var(--readw);
+  padding-block: 2rem 1rem;
+}
+
+.lede {
+  font-size: 1.1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

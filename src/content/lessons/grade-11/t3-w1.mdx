@@ -9,7 +9,6 @@ selGoal: "follow the staggered schedule and safety rules without being reminded,
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 This is the term you've been building toward: you start **making your product.**
 Before any machine runs, though, comes safety — and a shared makerspace only works
@@ -17,7 +16,7 @@ if everyone respects the schedule. Today you pass the safety check and cut your
 first part.
 
 <Callout type="exam" title="Why this matters" id="why">
-  Making is <a href={routes.project(11)}>Criterion 6</a> (product realisation) —
+  Making is <ExamLink to="project">Criterion 6</ExamLink> (product realisation) —
   worth **30 marks, the single biggest criterion**. It starts now and runs the whole
   term. Safety comes first because the makerspace is shared by the whole class.
 </Callout>
@@ -123,7 +122,7 @@ idle — good use of a shared space.
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 6)", href: routes.project(11), type: "Link" },
+  { label: "Grade 11 — The Project (Criterion 6)", route: "project", type: "Link" },
   { label: "Collins IGCSE D&T — §1.5 Health & safety (p.55)", type: "Textbook" },
   { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook" },
 ]} />

@@ -9,14 +9,13 @@ selGoal: "check a classmate's drawing against the British-Standard checklist and
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 A **working drawing** is the instruction manual for your product: clear enough that
 someone *else* could build it. This week you produce a dimensioned, conventionally
 laid-out drawing to British Standards.
 
 <Callout type="exam" title="Why this matters" id="why">
-  This is <a href={routes.project(11)}>Criterion 5</a> (planning), and it's exactly
+  This is <ExamLink to="project">Criterion 5</ExamLink> (planning), and it's exactly
   <ExamLink to="paper1">Paper 1 part (e)</ExamLink> — the full solution drawing with
   construction details and dimensions (12 marks).
 </Callout>
@@ -114,7 +113,7 @@ what's inside.
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — Paper 1 (part e: solution drawing)", href: routes.paper1(11), type: "Link" },
+  { label: "Grade 11 — Paper 1 (part e: solution drawing)", route: "paper1", type: "Link" },
   { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110–112)", type: "Textbook" },
 ]} />
 

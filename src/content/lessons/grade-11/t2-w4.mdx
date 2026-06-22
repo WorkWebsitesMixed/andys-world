@@ -9,14 +9,13 @@ selGoal: "record an unflattering test result honestly rather than hiding it, and
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 Last week you found problems by making. This week you **test on purpose** — with
 measurements, not guesses — and you breadboard your circuit before committing it.
 Honest test data is what turns a nice idea into a developed, evidence-backed design.
 
 <Callout type="exam" title="Why this matters" id="why">
-  Objective testing is core <a href={routes.project(11)}>Criterion 4</a>
+  Objective testing is core <ExamLink to="project">Criterion 4</ExamLink>
   (development) and sets up **Criterion 7** (testing & evaluation). The examiner
   rewards *measured* evidence — "held 5 kg", not "seemed strong".
 </Callout>
@@ -123,7 +122,7 @@ switch stay reliable after 20 presses?
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (Criteria 4 & 7)", href: routes.project(11), type: "Link" },
+  { label: "Grade 11 — The Project (Criteria 4 & 7)", route: "project", type: "Link" },
   { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook" },
   { label: "Collins IGCSE D&T — §4.4 Electronics (p.299)", type: "Textbook" },
 ]} />

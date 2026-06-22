@@ -9,7 +9,6 @@ selGoal: "work safely and patiently at the electronics bench, asking the technic
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 Every project needs its **switch-operated circuit** — and this is the week you build
 one. Keep it simple: a battery, a switch, a resistor and an indicator. By the end
@@ -17,7 +16,7 @@ you'll have a working circuit and the artefacts your folder needs.
 
 <Callout type="exam" title="Why this matters" id="why">
   Circuit symbols, switches and input–process–output are <ExamLink to="paper4">**Paper 4 Section A**</ExamLink> topics,
-  and a working circuit is a <a href={routes.project(11)}>required feature</a> of your
+  and a working circuit is a <ExamLink to="project">required feature</ExamLink> of your
   product. Remember the bound: a **simple on/off, battery-powered** circuit only — no
   motors, sensors, PICs, gates or PCBs.
 </Callout>
@@ -130,7 +129,7 @@ brightness and how the circuit behaves.
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (required circuit feature)", href: routes.project(11), type: "Link" },
+  { label: "Grade 11 — The Project (required circuit feature)", route: "project", type: "Link" },
   { label: "Collins IGCSE D&T — §4.1 Systems / IPO (p.230)", type: "Textbook" },
   { label: "Collins IGCSE D&T — §4.4.2 Circuit building (p.305)", type: "Textbook" },
   { label: "Collins IGCSE D&T — §4.4.3 Switches (p.311)", type: "Textbook" },

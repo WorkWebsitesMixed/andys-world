@@ -9,7 +9,6 @@ selGoal: "sustain focus across a full timed paper and notice where my stamina di
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 This week you sit a **full, timed Paper 1** from start to finish. It's a rehearsal
 under real conditions — the best way to build exam stamina and timing. This page is
@@ -121,7 +120,7 @@ full marks. Compare it with your timed attempt.
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — Paper 1 (the 7 parts explained)", href: routes.paper1(11), type: "Link" },
+  { label: "Grade 11 — Paper 1 (the 7 parts explained)", route: "paper1", type: "Link" },
   { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook" },
   { label: "Collins IGCSE D&T — §2.9 Presentation (p.139)", type: "Textbook" },
 ]} />

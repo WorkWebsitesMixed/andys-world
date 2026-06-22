@@ -8,6 +8,23 @@
 
 export type GradeStatus = 'active' | 'placeholder';
 
+/**
+ * Route keys that resolve to a grade-scoped page via routes[key](gradeId).
+ * Extend this union when new per-grade reference pages are added.
+ */
+export type HubRouteKey = 'igcse' | 'project' | 'paper1' | 'paper4';
+
+/** "Start here" banner shown at the top of a grade landing page. */
+export interface GradeHub {
+  routeKey: HubRouteKey;
+  /** Short label above the title, e.g. "Start here". */
+  eyebrow: string;
+  /** Banner heading, e.g. "Your IGCSE". */
+  title: string;
+  /** One-sentence description of what the hub page covers. */
+  blurb: string;
+}
+
 export interface GradeInfo {
   id: number;
   name: string;
@@ -16,6 +33,8 @@ export interface GradeInfo {
   /** One-line description for the grade landing page. */
   blurb: string;
   status: GradeStatus;
+  /** Optional hub-page banner. When set, renders a prominent link at the top of the grade landing. */
+  hub?: GradeHub;
 }
 
 export const GRADES: GradeInfo[] = [
@@ -33,6 +52,13 @@ export const GRADES: GradeInfo[] = [
     blurb:
       'Systems & Control with Structures as the coursework focus — the IGCSE route we are teaching in full.',
     status: 'active',
+    hub: {
+      routeKey: 'igcse',
+      eyebrow: 'Start here',
+      title: 'Your IGCSE',
+      blurb:
+        'How your grade works — Paper 1, Paper 4 and your year-long project. Read this once, and come back whenever a lesson mentions a paper or a criterion.',
+    },
   },
   {
     id: 12,

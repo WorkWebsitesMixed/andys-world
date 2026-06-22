@@ -9,7 +9,6 @@ selGoal: "set one personal goal for the project this term, in writing, naming on
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 This year's project starts with **a person, not a product.** Today you'll find a
 real person to design for, meet the brief, and see how a genuine frustration turns
@@ -69,8 +68,7 @@ product is and does, and its form and dimensions.
 
 <Callout type="info" title="Read this once: The Project">
   For the full picture — the brief, the marks for each criterion, and the
-  term-by-term plan — see the <a href={routes.project(11)}>Grade&nbsp;11 Project
-  overview</a>. Every weekly class links back to a stage of it.
+  term-by-term plan — see the <ExamLink to="project">Grade&nbsp;11 Project overview</ExamLink>. Every weekly class links back to a stage of it.
 </Callout>
 
 </Section>
@@ -92,7 +90,7 @@ frustration → product**, and how different they are from each other. Follow th
 </WorkedExample>
 
 <Activity title="Write your person profile" time="30 min" grouping="Individual" materials={["Folder page 1", "Pencil"]}>
-This is <a href={routes.project(11)}>**Criterion 1** (need &amp; brief)</a> — the first page in your folder.
+This is <ExamLink to="project">**Criterion 1** (need &amp; brief)</ExamLink> — the first page in your folder.
 
 1. **Write a person profile.** Choose a real person and note their **name or role**,
    **what they do or love doing**, and **at least three things that frustrate them**
@@ -166,7 +164,7 @@ struggle with, and what would help them?
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (the full brief & criteria)", href: routes.project(11), type: "Link" },
+  { label: "Grade 11 — The Project (the full brief & criteria)", route: "project", type: "Link" },
   { label: "Collins IGCSE D&T — §1.1 Getting Started (p.8)", type: "Textbook" },
   { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook" },
 ]} />

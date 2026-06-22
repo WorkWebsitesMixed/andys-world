@@ -44,7 +44,7 @@ const phases = [
 ---
 
 <BaseLayout title={`The Project — ${grade.name}`} description="Your IGCSE Design & Technology coursework project — the brief, the theme, and how the 100 marks are earned.">
-  <div class="page container">
+  <div class="page-narrow container">
     <Breadcrumbs items={[{ label: grade.name, href: routes.grade(11) }, { label: 'The Project' }]} />
 
     <header class="head">
@@ -172,10 +172,8 @@ const phases = [
 </BaseLayout>
 
 <style>
-  .page { max-width: var(--readw); padding-block: 2rem 1rem; }
   .head { margin: 1.5rem 0 0.5rem; }
   .head h1 { margin: 0.4rem 0 0.8rem; }
-  .lede { font-size: 1.1rem; }
 
   .criteria { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.5rem; }
   .crit {

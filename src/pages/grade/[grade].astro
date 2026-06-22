@@ -32,17 +32,13 @@ const counts = await Promise.all(
     )}
   </section>
 
-  {gradeNum === 11 && (
+  {info.hub && (
     <section class="container">
-      <a class="project-banner" href={routes.igcse(11)}>
+      <a class="project-banner" href={routes[info.hub.routeKey](gradeNum)}>
         <div>
-          <span class="eyebrow">Start here</span>
-          <h2>Your IGCSE</h2>
-          <p class="muted">
-            How your grade works — Paper 1, Paper 4 and your year-long project.
-            Read this once, and come back whenever a lesson mentions a paper or a
-            criterion.
-          </p>
+          <span class="eyebrow">{info.hub.eyebrow}</span>
+          <h2>{info.hub.title}</h2>
+          <p class="muted">{info.hub.blurb}</p>
         </div>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
@@ -51,7 +47,7 @@ const counts = await Promise.all(
 
   <section class="container">
     <h2 class="section-h">Terms</h2>
-    <div class="grid">
+    <div class="card-grid">
       {TERMS.map((t, i) => {
         const focus = getTermFocus(gradeNum, t);
         const empty = focus?.planned === false;
@@ -82,7 +78,7 @@ const counts = await Promise.all(
 <style>
   .head { padding-block: 2rem 1rem; }
   .head h1 { margin: 0.4rem 0 0.6rem; }
-  .lede { font-size: 1.1rem; max-width: 42rem; }
+  .lede { max-width: 42rem; }
   .notice {
     margin-top: 1rem;
     padding: 0.8rem 1rem;
@@ -122,9 +118,4 @@ const counts = await Promise.all(
   .project-banner:hover .arrow { transform: translateX(5px); }
 
   .section-h { margin-bottom: 1.2rem; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    gap: 1rem;
-  }
 </style>

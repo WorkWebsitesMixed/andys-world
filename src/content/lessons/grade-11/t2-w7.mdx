@@ -9,14 +9,13 @@ selGoal: "ask for and act on technical feedback on my CAD model rather than defe
 draft: false
 ---
 
-import { routes } from "../../../lib/url";
 
 Some parts of your product — brackets, connectors, feet — are better **3D printed**
 than laser-cut. This week you learn 3D CAD, set a part up to print, and start the
 **working drawing** that lets someone build your whole product.
 
 <Callout type="exam" title="Why this matters" id="why">
-  This is <a href={routes.project(11)}>Criterion 5</a> (planning), and 3D CAD rounds
+  This is <ExamLink to="project">Criterion 5</ExamLink> (planning), and 3D CAD rounds
   out your CAD/CAM skills. The working drawing you begin is the same skill as
   <ExamLink to="paper1">Paper 1 part (e)</ExamLink> (the full solution drawing).
 </Callout>
@@ -123,7 +122,7 @@ supports?
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 5)", href: routes.project(11), type: "Link" },
+  { label: "Grade 11 — The Project (Criterion 5)", route: "project", type: "Link" },
   { label: "Collins IGCSE D&T — §1.6 Use of technology", type: "Textbook" },
   { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook" },
 ]} />

@@ -22,7 +22,7 @@ const grade = getGrade(11)!;
       </p>
     </header>
 
-    <div class="grid">
+    <div class="card-grid">
       <Card
         href={routes.paper1(11)}
         eyebrow="Written paper · 25%"
@@ -64,11 +64,5 @@ const grade = getGrade(11)!;
   .page { max-width: var(--maxw); padding-block: 2rem 1rem; }
   .head { margin: 1.5rem 0 1.5rem; max-width: var(--readw); }
   .head h1 { margin: 0.4rem 0 0.8rem; }
-  .lede { font-size: 1.1rem; }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-    gap: 1rem;
-  }
   .note { margin-top: 1.5rem; }
 </style>

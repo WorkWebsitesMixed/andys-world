@@ -20,7 +20,7 @@ const parts = [
 ---
 
 <BaseLayout title={`Paper 1 — ${grade.name}`} description="Paper 1 (Product Design): the fixed 7-part question and how to approach it.">
-  <div class="page container">
+  <div class="page-narrow container">
     <Breadcrumbs items={[
       { label: grade.name, href: routes.grade(11) },
       { label: 'Your IGCSE', href: routes.igcse(11) },
@@ -95,9 +95,7 @@ const parts = [
 </BaseLayout>
 
 <style>
-  .page { max-width: var(--readw); padding-block: 2rem 1rem; }
   .head { margin: 1.5rem 0 0.5rem; }
   .head h1 { margin: 0.4rem 0 0.8rem; }
-  .lede { font-size: 1.1rem; }
   .back { margin-top: 2.5rem; }
 </style>
