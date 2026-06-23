@@ -64,19 +64,25 @@ export const GRADES: GradeInfo[] = [
     id: 12,
     name: 'Grade 12',
     subject: 'ICT & Programming',
-    blurb: 'IGCSE ICT review and an introduction to programming.',
-    status: 'placeholder',
+    blurb: 'IGCSE ICT exam preparation and an introduction to programming.',
+    status: 'active',
   },
 ];
 
 export const TERMS = [1, 2, 3] as const;
 export type TermId = (typeof TERMS)[number];
 
-/** Every term runs 10 weeks. In Term 3, Week 10 is a "Project Review". */
 export const WEEKS_PER_TERM = 10;
 
-export function weeksForTerm(_term: number): number[] {
-  return Array.from({ length: WEEKS_PER_TERM }, (_, i) => i + 1);
+/** Per-grade, per-term week-count overrides (when a term runs longer than 10 weeks). */
+const WEEKS_OVERRIDE: Partial<Record<number, Partial<Record<TermId, number>>>> = {
+  12: { 1: 12 },
+};
+
+export function weeksForTerm(term: number, grade?: number): number[] {
+  const override = grade !== undefined ? WEEKS_OVERRIDE[grade]?.[term as TermId] : undefined;
+  const count = override ?? WEEKS_PER_TERM;
+  return Array.from({ length: count }, (_, i) => i + 1);
 }
 
 export function termLabel(term: number): string {
@@ -108,7 +114,11 @@ export interface TermFocus {
  */
 export const TERM_FOCUS: Record<number, Partial<Record<TermId, TermFocus>>> = {
   12: {
-    1: { title: 'IGCSE ICT Review', blurb: 'Reviewing the core IGCSE ICT topics.' },
+    1: {
+      title: 'Exam Prep & LaTeX',
+      blurb:
+        'Block A: IGCSE ICT Papers 1–3 exam preparation (7 weeks). Block B: LaTeX for Chemistry lab reports in Overleaf (5 weeks).',
+    },
     2: { title: 'Term 2', blurb: 'Not yet planned — coming later.', planned: false },
     3: { title: 'Introduction to Programming', blurb: 'A first course in programming.' },
   },

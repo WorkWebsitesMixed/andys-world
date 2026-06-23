@@ -1,0 +1,220 @@
+---
+grade: 12
+term: 1
+week: 9
+title: "LaTeX Packages: Equations, Figures, Tables & References"
+topic: "LaTeX: packages"
+learningGoal: "typeset a chemical equation with mhchem, insert a labelled figure with a cross-reference, build a results table with booktabs, and add a citation from a .bib file."
+selGoal: "introduce one package at a time and compile after each before moving to the next — don't add all four at once."
+draft: false
+---
+
+Four packages, four new powers. This week you add everything that makes a Chemistry lab report look like a real scientific document: proper chemical equations, figures that number themselves, publication-style tables, and a bibliography that formats automatically. Introduce them one at a time.
+
+<Callout type="tip" title="Why packages?" id="why">
+  Each package solves a specific problem that plain LaTeX can't handle. `mhchem` makes chemical formulae correct automatically. `graphicx` handles images. `booktabs` produces clean, journal-style tables. `biblatex` manages references so the bibliography is never manually formatted again.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "\\usepackage{name}", definition: "The command to load a package in the preamble. Load all packages before \\begin{document}." },
+  { term: "mhchem", definition: "A package for typesetting chemical formulae and equations. The key command is \\ce{} — everything inside is treated as chemistry." },
+  { term: "graphicx", definition: "A package for inserting images. Used with the figure environment for captioned, numbered figures." },
+  { term: "booktabs", definition: "A package for professional-quality tables. Replaces default horizontal rules with \\toprule, \\midrule and \\bottomrule." },
+  { term: "biblatex", definition: "A package for managing references. Sources go in a separate .bib file; citations appear inline with \\cite{}; the full list prints with \\printbibliography." },
+]} />
+
+<Section title="Package 1: mhchem — chemical equations" icon="💻" id="mhchem">
+
+Add to the preamble:
+```latex
+\usepackage[version=4]{mhchem}
+```
+
+The core command is `\ce{}`. Everything inside is treated as chemistry — subscripts, superscripts, reaction arrows and ionic charges are all handled automatically.
+
+| What you type | What appears |
+|---|---|
+| `\ce{H2O}` | H₂O (subscript 2) |
+| `\ce{KClO3}` | KClO₃ |
+| `\ce{2KClO3 -> 2KCl + 3O2}` | Balanced equation with arrow |
+| `\ce{Ag+}` | Ag⁺ (superscript +) |
+| `\ce{CO3^2-}` | CO₃²⁻ |
+
+**Task:** open your lab report. Find the five chemical equations in the Discussion section currently written as plain text. Replace each with `\ce{}`. Compile and compare the output.
+
+</Section>
+
+<Section title="Package 2: graphicx — figures" icon="💻" id="graphicx">
+
+Add to the preamble:
+```latex
+\usepackage{graphicx}
+\usepackage{float}
+```
+
+The figure environment:
+```latex
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{filename.jpg}
+  \caption{Potassium chlorate melting in the test tube, before decomposition.}
+  \label{fig:decomp1}
+\end{figure}
+```
+
+- `[H]` (from the `float` package) forces the figure to appear exactly where you placed it, not wherever LaTeX decides to float it.
+- `width=0.6\textwidth` sets the image to 60% of the text width. Adjust this number to resize.
+- `\caption{}` adds the numbered caption below the figure — the number is automatic.
+- `\label{fig:decomp1}` gives the figure a name you can reference from the text.
+
+**Cross-reference in the text:**
+```latex
+As shown in Figure~\ref{fig:decomp1}, the potassium chlorate begins to melt before decomposition begins.
+```
+
+The `~` prevents a line break between "Figure" and the number. The number updates automatically if figures are reordered.
+
+**Task:** upload two lab photos to your Overleaf project. Insert both as figures with captions and labels. Cross-reference each one from the Results section.
+
+</Section>
+
+<Section title="Package 3: booktabs — tables" icon="💻" id="booktabs">
+
+Add to the preamble:
+```latex
+\usepackage{booktabs}
+```
+
+A basic results table:
+```latex
+\begin{table}[H]
+  \centering
+  \caption{Mass of oxygen collected at each time interval.}
+  \label{tab:results}
+  \begin{tabular}{lcc}
+    \toprule
+    Time (min) & Mass before (g) & Mass after (g) \\
+    \midrule
+    2  & 10.42 & 10.38 \\
+    4  & 10.38 & 10.31 \\
+    6  & 10.31 & 10.20 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+```
+
+`\toprule`, `\midrule` and `\bottomrule` produce the three rules of a publication-style table. No vertical lines — this is intentional and correct for scientific tables.
+
+In the column definition `{lcc}`: `l` = left-aligned, `c` = centred. Use `r` for right-aligned numbers.
+
+</Section>
+
+<Section title="Package 4: biblatex — references" icon="💻" id="biblatex">
+
+Add to the preamble:
+```latex
+\usepackage[style=numeric,sorting=none]{biblatex}
+\addbibresource{refs.bib}
+```
+
+Create a new file in Overleaf called `refs.bib`. One entry per reference:
+```
+@article{brown2020,
+  author = {Brown, James},
+  title  = {Thermal decomposition reactions in secondary education},
+  year   = {2020},
+  url    = {https://example-journal.org/article/...}
+}
+```
+
+**Cite inline** (in your body text):
+```latex
+This reaction is well documented in the literature \cite{brown2020}.
+```
+
+**Print the bibliography** (at the end of your document, before `\end{document}`):
+```latex
+\printbibliography
+```
+
+The bibliography is generated automatically from the entries you cite. You never format it manually.
+
+**Task:** enter three references from your lab report into `refs.bib`. Cite them in the Introduction. Compile and check the bibliography appears.
+
+</Section>
+
+<Activity title="Add all four packages to your lab report" time="60 min" grouping="Individual" materials={["Laptop", "Overleaf project", "Lab experiment photos", "Three reference sources to cite"]}>
+Work through the four packages **in order**. After each:
+1. Add the `\usepackage` line to the preamble.
+2. Add one example to your document.
+3. **Compile and confirm it works** before adding the next package.
+
+Don't proceed to Package 2 until Package 1 compiles without errors.
+</Activity>
+
+<Support title="Common errors this session">
+**mhchem error — "Package mhchem not found":** check the spelling in `\usepackage[version=4]{mhchem}`. The option `[version=4]` is required.
+
+**Figure doesn't appear where expected:** add the `float` package and use `[H]` as the position argument.
+
+**biblatex compilation takes two passes:** if the bibliography doesn't appear, click Compile twice (or switch to XeLaTeX in Overleaf settings if errors persist).
+
+**Table column count mismatch:** count the `&` separators — you need exactly one fewer `&` than you have columns. `\toprule`, `\midrule`, `\bottomrule` end with `\\` only after the last `&` on that row.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Which LaTeX command correctly typesets the chemical formula for potassium permanganate (KMnO₄)?",
+    options: [
+      "KMnO4",
+      "\\ce{KMnO4}",
+      "\\chem{KMnO4}",
+      "\\formula{KMnO_4}"
+    ],
+    answer: 1,
+    hint: "The mhchem package command handles all the subscripts automatically.",
+    explain: "\\ce{KMnO4} is the mhchem command. It automatically converts the 4 into a subscript ₄. The other options are not valid LaTeX chemistry commands."
+  },
+  {
+    q: "You insert a figure labelled \\label{fig:setup} and write 'see Figure~\\ref{fig:setup} below' in the text. You later add two more figures before it. What happens to the number in the text?",
+    options: [
+      "It stays as Figure 1 — labels are static.",
+      "It updates automatically to the correct new number when you compile.",
+      "You must manually change the number in the text.",
+      "The cross-reference breaks and shows a question mark."
+    ],
+    answer: 1,
+    hint: "The whole point of \\ref{} is that it updates automatically — that's why you use it.",
+    explain: "\\ref{fig:setup} looks up the current number assigned to that label at compile time. When figures are reordered, the numbers update automatically — you never change the text."
+  },
+  {
+    q: "In a biblatex .bib file, you add an entry with the key 'smith2024'. How do you cite it in the body of your document?",
+    options: [
+      "\\reference{smith2024}",
+      "\\bibliography{smith2024}",
+      "\\cite{smith2024}",
+      "[smith2024]"
+    ],
+    answer: 2,
+    hint: "The command for an inline citation is short — three letters after the backslash.",
+    explain: "\\cite{smith2024} produces an inline citation (e.g. [3]) in the text. \\printbibliography prints the full list at the end. \\bibliography is a different (older) system."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Complete your lab report so that all five equations use `\ce{}`, at least two photos are inserted as figures with captions and cross-references, and at least three references are cited with `\cite{}`. The document must compile without errors before Week 10.
+
+<Extension title="Ionic equations and charge notation">
+Research the mhchem syntax for ionic equations — for example, the dissolution of silver chloride: Ag⁺(aq) + Cl⁻(aq) → AgCl(s). Write it using `\ce{}` and verify the charge superscripts and state symbols appear correctly.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "mhchem package documentation (CTAN)", type: "Link" },
+  { label: "Overleaf guide: inserting images and cross-referencing", type: "Link" },
+  { label: "booktabs package documentation", type: "Link" },
+]} />
+
+<Reflection prompt="Which of the four packages do you think will save the most time in real scientific writing — and why? Think beyond this lab report." />

@@ -1,0 +1,190 @@
+---
+grade: 12
+term: 1
+week: 4
+title: "Paper 2 Document Production: Microsoft Word"
+topic: "Document production"
+learningGoal: "apply named styles, set up headers and footers with field codes, perform a mail merge and set image text-wrapping in Microsoft Word to mark-scheme standard."
+selGoal: "follow the mail merge steps in order without skipping — try each step from memory first, then use the prompt card if I'm stuck."
+draft: false
+---
+
+Paper 2 opens with document production in Microsoft Word. The marks test whether you followed the exact sequence — applying a named style is not the same as changing the font to look similar, and a mail merge with the wrong field names earns zero even if the letter looks right. Today you practise each task until the process is reliable.
+
+<Callout type="exam" title="Why this matters" id="why">
+  **Paper 2** (2.5 hours) covers document production (Word), databases (Access) and presentations (PowerPoint). Document production accounts for the first section. The most common losses are: applying a font change instead of a named style, omitting field codes from headers/footers, and failing to merge from a data source at all. All three are drilled today.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Named style", definition: "A saved set of formatting (font, size, spacing, colour) given a name, e.g. 'Heading 1'. Applying the named style — not just making the text look similar — is what earns the mark." },
+  { term: "Field code", definition: "An instruction in a header, footer or mail merge that inserts live data — e.g. the current filename, date, or a merge field from a data source." },
+  { term: "Mail merge", definition: "Combining a main document with a data source to produce personalised copies — e.g. one letter template + a spreadsheet of names = one letter per row." },
+  { term: "Text wrapping", definition: "How body text flows around an image. The question specifies exactly which wrap type to apply — choosing the wrong one loses the mark." },
+]} />
+
+<Section title="Practical: Microsoft Word tasks" icon="💻" id="practical">
+
+### Task 1 — Named styles (most-lost marks)
+
+Home → Styles panel → click the exact style name specified in the question.
+
+**The critical rule:** applying the named style from the Styles panel earns the mark. Changing the font manually to *look* like the style does not — even if the result is visually identical. The mark scheme checks whether the style is applied, not whether it looks right.
+
+To verify: click inside the formatted text → check the Styles panel highlights the correct style name.
+
+### Task 2 — Headers and footers with field codes
+
+Insert → Header (or Footer) → Edit Header, then insert field codes as specified:
+
+| What the question wants | How to insert it |
+|---|---|
+| Automatic filename | Insert → Quick Parts → Field → choose `FileName` |
+| Page number | Insert → Page Number → choose position |
+| Date (automatic) | Insert → Quick Parts → Field → choose `Date` |
+
+After inserting: right-click the field → Update Field to confirm it shows correct data. Close Header and Footer when done.
+
+### Task 3 — Mail merge (8 steps)
+
+1. Mailings → Start Mail Merge → **Step-by-Step Mail Merge Wizard**.
+2. Select document type (Letters, Labels, etc.).
+3. Use the current document as the starting document.
+4. Select recipients → Use an existing list → browse to the data file (`.csv` or `.xlsx`).
+5. Confirm column headers match what the question asks for — field names are case-sensitive.
+6. Insert merge fields: Mailings → Insert Merge Field → select the field name.
+7. Preview results — check each merge field shows the correct data.
+8. Finish & Merge → Edit Individual Documents → All → OK.
+
+**Common failures:** attaching the wrong data file, inserting fields that don't match the column headers, merging directly to the printer instead of a new document.
+
+### Task 4 — Image text wrapping
+
+Click the image → Picture Tools Format → Wrap Text → choose the wrap type named in the question (Square, Through, In Line with Text, Top and Bottom, etc.).
+
+The question always specifies the wrap type. Choosing the wrong one loses the mark even if the image is positioned correctly.
+
+</Section>
+
+<Section title="Theory: Paper 1 — Safety, security & countermeasures" icon="📖" id="theory">
+
+### Categories of threat
+
+| Category | Examples |
+|---|---|
+| Malicious external | Virus, hacking, phishing, ransomware |
+| Malicious internal | Disgruntled employee leaking data |
+| Accidental | User deleting files, hardware failure, natural disaster |
+
+### Logical countermeasures (software/policy)
+
+- **Encryption** — converts data into coded form; only someone with the correct key can read it. Even if intercepted, the data cannot be understood.
+- **Passwords** — should be long, complex and unique. Two-factor authentication adds a second check (something you know + something you have).
+- **Antivirus** — detects and removes known malware.
+- **Firewall** — filters incoming and outgoing network traffic according to rules.
+- **Access levels** — different users see different data; a cashier can't access salary records.
+
+### Physical countermeasures (hardware/environment)
+
+- Locked server room (key or keypad).
+- Security passes / ID badges for staff.
+- CCTV monitoring.
+- Biometric entry (fingerprint, retina scan).
+- Cable locks on laptops.
+
+### Backups
+
+- **Full backup** — a complete copy of all data. Takes longer; restoring is straightforward.
+- **Incremental backup** — only backs up files changed since the last backup. Faster to run; restoring requires the last full backup plus all incrementals.
+- **Off-site storage** — essential so a fire or flood doesn't destroy the backup along with the original.
+
+### Phishing vs hacking
+
+- **Phishing** — deceives the user into revealing credentials (fake login pages, urgent emails asking you to "verify your account").
+- **Hacking** — exploits a technical vulnerability in a system.
+
+**Exam weak-answer trap:** "Encryption keeps data safe." → *"Encryption converts data into a coded format using an algorithm; only a recipient with the correct decryption key can read it, so intercepted data cannot be understood."*
+
+</Section>
+
+<WorkedExample title="Mail merge: tracing a common failure">
+Scenario: A student runs the mail merge wizard, inserts a field called `{First Name}`, previews the results and sees `{First Name}` displayed literally — not the actual name.
+
+**Why it happened:** the data source column is called `FirstName` (no space), but the student inserted a field called `First Name` (with a space). The field names don't match.
+
+**Fix:** in step 4 of the wizard, open the data source and check the exact column headers. Insert the field with the name exactly as it appears in the column header.
+</WorkedExample>
+
+<Activity title="Document production task + self-mark" time="50 min" grouping="Individual" materials={["Laptop", "Microsoft Word", "Past paper task", "Mark scheme"]}>
+1. Complete the document production task your teacher has set.
+2. Before declaring done, verify:
+   - Named styles applied via the Styles panel, not manually.
+   - Header/footer contains field codes (not typed text) where specified.
+   - Mail merge produced multiple merged letters, not just the template.
+   - Image text wrapping matches the question.
+3. Self-mark against the mark scheme. Annotate green / red / ★. Add starred items to your deduction card.
+</Activity>
+
+<Support title="Mail merge rescue steps">
+If the merge didn't produce individual letters:
+
+1. Mailings → Edit Recipient List — confirm the data source is attached.
+2. Check field names: Mailings → Insert Merge Field → the dropdown should show your column headers.
+3. Preview Results — at least one merged version should show real data.
+4. If preview shows field codes literally (e.g. `«First Name»`): the column header doesn't match the inserted field name. Start again from step 4 of the wizard.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "The question says 'apply the Heading 2 style to the section titles'. You select the title text and change the font size to 14pt and make it bold, matching the visual appearance of Heading 2. Does this earn the mark?",
+    options: [
+      "Yes — the text looks like Heading 2.",
+      "No — you must apply the named style from the Styles panel.",
+      "Yes — if the font matches, the mark is awarded.",
+      "Only if you also change the colour."
+    ],
+    answer: 1,
+    hint: "The mark scheme checks whether the named style is applied, not whether the text looks right.",
+    explain: "You must click 'Heading 2' in the Styles panel. Manually formatting the text to look similar does not apply the named style and does not earn the mark."
+  },
+  {
+    q: "You need to insert the current filename into a footer. Which sequence is correct?",
+    options: [
+      "Insert → Footer → type the filename manually.",
+      "Insert → Footer → Edit Footer → Insert → Quick Parts → Field → FileName.",
+      "Insert → Header & Footer → type the filename.",
+      "Format → Footer → Field → FileName."
+    ],
+    answer: 1,
+    hint: "A field code inserts live, automatic data — not typed text.",
+    explain: "Insert → Quick Parts → Field → FileName inserts a field code that automatically displays the current document filename. Typing the filename manually is not a field code and may not earn the mark."
+  },
+  {
+    q: "Which countermeasure would best protect data if a company laptop is stolen?",
+    options: [
+      "Antivirus software",
+      "A firewall",
+      "Encryption of the hard drive",
+      "Regular backups"
+    ],
+    answer: 2,
+    hint: "The threat is physical theft. The data is now in someone else's hands.",
+    explain: "Encryption protects the data even after the device is stolen — without the decryption key, the thief cannot read the files. Antivirus and firewalls protect against software threats, not physical theft."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Write a one-sentence explanation of **why** each of the three most common mark losses today happens — don't describe the fix, explain the mistake.
+
+<Extension title="Multi-condition mail merge filter">
+In step 4 of the Mail Merge Wizard, click "Filter…" and add a condition — e.g. only merge rows where the City column equals "Bogotá". Preview the results to confirm only matching rows appear.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 2 past papers (document production section)", type: "Past paper" },
+  { label: "Microsoft Word mail merge reference", type: "Link" },
+]} />
+
+<Reflection prompt="Mail merge has 8 steps. Which specific step do you find hardest to remember? Write that step in your own words and why it matters." />

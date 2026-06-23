@@ -1,0 +1,180 @@
+---
+grade: 12
+term: 1
+week: 8
+title: "LaTeX Basics: Overleaf & Document Structure"
+topic: "LaTeX: basics"
+learningGoal: "log in to Overleaf, understand the preamble–body structure, write sections with formatted text, and compile a document without errors."
+selGoal: "read the compiler error log when the PDF doesn't build — find the line number and fix it — instead of deleting and restarting."
+draft: false
+---
+
+Block B begins. For the next five weeks you'll learn to write documents in **LaTeX** — the system used by universities, researchers and engineers worldwide to produce professional, publication-quality text. The immediate task is a Chemistry lab report. The transferable skill will follow you into university.
+
+<Callout type="tip" title="Why LaTeX?" id="why">
+  The Chemistry lab report currently written in Word has three persistent quality problems: chemical formulae written as plain text (`H2O` instead of H₂O), figure numbers that go out of sync when figures are reordered, and a manually formatted reference list. LaTeX solves all three automatically. You write instructions; LaTeX handles the layout.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "LaTeX", definition: "A markup language and typesetting system. You write instructions in a text editor; LaTeX compiles them into a professionally laid-out PDF." },
+  { term: "Overleaf", definition: "A browser-based LaTeX editor — no installation needed. You write in the left pane and click Compile to see the PDF in the right pane." },
+  { term: "Preamble", definition: "Everything before \\begin{document}. Sets the document class, loads packages and defines settings." },
+  { term: "Document body", definition: "Everything between \\begin{document} and \\end{document}. This is where your content goes." },
+  { term: "Compile", definition: "The step that converts your LaTeX source code into a PDF. Unlike Word, changes are not visible until you compile." },
+]} />
+
+<Section title="LaTeX document structure" icon="💻" id="lesson">
+
+### The skeleton every document starts with
+
+```latex
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+Your content goes here.
+
+\end{document}
+```
+
+Everything before `\begin{document}` is the **preamble**. Everything between `\begin{document}` and `\end{document}` is the **body**.
+
+### Key commands
+
+| Command | What it does |
+|---|---|
+| `\section{Title}` | Creates a numbered section heading |
+| `\subsection{Title}` | Creates a numbered sub-heading |
+| `\textbf{text}` | **Bold** text |
+| `\textit{text}` | *Italic* text |
+| `\emph{text}` | Emphasis — usually italic, context-aware |
+| Blank line | Starts a new paragraph |
+| `%` | Comment — LaTeX ignores everything after this on the line |
+
+### Packages: adding extra features
+
+Packages extend what LaTeX can do. Load them in the preamble with `\usepackage{name}`.
+
+```latex
+\usepackage{geometry}          % controls page margins
+\usepackage[utf8]{inputenc}    % handles accented characters (á, é, etc.)
+```
+
+### Reading a compile error
+
+When the PDF doesn't build, Overleaf shows a red error panel. Click it to see the log. The key information is:
+
+- **Line number** — go to that line in the editor.
+- **Error message** — common ones: "Missing } inserted" (unclosed brace), "Undefined control sequence" (typo in command name).
+
+**Rule:** every `{` needs a matching `}`. Every `\begin{env}` needs a matching `\end{env}`.
+
+### Common first-session mistakes
+
+| Mistake | What to check |
+|---|---|
+| `/section` instead of `\section` | Backslash `\`, not forward slash `/` |
+| Edited PDF pane | Source pane is on the left — that's where you type |
+| Changed something but PDF didn't update | Did you click **Recompile**? |
+| Wrong quotation marks | Use ` `` ` for opening, `''` for closing — not `"text"` |
+
+</Section>
+
+<WorkedExample title="Writing the Introduction section">
+Your teacher shares an Overleaf project link. Open it. The preamble is already set. You need to write the Introduction section of the Chemistry lab report.
+
+In the body, add:
+
+```latex
+\section{Introduction}
+
+This experiment investigates the thermal decomposition of potassium chlorate.
+Potassium chlorate (\ce{KClO3}) decomposes when heated to produce oxygen gas
+and potassium chloride.
+
+The aim of this experiment is to observe the reaction and collect the oxygen
+produced.
+```
+
+The `\ce{}` command for the formula comes from the `mhchem` package — that's Week 9. For now, write the formula as plain text with a note to fix it next week.
+
+Click **Compile** (Ctrl+Enter). Check the PDF. Fix any errors shown in the log.
+</WorkedExample>
+
+<Activity title="Write the Introduction in Overleaf" time="50 min" grouping="Individual" materials={["Laptop", "Overleaf (browser)", "Chemistry lab report content sheet"]}>
+1. Open the Overleaf project link your teacher shares. Compile it to confirm the PDF renders.
+2. In the body, write the Introduction section of the Chemistry lab report using `\section{}`, `\subsection{}` if needed, and text formatting commands.
+3. Add a paragraph break between the context and the aim.
+4. Compile. Fix any errors in the log before calling done.
+5. **Do not** attempt chemical formulae yet — leave them as plain text.
+</Activity>
+
+<Support title="LaTeX first-session survival guide">
+If the PDF won't compile:
+
+1. Click the error panel in Overleaf.
+2. Find the line number in the error message.
+3. Go to that line in the source.
+4. Look for: unclosed `{`, missing `}`, typo in a command name (`\scetion` instead of `\section`).
+5. Fix it. Compile again.
+
+Don't delete sections and restart — that makes it harder to find the error.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "In LaTeX, where does your document content go?",
+    options: [
+      "Before \\begin{document}",
+      "Between \\begin{document} and \\end{document}",
+      "After \\end{document}",
+      "Inside the \\usepackage command"
+    ],
+    answer: 1,
+    hint: "The preamble sets up the document; the body is where content lives.",
+    explain: "Content goes between \\begin{document} and \\end{document}. The preamble (before \\begin{document}) loads packages and defines settings — no visible content goes there."
+  },
+  {
+    q: "You change a heading in Overleaf but the PDF still shows the old heading. What is most likely wrong?",
+    options: [
+      "You edited the PDF pane instead of the source pane.",
+      "LaTeX doesn't allow headings to be changed.",
+      "You forgot to recompile after making the change.",
+      "The heading command is in the preamble."
+    ],
+    answer: 2,
+    hint: "LaTeX doesn't update the PDF automatically — something has to trigger the conversion.",
+    explain: "LaTeX is not WYSIWYG — changes to the source are only reflected in the PDF after you click Recompile. If the PDF looks unchanged, check whether you compiled after editing."
+  },
+  {
+    q: "Overleaf shows the error 'Missing } inserted' at line 14. What should you do?",
+    options: [
+      "Delete line 14 and retype the whole paragraph.",
+      "Go to line 14 and check for an unclosed brace — every { needs a matching }.",
+      "Add a blank line after line 14.",
+      "Change \\begin{document} to \\begin{article}."
+    ],
+    answer: 1,
+    hint: "The error message tells you exactly what's wrong and where.",
+    explain: "'Missing } inserted' means LaTeX expected a closing brace and didn't find one. Go to line 14 and count your { and } — find the one that's missing its pair."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Complete the Introduction section of the lab report in Overleaf if you didn't finish in class. Make sure it compiles without errors before next week.
+
+<Extension title="Add a table of contents">
+Add `\tableofcontents` on a new line after `\begin{document}` (before your first `\section{}`). Recompile. See what LaTeX generates automatically from your section headings. Try adding a `\subsection{}` and recompile.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Overleaf documentation: LaTeX basics", type: "Link" },
+  { label: "LaTeX Wikibook (comprehensive free reference)", type: "Link" },
+]} />
+
+<Reflection prompt="In Word you can see the result as you type. In LaTeX you can't. How does that change how you work? Is it better or worse for catching errors?" />

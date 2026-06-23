@@ -28,7 +28,7 @@ const info = getGrade(gradeNum)!;
 
 const lessons = await getTermLessons(gradeNum, termNum);
 const byWeek = new Map(lessons.map((l) => [l.data.week, l]));
-const weeks = weeksForTerm(termNum);
+const weeks = weeksForTerm(termNum, gradeNum);
 const focus = getTermFocus(gradeNum, termNum);
 ---
 

@@ -1,0 +1,203 @@
+---
+grade: 12
+term: 1
+week: 10
+title: "Lab Report Template: Format & Content"
+topic: "Lab report template"
+learningGoal: "map each section of the lab report template to its LaTeX commands and explain what the Chemistry teacher expects in each section's content."
+selGoal: "listen actively to the Chemistry teacher's content expectations — not just when the ICT teacher speaks."
+draft: false
+---
+
+Today both the ICT teacher and the Chemistry teacher are in the room. The ICT teacher owns the format; the Chemistry teacher owns the content. This session maps the two together so that next week, when you write independently, you know exactly what belongs in each section and how to produce it in LaTeX.
+
+<Callout type="tip" title="Why this joint session?" id="why">
+  A lab report that is perfectly formatted but scientifically empty earns low marks. A lab report with excellent scientific content buried in broken LaTeX is also penalised. Today you get both standards at once, from both teachers, in the same session — so you can't miss either.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Section", definition: "A major division of the lab report (Introduction, Materials & Methods, Results, etc.). Created with \\section{} in LaTeX." },
+  { term: "In-text citation", definition: "A short marker in the body (e.g. [1]) that points to a full reference in the bibliography. Inserted with \\cite{key}." },
+  { term: "Passive voice", definition: "Writing style used in scientific methods sections: 'The solution was heated' rather than 'We heated the solution'." },
+  { term: "Cross-reference", definition: "A reference to a figure or table by its label: 'as shown in Figure~\\ref{fig:setup}'. Updates automatically when figures are renumbered." },
+]} />
+
+<Section title="The lab report template: section by section" icon="💻" id="template">
+
+### Section 1 — Introduction
+
+**LaTeX:** `\section{Introduction}` → paragraphs → in-text citations with `\cite{key}`
+
+**Chemistry teacher expects:**
+- Context: why this reaction matters (link to chemical theory).
+- Theory: the relevant chemistry — equations, mechanisms.
+- Aim: one clear sentence stating what the experiment investigates.
+
+**Common mistake:** copying the aim from the worksheet verbatim. Write it in your own words.
+
+---
+
+### Section 2 — Materials and Methods
+
+**LaTeX:** `\section{Materials and Methods}` → paragraphs or a numbered list → figures for apparatus photos
+
+**Chemistry teacher expects:**
+- Write in the **past tense, passive voice** ("50 mL of solution was measured…").
+- Enough detail that another scientist could repeat the experiment.
+- Apparatus listed, chemicals named with concentrations if relevant.
+
+**Common mistake:** writing a future-tense instruction list ("Pour 50 mL…"). This is a procedure, not a method.
+
+---
+
+### Section 3 — Results
+
+**LaTeX:** `\section{Results}` → `booktabs` table → figures with captions → cross-references to both
+
+**Chemistry teacher expects:**
+- Present your data — numbers, observations, masses, temperatures.
+- No interpretation here. That belongs in Discussion.
+- Every table and figure must be cross-referenced in the text (e.g. `` `Table~\ref{tab:mass}` `` shows…).
+
+**Common mistake:** writing "the results show that the reaction worked" in the Results section. Save interpretation for Discussion.
+
+---
+
+### Section 4 — Discussion
+
+**LaTeX:** `\section{Discussion}` → paragraphs → `\ce{}` for all chemical equations
+
+**Chemistry teacher expects:**
+- Interpret your results: what do they mean scientifically?
+- Connect to theory: does your data confirm the expected reaction?
+- Acknowledge and explain anomalies: don't ignore unexpected values.
+- Use `\ce{}` for every chemical equation in this section — no plain-text formulae.
+
+**Common mistake:** summarising results again instead of interpreting them.
+
+---
+
+### Section 5 — Conclusions
+
+**LaTeX:** `\section{Conclusions}` → short paragraphs
+
+**Chemistry teacher expects:**
+- One conclusion per main finding — linked directly to the aim.
+- State whether the aim was achieved.
+- No new data or interpretation introduced here.
+
+**Common mistake:** writing a lengthy summary that duplicates Discussion.
+
+---
+
+### Section 6 — References
+
+**LaTeX:** `\printbibliography` (one line — generates everything automatically from your `.bib` file)
+
+**Chemistry teacher expects:**
+- Every source cited in the body must appear here.
+- Every source here must be cited somewhere in the body.
+- No Wikipedia as a primary source — use peer-reviewed articles, textbooks or official databases.
+
+</Section>
+
+<WorkedExample title="Connecting the LaTeX structure to the Chemistry content">
+The Results section of a well-structured lab report:
+
+```latex
+\section{Results}
+
+Table~\ref{tab:mass} shows the total mass recorded at each two-minute interval.
+
+\begin{table}[H]
+  \centering
+  \caption{Mass of reaction vessel at each time interval.}
+  \label{tab:mass}
+  \begin{tabular}{cc}
+    \toprule
+    Time (min) & Mass (g) \\
+    \midrule
+    0 & 25.42 \\
+    2 & 25.31 \\
+    4 & 25.19 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+A steady decrease in mass was observed throughout the reaction
+(Figure~\ref{fig:massplot}), consistent with the release of gaseous oxygen.
+```
+
+Notice: data only, no interpretation, both the table and figure are cross-referenced in the text.
+</WorkedExample>
+
+<Activity title="Section mapping exercise" time="30 min" grouping="Individual or pair" materials={["Laptop", "Overleaf project from W8–W9", "Lab report content sheet"]}>
+Open your Overleaf project. Add the six `\section{}` headings to your document body (Introduction through References). Under each heading:
+1. Write one bullet point in a LaTeX comment (`%`) stating what the Chemistry teacher expects in that section.
+2. Note which LaTeX command you'll use for that section's main content (table, figure, `\ce{}`, `\cite{}`, etc.).
+
+This gives you a skeleton with embedded reminders before you write for real next week.
+</Activity>
+
+<Support title="Which teacher to ask for which question">
+- **LaTeX syntax, compile error, package issue, figure not showing, table misaligned** → ICT teacher.
+- **What to write in Discussion, whether a conclusion is scientifically valid, how to cite this source, what counts as a result** → Chemistry teacher.
+
+Knowing which teacher owns which question saves time for both of you.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "In which section would you write: 'The decrease in mass confirms that gaseous oxygen was released during the decomposition of potassium chlorate'?",
+    options: [
+      "Results",
+      "Materials and Methods",
+      "Discussion",
+      "Conclusions"
+    ],
+    answer: 2,
+    hint: "This sentence interprets data and connects it to theory. Results only presents data.",
+    explain: "Interpretation — connecting data to scientific theory — belongs in Discussion. Results presents the data; Discussion explains what it means."
+  },
+  {
+    q: "The Chemistry teacher says your Methods section reads 'Add 2g of KClO3 to the test tube and heat it'. What needs to change?",
+    options: [
+      "Nothing — it is clear and concise.",
+      "Rewrite in passive voice, past tense: '2g of KClO3 was added to the test tube and heated.'",
+      "Move it to the Introduction.",
+      "Replace it with a figure."
+    ],
+    answer: 1,
+    hint: "Scientific methods use passive voice and past tense — not active instructions.",
+    explain: "Methods are written in passive voice, past tense ('was added', 'was heated') because the convention in scientific writing describes what was done, not what to do."
+  },
+  {
+    q: "You cite three sources in your Introduction with \\cite{} but forget to add \\printbibliography before \\end{document}. What appears in the PDF?",
+    options: [
+      "The references appear automatically at the end.",
+      "The citations show question marks instead of numbers.",
+      "The citations show numbers but no reference list appears.",
+      "The document fails to compile."
+    ],
+    answer: 2,
+    hint: "\\cite{} produces the inline marker; \\printbibliography produces the full list. They're separate.",
+    explain: "\\cite{} produces the inline [1], [2], [3] markers. Without \\printbibliography, the full reference list is never printed — you get numbers in the text but no bibliography at the end."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Before Week 11, complete the six-section skeleton in Overleaf: all section headings present, each with a comment note about what goes in it. The document must compile cleanly. Week 11 is writing time — the structure needs to be ready.
+
+<Extension title="Model report analysis">
+Your teacher will share a compiled PDF of a model lab report. Read it and for each section, identify: (1) one thing the author did well that you should copy, and (2) one thing you would do differently. Write your analysis as LaTeX comments in your own document.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Overleaf: creating a .bib file and citing sources", type: "Link" },
+  { label: "Scientific writing guide: past tense passive voice in Methods", type: "Link" },
+]} />
+
+<Reflection prompt="After today's joint session: which section of the lab report do you feel least confident about — the LaTeX format, the scientific content, or both? Name it specifically." />

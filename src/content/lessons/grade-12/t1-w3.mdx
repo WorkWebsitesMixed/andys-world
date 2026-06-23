@@ -1,0 +1,185 @@
+---
+grade: 12
+term: 1
+week: 3
+title: "Timed Paper 3: Exam Simulation"
+topic: "Paper 3 practice"
+learningGoal: "complete a full timed Paper 3 under exam conditions and identify my top three sources of mark loss on a deduction card."
+selGoal: "manage my time across the full paper without abandoning questions — write my best attempt and move on."
+draft: false
+---
+
+This week you sit a **full timed Paper 3** from start to finish. No models, no help, no prompt cards during the paper — just you and the clock. The debrief afterwards is where the real learning happens: you'll find out exactly where your marks went and why.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Sitting the paper under exam conditions once is worth more than reviewing ten mark schemes passively. You can't practise time management without the clock, and you can't know your real weak spots until you've attempted the full paper without any support.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Exam conditions", definition: "Timed, silent, no peer help — you may only raise your hand for a technical issue, not a content question." },
+  { term: "Deduction card", definition: "A small card where you list your top three sources of mark loss after the debrief. Your teacher collects these to plan Week 7." },
+  { term: "Self-annotation", definition: "Marking your own paper with green (correct), red (wrong/missing) and ★ star (wrong and don't know why). Honest annotation is the only way to find your real gaps." },
+]} />
+
+<Section title="Exam day strategy" icon="💻" id="strategy">
+
+### Before the paper starts (0–5 min)
+
+Your teacher will state the exam rules. Listen for:
+- The exact **filename** the question paper specifies — use it, don't change it.
+- The **save format** required (e.g. `.xlsx` not `.xls`).
+- Where to save your files.
+
+### During the paper
+
+- **Attempt every question.** If you're stuck on a formula, write your best attempt and move on. Partial credit can be available, and an attempt is always better than a blank.
+- **Manage your time.** Don't spend 20 minutes perfecting one formula and run out of time for the chart and web authoring tasks.
+- **File format and filename:** check these before you save. A correct formula saved with the wrong filename earns zero.
+
+### After the paper: the debrief (mark-scheme session)
+
+Your teacher will project the mark scheme. For each item:
+
+- **Green** — you got exactly the mark the scheme awards.
+- **Red** — you lost the mark (wrong answer, wrong format, wrong file).
+- **★ Star** — you lost the mark and genuinely don't know why.
+
+Stars are your real gaps. After annotating, write your **top 3 starred items** on a deduction card and hand it to your teacher. These drive Week 7.
+
+### Retry (last 10 min)
+
+You'll attempt your single highest-starred item — this time, prompt cards are allowed.
+
+</Section>
+
+<Section title="Theory: Paper 1 — Data, file sizes, binary & data types" icon="📖" id="theory">
+
+### Why binary?
+
+Computers use binary (base 2 — only 0s and 1s) because electronic circuits have two states: **on** (1) and **off** (0). Each digit is called a **bit**.
+
+### Units of data
+
+| Unit | Size |
+|---|---|
+| Bit | Single 0 or 1 |
+| Byte | 8 bits |
+| Kilobyte (KB) | 1 024 bytes |
+| Megabyte (MB) | 1 024 KB |
+| Gigabyte (GB) | 1 024 MB |
+| Terabyte (TB) | 1 024 GB |
+
+Both 1 024 and 1 000 are accepted by examiners (binary vs SI convention).
+
+### File size calculation
+
+For an image: **file size (bits) = width (px) × height (px) × colour depth (bits)**
+
+Example: an image 800 × 600 pixels with 24-bit colour:
+- 800 × 600 × 24 = **11 520 000 bits**
+- ÷ 8 = **1 440 000 bytes**
+- ÷ 1 024 = **1 406.25 KB ≈ 1.37 MB**
+
+Walk through every step — don't jump to the final unit. Examiners award marks for intermediate steps.
+
+### Data types
+
+| Type | What it stores | Example | Key exam point |
+|---|---|---|---|
+| Integer | Whole numbers | 42, -7 | Cannot store decimals |
+| Real / Float | Decimal numbers | 3.14, -0.5 | Used for measurements |
+| Boolean | True / False | Checkbox, switch | Only two possible values |
+| String / Text | Characters | "Hello", "SW1A 1AA" | Phone numbers stored as string, not integer |
+| Date | Calendar dates | 2026-06-23 | Allows date arithmetic |
+
+**Classic exam trap:** a phone number like "01234 567890" must be stored as a **string**, not an integer. Storing it as an integer removes the leading zero and prevents formatting like spaces or hyphens.
+
+</Section>
+
+<WorkedExample title="File size calculation step by step">
+**Question:** "A digital photograph is 1200 × 900 pixels. Each pixel uses 16 bits of colour. Calculate the file size in megabytes."
+
+Step 1: 1200 × 900 = **1 080 000 pixels**
+
+Step 2: 1 080 000 × 16 = **17 280 000 bits**
+
+Step 3: ÷ 8 = **2 160 000 bytes**
+
+Step 4: ÷ 1 024 = **2 109.375 KB**
+
+Step 5: ÷ 1 024 = **≈ 2.06 MB**
+
+Show every step even if the question only asks for the final answer — marks are often awarded along the way.
+</WorkedExample>
+
+<Activity title="Paper 3 past paper — exam conditions" time="55 min" grouping="Individual" materials={["Laptop", "Paper 3 past paper", "Mark scheme (for debrief)"]}>
+**During the paper:** No prompt cards, no peer help. Attempt every question. Check filename and file format before saving.
+
+**Debrief (once time is called):**
+1. Self-mark against the mark scheme. Annotate green / red / ★.
+2. Write your **top 3 starred items** on your deduction card and hand it to your teacher.
+
+**Retry (last 10 min):** Attempt your single highest-priority starred item — prompt cards allowed now.
+</Activity>
+
+<Support title="If you're stuck during the paper">
+- **Formula you can't start:** write the function name and the opening bracket, fill in what you know, and move on. Partial syntax may earn a mark.
+- **Chart type you're unsure about:** re-read the question. What does the data show — categories, trends over time, percentages, or two numerical variables?
+- **Filename/format:** read the question paper instructions again. Don't guess.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "An image is 640 × 480 pixels with a colour depth of 8 bits per pixel. What is the file size in bytes?",
+    options: [
+      "2 457 600 bytes",
+      "307 200 bytes",
+      "2 457 600 bits",
+      "38 400 bytes"
+    ],
+    answer: 1,
+    hint: "Width × height gives pixels. Pixels × colour depth gives bits. Bits ÷ 8 gives bytes.",
+    explain: "640 × 480 = 307 200 pixels. 307 200 × 8 = 2 457 600 bits. 2 457 600 ÷ 8 = 307 200 bytes."
+  },
+  {
+    q: "A school database stores student telephone numbers. Which data type should be used?",
+    options: [
+      "Integer — it is a number.",
+      "Real — it may contain decimal points.",
+      "String — it may have leading zeros, spaces or special characters.",
+      "Boolean — it is either present or absent."
+    ],
+    answer: 2,
+    hint: "Think about whether you'd ever do arithmetic on a phone number.",
+    explain: "Phone numbers must be strings because they can contain leading zeros, spaces and dashes that would be lost if stored as integers. You never add or subtract phone numbers."
+  },
+  {
+    q: "Which is the correct sequence for working out image file size?",
+    options: [
+      "Width + height, then × colour depth, then ÷ 8",
+      "Width × height × colour depth ÷ 8",
+      "Width × height ÷ colour depth × 8",
+      "Colour depth × 8 × width"
+    ],
+    answer: 1,
+    hint: "Pixels first, then bits, then bytes.",
+    explain: "Width × height gives total pixels. Pixels × colour depth (bits) gives total bits. Divide by 8 to convert bits to bytes."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+For each item on your deduction card, write **one sentence** explaining exactly why you lost the mark — not what the right answer was, but *why* your answer was wrong.
+
+<Extension title="Binary units drill">
+Without looking at your notes: write the sequence bit → byte → KB → MB → GB → TB and the number of each that makes the next. Then check. Repeat until you can write it from memory in under 30 seconds.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 3 past papers and mark schemes", type: "Past paper" },
+  { label: "File size calculation practice problems", type: "Link" },
+]} />
+
+<Reflection prompt="Looking at your deduction card: is your biggest gap a knowledge gap (you didn't know the answer) or an execution gap (you knew but made a mistake under pressure)? What does that tell you about how to prepare for the real exam?" />

@@ -17,7 +17,7 @@ import { getTermLessons } from '../../../../../../lib/lessons';
 export const getStaticPaths = (() => {
   return GRADES.flatMap((g) =>
     TERMS.flatMap((t) =>
-      weeksForTerm(t).map((w) => ({
+      weeksForTerm(t, g.id).map((w) => ({
         params: { grade: String(g.id), term: String(t), week: String(w) },
       })),
     ),

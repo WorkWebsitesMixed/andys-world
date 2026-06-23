@@ -1,0 +1,197 @@
+---
+grade: 12
+term: 1
+week: 5
+title: "Paper 2 Databases & Presentations: Access + PowerPoint"
+topic: "Databases & presentations"
+learningGoal: "create Access queries with AND and OR criteria, including calculated fields, and format a PowerPoint presentation with slide footer, transitions and speaker notes to mark-scheme standard."
+selGoal: "complete one application fully before switching to the other — resist the urge to jump back and forth."
+draft: false
+---
+
+Paper 2's second section is databases (Access) and presentations (PowerPoint). Both reward careful reading of the question: AND vs OR in Access is one grid row vs two, and a PowerPoint footer without "Apply to All" fails silently. Today you practise both until the detail is automatic.
+
+<Callout type="exam" title="Why this matters" id="why">
+  **Paper 2** tests Access and PowerPoint alongside Word. Access queries are the highest-risk task: students who know databases still lose marks by confusing AND with OR criteria placement. The AND vs OR distinction is demonstrated today — this single item accounts for more mark losses than anything else in the Access section.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Query", definition: "A question put to a database to retrieve records that match one or more criteria." },
+  { term: "AND criteria", definition: "Both conditions must be true. In Access Design view: place both criteria on the same Criteria row." },
+  { term: "OR criteria", definition: "Either condition can be true. In Access Design view: place conditions on different rows (the 'or' row)." },
+  { term: "Calculated field", definition: "A new column in a query that computes a value from existing fields — e.g. TotalCost: [UnitPrice]*[Quantity]." },
+  { term: "Slide footer", definition: "Text, date or slide number that appears at the bottom of every slide. Applied via Insert → Header and Footer → Apply to All." },
+]} />
+
+<Section title="Practical: Access queries and PowerPoint" icon="💻" id="practical">
+
+### Access: AND vs OR — the most important distinction
+
+In Query Design view, criteria placement controls the logic:
+
+| What you want | Where to put the criteria |
+|---|---|
+| Both conditions must be true (AND) | Same **Criteria** row, in different field columns |
+| Either condition can be true (OR) | Different rows — second condition on the **or** row below |
+
+**Example:** Find all employees in "London" who earn more than £30 000.
+
+- AND query: `London` in the City Criteria row AND `>30000` in the Salary Criteria row (same row).
+- OR query: `London` in City Criteria row, `>30000` in Salary **or** row (different rows) → returns anyone in London OR anyone earning over £30 000 — a much larger result set.
+
+Run both on the same table and compare. The different result sets make the logic visible.
+
+### Access: other query techniques
+
+- **Wildcard:** `Like "Sm*"` matches Smith, Smyth, Smart, etc.
+- **Date criteria:** use hash marks — `#01/01/2024#`.
+- **Number criteria:** `>100`, `<=50`, `Between 10 And 20`.
+- **Calculated field:** in an empty column header cell, type `NewFieldName: [Field1]*[Field2]`.
+
+Always **run the query** (the red ! button) and check the result set makes logical sense before moving on.
+
+### PowerPoint: the items students consistently miss
+
+#### Slide footer, number and date
+
+Insert → Header and Footer → check the relevant boxes:
+- **Date and time** — fixed or automatic as the question specifies.
+- **Slide number.**
+- **Footer** — type the exact text given in the question.
+
+Click **Apply to All** — not "Apply". This is the most commonly missed step. Clicking "Apply" applies the settings to the current slide only.
+
+#### Transitions
+
+Click the slide in the panel → Transitions tab → choose the transition named in the question. If all slides need the same: click **Apply To All** in the Timing group.
+
+#### Speaker notes
+
+Click the "Click to add notes" area below the slide → type the text exactly as given. Check it appears in Normal view before moving on.
+
+</Section>
+
+<Section title="Theory: Paper 1 — Systems life cycle, software types & ergonomics" icon="📖" id="theory">
+
+### The systems development life cycle (SDLC)
+
+| Stage | What happens |
+|---|---|
+| 1. Analysis | Define the problem; find out what the system needs to do |
+| 2. Design | Plan the solution — data structures, user interface, logic |
+| 3. Development | Build the system (coding, creating databases, etc.) |
+| 4. Testing | Test with real/realistic data; errors feed back to Development |
+| 5. Implementation | Install and deploy the system for real users |
+| 6. Evaluation | Review: does it meet the original requirements? What needs improving? |
+
+**Key exam point:** Testing uses realistic data to find errors; errors discovered in testing loop back to Development. The cycle is iterative, not one-way.
+
+### Software types
+
+| Type | Purpose | Example |
+|---|---|---|
+| Operating system | Manages hardware; provides user interface; manages files | Windows, macOS, Linux |
+| Application software | Performs a specific user task | Word processor, spreadsheet |
+| Utility software | Maintains/optimises the system | Antivirus, disk defragmenter, file compression |
+
+**Exam trap:** "Microsoft Word is an operating system." → Word is application software. The operating system manages the hardware and provides the environment in which Word runs.
+
+### Health and ergonomics
+
+| Problem | Cause | Countermeasure |
+|---|---|---|
+| RSI (repetitive strain injury) | Repeated keyboard/mouse movements | Wrist rests, regular breaks, correct desk height |
+| Eye strain | Screen glare, wrong distance or height | Anti-glare screen, correct monitor distance, breaks |
+| Back/neck pain | Poor posture, non-adjustable seating | Adjustable chair, lumbar support, monitor at eye level |
+
+</Section>
+
+<WorkedExample title="Access AND vs OR: checking your result set">
+**Task:** "Find all products in the category 'Electronics' with a price less than £50."
+
+AND query setup:
+- Category field, Criteria row: `Electronics`
+- Price field, Criteria row: `<50`
+
+Both on the **same Criteria row**.
+
+Result check: every record in the results should be an Electronics item AND cost less than £50. If you see any records outside Electronics, or any above £50, something is on the wrong row.
+
+Run the query → count the results → ask "does this number make sense?" If you expected 5 results and got 47, the criteria are probably on different rows (OR logic).
+</WorkedExample>
+
+<Activity title="Access + PowerPoint past paper task" time="50 min" grouping="Individual" materials={["Laptop", "MS Access", "MS PowerPoint", "Past paper task", "Mark scheme"]}>
+1. Complete the Access tasks first (query, then form or report if required). Run every query and check the result set makes sense before moving on.
+2. Complete the PowerPoint tasks. Before finishing:
+   - Footer, slide number and date all applied → Apply to All pressed.
+   - Transitions applied to all slides.
+   - Speaker notes typed exactly as given.
+3. Self-mark against the mark scheme. Annotate green / red / ★. Update your deduction card.
+</Activity>
+
+<Support title="Access query checklist">
+Before running the query, check:
+
+- [ ] Every required field is added to the grid (double-click the field name).
+- [ ] AND conditions: on the **same** Criteria row.
+- [ ] OR conditions: on **different** rows.
+- [ ] Wildcard uses `Like "text*"` — not just `text*` without `Like`.
+- [ ] Text criteria: Access adds quotes automatically — don't type them manually or you get double quotes.
+- [ ] Query saved with the exact name specified in the question.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "An Access query should return records where the Country is 'France' AND the Revenue is greater than 10000. How should the criteria be entered in Design view?",
+    options: [
+      "'France' in Country Criteria row; >10000 in Revenue 'or' row.",
+      "'France' in Country Criteria row; >10000 in Revenue Criteria row (same row).",
+      ">10000 in Country Criteria row; 'France' in Revenue Criteria row.",
+      "Both criteria on separate Criteria rows."
+    ],
+    answer: 1,
+    hint: "AND means both must be true at the same time — so they go on the same row.",
+    explain: "For AND logic: both criteria go on the same Criteria row, in their respective field columns. The 'or' row below creates OR logic — either condition being true is enough."
+  },
+  {
+    q: "You apply a slide footer in PowerPoint by clicking Insert → Header and Footer → checking 'Footer' → typing the text → clicking 'Apply'. When you check the other slides, none of them show the footer. What went wrong?",
+    options: [
+      "You need to retype the footer on each slide.",
+      "You should have clicked 'Apply to All' instead of 'Apply'.",
+      "The footer option is not available for this presentation.",
+      "Footers only work in Outline view."
+    ],
+    answer: 1,
+    hint: "'Apply' applies to the current slide only. What applies to all slides?",
+    explain: "'Apply' applies the settings to the current slide only. 'Apply to All' applies them to every slide in the presentation. This is the most commonly missed step."
+  },
+  {
+    q: "Which SDLC stage involves using realistic data to check whether the system works correctly?",
+    options: [
+      "Analysis",
+      "Design",
+      "Testing",
+      "Implementation"
+    ],
+    answer: 2,
+    hint: "This stage comes after development and before the system goes live.",
+    explain: "Testing uses realistic (or real) data to identify errors. Any errors found loop back to Development. Testing happens before Implementation (going live)."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Write the six SDLC stages from memory, in order, with one sentence for each describing what happens at that stage.
+
+<Extension title="Query with a calculated field">
+In an Access database, create a query that includes a calculated field: `TotalCost: [UnitPrice]*[Quantity]`. Add a criterion that only shows rows where TotalCost is greater than 100. Note: you can't put a criterion on a calculated field in the Criteria row directly — try the `Having` option or use a filter after running.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 2 past papers (databases and presentations)", type: "Past paper" },
+  { label: "Microsoft Access query design reference", type: "Link" },
+]} />
+
+<Reflection prompt="AND vs OR is the single highest-risk item in Access. Without looking at your notes, state the rule in one sentence. Then check whether your sentence is precise enough to get the mark." />

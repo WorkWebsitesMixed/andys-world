@@ -1,0 +1,193 @@
+---
+grade: 12
+term: 1
+week: 1
+title: "Paper 3 Data Analysis: Excel Functions & Charts"
+topic: "Data analysis"
+learningGoal: "apply IF, VLOOKUP, COUNTIF, SUMIF and AVERAGE correctly in an exam context, use absolute references where required, and select the appropriate chart type for a given data set."
+selGoal: "annotate my self-marked paper with green, red and star honestly — including the items I got wrong."
+draft: false
+---
+
+Excel is **half of Paper 3**. The marks here aren't about spreadsheet skill — they're about knowing the exact formula argument order the examiner expects and using a `$` in the right place. Today you lock down those patterns so they're automatic under exam conditions.
+
+<Callout type="exam" title="Why this matters" id="why">
+  **Paper 3** (2 hours) tests two applications: data analysis (Excel) and web authoring (Expression Web). The data analysis section targets six specific functions. Every one is practised today. Precise formula syntax — including `$` for absolute references — separates full marks from zero on a formula question.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Absolute reference", definition: "A cell or range address locked with $ signs so it doesn't shift when a formula is copied — e.g. $B$2:$C$10." },
+  { term: "VLOOKUP", definition: "Looks up a value in the first column of a table and returns a value from a column to its right. Takes four arguments: lookup_value, table_array, col_index_num, FALSE." },
+  { term: "Nested IF", definition: "An IF formula containing another IF inside the value_if_false argument, allowing more than two outcomes." },
+  { term: "COUNTIF / SUMIF", definition: "Count or sum cells that match a condition. Both require a range and a criteria argument; SUMIF also takes a separate sum_range." },
+  { term: "Chart type", definition: "Bar/column: comparing categories. Line: trends over time. Pie: parts of a whole. XY scatter: two sets of numbers against each other." },
+]} />
+
+<Section title="Practical: Excel data analysis" icon="💻" id="practical">
+
+### The function that loses the most marks: VLOOKUP
+
+VLOOKUP has four arguments — get any one wrong and the mark is gone:
+
+```
+=VLOOKUP(lookup_value, $table_array$, col_index_num, FALSE)
+```
+
+- **lookup_value** — the cell you're looking up (e.g. `A2`).
+- **table_array** — the whole lookup table with `$` signs so it stays fixed when copied (e.g. `$E$2:$G$50`). Press **F4** after selecting the range to add `$` automatically.
+- **col_index_num** — which column of the table to return (1 = leftmost, 2 = next, etc.).
+- **FALSE** — always use `FALSE` for exact match. `TRUE` or omitting it causes wrong results in almost all exam scenarios.
+
+### The other five functions
+
+| Function | Skeleton | Key exam trap |
+|---|---|---|
+| `IF` | `=IF(condition, value_if_true, value_if_false)` | Nested IF: put the second IF inside value_if_false |
+| `COUNTIF` | `=COUNTIF(range, "criteria")` | Range must be a range, not a single cell |
+| `SUMIF` | `=SUMIF(range, "criteria", sum_range)` | Three arguments — sum_range is often omitted |
+| `AVERAGE` | `=AVERAGE(range)` | Simplest of the six |
+
+### Chart types: match the data to the chart
+
+| Situation | Chart type |
+|---|---|
+| Comparing separate categories | Bar or Column |
+| Showing a trend over time | Line |
+| Parts of a whole (percentages) | Pie |
+| Two sets of numerical data | XY Scatter |
+
+A "fully labelled" chart needs a **chart title**, **axis titles** for both axes, and **data labels** if specified. These are free marks that proficient students regularly drop.
+
+### Common mark-scheme traps
+
+- VLOOKUP without `FALSE` returns an approximate match — wrong in most exam tasks.
+- COUNTIF range written as a single cell (`A2`) instead of a range (`A2:A50`).
+- A bar chart chosen when the x-axis is time — use a line chart instead.
+
+</Section>
+
+<Section title="Theory: Paper 1 — Hardware, I/O devices & storage" icon="📖" id="theory">
+
+### Input vs output devices
+
+An **input device** captures data and converts it into a form the computer can process. An **output device** presents processed data to the user.
+
+| Input device | What it captures |
+|---|---|
+| Keyboard | Keystrokes → text/commands |
+| Mouse | Movement + clicks → cursor control |
+| Scanner | Physical document → digital file |
+| Microphone | Sound → digital audio |
+| Barcode reader | Barcode → product code |
+
+| Output device | Output type |
+|---|---|
+| Monitor | Temporary (soft copy), visual |
+| Printer | Permanent (hard copy), physical |
+| Speakers | Audio |
+
+Key distinction: **hard copy** (printed, physical) vs **soft copy** (on screen, digital).
+
+### Storage: three types
+
+| Type | Examples | Advantage | Disadvantage |
+|---|---|---|---|
+| Magnetic | HDD | High capacity, low cost per GB | Moving parts — fragile |
+| Optical | DVD, Blu-ray | Portable, cheap to produce | Slower; scratch damage |
+| Solid-state | SSD, USB drive | Fast, no moving parts, robust | More expensive per GB |
+
+### RAM vs ROM
+
+- **RAM** — volatile; loses all data when power is removed; holds the OS and running programs.
+- **ROM** — non-volatile; keeps data without power; holds the boot instructions the computer needs at startup.
+
+**Classic exam question:** "Why can't the computer boot from RAM alone?" → Because RAM is volatile — it's empty after the power is switched off. ROM is non-volatile so the boot instructions survive.
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (storage)">
+**Question:** "Explain why solid-state storage is more suitable than a hard disk drive for a laptop."
+
+Weak: *"SSDs are better because they are faster."*
+
+Improved: *"Solid-state drives have no moving parts, making them more robust against physical shock — important in a portable device. They also offer faster data access because there is no read head that needs to seek to the correct track."*
+
+The improvement earns marks by giving **two distinct advantages**, each **linked to the laptop context** with a reason.
+</WorkedExample>
+
+<Activity title="Excel task + self-mark + deduction card" time="50 min" grouping="Individual" materials={["Laptop", "Excel past paper task", "Mark scheme", "Index card"]}>
+1. Work through the Excel task your teacher has set. Apply every formula from today's lesson.
+2. When time is called, mark your work against the mark scheme. Annotate each item:
+   - **Green** — correct.
+   - **Red** — wrong or missing.
+   - **★ Star** — wrong and you genuinely don't know why.
+3. Write your **top 3 starred items** on an index card and hand it to your teacher. This becomes your personal data for Week 7.
+</Activity>
+
+<Support title="Formula decision guide">
+Not sure which formula to use? Ask:
+
+- "Check or compare a condition" → `IF`
+- "Look up a value in a table" → `VLOOKUP`
+- "Count cells meeting a condition" → `COUNTIF`
+- "Sum cells meeting a condition" → `SUMIF`
+- "Average a range" → `AVERAGE`
+
+Then write the skeleton from the table above and fill in the arguments from the question. Don't guess the formula from memory — use this structure until it's automatic.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A VLOOKUP must look up a product code in columns E–G and return the value from column G (the third column). The formula will be copied down 50 rows. Which formula is correct?",
+    options: [
+      "=VLOOKUP(A2, E2:G50, 3, FALSE)",
+      "=VLOOKUP(A2, $E$2:$G$50, 3, FALSE)",
+      "=VLOOKUP(A2, $E$2:$G$50, 3, TRUE)",
+      "=VLOOKUP(A2, $E$2:$G$50, 2, FALSE)"
+    ],
+    answer: 1,
+    hint: "The table range needs $ signs so it doesn't shift when copied. TRUE means approximate match — which is wrong here.",
+    explain: "The table_array needs $ signs ($E$2:$G$50) so it stays fixed when copied. col_index_num is 3 for the third column. FALSE forces an exact match."
+  },
+  {
+    q: "The question asks you to 'show how monthly sales changed over the course of a year'. Which chart type is correct?",
+    options: [
+      "Pie chart",
+      "Bar chart",
+      "Line chart",
+      "XY Scatter chart"
+    ],
+    answer: 2,
+    hint: "One axis is time (months). Which chart type is designed to show how a value changes over time?",
+    explain: "A line chart shows trends over time. A bar chart compares separate categories with no time relationship."
+  },
+  {
+    q: "Why must the computer's boot instructions be stored in ROM rather than RAM?",
+    options: [
+      "ROM is faster than RAM",
+      "ROM retains its contents without power, so the instructions are there when the computer starts",
+      "RAM cannot be read by the processor",
+      "ROM has larger storage capacity"
+    ],
+    answer: 1,
+    hint: "Think about what happens to RAM contents when the power goes off.",
+    explain: "ROM is non-volatile — it keeps data without power. RAM loses everything when switched off, so boot instructions stored in RAM would be gone before the computer could read them."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Review the items you starred on your deduction card. For each one, write the correct formula or rule in your own words — not copied from the mark scheme.
+
+<Extension title="Combine VLOOKUP with IF">
+Write a formula that looks up a student's test score from a table, then displays "Pass" if the score is 50 or above and "Fail" otherwise. Hint: nest the VLOOKUP inside an IF as the condition argument.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — past papers (Paper 3 data analysis tasks)", type: "Past paper" },
+  { label: "Excel function reference: IF, VLOOKUP, COUNTIF, SUMIF, AVERAGE", type: "Link" },
+]} />
+
+<Reflection prompt="Which formula argument do you most need to practise before the exam? Write one example of that formula with real arguments — not the skeleton." />

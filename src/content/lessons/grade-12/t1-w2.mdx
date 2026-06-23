@@ -1,0 +1,193 @@
+---
+grade: 12
+term: 1
+week: 2
+title: "Paper 3 Web Authoring: Expression Web & CSS"
+topic: "Web authoring"
+learningGoal: "create and style a web page in Expression Web to mark-scheme standard: link an external CSS stylesheet, insert images with alt text, create internal and external hyperlinks, and build a table."
+selGoal: "preview my work in the browser before declaring it done, and catch at least one error I would otherwise have missed."
+draft: false
+---
+
+Web authoring is the second half of Paper 3. The marks aren't about design flair — they're about following the exact sequence the examiner expects: external CSS file, alt text on every image, hyperlinks that open the right page. Today you practise each step until the sequence is automatic.
+
+<Callout type="exam" title="Why this matters" id="why">
+  **Paper 3** web authoring questions test whether you can produce a functional, correctly structured web page. The most common mark losses are: applying styles inline instead of via an external stylesheet, missing alt text, and hyperlinks that open the wrong target. All three are addressed today.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "CSS (Cascading Style Sheets)", definition: "A language that controls the visual presentation of a web page. Exam requirement: styles must be in an external .css file, not written inline." },
+  { term: "External stylesheet", definition: "A separate .css file linked to the HTML page. Changing the stylesheet changes the look of every linked page at once." },
+  { term: "Alt text", definition: "A text description of an image set in the Alternate Text field. Read by screen readers and displayed if the image fails to load." },
+  { term: "Internal hyperlink", definition: "A link to another page within the same website — target is a local .html file." },
+  { term: "External hyperlink", definition: "A link to a page on a different website — target starts with https://." },
+]} />
+
+<Section title="Practical: Expression Web tasks" icon="💻" id="practical">
+
+### Step 1 — the one technique that loses most marks: external CSS
+
+The question will say *"use a stylesheet"*. Applying styles inline (via Format → Font or the toolbar) does **not** earn the mark, even if it looks identical. Follow this sequence every time:
+
+1. **Create the CSS file:** File → New → CSS → name it (e.g. `styles.css`) → Save.
+2. **Write a rule:** e.g. `body { background-color: #ffffff; font-family: Arial; }`.
+3. **Link it to the HTML page:** Format → CSS → Attach Style Sheet → browse to your `.css` file → OK.
+4. **Confirm:** switch to Design view — the style should apply visually.
+
+### Step 2 — images with alt text
+
+1. Insert → Picture → From File → browse to the image → Insert.
+2. Right-click the image → Picture Properties → General tab → **Alternate text** field → type a description → OK.
+
+The alt text must **describe the image**, not repeat the filename. "logo.png" earns zero; "School logo — a red shield on a white background" earns the mark.
+
+### Step 3 — hyperlinks
+
+- **Internal (another page in the site):** Select text/image → Insert → Hyperlink (Ctrl+K) → browse to the target `.html` file → OK.
+- **External (another website):** Select text/image → Insert → Hyperlink → type the full URL including `https://` → OK.
+
+Always check the link opens the correct target. A link that goes to the wrong page loses the mark even if the hyperlink itself is correctly inserted.
+
+### Step 4 — tables
+
+Insert → Table → Insert Table → set rows and columns → OK. To set column width: right-click the cell → Cell Properties → set width in pixels or %.
+
+### Step 5 — form elements (if required)
+
+Insert → Form → choose element (Text Box, Radio Button, Check Box, Submit Button). Right-click the element → Form Field Properties → set the **Name** field exactly as specified in the question.
+
+### Before finishing: always preview in the browser
+
+File → Preview in Browser (F12). Check: links open the correct page, images display, CSS styles apply correctly in the browser (not just Design view).
+
+</Section>
+
+<Section title="Theory: Paper 1 — Networks, LAN, WAN & protocols" icon="📖" id="theory">
+
+### LAN vs WAN
+
+| | LAN | WAN |
+|---|---|---|
+| Geographic area | Small — one building or site | Large — cities, countries, global |
+| Ownership | Usually one organisation | Multiple organisations; uses public infrastructure |
+| Example | School network | The internet |
+
+**Exam sentence:** "A LAN covers a small geographic area and is typically owned and managed by a single organisation. A WAN covers a large geographic area and uses infrastructure owned by multiple organisations."
+
+### Wired vs wireless
+
+| | Wired | Wireless |
+|---|---|---|
+| Advantage | More reliable, faster, more secure | Mobility, easier to add devices |
+| Disadvantage | Cables limit movement | Interference; security risk if unencrypted |
+
+**Scenario question:** "Why might a hospital prefer wired networking?" → Reliability and security are critical; cables provide both.
+
+### Client-server vs peer-to-peer
+
+| | Client-server | Peer-to-peer |
+|---|---|---|
+| How it works | Clients request; server manages resources | Each device shares equally |
+| Advantage | Centralised management, security, backups | Simpler, no single point of failure |
+| Best for | Large networks (schools, businesses) | Small home networks |
+
+### Protocols: what they are and why they matter
+
+A **protocol** is a set of rules that governs how data is formatted and transmitted between devices. Without protocols, devices from different manufacturers couldn't communicate.
+
+| Protocol | Purpose |
+|---|---|
+| HTTP / HTTPS | Transfer of web pages between browser and server (HTTPS adds encryption) |
+| FTP | File transfer between computers |
+| SMTP | Sending email |
+| IMAP / POP3 | Receiving email (IMAP keeps email on server; POP3 downloads it) |
+
+**Weak-answer trap:** "HTTP is used to send emails." → Wrong. HTTP transfers web pages. SMTP sends email.
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (protocols)">
+**Question:** "A user wants to visit a website. State the protocol used and explain what it does."
+
+Weak: *"HTTP is used. It lets you browse the internet."*
+
+Improved: *"HTTP (HyperText Transfer Protocol) is used. It governs the rules for how web pages are requested by a browser and sent by a web server, defining the format of the request and response messages."*
+
+The improvement earns marks by naming the protocol correctly, **expanding the acronym**, and explaining **what the protocol actually governs** (the request-response format between browser and server).
+</WorkedExample>
+
+<Activity title="Web authoring task + self-mark" time="50 min" grouping="Individual" materials={["Laptop", "Expression Web", "Past paper task", "Mark scheme"]}>
+1. Complete the web authoring task your teacher has set. Check each step:
+   - CSS applied via external stylesheet (not inline).
+   - Alt text on every image — description, not filename.
+   - Hyperlinks open the correct target.
+   - Any required table or form element is present with correct settings.
+2. Preview in the browser (F12) before declaring done.
+3. Self-mark against the mark scheme. Annotate: green / red / ★ star.
+4. Add any starred items to your deduction card.
+</Activity>
+
+<Support title="Expression Web task checklist">
+Before submitting, run through this in order:
+
+- [ ] CSS file is a separate `.css` file, linked to the HTML page (not inline styles).
+- [ ] Every image has alt text in Picture Properties, not the filename.
+- [ ] Every hyperlink: internal links point to a local `.html` file; external links start with `https://`.
+- [ ] Previewed in the browser — links work, images load, styles apply.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "The question says 'apply a background colour using a stylesheet'. You apply it via Format → Background in Expression Web. Does this earn the mark?",
+    options: [
+      "Yes — the colour is applied and visible.",
+      "No — inline styles do not earn the mark when a stylesheet is specified.",
+      "Yes — Expression Web automatically creates a stylesheet.",
+      "Only if you also link the stylesheet."
+    ],
+    answer: 1,
+    hint: "Think about where the style rule is stored — in the HTML file or in a separate .css file?",
+    explain: "Format → Background writes an inline style into the HTML. The question requires an external stylesheet (.css file). Applying the style inline does not earn the mark even if the page looks correct."
+  },
+  {
+    q: "You need to add a hyperlink to another page in the same website. Which is the correct target?",
+    options: [
+      "https://contact.html",
+      "contact.html",
+      "www.contact.html",
+      "file:///contact.html"
+    ],
+    answer: 1,
+    hint: "An internal link points to a local file, not a URL. No protocol prefix needed.",
+    explain: "An internal hyperlink uses the relative path to the local file: contact.html. External links start with https://."
+  },
+  {
+    q: "Which statement correctly distinguishes LAN from WAN?",
+    options: [
+      "A LAN is always wireless; a WAN is always wired.",
+      "A LAN covers a small geographic area owned by one organisation; a WAN covers a large area using shared infrastructure.",
+      "A LAN is faster than the internet.",
+      "A WAN connects devices in one building."
+    ],
+    answer: 1,
+    hint: "Focus on geographic area and ownership — not speed or connection type.",
+    explain: "The key distinction is geographic scope (small vs large) and ownership (single organisation vs shared/public infrastructure)."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+Review the protocols table from today's theory section. For each protocol, write one mark-scheme-quality sentence explaining what it does — without looking at your notes.
+
+<Extension title="Build a two-page mini-site">
+Create a second HTML page and link the two pages to each other with hyperlinks. Share the same external stylesheet between both pages. Test that changing one rule in the CSS updates both pages.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — past papers (Paper 3 web authoring tasks)", type: "Past paper" },
+  { label: "Expression Web: CSS and hyperlink reference", type: "Link" },
+]} />
+
+<Reflection prompt="What is the one step in the web authoring task that you're most likely to forget under exam pressure? Write it on a sticky note and put it on your monitor." />

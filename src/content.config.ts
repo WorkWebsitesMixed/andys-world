@@ -16,7 +16,7 @@ const lessons = defineCollection({
   schema: z.object({
     grade: z.number().int(),
     term: z.number().int().min(1).max(3),
-    week: z.number().int().min(1).max(10),
+    week: z.number().int().min(1).max(12),
     title: z.string(),
     /** Single topic tag, e.g. "Structures". */
     topic: z.string(),

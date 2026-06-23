@@ -1,0 +1,157 @@
+---
+grade: 12
+term: 1
+week: 11
+title: "Writing the Lab Report in Overleaf"
+topic: "Lab report writing"
+learningGoal: "produce a substantially complete Chemistry lab report in Overleaf with all six sections attempted, using the Week 10 template."
+selGoal: "ask a specific, targeted question when stuck — not 'I don't know what to do' but 'I can't make the figure cross-reference update'."
+draft: false
+---
+
+Today you write. The template is ready, the packages are loaded, the six sections are structured. Your job for the next 80 minutes is to fill in every section with real content — Chemistry content in the right sections, LaTeX commands working correctly throughout. Both teachers circulate to help.
+
+<Callout type="tip" title="Who to ask for what" id="why">
+  Two teachers are in the room today. **ICT teacher:** format questions — compile errors, package commands, figure sizing, table alignment. **Chemistry teacher:** content questions — what to write in Discussion, how to interpret a result, whether a conclusion is scientifically supported. Going to the wrong teacher slows you down.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Substantially complete", definition: "All six sections have content — none is empty. Some sections may still need polishing, but every section has been started." },
+  { term: "Incomplete section", definition: "A section heading with no content below it. An incomplete document cannot be peer-reviewed next week." },
+  { term: "Progress checkpoint", definition: "At 80 minutes: you state which sections are complete and which are unfinished. Incomplete sections become homework." },
+]} />
+
+<Section title="What to write in each section" icon="💻" id="content">
+
+Use this as your in-session reference. Your teacher has provided: (1) a one-page experiment summary with data and observations, (2) lab photos uploaded to Overleaf, (3) a starter `.bib` file with three references.
+
+### Introduction
+
+- Context: why potassium chlorate decomposition matters (link to the curriculum theory you've covered with the Chemistry teacher).
+- Theory: the balanced equation — use `\ce{}`.
+- Aim: one sentence. ("This experiment investigates…")
+- At least one `\cite{}` citation to a source in your `.bib` file.
+
+### Materials and Methods
+
+- List your apparatus and chemicals.
+- Describe the procedure in past tense, passive voice.
+- Insert the apparatus photo as a figure with a caption and cross-reference.
+
+### Results
+
+- Present the data table (use `booktabs`).
+- Insert the second lab photo as a figure.
+- Cross-reference both table and figure in the text.
+- No interpretation — just data and observations.
+
+### Discussion
+
+- Interpret your results: what do they mean?
+- Use `\ce{}` for every equation.
+- Connect to theory: does your data confirm the expected outcome?
+- Explain any anomalies.
+
+### Conclusions
+
+- One conclusion per main finding, linked to the aim.
+- State whether the aim was achieved.
+- Three to five sentences — not a summary of Discussion.
+
+### References
+
+- `\printbibliography` generates this automatically.
+- Check: every source you cited appears here, and every source here is cited in the body.
+
+</Section>
+
+<WorkedExample title="From a rough note to a Discussion sentence">
+**Rough note from your observation:** "mass went down — oxygen came out"
+
+**First draft:** "The mass decreased because oxygen was released."
+
+**Improved (mark-level) — what to write in your `.tex` source:**
+
+```latex
+The steady decrease in mass observed in Table~\ref{tab:mass} is consistent
+with the release of gaseous oxygen during the decomposition of potassium
+chlorate, as described by the equation \ce{2KClO3 -> 2KCl + 3O2}.
+The oxygen escaped from the open test tube, reducing the total mass of the system.
+```
+
+This earns marks by: (1) cross-referencing the data table with `\ref{}`, (2) using `\ce{}` for the balanced equation, and (3) explaining the mechanism (open system → gas escapes → mass decreases).
+</WorkedExample>
+
+<Activity title="Write the full lab report" time="80 min" grouping="Individual" materials={["Laptop", "Overleaf project", "Experiment summary sheet", "Lab photos (already uploaded)", "refs.bib starter file"]}>
+Write all six sections. Compile after completing each section — don't wait until the end to discover a cascade of errors.
+
+At the 80-minute mark, your teacher will ask: "Which sections are complete?" Incomplete sections become homework — you must arrive at Week 12 with a fully compiled document.
+</Activity>
+
+<Support title="Common writing blocks and how to break them">
+**Stuck on Discussion:** re-read your Results table. Pick one row of data. Ask "why did this value change?" That question is your Discussion sentence starter.
+
+**Can't write the aim:** try this frame: "This experiment investigates [the reaction/property] of [substance] by [method], in order to [scientific purpose]."
+
+**Figure not showing:** check (1) the filename in `\includegraphics{}` exactly matches the file in Overleaf (including extension), (2) the file is uploaded to the project (not just on your computer), (3) you have `\usepackage{graphicx}` and `\usepackage{float}` in the preamble.
+
+**Bibliography empty:** check (1) `\addbibresource{refs.bib}` is in the preamble, (2) `\printbibliography` is before `\end{document}`, (3) you've compiled twice — biblatex needs two passes.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "You write 'The results show that the reaction produced oxygen, proving our hypothesis correct' in the Results section. What is wrong?",
+    options: [
+      "Nothing — it summarises the results clearly.",
+      "This is interpretation, which belongs in Discussion. Results should present data only.",
+      "It should be written in future tense.",
+      "It needs a chemical equation."
+    ],
+    answer: 1,
+    hint: "Results = what you observed/measured. Discussion = what it means.",
+    explain: "'Proving our hypothesis correct' is an interpretation — it connects the data to a conclusion. That belongs in Discussion. Results should state what was measured, not what it means."
+  },
+  {
+    q: "Your Discussion section has the sentence 'KClO3 decomposes to give O2 and KCl.' What LaTeX improvement should you make?",
+    options: [
+      "Add a \\section{} heading before it.",
+      "Replace the formula text with \\ce{} commands: '\\ce{KClO3} decomposes to give \\ce{O2} and \\ce{KCl}.'",
+      "Move the sentence to Results.",
+      "Add a \\cite{} citation."
+    ],
+    answer: 1,
+    hint: "Formulae in the Discussion section should use mhchem, not plain text.",
+    explain: "Using \\ce{} converts the plain-text formulae into correctly typeset chemistry: KClO₃ → KCl + O₂ with proper subscripts. Plain text formulae are one of the three problems LaTeX was introduced to solve."
+  },
+  {
+    q: "The Conclusions section should do which of the following?",
+    options: [
+      "Introduce new data not in Results.",
+      "Re-explain all the theory from the Introduction.",
+      "State one conclusion per finding, linked to the aim, with no new interpretation.",
+      "List all the sources cited in the report."
+    ],
+    answer: 2,
+    hint: "Conclusions are the answer to the aim — concise, direct, no new material.",
+    explain: "Conclusions state what was found (one per finding), linked to the original aim. No new data, no new interpretation, no reference list — those belong in other sections."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**If any section is incomplete:** finish it before Week 12. Arriving at peer review with an empty section means your partner cannot review that section — and you lose half the value of the session.
+
+**All sections complete?** Reread your Discussion. For every sentence: can you trace it back to a row in your Results table or a figure? If a sentence in Discussion has no data behind it, either it belongs in Introduction (theory) or it needs to be cut.
+
+<Extension title="Add a graph">
+Use the `pgfplots` package to generate a line graph of your mass-over-time data directly in LaTeX — no Excel, no image export. The graph updates automatically if your data changes. Your ICT teacher can show you the basic setup.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Overleaf: bibliography management with biblatex", type: "Link" },
+  { label: "mhchem package: full command reference", type: "Link" },
+]} />
+
+<Reflection prompt="Which section took you longest to write today — and was the difficulty LaTeX format, scientific content, or both? What will you do differently in the next lab report?" />
