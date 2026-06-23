@@ -100,12 +100,20 @@ explains Paper 1, Paper 4 and the Project.
     Latin-only `@font-face` block (drops 6 unused subset declarations).
   - **P8** `<link rel="preload">` for Inter in `BaseLayout.astro` using a Vite
     `?url` import so the href matches the content-hashed filename in the CSS.
+- **Textbook links (2026-06-23):** `../Curriculum/Book.pdf` (Collins IGCSE D&T,
+  375 pp, image-only) split into 27 section PDFs with ghostscript (PDF page =
+  book page − 1 throughout). Hosted on Google Drive (anyone-with-link; not in
+  repo — copyright). 58 `href` fields added to `type: "Textbook"` resource items
+  across all 29 G11 lesson MDX files. Each `📘 Textbook` entry now links directly
+  to the relevant section extract. §1.5 + §1.6 share one bundled file.
+  Extracts kept at `../textbook-extracts/` locally for re-use.
 
 ## 7. Content sources (for populating more lessons)
 - **Grade 11 (done):** `../Curriculum/LaTeX_sources/Term{1,2,3}.tex` (each
   `\section{Week N}` → the `W (90 min)` lesson; ignore `B` bonus sessions),
   context in `../Curriculum/PLANNING_HANDOFF_Grade11_2027.md`, textbook
-  `../Curriculum/Book.pdf` (Collins, image-only).
+  `../Curriculum/Book.pdf` (Collins, image-only, section extracts at
+  `../textbook-extracts/`).
 - **Grade 10 (Materials) — to populate:** `../Curriculum/Curriculum_2028-2030_Materials/`.
 - **Grade 12 (ICT/Programming) — user-populated:** T1 IGCSE ICT review, T2 empty,
   T3 Programming. Structure/labels already stubbed in `curriculum.ts`.
