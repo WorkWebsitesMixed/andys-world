@@ -1,0 +1,159 @@
+---
+grade: 11
+term: 3
+week: 13
+sessionType: "bonus"
+title: "Bonus B3: Electronics — Transistors, Relays & Logic Gates"
+topic: "Electronics"
+learningGoal: "explain how an NPN transistor switches an output load; describe how a relay isolates a low-voltage control circuit from a high-voltage load; identify AND and OR gate truth tables"
+selGoal: "draw the transistor switch circuit from memory — base, collector, emitter, and load in the correct positions"
+draft: false
+---
+
+The main sessions covered sensors and voltage dividers. This bonus session extends into the switching and logic components that allow those sensing circuits to control high-power loads and make multi-condition decisions. These topics appear at the top of Paper 4 Section B difficulty.
+
+<KeyTerms terms={[
+  { term: "NPN transistor (BC547)", definition: "A semiconductor switching component with three terminals: Base (B), Collector (C), and Emitter (E). When a small current flows into the Base (via a base resistor), a much larger current can flow from Collector to Emitter. This amplification (or switching) allows a small sensing signal to control a large output load. 'NPN' refers to the doping sequence of the three semiconductor layers." },
+  { term: "Base resistor", definition: "A resistor placed in series with the base of a transistor to limit the base current. The transistor switches ON when the base voltage exceeds approximately 0.6 V — the base resistor sets the base current to a safe value. Without it, excess base current can destroy the transistor." },
+  { term: "Relay", definition: "An electromechanical switch: a small electromagnet coil is activated by the transistor's collector-emitter current, which mechanically opens or closes contacts in a separate (electrically isolated) higher-voltage circuit. A relay allows a 9 V control circuit to safely switch a 240 V AC mains load (e.g. a room heater) without direct electrical connection between the circuits." },
+  { term: "Logic gate", definition: "An electronic component that performs a Boolean logic operation on one or two binary input signals (0 = LOW voltage; 1 = HIGH voltage) and produces one binary output. Basic gates: AND (output 1 only when all inputs are 1), OR (output 1 when any input is 1), NOT (output inverts the input), NAND (AND then NOT), NOR (OR then NOT)." },
+  { term: "Truth table", definition: "A table listing all possible combinations of input values (0 and 1) and the corresponding output value for a logic gate or combination of gates. For a 2-input gate: 4 rows (00, 01, 10, 11). Used to verify gate behaviour and to design logic systems." },
+]} />
+
+<Section title="The NPN transistor as a switch" icon="⚡" id="transistor">
+
+### Circuit configuration
+
+The standard NPN switch circuit:
+1. Output device (LED, buzzer, motor) connects between the collector and the positive supply.
+2. Emitter connects directly to 0 V (earth).
+3. Base connects to the output junction of the voltage divider, through a base resistor (typically 10 kΩ).
+
+When Vout from the voltage divider exceeds approximately 0.6 V, the transistor switches ON — current flows from collector to emitter through the output device.
+
+### Collector current and load
+
+When ON, the collector current (Ic) flows through the output device. The transistor acts as a near-short-circuit between collector and emitter — the output device determines the current (Ic = (Vsupply - V_device_forward) / R_device or V_supply / R_device for resistive loads).
+
+The base current (Ib) is: Ib = (Vb - 0.6) / R_base.
+The ratio Ic / Ib is the current gain (hFE), typically 100–500 for a BC547.
+
+### Flyback diode
+
+When a transistor switches OFF a relay coil or a motor (inductive load), the collapsing magnetic field generates a reverse voltage spike that can destroy the transistor. A flyback diode (placed in reverse across the coil) clamps this spike. Always required for inductive loads.
+
+</Section>
+
+<Section title="The relay" icon="🔌" id="relay">
+
+### How a relay works
+
+1. Transistor switches ON → current flows through the relay coil.
+2. The coil creates a magnetic field → attracts an iron armature.
+3. The armature movement closes (or opens) the relay contacts.
+4. The contacts are in the high-voltage load circuit — completely electrically separate from the low-voltage control circuit.
+
+### Why use a relay rather than a transistor directly?
+
+A relay switches its contacts regardless of the contact voltage or current — it can switch 240 V AC at 10 A, which a BC547 transistor cannot. It also provides galvanic isolation — no electrical connection between the control circuit and the load circuit, preventing high voltages from reaching the sensing/control electronics.
+
+</Section>
+
+<Section title="Logic gates: AND and OR" icon="💻" id="logic">
+
+### AND gate
+
+Output is 1 (HIGH) only when ALL inputs are 1.
+
+| A | B | Output (A AND B) |
+|---|---|---|
+| 0 | 0 | 0 |
+| 0 | 1 | 0 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+**Application:** A burglar alarm that triggers only when BOTH a PIR sensor AND a door sensor are activated — prevents false alarms from either sensor alone.
+
+### OR gate
+
+Output is 1 (HIGH) when ANY input is 1.
+
+| A | B | Output (A OR B) |
+|---|---|---|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 1 |
+| 1 | 1 | 1 |
+
+**Application:** A hospital call light that activates when a patient presses EITHER the bed button OR the bathroom button — either input alone is sufficient to trigger the nurse call.
+
+</Section>
+
+<WorkedExample title="Design a transistor + relay circuit for a temperature-controlled heater">
+
+**Context:** An NTC thermistor is connected as the top resistor (R1) in a voltage divider with a 5 kΩ fixed resistor (R2). Supply = 12 V. The relay connects a 240 V mains heater. The system should switch the heater ON when the temperature drops (thermistor resistance increases).
+
+**Analysis:**
+- Cold temperature → NTC thermistor (R1) increases → Vout = 12 x R2 / (R1 + R2) decreases as R1 increases. Wait — that gives LOW Vout when cold. But we need the heater ON when cold (HIGH signal needed).
+- Solution: swap R1 and R2 — place the thermistor as R2 (bottom) and fixed resistor as R1 (top).
+- Cold → thermistor R2 is HIGH → Vout = 12 x R2 / (R1 + R2) increases → transistor switches ON → relay activates → heater turns on.
+
+**Circuit design:**
+- R1 (fixed) = 5 kΩ (top). Thermistor (R2) at bottom.
+- At 0°C: thermistor = 10 kΩ. Vout = 12 x 10,000 / (5,000 + 10,000) = 12 x 0.667 = 8.0 V. Transistor ON. Heater ON. Correct.
+- At 25°C: thermistor = 5 kΩ. Vout = 12 x 5,000 / (5,000 + 5,000) = 6 V. Transistor ON. Heater still ON (transition point needs adjustment).
+- At 40°C: thermistor = 2 kΩ. Vout = 12 x 2,000 / (5,000 + 2,000) = 3.43 V. Transistor ON.
+
+To adjust the switch point: change R1. A larger R1 reduces Vout at high temperature, eventually switching the transistor OFF. To get transistor OFF at 40°C (thermistor 2 kΩ): need Vout less than 0.6 V. R1 must be much larger than 2 kΩ (e.g. 100 kΩ gives Vout = 12 x 2/102 = 0.24 V — transistor OFF).
+</WorkedExample>
+
+<Activity title="Transistor, relay, and logic gate design" time="45 min" grouping="Individual" materials={["Logic gate truth table worksheet", "Transistor circuit design sheet"]}>
+
+**Transistor switch circuit (0–15 min):**
+1. Draw the complete NPN transistor switch circuit from memory: voltage divider (R1 and R2 with an LDR as one), base resistor, BC547 transistor (B, C, E labelled), LED load between collector and positive supply, flyback diode if relevant.
+
+**Relay circuit (15–25 min):**
+2. Extend the circuit from step 1: replace the LED with a relay coil. Draw the relay contacts in the separate high-voltage circuit. Add a flyback diode across the relay coil.
+3. Explain in two sentences why the relay is needed instead of connecting the transistor directly to the high-voltage load.
+
+**Logic gate truth tables (25–40 min):**
+4. Complete truth tables for: AND gate (2 inputs), OR gate (2 inputs), NAND gate (AND then NOT), NOR gate (OR then NOT).
+5. For each gate: give a real-world product application where that specific logic behaviour is useful.
+
+**Section B question (40–45 min):**
+6. Attempt a past Paper 4 Section B question on electronic control systems (teacher-provided or from the question bank).
+</Activity>
+
+<SelfCheck questions={[
+  {
+    q: "In an NPN transistor switch, which terminal receives the control signal from the voltage divider output?",
+    options: [
+      "The Collector — the voltage divider connects to the collector, which controls the collector-emitter current",
+      "The Base — the small base current from the voltage divider controls the larger collector-emitter current",
+      "The Emitter — the emitter receives the control signal and connects to the output load",
+      "Any terminal — the transistor is symmetric and can be connected in any orientation"
+    ],
+    answer: 1,
+    hint: "The transistor has three terminals: B, C, E. Which one receives a small signal that controls a larger current?",
+    explain: "The Base (B) receives the control signal from the voltage divider (via a base resistor). A small base current (Ib) controls a much larger collector-emitter current (Ic). The ratio Ic/Ib is the current gain (hFE ≈ 100–500). The Collector connects to the output device (LED, relay coil) and the positive supply. The Emitter connects to 0 V. The transistor is not symmetric — connecting B, C, E in the wrong orientation prevents switching."
+  },
+  {
+    q: "A 2-input AND gate has inputs A=1, B=0. What is the output?",
+    options: [
+      "1 — because at least one input is HIGH (A=1)",
+      "0 — because NOT all inputs are HIGH; AND requires all inputs to be 1 for a HIGH output",
+      "Undefined — a mixed input state cannot be processed by a simple AND gate",
+      "0.5 — the output is the average of the two inputs"
+    ],
+    answer: 1,
+    hint: "AND: output is 1 only when ALL inputs are 1. A=1, B=0 — are all inputs 1?",
+    explain: "An AND gate's output is 1 ONLY when all inputs are simultaneously 1. With A=1 and B=0, not all inputs are 1 — therefore the output is 0. An OR gate would give output 1 here (because at least one input is 1). Digital logic works only with binary values (0 or 1) — fractional outputs and undefined states do not occur in ideal digital logic gates."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.3 Switches (p. 310)", type: "Textbook", href: "https://drive.google.com/file/d/11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY/view?usp=sharing" },
+]} />
+
+<Reflection prompt="The relay provides galvanic isolation between control and load circuits. Can you think of two products in your home that likely use a relay — and why isolation is important in each?" />

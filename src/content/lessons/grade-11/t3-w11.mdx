@@ -1,0 +1,134 @@
+---
+grade: 11
+term: 3
+week: 11
+sessionType: "bonus"
+title: "Bonus B1: Structures Calculation Extension"
+topic: "Structures"
+learningGoal: "solve multi-load beam reaction problems and bending moment diagrams; calculate stress in non-rectangular cross-sections"
+selGoal: "set up the equilibrium equations before calculating — never guess which reaction is larger"
+draft: false
+---
+
+This bonus session extends the structures content from the main sessions into territory that appears at the top of Paper 4 Section B difficulty. Two-point-load beams, combined stress, and hollow section calculations push beyond the single-load worked examples in the main sessions.
+
+<KeyTerms terms={[
+  { term: "Principle of moments", definition: "For a beam in equilibrium (not rotating and not moving): the sum of all clockwise moments about any point equals the sum of all anticlockwise moments about the same point. This principle allows beam reactions to be calculated for any number of loads at any position." },
+  { term: "Bending moment", definition: "The product of a force and the perpendicular distance from the force to the point being considered. Measured in N·m or N·mm. A bending moment diagram (BMD) shows how the bending moment varies along the length of a beam — essential for identifying the critical section (where bending moment is maximum)." },
+  { term: "Hollow section advantage", definition: "A hollow tube (circular or rectangular) has a higher second moment of area (I) for the same mass of material compared to a solid section of the same outer dimensions. This means hollow sections are more efficient structurally — they resist bending with less material. Used in bicycle frames, scaffolding, and aircraft fuselage frames." },
+  { term: "Second moment of area (I)", definition: "A geometric property of a cross-section that determines its resistance to bending. For a solid rectangle: I = b x h³ / 12, where b is the width and h is the height. For a hollow rectangle: I = I_outer minus I_inner. Higher I means less deflection for the same applied force — a deep I-beam is more efficient than a wide flat plate of the same area." },
+]} />
+
+<Section title="Two-point-load beam reactions" icon="🔧" id="two-loads">
+
+### Setting up the equilibrium equations
+
+For a beam with two point loads W1 at position a from A, and W2 at position b from A (span L):
+
+**Taking moments about A (to find RB):**
+RB x L = W1 x a + W2 x b
+RB = (W1 x a + W2 x b) / L
+
+**Sum of vertical forces (to find RA):**
+RA + RB = W1 + W2
+RA = W1 + W2 - RB
+
+**Check:** RA + RB = W1 + W2 (must balance)
+
+### Why take moments about A?
+
+Taking moments about A eliminates RA from the moment equation (RA has zero moment arm about A), leaving only RB as the unknown. This allows direct calculation of RB. Once RB is known, RA follows from vertical equilibrium.
+
+</Section>
+
+<Section title="Hollow section stress calculation" icon="📐" id="hollow">
+
+### Stress in a hollow rectangular tube
+
+For a hollow tube carrying a tensile force F:
+Stress = F / A_net
+
+Where A_net is the net cross-sectional area: A_outer minus A_inner.
+
+Example: Outer section 50 mm x 50 mm. Wall thickness 5 mm. Inner section: (50-2x5) mm x (50-2x5) mm = 40 mm x 40 mm.
+A_outer = 50 x 50 = 2,500 mm².
+A_inner = 40 x 40 = 1,600 mm².
+A_net = 2,500 - 1,600 = 900 mm².
+
+If F = 9,000 N: Stress = 9,000 / 900 = 10 N/mm² = 10 MPa.
+
+### Comparing solid vs hollow for the same stress
+
+A solid 50 x 50 mm section has A = 2,500 mm². At 9,000 N: stress = 3.6 MPa.
+The hollow section achieves 10 MPa — higher stress for the same force, but uses 900/2500 = 36% of the material.
+
+For the same stress: the hollow section supports the same force with less than half the cross-section area and therefore much less mass. This is the structural efficiency of hollow sections.
+
+</Section>
+
+<WorkedExample title="Two-point-load beam with three reactions">
+
+**Scenario:** A steel bracket supports a shelf. The shelf carries a uniformly distributed load (but for this problem, two concentrated loads): W1 = 200 N at 300 mm from A, W2 = 150 N at 700 mm from A. Span = 1,000 mm.
+
+**Step 1 — Take moments about A:**
+RB x 1,000 = 200 x 300 + 150 x 700 = 60,000 + 105,000 = 165,000 N·mm.
+RB = 165,000 / 1,000 = 165 N.
+
+**Step 2 — Vertical equilibrium:**
+RA + RB = W1 + W2 = 200 + 150 = 350 N.
+RA = 350 - 165 = 185 N.
+
+**Check:** RA + RB = 185 + 165 = 350 N = W1 + W2. Correct.
+
+**Interpretation:** Support A carries 185 N (53%), support B carries 165 N (47%). W1 is closer to A (300 mm from A vs 700 mm from B) — so A carries more. Result is consistent with expectation.
+</WorkedExample>
+
+<Activity title="Two-load beam problems and hollow section calculations" time="45 min" grouping="Individual" materials={["Calculator", "Section B structures question bank"]}>
+
+**Two-load beam problems (0–25 min):**
+1. Complete four two-point-load beam reaction problems from the question bank. For each:
+   - Set up the moments equation about the left support.
+   - Calculate the right reaction.
+   - Calculate the left reaction from equilibrium.
+   - Verify: RA + RB = total load.
+
+**Hollow section calculations (25–40 min):**
+2. For two given hollow section profiles: calculate the net cross-sectional area and the stress for a given axial force. Compare to a solid section of the same outer dimensions.
+
+**Reflection (40–45 min):**
+3. Write one sentence: for the same outer dimensions and the same applied force, what is the advantage of the hollow section over the solid section?
+</Activity>
+
+<SelfCheck questions={[
+  {
+    q: "A simply supported beam has a span of 2,000 mm. W1 = 300 N acts at 500 mm from A. W2 = 200 N acts at 1,500 mm from A. What is RB?",
+    options: [
+      "175 N — RB = (300 x 500 + 200 x 1,500) / 2,000 = (150,000 + 300,000) / 2,000 = 450,000 / 2,000 = 225 N",
+      "225 N — taking moments about A: RB x 2,000 = 300 x 500 + 200 x 1,500 = 450,000. RB = 225 N",
+      "250 N — equal share of the total load (500 N / 2)",
+      "150 N — RB carries only W2 (200 N) adjusted for its position"
+    ],
+    answer: 1,
+    hint: "Take moments about A. RB x span = sum of (each force x its distance from A).",
+    explain: "Taking moments about A: RB x 2,000 = (300 x 500) + (200 x 1,500) = 150,000 + 300,000 = 450,000 N·mm. RB = 450,000 / 2,000 = 225 N. Check: RA = (300 + 200) - 225 = 275 N. Verify: 275 + 225 = 500 N = 300 + 200. Correct."
+  },
+  {
+    q: "Why do structural engineers prefer hollow rectangular or circular tube sections over solid sections of the same outer dimensions?",
+    options: [
+      "Hollow sections are weaker but cheaper, making them economical for non-critical structures",
+      "Hollow sections have the same or higher resistance to bending for significantly less material mass — they are structurally more efficient",
+      "Hollow sections are easier to connect to other members using bolts — the bolt passes through the hollow interior",
+      "Hollow sections distribute compressive loads more evenly than solid sections because the load travels around the perimeter"
+    ],
+    answer: 1,
+    hint: "The key term here is 'second moment of area' — what property determines bending resistance?",
+    explain: "Bending resistance is determined by the second moment of area (I = b x h³ / 12 for a rectangle). A hollow section concentrates material at the outer edges — the furthest from the neutral axis — where it contributes most to bending resistance. A solid section wastes material near the centre where its contribution to bending resistance is minimal. For the same mass of material, a hollow section achieves a higher I and therefore higher bending resistance. This is why I-beams, RSJs, and tube sections dominate structural engineering over solid sections."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.2.3 Structural forces (p. 238)", type: "Textbook", href: "https://drive.google.com/file/d/1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.5 Structural stability (p. 249)", type: "Textbook", href: "https://drive.google.com/file/d/1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a/view?usp=sharing" },
+]} />
+
+<Reflection prompt="Two-load beam reactions require more steps than single-load. Which step is most likely to produce an error — and what habit prevents it?" />

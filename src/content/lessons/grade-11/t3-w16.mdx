@@ -1,0 +1,128 @@
+---
+grade: 11
+term: 3
+week: 16
+sessionType: "bonus"
+title: "Bonus B6: Sustainable Design — Life Cycle Assessment"
+topic: "Sustainability"
+learningGoal: "explain the four stages of a product life cycle and identify the stage with the highest environmental impact for two given products; calculate a simple carbon footprint comparison"
+selGoal: "link every LCA stage to a specific material or process in the product — not to a general statement about sustainability"
+draft: false
+---
+
+This bonus extends the 6Rs sustainability content from T2 W9 into Life Cycle Assessment (LCA) — a more quantitative approach to sustainability that appears in the most challenging Section B questions.
+
+<KeyTerms terms={[
+  { term: "Life Cycle Assessment (LCA)", definition: "A systematic analysis of the environmental impact of a product across its entire life: from raw material extraction, through manufacturing, use phase, to end-of-life disposal or recovery. LCA identifies which stage contributes most to environmental impact (energy use, CO₂ emissions, water use, waste), allowing targeted design improvements." },
+  { term: "Cradle-to-grave", definition: "An LCA scope that covers all four life cycle stages: extraction of raw materials, manufacturing, product use, and end-of-life disposal. A cradle-to-grave assessment gives the full environmental picture." },
+  { term: "Cradle-to-gate", definition: "An LCA scope limited to the first two stages: raw material extraction and manufacturing (up to the factory gate). Used when the use phase is identical between products being compared — for example, comparing two chair designs made from different materials." },
+  { term: "Embodied energy", definition: "The total energy consumed in extracting and processing a material from its raw form into a usable product (before the product is used). Aluminium has high embodied energy (approximately 200 MJ/kg for virgin aluminium) because smelting requires large amounts of electricity. Recycled aluminium uses only 5% of the embodied energy of virgin aluminium." },
+  { term: "Carbon footprint", definition: "The total greenhouse gas emissions (expressed in equivalent kilograms of CO₂) produced across a product's life cycle or a specific stage. Used to compare products or processes on a common scale. 1 kg of CO₂e = 1 CO₂ equivalent unit, which can represent different greenhouse gases weighted by their warming potential." },
+]} />
+
+<Section title="The four life cycle stages" icon="♻️" id="stages">
+
+### Stage 1: Raw material extraction
+
+Impact from mining, logging, oil extraction. High energy and water use. Habitat disruption. Key drivers: material type (virgin aluminium has high impact; sustainably certified timber has lower impact) and location (local vs imported).
+
+### Stage 2: Manufacturing
+
+Impact from energy used in machines, chemicals used in surface treatment, transport between suppliers. Key drivers: process energy intensity (casting steel is more energy-intensive than cutting MDF) and factory location (renewably powered vs coal-powered factory).
+
+### Stage 3: Use phase
+
+Impact from energy used during operation (heaters, powered appliances) and maintenance (replacement parts, cleaning chemicals). For passive products (a shelf, a chair), the use phase impact is low. For powered products (refrigerators, cars), the use phase dominates total LCA impact.
+
+### Stage 4: End-of-life
+
+Impact from disposal method: landfill (permanent material loss), incineration (CO₂ release), recycling (material recovered, new embodied energy avoided), reuse (maximum impact avoidance). Design decisions (single material vs composite, mechanical vs adhesive joins) determine which end-of-life route is available.
+
+### Which stage dominates?
+
+| Product type | Dominant stage | Reason |
+|---|---|---|
+| Car | Use phase | Fuel consumption over 15 years dwarfs manufacture |
+| Refrigerator | Use phase | Electricity for cooling over 20 years |
+| Wooden chair | Manufacturing | Use phase is passive (no energy); most impact from timber processing |
+| Aluminium laptop case | Raw material extraction | Virgin aluminium smelting has very high embodied energy |
+
+</Section>
+
+<WorkedExample title="LCA stage analysis for MDF shelf vs aluminium shelf">
+
+**Product:** 600 mm x 200 mm shelf. Compare MDF 18 mm vs aluminium 3 mm.
+
+**Stage 1 — Extraction:**
+MDF: softwood logs felled (FSC-certified = managed replanting, lower impact). Resins for bonding (chemical extraction, modest impact).
+Aluminium: bauxite mining (open-cast, high land disturbance), then smelting (approximately 15 kWh per kg electricity-intensive). Recycled Al: impact approximately 5% of virgin. If virgin Al: high extraction impact.
+
+**Stage 2 — Manufacturing:**
+MDF: mechanical pressing and drying (moderate energy). Laser cutting: electricity-based (low carbon if renewable grid).
+Aluminium: extrusion or rolling (moderate energy after smelting).
+
+**Stage 3 — Use:**
+Both passive (no electricity consumed). Equal low impact.
+
+**Stage 4 — End-of-life:**
+MDF: composite material (MDF = wood fibres + urea-formaldehyde resin) — cannot be recycled into new MDF; typically landfill or incineration.
+Aluminium: 100% recyclable. Recycled aluminium uses 95% less energy than virgin. High end-of-life recovery rate (approximately 75% global recycling rate for aluminium).
+
+**LCA conclusion:** Virgin aluminium has a higher stage 1 impact than MDF. However, at end-of-life, aluminium is fully recyclable (low stage 4 impact) while MDF cannot be recycled. Over multiple product cycles, recycled aluminium has lower cumulative impact than MDF. The decision depends on whether the aluminium will actually be recycled — design for disassembly (screwed not riveted) and user behaviour matter.
+</WorkedExample>
+
+<Activity title="LCA stage analysis and carbon comparison" time="45 min" grouping="Individual" materials={["LCA worksheet (teacher-provided)", "Carbon footprint data table (teacher-provided or use estimates in this page)"]}>
+
+**LCA stage analysis (0–20 min):**
+1. For two products assigned by the teacher (or choose from: a steel bicycle frame vs a carbon fibre bicycle frame; a glass jar vs a plastic container; a hardwood table vs an MDF table):
+   - Rate each stage (1–3: 1 = low impact, 3 = high impact) for both products.
+   - Identify the dominant stage for each product.
+   - State one design change that would reduce impact in the dominant stage.
+
+**6Rs and LCA alignment (20–35 min):**
+2. For each of the 6Rs, identify which LCA stage it primarily affects:
+   - Reduce: which stage?
+   - Reuse: which stage?
+   - Recycle: which stage?
+   - Refuse: which stage?
+   - Rethink: which stage?
+   - Repair: which stage?
+3. Write a two-sentence explanation for the most surprising alignment you found.
+
+**Section B style question (35–45 min):**
+4. Write a 4-mark answer to: "Compare the end-of-life impact of a solid pine shelf and an aluminium shelf. Explain which is more sustainable at end-of-life and suggest one design decision that would improve the less sustainable option." Use the LCA evidence from this session.
+</Activity>
+
+<SelfCheck questions={[
+  {
+    q: "For which type of product does the use phase dominate the total Life Cycle Assessment impact?",
+    options: [
+      "Any product made from virgin aluminium — the high embodied energy of aluminium dominates all other stages",
+      "Products that consume energy during normal use (cars, refrigerators, electric heaters) — the cumulative energy use over years of operation exceeds all other stages",
+      "Products that require frequent cleaning with chemicals — the chemical use phase impact exceeds manufacturing",
+      "Any product made from a single material — single-material products have no impact from recycling at end-of-life"
+    ],
+    answer: 1,
+    hint: "Think about how long a car or refrigerator is used, and how much energy it consumes per year over that lifetime.",
+    explain: "The use phase dominates for products that consume significant energy during operation. A car used for 15 years accumulates far more CO₂ from fuel combustion than was produced in its manufacture. A refrigerator running 24/7 for 20 years accumulates far more electricity-based CO₂ than its manufacture. A passive product (a shelf, a chair, a storage box) consumes no energy in use — its manufacture and end-of-life dominate instead."
+  },
+  {
+    q: "Why does recycled aluminium have much lower environmental impact than virgin aluminium?",
+    options: [
+      "Recycled aluminium is lighter than virgin aluminium — lower density reduces transport emissions",
+      "Recycling aluminium avoids the energy-intensive bauxite smelting process — recycled aluminium requires only about 5% of the energy needed for virgin aluminium",
+      "Recycled aluminium has higher tensile strength than virgin aluminium — so less material is needed for the same structural performance",
+      "Recycling returns aluminium to its bauxite ore form, which then requires less energy to process than new bauxite deposits"
+    ],
+    answer: 1,
+    hint: "The energy-intensive step in producing aluminium is smelting — what does recycling avoid?",
+    explain: "Producing virgin aluminium from bauxite requires electrolytic smelting — approximately 15 kWh of electricity per kg of aluminium. This is the highest energy stage and the largest source of CO₂ emissions in aluminium's LCA. Recycling aluminium skips smelting — it only requires re-melting the scrap metal (approximately 0.75 kWh per kg = 5% of virgin energy). This is why aluminium recycling is environmentally important — and why using recycled aluminium in product design significantly reduces the embodied carbon."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §1.9 Sustainability (p. 72)", type: "Textbook", href: "https://drive.google.com/file/d/1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §1.5 Making products sustainable (p. 40)", type: "Textbook", href: "https://drive.google.com/file/d/1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0/view?usp=sharing" },
+]} />
+
+<Reflection prompt="LCA shows that the most visible environmental decision (material choice) is sometimes not the most impactful one (use phase energy). Has this changed how you think about the sustainability of any product you use daily?" />

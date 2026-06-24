@@ -1,0 +1,123 @@
+---
+grade: 11
+term: 3
+week: 17
+sessionType: "bonus"
+title: "Bonus B7: Computer-Aided Design & Manufacturing"
+topic: "CAD/CAM"
+learningGoal: "explain the advantages and limitations of CAD and CAM in the design and manufacturing process; describe the workflow from CAD drawing to laser-cut component"
+selGoal: "give one specific advantage and one specific limitation — not just 'it's faster' and 'it costs a lot'"
+draft: false
+---
+
+CAD and CAM appear regularly in Paper 4 Section B when the design context involves computer-aided processes. This bonus session covers the vocabulary, advantages, limitations, and the complete CAD-to-component workflow.
+
+<KeyTerms terms={[
+  { term: "CAD (Computer-Aided Design)", definition: "The use of software to create, modify, and analyse 2D or 3D digital design models. IGCSE contexts: 2D vector drawing for laser cutting (e.g. CorelDRAW, Inkscape), 3D parametric modelling for 3D printing or milling (e.g. Fusion 360, TinkerCAD). CAD produces files that can be sent directly to CAM equipment." },
+  { term: "CAM (Computer-Aided Manufacturing)", definition: "The use of software to control manufacturing equipment directly from a CAD file. The CAD file is converted to machine code (G-code) that controls the tool path, cut depth, speed, and other parameters. Examples: laser cutter, CNC router, 3D printer, CNC mill." },
+  { term: "DXF file", definition: "Drawing Exchange Format — a common CAD file format used to transfer 2D vector geometry between different CAD software and CAM equipment. Laser cutters typically require a DXF file with vectors representing cut lines (in red, 0.001 pt stroke width) and engraving areas (filled shapes or raster images)." },
+  { term: "Kerf offset", definition: "A compensation applied in CAD to account for the width of material removed by the laser beam (kerf). If a 200 mm square is required and the laser kerf is 0.2 mm, the CAD square should be drawn as 200.2 mm to ensure the finished component is exactly 200 mm after cutting. Most CAM software can apply this compensation automatically." },
+  { term: "Nesting", definition: "The arrangement of multiple components on a sheet of material to minimise waste. CAD nesting software automatically positions components to maximise material utilisation — reducing offcuts from 30–40% to under 10% of the sheet in many cases. Nesting is a direct application of the Reduce principle from the 6Rs." },
+]} />
+
+<Section title="Advantages and limitations of CAD" icon="💻" id="cad">
+
+### Advantages
+
+| Advantage | Specific explanation |
+|---|---|
+| Rapid iteration | Design changes take seconds in CAD (drag a dimension, press Enter) vs hours in manual redrawing |
+| Precision | CAD dimensions are exact to 0.001 mm — no measurement or drawing errors |
+| Simulation | 3D CAD can simulate structural loads, thermal gradients, or assembly interference before manufacture |
+| File transfer | CAD files are sent directly to CAM equipment — no manual transcription errors |
+| Revision history | Previous versions are saved — changes can be undone; design decisions are traceable |
+
+### Limitations
+
+| Limitation | Specific explanation |
+|---|---|
+| Equipment cost | High-specification CAD workstations and professional licenses cost thousands of pounds |
+| Learning curve | Complex CAD software (Fusion 360, SolidWorks) requires weeks to months of training before productive use |
+| File compatibility | Different CAD software uses different file formats — conversion between systems can introduce errors |
+| Not tactile | CAD cannot replicate the experience of handling a physical prototype — ergonomics and haptics require physical models |
+| Over-engineering risk | CAD makes it easy to add features (fillets, slots, text) that would not be added in manual design — complexity can increase unnecessarily |
+
+</Section>
+
+<Section title="CAD to laser cutter: the complete workflow" icon="🔧" id="workflow">
+
+### Step-by-step
+
+1. **Design in 2D CAD:** Draw the component outline as closed vector shapes. Holes are separate closed shapes inside the outline. All dimensions as per C5 working drawings.
+
+2. **Apply kerf offset:** Offset external outlines outward by half the kerf width. Offset internal hole outlines inward by half the kerf width. (Or: enable kerf compensation in the laser cutter control software.)
+
+3. **Nest components:** Arrange multiple components on a digital sheet matching the material dimensions. Rotate to pack tightly. Check minimum spacing between components (typically 5 mm — prevents material distortion from adjacent cuts).
+
+4. **Export DXF:** Save as DXF. Check: all lines are vectors (not bitmap traces), cut lines are correct colour and stroke weight, material boundaries are correct.
+
+5. **Set machine parameters:** In the laser cutter control software, set: material (MDF 18 mm), power (%), speed (%), frequency (Hz). These parameters determine cut quality — too fast and the laser does not cut through; too slow and the material scorches.
+
+6. **Test cut:** Run a test cut on a scrap piece first. Measure the test component against the CAD dimension. Adjust kerf offset if needed.
+
+7. **Full cut:** Load the MDF sheet, secure (pin or tape corners), run the full nest. Monitor the first pass for correct cut-through.
+
+8. **Post-cut check:** Measure key dimensions with a steel rule. Compare to CAD drawing and C5 specification.
+
+</Section>
+
+<WorkedExample title="Section B CAD/CAM explanation response">
+
+**Q: Explain two advantages of using CAD to produce working drawings for a product, compared to producing them by hand. [4 marks]**
+
+"First: CAD allows rapid design iteration — changing a dimension (for example, increasing the shelf depth from 150 mm to 220 mm to accommodate the user's A4 textbook) takes seconds in CAD software. The same change in a hand-drawn orthographic drawing would require erasing and redrawing all three views, taking 20–30 minutes and potentially introducing new drawing errors (2 marks — advantage named, specific example in context, consequence stated).
+
+Second: CAD files can be sent directly to CAM equipment (laser cutter, CNC router) without transcribing dimensions manually. Manual transcription introduces opportunities for measurement errors; a direct CAD-to-CAM workflow ensures the manufactured component dimensions exactly match the design specification (2 marks — advantage named, specific mechanism, consequence for manufacturing accuracy)."
+</WorkedExample>
+
+<Activity title="CAD/CAM advantages and workflow analysis" time="45 min" grouping="Individual" materials={["CAD/CAM question set (teacher-provided)", "One completed CAD file (from C5 if available, or a provided file for review)"]}>
+
+**Advantages and limitations (0–15 min):**
+1. Write four advantages and four limitations of CAD. For each: one sentence with a specific mechanism (not just 'it's better' or 'it costs more').
+2. For each advantage: link it to a specific stage of the Component 2 design process (specification, idea generation, development, working drawings, manufacture, evaluation).
+
+**Workflow questions (15–35 min):**
+3. Describe the step-by-step workflow from a completed C5 orthographic drawing to a laser-cut component. Minimum 5 steps. For each step: state the input (what goes in), the process (what happens), and the output (what comes out).
+4. Explain what a kerf offset is and why it is necessary. Give a numerical example.
+
+**Section B response (35–45 min):**
+5. Write a 4-mark Section B response: "Explain two advantages of using a laser cutter compared to a hand saw for cutting 3 mm acrylic components." Use the advantage + mechanism + consequence format.
+</Activity>
+
+<SelfCheck questions={[
+  {
+    q: "What is the specific function of a DXF file in the CAD-to-laser-cutter workflow?",
+    options: [
+      "A DXF file stores the 3D solid model that the laser cutter uses to determine cut depth for each cross-section",
+      "A DXF file transfers 2D vector geometry from the CAD software to the laser cutter control software — preserving exact dimensions and line types",
+      "A DXF file contains the material properties (density, melting point) that the laser cutter uses to set power and speed automatically",
+      "A DXF file is the quality control record generated after a laser cut — it records any dimensional errors"
+    ],
+    answer: 1,
+    hint: "DXF = Drawing Exchange Format. Think about what 'exchange' means between software applications.",
+    explain: "A DXF file is a 2D vector file format that allows CAD geometry to be transferred between different software applications without loss of precision. Laser cutters read DXF files to determine the exact path and position of each cut line. The file contains the geometric coordinates of all lines, arcs, and circles — but not material properties, 3D geometry, or post-cut records. The machine operator sets material-specific parameters (power, speed) separately in the CAM control software."
+  },
+  {
+    q: "Nesting multiple components on a sheet before laser cutting is an application of which of the 6Rs?",
+    options: [
+      "Rethink — nesting fundamentally redesigns the manufacturing approach",
+      "Recycle — nesting ensures offcuts can be recycled rather than discarded",
+      "Reduce — nesting minimises material waste by packing components efficiently, reducing offcuts",
+      "Repair — nesting allows replacement parts to be cut alongside original components"
+    ],
+    answer: 2,
+    hint: "Nesting reduces the amount of material wasted — which R does this correspond to?",
+    explain: "Nesting applies the Reduce principle by minimising material waste. Without nesting, a student might cut each component individually from separate areas of the sheet, leaving 30–40% of the sheet as offcuts. A nested layout positions all components efficiently, reducing offcuts to under 10%. Less offcut = less material consumed per product = reduced environmental impact. This is a specific, measurable Reduce application — an ideal answer for Paper 1 part (e) or Section A sustainability questions."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §2.1 Drawing techniques (p. 84)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+]} />
+
+<Reflection prompt="If your school had a CNC router as well as a laser cutter, which would be more appropriate for making your Component 2 product — and why? Think about material, geometry, and precision requirements." />
