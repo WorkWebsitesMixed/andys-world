@@ -1,0 +1,176 @@
+---
+grade: 10
+term: 1
+week: 10
+title: "Integration: Install, Test & Paper 1 Part (c)"
+topic: "System integration, testing, and Paper 1 three-ideas practice"
+learningGoal: "install the crank or cam mechanism and thermistor circuit into the building façade, demonstrate that the door opens automatically when the thermistor is warmed, and produce a test evidence page; sketch three genuinely different mechanism ideas for a Paper 1 part (c) context."
+selGoal: "take a creative risk when the mechanism does not work first time, trying at least one different approach before asking for help."
+draft: false
+---
+
+Everything you have designed and built this term comes together in one session. The mechanism goes into the façade, the circuit connects to the motor, and you test whether the whole system functions as the brief requires. This is also the week of the Moment 3 knowledge test outside class — and the final exam-skills session closes the term by practising the three-ideas drawing that completes the Paper 1 arc.
+
+<Callout type="exam" title="Moment 3 (M3) — knowledge test this week" id="why">
+  **Moment 3 (M3, 40%)** is sat this week in the school's assessment centre, outside class time. It covers all design communication, mechanisms, and electronics content from Weeks 1–9. Review: motion types, slider-crank, cam profiles, circuit symbols, IPO, V = IR, NPN transistor switch, NTC thermistor and voltage divider. These two in-class sessions run as normal.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Integration", definition: "Combining separately designed and built components into one working system. The test of integration is whether all the parts function correctly together, not just individually." },
+  { term: "Test evidence", definition: "A documented record of a test: what was tested, the test method, the result (measured), and a conclusion. 'It worked' is not test evidence. '  Door opened 65° when thermistor reached approximately 35°C (hand contact) — meets the 60° specification point' is." },
+  { term: "Testing methodology", definition: "A systematic approach to testing: define the criterion, state the test method, record the result, compare to the specification, draw a conclusion. Used in the project and in Paper 1 part (g)." },
+  { term: "Paper 1 part (c)", definition: "Three separate, annotated design ideas for the given brief. Each idea must be conceptually different from the others — not the same approach restyled. Each must be annotated for material, join, and function." },
+]} />
+
+<Section title="Installation and testing" icon="🔧" id="installation">
+
+### Integrating the mechanism and circuit
+
+Before connecting everything, check:
+1. **Motor is securely mounted** — use the pre-drilled motor-mount holes in the façade. A motor that moves will misalign the crank arm.
+2. **Crank arm is correctly positioned** — the door should be closed when the crank arm is at its natural rest position.
+3. **Connecting rod is attached** so the door pivot arm can move freely through its full arc without binding.
+4. **Circuit connections** — all leads securely in breadboard, no loose ends. Thermistor lead away from the motor (vibration can dislodge it).
+
+### Testing the system: what "working" means
+
+The Firefighter Barbie system **works** when:
+- The motor does **not** activate at room temperature.
+- The motor **does** activate when the thermistor is warmed by hand or breath (approximately 35–40°C).
+- The door opens **measurably** — at least the angle stated in your specification (e.g., 60°).
+- The door returns toward closed when the thermistor cools.
+
+### Troubleshooting sequence
+
+If the motor does not activate when the thermistor is warmed:
+1. Check battery voltage — is it above 7 V? (Use a voltmeter or swap battery.)
+2. Check all circuit connections are secure.
+3. Check the transistor orientation — base, collector, emitter in the right holes.
+4. Try warming the thermistor more directly (breathe on it or hold it briefly against your palm).
+
+If the motor activates but the door doesn't move:
+1. Check the crank arm is securely attached to the motor shaft — does it slip?
+2. Check the connecting rod attachment to the door pivot — is there a firm mechanical link?
+
+### Test evidence page
+
+After testing, produce a test evidence page in your folder:
+- Annotated photograph or sketch of the installed system (label each component's position).
+- Results table: temperature at activation, door angle achieved, time to open.
+- Conclusion: does the system meet the four specification points you can test today?
+
+</Section>
+
+<WorkedExample title="What a results table looks like">
+| Test | Method | Result | Specification met? |
+|---|---|---|---|
+| Motor activates at elevated temperature | Warm thermistor by hand | Motor activated after approximately 10 seconds | Yes |
+| Door opens at least 60° | Protractor against door hinge | Door opened 68° | Yes |
+| Motor does not activate at room temperature | Leave 5 minutes undisturbed | Motor remained off | Yes |
+| Door returns toward closed when thermistor cools | Remove hand, wait 30 seconds | Door returned to 15° (not fully closed) | Partially — investigate spring return |
+
+Note that "partially met" is an honest, valid result. A test that always passes regardless of performance is not a real test.
+</WorkedExample>
+
+<Section title="Exam practice — Paper 1 part (c)" icon="📝" id="paper1-c">
+
+### What part (c) asks
+
+Part (c) of Paper 1 gives you a brief for a new product and asks you to sketch **three separate, annotated design ideas**. Each idea must be:
+- **Conceptually different** from the others — not the same mechanism/form drawn three times.
+- **Annotated** for material, join, and function (at least one annotation per sketch).
+- **Labelled** with the motion type at key components (if a mechanism).
+
+Examiners specifically look for evidence that the three ideas are genuinely different approaches, not the same concept restyled.
+
+### Time management in part (c)
+
+Allow yourself **3–4 minutes per idea**: 2 minutes to sketch, 1–2 minutes to annotate. Do not spend all your time on the first idea and leave the other two as bare outlines.
+
+### Three ideas for a new scenario
+
+This session: practise part (c) for a given mechanism context (a sliding bin lid, a pop-up display stand, or similar). Sketch three different mechanisms:
+- Idea 1: A slider-crank.
+- Idea 2: A pear cam with follower.
+- Idea 3: A rack-and-pinion (or lever linkage).
+
+Each labelled with: motion type, key part names, one material note, and one function note.
+
+</Section>
+
+<Activity title="Installation and Paper 1 part (c)" time="90 min (W session) + 45 min (B session)" grouping="Individual (circuit/mechanism) + rotation (technician supervised)" materials={["Building façades", "Motor mounts, crank/cam parts, adhesive, hand tools", "Breadboard circuit from Week 9", "Protractor (for door angle measurement)", "A3 paper for part (c) sketches"]}>
+**W session:**
+1. Install your mechanism and circuit into the building façade (technician rotation — wait your turn; use waiting time to prepare your test evidence page template).
+2. Test: warm the thermistor. Record door angle, activation time, and room-temperature check in your results table.
+3. Produce a test evidence page: annotated sketch or photograph + results table + conclusions.
+
+**B session:**
+4. Sketch three different annotated mechanism ideas for the given part (c) brief. Time yourself: 3–4 minutes per idea. All three on one A3 sheet.
+5. Review your Term 1 progress against your Week 1 personal goal. Set one focus for Term 2 on a sticky note to add to your folder.
+</Activity>
+
+<Support title="Installation and testing guide">
+**Pre-drilled motor-mount holes:** The façade has holes positioned for the motor. Use the screws in the kit bag — do not improvise. A motor that moves will misalign the whole mechanism.
+
+**Door angle measurement:** Use a protractor or angle-measuring app. Place one arm along the closed-door position and measure the angle to the fully open position.
+
+**Part (c) idea-per-box template:** If blank-page anxiety is a problem, use the three-box template — one box per idea. Having the box boundary reduces the tendency to over-draw idea 1 and run out of space.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "After testing, you write 'The door works fine.' Why is this NOT valid test evidence?",
+    options: [
+      "Because test evidence must be written in formal academic English",
+      "Because test evidence must include a measured result and a comparison to the specification",
+      "Because 'fine' should be replaced with 'satisfactorily'",
+      "Because test evidence should only be written if the system fails"
+    ],
+    answer: 1,
+    hint: "Test evidence must be specific and measurable — a statement that 'it works' gives no data.",
+    explain: "Valid test evidence requires: a criterion (what was being tested), a test method, a measured result (door angle, activation time), and a conclusion comparing the result to the specification point. 'The door works fine' provides none of these — it is an unsupported opinion, not evidence."
+  },
+  {
+    q: "Paper 1 part (c) asks for three design ideas. What is the key requirement?",
+    options: [
+      "All three must be drawn in isometric 3D on separate sheets",
+      "One must use a crank, one a cam, and one a lever — no other combinations allowed",
+      "The three ideas must be genuinely conceptually different — not the same idea redrawn at different angles",
+      "Each sketch must be fully dimensioned before you can earn marks"
+    ],
+    answer: 2,
+    hint: "The mark scheme rewards genuinely different design approaches, not variations of the same concept.",
+    explain: "Part (c) awards marks for three genuinely different design ideas — a slider-crank, a pear cam, and a rack-and-pinion would each represent a distinct mechanism concept. Three versions of the same slider-crank drawn from different viewpoints would not earn separate marks, regardless of how detailed they are."
+  },
+  {
+    q: "Term 2 will introduce which main topic area?",
+    options: [
+      "Further electronics — integrated circuits and microcontrollers",
+      "Commercial manufacturing at industrial scale — injection moulding, die casting",
+      "Material properties and making — the desk organiser project using timber and acrylic",
+      "Digital design and 3D printing with OnShape only"
+    ],
+    answer: 2,
+    hint: "The end-of-term plan lists what is carried into Term 2.",
+    explain: "Term 2 is the Materials and Making term: students learn material families and properties (Weeks 1–3), then build the desk organiser project in the makerspace using timber and acrylic (Weeks 4–9). OnShape CAD is introduced in three sessions. Commercial manufacturing at industrial scale is Term 3."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Home task:** Write a 150-word evaluation of the Firefighter Barbie project: what worked, what did not, and what you would change if you rebuilt the mechanism or circuit. Be specific — reference your results table and your specification points.
+
+<Extension title="Optional system improvements">
+If your system has time today: (1) Add an LED in parallel with the motor to give a visual "door open" signal. (2) Adjust the fixed resistor value in the voltage divider to change the trigger temperature — does a higher-value fixed resistor raise or lower the activation threshold? Test it and record the result.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §1.3 Making (p. 36)", type: "Textbook", href: "https://drive.google.com/file/d/1IbAZ2IFent68VPoS1lmI2x6wJUvJu0jB/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.3.2 Conversion of motion (p. 273)", type: "Link" },
+  { label: "Collins IGCSE D&T — §1.2 Design ideas and techniques (p. 20)", type: "Textbook", href: "https://drive.google.com/file/d/1G5_GlCOiLuFPLZbVGxUI94ZvgxcRGbj7/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+]} />
+
+<Reflection prompt="What would I change about my mechanism or circuit if I built it again — and why? Is the thing I would change a design decision, a making decision, or a testing decision?" />

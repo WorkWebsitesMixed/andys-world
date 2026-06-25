@@ -1,0 +1,166 @@
+---
+grade: 10
+term: 1
+week: 7
+title: "Electronics I: Circuits, Symbols & IPO"
+topic: "Circuit symbols, the IPO model, and series vs parallel"
+learningGoal: "draw a simple LED circuit using correct symbols, label it with the input-process-output model, and produce correct circuit drawings for both series and parallel configurations."
+selGoal: "work safely and patiently at the electronics bench, asking the technician before acting whenever I am unsure."
+draft: false
+---
+
+Electronics starts from zero this week. You do not need any prior knowledge — every symbol and concept is introduced before you draw or build anything. By the end of the session you will have a circuit symbol reference sheet you made yourself and an understanding of how the Firefighter Barbie circuit's three main stages connect as a system.
+
+<Callout type="exam" title="IPO and specific language" id="why">
+  Paper 1 Section A regularly asks you to label a circuit using the input-process-output model and to name the function of each component. Generic answers — "it makes the circuit work" — earn zero. You must name the component, state what it does, and use the correct technical term: thermistor, transistor, motor — never "sensor thing" or "switch part."
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Circuit symbol", definition: "A standardised diagram shape representing one component. Symbols follow BS/IEC conventions so any engineer anywhere in the world can read the same circuit diagram." },
+  { term: "Conventional current", definition: "The direction of current flow in a circuit diagram: from the positive terminal of the cell, through the circuit, to the negative terminal. (Electrons actually move the other way, but convention uses positive-to-negative.)" },
+  { term: "IPO (Input–Process–Output)", definition: "A model for describing any system. Input: the sensor or trigger. Process: the decision or control circuit. Output: the device that does the work. Applied to Firefighter Barbie: thermistor (input) → transistor circuit (process) → motor (output)." },
+  { term: "Series circuit", definition: "Components connected in one single loop. The same current flows through every component. If one component fails, the whole circuit breaks." },
+  { term: "Parallel circuit", definition: "Components connected in separate branches. Each branch has the full supply voltage across it. If one branch fails, others continue working." },
+]} />
+
+<Section title="Circuit symbols and conventions" icon="🔧" id="symbols">
+
+### The eight symbols you must know
+
+| Component | Symbol description | Function |
+|---|---|---|
+| Cell (single) | Long thin line (positive) + short thick line (negative) | Single power source |
+| Battery | Multiple cell symbols in series | Multiple cells providing higher voltage |
+| Switch (open) | Line with a gap and a lever | Breaks the circuit when open |
+| Resistor | Rectangle | Limits current flow |
+| LED | Diode triangle with two arrows pointing outward | Emits light when current flows in forward direction |
+| Motor | Circle with M inside | Converts electrical energy to rotational mechanical energy |
+| Thermistor | Resistor rectangle with a diagonal arrow | Resistance changes with temperature |
+| NPN transistor | Circle with base, collector, emitter lines | Amplifies or switches current — controlled by base current |
+
+Draw each symbol on your reference sheet. Size them consistently. A symbol that is too small or distorted will not be credited in an exam.
+
+### Conventional current and conductors
+
+Current flows from positive to negative terminal in a circuit diagram (conventional direction). The wire (conductor) allows current to flow; the plastic insulation around it prevents current leaking to unwanted paths.
+
+In the Firefighter Barbie circuit: the battery provides the EMF; current flows through the circuit to the motor or LED.
+
+</Section>
+
+<WorkedExample title="Labelling a circuit with IPO">
+**Circuit:** Cell → switch → resistor → LED → back to cell.
+
+**IPO labelling:**
+- **Input:** Switch (the human trigger — on/off control)
+- **Process:** Resistor (limits current to protect the LED)
+- **Output:** LED (produces light — the visible result)
+
+**Applied to Firefighter Barbie:**
+- **Input:** Thermistor (detects heat — changes resistance as temperature rises)
+- **Process:** Transistor circuit (makes the switching decision — turns on when base voltage exceeds threshold)
+- **Output:** DC motor (converts electrical energy to rotation — drives the crank or cam mechanism)
+
+The IPO model helps you see that each component has a role in the system — not just a name.
+</WorkedExample>
+
+<Section title="Series vs parallel circuits" icon="🔧" id="series-parallel">
+
+### Series circuit
+
+All components in one single loop. The same current flows through every component.
+
+**Consequence:** If you add more components, each one shares the total supply voltage — each component gets less voltage. Two LEDs in series: each gets half the supply voltage, so they are dimmer than a single LED.
+
+**If one breaks:** The circuit is open and nothing works.
+
+### Parallel circuit
+
+Components in separate branches. The supply voltage appears across every branch.
+
+**Consequence:** Each branch gets the full supply voltage regardless of how many branches there are. Two LEDs in parallel: each gets full voltage, so they are as bright as a single LED. Total current from the battery doubles.
+
+**If one branch breaks:** Other branches continue to work.
+
+### Exam practice — Section A quick-fire
+
+The bonus session is a Section A quick-fire covering both mechanisms (Weeks 4–5) and electronics (this week). For each question: name the specific component or motion type, give a reason using technical language, and never leave an answer blank.
+
+**Rewriting exercise:** "A crank is used to change the motor's movement" → rewrite to name the exact input motion type, the output motion type, and the connecting mechanism component that makes the conversion.
+
+</Section>
+
+<Activity title="Circuit drawing and IPO exercises" time="90 min (W session) + 45 min (B session)" grouping="Individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboard, cell holders, LEDs, switches, resistors (optional hands-on)"]}>
+**W session:**
+1. Complete your own circuit symbol reference sheet: draw all eight symbols neatly at a consistent size. Label each with name and function.
+2. Draw a switch → resistor → LED circuit with IPO labels.
+3. Draw a series circuit with two LEDs and a cell. Then draw a parallel circuit with the same two LEDs. Label which LEDs will be brighter and why.
+
+**B session:**
+4. Six Section A quick-fire questions: three on mechanisms (motion types, crank, cam) and three on electronics (symbols, IPO, series/parallel). Self-mark.
+5. Rewrite the two answers with the lowest marks, removing any generic words. Show what you changed.
+</Activity>
+
+<Support title="Scaffolds for circuit drawing">
+**Symbol reference card:** Keep it visible at all times. In the exam, you do not have this card — so practise drawing each symbol from memory at least twice this session.
+
+**Pre-drawn circuit diagram with blanks:** If the full drawing exercise is too open-ended, use the version where the circuit is printed and you add the IPO labels and complete the missing symbol.
+
+**Sentence frame for rewriting:** "[Component] converts [input] into [output] by [mechanism/process], which means [consequence for the circuit]."
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "In the Firefighter Barbie circuit, which component is the INPUT in the IPO model?",
+    options: [
+      "The DC motor",
+      "The transistor",
+      "The thermistor",
+      "The battery"
+    ],
+    answer: 2,
+    hint: "The input senses a change in the environment and sends a signal to the rest of the circuit.",
+    explain: "The thermistor is the input — it detects the rise in temperature and responds by changing its resistance. The transistor is the process (makes the switching decision) and the motor is the output (does the work). The battery provides power but is not part of the IPO classification."
+  },
+  {
+    q: "Two LEDs are connected in parallel across a 9 V battery. How does each LED's brightness compare to a single LED connected to the same 9 V battery?",
+    options: [
+      "Each LED is dimmer because the current is shared between them",
+      "Each LED is the same brightness — in parallel, each branch receives the full supply voltage",
+      "Each LED is brighter because more total current flows from the battery",
+      "One LED is bright and the other is dim"
+    ],
+    answer: 1,
+    hint: "In a parallel circuit, each branch has the same voltage across it as the supply.",
+    explain: "In a parallel circuit, each branch receives the full supply voltage (9 V). So each LED has 9 V across it — the same as a single LED connected to 9 V. Brightness depends on voltage, so each LED is equally bright. The total current from the battery increases, but each branch's current is unchanged."
+  },
+  {
+    q: "An exam answer states: 'A crank is used to change the motor's movement.' What is wrong with this answer?",
+    options: [
+      "It is too long — exam answers should be one word only",
+      "It is correct and would earn full marks on a mark scheme",
+      "It uses generic language — 'change the movement' does not name the specific motion types converted",
+      "It should mention the voltage of the motor"
+    ],
+    answer: 2,
+    hint: "Exam answers must use precise technical vocabulary — name the input motion type and the output motion type.",
+    explain: "A full-credit answer names both motion types: 'A crank converts the motor's rotary motion into the reciprocating motion that pushes the door open through the connecting rod.' Generic words like 'change' or 'movement' earn zero marks on a Paper 1 Section A mark scheme."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Home task:** List all components the Firefighter Barbie circuit will need and write one sentence for each explaining what it does. Use the IPO model — label each component as input, process, or output, and explain why.
+
+<Extension title="Breadboard exploration">
+Wire two LEDs in series on a breadboard, then rearrange them in parallel using the same battery. Observe the brightness change. Measure the voltage across each LED with a voltmeter if available. Record your observations in your folder: what did you predict before wiring, and did the result match?
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.4.1 Basic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+]} />
+
+<Reflection prompt="What does input-process-output mean for the Firefighter Barbie circuit? Could I name each part without looking at my notes — and explain in one sentence why each stage is necessary?" />

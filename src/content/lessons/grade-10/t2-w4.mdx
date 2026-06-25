@@ -1,0 +1,128 @@
+---
+grade: 10
+term: 2
+week: 4
+title: "Making Processes I: Marking Out, Cutting & OnShape"
+topic: "Measuring, marking, cutting, and introduction to parametric CAD"
+learningGoal: "mark out at least two components accurately from my design dimensions, name the correct tool for each cut type, demonstrate safe use of a tenon saw or acrylic scriber to make one straight cut, and create a new OnShape document with a dimensioned 2D rectangle representing one desk organizer component."
+selGoal: "stop and ask before using any machine or tool I have not been explicitly demonstrated; and persist through at least two failed OnShape attempts before asking for help."
+draft: false
+---
+
+From this session onwards, your folder decisions become physical material. Before any cut, you need: correct measurement, correct tool, correct safety procedure. All three must be in place before you touch the material.
+
+<Callout type="exam" title="Paper 3 Section A — making processes" id="why">
+  Paper 3 asks you to name tools, match them to materials, and describe safe use. Knowing the correct tool for each cut type — and being able to say why — is directly tested. Today's workshop experience is Paper 3 revision.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Datum edge", definition: "The reference edge from which all measurements are taken. Always mark out from a datum edge, not from a previously cut edge (which may be slightly out of square). The datum is usually the straightest edge of the workpiece, checked with a try square." },
+  { term: "Try square", definition: "A tool with a stock (handle) and a blade set at exactly 90°. Used to check that an edge is square (perpendicular) to the datum, and to transfer a line across a face at 90° to the datum edge." },
+  { term: "Workability", definition: "How easily a material can be cut, shaped and joined using available tools and machines. Pine has high workability (easy to cut with a tenon saw); mild steel has low workability (needs power tools for most cuts). Acrylic has moderate workability — it can be scribed and snapped, or cut slowly with a fine-tooth saw." },
+  { term: "Parametric CAD", definition: "Computer-Aided Design where dimensions are entered as editable numbers, not just drawn. In OnShape, a sketch becomes 'fully constrained' when every line has a defined dimension and position — all lines turn black. A parametric model updates automatically if you change a dimension." },
+]} />
+
+<Section title="Marking out and cutting tools" icon="🔧" id="tools">
+
+| Operation | Tool | Material | Safety note |
+|-----------|------|----------|-------------|
+| Mark out timber | Marking gauge + pencil | Pine, MDF | Gauge towards you on the pull stroke |
+| Mark out metal/acrylic | Steel rule + scriber | Steel, aluminium, acrylic | Scriber is sharp — keep other hand clear |
+| Straight cut — timber | Tenon saw | Pine, MDF | Secure in bench vice; cut on waste side |
+| Curved cut — timber | Coping/scroll saw | Pine, MDF | Feed slowly; keep fingers clear of blade |
+| Straight cut — acrylic | Scribe-and-break | Acrylic sheet | Score 5–7 passes; clamp to edge; snap cleanly |
+| Holes | Pillar drill | Any | Use correct bit type; clamp workpiece; wear eye protection |
+
+### OnShape basics — key concepts
+
+**Sketch tools:** Line, Rectangle, Circle. Build 2D shapes from these.
+
+**Constraints:** Horizontal, Vertical, Coincident. These lock lines to specific relationships.
+
+**Dimension tool:** Adds a number to a line or distance. When every line is dimensioned or constrained, the sketch turns fully black — this is "fully constrained."
+
+**Why fully constrained matters:** An under-constrained sketch (some lines blue/grey) can shift when you extrude it. Only fully constrained sketches produce predictable 3D solids.
+
+</Section>
+
+<WorkedExample title="Marking out a 150 × 100 mm rectangle in pine">
+
+1. **Select datum edge:** the straightest long edge of your pine off-cut. Check it with the try square.
+2. **Mark width (150 mm):** place steel rule on the datum, mark at 150 mm with a pencil cross.
+3. **Mark length (100 mm):** use the try square to transfer a line at 90° from the datum at the 100 mm position.
+4. **Check:** measure both diagonals — if they are equal, the rectangle is square.
+5. **Label waste side:** put a cross on the material outside your cut lines. You cut on the waste side of the line.
+6. **Secure and cut:** hold the piece in the bench vice. Tenon saw starts on the pull stroke (pulling back creates the kerf on the correct side of the line).
+</WorkedExample>
+
+<Activity title="Marking out + OnShape introduction" time="90 min" grouping="Individual (technician rotation at machines)" materials={["Pine off-cut", "Marking gauge", "Try square", "Steel rule", "Pencil", "Tenon saw or acrylic scriber + sample", "Student device with browser access to onshape.com"]}>
+
+**Workshop — marking and cutting (0–72 min):**
+1. Mark out at least two desk organizer components on your chosen material(s), working from your making plan.
+2. Make one straight cut using the tenon saw (pine) or the scribe-and-break method (acrylic) — supervised by the technician.
+3. After the cut: check the dimension against your making plan. Note any discrepancy.
+
+**Safety check (72–75 min):**
+4. Return all tools to their correct position. Sweep sawdust into the waste bin. Check that the bench vice is released.
+
+**OnShape — first sketch (75–90 min):**
+5. Log in at onshape.com; create a new document called "Desk Organizer."
+6. Start a new sketch on the Front plane; use the Rectangle tool to draw a rectangle.
+7. Add dimensions: type the width and height from your making plan. Confirm all lines are black (fully constrained).
+8. Screenshot your completed sketch.
+</Activity>
+
+<Support title="OnShape quick-start">
+
+**If all lines are blue/grey:** you have not fully dimensioned the sketch. Add dimensions to any remaining blue lines using the Dimension tool (D key).
+
+**If a line snaps to the wrong position:** press Undo (Ctrl+Z) and try again more slowly. Constraints apply automatically — if a line appears to jump, a constraint has been applied that you did not intend.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student is cutting a 120 mm × 80 mm panel from an acrylic sheet. Which tool is most appropriate for making a straight cut?",
+    options: [
+      "Tenon saw — it cuts straight lines in any material",
+      "Coping saw — curved blade gives better control on flat acrylic",
+      "Scribe-and-break method — score with a scriber, clamp to an edge, snap cleanly",
+      "Pillar drill — drill a series of holes along the cut line then break between them"
+    ],
+    answer: 2,
+    hint: "Acrylic can crack if sawn too fast. What method takes advantage of acrylic's brittleness to produce a clean straight cut?",
+    explain: "The scribe-and-break method uses a sharp scriber to score the line 5–7 times, then the sheet is clamped with the score line at the edge and snapped downward. This produces a clean, straight break in acrylic without the heat and friction of a saw blade. A tenon saw can work but risks cracking; a coping saw is for curves; drilling holes is wasteful and inaccurate."
+  },
+  {
+    q: "In OnShape, a student's sketch shows some lines in blue and some in black. What does this mean?",
+    options: [
+      "Blue lines are construction lines; black lines are profile lines that will be extruded",
+      "Blue lines are fully constrained; black lines are under-constrained and need dimensions",
+      "Blue lines are under-constrained (no dimension or constraint applied); black lines are fully constrained",
+      "The colour makes no difference — both are valid for extrusion"
+    ],
+    answer: 2,
+    hint: "What does 'fully constrained' mean? Which colour signals that a line can still move?",
+    explain: "In OnShape (and most parametric CAD software), blue lines are under-constrained — they can still move because they lack a dimension or constraint. Black lines are fully constrained — their position and length are fully defined. A fully constrained sketch (all lines black) is required to produce a stable 3D solid when you extrude it."
+  },
+  {
+    q: "Why should you always mark out from a datum edge rather than from the edge you just cut?",
+    options: [
+      "Because a freshly cut edge is too rough to measure from",
+      "Because cut edges may be slightly out of square, causing accumulated measurement errors across multiple components",
+      "Because the datum edge is always the longest edge of the workpiece",
+      "Because marking from cut edges leaves pencil marks that are hard to remove"
+    ],
+    answer: 1,
+    hint: "Imagine marking component A from the original datum. Then marking component B from component A's cut edge. What happens if component A's cut is not perfectly square?",
+    explain: "Each cut edge may be slightly out of square or off-dimension. If you mark the next component from a cut edge, any error in that cut carries forward and compounds. By always marking from the original datum edge (which you checked with a try square), you ensure all measurements are taken from the same, verified reference — errors do not accumulate."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §3.9 Manufacturing processes (p.205)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.3 Making (p.36)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.5 Health & safety (p.55)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.6 CAD (p.128)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which part of marking out was hardest to get right? How is constraining a CAD sketch different from drawing by hand — and why does that difference matter?" />

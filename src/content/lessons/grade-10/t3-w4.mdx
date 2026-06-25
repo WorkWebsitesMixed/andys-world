@@ -1,0 +1,125 @@
+---
+grade: 10
+term: 3
+week: 4
+title: "Product Analysis: Water Bottle Disassembly"
+topic: "Reverse engineering methodology, ACCESS FM product analysis, and annotation drawing"
+learningGoal: "describe a systematic product analysis method using ACCESS FM applied to an existing product, disassemble a water bottle to its individual components, record every component in a parts list with preliminary material identification, and produce an annotated freehand drawing of two components."
+selGoal: "observe the product carefully before writing anything — spend at least 5 minutes handling it before filling in the parts list; and compare my drawing to the actual component, correcting at least one proportion error."
+draft: false
+---
+
+Reverse engineering is how designers learn from what already exists. Before you can redesign the water bottle, you must understand how it was made, why each material was chosen, and where its weaknesses are. Today you take it apart.
+
+<Callout type="exam" title="M1 analysis package — work starts today" id="why">
+  The M1 graded package (20% of term) is collected at the start of Week 6. Everything produced in Weeks 4 and 5 goes into it: the parts list, ACCESS FM observations, annotated drawings, function map, test results, improvement list, and design direction sketches. Start every piece of evidence cleanly — it is collected as-is.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Reverse engineering", definition: "Taking a product apart to understand how it was made, what materials were used, and why specific design decisions were made — in order to inform an improved redesign. Reverse engineering builds on an existing product rather than starting from a blank sheet." },
+  { term: "ACCESS FM (for product analysis)", definition: "A systematic framework for analysing an existing product. Applied to a real product: Aesthetics (appearance, colour, surface finish), Cost (estimated selling price), Customer (user needs, ergonomics), Environment (sustainability of materials and disposal), Size (dimensions, weight), Safety (potential hazards), Function (what it does and how), Materials (what each component is made from and why)." },
+  { term: "Material identification by observation", definition: "Identifying materials without lab testing: colour and translucency (PET is clear; HDPE slightly opaque); surface temperature (metal feels cold, polymers feel neutral); flexibility (PP is flexible; acrylic is rigid and brittle); recycling number moulded into the base (1=PET, 2=HDPE, 5=PP, 6=PS)." },
+  { term: "Annotation leader line", definition: "A line drawn from an annotation note to the specific feature it describes. The leader must touch the feature it refers to — not float nearby. Annotation in a disassembly drawing must state: material + evidence for identification, manufacturing process + one visible clue (e.g. parting line, witness marks), function of that component." },
+]} />
+
+<Section title="Parts of a typical water bottle" icon="🔧" id="parts">
+
+| Component | Material (typical) | Identification clue | Manufacturing process |
+|-----------|------------------|--------------------|-----------------------|
+| Bottle body (PET) | PET (polyethylene terephthalate) | Recycling number 1, clear, thin wall | Injection stretch blow moulding |
+| Bottle body (PE) | HDPE | Recycling number 2, slightly opaque | Extrusion blow moulding |
+| Cap | PP | Recycling number 5, white, slightly flexible | Injection moulding |
+| Gasket / seal | LDPE or silicone | White, very flexible, flat ring shape | Compression moulding or extrusion |
+| Label | Paper or BOPP film | Paper tears; BOPP is a thin polymer film | Printed flat; adhesive or sleeve applied |
+| Base insert | PE or PP | Separate disc at base of some PET bottles | Injection moulding |
+
+### How to identify a manufacturing process from the component
+
+- **Parting line:** a thin line of flash where two mould halves met → injection moulded or blow moulded
+- **Gate mark:** a small nub or scar where polymer was injected → injection moulded
+- **Seam line (bottom):** a horizontal pinch mark at the base → extrusion blow moulded (where parison was pinched)
+- **Uniform wall thickness across the body:** injection stretch blow moulded (biaxial stretching makes thickness even)
+
+</Section>
+
+<WorkedExample title="Teacher disassembly notes — what to look for">
+
+**Step 1 — cap:** Unscrew and examine. Look for: thread moulded in (injection moulding), parting line running across the top face, recycling symbol 5 (PP), white colour, slight flexibility.
+
+**Step 2 — gasket under cap:** Lift out the ring. Note: it is white, very flexible, flat — likely LDPE or silicone. Function: seals the thread to prevent leaking under hydrostatic pressure when the bottle is inverted.
+
+**Step 3 — label:** Peel or slide off. Is it paper (tears when wet) or BOPP film (does not tear)? Note the adhesive strip or lack of it (shrink sleeve has no adhesive).
+
+**Step 4 — body:** Examine the base — recycling number? Is there a seam mark at the base (blow moulded) or is the base uniformly formed (injection stretch blow)?
+
+**Step 5 — base insert (if present):** A separate disc inside the concave base of some PET bottles. Injection moulded PP. Function: stabilises a rounded base.
+</WorkedExample>
+
+<Activity title="Disassembly + ACCESS FM + annotation drawing" time="90 min" grouping="Groups of 3 for disassembly, individual for drawings" materials={["One PET bottle + one aluminium bottle per group", "Dismantling tray", "Callipers", "Ruler", "Pencil", "Pre-printed parts list template"]}>
+
+**Observation (0–10 min):**
+1. Do not write anything for the first 5 minutes. Handle the bottle. Turn it. Note the seams, the marks, the material feel.
+2. Write one sentence: "The most surprising thing I noticed before dismantling was ___."
+
+**Disassembly + parts list (10–60 min):**
+3. Disassemble the bottle to all separable components.
+4. Complete the parts list: component name | material identified | evidence for identification | preliminary process guess | function.
+5. Apply ACCESS FM: at least two observations under each of the eight headings.
+
+**Annotation drawings (60–90 min):**
+6. Draw two components from the disassembly (freehand, on A4). Proportion matters — hold the real component next to your drawing and compare widths at three points.
+7. Add annotation leaders to each drawing: at minimum, material + identification evidence; manufacturing process + visible clue; function of this component in the product system.
+8. Drawing colleague circulates: accepts or challenges annotation quality before you file the page.
+</Activity>
+
+<Support title="Proportion check for drawings">
+
+Before drawing: measure the real component's height and width with a calliper. Set your drawing dimensions to approximately the same ratio (you may scale up or down, but the ratio must be correct). A cap that is 28 mm wide and 20 mm tall should appear wider than it is tall — not square or taller than wide.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student sees a thin line running along the side of a plastic cap and writes 'manufacturing defect' in the parts list. An examiner corrects this. What is the line actually called, and what does it indicate?",
+    options: [
+      "A stress crack — the cap was loaded beyond its elastic limit during assembly",
+      "A parting line — the seam where two halves of the injection mould met; not a defect, but evidence that the cap was injection moulded",
+      "A gate mark — the point where molten polymer entered the mould during injection",
+      "A weld line — where two streams of molten polymer met inside the mould"
+    ],
+    answer: 1,
+    hint: "Injection moulds are made in two or more halves. Where the halves meet, a line forms on the product.",
+    explain: "A parting line (also called a mould line or seam line) is the visible line on a moulded component where the two halves of the mould met. It is not a defect — it is an expected feature of injection moulding. Parting lines are used in reverse engineering as evidence that a component was injection moulded. A gate mark is a separate feature — a small nub or scar where molten polymer was injected into the cavity."
+  },
+  {
+    q: "A student's annotation of the PP bottle cap says: 'Made of polypropylene because it is white.' An examiner marks this annotation incomplete. What information is missing?",
+    options: [
+      "The colour alone (white) is not sufficient evidence for material identification — the annotation should also state the recycling number, the surface feel, and possibly the flexibility test",
+      "The annotation should include the price of PP per kilogram",
+      "The annotation should compare PP to an alternative material and explain why PP was chosen instead",
+      "White PP is actually a trade name — the full chemical name (polypropylene) should be abbreviated to HIPP"
+    ],
+    answer: 0,
+    hint: "What makes material identification by observation reliable? Is colour alone sufficient?",
+    explain: "Colour alone is weak evidence — white is used for many polymers (HDPE, LDPE, PP, ABS). A complete annotation includes multiple identification clues: 'PP (recycling symbol 5 moulded in the base); white; slight flex when pressed (PP is semi-rigid); parting line visible on top face (injection moulded); surface temperature: neutral (polymer, not metal).' Multiple clues = reliable identification."
+  },
+  {
+    q: "Why does an annotation leader line need to physically touch the feature it describes?",
+    options: [
+      "It is a convention in engineering drawing to show the leader with a dot or arrowhead on the feature so there is no ambiguity about which part of the component the annotation refers to",
+      "A floating leader line is acceptable as long as the annotation text is close to the feature",
+      "Leader lines only need to touch the feature when the drawing is in orthographic projection, not in freehand",
+      "Leader lines are optional — annotation text can be placed anywhere on the drawing if it is clear enough"
+    ],
+    answer: 0,
+    hint: "A drawing may have 5 components. If the leader floats, which component does the annotation describe?",
+    explain: "In a drawing with multiple components or features, a floating annotation (one whose leader does not clearly point to a specific feature) is ambiguous — the reader cannot tell which part of the component the note applies to. An arrowhead or dot at the tip of the leader, touching the specific feature, removes all ambiguity. This is a convention in engineering drawing that examiners check for in annotation quality marks."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §1.7 Product analysis (p.70)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §3.1 Types of materials (p.166)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.3 Freehand drawing (p.120)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+]} />
+
+<Reflection prompt="What surprised me about the materials or construction of the water bottle — and what does that surprise tell me about what I assumed before I took it apart?" />

@@ -1,0 +1,165 @@
+---
+grade: 10
+term: 1
+week: 8
+title: "Electronics II: Resistors, Ohm's Law & Transistors"
+topic: "Resistor calculations and the NPN transistor as a switch"
+learningGoal: "calculate the correct current-limiting resistor for an LED using V = IR rearranged, and draw an NPN transistor switch circuit that activates a motor when base current flows, correctly labelling base, collector, and emitter."
+selGoal: "stay with a multi-step calculation when it feels hard, writing every step before checking the answer."
+draft: false
+---
+
+The circuit is more than wires and components — it is a set of precise decisions. Too much current burns the LED. Too little base current and the transistor never switches on. This week you learn the calculation behind each decision and draw the transistor switch circuit that is the brain of the Firefighter Barbie system.
+
+<Callout type="exam" title="Show every step in a calculation" id="why">
+  Paper 1 Section A sometimes includes a resistor calculation. Examiners award marks for each correct step, not just the final answer. Write the formula, substitute the values, calculate, and state the unit. Even if you make an arithmetic error, you can still earn marks for the correct method.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Ohm's Law", definition: "The relationship between voltage, current, and resistance: V = I × R. Rearranged: I = V / R and R = V / I. V in volts, I in amperes, R in ohms." },
+  { term: "Current-limiting resistor", definition: "A resistor placed in series with an LED to prevent excess current that would burn the LED. Calculated using R = (Vsupply − VLED) / ILED." },
+  { term: "NPN transistor", definition: "A three-terminal semiconductor switch. Terminals: base (control input), collector (connected to supply via output device), emitter (connected to 0 V). A small base current switches the transistor ON, allowing a large collector-to-emitter current." },
+  { term: "Base current", definition: "The small current flowing into the base terminal of an NPN transistor that triggers it to switch on. In the Firefighter Barbie circuit, the thermistor voltage divider provides this base current when temperature rises sufficiently." },
+]} />
+
+<Section title="Ohm's Law and the current-limiting resistor" icon="🔧" id="ohms-law">
+
+### Ohm's Law: V = I × R
+
+Three forms — one formula, three rearrangements:
+
+- **V = I × R** (find voltage if you know current and resistance)
+- **I = V / R** (find current if you know voltage and resistance)
+- **R = V / I** (find resistance if you know voltage and current) ← most used in this project
+
+### Calculating a current-limiting resistor for an LED
+
+An LED has two critical values:
+- **Forward voltage (VLED):** the voltage it drops when operating (typically 2 V for red/green, 3.5 V for blue/white).
+- **Forward current (ILED):** the current it needs to operate at full brightness (typically 20 mA = 0.020 A).
+
+The resistor must drop the remaining voltage above the LED's forward voltage:
+
+**R = (Vsupply − VLED) / ILED**
+
+After calculating R, always choose the **nearest standard resistor value above** the calculated value. Standard values follow the E12 or E24 series (common values: 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000 Ω...).
+
+</Section>
+
+<WorkedExample title="Calculating R for an LED in the Firefighter Barbie circuit">
+**Given:** Supply voltage = 9 V. LED forward voltage = 2 V. LED current = 20 mA.
+
+**Step 1 — Write the formula:**
+R = (Vsupply − VLED) / ILED
+
+**Step 2 — Convert mA to A:**
+20 mA = 0.020 A
+
+**Step 3 — Substitute:**
+R = (9 − 2) / 0.020 = 7 / 0.020 = 350 Ω
+
+**Step 4 — Choose nearest standard value above 350 Ω:**
+From the E12 series: 390 Ω is the next value above 350 Ω.
+
+**Answer:** Use a 390 Ω resistor. This keeps the LED current just below 20 mA (safe), with no risk of burning the LED.
+</WorkedExample>
+
+<Section title="The NPN transistor as a switch" icon="🔧" id="transistor">
+
+### The three terminals
+
+- **Base (B):** The control input. A small current into the base switches the transistor on.
+- **Collector (C):** Connected to the positive supply via the output device (motor or LED). When the transistor is on, current flows from collector to emitter through the output device.
+- **Emitter (E):** Connected to 0 V (the negative rail). Current exits the transistor here.
+
+### Switching action
+
+- **Transistor OFF (base current = 0):** No path from collector to emitter. Output device (motor) receives no current. Motor stops.
+- **Transistor ON (base current flows):** Transistor conducts from collector to emitter. Current flows through the motor. Motor runs.
+
+**Key point:** A very small base current (microamps) controls a much larger collector current (milliamps or more). The transistor amplifies the control signal.
+
+### Applied to Firefighter Barbie
+
+The thermistor voltage divider (covered in Week 9) provides the base voltage. When temperature rises:
+- Thermistor resistance falls → junction voltage rises → reaches base threshold → transistor switches on → motor runs → crank opens the door.
+
+### Exam practice — Section A units drill
+
+In the bonus session: a mixed Section A set on circuit symbols, IPO labelling, series/parallel, and component identification. Then a units-matching exercise: pair each quantity (current, voltage, resistance) with its unit (A, V, Ω) and its sub-multiples (mA, kΩ).
+
+</Section>
+
+<Activity title="Resistor calculations and transistor circuit drawing" time="90 min (W session) + 45 min (B session)" grouping="Individual" materials={["Resistors (various values)", "NPN transistors (BC547)", "Breadboards", "Formula strip", "A4 paper for circuit diagrams"]}>
+**W session:**
+1. Complete three LED resistor calculations with different supply voltages and LED currents. Show every step: formula → convert mA to A → substitute → calculate R → choose nearest standard value.
+2. Draw the Firefighter Barbie transistor switch circuit: thermistor voltage divider feeding the base, motor at the collector, resistor between supply and collector. Label: base, collector, emitter, current direction, IPO.
+
+**B session:**
+3. Mixed Section A set: symbol identification (six components), IPO labelling (one circuit), series/parallel identification, one resistor calculation.
+4. Units matching exercise: match current, voltage, resistance to their units; convert mA to A, kΩ to Ω for three given values.
+</Activity>
+
+<Support title="Scaffolds for calculations and transistor circuit">
+**Formula strip:** V = IR, I = V/R, R = V/I — keep on your desk. For the LED resistor, always use R = (Vsupply − VLED) / ILED, not plain V/I.
+
+**Partially completed transistor diagram:** If the full circuit drawing is too open, use the version with the transistor symbol and supply connections already drawn — add the base resistor, base connection from the voltage divider, motor symbol, and all labels.
+
+**Step-by-step calculation guide:** Formula → units conversion → substitution → arithmetic → standard value selection. Follow these five steps in order. Never skip the unit conversion step (mA to A is the most common error).
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "An LED has a forward voltage of 2 V and needs 20 mA. The supply is 9 V. What is the calculated resistor value, and which standard value should you use?",
+    options: [
+      "100 Ω — use 100 Ω",
+      "250 Ω — use 270 Ω",
+      "350 Ω — use the nearest standard value of 390 Ω",
+      "700 Ω — use 680 Ω"
+    ],
+    answer: 2,
+    hint: "Use R = (Vsupply − VLED) / ILED. Remember to convert 20 mA to 0.020 A before dividing.",
+    explain: "R = (9 − 2) / 0.020 = 7 / 0.020 = 350 Ω. The nearest standard resistor value above 350 Ω is 390 Ω. Using a value above the calculated figure keeps the LED current safely below its rated maximum."
+  },
+  {
+    q: "In an NPN transistor switch circuit, what happens when a small current flows into the base?",
+    options: [
+      "The transistor blocks current from collector to emitter — the motor stops",
+      "The transistor conducts from collector to emitter — the motor runs",
+      "The transistor conducts from emitter to base — current reverses",
+      "The resistor heats up and the LED turns off"
+    ],
+    answer: 1,
+    hint: "The base is the control input. A small base current switches the transistor ON.",
+    explain: "When base current flows into the NPN transistor, the transistor switches ON and allows a much larger current to flow from collector to emitter. This current flows through the motor, making it run. When base current is zero, the transistor is OFF and the motor stops."
+  },
+  {
+    q: "A resistor is marked 4.7 kΩ. What is this value in ohms?",
+    options: [
+      "47 Ω",
+      "470 Ω",
+      "4,700 Ω",
+      "47,000 Ω"
+    ],
+    answer: 2,
+    hint: "The prefix k means kilo = ×1,000.",
+    explain: "4.7 kΩ = 4.7 × 1,000 = 4,700 Ω. Similarly, 20 mA = 20 × 0.001 = 0.020 A (m = milli = ×0.001). Always convert to base units before substituting into Ohm's Law."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Home task:** (1) Complete one further resistor calculation: supply 6 V, LED forward voltage 2 V, LED current 15 mA. Show all steps. (2) Draw the complete Firefighter Barbie transistor switch circuit from memory, including: battery, thermistor, fixed resistor, NPN transistor (base/collector/emitter labelled), motor. Bring both to Week 9.
+
+<Extension title="Why transistors replaced relays">
+Research one reason why transistors replaced mechanical relays in modern electronics control circuits. Consider: speed of switching, size, power consumption, reliability. Write 50 words in your folder, with one specific comparison (e.g., "A transistor can switch in under 1 microsecond; a relay takes approximately 10 milliseconds").
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.4.4 Resistors (p. 316)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+]} />
+
+<Reflection prompt="How does the transistor 'make the decision' to open the door? Describe the chain from rising temperature to spinning motor in four steps — without looking at your notes." />

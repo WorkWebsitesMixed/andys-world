@@ -1,0 +1,128 @@
+---
+grade: 10
+term: 2
+week: 5
+title: "Joining Techniques, Development Sketches & OnShape 3D"
+topic: "Temporary and permanent joining, design development, and extruding a 3D solid in OnShape"
+learningGoal: "distinguish temporary from permanent joining methods, sketch and annotate two different joining methods for my desk organizer, produce two design development sketches showing different construction approaches, and extrude my W4 OnShape sketch to the correct thickness to produce a 3D solid."
+selGoal: "justify my joining choice using technical criteria, share my reasoning with a partner, and incorporate at least one piece of their feedback."
+draft: false
+---
+
+The difference between a temporary and a permanent joint is not just how it looks — it determines whether the product can be disassembled for repair, which is directly a sustainability decision. Choose your joints with a reason.
+
+<Callout type="exam" title="Paper 3 Section A — joining" id="why">
+  Paper 3 joining questions always ask for justification: "Why is PVA not suitable for joining acrylic to pine?" or "Give one advantage of a temporary joint over a permanent joint." Today you practise giving technical justifications — not just naming the join.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Temporary joint", definition: "A joint that can be assembled and disassembled without damaging the components. Examples: machine screws and nuts, wood screws (can be removed), knock-down (KD) fittings (cam-lock and barrel nut). Temporary joints allow repair and disassembly — relevant to Repair and Reuse in the 6Rs." },
+  { term: "Permanent joint — adhesive", definition: "A joint where components are bonded with adhesive and cannot be separated without damage. PVA (polyvinyl acetate) bonds wood-to-wood only. Contact adhesive bonds most surfaces including wood-to-acrylic and acrylic-to-acrylic. Epoxy resin bonds dissimilar materials. Never use PVA on polymer surfaces — it does not form a bond with acrylic." },
+  { term: "Knock-down fitting", definition: "A temporary joining system designed for flat-pack furniture. A barrel nut is inserted in one component; a cam-lock in the other. A bolt connects them; rotating the cam locks the bolt. Fully reversible, repeatable, and requires no adhesive. Common in MDF flatpack furniture." },
+  { term: "Extrude (CAD)", definition: "The operation that converts a 2D sketch face into a 3D solid by specifying a depth. In OnShape: select the sketch face → Extrude → enter depth in mm. The result is a 3D solid with the profile of the sketch and the depth you specified." },
+]} />
+
+<Section title="Joining method selection" icon="🔧" id="joining">
+
+| Joint type | Bond type | Works on | Key advantage | Key limitation |
+|-----------|-----------|---------|--------------|----------------|
+| Wood screws | Temporary | Wood to wood | Can be removed; strong in shear | Poor in end grain without pilot hole |
+| Machine screw + nut | Temporary | Any (through-holes needed) | Very strong; fully reversible | Requires aligned through-holes |
+| KD cam-lock fitting | Temporary | MDF/panel boards | Flat-pack; repeatable | Not suitable for structural loads |
+| PVA glue | Permanent | Wood to wood only | Strong wood bond; low cost | Does not bond acrylic or metal |
+| Contact adhesive | Permanent | Most surfaces | Bonds dissimilar materials (wood + acrylic) | Immediate bond on contact — no repositioning |
+| Epoxy resin | Permanent | Dissimilar materials | Strongest; works on any pair | Long cure time; expensive |
+
+### Matching the join to the requirement
+
+For the desk organizer:
+- **Frame corners (pine to pine):** PVA + wood screws (strong permanent bond + mechanical backup)
+- **Acrylic panel to pine frame:** contact adhesive (only adhesive that bonds both; permanent = no gap)
+- **Dividers (removable):** wood screws only (allows future compartment reconfiguration)
+
+</Section>
+
+<WorkedExample title="Justifying a joining choice in the folder">
+
+**Component:** acrylic side panel bonded to pine frame.
+
+**Option A — countersunk wood screw:** drills through the acrylic; risk of cracking acrylic at the pilot hole; visible fixings.
+
+**Option B — contact adhesive:** no holes in acrylic; immediate bond; invisible from outside.
+
+**Chosen: Option B (contact adhesive)**
+
+"Contact adhesive is chosen because it bonds acrylic to pine without drilling holes in the acrylic panel (which risks cracking). The bond resists shear along the panel length. PVA was rejected because it does not form an adhesive bond with the acrylic surface."
+
+This is the format for a folder justification: chosen join + technical reason + rejected alternative + reason for rejection.
+</WorkedExample>
+
+<Activity title="Join sketches + development sketches + OnShape extrude" time="90 min" grouping="Individual" materials={["Join samples set (screw, bolt, KD fitting, PVA, contact adhesive, epoxy)", "A4 folder pages", "Student device"]}>
+
+**Join sketches (0–45 min):**
+1. Sketch and annotate two joining methods for your desk organizer:
+   - One wood-to-wood join (label: materials being joined, join type, assembly direction)
+   - One acrylic-to-frame join (label: materials, join type, why this adhesive not another)
+2. Add a justification sentence for each: "I chose ___ because ___ [technical reason]. I rejected ___ because ___."
+
+**Development sketches (45–65 min):**
+3. Produce two development sketches showing two alternative frame constructions — each annotated with material, join type, and an approximate dimension. These are design thinking sketches, not finished drawings.
+4. Peer feedback (65–70 min): a partner reads both development sketches and gives one comment: "The clearer of the two is ___ because ___."
+
+**OnShape — extrude (70–90 min):**
+5. Open your W4 OnShape document. Select the sketch face.
+6. Extrude to the thickness of the component (e.g. 18 mm for a pine base panel).
+7. Apply at least one Fillet to a top edge (radius: 3 mm).
+8. Orbit the view; screenshot for the folder.
+</Activity>
+
+<Support title="Contact adhesive — safe use">
+
+Contact adhesive contains solvent. **Ventilate the room before using.** Apply to both surfaces, allow to dry until tacky (not wet — approximately 5–10 minutes), then press together only once. The bond is immediate on contact and cannot be repositioned. If you press too early (when still wet), the bond is weak.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student uses PVA to bond a 3 mm acrylic panel to a pine frame. After curing, the panel lifts off. What is the most likely cause?",
+    options: [
+      "PVA was applied too thickly and did not cure properly",
+      "PVA does not form an adhesive bond with polymer surfaces — it only bonds wood-to-wood",
+      "The pine surface was not sanded smooth enough before applying PVA",
+      "The joint needed a mechanical fixing (screw) as well as adhesive"
+    ],
+    answer: 1,
+    hint: "Which adhesive is described as working only on wood-to-wood joints?",
+    explain: "PVA (polyvinyl acetate) bonds wood-to-wood by penetrating the wood fibres as it cures. It does not form a chemical bond with polymer surfaces — the acrylic surface is non-porous and the PVA cures without bonding to it. Contact adhesive or epoxy resin is required when one surface is a polymer."
+  },
+  {
+    q: "From a sustainability perspective, which joining method is most aligned with the 'Repair' principle from the 6Rs?",
+    options: [
+      "Contact adhesive — forms the strongest permanent bond",
+      "PVA glue — bonds wood fibres permanently for a long-lasting product",
+      "Epoxy resin — the hardest bond means the product lasts longer before breaking",
+      "Wood screws — can be removed to replace a damaged component, then reinstalled"
+    ],
+    answer: 3,
+    hint: "Which R is about designing a product so it can be taken apart and a damaged part replaced?",
+    explain: "Repair means designing the product so components can be replaced rather than discarded when one part fails. Wood screws can be removed, allowing a cracked panel or damaged compartment to be replaced. Permanent adhesives (PVA, contact adhesive, epoxy) make disassembly impossible without damaging components — this works against the Repair principle."
+  },
+  {
+    q: "A student extrudes their OnShape desk organizer base sketch to 18 mm, but the solid looks much thinner than expected. What is the most likely cause?",
+    options: [
+      "The Fillet tool was applied before the Extrude, removing material from the edges",
+      "The sketch dimensions were entered in cm instead of mm — the base is 18 cm not 18 mm",
+      "The Extrude depth was entered as 18 mm but the sketch was drawn in inches",
+      "The Extrude direction is set to Symmetric rather than One Direction"
+    ],
+    answer: 0,
+    hint: "The sketch looks correct; only the depth (18 mm) was entered. Could the units of the sketch and the extrude be mismatched?",
+    explain: "If the sketch dimensions were entered in centimetres (18 cm) and the extrude depth in millimetres (18 mm), the sketch would be 18 cm (180 mm) wide but only 18 mm thick — making it look very thin by comparison. OnShape documents should be set to mm units from the start. Check Document settings → Units if dimensions look wrong. The most common cause of scale confusion in school projects is cm/mm mismatch."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §3.10 Joining & assembly (p.210)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.6 CAD (p.128)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Which joining choice surprised me most, and what trade-off did I accept? If I redesigned the product to be flat-pack (for shipping), what would change about my joining decisions?" />

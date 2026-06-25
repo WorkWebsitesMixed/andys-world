@@ -1,0 +1,129 @@
+---
+grade: 10
+term: 2
+week: 6
+title: "OnShape III: Full Assembly & Engineering Drawing"
+topic: "Multi-component assembly, mate connectors, and exporting a dimensioned drawing"
+learningGoal: "create a multi-component OnShape assembly of the desk organizer with at least 3 components, apply mate connectors to position components correctly, and export a dimensioned 2-view engineering drawing to PDF."
+selGoal: "manage the 90 minutes independently, using the step-by-step guide without waiting to be told what to do at each step."
+draft: false
+---
+
+The engineering drawing you produce today is the document your workshop session works from. It is the link between the screen and the bench. If your drawing has correct dimensions, your cuts will be correct. If your drawing is incomplete, your making will suffer.
+
+<Callout type="exam" title="Why engineering drawings matter" id="why">
+  Working drawings (C5 in IGCSE Component 2) are assessed in Grade 11. Grade 10 is the practice run. An engineering drawing earns marks only if it is dimensioned, has correct views, and matches what was actually made. Today you produce that document for real — your printed drawing goes straight into the project folder.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Assembly (OnShape)", definition: "A workspace that links separate Part Studio components into a single combined view. Each component retains its own part studio and can be edited independently; the assembly shows how they fit together spatially. The assembly is what you would see if all components were placed together on a real bench." },
+  { term: "Mate connector (Fastened)", definition: "A Fastened mate in OnShape fixes two components in a specific positional relationship so they cannot move relative to each other. It is the equivalent of a permanent joint — once a Fastened mate is applied, the two components behave as one rigid body." },
+  { term: "Engineering drawing", definition: "A formal 2D representation of a 3D object, showing all necessary views and dimensions so that it can be manufactured without the designer being present. Must include: correct projection type (first-angle or third-angle); at least two views (front + side, or front + plan); all critical dimensions; title block (product name, date, scale, drawn by)." },
+  { term: "Third-angle projection", definition: "The drawing convention where each view is placed on the same side as the direction you are looking from — front view in the middle, right-side view to the right, plan (top view) above. Identified by the BS/ISO third-angle symbol. Used in the UK, USA and at Marymount." },
+]} />
+
+<Section title="Building the OnShape assembly" icon="💻" id="assembly">
+
+### Step-by-step
+
+1. **From the Documents page:** click the Desk Organizer document → click the blue (+) tab at the top → select **Assembly**.
+2. **Insert components:** click Insert → choose each part studio component (base, sides, dividers) → click to place.
+3. **Apply Fastened mates:** click Mate → Fastened → click the mate connector on component A, then the matching connector on component B → confirm.
+4. **Orbit and inspect:** use the middle mouse button to orbit; check all components are positioned correctly.
+5. **Create drawing:** File → New Drawing → Insert View → choose the assembly → position front and side views.
+6. **Add dimensions:** Dimension tool → click each edge/face → type the value → OK.
+7. **Fill title block:** product name, your name, date, scale (1:5 or 1:10 for the full desk organizer).
+8. **Export:** File → Export → PDF → print one copy for your folder.
+
+### What makes a drawing complete
+
+| Element | Minimum requirement |
+|---------|-------------------|
+| Views | Front view + at least one other (side or plan) |
+| Dimensions | Overall length × width × height; major component dimensions |
+| Title block | Product name, drawn by, date, scale |
+| Projection symbol | Third-angle symbol (circle with truncated cone) |
+
+</Section>
+
+<WorkedExample title="Assembling three parts in OnShape">
+
+**Parts:** base panel (18 mm pine, 280 mm × 180 mm) + two side panels (3 mm acrylic, 180 mm × 150 mm).
+
+1. Insert base panel → place at origin.
+2. Insert left side panel → Fastened mate: align the bottom face of the side panel to the top face of the base at the left edge.
+3. Insert right side panel → Fastened mate: mirror position on the right.
+4. Orbit to inspect: base visible as floor; sides standing vertical at each end.
+5. Drawing: front view shows both sides and the base in elevation. Side view shows the depth of the base and the height of the sides.
+6. Three key dimensions added: total height (150 + 18 = 168 mm), total width (280 mm), base thickness (18 mm).
+</WorkedExample>
+
+<Activity title="OnShape assembly + engineering drawing" time="90 min" grouping="Individual" materials={["Student device with browser access to onshape.com", "Printer (for final 10 min)", "Folder for drawing printout"]}>
+
+**Assembly (0–70 min):**
+1. Build the full desk organizer assembly in OnShape — all components from your making plan.
+2. Apply Fastened mates to position every component correctly.
+3. Orbit and inspect: do all components sit in the correct position relative to each other?
+
+**Engineering drawing (70–85 min):**
+4. Create a new drawing from the assembly.
+5. Add front and side views.
+6. Dimension every component (minimum: overall height, overall width, base thickness, side panel thickness).
+7. Complete the title block.
+8. Export to PDF.
+
+**Print + file (85–90 min):**
+9. Print one copy (or save as PDF and send to teacher for printing).
+10. File the printed drawing in your project folder — this is the document you use for making in Week 7.
+</Activity>
+
+<Support title="If your assembly is not fitting together correctly">
+
+Check the mate connector direction. A Fastened mate works by aligning two mate connectors — if the connector axes point in opposite directions, the parts will overlap instead of aligning. Click Flip on one of the connectors to reverse its direction.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student's OnShape engineering drawing shows only one view (the front elevation). The examiner's comment is: 'Not sufficient to manufacture from.' Why?",
+    options: [
+      "A single view does not show the depth of the product — a viewer cannot determine how wide or deep the desk organizer is from the front view alone",
+      "The front view is the least important view — the side view should always be shown first",
+      "One view is sufficient if all dimensions are shown on it",
+      "The drawing needs to be in isometric projection, not orthographic"
+    ],
+    answer: 0,
+    hint: "What information does a front view give, and what information does it not give?",
+    explain: "A front elevation shows height and width but gives no information about depth. Without a side view (which shows height and depth) or a plan view (which shows width and depth), it is impossible to determine the 3D form of the product from the drawing alone. A minimum of two orthographic views is required for a manufacturing drawing. The isometric view (option D) is useful for visualisation but is not an orthographic engineering drawing."
+  },
+  {
+    q: "What does the third-angle projection symbol on an engineering drawing tell the manufacturer?",
+    options: [
+      "The drawing was made using third-party software",
+      "The views are arranged so each view is on the same side as the direction you look from — right-side view goes to the right, plan view goes above the front",
+      "The drawing has been checked and approved by a third party",
+      "Three views must always be shown for the drawing to be valid"
+    ],
+    answer: 1,
+    hint: "Projection type controls how views are positioned relative to each other on the drawing sheet. What is the rule for third-angle?",
+    explain: "Third-angle projection places each view on the side from which you look: if you look at the object from the right, the right-side view goes to the right of the front view. This is in contrast to first-angle projection (common in mainland Europe) where the right-side view goes to the left. The projection symbol (a circle with a truncated cone) tells the manufacturer which convention is used, so they place each view correctly when reading the drawing."
+  },
+  {
+    q: "A student's OnShape assembly has the side panels passing through the base panel (overlapping) rather than sitting on top of it. What most likely caused this?",
+    options: [
+      "The Extrude for the base was made too thin, so the sides appear larger than the base",
+      "The Fastened mate connector on one component points in the wrong direction — flipping it would correct the position",
+      "The Assembly view does not show true positions — the parts are correct when exported to a drawing",
+      "The side panel sketch was drawn in the wrong plane in its Part Studio"
+    ],
+    answer: 1,
+    hint: "In a Fastened mate, what controls which face aligns with which?",
+    explain: "A Fastened mate aligns two mate connectors — one on each component. If the connector on the side panel points downward (into the base) instead of upward (resting on the base top face), the side panel will be positioned below the base rather than resting on it. Clicking Flip on the mate connector reverses its direction, moving the side panel to the correct position on top of the base."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.6 CAD (p.128)", type: "Textbook" },
+]} />
+
+<Reflection prompt="What would have been different if I had built the CAD model before drawing my development sketches — rather than after? Which came out more detailed: the sketch or the CAD drawing?" />

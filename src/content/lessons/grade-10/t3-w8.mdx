@@ -1,0 +1,130 @@
+---
+grade: 10
+term: 3
+week: 8
+title: "Manufacturing Plan II: QC, H&S & Section A Drill"
+topic: "Completing the plan with quality control and safety notes, plus Paper 3 Section A revision"
+learningGoal: "complete the full manufacturing plan with all components and columns filled, add at least two quality control checkpoints with method and tolerance, state one H&S precaution with reason for each manufacturing step, and complete a timed Paper 3 Section A drill covering all year's content scoring at least 70%."
+selGoal: "take responsibility for the completeness of my plan — check every row has no blank cells; and flag one question I genuinely do not know the answer to rather than guessing."
+draft: false
+---
+
+The manufacturing plan is the most complex document in the M2 package. Every row must be complete: no blank cells. A plan with gaps is not a plan — it is a sketch. Today you complete it and begin the most focused Section A revision session of the year.
+
+<Callout type="exam" title="Graded Moment 2 — 30% of term" id="graded">
+  **M2 (30%) is collected at the start of Week 9.** The package includes: redesign brief + specification + design sketches + manufacturing plan (all components, all columns, QC + H&S). Teacher and drawing colleague co-mark together. Check every page before next session.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Quality control checkpoint placement", definition: "QC checkpoints are placed at critical steps in the sequence — after operations where a defect would be expensive to fix downstream. For a bottle cap: wall thickness after moulding (before threading — a thin wall cannot hold the thread); thread dimension after tooling (before assembly — a wrong thread will not fit the bottle); cap torque before labelling (a loose cap will leak in use)." },
+  { term: "Go/no-go gauge", definition: "A gauging tool that checks whether a dimension falls within tolerance limits without measuring the exact value. The GO end of the gauge (maximum acceptable size) must fit; the NO-GO end (minimum acceptable + tolerance) must not fit. Rapid, non-destructive, usable by an unskilled operator on a production line." },
+  { term: "Section A timing strategy", definition: "Paper 3 Section A is approximately 40 marks. Total time: allow 1–1.5 min per mark. Common trap: spending 6 minutes on a 2-mark question, leaving insufficient time for a 6-mark question. Write the main point first; add detail only if time allows. Never leave a sub-part blank — a material name alone earns 1 mark even without a full explanation." },
+  { term: "Tolerance notation", definition: "Written as: target value ± allowable deviation. Example: 28.0 ± 0.1 mm. This means the acceptable range is 27.9 mm to 28.1 mm. In a manufacturing plan, every QC checkpoint must state the tolerance — otherwise the checkpoint cannot distinguish a passing from a failing measurement." },
+]} />
+
+<Section title="Quality control techniques" icon="✅" id="qc">
+
+### Common QC methods for water bottle production
+
+| Step checked | QC method | Tolerance (example) | Action on failure |
+|-------------|-----------|-------------------|-----------------|
+| Bottle wall thickness | Ultrasonic thickness gauge | 0.20 ± 0.05 mm | Reject; raw material returned |
+| Cap thread diameter | Go/no-go gauge | 28.0 ± 0.1 mm | Reject; remelt |
+| Cap opening torque | Torque meter | 0.5–1.5 N·m | Adjust mould temperature |
+| Bottle leak test | Fill and invert at 2 bar, 30 s | Zero leakage | Reject batch; check sealing station |
+| Label position | Machine vision system | ± 2 mm from target | Auto-reject; recalibrate |
+
+### Health and safety at key manufacturing steps
+
+| Process | Specific hazard | PPE / precaution |
+|---------|----------------|-----------------|
+| Injection moulding | Molten PP at 230°C | Heat-resistant gloves + face shield |
+| Blow moulding | Compressed air (up to 40 bar) | Interlocked guards; no access during cycle |
+| CNC machining | Moving cutters; swarf | Machine guards + emergency stop; no loose clothing |
+| Chemical finishing (anodising) | Acid bath (sulphuric acid) | Acid-resistant apron, gloves, face shield; emergency shower |
+| UV printing | UV lamp exposure | UV-blocking eyewear; enclosed print station |
+
+</Section>
+
+<WorkedExample title="Complete plan row — PP bottle cap">
+
+| Column | Content |
+|--------|---------|
+| Component | Bottle cap |
+| Material | Polypropylene (PP), food grade, white |
+| Commercial process | Injection moulding |
+| Justification | PP is injection mouldable; the cap requires complex internal thread geometry and high dimensional precision at the thread diameter — only injection moulding can produce this geometry with sufficient repeatability at 2 million units/year. |
+| Sequence | 1. PP granules loaded into hopper. 2. Rotating screw melts and pushes PP toward nozzle (~230°C). 3. Molten PP injected under pressure into cooled steel mould. 4. Mould cool water channels reduce PP to ~50°C. 5. Mould opens; ejector pins release cap. 6. Cap inspected: thread diameter go/no-go gauge. |
+| H&S | Molten PP at 230°C — heat-resistant gloves and face shield worn when clearing blockages; machine guards closed before injection cycle starts. |
+| QC | Thread diameter: go/no-go gauge, tolerance 28.0 ± 0.1 mm. Checked every 500 units. Units outside tolerance rejected and remelted. |
+
+</WorkedExample>
+
+<Activity title="Complete the plan + peer check + Section A drill" time="90 min" grouping="Individual" materials={["Manufacturing plan in progress", "QC template", "Paper 3 Section A drill sheet (10 items, all year content)", "Revision card"]}>
+
+**Complete the plan (0–60 min):**
+1. Complete any unfinished manufacturing plan rows — every column must have content.
+2. Add QC checkpoints to at least two steps: what is checked, method, tolerance, action on failure.
+3. Add H&S notes to at least two manufacturing steps: specific hazard + specific precaution.
+
+**Peer check (60–70 min):**
+4. Swap plans with a partner. Circle every blank cell. Return with a written note: "Blank cells found in: ___."
+5. Fill any blanks identified.
+
+**Paper 3 Section A timed drill (70–90 min):**
+6. 10 items across all year content: material properties (4), joining (2), commercial processes (3), sustainability (1).
+7. Allow approximately 1.5 min per mark.
+8. Self-mark. Write two revision targets on your revision card: "Before M3, I need to review: (1) ___ (2) ___."
+</Activity>
+
+<Support title="If you cannot answer a drill question">
+
+Write the material or process name anyway — even a named material without a full explanation earns 1 mark. Then flag it on your revision card. Do not leave the question blank. Partial credit on a question you are unsure of is better than zero from a blank.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A manufacturing plan QC checkpoint says: 'Check the cap diameter.' An examiner marks this as incomplete. What two things are missing?",
+    options: [
+      "The frequency of checking and the name of the QC technician",
+      "The specific measurement method (e.g. go/no-go gauge or calliper) and the tolerance (e.g. 28.0 ± 0.1 mm)",
+      "The name of the commercial process that produced the cap",
+      "The H&S precaution for the QC checking operation"
+    ],
+    answer: 1,
+    hint: "A QC checkpoint must allow someone else to run the check and make a pass/fail decision. What information is needed for that?",
+    explain: "A complete QC checkpoint requires: what is checked (cap diameter — ✓), how it is checked (go/no-go gauge or calliper — ✗ missing), and what range constitutes a pass (tolerance: 28.0 ± 0.1 mm — ✗ missing). Without the method and tolerance, two different operators could reach different conclusions about the same cap. The checkpoint must be objective and repeatable, which requires both pieces of information."
+  },
+  {
+    q: "A Section A question asks: 'Name a process used to join two pieces of pine in a desk organizer and give one advantage of this method. [2 marks]' A student writes: 'Joining. It holds the wood together.' How many marks does this score?",
+    options: [
+      "2 marks — 'joining' is named and 'holds the wood together' is an advantage",
+      "1 mark — an advantage is given but the process is not named",
+      "0 marks — 'joining' is not a process name and 'holds the wood together' is not a specific advantage",
+      "1 mark — 'joining' earns the process name mark; the advantage is too vague"
+    ],
+    answer: 2,
+    hint: "What is a process name? Is 'joining' a specific process? What is a specific advantage?",
+    explain: "'Joining' is a category, not a process name. The answer needs a specific process: PVA adhesive, wood screws, KD cam-lock fitting, mortise and tenon, etc. 'Holds the wood together' is a description of what any join does — not a specific advantage of the named process. A full 2-mark answer: 'Wood screws [1 mark — specific process]. The screw can be removed to allow the joint to be disassembled for repair or reconfiguration, which is not possible with PVA adhesive [1 mark — specific advantage].' Both marks require specificity."
+  },
+  {
+    q: "Why should a QC checkpoint be placed after an operation rather than at the end of the production line?",
+    options: [
+      "Because it is cheaper to inspect parts mid-process than at the end",
+      "Because defects caught early can be corrected or rejected before additional cost (time, materials, energy) is spent on a part that will ultimately be rejected anyway",
+      "Because end-of-line inspection is illegal in most countries",
+      "Because go/no-go gauges only work on parts that have not yet been labelled"
+    ],
+    answer: 1,
+    hint: "What happens to a defective part if the defect is not caught until the end of the line?",
+    explain: "If a defective part is not caught until the final inspection, it has already passed through all subsequent operations — labelling, packaging, storage — adding cost at each stage. If the defect is caught immediately after the operation that created it (e.g. a wall too thin after blow moulding), the part is rejected before any further cost is added. This is why QC checkpoints are placed at 'critical steps' — the points where catching a defect prevents the most wasted cost downstream."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §3.13 Metal processes (p.224)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §3.12 Polymer processes (p.218)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.5 Health & safety (p.55)", type: "Textbook" },
+]} />
+
+<Reflection prompt="If I were a quality control manager, which checkpoint would I invest the most resources in — and why? Which step, if its QC is missed, would create the most expensive downstream problem?" />

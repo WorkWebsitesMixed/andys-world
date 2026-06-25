@@ -1,0 +1,134 @@
+---
+grade: 10
+term: 3
+week: 7
+title: "Manufacturing Plan I: Process Selection & OnShape Revolve"
+topic: "Choosing commercial processes, sequence of operations, and modelling a redesigned component"
+learningGoal: "select a commercial manufacturing process for each component of my redesigned water bottle and justify each choice, draft a sequence of operations for two components, and model at least one redesigned component in OnShape using the Revolve feature."
+selGoal: "challenge my first process choice for at least one component, considering an alternative and explaining why I rejected it; and notice if my CAD model differs from my design sketch and choose which is more accurate."
+draft: false
+---
+
+A manufacturing plan is the bridge between a design sketch and a production line. It specifies what material each component is made from, which commercial process is used, in what sequence operations happen, and what quality checks are in place. Today you build the first half of that plan.
+
+<Callout type="exam" title="Paper 3 Section B — process selection" id="why">
+  Section B sub-parts often ask: "Name the process used to make this component and justify your choice." The justification must link: material → process capability → component shape/function. A process that is correct for the material but wrong for the shape scores zero on the justification.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Process selection criteria", definition: "The three factors that determine the correct commercial process: (1) material — what polymer or metal; (2) shape — solid or hollow, simple or complex, open or closed; (3) scale — how many units per year determine whether high tooling cost (injection moulding) is economical. Match all three before selecting a process." },
+  { term: "Sequence of operations", definition: "A numbered list of production steps for one component, from raw material to finished part. Each step states: the operation (e.g. 'inject'), the material state (e.g. 'molten PP'), and any tool or machine used. A complete sequence allows any trained operator to produce the component without additional guidance." },
+  { term: "Manufacturing plan table", definition: "A structured table with columns: component name | material | commercial process | justification (process + reason) | sequence of operations | health and safety note | QC checkpoint. All cells must be filled — blank cells indicate incomplete planning." },
+  { term: "OnShape Revolve", definition: "A feature that creates a 3D solid by rotating a 2D profile sketch around a centreline axis. Used for components with rotational symmetry: bottle caps, bottle bodies, wheel hubs. Sketch one half of the cross-section profile; select the centreline; rotate 360°. The result is a solid of revolution." },
+]} />
+
+<Section title="Process selection — decision rules" icon="🏭" id="selection">
+
+### How to choose the right process
+
+| If the material is... | And the shape is... | Consider... |
+|----------------------|-------------------|-------------|
+| Thermoplastic (PP, PE, ABS) | Complex 3D solid, closed shape | Injection moulding |
+| Thermoplastic (PE, PET) | Hollow sealed container | Blow moulding (extrusion or injection stretch) |
+| Thermoplastic | Simple open-top tray | Vacuum forming |
+| Aluminium | Thin-walled hollow tube/can | Impact extrusion |
+| Aluminium, zinc alloy | Complex 3D solid | Die casting |
+| Aluminium/steel sheet | Open cup, shallow container | Deep drawing |
+| PET specifically | Clear drinks bottle | Injection stretch blow moulding |
+
+### Manufacturing plan — column definitions
+
+| Column | What to write |
+|--------|--------------|
+| Component | Name (e.g. "bottle cap") |
+| Material | Full name + grade (e.g. "polypropylene (PP), food grade") |
+| Commercial process | Full process name (e.g. "injection moulding") |
+| Justification | Process name + reason (material property + shape requirement) |
+| Sequence | Numbered steps; material state at each |
+| H&S | One specific precaution + reason (e.g. "heat-resistant gloves — molten PP at 230°C") |
+| QC checkpoint | What is checked, method, tolerance, action on failure |
+
+</Section>
+
+<WorkedExample title="Manufacturing plan row — PET bottle body">
+
+| Column | Content |
+|--------|---------|
+| Component | Bottle body |
+| Material | PET (polyethylene terephthalate), food grade, clear |
+| Commercial process | Injection stretch blow moulding |
+| Justification | PET requires injection stretch blow moulding because: (1) PET must be biaxially stretched to achieve the clarity and strength required for a drinks bottle; (2) simple blow moulding cannot stretch PET sufficiently. |
+| Sequence | 1. PET granules dried (moisture causes hydrolysis). 2. Preform injection-moulded to correct weight. 3. Preform reheated to above glass transition temperature. 4. Preform stretched longitudinally by stretch rod. 5. Compressed air blown — PET inflates against mould. 6. Mould opens; bottle ejected. 7. Flash trimmed from neck. |
+| H&S | Heat-resistant gloves worn when handling preforms from reheating oven (surface temperature ~100°C). |
+| QC | Wall thickness checked ultrasonically every 500 units; tolerance: 0.20 ± 0.05 mm. Units outside tolerance rejected before labelling. |
+
+</WorkedExample>
+
+<Activity title="Manufacturing plan (partial) + OnShape Revolve" time="90 min" grouping="Individual" materials={["Manufacturing plan table template", "Student device with OnShape access", "Design sketches from W6"]}>
+
+**Manufacturing plan (0–65 min):**
+1. Complete plan rows for at least two components of your redesigned water bottle (from the template). All columns must be filled.
+2. For one component, write the complete sequence of operations (minimum 5 steps). State the material condition at each step.
+3. Challenge step: for one component, write down your first process choice and then consider an alternative. Write: "My first choice was ___. I considered ___ as an alternative. I rejected it because ___."
+
+**OnShape — Revolve (65–90 min):**
+4. Watch the Revolve demo (5 min): teacher creates a bottle cap profile from a 2D cross-section, selects the centreline, revolves 360°.
+5. Open your OnShape Desk Organizer document → new part studio called "Redesigned Component."
+6. Sketch the cross-section profile of your redesigned component (e.g. cap cross-section).
+7. Use Revolve: select the profile, set centreline, revolve 360°. Apply one fillet.
+8. Screenshot and save for the folder. Note: does the model match your W6 design sketch? If not, which is more accurate to your intent?
+</Activity>
+
+<Support title="OnShape Revolve — common errors">
+
+**Error: profile crosses the centreline.** The profile must be entirely on one side of the centreline axis. If any line of the profile crosses the axis, the revolve will fail or produce inside-out geometry. Move the profile so it is fully to one side.
+
+**Error: profile is not closed.** The profile must be a fully closed loop (no gaps). Use the Trim or Extend tools to close any gaps. All lines must be black (fully constrained) before revolving.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student is making a redesigned bottle cap in PP for a run of 2 million units per year. They propose using vacuum forming. What is wrong with this choice?",
+    options: [
+      "Vacuum forming cannot process PP — it only works with PET",
+      "Vacuum forming produces open-topped shapes only — it cannot produce a closed cap with internal thread geometry; injection moulding is the correct choice for a complex 3D solid at high volume",
+      "Vacuum forming is too slow for 2 million units — only die casting achieves this throughput",
+      "Vacuum forming is only suitable for aluminium, not polymers"
+    ],
+    answer: 1,
+    hint: "What shapes can vacuum forming produce? What shape is a bottle cap?",
+    explain: "Vacuum forming produces open-topped shapes by pressing a softened sheet over a mould. A bottle cap is a complex 3D solid with internal thread geometry and a closed top — vacuum forming cannot produce this shape. Injection moulding is correct: it can produce complex 3D forms (including internal threads) with tight dimensional control, and at 2 million units/year the steel mould cost is spread across enough units to be economical."
+  },
+  {
+    q: "In the OnShape Revolve feature, what does the centreline axis do?",
+    options: [
+      "It sets the direction in which the sketch will be extruded",
+      "It defines the axis around which the 2D profile sketch is rotated to create a solid of revolution",
+      "It marks the symmetry line so the sketch is mirrored to both sides",
+      "It defines the mating face where two components will be joined in the assembly"
+    ],
+    answer: 1,
+    hint: "Revolve creates a shape by rotating a profile. Around what does it rotate?",
+    explain: "The centreline axis is the axis of rotation in OnShape's Revolve feature. The 2D profile sketch is rotated around this axis by a specified angle (typically 360° for a full solid of revolution). The centreline must be a line on the same sketch as the profile — usually drawn as a construction line (dashed) at the centre of the intended solid. Without it, the Revolve cannot determine the axis of rotation."
+  },
+  {
+    q: "A manufacturing plan row has a blank H&S cell. An examiner notes this as incomplete. Why is a health and safety note required in every row?",
+    options: [
+      "Because it is a school requirement but not an exam requirement",
+      "Because each manufacturing step has its own specific hazard — the H&S note at that step tells operators what protection is required for that specific operation, not just in general",
+      "Because H&S notes are only required for metal processes, not polymer processes",
+      "Because the H&S note proves the student visited a factory and observed real conditions"
+    ],
+    answer: 1,
+    hint: "A general 'wear PPE' instruction at the start of the plan is different from a step-specific H&S note. Why does each step need its own?",
+    explain: "Each manufacturing step has a different hazard profile: reheating PET preforms requires gloves for surface heat; blow moulding requires guards against compressed air; injection moulding involves high-temperature molten polymer; CNC machining needs machine guards. A single general 'wear PPE' note does not tell an operator which PPE is required at which step or why. Step-specific H&S notes demonstrate that the student understands the hazard at each point in the process."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §3.12 Polymer processes (p.218)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §3.13 Metal processes (p.224)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.6 CAD (p.128)", type: "Textbook" },
+]} />
+
+<Reflection prompt="Would a different scale of production change my process choice? If I only needed 50 redesigned caps (not 2 million), what process would I use instead — and why would that be economical at small scale but not at large scale?" />

@@ -1,0 +1,167 @@
+---
+grade: 10
+term: 1
+week: 9
+title: "Electronics III: Thermistors, Voltage Dividers & Workshop Safety"
+topic: "Thermistor sensing, voltage divider circuit, and makerspace induction"
+learningGoal: "explain how an NTC thermistor's resistance changes with temperature, connect a thermistor voltage divider to an NPN transistor switch, and demonstrate that the complete circuit activates the motor when the thermistor is warmed."
+selGoal: "work safely and patiently at the electronics bench, following every instruction from the technician before acting."
+draft: false
+---
+
+This is the session where the circuit becomes real. You have the symbols, the Ohm's Law calculation, and the transistor switch from last week. Today you add the thermistor, wire the voltage divider that feeds it to the transistor base, and test whether warming your hand near the sensor actually starts the motor. Then in the bonus session, the makerspace opens — but only after a safety check you must pass at 100%.
+
+<Callout type="exam" title="NTC thermistors in Section A" id="why">
+  Section A regularly asks: "Describe how an NTC thermistor responds to a rise in temperature." The answer must use the phrase **Negative Temperature Coefficient** and state that resistance **decreases** as temperature **increases**. Answers that say resistance increases, or omit the direction of change, earn zero.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "NTC thermistor", definition: "A resistor whose resistance decreases as temperature increases. NTC = Negative Temperature Coefficient. Used as a heat sensor in the Firefighter Barbie circuit." },
+  { term: "Voltage divider", definition: "Two resistors in series across a supply. The voltage at the junction between them is a fraction of the supply, determined by the ratio of the two resistances. Used to convert the thermistor's resistance change into a voltage change that drives the transistor base." },
+  { term: "Base threshold", definition: "The minimum voltage at the transistor base terminal required to switch it on. Approximately 0.6–0.7 V for a silicon NPN transistor (BC547)." },
+  { term: "PPE (Personal Protective Equipment)", definition: "Safety equipment worn in the makerspace: safety glasses, apron, closed-toe shoes. Required before entering the workshop — no exceptions." },
+  { term: "Safety symbol categories", definition: "Mandatory (blue circle — you must do this), Prohibition (red circle with diagonal bar — you must not do this), Warning (yellow triangle — a hazard is present)." },
+]} />
+
+<Section title="The NTC thermistor and voltage divider" icon="🔧" id="thermistor">
+
+### NTC thermistor behaviour
+
+NTC stands for **Negative Temperature Coefficient** — as temperature rises, resistance falls.
+
+| Temperature | Thermistor resistance | Effect on circuit |
+|---|---|---|
+| Cold (room temp) | High (e.g. 10,000 Ω) | Low voltage at divider junction — transistor OFF — motor stopped |
+| Warm (hand or breath) | Medium (e.g. 3,000 Ω) | Rising voltage at junction |
+| Hot (fire conditions) | Low (e.g. 500 Ω) | High voltage at junction — transistor switches ON — motor runs |
+
+### The voltage divider: how it converts resistance to voltage
+
+Connect the thermistor in series with a fixed resistor between the supply (+9 V) and 0 V. Take the output voltage from the junction between the two components:
+
+**Junction voltage = Vsupply × Rfixed / (Rthermistor + Rfixed)**
+
+As temperature rises: Rthermistor decreases → denominator decreases → junction voltage increases → eventually exceeds the base threshold → transistor ON → motor runs.
+
+**Choosing the fixed resistor:** Match it to approximately the thermistor's resistance at the trigger temperature. A 10 kΩ fixed resistor with a 10 kΩ thermistor gives exactly half the supply voltage at room temperature — well below the base threshold. As the thermistor warms and its resistance drops below the fixed resistor value, the junction voltage rises above the threshold.
+
+### LDR comparison
+
+An **LDR (Light Dependent Resistor)** works on the same principle, but responds to light instead of temperature. Resistance decreases as light increases. The same voltage divider and transistor circuit applies — the only difference is the sensing element. This makes Section A questions predictable: if you understand the thermistor circuit, you understand the LDR circuit.
+
+</Section>
+
+<WorkedExample title="Tracing the voltage at the divider junction">
+**Circuit:** 9 V battery, 10 kΩ fixed resistor in series with a 10 kΩ NTC thermistor.
+
+**At room temperature (thermistor = 10 kΩ):**
+Junction voltage = 9 × 10,000 / (10,000 + 10,000) = 9 × 0.5 = 4.5 V
+
+Transistor base threshold ≈ 0.7 V — but 4.5 V is much higher than 0.7 V, so why isn't the transistor already on? Because there is a **base resistor** (typically 10–47 kΩ) between the junction and the base, which limits base current so the transistor stays in the linear region rather than saturating at room temperature.
+
+**At elevated temperature (thermistor = 1 kΩ):**
+Junction voltage = 9 × 10,000 / (1,000 + 10,000) = 9 × 0.909 = 8.2 V → transistor fully saturated → motor at full speed.
+
+In practice, the trigger point is set by the value of the base resistor and the transistor's gain. For this project, hand warmth (≈35°C) should be sufficient to trigger the motor.
+</WorkedExample>
+
+<Section title="Bonus session: workshop safety and makerspace induction" icon="🏠" id="safety">
+
+### Safety symbols — three categories
+
+- **Mandatory (blue circle):** You must do this action. Examples: "Eye protection must be worn," "Hearing protection required."
+- **Prohibition (red circle, diagonal bar):** You must not do this. Examples: "No loose clothing," "Do not use mobile phones near machinery."
+- **Warning (yellow triangle):** A hazard is present — take care. Examples: "Danger: rotating machinery," "Caution: hot surface."
+
+**Exam note:** The category is identified by shape and colour, not by the specific symbol inside. A yellow triangle always means warning regardless of what is depicted inside it.
+
+### PPE required in the makerspace
+
+- **Safety glasses:** Always when using any cutting tool, drilling, or sanding.
+- **Apron:** Protects clothing and provides a barrier from chips.
+- **Closed-toe shoes:** Mandatory — no exceptions for sandals or open-toe footwear.
+
+### Safety check: pass mark = 100%
+
+You must correctly identify all safety symbols shown before you are signed off for makerspace access. This is not negotiable — it is a health and safety requirement, not an academic assessment.
+
+</Section>
+
+<Activity title="Circuit building and safety induction" time="90 min (W session) + 45 min (B session)" grouping="Individual (circuit) / Group (safety)" materials={["NTC thermistors (10 kΩ)", "NPN transistors (BC547)", "DC motors", "9 V batteries", "Fixed resistors (10 kΩ)", "Breadboards", "Pre-stripped leads", "Safety symbol flashcards"]}>
+**W session:**
+1. Build the complete Firefighter Barbie circuit on a breadboard: thermistor voltage divider → base resistor → NPN transistor base → motor at collector. No soldering required.
+2. Test: warm the thermistor with your hand or breath. Does the motor activate? If not, check each connection methodically (see Support notes).
+3. Draw the complete, labelled circuit diagram: all components, all connections, IPO labels. Note the approximate temperature at which the motor triggered.
+
+**B session:**
+4. Safety-symbol matching exercise: correctly identify 10 symbols covering mandatory, prohibition, and warning categories.
+5. Makerspace walk-through: locate the emergency stop, the fire exit, the first-aid kit, and the PPE storage.
+6. Sign the makerspace safety code. Receive sign-off for Week 10 workshop access.
+</Activity>
+
+<Support title="Troubleshooting the circuit">
+**Motor does not activate at all:** Check the battery connection — is the positive terminal connected to the correct rail? Check the transistor orientation — base, collector, emitter must match the circuit diagram (not interchangeable).
+
+**Motor runs all the time (even cold):** The base resistor value may be too low. Try increasing it (e.g., from 10 kΩ to 47 kΩ) to raise the trigger threshold.
+
+**Motor activates then stops immediately:** Check that the thermistor leads are securely in the breadboard — intermittent contact causes flickering.
+
+**Breadboard guide:** Holes in the same horizontal row on each side of the central channel are connected. The two long rails (red and blue) run the full length of the board.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "An NTC thermistor is placed in a warm environment. What happens to its resistance?",
+    options: [
+      "It increases — more thermal energy means more electrical resistance",
+      "It stays the same — thermistors only respond to light, not temperature",
+      "It decreases — NTC stands for Negative Temperature Coefficient",
+      "It drops to zero instantly when any heat is applied"
+    ],
+    answer: 2,
+    hint: "NTC = Negative Temperature Coefficient. The coefficient of resistance with temperature is negative — they move in opposite directions.",
+    explain: "NTC (Negative Temperature Coefficient) means resistance decreases as temperature increases. As the thermistor warms, its resistance falls, which raises the voltage at the divider junction and eventually triggers the transistor."
+  },
+  {
+    q: "In the Firefighter Barbie voltage divider, as temperature rises, what happens to the voltage at the junction between the thermistor and the fixed resistor?",
+    options: [
+      "The voltage decreases because the thermistor resistance increases as temperature rises",
+      "The voltage stays constant — the battery sets all voltages in the circuit",
+      "The voltage increases because the thermistor resistance falls, so a larger fraction of the supply appears across the fixed resistor",
+      "The voltage increases because the battery gets warmer and produces more EMF"
+    ],
+    answer: 2,
+    hint: "Use the formula: junction voltage = Vsupply × Rfixed / (Rthermistor + Rfixed). What happens when Rthermistor decreases?",
+    explain: "As temperature rises, Rthermistor decreases. In the formula, a smaller Rthermistor means a smaller denominator, which makes the fraction larger — so junction voltage increases. When it exceeds the base threshold, the transistor switches on and the motor runs."
+  },
+  {
+    q: "A yellow triangle with a black border on a workshop wall means:",
+    options: [
+      "Action is mandatory — you must do this",
+      "Action is prohibited — you must not do this",
+      "A hazard is present — take care",
+      "This area is safe — no action needed"
+    ],
+    answer: 2,
+    hint: "Safety symbol categories are identified by shape and colour: blue circle = mandatory, red circle = prohibition, yellow triangle = warning.",
+    explain: "Yellow triangles with a black border are warning symbols — they alert you to a hazard (e.g., 'Danger: rotating machinery', 'Caution: hot surface'). The yellow triangle category means 'a hazard is present, take appropriate care.' Blue circles indicate mandatory actions; red circles with a diagonal bar indicate prohibited actions."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Home task:** Complete the Knowledge Check in §4.4.7 of the Collins textbook (transducers). Draw the full Firefighter Barbie circuit from memory including all component names and labels (battery, thermistor, fixed resistor, base resistor, NPN transistor, motor). Check your drawing against your folder circuit diagram.
+
+<Extension title="LDR comparison">
+Describe what would happen if you replaced the thermistor with an LDR in the Firefighter Barbie circuit. In what condition would the motor activate — dark or bright? Would this still work as a fire detector? Write 60 words in your folder, including which type of sensor (thermistor or LDR) is more appropriate for this application and why.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.4.7 Transducers (p. 326)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §1.5 Health and safety (p. 55)", type: "Textbook", href: "https://drive.google.com/file/d/1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0/view?usp=sharing" },
+]} />
+
+<Reflection prompt="What would happen if I used an LDR instead of a thermistor — would the Firefighter Barbie system still work? What does this tell me about choosing the right input sensor for a system?" />

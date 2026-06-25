@@ -1,0 +1,176 @@
+---
+grade: 10
+term: 1
+week: 3
+title: "Isometric Drawing & Specification Writing"
+topic: "3D communication and project specification"
+learningGoal: "draw a crated isometric view of a given component using 30-degree guidelines, and write a project specification of at least five measurable, justified points using ACCESS FM."
+selGoal: "represent the brief's constraints fairly — at least two specification points must reference the pre-set façade or the firefighter's operational needs rather than personal preferences."
+draft: false
+---
+
+Isometric drawing lets you show a 3D object on a 2D sheet without the distortion of perspective. This week you practise it on mechanism components, then apply the same precision to writing a specification — where every point must be measurable and justified, just as every isometric line is drawn at a precise angle.
+
+<Callout type="exam" title="Specification vs wish list" id="why">
+  A specification is not a wish list. Every point must pass two tests: **measurable** (can I test whether the design meets it?) and **justified** (can I trace it back to the brief, the user, or a safety rule?). "The door must look good" fails both. "The door must open at least 60° so the façade opening is wide enough for a person to pass through" passes both.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Isometric drawing", definition: "A 3D drawing technique where all receding lines are drawn at 30° from horizontal. All edges in the same axis are parallel — there is no perspective convergence." },
+  { term: "Crating (isometric)", definition: "Drawing an isometric bounding box first, then sketching the actual form inside it. Essential for irregular or complex 3D shapes." },
+  { term: "ACCESS FM", definition: "A framework for writing specifications: Aesthetics, Cost, Customer, Environment, Size, Safety, Function, Materials. Use it to check you have covered the main design dimensions." },
+  { term: "Measurable specification point", definition: "A specification point that can be tested with a specific method (measure with a ruler, load with a known weight, time with a stopwatch). Vague words like 'strong' or 'quick' are not measurable." },
+]} />
+
+<Section title="Isometric drawing: technique" icon="✏️" id="isometric">
+
+### The three axes
+
+Isometric drawing uses three axes:
+- **Vertical axis** — goes straight up and down on the page.
+- **Left receding axis** — goes up-left at 30° from horizontal.
+- **Right receding axis** — goes up-right at 30° from horizontal.
+
+All edges parallel to an axis are drawn at that angle. All edges are drawn at true length (no foreshortening).
+
+### Steps: crating an isometric box
+
+1. Mark your starting corner at the bottom-front.
+2. Draw the vertical edge upward.
+3. Draw the left and right receding edges at 30° from horizontal.
+4. Complete the remaining edges parallel to these three directions.
+5. Now sketch the actual form inside the crate: slice away the corners, inscribe curves, add internal features.
+
+### Drawing curved shapes isometrically
+
+Circles become **ellipses** on an isometric face. Method:
+1. Draw the isometric square face first.
+2. Mark the midpoint of each side.
+3. Connect opposite midpoints with light arcs — you will see an ellipse forming inside the square. Refine the curve.
+
+For a disc (cam) or cylinder (roller), draw the front ellipse, then draw the back ellipse offset by the depth, and connect the two with tangent lines at top and bottom.
+
+</Section>
+
+<WorkedExample title="Isometric crate of a pear cam disc">
+**Object:** A circular disc (cam) 60 mm diameter, 15 mm thick.
+
+**Step 1:** Draw a 60 × 60 isometric square face (left and right sides at 30°, top horizontal).
+
+**Step 2:** Inscribe the front ellipse by marking midpoints of all four sides and drawing smooth arcs through them.
+
+**Step 3:** Offset the four corners by 15 mm in the depth direction. Draw the back ellipse (only the visible portion — top and right arcs).
+
+**Step 4:** Add tangent lines connecting the front and back ellipses at the top and bottom of the visible edge.
+
+**Step 5:** Thicken all visible outlines. Add construction lines lightly — they show your method.
+</WorkedExample>
+
+<Section title="Specification writing with ACCESS FM" icon="📝" id="specification">
+
+### The ACCESS FM framework
+
+Use each letter to prompt a different kind of specification point:
+
+| Letter | Dimension | Prompt for the door system |
+|---|---|---|
+| A | Aesthetics | Finish, colour, surface quality of the door panel |
+| C | Cost | Affordable within the workshop material budget |
+| C | Customer | Firefighter's operational requirements; building occupant safety |
+| E | Environment | Sustainable material choices; no toxic finishes |
+| S | Size | Must fit within the pre-made façade opening |
+| S | Safety | No sharp edges; circuit meets low-voltage safety rules |
+| F | Function | Door opens automatically; thermistor trigger; motor-driven |
+| M | Materials | Workshop palette materials only |
+
+### The measurable + justified formula
+
+**Formula:** "The [feature] must [measurable criterion] because [reason linked to brief, user, or safety]."
+
+**Example:** "The door must open within 5 seconds of the thermistor reaching 40°C because fire can spread to an adjacent room within 30 seconds."
+
+This point is measurable (5 seconds, 40°C) and justified (fire spread time — a real constraint from the brief).
+
+### Exam practice — sketching mechanism parts
+
+In the bonus session, you draw two mechanism components — a disc and a straight arm — in crated isometric. Both will appear in your finished mechanism design, so this is project work and exam practice simultaneously.
+
+</Section>
+
+<Activity title="Isometric drawing and specification writing" time="90 min (W session) + 45 min (B session)" grouping="Individual" materials={["30-degree isometric guideline paper", "A3 paper", "Pencil", "ACCESS FM prompt card", "Project brief sheet"]}>
+**W session:**
+1. Draw a crated isometric view of the given component (a box with a hole) using the three-axis method. Add at least one ellipse.
+2. Draft your Firefighter Barbie specification: at least five points, each measurable and justified. Use ACCESS FM as a scaffold. Include at least one safety point and one sustainability point.
+
+**B session:**
+3. Draw two mechanism components in crated isometric: a disc (cam) and a straight arm (crank link). Aim for a clean outline and at least one ellipse on the disc face.
+4. Add light shading to one face if time allows — hatching for a metal surface.
+</Activity>
+
+<Support title="Scaffolds for isometric and specification">
+**Isometric paper:** Use pre-printed 30° guideline paper. The guidelines are your scaffolding — draw directly over them until you internalise the angles, then try without.
+
+**Specification sentence frame:** "The [component/feature] must [measurable criterion] because [reason from brief, user, or safety rule]."
+
+**ACCESS FM prompt card:** Keep it beside your folder. For each letter, ask: "Do I have a specification point that covers this dimension?" If not, write one.
+
+**Crating sequence card:** (1) bottom-front corner, (2) three edges of the box, (3) complete the box, (4) sketch the form inside.
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "When drawing in isometric, at what angle are the receding lines drawn from horizontal?",
+    options: [
+      "45 degrees",
+      "30 degrees",
+      "60 degrees",
+      "15 degrees"
+    ],
+    answer: 1,
+    hint: "Isometric projection uses a specific standard angle that creates a balanced 3D appearance on a flat sheet.",
+    explain: "Isometric lines are drawn at 30 degrees from horizontal. This creates the illusion of three dimensions while keeping all edges drawn at true length — unlike perspective drawing, where distant edges appear shorter."
+  },
+  {
+    q: "Which ACCESS FM letter most directly prompts a sustainability specification point?",
+    options: [
+      "A — Aesthetics",
+      "C — Customer",
+      "E — Environment",
+      "M — Materials"
+    ],
+    answer: 2,
+    hint: "Think about which letter covers environmental impact, recyclability, and responsible sourcing.",
+    explain: "E stands for Environment in ACCESS FM. A sustainability point would be traceable to this heading: for example, 'The door panel must be made from FSC-certified timber to minimise deforestation impact.' M (Materials) covers availability and machinability, not sustainability per se."
+  },
+  {
+    q: "Which specification point is measurable and justified?",
+    options: [
+      "The door must open quickly",
+      "The door must look modern and professional",
+      "The door must open at least 60° within 5 seconds of the thermistor reaching 40°C, because fire spreads to adjacent rooms within 30 seconds",
+      "The door must be well made using good materials"
+    ],
+    answer: 2,
+    hint: "Apply both tests: Can I measure it? Can I trace it to the brief or a user need?",
+    explain: "Option C is measurable (60°, 5 seconds, 40°C) and justified (fire spread time — a real constraint). Options A, B, and D contain only vague, untestable language ('quickly', 'modern', 'well made') that would earn zero marks on a mark scheme."
+  }
+]} />
+
+<Section title="Homework & extension" icon="🏠" id="homework">
+
+**Home task:** Finalise your specification to at least six measurable, justified points. Include one safety point (e.g., no exposed sharp edges, low-voltage circuit) and one sustainability point (e.g., FSC-certified wood, recyclable material). Bring the finalised specification to Week 6 for peer review.
+
+<Extension title="Rendered isometric: material texture">
+Add material texture to your disc and arm sketches: hatching (parallel diagonal lines) for a metal surface; cross-hatching for cut sections. Research the standard conventions for wood and metal rendering in engineering drawing and apply them to one face of each component.
+</Extension>
+
+</Section>
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p. 110)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.3 Freehand drawing (p. 120)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.4 Drawing basic shapes (p. 122)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §1.8 Product design application (p. 78)", type: "Textbook", href: "https://drive.google.com/file/d/1LALQ16ljZjug0gE7WVoN2HaERnwFK-4/view?usp=sharing" },
+]} />
+
+<Reflection prompt="Does my specification describe what the door system must DO — or only what I want it to look like? How could I strengthen the weakest point?" />
