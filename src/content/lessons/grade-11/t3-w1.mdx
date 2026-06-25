@@ -2,129 +2,179 @@
 grade: 11
 term: 3
 week: 1
-title: "Makerspace Launch: Safety & First Manufacture (C6)"
-topic: "Project"
-learningGoal: "pass the makerspace safety check and begin manufacturing my first part from my production plan, correctly using at least one process (laser cut, 3D print or hand tool) under supervision."
-selGoal: "follow the staggered schedule and safety rules without being reminded, taking responsibility for my conduct in a shared space."
+title: "Revision Plan + Structures Deep Dive"
+topic: "Revision: Structures"
+learningGoal: "build a personal revision priority list from the M5 analysis; complete six structures Section A questions at full mark under timed conditions"
+selGoal: "revise from my weakest area first — not from the area I already know"
 draft: false
 ---
 
+Term 3 is exam preparation. The November 2027 examination is approximately 8 months away but Paper 4 revision starts today. T3 W1 establishes the revision plan from your M5 analysis and goes deep on Structures — consistently the highest-mark area in Section A and the most calculation-intensive.
 
-This is the term you've been building toward: you start **making your product.**
-Before any machine runs, though, comes safety — and a shared makerspace only works
-if everyone respects the schedule. Today you pass the safety check and cut your
-first part.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Making is <ExamLink to="project">Criterion 6</ExamLink> (product realisation) —
-  worth **30 marks, the single biggest criterion**. It starts now and runs the whole
-  term. Safety comes first because the makerspace is shared by the whole class.
+<Callout type="info" title="T3 bonus sessions" id="bonus">
+  Each main session (W1–W9) is paired with a bonus session. See the bonus sessions (B1–B9) for additional exam practice questions, worked examples, and extended problem sets. The bonus sessions are optional but strongly recommended for any student targeting Grade 8 or above.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "Product realisation (C6)", definition: "Making your product to a precise, working standard — 30 marks." },
-  { term: "PPE", definition: "Personal Protective Equipment — goggles, aprons and so on, worn for safety." },
-  { term: "Emergency stop", definition: "The button that instantly cuts power to a machine in danger." },
-  { term: "Staggered rotation", definition: "A schedule so not everyone needs the same machine at once." },
-  { term: "Quality control (QC)", definition: "Checking each part is right before moving on." },
+  { term: "Consolidation", definition: "The process of moving knowledge from short-term recall (recently studied) to long-term retrieval (available under exam pressure). Consolidation requires spaced repetition — reviewing material at increasing intervals. A topic revised once is forgotten within a week; revised three times with gaps, it is retained for months." },
+  { term: "Active recall", definition: "A revision technique where you test yourself by attempting to reproduce knowledge from memory before checking notes. Active recall is more effective than re-reading notes (passive). Flashcards, past paper questions, and the SelfCheck on every page are all active recall techniques." },
+  { term: "Interleaving", definition: "A revision strategy where different topics are mixed within a study session rather than blocked (studying one topic all day, then moving to the next). Interleaving feels harder but produces better long-term retention and improves performance on exams that mix topics (like Paper 4)." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Building the revision plan" icon="📋" id="plan">
 
-### 1. Safety first — always
+### Step 1: Score the M5 paper by topic
 
-Wear the right **PPE**, know where the **emergency stops** are, and use each machine
-only as you've been shown. If you're unsure, **ask the technician before acting** —
-never guess with a machine.
+From the M5 marked paper, record marks earned and lost by topic:
 
-### 2. Share the space: the staggered rotation
+| Topic | Marks available | Marks earned | % scored |
+|---|---|---|---|
+| Structures (types, forces, calculations) | — | — | — |
+| Materials (properties, families, working) | — | — | — |
+| Electronics (IPO, symbols, calculations) | — | — | — |
+| Sustainability (6Rs) | — | — | — |
+| Design process (brief, spec, evaluate) | — | — | — |
 
-Sixty students can't all be at the laser cutter at once. Follow the **staggered
-rotation**: while some are at machines, others are marking out, assembling or
-finishing. Be where the schedule says, and free the machine promptly.
+### Step 2: Priority ranking
 
-### 3. Work to your plan
+Rank topics from lowest % to highest %. The topic with the lowest percentage becomes **Priority 1** — the first topic revised in T3.
 
-Open your **production plan** and make parts **in order**. Build the weekly **QC
-habit**: check each part against your cutting list and drawing before you move on.
-**Book machine time** rather than queuing and waiting.
+**Important:** Revising what you already know well feels productive but produces minimal grade improvement. Revising your weakest area is uncomfortable but has the highest return.
+
+### Step 3: T3 session plan
+
+Map T3 sessions W1–W9 to topics in priority order. Assign at least two sessions to Priority 1, at least two to Priority 2, and one session each to remaining topics. Sessions W8 and W9 are reserved for mixed past paper practice.
 
 </Section>
 
-<WorkedExample title="Worked example — a part from file to finished">
-1. **Check** your cut/print file is the right part and size.
-2. **Set up** the machine (material, settings) with the technician.
-3. **Run** the job — staying with it, never leaving it unattended.
-4. **QC it:** measure the finished part against your cutting list. Right? Move on. Wrong? Fix before cutting more.
+<Section title="Structures: deep dive" icon="🏗️" id="structures">
+
+### The five force types — exam-ready definitions
+
+| Force type | Definition | Recognise it by |
+|---|---|---|
+| Tension | Force that pulls a member apart along its length | Member being stretched; cable or tie rod |
+| Compression | Force that pushes a member together along its length | Member being shortened; column, strut |
+| Bending | Force that causes curvature — combines tension on one face and compression on the other | Horizontal beam under vertical load |
+| Shear | Force that causes one layer to slide relative to the adjacent layer | Bolt through two plates being pulled apart |
+| Torsion | Twisting force — causes rotation about the member's long axis | A shaft being twisted; a screw being turned |
+
+### FoS calculation
+
+FoS = Ultimate load / Working load
+
+A FoS of 2.0 means the structure can support twice the load it is designed for before failing.
+
+**Given FoS and working load — find ultimate load:**
+Ultimate load = FoS x Working load
+
+**Given ultimate load and working load — find FoS:**
+FoS = Ultimate load / Working load
+
+### Beam reactions
+
+For a simply supported beam with a single point load:
+- RA = W x (distance from load to B) / span
+- RB = W x (distance from load to A) / span
+- Check: RA + RB must equal W.
+
+Where W is the load, A is the left support, B is the right support, span is the distance A to B.
+
+### Stress calculation
+
+Stress = Force / Area
+
+Where force is in N and area is in mm². Result is in N/mm² (= MPa).
+
+</Section>
+
+<WorkedExample title="Three structures calculations in sequence">
+
+**Scenario:** A cantilever shelf bracket carries a 4 kg load at its tip. The bracket arm is 200 mm long. The cross-section is 40 mm x 8 mm solid mild steel. FoS required: 2.5. Yield strength of mild steel: 250 MPa.
+
+**Step 1 — Force from load:**
+W = mass x g = 4 x 10 = 40 N
+
+**Step 2 — Stress at the bracket root:**
+Stress = Force / Area = 40 / (40 x 8) = 40 / 320 = 0.125 N/mm²
+
+**Step 3 — Compare to safe working stress:**
+Safe working stress = Yield strength / FoS = 250 / 2.5 = 100 MPa
+
+**Step 4 — Is the bracket safe?**
+0.125 MPa much less than 100 MPa — yes, massively over-designed. The bracket could carry: 100 MPa x 320 mm² = 32,000 N = 3,200 kg. Designed for 4 kg.
+
+**Conclusion:** The stress calculation shows the bracket is structurally safe with an enormous safety margin, suggesting the material and cross-section are selected for cost and manufacturing convenience, not structural necessity.
 </WorkedExample>
 
-<Activity title="Safety check, then make" time="Full session (technician-managed rotation)" grouping="Staggered stations" materials={["Your production plan & cut files", "PPE", "Stock materials"]}>
-1. **Pass the makerspace safety check.**
-2. **Start manufacturing your first part** following your plan, under supervision.
-3. **Log your progress** against your production plan before you tidy up.
+<Activity title="Revision plan and structures question set" time="90 min" grouping="Individual" materials={["Marked M5 paper", "Calculator", "Section A structures question bank (teacher-provided)"]}>
+
+**Revision plan (0–20 min):**
+1. Complete the M5 topic analysis table. Record your lowest-percentage topic as Priority 1.
+2. Write the T3 session plan: which topic is covered in which session (W1–W9). Stick to the priority order — not your comfort order.
+3. Identify your three most frequent mark-loss categories from M5 (knowledge gap, vocabulary, calculation, time). Write a one-sentence strategy for each.
+
+**Structures questions (20–80 min):**
+4. Complete six Section A structures questions from the question bank. Time yourself: 1 minute per mark. After each question: self-mark before moving to the next.
+5. For any question below full marks: identify the exact mark point missed. Write a corrected, full-mark answer immediately after marking.
+
+**Reflection and next steps (80–90 min):**
+6. Count your total structures score from the six questions. Calculate a percentage.
+7. Compare to your M5 structures percentage. Is there improvement? If not, what was different about the six questions today versus the exam conditions?
 </Activity>
 
-<Support title="Need a hand? Stations, buddies and pre-checked files">
-Work at the **technician-led stations** and use the **buddy system** — two pairs of
-eyes are safer. If CAD was tricky, your files have been **pre-checked**, so you can
-focus on making.
+<Support title="Structures revision reminders">
+
+**Force vs stress:** Force is in N (newtons). Stress is in N/mm² (pascals, or MPa). Stress = Force / Area. You need the cross-sectional area in mm² to calculate stress.
+
+**FoS direction:** FoS is always greater than 1.0 for a safe design. FoS = Ultimate / Working. If you calculate a FoS less than 1.0, you have divided the wrong way round.
+
+**Beam reactions check:** Always verify that RA + RB = W. If the reactions do not add up to the total load, there is an arithmetic error somewhere.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "You're unsure how to use a machine safely. What should you do?",
+    q: "A beam carries a 500 N load at 600 mm from support A. The span is 1,000 mm. What is the reaction at support A (RA)?",
     options: [
-      "Guess and try carefully",
-      "Ask the technician before acting",
-      "Watch a video later",
-      "Skip that part"
+      "200 N — RA = W x (distance from load to A) / span = 500 x 400 / 1000 = 200 N",
+      "300 N — RA = W x (distance from load to B) / span = 500 x 600 / 1000 = 300 N",
+      "500 N — both supports carry the full load equally",
+      "250 N — the load is divided equally between the two supports"
     ],
     answer: 1,
-    hint: "Never guess with a machine.",
-    explain: "Always ask the technician before acting when you're unsure — safety comes before progress."
+    hint: "RA carries more load when the load is closer to A. The load is 600 mm from A and 400 mm from B.",
+    explain: "RA = W x (distance from load to B) / span = 500 x 400 / 1000 = 200 N. RB = W x (distance from load to A) / span = 500 x 600 / 1000 = 300 N. Check: RA + RB = 200 + 300 = 500 N = W. The load is 600 mm from A (close to A's side) — actually wait: the load is 600 mm from A and 400 mm from B. RA carries less (load is farther from A). RA = 500 x 400/1000 = 200 N."
   },
   {
-    q: "Why does the makerspace use a staggered rotation?",
+    q: "A structural member has a cross-sectional area of 200 mm² and carries a tensile force of 6,000 N. What is the tensile stress?",
     options: [
-      "To make lessons longer",
-      "So not everyone needs the same machine at once",
-      "To stop students assembling",
-      "To save electricity"
+      "0.033 MPa — stress = area / force = 200 / 6,000",
+      "30 MPa — stress = force / area = 6,000 / 200",
+      "1,200,000 MPa — stress = force x area = 6,000 x 200",
+      "6,200 MPa — stress = force + area = 6,000 + 200"
     ],
     answer: 1,
-    hint: "Sixty students, a few machines.",
-    explain: "Staggering means the class shares the machines fairly, so work keeps flowing for everyone."
+    hint: "Stress = Force / Area. Units: N / mm² = N/mm² = MPa.",
+    explain: "Stress = Force / Area = 6,000 / 200 = 30 N/mm² = 30 MPa. Always divide force by area (not the other way). The unit N/mm² is the same as MPa (megapascal) — both are used in D&T. Option A divides in the wrong direction. Option C multiplies. Option D adds (no physical meaning)."
   },
   {
-    q: "What is the quality-control (QC) habit when a part comes off a machine?",
+    q: "Which revision strategy produces better long-term retention: re-reading your notes, or attempting past paper questions without looking at notes first?",
     options: [
-      "Cut several more straight away",
-      "Measure it against your cutting list before moving on",
-      "Put it away unchecked",
-      "Start a different part"
+      "Re-reading notes — repeated exposure to the same material strengthens the memory trace",
+      "Past paper questions — forcing retrieval from memory (active recall) strengthens long-term retention more than passive re-reading",
+      "Both are equally effective — the best strategy depends on the individual student's learning style",
+      "Re-reading notes is better for factual content; past paper questions are better for calculations"
     ],
     answer: 1,
-    hint: "Check before you commit to more.",
-    explain: "QC means measuring each finished part against your plan, so a mistake isn't repeated."
+    hint: "The term in the KeyTerms section that describes this process is 'active recall'.",
+    explain: "Active recall — forcing yourself to retrieve information from memory before checking — is significantly more effective for long-term retention than passive re-reading. When you re-read, you recognise content you already know without strengthening the retrieval pathway. When you attempt a question from memory, you strengthen the exact memory pathway that will be needed in the exam. The SelfCheck and past paper questions on every page are active recall tools."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** check that **all your cut and print files are queued and correct** for
-next session.
-
-<Extension title="Go deeper">
-While you wait for a machine, **prepare your next part's file** so you're never
-idle — good use of a shared space.
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 6)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.5 Health & safety (p.55)", type: "Textbook", href: "https://drive.google.com/file/d/1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook", href: "https://drive.google.com/file/d/1sw2Urh7Ek7FLInSxxQJqWqAnXsnlXye0/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.3 Structural forces (p. 238)", type: "Textbook", href: "https://drive.google.com/file/d/1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.5 Structural stability (p. 249)", type: "Textbook", href: "https://drive.google.com/file/d/1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Am I on track against my plan, and what will I do if a machine is busy?" />
+<Reflection prompt="Your M5 priority list says what to revise. But what is making you resist revising that topic first — and how will you overcome that resistance before the next session?" />

@@ -2,125 +2,152 @@
 grade: 11
 term: 2
 week: 3
-title: "CAD/CAM 1: 2D CAD & the Laser-Cut Workflow"
-topic: "CAD/CAM"
-learningGoal: "produce a dimensioned 2D CAD drawing of at least one laser-cut part of my product, ready to test-cut."
-selGoal: "persevere through learning new software, using the help handout and a classmate before asking the teacher."
+title: "Materials 3: Properties Testing & Material Selection"
+topic: "Materials"
+learningGoal: "conduct three materials property tests (bending stiffness, surface hardness, machinability) and justify a final material selection using test evidence and specification points"
+selGoal: "write a material justification that names a specific measured result from the test — not just 'it felt harder'"
 draft: false
 ---
 
-
-Time to turn your design into something a machine can cut. This week you learn
-**2D CAD** and how a drawing on screen becomes a part on the **laser cutter** —
-the workflow you'll use to make most of your product.
-
-<Callout type="exam" title="Why this matters" id="why">
-  CAD/CAM feeds <ExamLink to="project">Criteria 4 and 5</ExamLink> (development and
-  planning), and the accuracy you learn here transfers to Paper 1 drawing. It's also
-  a skill the course expects you to gain *through* the project.
-</Callout>
+You have read about material properties in T1. Today you test them. The three practical tests carried out in this session give you primary research evidence that can be cited in your C2 justifications and in Paper 4 Section A answers. Every result you record becomes a data point that replaces a generic claim.
 
 <KeyTerms terms={[
-  { term: "CAD", definition: "Computer-Aided Design — drawing a product accurately on a computer." },
-  { term: "CAM", definition: "Computer-Aided Manufacture — the CAD file drives the machine." },
-  { term: "Vector", definition: "Lines and paths defined by points — what a laser follows to cut. Scales without blurring." },
-  { term: "Raster", definition: "An image made of pixels — used for engraving, not clean cutting." },
-  { term: "Kerf", definition: "The thin width of material the laser burns away as it cuts." },
+  { term: "Stiffness (Young's modulus)", definition: "A material's resistance to elastic deformation under load. Measured in GPa. A stiffer material deflects less for the same applied force. For a shelf, stiffness (not just strength) is often the controlling property — a stiff shelf does not sag." },
+  { term: "Hardness", definition: "A material's resistance to surface indentation or scratching. Tested comparatively using the scratch test (harder material scratches softer). High hardness means the surface resists daily wear from stored items." },
+  { term: "Machinability", definition: "How easily a material can be cut, drilled, or shaped using available tools. Factors include grain direction (wood), brittleness (ceramics), and tool requirements. High machinability means clean cuts and short processing time with school equipment." },
+  { term: "Ductility", definition: "A material's ability to be deformed plastically without fracturing. Mild steel is ductile — it bends before breaking. Cast iron is brittle — it fractures without significant deformation. Ductility matters for workshop forming processes." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Materials testing — three methods" icon="🔬" id="testing">
 
-### 1. Why CAD?
+### Test 1: Cantilever bending (stiffness comparison)
 
-CAD gives you **accuracy, easy editing, sharing, and a direct link to manufacture**.
-Change one dimension and the whole part updates — then the same file cuts the part.
+**Method:** Cut strips of each test material to identical dimensions (200 mm x 30 mm). Clamp each strip with 150 mm overhanging. Apply a standard 100 g (1 N) load at the free end. Measure the deflection at the free end with a ruler.
 
-### 2. Vector vs raster
+**Result:** Lower deflection = higher stiffness. Record deflection in mm for each material.
 
-The laser **cuts along vectors** (lines/paths) and **engraves rasters** (images).
-For parts you want cut out, everything must be **vector**.
+**Materials to test:** 18 mm MDF, 18 mm pine, 3 mm acrylic, 3 mm mild steel strip, 3 mm aluminium strip.
 
-### 3. The laser-cut workflow
+### Test 2: Surface hardness (scratch comparison)
 
-- Separate **cut** lines from **engrave** areas (usually by colour or layer).
-- Allow for **kerf** — the laser removes a sliver of material, so tight-fitting
-  slots need adjusting.
-- Get the **material settings** right (power/speed), and follow safety: fume
-  extraction on, **never leave the machine unattended**.
+**Method:** Each material gets a scratch test using three tools in increasing hardness order: (A) fingernail, (B) copper coin, (C) steel file. Record which tool leaves a scratch.
 
-<WatchSee items={[
-  { label: "How a laser cutter works (basics)", href: "https://www.youtube.com/watch?v=SIjUVCho_xU", kind: "Video", note: "A short look at how the laser cuts along your vector lines." }
-]} />
+**Result:** Higher scratch resistance = higher hardness. Record as: resists A only, resists A+B, resists A+B+C.
+
+### Test 3: Machinability (cut quality)
+
+**Method:** Using a hand saw or scroll saw, cut across each material. Observe: does the material split along grain lines? Does the cut face require sanding? Any burr or tear-out? Rate each material 1 (poor) to 3 (excellent) for clean cut quality.
 
 </Section>
 
-<WorkedExample title="Worked example — a laser-ready bracket plate">
-1. **Draw** a 100 × 60 mm plate in CAD.
-2. **Add** two fixing holes, dimensioned from an edge.
-3. **Assign layers:** outline + holes on the **cut** layer; a label on the **engrave** layer.
-4. **Export** the file ready for the cutter.
+<Section title="Material selection matrix" icon="📊" id="matrix">
+
+### The weighted matrix method
+
+1. List the evaluation criteria relevant to your specification.
+2. Assign a **weight** (1–5) to each criterion based on its importance.
+3. Score each material on each criterion (1–5: 1 = poor, 5 = excellent).
+4. Multiply score by weight for each cell.
+5. Sum the weighted scores — highest total wins.
+
+| Criterion | Weight | MDF | Pine | Aluminium |
+|---|---|---|---|---|
+| Stiffness for shelf | 5 | 3 (15) | 2 (10) | 5 (25) |
+| Surface hardness | 3 | 3 (9) | 2 (6) | 4 (12) |
+| Machinability in school | 4 | 5 (20) | 4 (16) | 3 (12) |
+| Cost | 2 | 4 (8) | 3 (6) | 2 (4) |
+| Sustainability | 3 | 2 (6) | 4 (12) | 3 (9) |
+| **Total** | | **58** | **50** | **62** |
+
+Aluminium scores highest here. The matrix allows specific justification: "Aluminium was selected over MDF primarily due to its higher stiffness (score 5 vs 3), weighted most heavily because the product must resist 5 kg without 2 mm deflection."
+
+</Section>
+
+<WorkedExample title="Full material justification for a shelf: MDF vs aluminium">
+
+**From test results:**
+- MDF cantilever deflection at 100 g: 12 mm. Aluminium deflection at 100 g: 3 mm.
+- MDF surface hardness: resists fingernail only. Aluminium: resists file (A+B+C).
+- MDF cut quality: 3/3. Aluminium cut quality: 2/3.
+
+**Justification statement:**
+"Aluminium was selected for the shelf surface based on testing evidence. The cantilever deflection test recorded 3 mm for aluminium versus 12 mm for MDF — a factor of 4 improvement in stiffness. The specification requires less than 2 mm deflection at 5 kg (Spec point 1), and modelling indicates aluminium will meet this requirement where 18 mm MDF would not. The lower machinability score for aluminium (2/3 versus MDF 3/3) is accepted because the workshop has a band saw appropriate for aluminium, and the stiffness advantage outweighs the machinability compromise."
 </WorkedExample>
 
-<Activity title="CAD your first part" time="50 min" grouping="Paired workstations" materials={["CAD workstation", "Step-by-step CAD handout", "Sample sheet stock"]}>
-1. **CAD one part** of your product.
-2. **Add dimensions** so it's the right size.
-3. **Set up the cut file** — separate cut and engrave by layer/colour, ready to test-cut.
+<Activity title="Three materials tests and selection matrix" time="90 min" grouping="Pairs for testing, individual for write-up" materials={["Test strips: MDF, pine, acrylic, mild steel, aluminium (prepared by teacher)", "100 g standard weight", "Ruler (mm)", "Clamp or bench vice", "Copper coin, steel file for scratch test"]}>
+
+**Testing phase (0–45 min):**
+1. Conduct the three tests in rotation as pairs:
+   - Bending test: record deflection in mm for each material strip.
+   - Scratch test: record scratch resistance level for each material.
+   - Cut quality: observe cut or record from teacher demo.
+2. Record all results in a data table before moving to the next test.
+
+**Matrix completion (45–65 min):**
+3. Individually, build a weighted matrix for your Component 2 material decision. Choose criteria relevant to your specification. Assign weights. Score each candidate material using test data where available, textbook data otherwise.
+
+**Justification writing (65–85 min):**
+4. Write a 150-word material justification. Must include:
+   - At least one numerical result from today's tests.
+   - The specification point number addressed.
+   - One acknowledged trade-off.
+
+**Folder integration (85–90 min):**
+5. Note which folder section (C2 or C4) this justification belongs to. Flag for insertion into your project folder.
 </Activity>
 
-<Support title="Need a hand? Use the handout and a template">
-Work from the **step-by-step CAD handout** and open the **pre-built template file**
-— the layers and colours are already set, so you only draw your part. Stuck? Ask
-your workstation partner, then the handout, *then* the teacher.
+<Support title="Testing and matrix help">
+
+**Deflection results inconsistent?** Ensure the clamp position is the same for each strip (150 mm overhang). Apply the load at the same point (free end tip).
+
+**Matrix results not matching intuition?** Review your weights. The stiffness weight should be high if the shelf must carry 5 kg. Adjust weights to reflect what your specification actually demands.
+
+**Justification still generic?** Replace every claim with a number: "higher stiffness" → "4x less deflection at 100 g (3 mm vs 12 mm)". If no test number exists, find a textbook value: Young's modulus for aluminium is approximately 70 GPa vs 7 GPa for MDF.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "The laser cutter follows which kind of line to cut a shape out?",
-    options: ["Raster", "Vector", "Pixel", "Engrave"],
-    answer: 1,
-    hint: "Cutting needs a path, not an image.",
-    explain: "The laser cuts along vectors (paths). Rasters (pixel images) are used for engraving."
-  },
-  {
-    q: "What is 'kerf'?",
+    q: "In a cantilever bending test for stiffness comparison, which result indicates the stiffer material?",
     options: [
-      "A type of plastic",
-      "The width of material the laser burns away",
-      "A CAD shortcut",
-      "The engraving layer"
+      "The material with the largest deflection — more deflection means it absorbed more energy",
+      "The material with the smallest deflection — stiffness resists elastic deformation, so less deflection = higher stiffness",
+      "The material that fractured first — fracture indicates maximum energy stored before yielding",
+      "The material with the longest test strip — longer strips deflect less relative to their length"
     ],
     answer: 1,
-    hint: "It's about the thin gap the cut leaves behind.",
-    explain: "Kerf is the sliver of material the laser removes — important for parts that must fit together."
+    hint: "Stiffness is resistance to deflection. More stiffness = less deflection under the same load.",
+    explain: "Stiffness is the material's resistance to elastic (recoverable) deformation. All strips have the same geometry and the same load, so the only variable is material stiffness. The strip that deflects least is the stiffest. Aluminium deflecting 3 mm vs MDF at 12 mm means aluminium is approximately 4x stiffer in this test geometry."
   },
   {
-    q: "Why separate your cut and engrave lines onto different layers/colours?",
+    q: "What is the purpose of weighting criteria in a material selection matrix?",
     options: [
-      "To make the file bigger",
-      "So the machine knows what to cut and what to engrave",
-      "To use more ink",
-      "It makes no difference"
+      "To make the calculation more complex and therefore more credible to examiners",
+      "To ensure that criteria which matter most to the specific specification have more influence on the result",
+      "To ensure that the cheapest material always wins the comparison",
+      "To match the number of criteria to the number of candidate materials"
     ],
     answer: 1,
-    hint: "The machine needs to tell the two operations apart.",
-    explain: "Layers/colours tell the laser which lines to cut through and which areas to engrave."
+    hint: "Different products have different priorities. A surgical instrument prioritises different properties than a garden chair.",
+    explain: "Weighting allows the matrix to reflect the specific requirements of the product. For a load-bearing shelf, stiffness (weight 5) should dominate more than cost (weight 2). Without weighting, a cheap but structurally inadequate material could score the same as one that meets all structural requirements."
+  },
+  {
+    q: "What does machinability specifically refer to in the context of school workshop material selection?",
+    options: [
+      "Whether a material can be shaped using a computer-controlled machine",
+      "How easily a material can be cut, drilled, and shaped using the tools available in the school workshop",
+      "The cost per cut when machining the material on a CNC machine",
+      "Whether the material requires specialist protective equipment during cutting"
+    ],
+    answer: 1,
+    hint: "Machinability is context-dependent — it depends on the tools available and the skills of the person cutting.",
+    explain: "Machinability refers to how easily a material can be cut, drilled, and shaped using available tools. In school workshop context: can it be safely handled with the available equipment (laser cutter, scroll saw, hand saw, drill press)? MDF has high machinability — clean laser cuts, no grain splitting. Aluminium has moderate machinability — requires metalwork tools not always available."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** list **every part** of your product that could be laser-cut.
-
-<Extension title="Go deeper">
-**Nest** two of your parts close together on the sheet to save material — how much
-stock can you save?
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Collins IGCSE D&T — §1.6 Use of technology (CAD/CAM)", type: "Textbook", href: "https://drive.google.com/file/d/1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook", href: "https://drive.google.com/file/d/1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §3.1 Timber and manufactured boards (p. 152)", type: "Textbook", href: "https://drive.google.com/file/d/1AkkrutnyjCg0mVjlA5QxY5YDsqeQzcJh/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §3.4 Ferrous and non-ferrous metals (p. 173)", type: "Textbook", href: "https://drive.google.com/file/d/18W7jfbqGnuZzPl2dYSFWuU6dgThP5KXk/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.7 Properties of materials (p. 268)", type: "Textbook", href: "https://drive.google.com/file/d/1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Where could CAD save me time compared with hand drawing?" />
+<Reflection prompt="Which material 'won' your matrix but surprised you — and which result from the physical test changed your understanding of a material you thought you already knew?" />

@@ -2,129 +2,163 @@
 grade: 11
 term: 2
 week: 4
-title: "Development by Testing (C4)"
-topic: "Project"
-learningGoal: "test my model against at least two specification points and build my low-voltage light circuit on a breadboard, recording objective results and one change I will make."
-selGoal: "record an unflattering test result honestly rather than hiding it, and treat it as data."
+title: "Manufacture Part 1: Marking Out & Cutting (C6)"
+topic: "Manufacture"
+learningGoal: "mark out all components from your working drawings; cut the main structural components to dimension with tolerances within 1 mm"
+selGoal: "mark out before cutting — measure twice, mark once, cut once"
 draft: false
 ---
 
+Manufacturing begins. C6 is the practical evidence of your Component 2 project. This session covers the first half of the making process: transferring dimensions from your C5 working drawings to the material, and making accurate cuts. The quality of everything that follows depends on accurate marking out.
 
-Last week you found problems by making. This week you **test on purpose** — with
-measurements, not guesses — and you breadboard your circuit before committing it.
-Honest test data is what turns a nice idea into a developed, evidence-backed design.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Objective testing is core <ExamLink to="project">Criterion 4</ExamLink>
-  (development) and sets up **Criterion 7** (testing & evaluation). The examiner
-  rewards *measured* evidence — "held 5 kg", not "seemed strong".
+<Callout type="info" title="C6 manufacturing record requirement" id="c6">
+  As you manufacture, photograph each stage: marked-out components before cutting, components after cutting, after joining, and after finishing. These photos form your C6 manufacturing record and are submitted alongside the finished product. Photograph before discarding any offcuts or templates.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "Objective test", definition: "A test that measures a result, rather than relying on opinion." },
-  { term: "Fair test", definition: "A test where you change one thing at a time, so the result is trustworthy." },
-  { term: "Load test", definition: "Measuring how much weight a structure carries before it fails." },
-  { term: "Breadboarding", definition: "Building a circuit on a solderless board to check it works before making it permanent." },
-  { term: "Iteration loop", definition: "Test → modify → re-test, repeated until the design works." },
+  { term: "Datum", definition: "A fixed reference point from which all measurements are taken. Using a single datum edge (usually the straightest factory edge of a sheet) minimises accumulated measurement error — each measurement is independent and starts from the same reference, rather than being measured from the last mark." },
+  { term: "Marking gauge", definition: "A tool used to scribe a line parallel to a reference edge at a set distance. It has a fence (rides along the edge) and a marking pin. Used for setting out rebate depths, dado positions, and parallel lines along a timber face or edge." },
+  { term: "Try square", definition: "An L-shaped precision tool used to mark or check 90-degree angles. The stock (short arm) is pressed against the reference face; the blade (long arm) is perpendicular. Lines scribed along the blade are guaranteed to be square to the reference face." },
+  { term: "Kerf", definition: "The width of material removed by a saw cut. Typically 2–3 mm for a hand saw, 1–2 mm for a scroll saw. Always cut on the waste side of the line (the side to be removed), leaving the marked line intact on the component to be used." },
+  { term: "Tolerance", definition: "The acceptable range of variation from a nominal dimension. For this project, a tolerance of ±1 mm is acceptable for most dimensions. A specification dimension of 200 mm means any value from 199 mm to 201 mm is acceptable." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Marking out: the sequence" icon="📏" id="marking-out">
 
-### 1. Test objectively
+### Step 1: Select and prepare the datum edge
 
-**Measure, don't guess.** Design a **fair test**: change one thing at a time so you
-know what caused the result. For a structure, the key tests are **load** (how much
-weight before it fails) and **stability** (does it tip or wobble?).
+Before making any marks, identify the datum edge of your material — typically the factory-cut straight edge. Check it with a try square against the face. If not perfectly square, rip a straight edge with a hand plane or circular saw guide before using it as a datum.
 
-### 2. Breadboard before you build
+### Step 2: Mark the overall blank dimensions
 
-Before fixing your circuit into the product, build it on a **breadboard** — a
-solderless board for testing. Confirm the switch turns the LED on and off, then
-you can commit it with confidence.
+Using the try square and a pencil (for wood/MDF) or scriber (for metal):
+1. From the datum edge, mark the full width of the component (not the final width — the blank with material to spare).
+2. From the datum end, mark the full length.
+3. Cross-hatch the waste areas immediately (marks the regions to be removed — prevents cutting the wrong side).
 
-<CircuitDiagram />
+### Step 3: Mark the joint positions
 
-### 3. The iteration loop
+Using the marking gauge and try square:
+1. Set the marking gauge to the rebate or dado depth. Scribe the depth line along the edge.
+2. Using a try square, mark the shoulder lines (the positions where the dado or rebate starts and ends).
+3. Mark the waste area within the joint with hatching.
 
-One test is rarely the end. Run the loop: **test → modify → re-test**, recording
-each result. Each turn of the loop is development evidence.
+### Step 4: Mark drilling positions
+
+For holes (LED hole, wire exit hole, mounting holes):
+1. Mark the centre of each hole with crossed lines.
+2. Use a centre punch (for metal) or awl (for wood/MDF) to create a starting point for the drill bit — prevents the bit wandering at the start of the cut.
 
 </Section>
 
-<WorkedExample title="Worked example — test, modify, re-test">
-1. **Test:** a cyclist's gear organiser holds 3 kg, then **twists at a joint**.
-2. **Record:** note the exact load and what happened (a number, not "a bit").
-3. **Modify:** add a diagonal brace (triangulation) across the joint.
-4. **Re-test:** it now holds 5 kg with no twist — record the before and after.
+<Section title="Cutting: technique by process" icon="🔧" id="cutting">
+
+### Hand saw
+
+Hold the workpiece firmly against a bench stop or in a vice. Start the cut with a pull stroke (fine teeth pull the saw into the material — safer to start). Maintain a consistent angle (approximately 45° to the workpiece surface for general cuts). Let the saw do the work — do not force the blade.
+
+### Scroll saw / band saw
+
+Set the fence parallel to the blade for rip cuts. Never force the material — let the blade feed at its own pace. Keep fingers away from the blade line by at least 50 mm (use a push stick for narrow rip cuts). After cutting, check the dimension with a steel rule immediately.
+
+### Laser cutter (MDF/acrylic)
+
+All geometry is transferred from the C5 drawing CAD file. Check: scale is correct in the software, material thickness matches the cut settings. Run a small test cut on a scrap piece first to verify kerf width and ensure dimensions are accurate after cutting.
+
+### Drill press
+
+Clamp the workpiece to the table — never hold it freehand for large holes. Select the correct bit size: 3 mm for LED (standard 3 mm LED), 2 mm for wires, countersink for fixing holes. Set depth stop to prevent drilling through (unless a through-hole is required).
+
+</Section>
+
+<WorkedExample title="Marking out a dado joint for a shelf bracket">
+
+**Component:** MDF back panel, 220 mm wide x 300 mm tall x 18 mm thick. A shelf (also 18 mm MDF) slots into a dado 12 mm deep.
+
+**Step 1 — Datum:** Bottom factory edge is the datum. Check square.
+
+**Step 2 — Shelf height position:** From datum, measure 120 mm up. Mark a horizontal pencil line. This is the bottom shoulder of the dado.
+
+**Step 3 — Dado width:** From the 120 mm line, measure 18 mm up. Mark a second horizontal line. This is the top shoulder. The 18 mm gap between the lines matches the shelf thickness. Cross-hatch the area between.
+
+**Step 4 — Dado depth:** Set the marking gauge to 12 mm. Run along both face edges of the panel, scribing depth lines on both edges. These are cut-off lines when chiselling.
+
+**Step 5 — Waste hatching:** Hatch the area inside the dado (the wood to be removed) clearly. The finished component uses the wood above and below the dado, not inside it.
 </WorkedExample>
 
-<Activity title="Test and breadboard" time="50 min" grouping="Pairs (technician supports)" materials={["Weights / load rig", "Breadboard kit & multimeter", "Test-results table"]}>
-1. **Run a load or stability test** and **record the data** (numbers and photos).
-2. **Breadboard your circuit** (switch → resistor → LED) and confirm it works.
-3. **Note the changes** your results call for.
+<Activity title="Mark out and cut all components" time="90 min" grouping="Individual" materials={["Your C5 working drawings", "Material prepared to blank size", "Try square, steel rule (600 mm), marking gauge", "Pencil/scriber, centre punch, awl", "Saw (hand saw or scroll saw as appropriate)", "Steel rule for post-cut checking"]}>
+
+**Preparation check (0–10 min):**
+1. Line up your C5 working drawings and identify every component to be cut in this session. Write a cut list: component name, material, quantity, dimensions (length x width x thickness).
+2. Confirm you have all materials and tools at your bench before starting.
+
+**Datum and first marks (10–25 min):**
+3. Select the datum edge for your main sheet material. Check with a try square.
+4. Mark the first component blank from the datum. Cross-hatch waste.
+
+**Joint positions and hole centres (25–45 min):**
+5. Mark all joint positions using the marking gauge and try square. Cross-hatch waste inside joint areas.
+6. Mark all hole centres with crossed lines. Use a centre punch or awl on each centre mark.
+
+**Cutting (45–80 min):**
+7. Cut components in this sequence: large panels first, then small parts from offcuts. Cut on the waste side of every line.
+8. After each cut, measure with a steel rule immediately and compare to the C5 dimension. Record any variance.
+
+**Post-cut check (80–90 min):**
+9. Complete the cut list: tick each component. Record actual dimensions versus nominal. Note any components that need re-cutting or adjustment. Photograph all marked and cut components before tidying up.
 </Activity>
 
-<Support title="Need a hand? A results table + the circuit card">
-Use the **ready-made results table** — just fill in *what you tested*, *the
-measurement*, and *what you'll change*. For the circuit, reuse the
-**circuit-on-a-card** reference from Term 1, Week 9.
+<Support title="Marking and cutting accuracy">
+
+**Lines not square?** The try square must be held firmly against the reference face before scribing. If the stock is not seated flat, the blade is not perpendicular. Check by scribing a line, flipping the square, and scribing the same line again from the opposite side — the two lines should coincide.
+
+**Cuts consistently 2–3 mm over?** You are cutting on the line (removing the line itself). The cut must be on the WASTE side — leave the pencil line visible on the finished component.
+
+**Laser cut dimensions slightly smaller than specified?** Kerf takes material from both sides of the cut line. If a 200 mm wide part comes out at 197 mm, the kerf is 3 mm — offset the CAD shape by 1.5 mm on each side in the software to compensate.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Which is an objective test result?",
+    q: "Why is it important to mark all measurements from a single datum edge rather than measuring from the previous mark?",
     options: [
-      "It felt pretty sturdy",
-      "It held 5 kg, then sagged 4 mm",
-      "It looks strong",
-      "Everyone liked it"
+      "Measuring from the previous mark is actually faster and more accurate",
+      "Using a datum edge ensures each measurement is independent — errors do not accumulate from one mark to the next",
+      "The datum edge is required by the school's health and safety policy for all cutting operations",
+      "Only the datum edge has the correct factory measurements — other edges may have been cut incorrectly"
     ],
     answer: 1,
-    hint: "Objective means measured, with numbers.",
-    explain: "'Held 5 kg, sagged 4 mm' is measured data. The others are opinions."
+    hint: "Think about what happens if each mark is ±0.5 mm from the previous one over ten marks.",
+    explain: "When measuring chain-style (each mark from the previous one), small errors accumulate — a consistent 0.5 mm overmark on each of ten positions creates a 5 mm total error on the last mark. Using a single datum means each measurement error is independent and limited to ±0.5 mm regardless of how many marks are made. This is called baseline or datum dimensioning and matches the C5 dimensioning approach."
   },
   {
-    q: "What makes a test 'fair'?",
+    q: "What is a 'kerf' and why does it matter when cutting to a marked line?",
     options: [
-      "You change one thing at a time",
-      "You repeat it until you like the answer",
-      "You test only the strong parts",
-      "You guess the result first"
-    ],
-    answer: 0,
-    hint: "It's about isolating the cause of the result.",
-    explain: "Changing one variable at a time means you can trust what caused the result."
-  },
-  {
-    q: "Why breadboard a circuit before building it into the product?",
-    options: [
-      "To make it look professional",
-      "To check it works before committing it permanently",
-      "Because breadboards are required in the exam",
-      "To use more wire"
+      "The angle of the saw blade relative to the workpiece surface",
+      "The width of material removed by the saw blade — the cut must be on the waste side of the line",
+      "The maximum depth a saw can cut in one pass without binding",
+      "The distance between the saw blade and the fence on a scroll saw"
     ],
     answer: 1,
-    hint: "It's a try-before-you-commit step.",
-    explain: "Breadboarding lets you confirm the circuit works before fixing it permanently into the product."
+    hint: "A saw removes material. The width it removes comes from somewhere.",
+    explain: "Kerf is the width of material removed by the saw cut (typically 2–3 mm for a hand saw, 1–2 mm for a scroll saw, less for laser cutting). If you cut on the line rather than on the waste side, the kerf removes the line and up to 2–3 mm of your finished component. Always cut so the kerf is in the waste area, leaving the pencil line intact on the component to be used."
+  },
+  {
+    q: "When drilling a hole in MDF for an LED, why should the workpiece be clamped to the drill press table rather than held by hand?",
+    options: [
+      "Clamping is required by school rules for all drilling operations regardless of material",
+      "As the drill bit breaks through, it can grab the material and spin it rapidly — clamping prevents injury",
+      "MDF is too soft to be held by hand — it will compress under the pressure",
+      "Hand-holding prevents the drill bit from achieving the correct speed for clean drilling"
+    ],
+    answer: 1,
+    hint: "Think about what the drill bit does as it exits the underside of the material.",
+    explain: "As a drill bit breaks through the underside of a workpiece, it can catch and grab the material. For a freehand-held workpiece, this can spin the workpiece at high speed — causing injury and damaging the component. Clamping the workpiece to the drill press table (or using a bench vice) prevents this. The risk is greatest with large-diameter bits and thin materials like MDF and acrylic."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** write up your **test-results table** (what you tested, the data, the
-change).
-
-<Extension title="Go deeper">
-Run a **second test** on a different specification point — for example, does the
-switch stay reliable after 20 presses?
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criteria 4 & 7)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook", href: "https://drive.google.com/file/d/11tjufYjFFxb4KBQe3iqqDFiU62aPjLDs/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4 Electronics (p.299)", type: "Textbook", href: "https://drive.google.com/file/d/1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.9 Joining techniques (p. 280)", type: "Textbook", href: "https://drive.google.com/file/d/1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.10 Surface treatments (p. 288)", type: "Textbook", href: "https://drive.google.com/file/d/1F8bzARgbX_6J9CRumVRAswfFDgXfydHy/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Did my product do what my spec promised — and what is my evidence?" />
+<Reflection prompt="When you measured your cut components against the C5 dimensions, where was the largest variance? Is the variance within your tolerance of ±1 mm — and if not, what would you do differently when cutting the next component?" />

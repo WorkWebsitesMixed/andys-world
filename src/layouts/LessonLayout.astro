@@ -7,7 +7,7 @@ import PrevNext from '../components/PrevNext.astro';
 import LessonNav from '../components/LessonNav.astro';
 import type { Lesson } from '../lib/lessons';
 import { routes } from '../lib/url';
-import { termLabel } from '../lib/curriculum';
+import { termLabel, bonusWeekStart } from '../lib/curriculum';
 
 // Components made available inside lesson MDX bodies without an explicit import.
 import KeyTerms from '../components/KeyTerms.astro';
@@ -36,7 +36,13 @@ interface Props {
 }
 
 const { lesson, prev, next } = Astro.props;
-const { grade, term, week, title, topic, learningGoal, selGoal } = lesson.data;
+const { grade, term, week, title, topic, learningGoal, selGoal, sessionType } = lesson.data;
+
+const isBonus = sessionType === 'bonus';
+const bStart = bonusWeekStart(grade, term);
+const bonusNum = isBonus && bStart ? week - bStart + 1 : undefined;
+const weekLabel = isBonus && bonusNum != null ? `Bonus B${bonusNum}` : `Week ${week}`;
+const duration = isBonus ? '45 min' : '90 min';
 
 const { Content } = await render(lesson);
 
@@ -64,11 +70,11 @@ const mdxComponents = {
 const crumbs = [
   { label: `Grade ${grade}`, href: routes.grade(grade) },
   { label: termLabel(term), href: routes.term(grade, term) },
-  { label: `Week ${week}` },
+  { label: weekLabel },
 ];
 ---
 
-<BaseLayout title={title} description={`Grade ${grade} · ${termLabel(term)} · Week ${week} — ${title}`}>
+<BaseLayout title={title} description={`Grade ${grade} · ${termLabel(term)} · ${weekLabel} — ${title}`}>
   <LessonNav />
 
   <article class="lesson container" data-lesson-root>
@@ -78,7 +84,8 @@ const crumbs = [
       <div class="meta">
         <span class="pill">Grade {grade}</span>
         <span class="pill">{termLabel(term)}</span>
-        <span class="pill">Week {week}</span>
+        <span class:list={['pill', isBonus ? 'bonus' : '']}>{weekLabel}</span>
+        <span class="pill dim">{duration}</span>
         <span class="pill topic">{topic}</span>
       </div>
       <h1 class="glow-text">{title}</h1>
@@ -120,6 +127,13 @@ const crumbs = [
     color: var(--accent);
     border-color: var(--accent);
     background: var(--accent-wash);
+  }
+  .pill.bonus {
+    color: var(--ok, #4ade80);
+    border-color: var(--ok, #4ade80);
+  }
+  .pill.dim {
+    opacity: 0.65;
   }
   /* Section 5 free prose & first body block ("Why this matters") get spacing. */
   .lesson-body :global(> p:first-child) {

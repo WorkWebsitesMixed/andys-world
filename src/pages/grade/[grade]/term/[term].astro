@@ -11,6 +11,7 @@ import {
   weeksForTerm,
   defaultWeekTitle,
   getTermFocus,
+  bonusWeekStart,
 } from '../../../../lib/curriculum';
 import { routes } from '../../../../lib/url';
 import { getTermLessons } from '../../../../lib/lessons';
@@ -30,6 +31,10 @@ const lessons = await getTermLessons(gradeNum, termNum);
 const byWeek = new Map(lessons.map((l) => [l.data.week, l]));
 const weeks = weeksForTerm(termNum, gradeNum);
 const focus = getTermFocus(gradeNum, termNum);
+
+const bonusStart = bonusWeekStart(gradeNum, termNum);
+const mainWeeks = bonusStart ? weeks.filter((w) => w < bonusStart) : weeks;
+const bonusWeeks = bonusStart ? weeks.filter((w) => w >= bonusStart) : [];
 ---
 
 <BaseLayout title={`${info.name} · ${termLabel(termNum)}`}>
@@ -48,8 +53,9 @@ const focus = getTermFocus(gradeNum, termNum);
   </section>
 
   <section class="container">
+    {bonusWeeks.length > 0 && <h2 class="section-heading">Main Sessions</h2>}
     <div class="grid">
-      {weeks.map((w) => {
+      {mainWeeks.map((w) => {
         const lesson = byWeek.get(w);
         const ready = Boolean(lesson);
         return (
@@ -65,12 +71,47 @@ const focus = getTermFocus(gradeNum, termNum);
         );
       })}
     </div>
+
+    {bonusWeeks.length > 0 && (
+      <>
+        <h2 class="section-heading bonus-heading">Bonus Sessions</h2>
+        <p class="muted bonus-blurb">45-minute sessions running in the same weeks as the main programme.</p>
+        <div class="grid">
+          {bonusWeeks.map((w) => {
+            const lesson = byWeek.get(w);
+            const ready = Boolean(lesson);
+            const bonusNum = w - bonusStart! + 1;
+            return (
+              <Card
+                href={routes.week(gradeNum, termNum, w)}
+                eyebrow={`Bonus B${bonusNum}`}
+                title={lesson?.data.title ?? `Bonus B${bonusNum}`}
+                tag={ready ? lesson!.data.topic : 'Coming soon'}
+                muted={!ready}
+              >
+                {ready ? lesson!.data.learningGoal : 'This lesson is being prepared.'}
+              </Card>
+            );
+          })}
+        </div>
+      </>
+    )}
   </section>
 </BaseLayout>
 
 <style>
   .head { padding-block: 2rem 1rem; }
   .head h1 { margin: 0.4rem 0 0.4rem; }
+  .section-heading {
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 2rem 0 0.75rem;
+  }
+  .bonus-heading { margin-top: 3rem; }
+  .bonus-blurb { margin: -0.25rem 0 0.75rem; font-size: 0.875rem; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));

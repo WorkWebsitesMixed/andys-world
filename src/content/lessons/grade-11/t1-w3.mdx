@@ -2,137 +2,222 @@
 grade: 11
 term: 1
 week: 3
-title: "Forces & Structural Members"
+title: "Structures: Everything in One Session"
 topic: "Structures"
-learningGoal: "identify and label the five forces — tension, compression, shear, bending and torsion — on everyday structures, and tell a tie from a strut, naming at least four of the five correctly."
-selGoal: "ask for help the moment I get stuck rather than going quiet, using our 'ask three, then me' routine."
+learningGoal: "classify any structure as frame, shell or mass; name the five forces acting on structures; calculate a beam reaction and a factor of safety; sketch three structural joints"
+selGoal: "when I get a calculation wrong, reread the question before changing my answer — the question usually contains the fix"
 draft: false
 ---
 
-Last week you learned the *types* of structure. Now we look at what's actually
-happening inside them: the **forces** trying to break them, and the **members**
-that resist those forces. This is the heart of the Structures exam question.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Naming forces and members is core <ExamLink to="paper4">**Paper 4 Section B**</ExamLink> content, and it appears in
-  Section A too. You'll also use it to predict which force most threatens your own
-  project — and design against it.
-</Callout>
+Structures is the theory backbone of the entire IGCSE course and of your Component 2 project. This session compresses everything — types of structure, forces, stress, factor of safety, beam reactions, and joints — into one 90-minute session with a diagnostic at the start and calculations practice at the end. It feels like a lot, but every concept here shows up in Paper 4 Section B.
 
 <KeyTerms terms={[
-  { term: "Tension", definition: "A pulling-apart force. A rope holding a weight is in tension." },
-  { term: "Compression", definition: "A squeezing force. A table leg is in compression." },
-  { term: "Shear", definition: "A sliding or cutting force, where two parts slide past each other (like scissors)." },
-  { term: "Bending", definition: "A force that curves a member — one face stretches (tension), the other squeezes (compression)." },
-  { term: "Torsion", definition: "A twisting force." },
-  { term: "Tie", definition: "A member in tension (being pulled)." },
-  { term: "Strut", definition: "A member in compression (being squeezed)." },
-  { term: "Beam", definition: "A member that resists bending." },
+  { term: "Frame structure", definition: "A structure made of individual members (rods, beams, or struts) connected at joints. The members carry the load; the spaces between them carry nothing. Examples: bicycle frame, roof truss, shelf bracket, Eiffel Tower." },
+  { term: "Shell structure", definition: "A structure where the outer skin carries the load. The surface itself is the structural element — there is no internal frame. Examples: egg, car body panel, dome, tin can." },
+  { term: "Mass structure", definition: "A solid structure where the whole volume of material is under compression. No internal cavity. Examples: dam wall, concrete foundation, brick wall, cliff." },
+  { term: "Factor of Safety (FoS)", definition: "The ratio of the load at which a structure fails to the maximum load it is designed to carry in use. FoS = Failure Load divided by Working Load. A FoS of 1 means the structure would fail exactly at its working load — far too risky. Structural engineering uses FoS of 2 to 6 or higher." },
+  { term: "Strut", definition: "A structural member under compression. It pushes back against the load trying to squash it. Columns and vertical posts are typically struts." },
+  { term: "Tie", definition: "A structural member under tension. It resists being pulled apart. The bottom chord of a roof truss is typically a tie." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Types of structure" icon="🏗️" id="types">
 
-### 1. The five forces
+### Frame, shell, and mass
 
-Every load puts one or more of these five forces into a structure:
+| Type | How load is carried | Key feature | Example |
+|---|---|---|---|
+| Frame | Members and joints | Spaces between members carry nothing | Bicycle frame, roof truss, your shelf project |
+| Shell | Outer skin | Surface is the structural element | Egg, car bonnet, dome |
+| Mass | Entire volume | All material in compression | Dam, brick wall, concrete foundation |
 
-- **Tension** — pulling apart (a tow rope).
-- **Compression** — squeezing (a column under a roof).
-- **Shear** — sliding/cutting (the bolt in a pair of scissors).
-- **Bending** — a shelf sagging under books.
-- **Torsion** — twisting (turning a screwdriver).
+**Exam trap:** A cardboard box is a shell structure, not a frame. The faces carry the load. A box made of straws glued at the corners is a frame — the straws carry load, the spaces do not.
 
-A clever tip: when something **bends**, the outer (stretched) face is in **tension**
-and the inner (squeezed) face is in **compression** at the same time.
+### Triangulation: why triangles are rigid
 
-<ForcesDiagram />
-
-<WatchSee items={[
-  { label: "The five forces, animated (MIT)", href: "https://www.youtube.com/watch?v=hXlnFgWUpDA", kind: "Video", note: "A short animation showing all five forces in action." }
-]} />
-
-### 2. Members: tie, strut and beam
-
-The parts of a frame are **members**, and we name them by the force they carry:
-
-- a **tie** is in **tension** (pulled),
-- a **strut** is in **compression** (squeezed),
-- a **beam** resists **bending**.
-
-How well a member does its job depends on its **length, cross-sectional shape and
-material** — a deep, I-shaped steel beam resists bending far better than a thin flat
-bar of the same weight.
+A triangle cannot be deformed without changing the length of one of its sides. A square frame can be racked (pushed into a parallelogram) without changing side lengths. Adding a diagonal brace converts the square into two triangles — now rigid. This is why trusses, bicycle frames, and roof structures use triangulated geometry.
 
 </Section>
 
-<WorkedExample title="Worked example — a cantilever shelf">
-1. **Picture it.** A shelf is fixed to a wall at one end, with a heavy plant pot on the free end.
-2. **What does it do?** It **bends** downward.
-3. **Top face?** It is stretched → in **tension**.
-4. **Bottom face?** It is squeezed → in **compression**.
+<Section title="Forces on structures" icon="⚡" id="forces">
 
-→ A loaded cantilever **bends**, with **tension on top and compression underneath**.
+### The five forces
+
+| Force | Direction | What it does | Example |
+|---|---|---|---|
+| Tension | Pulls apart along the axis | Stretches the member | Bottom chord of a truss, guy wire |
+| Compression | Pushes together along the axis | Squashes the member | Column, strut, concrete wall |
+| Shear | Acts across the member | Cuts or slides layers | Bolt through a joint, scissors |
+| Torsion | Twists around the axis | Rotates the cross-section | Driveshaft, screwdriver bit |
+| Bending | Combination of tension + compression | Curves the member | Loaded beam (top face in compression, bottom in tension) |
+
+**On a loaded beam:** the top face is in compression (being squashed by the load); the bottom face is in tension (being stretched as the beam sags). The point in between where stress is zero is the **neutral axis**. This is why I-beams have flanges top and bottom — most of the material is placed where the stress is highest, away from the neutral axis.
+
+</Section>
+
+<Section title="Stress and Factor of Safety" icon="📐" id="stress-fos">
+
+### Stress
+
+Stress = Force / Area
+
+If a force of 500 N acts on a cross-section of 50 mm², the stress is 500 / 50 = 10 N/mm² (which equals 10 MPa).
+
+A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load.
+
+### Factor of Safety
+
+FoS = Failure Load / Working Load
+
+**Example:** A shelf bracket fails (permanently deforms) at 200 N. It is designed to carry a maximum load of 50 N.
+FoS = 200 / 50 = 4.0
+
+A FoS of 4.0 means the bracket could carry four times its working load before failing. For structures that affect human safety (buildings, bridges), FoS values of 2.5–6 are typical.
+
+</Section>
+
+<Section title="Beam reactions" icon="⚖️" id="beam-reactions">
+
+### Simple supported beam
+
+A simply supported beam rests on two supports (A and B). When a load W is applied at some point along the beam, the two supports share the reaction. The method:
+
+1. Take moments about support A to find reaction at B.
+2. Then use equilibrium (RA + RB = total load) to find RA.
+
+**Moments about A:** Sum of clockwise moments = Sum of anticlockwise moments. The reaction at B creates an anticlockwise moment about A.
+
+Example: A beam 4 m long, supported at A (left) and B (right). A load of 600 N is applied 1 m from A.
+
+Moment of load about A = 600 N x 1 m = 600 N·m (clockwise)
+Moment of RB about A = RB x 4 m (anticlockwise)
+
+Setting equal: RB x 4 = 600, so RB = 150 N
+Then: RA = 600 - 150 = 450 N
+
+Check: 450 + 150 = 600 N (correct — equals total load).
+
+</Section>
+
+<Section title="Structural joints" icon="🔩" id="joints">
+
+| Joint | Sketch description | Load it handles | Used for |
+|---|---|---|---|
+| Halving joint | Two members notched halfway through, overlapping | Shear at crossing point | Cross-frames, timber grids |
+| Bridle joint | One member has a slot, the other a tongue — mechanical interlock | Tension and shear | Corners in timber frames |
+| Mortise and tenon | Tenon (rectangular peg) fits into mortise (rectangular hole) | Bending and shear | Furniture legs to rails |
+| Dowel joint | Round wooden pegs align two pieces | Shear | Furniture panels |
+| KD fitting | Cam lock and bolt — disassembles without tools | Tension and compression | Flatpack furniture |
+
+For your Component 2 project, you must use **at least two** different joining methods. KD fittings plus wood adhesive is one valid combination.
+
+</Section>
+
+<WorkedExample title="Three calculations in sequence">
+
+**Q1 — FoS:** A shelf is designed to hold 30 kg (approximately 300 N). It fails at 1,200 N. FoS = 1200 / 300 = 4.0. Is this adequate for a domestic shelf? Yes — a FoS of 4 provides comfortable safety margin.
+
+**Q2 — Stress:** The vertical support of the shelf bracket is 25 mm x 25 mm square section timber. The maximum compressive load is 300 N.
+Stress = Force / Area = 300 / (25 x 25) = 300 / 625 = 0.48 N/mm² (well within timber's compressive strength of ~30 N/mm²).
+
+**Q3 — Beam reaction:** The shelf (length 600 mm) is supported at the wall (A, left) and a bracket tip (B, right). A load of 400 N acts 200 mm from A.
+Moment about A: RB x 600 = 400 x 200 = 80,000 N·mm
+RB = 80,000 / 600 = 133 N
+RA = 400 - 133 = 267 N
+Check: 267 + 133 = 400 N.
 </WorkedExample>
 
-<Activity title="Spot the forces" time="30 min" grouping="Pairs" materials={["The three structure cards", "A truss diagram", "Coloured pencils"]}>
-1. **Label the forces.** On each of the three structures, mark where you see
-   tension, compression, shear, bending or torsion. Use a **consistent colour** for
-   each force.
-2. **Tie or strut?** On the truss diagram, mark every member as a **tie** or a
-   **strut**.
+<Activity title="Structures diagnostic and four exercises" time="90 min" grouping="Individual" materials={["Graph paper or squared paper", "Ruler", "Calculator"]}>
 
-If you get stuck, use **"ask three, then me"** — check with three classmates before
-calling the teacher.
+**Diagnostic quiz (0–10 min):** Teacher-led — 6 questions, no marks. Answers discussed immediately.
+
+**Exercise 1 (10–25 min) — Classify:** Given eight photographs of real structures (truss bridge, eggshell, stone wall, bicycle wheel, car bonnet, tent, concrete dam, roof truss) — classify each as frame, shell, or mass. Justify in one sentence each.
+
+**Exercise 2 (25–40 min) — Label forces:** On three given diagrams (loaded beam, roof truss, guy wire) — label each member or region with its force type (tension, compression, shear, bending). Use T, C, S, B labels.
+
+**Exercise 3 (40–65 min) — Calculations:** Complete four problems:
+- FoS given failure load and working load (two problems).
+- Working load given FoS and failure load (one problem).
+- Beam reaction for a simply supported beam with one point load.
+Show all working: formula, substitution, calculation, units.
+
+**Exercise 4 (65–85 min) — Joints:** Sketch three structural joints from the list (halving, bridle, mortise and tenon, dowel, KD fitting). For each: name, sketch (clear enough to identify the joint type), and one sentence on where it would be used in your Component 2 project.
+
+**Review (85–90 min):** Swap papers with a neighbour. Check one calculation each.
 </Activity>
 
-<Support title="Need a hand? A colour key + sentence frame">
-**Colour key** (use the same colours every time): tension = blue, compression =
-red, shear = green, bending = orange, torsion = purple.
+<Support title="Calculation and classification support">
 
-**Sentence frame:** *"This member is in **[tension / compression]** because it is
-being **[pulled apart / squeezed]**, so it is a **[tie / strut]**."*
+**FoS calculation strip:**
+- FoS = Failure Load / Working Load
+- Working Load = Failure Load / FoS
+- Failure Load = Working Load x FoS
+
+**Beam reaction method card:**
+1. Draw the beam, mark supports A and B, mark load with position.
+2. Take moments about A: (RB x beam length) = (Load x distance from A).
+3. Solve for RB.
+4. Find RA = Total load - RB.
+5. Check: RA + RB must equal total load.
+
+**Structure classification — if uncertain:** Ask "does the skin/surface carry the load, or do separate members carry it?" If separate members (rods, beams, struts), it is a frame. If the surface itself carries the load, it is a shell. If it is solid throughout and all material is under compression, it is a mass.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A crane's cable lifting a load is mainly in which force?",
-    options: ["Compression", "Tension", "Torsion", "Shear"],
-    answer: 1,
-    hint: "Is the cable being pulled apart, or squeezed?",
-    explain: "The load pulls the cable apart, so it is in tension."
-  },
-  {
-    q: "A member that is being squeezed is called a…",
-    options: ["tie", "strut", "beam", "joint"],
-    answer: 1,
-    hint: "Squeezing is compression — which member name goes with compression?",
-    explain: "A strut is a member in compression. (A tie is in tension; a beam resists bending.)"
-  },
-  {
-    q: "A diving board with a person standing on the end mainly experiences…",
-    options: ["torsion", "shear", "bending", "tension only"],
+    q: "A simply supported beam is 3 m long, supported at A (left) and B (right). A load of 900 N acts 1 m from A. What is the reaction at B?",
+    options: [
+      "900 N — B takes the full load when A is to the left",
+      "450 N — the load is shared equally between both supports",
+      "300 N — moment of 900 N x 1 m about A, divided by beam length 3 m",
+      "600 N — moment of 900 N x 2 m about B, divided by beam length 3 m"
+    ],
     answer: 2,
-    hint: "What shape does the board take when someone stands on the end?",
-    explain: "The board bends — its top face goes into tension and its bottom face into compression."
+    hint: "Take moments about A: RB x 3 = 900 x 1. Solve for RB.",
+    explain: "Moments about A: RB x 3 = 900 x 1 = 900 N·m. RB = 900 / 3 = 300 N. Then RA = 900 - 300 = 600 N. Check: 600 + 300 = 900 N (correct). The support closer to the load (A) takes the larger reaction."
+  },
+  {
+    q: "On a loaded horizontal beam, the top face is in compression and the bottom face is in tension. The zone between them where stress is zero is called:",
+    options: [
+      "The shear plane — where shear stress acts horizontally through the beam",
+      "The neutral axis — the layer where bending stress transitions from compression to tension",
+      "The factor of safety line — the reserve capacity built into the beam",
+      "The torsion zone — where twisting forces are balanced"
+    ],
+    answer: 1,
+    hint: "The top is compressed, the bottom is stretched — where is the transition?",
+    explain: "The neutral axis is the zone in the beam cross-section where bending stress is zero — the transition from compression (top, being squashed) to tension (bottom, being stretched). I-beams concentrate material at the top and bottom flanges because that is where the highest bending stress occurs, far from the neutral axis."
+  },
+  {
+    q: "A structure's failure load is 5,000 N. It has a Factor of Safety of 5. What is its maximum working load?",
+    options: [
+      "25,000 N — multiply failure load by FoS",
+      "5,000 N — the working load equals the failure load",
+      "1,000 N — divide failure load by FoS",
+      "4,000 N — subtract FoS from failure load"
+    ],
+    answer: 2,
+    hint: "Working Load = Failure Load / FoS.",
+    explain: "Working Load = Failure Load / FoS = 5,000 / 5 = 1,000 N. The FoS tells you how many times larger the failure load is than the working load. A FoS of 5 means the structure must be able to bear five times the working load before it fails."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
+<Section title="Homework" icon="🏠" id="homework">
 
-**Homework:** complete the **Knowledge Check** for textbook §4.2 (forces and
-members).
+**Home task:** Complete any calculation exercises not finished in class. Read §4.2.1 (Basic structural concepts) and §4.2.5 (Loads and reactions) and write definitions of strut, tie, and neutral axis in your own words.
 
-<Extension title="Go deeper">
-Find a real structure near you (a gate, a bridge, a climbing frame) and label
-**all five forces** you can find on it, plus every tie and strut. Or try the
-**Skills Activity** in §4.2.4.
+<Extension title="Triangulation investigation">
+Build a square frame from four drinking straws (tape at corners). Test its rigidity — does it rack? Now add a diagonal straw across one corner and retest. Photograph or sketch the result. Explain in 60 words why the triangle is rigid while the square is not, referring to member lengths and angles.
 </Extension>
 
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.4 Nature of structural members (p.242)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.2.10 Forces (p.258)", type: "Textbook", href: "https://drive.google.com/file/d/1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.3 Strengthening frames (p. 239)", type: "Textbook", href: "https://drive.google.com/file/d/1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.5 Loads and reactions (p. 249)", type: "Textbook", href: "https://drive.google.com/file/d/1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.6 Moments (p. 253)", type: "Textbook", href: "https://drive.google.com/file/d/1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.9 Structural joints (p. 265)", type: "Textbook", href: "https://drive.google.com/file/d/1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.10 Forces in structures (p. 269)", type: "Textbook", href: "https://drive.google.com/file/d/1F8bzARgbX_6J9CRumVRAswfFDgXfydHy/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Which force will most threaten my product, and how will I resist it?" />
+<Reflection prompt="Which of the five forces (tension, compression, shear, torsion, bending) appears most in your Component 2 project, and where? Draw a quick sketch of your product and label the dominant force on each main member." />

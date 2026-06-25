@@ -2,119 +2,180 @@
 grade: 11
 term: 2
 week: 8
-title: "Working Drawings (C5)"
-topic: "Project"
-learningGoal: "produce a dimensioned third-angle orthographic working drawing — with scale and British-Standard conventions — that someone could build my product from."
-selGoal: "check a classmate's drawing against the British-Standard checklist and give precise, kind feedback."
+title: "Electronics 2: Sensing & Control (Thermistors & LDRs)"
+topic: "Electronics 2"
+learningGoal: "describe how NTC thermistors and LDRs change resistance with temperature and light; calculate the output voltage of a voltage divider containing one of these sensors"
+selGoal: "draw the voltage divider circuit from memory and calculate the output voltage for two different sensor conditions — before looking at the formula"
 draft: false
 ---
 
-
-A **working drawing** is the instruction manual for your product: clear enough that
-someone *else* could build it. This week you produce a dimensioned, conventionally
-laid-out drawing to British Standards.
-
-<Callout type="exam" title="Why this matters" id="why">
-  This is <ExamLink to="project">Criterion 5</ExamLink> (planning), and it's exactly
-  <ExamLink to="paper1">Paper 1 part (e)</ExamLink> — the full solution drawing with
-  construction details and dimensions (12 marks).
-</Callout>
+Your project circuit uses a simple switch. Paper 4 tests a more sophisticated class of circuits: sensing circuits that respond automatically to environmental conditions. This session introduces the two most commonly tested sensors (NTC thermistor and LDR) and the voltage divider circuit that connects them to an output device.
 
 <KeyTerms terms={[
-  { term: "Orthographic drawing", definition: "Flat 2D views of a product: plan (top), front and end elevations." },
-  { term: "Third-angle projection", definition: "The standard arrangement of those views used in most schools." },
-  { term: "Scale", definition: "The drawing's size compared to real life, e.g. 1:2 (half size)." },
-  { term: "Dimensioning", definition: "Adding measurements following British-Standard rules." },
-  { term: "Hidden detail", definition: "Edges you can't see, shown as dashed lines." },
+  { term: "NTC thermistor", definition: "Negative Temperature Coefficient thermistor. A resistor whose resistance decreases as temperature increases. At cold temperatures: high resistance. At hot temperatures: low resistance. Used to sense temperature — for example, in central heating thermostats and kettle cut-off circuits." },
+  { term: "LDR (Light-Dependent Resistor)", definition: "A resistor whose resistance decreases as light intensity increases. In bright conditions: low resistance (typically 100–500 Ω). In dark conditions: high resistance (typically 1 MΩ). Used in automatic lighting circuits (streetlights, night lights) and light-activated alarms." },
+  { term: "Voltage divider", definition: "A circuit of two resistors in series connected across a supply voltage. The output voltage is taken between the two resistors. Vout = Vsupply x R2 / (R1 + R2). When one of the resistors is a sensor (thermistor or LDR), the output voltage changes as the sensor resistance changes — this is the basis of sensing circuits." },
+  { term: "Potential divider", definition: "Another term for voltage divider. The circuit 'divides' the supply voltage between two series resistors in proportion to their resistance values. The junction between the two resistors is the output (signal) point." },
+  { term: "Transistor switch", definition: "A transistor (typically BC547 NPN) connected so that a small base current (from the voltage divider output) controls a larger collector-emitter current through an output device (LED, buzzer, relay). The transistor is ON when the base voltage exceeds approximately 0.6 V." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="NTC thermistor: how it works" icon="🌡️" id="thermistor">
 
-### 1. Three views, by convention
+### Resistance vs temperature relationship
 
-A **third-angle orthographic** drawing lays out the **plan, front elevation and end
-elevation** in standard positions, so anyone reading it knows what they're looking at.
+For an NTC thermistor:
+- Cold (e.g. 0°C): resistance high (e.g. 10 kΩ)
+- Room temperature (25°C): resistance medium (e.g. 5 kΩ)
+- Hot (e.g. 100°C): resistance low (e.g. 500 Ω)
 
-<WatchSee items={[
-  { label: "Third-angle orthographic projection (beginners)", href: "https://www.youtube.com/watch?v=qzE9ZZYCfeY", kind: "Video", note: "How the plan, front and end views are arranged." }
-]} />
+This non-linear relationship is what distinguishes a thermistor from a fixed resistor — its resistance value changes with temperature.
 
-### 2. Scale and dimensioning
+### In a voltage divider
 
-State a **scale** (e.g. 1:2) and dimension to **British Standards**: clear
-extension and dimension lines, the **diameter symbol (⌀)** for holes, centre lines,
-and **hidden detail** as dashed lines.
+If the thermistor is the top resistor (R1) and a fixed resistor is the bottom resistor (R2):
 
-### 3. Make it buildable
+Vout = Vsupply x R2 / (R1 + R2)
 
-Add a **title block** and an **assembly note**, and a **section or exploded view**
-where it helps. The test: could someone build it from this drawing alone?
+- When the thermistor is cold: R1 is large → R1 + R2 is large → Vout is small (most voltage across R1).
+- When the thermistor is hot: R1 is small → Vout is large (most voltage across R2).
+
+**Application:** A high Vout when hot can switch on a transistor, which activates a fan or an alarm — this is how a temperature-controlled cooling fan works.
 
 </Section>
 
-<WorkedExample title="Worked example — dimensioning a bracket">
-1. **Lay out** the plan, front and end elevations in third-angle positions.
-2. **State the scale** (say 1:2) in the title block.
-3. **Dimension** each view to British Standards — sizes, hole diameters (⌀), centre lines.
-4. **Show hidden detail** (a hole behind a face) as dashed lines.
+<Section title="LDR: how it works" icon="💡" id="ldr">
+
+### Resistance vs light level relationship
+
+For an LDR:
+- Dark (covered): resistance very high (e.g. 1 MΩ = 1,000 kΩ)
+- Dim light: resistance medium (e.g. 50 kΩ)
+- Bright light: resistance low (e.g. 500 Ω)
+
+### In a voltage divider (dark-activated circuit)
+
+If the LDR is the top resistor (R1) and a fixed resistor is the bottom (R2):
+
+- In the dark: LDR resistance (R1) is very high → Vout is small → transistor OFF → LED off.
+- In the light: LDR resistance is low → Vout is high → transistor ON → LED on.
+
+This is a light-activated circuit (LED lights in bright conditions).
+
+To make a dark-activated circuit (LED lights in dark conditions), swap the positions of the LDR and the fixed resistor — place the fixed resistor at the top and the LDR at the bottom.
+
+</Section>
+
+<Section title="The voltage divider formula" icon="🔢" id="formula">
+
+### Formula
+
+Vout = Vsupply x R2 / (R1 + R2)
+
+Where R1 is the top resistor (between supply and the output junction), and R2 is the bottom resistor (between the output junction and 0 V).
+
+### Worked steps
+
+1. Identify R1 and R2 (top and bottom of the divider).
+2. Identify Vsupply.
+3. Substitute and calculate: Vout = Vsupply x R2 / (R1 + R2).
+4. State units: volts.
+
+**Sanity check:** Vout must be between 0 V and Vsupply. If your answer is outside this range, recheck the formula substitution.
+
+</Section>
+
+<WorkedExample title="Two voltage divider calculations">
+
+**Scenario 1 — LDR in bright conditions:**
+Supply = 9 V. LDR resistance in bright conditions = 500 Ω (R1, top). Fixed resistor = 4,500 Ω (R2, bottom).
+
+Vout = 9 x 4,500 / (500 + 4,500) = 9 x 4,500 / 5,000 = 9 x 0.9 = 8.1 V
+
+At 8.1 V, the transistor base voltage is well above 0.6 V — transistor ON, LED lights.
+
+**Scenario 2 — LDR in dark conditions:**
+Supply = 9 V. LDR resistance in dark = 100,000 Ω (100 kΩ) (R1, top). Fixed resistor = 4,500 Ω (R2, bottom).
+
+Vout = 9 x 4,500 / (100,000 + 4,500) = 9 x 4,500 / 104,500 = 9 x 0.0431 = 0.39 V
+
+At 0.39 V, the transistor base voltage is below 0.6 V — transistor OFF, LED does not light.
+
+**Conclusion:** This LDR circuit lights the LED in bright conditions and switches it off in dark conditions. To reverse (dark-activated), swap R1 and R2.
 </WorkedExample>
 
-<Activity title="Draw it to standard" time="55 min" grouping="Individual (drawing colleague circulates)" materials={["CAD or drawing board", "BS dimensioning guide", "Your 3D model & parts"]}>
-1. **Complete** the plan and two elevations of your product.
-2. **Dimension** them to British Standards, with a stated scale.
-3. **Add an assembly note**, then **peer-check** a classmate's drawing against the
-   BS checklist — precise, kind feedback.
+<Activity title="Sensing circuit analysis and calculation" time="90 min" grouping="Individual" materials={["Calculator", "Graph paper (for resistance vs condition plot)"]}>
+
+**Concept mapping (0–20 min):**
+1. Without looking at notes, draw the voltage divider circuit: supply → R1 → output junction → R2 → 0 V. Label Vsupply, R1, R2, and Vout.
+2. Label which resistor position (R1 top or R2 bottom) should hold the sensor for a light-activated circuit vs a dark-activated circuit.
+
+**Calculation set (20–55 min):**
+3. Complete four voltage divider calculations (given on the teacher worksheet):
+   - LDR, bright, 9 V supply.
+   - LDR, dark, 9 V supply.
+   - Thermistor, hot, 6 V supply.
+   - Thermistor, cold, 6 V supply.
+4. For each calculation: write the formula, state R1 and R2 and their values, substitute, calculate, state Vout, state transistor state (ON if Vout > 0.6 V; OFF if Vout < 0.6 V).
+
+**Design task (55–80 min):**
+5. Design a streetlight control circuit using an LDR. State: which position the LDR occupies (R1 or R2), the fixed resistor value needed so that the transistor switches at approximately 3 V in ambient light conditions (LDR resistance 5 kΩ in ambient light), the output device (LED representing the streetlight).
+6. Draw the complete circuit including the transistor switch stage.
+
+**Exam question practice (80–90 min):**
+7. Complete a past Paper 4 Section A question on sensing circuits (provided by teacher).
 </Activity>
 
-<Support title="Need a hand? A BS checklist + grid paper">
-Work through the **British-Standard dimensioning checklist** one line at a time, and
-use **grid paper** to keep views square and aligned. Copy the layout from the
-textbook's worked example (p.111).
+<Support title="Voltage divider and sensing circuit help">
+
+**R1 and R2 confusion:** R1 is always the top resistor — between the supply and the output junction. R2 is the bottom — between the junction and 0 V. When the top resistor (R1) increases, Vout decreases (more voltage dropped across R1). When R2 increases, Vout increases (more voltage available at the junction).
+
+**Calculation gives a voltage above Vsupply:** R1 and R2 have been swapped in the formula. Recheck which is at the top and which is at the bottom of the divider.
+
+**Transistor always ON or always OFF regardless of sensor state:** The fixed resistor value may be too extreme. If the fixed resistor is very large compared to the sensor's maximum resistance, Vout will always be high (transistor always ON). If it is very small, Vout will always be low (transistor always OFF). The fixed resistor should be chosen so that the transition point (Vout = 0.6 V) falls within the sensor's normal operating range.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "In an orthographic working drawing, what are the three usual views?",
+    q: "An NTC thermistor is the top resistor (R1) in a voltage divider with a 9 V supply. As temperature increases, what happens to Vout?",
     options: [
-      "Top, bottom, side",
-      "Plan, front elevation, end elevation",
-      "Left, right, back",
-      "Three random angles"
+      "Vout decreases — higher temperature means higher R1, so more voltage is dropped across R1",
+      "Vout increases — higher temperature means lower R1, so less voltage is dropped across R1 and more appears at the output",
+      "Vout remains constant — the thermistor only affects current, not voltage",
+      "Vout increases to the full supply voltage — the thermistor shorts out when hot"
     ],
     answer: 1,
-    hint: "One looks down, two look from the sides/front.",
-    explain: "The standard views are the plan (from above), the front elevation and the end elevation."
+    hint: "NTC = resistance decreases as temperature increases. Apply Vout = Vsupply x R2 / (R1 + R2) with a smaller R1.",
+    explain: "For an NTC thermistor as R1: when temperature increases, R1 decreases. Vout = Vsupply x R2 / (R1 + R2). As R1 decreases, the denominator (R1 + R2) decreases, so R2 / (R1 + R2) increases, and therefore Vout increases. The junction sees more of the supply voltage when R1 is small relative to R2."
   },
   {
-    q: "How is hidden detail shown on a working drawing?",
-    options: ["Thick solid lines", "Dashed lines", "Red lines", "It's left out"],
-    answer: 1,
-    hint: "Edges you can't directly see use a broken line.",
-    explain: "Hidden detail (edges behind a face) is drawn as dashed lines."
+    q: "A voltage divider has R1 = 3,000 Ω (top) and R2 = 6,000 Ω (bottom). Supply is 9 V. What is Vout?",
+    options: [
+      "3 V — R1 is half of R2, so R1 takes one-third and R2 takes two-thirds of the supply",
+      "4.5 V — the supply is split equally across two resistors",
+      "6 V — Vout = 9 x 6,000 / (3,000 + 6,000) = 9 x 6/9 = 6 V",
+      "2 V — Vout = 9 x 3,000 / (3,000 + 6,000) = 9 x 1/3 = 3 V minus overhead"
+    ],
+    answer: 2,
+    hint: "Vout = Vsupply x R2 / (R1 + R2). Substitute carefully.",
+    explain: "Vout = 9 x 6,000 / (3,000 + 6,000) = 9 x 6,000 / 9,000 = 9 x 0.667 = 6 V. Option C is correct. The voltage at the output junction is 6 V. Note: option A misidentifies which resistor takes which share — R2 (the bottom, larger resistor at 6 kΩ) gives more voltage at the junction, not less."
   },
   {
-    q: "A scale of 1:2 means the drawing is…",
-    options: ["twice real size", "half real size", "the same size", "in millimetres only"],
+    q: "To make a dark-activated circuit using an LDR and a voltage divider (LED lights in the dark, off in the light), the LDR should be placed:",
+    options: [
+      "As R1 (top resistor) — in the dark, LDR resistance is high, Vout is low, transistor OFF",
+      "As R2 (bottom resistor) — in the dark, LDR resistance is high, Vout is high, transistor ON",
+      "As R1 (top resistor) — in the dark, LDR resistance is low, Vout is high, transistor ON",
+      "As R2 (bottom resistor) — in bright light, LDR resistance is high, Vout is high, transistor ON"
+    ],
     answer: 1,
-    hint: "The drawing number comes first, real life second.",
-    explain: "1:2 means one unit on the drawing equals two in real life — so the drawing is half size."
+    hint: "Dark = high LDR resistance. Work through Vout = Vsupply x R2 / (R1 + R2) with LDR as R2: what happens to Vout when LDR resistance is very high?",
+    explain: "With LDR as R2: Vout = Vsupply x R_LDR / (R1_fixed + R_LDR). In the dark, R_LDR is very high (e.g. 1 MΩ), so R_LDR dominates the denominator — Vout approaches Vsupply (high). Transistor switches ON, LED lights. In bright light, R_LDR drops to 500 Ω — R1_fixed dominates, Vout is small, transistor OFF, LED extinguishes. This is the dark-activated configuration."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** finalise your **working drawing** so it's complete and dimensioned.
-
-<Extension title="Go deeper">
-Add an **exploded** or **sectional** view to show how the parts fit together or
-what's inside.
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — Paper 1 (part e: solution drawing)", route: "paper1", type: "Link" },
-  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110–112)", type: "Textbook", href: "https://drive.google.com/file/d/1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.1 Systems and IPO (p. 214)", type: "Textbook", href: "https://drive.google.com/file/d/1-HWfTqCVLKs3nuPyimiNMPm2T3FVct9N/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Could someone else build my product from this drawing alone?" />
+<Reflection prompt="If your project circuit used an LDR instead of a manual switch, what would the product do differently — and would that make it more or less useful for your target user?" />

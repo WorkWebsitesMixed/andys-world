@@ -2,138 +2,195 @@
 grade: 11
 term: 1
 week: 6
-title: "Research → Specification (C2)"
-topic: "Project"
-learningGoal: "analyse my user research and write a justified, measurable specification of at least six points, each linked to a need and including one safety and one sustainability point."
-selGoal: "represent my user's needs fairly, basing at least two spec points on what the user actually told me."
+title: "The Required Project Circuit"
+topic: "Electronics"
+learningGoal: "draw the switch-operated LED circuit using correct symbols; label it with the IPO model; calculate the current-limiting resistor value using R = V/I"
+selGoal: "build the circuit on a breadboard without copying — use the diagram I drew, not a neighbour's breadboard"
 draft: false
 ---
 
-
-Back to your project. You've met your user and gathered research — now you turn that
-into a **specification**: the precise, measurable list of what your product *must*
-do. A strong spec is the backbone of every mark that follows.
-
-<Callout type="exam" title="Why this matters" id="why">
-  This is <ExamLink to="project">Criterion 2</ExamLink> of your coursework
-  (research → specification, 10 marks). A clear, justified spec also makes idea
-  generation and evaluation far easier later — and the analysis skill transfers
-  straight to Paper 1.
-</Callout>
+Your Component 2 project requires a switch-operated light circuit integrated into the structural product. This session covers every piece of theory you need to design, draw, and build it — from circuit symbols through IPO labelling to the resistor calculation that protects the LED.
 
 <KeyTerms terms={[
-  { term: "Primary research", definition: "Information you gather yourself (interviewing or observing your user)." },
-  { term: "Secondary research", definition: "Information from existing sources (books, websites, existing products)." },
-  { term: "Specification", definition: "A list of measurable, justified statements of what the product must do or be." },
-  { term: "Measurable", definition: "Written so you can test it — a number, a limit or a clear yes/no." },
-  { term: "ACCESS FM", definition: "A spec framework: Aesthetics, Cost, Customer, Environment, Size, Safety, Function, Materials." },
+  { term: "IPO (Input–Process–Output)", definition: "A model for describing any electronic system. Input: the component that senses or controls (the switch). Process: the component that manages the electrical flow (resistor or transistor). Output: the component that produces a visible or physical effect (LED, lamp, motor)." },
+  { term: "LED (Light-Emitting Diode)", definition: "A semiconductor component that emits light when current flows through it in the forward direction. LEDs have a forward voltage (typically 2 V for red/green, 3.0–3.5 V for blue/white) and a maximum forward current (typically 20 mA)." },
+  { term: "Current-limiting resistor", definition: "A resistor placed in series with an LED to restrict the current to the LED's safe operating level. Without this resistor, the LED would draw excess current and burn out. R = (Vsupply minus V_LED) divided by I_LED." },
+  { term: "Switch type", definition: "The physical mechanism that opens and closes a circuit. SPST toggle (latching, stays in position), push-to-make (momentary, returns when released), tilt switch (gravity-operated, closes when tilted), reed switch (closes in a magnetic field)." },
+  { term: "Series circuit", definition: "Components connected end-to-end in a single loop. The same current flows through every component. The total voltage is shared among components. If any component fails open, the whole circuit stops." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Circuit symbols and the IPO model" icon="⚡" id="symbols">
 
-### 1. Analyse, don't just collect
+### The seven symbols you must be able to draw
 
-Research only earns marks when you **analyse** it — say what each finding *means for
-your design*. "My user keeps heavy folders" → "the shelf must support at least 5 kg".
+| Component | Symbol features | Function |
+|---|---|---|
+| Cell (single) | Long thin line (positive), short thick line (negative) | Provides EMF (electromotive force) |
+| Battery (multi-cell) | Multiple cell symbols in series | Higher voltage supply |
+| Resistor | Rectangle | Limits current flow |
+| LED | Diode triangle (direction of current flow) with two outward arrows | Emits light when forward current flows |
+| Switch (SPST open) | Line with a gap and a pivoting lever | Breaks the circuit to stop current |
+| Toggle switch | Same as above with latching symbol | Stays in the open or closed position |
+| Push-to-make | Switch symbol with a dashed line showing spring return | Closes only while pressed |
 
-### 2. ACCESS FM — a checklist for a complete spec
+Draw each symbol neatly and consistently. In the exam, a symbol that is too small or distorted will not be credited.
 
-Cover each heading so nothing is missed: **A**esthetics, **C**ost, **C**ustomer,
-**E**nvironment, **S**ize, **S**afety, **F**unction, **M**aterials. Your make-palette
-and the project's <ExamLink to="project">size limits</ExamLink> already fix some of
-these for you.
+### Conventional current direction
 
-### 3. What a good spec point looks like
+Current is shown flowing from the positive terminal of the cell (+), through the circuit, and back to the negative terminal (–). Components must be connected in the correct direction — the LED has a positive (anode) and negative (cathode) terminal and only conducts when connected the right way.
 
-Every point should be **measurable** *and* **justified**:
+### IPO for the project circuit
 
-> *"The product must support 5 kg **because** the user stores heavy folders
-> (**measured by** loading it with 5 kg without sagging)."*
-
-Include at least one **safety** point and one **sustainability** point.
+- **Input:** Switch (the student or user decides when the light is on — they trigger the system)
+- **Process:** Resistor (limits the current to protect the LED — makes the electrical decision)
+- **Output:** LED (produces light — the visible result that meets the user need)
 
 </Section>
 
-<WorkedExample title="Worked example — turning research into spec points">
-1. **Finding:** "My user's desk is only 60 cm deep and always cluttered."
-2. **Spec point:** *"Must take up no more than 25 cm of desk depth, because the desk is small and cluttered."*
-3. **Finding:** "They work late and the room is dark."
-4. **Spec point:** *"Must include a switch-operated light, because the user works in low light."*
+<Section title="Switch types" icon="🔌" id="switches">
 
-→ Each point traces back to something the **user actually said**.
+### Choosing the right switch for your project
+
+| Switch type | How it works | Best for |
+|---|---|---|
+| SPST toggle | Flips between on and off, stays in position | A desk organiser where the user wants the light on for extended periods |
+| Push-to-make | Closes while pressed, springs open when released | A product where the light should activate only when the product is in use |
+| Tilt switch | Contains a ball bearing — closes when tilted past an angle | Products where the light should activate automatically when the item is picked up or repositioned |
+| Reed switch | Closes in the presence of a magnetic field | Products where the light activates when a door is opened (magnet on door, reed switch in frame) |
+
+For your project, you must choose a switch type and justify it in your specification. The justification should relate to the user: "A tilt switch was chosen because the product is a portable charging stand — when lifted, the tilt switch closes and the LED confirms the product is ready."
+
+</Section>
+
+<Section title="The current-limiting resistor calculation" icon="🔢" id="resistor">
+
+### Why the resistor is essential
+
+An LED is not a resistor — it does not naturally limit its own current. If connected directly to a battery, it draws as much current as the battery can supply, far exceeding its 20 mA maximum, and burns out in seconds.
+
+### The formula
+
+R = (Vsupply - V_LED) / I_LED
+
+Where:
+- Vsupply = battery voltage (typically 9 V for this project)
+- V_LED = LED forward voltage (2 V for red/green/yellow; 3.0 V for blue/white)
+- I_LED = LED operating current in **amperes** (20 mA = 0.020 A)
+
+Always convert mA to A before substituting. The result R is in ohms.
+
+After calculating R, choose the nearest standard resistor value **above** the calculated value (never below — you must not exceed the LED's current rating).
+
+Common standard resistor values (E12 series): 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000 Ω.
+
+</Section>
+
+<WorkedExample title="Full resistor calculation for a red LED on a 9 V supply">
+
+**Given:** Supply = 9 V. Red LED forward voltage = 2 V. LED operating current = 20 mA.
+
+**Step 1 — Write the formula:**
+R = (Vsupply - V_LED) / I_LED
+
+**Step 2 — Convert mA to A:**
+20 mA = 0.020 A
+
+**Step 3 — Substitute:**
+R = (9 - 2) / 0.020 = 7 / 0.020 = 350 Ω
+
+**Step 4 — Choose the nearest standard value above 350 Ω:**
+From the E12 series: 390 Ω is the next value above 350 Ω.
+
+**Answer:** Use a 390 Ω resistor. This keeps LED current below 20 mA (safe), with a small margin.
+
+**Verification:** Actual current with 390 Ω: I = (9 - 2) / 390 = 7 / 390 = 0.0179 A = 17.9 mA. Below 20 mA — LED is protected.
 </WorkedExample>
 
-<Activity title="Draft your specification" time="40 min" grouping="Individual, with a peer check" materials={["ACCESS FM template", "Your Week 1 user research", "Your specification page"]}>
-1. **Write at least six spec points**, each **measurable and justified** and linked
-   to a real need.
-2. **Include** one **safety** point and one **sustainability** point.
-3. **Peer check:** swap with a partner — can they trace each of your points back to a
-   user need? Fix any that can't.
+<Activity title="Circuit drawing, calculation, and breadboard build" time="90 min" grouping="Individual" materials={["A4 paper for circuit diagram", "Calculator", "Breadboard", "9 V battery and clip", "Red LED", "Various resistors (330, 390, 470 Ω)", "SPST toggle switch", "Push-to-make switch", "Pre-stripped wire leads"]}>
+
+1. **(0–20 min) Draw the circuit.** On A4 paper, draw the complete switch-operated LED circuit using correct symbols: battery → switch → resistor → LED → back to battery. Label: + and – terminals on battery, component names, IPO labels (I, P, O), current direction arrows.
+
+2. **(20–35 min) Resistor calculation.** Complete three calculations:
+   - Red LED, 9 V supply: forward voltage 2 V, 20 mA.
+   - Blue LED, 9 V supply: forward voltage 3.0 V, 20 mA.
+   - Green LED, 6 V supply: forward voltage 2.1 V, 15 mA.
+   Show all steps: formula, unit conversion, substitution, calculation, standard value selection.
+
+3. **(35–65 min) Build on breadboard.** Using the circuit you drew:
+   - Connect battery to breadboard power rails.
+   - Place the toggle switch in the circuit.
+   - Connect the calculated resistor in series.
+   - Connect the LED (note anode/cathode direction).
+   - Test: does the LED light when the switch is toggled?
+
+4. **(65–80 min) Switch type comparison.** Replace the toggle switch with a push-to-make switch. Test. Then try a tilt switch if available. For each: note how the user experience changes and which switch type best suits your project brief.
+
+5. **(80–90 min) Circuit annotation.** Add your switch choice and justification to your C1 brief. State which switch type you will use and why it suits your target user.
 </Activity>
 
-<Support title="Need a hand? A spec sentence frame">
-Use this frame for every point:
+<Support title="Building and troubleshooting the breadboard circuit">
 
-> *"The product must **………** because **………** (measured by **………**)."*
+**Breadboard layout reminder:** Holes in the same horizontal row on each half of the board are connected. The two long rails (marked red + and blue –) run the full board length — use these for the battery positive and negative connections.
 
-Start from your user's own words — that guarantees each point is justified.
+**LED not lighting?** Check: (1) LED polarity — the longer leg is the anode (positive); (2) switch correctly positioned in the circuit (gap in the circuit line); (3) resistor value correct; (4) battery connection secure; (5) all connections in the same numbered column or power rail.
+
+**LED burning out?** Check your resistor value. If you used a resistor much lower than the calculated value, the LED drew too much current. Replace the LED and use the correct resistor.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Which is the strongest specification point?",
+    q: "In the switch-operated LED circuit, which component is the PROCESS in the IPO model?",
     options: [
-      "Must be strong",
-      "Must look nice",
-      "Must support 5 kg without sagging, because the user stores heavy folders",
-      "Must be made of wood"
+      "The switch — it receives the user's input and triggers the circuit",
+      "The battery — it provides the energy that powers the whole system",
+      "The resistor — it controls the current flowing to the LED to keep it safe",
+      "The LED — it produces the light that the user sees"
     ],
     answer: 2,
-    hint: "Which one is both measurable AND justified?",
-    explain: "It is measurable (5 kg, no sagging) and justified (the user stores heavy folders). The others are vague or unjustified."
+    hint: "The process is the component that makes a decision or manages the electrical flow between input and output.",
+    explain: "The resistor is the process — it limits the current flowing to the LED, managing the electrical decision of how much current the LED receives. The switch is the input (user triggers the system). The LED is the output (produces the visible light). The battery is the power source, not part of the IPO classification."
   },
   {
-    q: "What does it mean to 'analyse' research?",
+    q: "A white LED has a forward voltage of 3.0 V and requires 20 mA. The supply is 9 V. Calculate the current-limiting resistor value and choose the correct standard resistor.",
     options: [
-      "Collect as much of it as possible",
-      "Say what each finding means for your design",
-      "Copy it from a website",
-      "Save it for the evaluation"
+      "100 Ω — nearest E12 value below 100 Ω",
+      "220 Ω — nearest E12 value below 240 Ω",
+      "300 Ω — exactly the calculated value",
+      "330 Ω — nearest E12 value above 300 Ω"
     ],
-    answer: 1,
-    hint: "Marks come from what you DO with the findings.",
-    explain: "Analysing means interpreting each finding into a design implication — not just collecting data."
+    answer: 3,
+    hint: "R = (9 - 3.0) / 0.020. Choose the nearest standard value ABOVE the result.",
+    explain: "R = (9 - 3.0) / 0.020 = 6 / 0.020 = 300 Ω. The nearest E12 standard value above 300 Ω is 330 Ω. You must choose a value above the calculated minimum to keep the LED current below 20 mA. Using exactly 300 Ω would result in exactly 20 mA — at the limit, with no safety margin. Using 330 Ω gives I = 6 / 330 = 18.2 mA — safely below 20 mA."
   },
   {
-    q: "In ACCESS FM, what does the 'S' for Safety remind you to do?",
+    q: "Which switch type would be most appropriate for a product where the light should switch on automatically when the product is lifted off a desk?",
     options: [
-      "Choose a cheap material",
-      "Include at least one safety requirement in the spec",
-      "Make the product bigger",
-      "Skip the risky ideas"
+      "SPST toggle switch — stays in position, so once switched on the light remains on",
+      "Push-to-make switch — the user holds it while lifting, keeping the circuit closed",
+      "Tilt switch — contains a ball bearing that closes the circuit when the angle changes from horizontal",
+      "Reed switch — activates in the presence of a magnetic field built into the desk surface"
     ],
-    answer: 1,
-    hint: "ACCESS FM is a checklist of spec headings.",
-    explain: "Safety is one of the ACCESS FM headings — your spec should include at least one safety requirement."
+    answer: 2,
+    hint: "The trigger is the act of lifting — which switch responds to angle change?",
+    explain: "A tilt switch contains a conductive ball bearing (or mercury historically). When the switch is horizontal (product on desk), the ball rests in one position and the circuit is open. When tilted (product lifted), the ball rolls and connects the contacts, closing the circuit. This makes tilt switches ideal for products where the light should activate automatically when the angle changes — without any manual interaction."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
+<Section title="Homework" icon="🏠" id="homework">
 
-**Homework:** finalise your specification — at least six justified, measurable
-points, including safety and sustainability.
+**Home task:** Draw the complete switch-operated LED circuit from memory, without looking at today's notes. Label all components with name and IPO role. Calculate the resistor value for the LED you plan to use in your project (check the LED datasheet or use 2 V / 20 mA as defaults).
 
-<Extension title="Go deeper">
-Add a short **product analysis**: study one existing product like yours and note two
-things it does well and one weakness your design will fix.
+<Extension title="Series vs parallel LED circuit comparison">
+Draw two circuit variations: (A) two LEDs in series with one resistor, (B) two LEDs in parallel with individual resistors. Calculate the resistor value for each configuration. Which uses less total energy? Which is more reliable if one LED fails? Write 80 words comparing the two approaches for your Component 2 project.
 </Extension>
 
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (criteria & timeline)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.8 Product design application (p.78)", type: "Textbook", href: "https://drive.google.com/file/d/1LALQ16ljZjug0gE7WVoN2HaEERnwFK-4/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.1 Systems and IPO (p. 214)", type: "Textbook", href: "https://drive.google.com/file/d/1-HWfTqCVLKs3nuPyimiNMPm2T3FVct9N/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.1 Basic electronic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.3 Switches (p. 310)", type: "Textbook", href: "https://drive.google.com/file/d/11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Does each spec point trace back to a real user need?" />
+<Reflection prompt="Which switch type did you choose for your project — and if you had to explain that choice to your target user in one sentence, what would you say?" />

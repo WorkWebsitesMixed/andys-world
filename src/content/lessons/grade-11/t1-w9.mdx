@@ -2,137 +2,168 @@
 grade: 11
 term: 1
 week: 9
-title: "The Required Project Circuit"
-topic: "Electronics"
-learningGoal: "draw a simple light circuit with correct symbols, build and test it, and calculate a current-limiting resistor with I = V/R — producing a working circuit and the three required circuit artefacts."
-selGoal: "work safely and patiently at the electronics bench, asking the technician before acting when I'm unsure."
+title: "Sketching 2: Isometric & Annotation"
+topic: "Sketching 2: Isometric"
+learningGoal: "draw a structural product in isometric using 30-degree crating guidelines; annotate with material, join, function and one dimension"
+selGoal: "annotate four items on every sketch — material, join, function and dimension — before calling it finished"
 draft: false
 ---
 
-
-Every project needs its **switch-operated circuit** — and this is the week you build
-one. Keep it simple: a battery, a switch, a resistor and an indicator. By the end
-you'll have a working circuit and the artefacts your folder needs.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Circuit symbols, switches and input–process–output are <ExamLink to="paper4">**Paper 4 Section A**</ExamLink> topics,
-  and a working circuit is a <ExamLink to="project">required feature</ExamLink> of your
-  product. Remember the bound: a **simple on/off, battery-powered** circuit only — no
-  motors, sensors, PICs, gates or PCBs.
-</Callout>
+Sketching 1 (Week 2) gave you line confidence and crating. Today goes further: isometric projection gives your sketches a consistent, professional 3D quality, and annotation transforms a picture into an engineering communication. By the end of the session, every sketch you produce for C3 will carry four types of annotation.
 
 <KeyTerms terms={[
-  { term: "Circuit symbol", definition: "The standard drawing for a component — cell, switch, resistor, LED." },
-  { term: "Series / parallel", definition: "Series = one loop, components in a line; parallel = side-by-side branches." },
-  { term: "Input–Process–Output (IPO)", definition: "Switch (input) → circuit (process) → LED or buzzer (output)." },
-  { term: "Switch types", definition: "Toggle (latching on/off), push-to-make (momentary), reed (magnet-operated, contactless)." },
-  { term: "Current-limiting resistor", definition: "A resistor that protects the LED by limiting current; found with R = V / I." },
+  { term: "Isometric projection", definition: "A method of drawing 3D objects on a 2D surface where all three axes (x, y, z) are drawn at 120° to each other. The two horizontal-ish axes go at 30° above horizontal to left and right; the vertical axis goes straight up. All dimensions are drawn at true scale along these three axes." },
+  { term: "30-degree guidelines", definition: "The construction lines drawn at 30° above horizontal (left and right) that form the basis of isometric drawing. A 30-60-90 set square or isometric dot paper provides these angles. All receding horizontal edges follow one of the two 30° directions." },
+  { term: "Annotation", definition: "Written notes added to a sketch to communicate information that the drawing alone cannot show. Effective annotations are connected to the sketch by a leader line and state material + reason, join method + reason, function statement, or a key dimension." },
+  { term: "Leader line", definition: "A thin straight line with an arrow at one end connecting an annotation to the specific part of the sketch it refers to. Leader lines do not cross other leader lines if avoidable. The arrow points to the part being described." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Isometric drawing in practice" icon="📐" id="isometric">
 
-### 1. Symbols and the IPO model
+### The three axes
 
-Draw circuits with the **standard symbols** (cell, switch, resistor, LED) wired as a
-loop. Think in **input → process → output**: the **switch** is the input, the
-**circuit** is the process, the **LED (or buzzer)** is the output.
+In isometric drawing:
+- **Vertical axis:** goes straight up and down — draw vertical lines as actual vertical lines.
+- **Left-receding axis:** goes at 30° above horizontal to the left.
+- **Right-receding axis:** goes at 30° above horizontal to the right.
 
-<CircuitDiagram />
+All measurements on the drawing are true scale along these three axes. A 200 mm wide shelf is drawn as 200 mm (or scaled, e.g. 1:5 = 40 mm) along the right-receding axis.
 
-<WatchSee items={[
-  { label: "Build a simple LED circuit (beginners)", href: "https://www.youtube.com/watch?v=yQ2-yVXFMeE", kind: "Video", note: "Follow a battery–switch–resistor–LED circuit built on a breadboard." }
-]} />
+### Step-by-step isometric crating
 
-### 2. Choosing your switch
+1. **Choose a corner** to start from — usually the front-bottom corner of the object.
+2. **Draw the three axes** from that corner: one up, one at 30° left, one at 30° right.
+3. **Mark the dimensions** along each axis: width (right axis), depth (left axis), height (vertical axis).
+4. **Complete the box** by drawing parallel lines to close the three visible faces.
+5. **Cut the form** out of the box — remove lines that fall inside the object's solid area.
+6. **Apply thick/thin line** — visible edges thick, construction/receding edges thin.
 
-Your circuit must be **switch-operated**, and the **switch type is your choice**:
+### Circles in isometric
 
-- **Toggle** — latches on and stays on (good for a desk light).
-- **Push-to-make (PTM)** — on only while pressed (good for a momentary signal).
-- **Reed** — operated by a magnet, with no contact (good for "lid closed" sensing).
+A circle on an isometric face becomes an ellipse. On the right-facing or left-facing faces: draw an isometric square (a rhombus using the axis directions), then sketch the ellipse tangent to the midpoints of all four sides of the rhombus.
 
-Pick the one that matches **how your product is used**, and justify it.
-
-### 3. The current-limiting resistor
-
-An LED needs a resistor in series or it burns out. Using **I = V/R** (rearranged to
-**R = V/I**) with the supply voltage and the LED's voltage drop, you can size it.
-
-<Callout type="warn" title="At the bench">
-  Work patiently, follow the technician's instructions, and **ask before acting** if
-  you're unsure. No soldering today — the kit uses solderless terminals.
-</Callout>
+This is the same principle as Week 2 ellipses, but now governed by the 30° axes rather than freehand estimation.
 
 </Section>
 
-<WorkedExample title="Worked example — sizing the resistor">
-1. **Supply:** a 6 V battery. **LED:** drops about 2 V and needs about 20 mA (0.02 A).
-2. **Voltage across the resistor:** 6 V − 2 V = 4 V.
-3. **Apply R = V / I:** R = 4 ÷ 0.02.
-4. **Resistor:** **R = 200 Ω** — choose the nearest standard value.
+<Section title="Annotation — four types that earn marks" icon="✏️" id="annotation">
+
+### What IGCSE mark schemes reward in sketches
+
+Paper 1 part (c) and Component 2 C3 both award marks for annotation. The four types that consistently earn marks:
+
+| Annotation type | What to write | Example |
+|---|---|---|
+| Material + reason | Name the material and link it to a function or property | "Pine — lightweight and easy to machine in school workshop" |
+| Join method + reason | Name the joint and explain why it is used here | "Mortise and tenon joint — handles the bending force at the bracket shoulder" |
+| Function statement | Explain what this specific part does | "Horizontal shelf — carries the static load of stored items" |
+| Dimension | A key measurement that shows the design is thought through | "150 mm deep — based on A4 textbook depth measurement" |
+
+### How to lay out annotations
+
+- Use a **leader line** from the annotation to the part it describes — a thin line with a clear arrowhead touching the part.
+- Write annotations **outside** the sketch, not inside it.
+- Use **horizontal text** regardless of where the leader line goes.
+- Fit four annotations on every sketch — one of each type above.
+
+### What NOT to do
+
+- Do not annotate the obvious: "this is the shelf" adds nothing.
+- Do not write general comments about the whole product as if annotating a specific part.
+- Do not use generic words (Week 7 rule): "strong material" becomes "pine — Young's modulus approximately 10 GPa, sufficient to resist the shelf bending load."
+
+</Section>
+
+<WorkedExample title="Annotating a shelf bracket in isometric">
+
+**The sketch:** An isometric view of an L-shaped shelf bracket, 150 mm tall vertical arm, 200 mm long horizontal arm, 20 mm thick throughout, cut from 18 mm MDF.
+
+**Four annotations:**
+
+1. Material + reason (leader line to the horizontal arm): "18 mm MDF — no grain direction, cuts cleanly on laser cutter in any orientation."
+
+2. Join method + reason (leader line to the corner joint between arms): "Bridle joint reinforced with PVA — mechanical interlock handles bending moment at the shoulder; PVA adds shear resistance after curing."
+
+3. Function (leader line to the horizontal arm): "Shelf surface — carries static load of stored items; designed for 5 kg minimum."
+
+4. Dimension (leader line with dimension line to the horizontal arm length): "200 mm — based on depth of user's A4 textbook (210 mm) with 10 mm front clearance."
 </WorkedExample>
 
-<Activity title="Build and test your circuit" time="45 min" grouping="Technician-supervised rotation" materials={["Circuit kit (battery, switch, resistor, LED)", "Pre-stripped leads", "Circuit-on-a-card template"]}>
-1. **Draw** the circuit with correct symbols and label the **IPO**.
-2. **Build and test** it with the kit — switch on, light on.
-3. **Justify your switch** choice for *your* product in one sentence.
+<Activity title="Isometric crating and annotation practice" time="90 min" grouping="Individual (drawing colleague demonstrates first 30 min)" materials={["A3 isometric dot paper or 30-60-90 set square", "HB pencil for construction, 2B for final lines", "Ruler (for leader lines only — not for crating)"]}>
 
-Your folder needs three artefacts: the **circuit diagram**, the **IPO label** and the
-**resistor calculation** — plus your tested circuit.
+**Drawing colleague demo (0–30 min):** Watch the demonstration of the full isometric workflow: axes first, bounding box, form cutout, line weighting, annotation layout.
+
+**Exercise 1 (30–55 min) — Crate given objects:** Using isometric dot paper:
+1. Draw a simple rectangular box (e.g. 80 mm x 50 mm x 40 mm) in isometric. Apply thick/thin line.
+2. Draw the same box with a circular hole on the front face — draw the ellipse correctly using the rhombus method.
+3. Draw an L-shaped bracket (dimensions given on the exercise sheet).
+
+**Exercise 2 (55–80 min) — Annotate your own product:** Draw your Component 2 project concept in isometric. It does not need to be fully detailed — the main form and one joining area is enough. Add four annotations: material + reason, join + reason, function statement, dimension. Use leader lines correctly.
+
+**Self-review (80–90 min):** Check your sketch against the four-annotation checklist. Circle any generic words in your annotations and rewrite them using specific property names (Week 7 rule).
 </Activity>
 
-<Support title="Need a hand? Pre-made leads + a circuit card">
-Start from the **circuit-on-a-card** template — it shows where each component goes.
-Use the **pre-made jumper leads** so there's no stripping or soldering. Build it
-once exactly like the worked example, then change only the switch.
+<Support title="Isometric and annotation help">
+
+**Axes going wrong?** Use isometric dot paper — the dots are pre-arranged in the correct 30° grid. All lines follow the dot connections. Freehand isometric without the paper requires careful attention to consistent 30° angles.
+
+**Ellipses not looking right?** Draw the isometric square (rhombus) for the face first. Find the four midpoints of the rhombus sides. Sketch the ellipse touching all four midpoints — not crossing them, tangent to them.
+
+**Cannot think of a fourth annotation?** The dimension annotation is often the easiest to add and the most often forgotten. Pick any significant dimension (shelf depth, bracket height, hole diameter), draw a dimension line with arrowheads, and state the value in mm.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "In the input–process–output model, the switch is the…",
-    options: ["output", "process", "input", "resistor"],
-    answer: 2,
-    hint: "What starts the circuit working when you act on it?",
-    explain: "The switch is the input: you operate it to control the circuit (the process), which drives the LED (the output)."
-  },
-  {
-    q: "Why does an LED need a current-limiting resistor?",
+    q: "In isometric drawing, at what angles do the two 'horizontal' receding axes travel from a corner point?",
     options: [
-      "To make it brighter",
-      "To stop too much current burning it out",
-      "To change its colour",
-      "To make the circuit parallel"
+      "45° above horizontal — the same as a standard perspective drawing",
+      "30° above horizontal to the left and 30° above horizontal to the right",
+      "60° above horizontal for the left axis and 30° for the right axis",
+      "Horizontal (0°) for one axis and vertical (90°) for the other"
     ],
     answer: 1,
-    hint: "What happens to an LED with too much current?",
-    explain: "Without a resistor the current is too high and the LED burns out; the resistor limits it to a safe level."
+    hint: "Isometric uses equal angles for both horizontal axes — symmetric about the vertical.",
+    explain: "In isometric projection, both receding horizontal axes travel at 30° above horizontal — one going to the left, one to the right. This gives the characteristic 120° angle between all three axes (30° + 90° + 30° from the front corner viewed straight-on). All three axes use true scale — dimensions are not distorted by perspective."
   },
   {
-    q: "A switch that stays on after you press it once is a…",
-    options: ["push-to-make", "reed switch", "toggle switch", "resistor"],
+    q: "Which of the following is the most mark-worthy annotation for a structural sketch?",
+    options: [
+      "This part is the shelf",
+      "Good material — suitable for this product",
+      "18 mm MDF — no grain direction allows laser cutting in any orientation without splitting",
+      "The horizontal arm is made of wood and is strong enough for the load"
+    ],
     answer: 2,
-    hint: "Which switch latches rather than only working while pressed?",
-    explain: "A toggle switch latches on/off. A push-to-make is on only while held; a reed switch is magnet-operated."
+    hint: "Apply the Week 7 rule: specific property name + value or comparison + consequence.",
+    explain: "Option C earns marks because it names the material (18 mm MDF), identifies a specific property (no grain direction), and links it to a manufacturing consequence (laser cutting in any orientation without splitting). Option A describes but does not annotate. Option B uses generic language ('good material', 'suitable'). Option D uses 'strong enough' without specificity and 'wood' without a specific species."
+  },
+  {
+    q: "A leader line in a technical sketch is:",
+    options: [
+      "A thick outline line that highlights the most important edge of a component",
+      "A thin line with an arrow connecting an annotation to the specific part it describes",
+      "A dimension line showing the overall width of the sketched object",
+      "A construction line used to establish the 30° isometric axes"
+    ],
+    answer: 1,
+    hint: "Leader lines lead the eye from written text to the part being described.",
+    explain: "A leader line is a thin line (typically the same weight as a construction line, not a visible edge line) with an arrowhead at the end that touches the part being described. The annotation text is written at the other end of the leader line, outside the sketch boundary. Leader lines should not cross other leader lines where possible."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
+<Section title="Homework" icon="🏠" id="homework">
 
-**Homework:** one **resistor-value calculation** (different supply or LED) using
-R = V / I.
+**Home task:** Draw your Component 2 project concept in isometric from a different viewpoint to the one you drew in class. Add four fresh annotations covering a different set of parts. Compare the two sketches — do they communicate the same design? Do they reveal different aspects of the product?
 
-<Extension title="Go deeper">
-Wire **two LEDs in series**, then in **parallel**, and note what changes about their
-brightness and how the circuit behaves.
+<Extension title="Presentation rendering">
+Read §2.9 (Presentation) in the Collins textbook. Practise one of the rendering techniques shown (pencil hatching, tone shading, or marker blending) on one face of an isometric sketch from class today. Write two sentences: what makes a rendered sketch communicate more than an outline sketch — and when is rendering worth the time in a Paper 1 context?
 </Extension>
 
 </Section>
 
 <Resources items={[
-  { label: "Grade 11 — The Project (required circuit feature)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §4.1 Systems / IPO (p.230)", type: "Textbook", href: "https://drive.google.com/file/d/1Gef_9F-ldqFU3wRb5XPN1_FYC2yuFzaS/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4.2 Circuit building (p.305)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4.3 Switches (p.311)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.1 Drawing techniques (p. 84)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.9 Presentation (p. 118)", type: "Textbook", href: "https://drive.google.com/file/d/1zOvwY27lZrtlyihy2BaHxFdV-k0vn6pQ/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Which switch suits how my product is used, and why?" />
+<Reflection prompt="Look at your annotated sketch. If you removed all the written annotations, how much design information would be left? Now add the annotations back — what percentage of the communication comes from the drawing, and what percentage from the words?" />

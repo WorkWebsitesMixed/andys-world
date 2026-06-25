@@ -2,143 +2,158 @@
 grade: 11
 term: 2
 week: 1
-title: "Idea Development, Selection & Evaluation (close C3)"
-topic: "Project"
-learningGoal: "develop my Term 1 ideas further and select one to take forward, evaluating at least three ideas against my specification and justifying my choice in writing."
-selGoal: "decide under uncertainty and commit to one direction — accepting I can't pursue every idea, and noting why my choice is sound."
+title: "Development: Refining Your Selected Idea (C4)"
+topic: "Design Development"
+learningGoal: "apply four development moves to the selected C3 idea: material refinement, joint refinement, dimension change, and circuit integration"
+selGoal: "make at least one development move that changes the structural principle — not just the colour or size"
 draft: false
 ---
 
-
-Welcome to Term 2. You ended last term with several different ideas; now you
-**develop** them, choose **one** to build, and — crucially — explain **why**. Making
-that choice *objectively*, against your specification, is what turns a nice sketch
-into a high-scoring design decision.
-
-<Callout type="exam" title="Why this matters" id="why">
-  This **closes <ExamLink to="project">Criterion 3</ExamLink>** (idea generation,
-  20 marks) and rehearses <ExamLink to="paper1">**Paper 1 part (d)**</ExamLink> — evaluate three ideas, choose one, and
-  justify it. The justification is the marks; "I just liked it" scores nothing.
-</Callout>
+Term 2 opens with your selected idea from T1 W10 in hand. Development is not the same as redrawing the same idea more neatly. Each development move must answer a specific question: what was wrong or uncertain in C3, and how does this change fix it? By the end of this session you have a C4 folder section with at least four documented development moves.
 
 <KeyTerms terms={[
-  { term: "Developing", definition: "Adding detail and resolving how an idea actually works — not just drawing more ideas." },
-  { term: "Evaluation matrix", definition: "A table that scores each idea against your specification points, so the choice is objective." },
-  { term: "Weighted criteria", definition: "Giving your most important spec points a higher score value, so they count more." },
-  { term: "Justification", definition: "A written reason why your chosen idea best meets the specification." },
+  { term: "Development move", definition: "A single, deliberate change to the design that can be explained and justified. A development move must: identify a problem or uncertainty in the previous version, show the proposed change, and explain how the change improves the product against the specification. 'I made it bigger' is not a development move. 'I increased the shelf depth from 150 mm to 210 mm because the user's A4 textbook is 210 mm deep and the previous version would not have contained it' is a development move." },
+  { term: "Iterative design", definition: "A design process where successive versions of a product are tested and refined based on feedback, testing, or analysis. Each iteration builds on the previous one. The IGCSE coursework process is explicitly iterative: C3 → C4 → C5 → C6 → C7." },
+  { term: "Design rationale", definition: "The reasoning behind a design decision. A design rationale for a joint choice includes: the forces acting on the joint, the material being joined, the manufacturing process available, and why this joint type handles those conditions better than alternatives." },
+  { term: "Circuit integration", definition: "The process of incorporating the electronic circuit into the structural product so that the circuit is hidden, protected, and operable. Development of circuit integration decisions includes: where the switch is positioned (user access), where the LED is positioned (visibility), how the wires are routed (hidden within the structure), and how the battery is accessed (for replacement)." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Four types of development move" icon="🔄" id="moves">
 
-### 1. Develop, don't just generate
+### Move 1: Material refinement
 
-Generating ideas (Term 1) was about *breadth*. **Developing** is about *depth*: add
-dimensions, show how parts join, resolve the structure and the circuit. A developed
-idea answers "but how would that actually work?"
+Look at the material stated in C3. Ask: is it the best choice for this specific product, for this specific user, given the school workshop constraints?
 
-### 2. Choose objectively — the evaluation matrix
+A material refinement move involves:
+- Identifying the reason the original material is problematic (too heavy, not available, too expensive, poor machinability).
+- Proposing an alternative with specific material justification (not just "better" — which property is improved?).
+- Sketching the revised component in the new material with annotations.
 
-Don't pick the one you *like*. Score each idea against your **specification** in a
-matrix. Give your most important spec points a **weighting** so they count for more.
-The highest total points you to the strongest design — fairly.
+### Move 2: Joint refinement
 
-### 3. Justify your choice
+Look at every joint in C3. For each joint, ask: what force acts on this joint? Does the joint type resist that force effectively?
 
-State **why** the winner best meets the spec. This is the exact skill of **Paper 1
-part (d)**: "Idea B best meets the spec because it supports the load *and* fits the
-small desk, which the user said matters most."
+Common joint refinements:
+- A butt joint was shown at a corner under bending — replace with a bridle joint or reinforce with a dowel.
+- A mortise and tenon was shown in a location where quick disassembly is required — replace with a KD fitting.
+- An adhesive bond was shown at a joint under tension — reinforce with a mechanical fastener.
+
+### Move 3: Dimension change
+
+Go back to the specification. For each dimension in C3, check it against the spec. If a dimension does not meet a spec point, this is a required change — not optional.
+
+Dimension changes include:
+- Shelf depth increased to match the user's A4 textbook depth.
+- Bracket wall thickness increased to meet the load calculation (FoS must exceed 2.0).
+- Circuit housing enlarged to accommodate the battery clip and switch.
+
+### Move 4: Circuit integration
+
+This move documents where and how the circuit components fit into the structure. It must show:
+- Switch position (where the user operates it — accessible without removing objects from the shelf).
+- LED position (where light is needed — aimed at the working surface).
+- Wire routing (hidden within a channel, channel dimensions stated).
+- Battery access (a removable panel or accessible compartment for battery replacement).
 
 </Section>
 
-<WorkedExample title="Worked example — an evaluation matrix for a cyclist's gear organiser">
-1. **List your key spec points** and weight them (×2 for the most important).
-2. **Score each idea** out of 5 on each point.
-3. **Multiply by the weight, then total** each column.
-4. **Read off the winner** and justify it against the user's biggest need.
+<Section title="Drawing development moves" icon="✏️" id="drawing">
 
-| Spec point (weight) | Wall pegboard | Freestanding tower | Hanging frame |
-|---|---|---|---|
-| Holds gear weight (×2) | 4 → 8 | 5 → 10 | 3 → 6 |
-| Fast to grab (×2) | 5 → 10 | 3 → 6 | 5 → 10 |
-| Easy to make (×1) | 4 | 3 | 3 |
-| **Total** | **22** | **19** | **19** |
+### Before-and-after format
 
-→ *"The wall pegboard scores highest because it best balances the user's two
-priorities — holding the gear **and** being quick to grab before a ride."*
+Each development move should be presented as:
+1. **Before:** a small sketch of the original C3 detail.
+2. **Change label:** one sentence identifying the problem and the proposed solution.
+3. **After:** a revised sketch showing the change.
+4. **Justification:** 1–2 sentences linking the change to the specification.
+
+This format is consistent with the Paper 1 part (d) format — practising it now means part (d) in the exam is familiar.
+
+### Scale and annotation
+
+Development sketches do not need to be full product drawings. A detail of a single joint, a cross-section through the shelf, or a plan view of the circuit placement is sufficient. Annotate each sketch: material, dimension, function, or force label as appropriate.
+
+</Section>
+
+<WorkedExample title="Four documented development moves for a desk organiser">
+
+**Move 1 — Material:** C3 used 12 mm pine for the vertical back panel. Pine has visible grain and may split along grain lines when drilled. Changed to 12 mm MDF — no grain direction, predictable drilling without splitting, smooth laser-cut finish. Meets Spec point 4 (consistent finish visible at 300 mm).
+
+**Move 2 — Joint:** C3 showed a butt joint at the shelf-to-back panel connection. Under a 5 kg vertical load, the butt joint is in shear at the nail points — low strength. Changed to a housed joint (dado joint): a 12 mm channel routed in the back panel receives the shelf, distributing the shear load over the full shelf thickness. Meets Spec point 1 (5 kg load without 2 mm deflection).
+
+**Move 3 — Dimension:** C3 shelf depth was 150 mm. User's A4 textbook is 210 mm deep — the original shelf would not contain it. Increased shelf depth to 220 mm (210 mm textbook plus 10 mm clearance at front). Meets Spec point 3 (product dimensions match user's storage items).
+
+**Move 4 — Circuit integration:** Added a circuit housing diagram. Toggle switch on the right-hand face, 30 mm from the front edge (accessible without removing items). Red LED on the top face, angled 15° toward the desk surface (illuminates working surface). Wire channel: 8 mm wide x 5 mm deep routed in the underside of the shelf. Battery compartment: a removable MDF panel on the rear face secured with two M3 screws.
 </WorkedExample>
 
-<Activity title="Develop, evaluate, decide" time="50 min" grouping="Individual (teacher + drawing colleague circulate)" materials={["Your Term 1 idea pages", "Weighted evaluation-matrix template", "Your specification"]}>
-1. **Develop** each of your three ideas — add detail so each clearly *works*.
-2. **Build an evaluation matrix** scoring them against your weighted spec points.
-3. **Select one** and write a short **justification** of why it wins.
+<Activity title="C4 development documentation" time="90 min" grouping="Individual" materials={["Your C3 sketches from T1 W10", "Your specification from T1 W8", "A3 layout paper", "Pencil and 30-60-90 set square"]}>
 
-This completes **C3** — developed ideas + matrix + justified chosen design.
+**Review and plan (0–15 min):**
+1. Place your C3 sketches and specification side by side.
+2. For each specification point: does C3 meet it? Circle any point that is not clearly met.
+3. List four development moves (one from each category: material, joint, dimension, circuit integration). Write the move title and the specification point it addresses before drawing anything.
+
+**Development sketches (15–75 min):**
+4. Complete four before-and-after development move sketches. Each must have: (a) a before sketch, (b) a change label naming the problem and the fix, (c) an after sketch with relevant annotations, (d) one or two sentences of justification linking to the specification point number.
+
+**Circuit integration drawing (75–85 min):**
+5. Draw a plan view (top-down) of the product with circuit components placed: switch, LED, battery, and wire channel. Label each component and state its position relative to the nearest edge (e.g. "switch: 30 mm from right face, 20 mm from front face").
+
+**Self-check (85–90 min):**
+6. For each development move: can you identify the problem it solves and the specification point it addresses? If not, add the link before finishing.
 </Activity>
 
-<Support title="Need a hand? A pre-weighted matrix + justification frame">
-Start from the **pre-weighted template** — the spec points and weights are already
-filled in, so you only add scores.
+<Support title="Development move blockers">
 
-**Justification frame:** *"Idea **……** best meets the spec because **……**, which the
-user said matters most."*
+**"I do not know what to change."** Start with the specification. Find the spec point with the most specific number (the load, the dimension, the electrical voltage). Now check: does your C3 explicitly meet this number? If yes, show it. If uncertain, that is a development move — add the calculation or the measurement that proves it.
+
+**"All my ideas look the same as C3."** Look at the joint, not the overall form. Even if the outer shape stays the same, the internal joints and the circuit integration are always development territory. The switch position and LED angle are concrete decisions that can be shown clearly.
+
+**"I do not know where to put the circuit."** Start with the user: which hand do they use? Which direction does the product face? The switch goes where the user's hand naturally reaches. Then route wires in channels away from load-bearing areas.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "What does it mean to 'develop' an idea (rather than generate more)?",
+    q: "Which of the following is a valid development move?",
     options: [
-      "Draw the same idea again",
-      "Add detail and resolve how it actually works",
-      "Pick the one you like best",
-      "Start a brand-new concept"
+      "Making the product blue instead of brown",
+      "Increasing the shelf depth from 150 mm to 220 mm because the user's A4 textbook is 210 mm deep and the original shelf would not have contained it",
+      "Redrawing the C3 sketch more neatly on clean A3 paper",
+      "Adding colour rendering to make the sketch look more professional"
     ],
     answer: 1,
-    hint: "Development is about depth, not breadth.",
-    explain: "Developing means adding detail and working out how the idea functions — not producing more ideas."
+    hint: "A development move must identify a problem in the previous version and explain how the change fixes it against the specification.",
+    explain: "Option B is the only valid development move. It identifies the problem (original shelf too shallow), states the change (increase to 220 mm), and justifies it against a measured user need (A4 textbook 210 mm deep). Changing colour, redrawing neatly, and adding rendering are presentation improvements — not development moves. Development is about improving the design's ability to meet the specification."
   },
   {
-    q: "Why use an evaluation matrix to choose your design?",
+    q: "Why does the before-and-after development format match Paper 1 part (d)?",
     options: [
-      "It makes the page look full",
-      "It scores each idea against the spec, so the choice is objective",
-      "It guarantees the cheapest idea wins",
-      "It removes the need for a specification"
+      "It does not — Paper 1 part (d) asks for a completely new design idea, not a development",
+      "Because part (d) also requires showing a change, explaining the reason for the change, and stating how the change improves the design",
+      "Because part (d) is a materials question and before-and-after compares two materials",
+      "Because part (d) requires exactly four development moves, matching the four types learned today"
     ],
     answer: 1,
-    hint: "What makes a choice fair instead of just personal taste?",
-    explain: "A matrix scores ideas against your spec points, so the decision is objective rather than 'which one I like'."
+    hint: "Think about what part (d) of Paper 1 asks: 'show a development of one of your ideas'.",
+    explain: "Paper 1 part (d) asks students to show a development of one idea — they must sketch a change and explain why it improves the design. This is exactly the before-and-after format used in C4. Practising the C4 format means that when part (d) appears in the exam, the structure (before, change label, after, justification) is already automatic."
   },
   {
-    q: "What earns the marks in Paper 1 part (d)?",
+    q: "In circuit integration development, which decision is most important for the user experience?",
     options: [
-      "Choosing any idea quickly",
-      "Justifying why your chosen idea best meets the spec",
-      "Drawing the most ideas",
-      "Using the most colours"
+      "The colour of the LED — warm white vs cool white changes the mood of the lighting",
+      "The position of the switch — it must be accessible without the user removing objects from the shelf",
+      "The brand of resistor — premium resistors have tighter tolerance and more reliable performance",
+      "The wire colour — matching wire colours makes the inside of the product look professional"
     ],
     answer: 1,
-    hint: "It's not the choice itself — it's the reasoning.",
-    explain: "Part (d) rewards a clear justification of why the chosen idea best meets the specification."
+    hint: "Circuit integration development is about function — how the circuit interacts with the user through the product.",
+    explain: "The switch position is the primary usability decision in circuit integration. If the switch is obscured by stored objects, the user cannot operate the circuit — the product fails its function. LED angle and battery accessibility are secondary usability decisions. Wire colour and resistor brand are not usability decisions at all."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** tidy your **chosen-design page**, and list everything you'll need to
-**test** during development (does it hold the load? is it rigid? does the circuit
-work?).
-
-<Extension title="Go deeper">
-Create a fourth **hybrid** idea that combines the strengths of two of your designs,
-and score it on your matrix — does it beat the original winner?
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 3)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.2 Design ideas & techniques (p.20)", type: "Textbook", href: "https://drive.google.com/file/d/1IbAZ2IFent68VPoS1lmI2x6wJUvJu0jB/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §1.3 Development and evaluation (p. 26)", type: "Textbook", href: "https://drive.google.com/file/d/1IbAZ2IFent68VPoS1lmI2x6wJUvJu0jB/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Which idea did I let go, and am I at peace with why?" />
+<Reflection prompt="Which development move was hardest to justify — and why? Does that difficulty tell you something about what was uncertain in your C3 design?" />

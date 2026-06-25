@@ -2,135 +2,177 @@
 grade: 11
 term: 1
 week: 7
-title: "Loads, Moments, Stress & Factor of Safety"
-topic: "Structures"
-learningGoal: "calculate stress (force ÷ area) and a simple beam reaction using moments, showing full working with units, getting at least two of three questions right."
-selGoal: "stay with a multi-step calculation when it feels hard, finishing every step of at least one problem before I check the answer."
+title: "Section A Technique + Graded M1"
+topic: "Section A Technique"
+learningGoal: "complete a timed Paper 4 Section A mini-quiz under exam conditions; identify and rewrite at least two answers that used generic vocabulary"
+selGoal: "sit the M1 quiz without looking at anyone else's paper — this mark is mine"
 draft: false
 ---
 
-This is the one week with real calculations — and the good news is that the
-**formulae are printed on the exam paper**. Your job is to use them carefully:
-show every step and always add units. That habit alone earns marks.
+The first graded moment of the year. Twenty minutes at the start of this session are your M1 — a Paper 4 Section A mini-quiz under exam conditions. It counts for 20% of your term grade. The remaining 70 minutes focus on the single most impactful exam skill you will learn this year: removing generic vocabulary from your answers.
 
-<Callout type="exam" title="Why this matters" id="why">
-  These calculations are the numerical part of <ExamLink to="paper4">**Paper 4 Section B**</ExamLink>. They're only a
-  few marks each, but they're very winnable — examiners give **method marks** for
-  correct working even if the final number is wrong. So *always show working*.
+<Callout type="exam" title="Graded M1 (20%) — first 20 minutes, exam conditions" id="m1">
+  **Moment 1 (M1, 20%)** is a Paper 4 Section A mini-quiz sat in the first 20 minutes of this session. It covers all structures, materials, and electronics content from Weeks 1–6. Prepare by reviewing: types of structure (frame/shell/mass), five forces, FoS calculation, beam reaction, wood/metal families, composite examples, circuit symbols, IPO, switch types, and the resistor calculation. Sit in silence. No notes.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "Equilibrium", definition: "When all forces and moments are balanced, so nothing moves." },
-  { term: "Moment", definition: "A turning effect = force × distance from the pivot." },
-  { term: "Reaction", definition: "The upward support force a beam pushes back with at each support." },
-  { term: "Stress", definition: "Force ÷ cross-sectional area, in N/m². How hard a material is being worked." },
-  { term: "Factor of Safety", definition: "Designing a structure stronger than the expected load, for safety." },
+  { term: "Generic vocabulary", definition: "Imprecise words that cannot be credited on a mark scheme because they do not convey specific technical knowledge. Common offenders: 'strong', 'durable', 'good', 'better', 'nice', 'useful', 'appropriate', 'efficient'. Every generic word can be replaced with a specific property name or a measurable statement." },
+  { term: "ORA (Or Reverse Argument)", definition: "A mark scheme notation indicating that the opposite argument is also acceptable for the mark. For example: 'mild steel has high tensile strength (ORA: aluminium has lower tensile strength).' Both arguments earn the mark." },
+  { term: "NE (Not Enough explanation)", definition: "A mark scheme notation indicating that the answer started in the right direction but did not include enough detail to earn the mark. Recognising NE answers in practice prevents them in the exam." },
+  { term: "Method marks", definition: "Marks awarded for correct working in a calculation, even if the final numerical answer is wrong. Showing the formula, substituting correctly, and converting units correctly can each earn a mark even if an arithmetic error gives a wrong result. Never skip working." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="The M1 quiz format" icon="🎯" id="quiz-format">
 
-### 1. Moments and equilibrium
+### What Section A looks like
 
-A **moment** is a turning effect: **moment = force × distance** from the pivot. A
-beam is in **equilibrium** when the turning effects balance:
+Paper 4 Section A consists of approximately 10–15 short-answer questions, each worth 1–4 marks. Questions test:
+- Identification (name a component, identify a structure type, label a force)
+- Description (describe what an NTC thermistor does)
+- Explanation (explain why concrete is reinforced)
+- Calculation (find beam reaction, FoS, resistor value)
 
-> total clockwise moments = total anticlockwise moments
+Total marks for Section A: approximately 40. Recommended time: 40–45 minutes in the real Paper 4.
 
-That single rule lets you find an unknown support **reaction**.
+### Today's M1 quiz
 
-### 2. Stress
+Same format, shorter version: 8–10 questions covering T1 W1–W6 content. 20 minutes.
 
-**Stress = force ÷ area** (units **N/m²**). For a round bar, the area is a circle:
-**area = π r²**. Watch your units — convert millimetres to metres first.
-
-### 3. Factor of Safety
-
-Real designs are built **stronger than the expected load** — that margin is the
-**Factor of Safety**. A hoist rated to lift 100 kg might be built to hold 500 kg: a
-factor of safety of 5.
-
-<Callout type="tip" title="The golden rules">
-  Show every step · keep the units with the numbers · convert mm → m before using
-  area · write the final answer with its unit.
-</Callout>
+**Strategy:** Read each question fully before answering. If a question has multiple parts, answer all parts. Never leave a question blank — a blank earns zero; a partial answer may earn a mark.
 
 </Section>
 
-<WorkedExample title="Worked example — stress, then a beam reaction">
-**(a) Stress in a round pillar.** Force = 3140 N, radius = 10 mm = 0.01 m.
-1. Area = π r² = π × (0.01)² = 3.14 × 10⁻⁴ m².
-2. Stress = force ÷ area = 3140 ÷ (3.14 × 10⁻⁴).
-3. Stress = **10 000 000 N/m² = 10 MPa.**
+<Section title="The no-generic-words rule" icon="✏️" id="generic-words">
 
-**(b) Beam reaction.** A 2 m beam rests on a support at each end. A 200 N load sits 1.5 m from the left support (R₁).
-1. Take moments about R₁: clockwise = 200 × 1.5 = 300 N·m.
-2. Anticlockwise = R₂ × 2.
-3. Balance: R₂ × 2 = 300 → **R₂ = 150 N.**
-4. Total up = total down: R₁ + R₂ = 200 → **R₁ = 50 N.**
+### Why generic words earn zero
+
+Paper 4 mark schemes use a principle called **positive marking**: marks are awarded for specific correct statements, not for generally sensible-sounding answers. "Steel is strong" matches no mark point. "Mild steel has a tensile strength of approximately 400 MPa" matches the mark point for "high tensile strength with a specific value or comparison."
+
+### The rewrite process
+
+For every generic word in an answer, ask:
+1. **What specific property does 'strong' / 'durable' / 'good' refer to?** (tensile strength? hardness? corrosion resistance?)
+2. **What is the measured value or comparison?** (400 MPa? three times higher than aluminium? lasts 20 years without treatment?)
+3. **What is the consequence for the product?** (means the bracket resists bending under a 5 kg load without permanent deformation)
+
+### The five generic words that lose the most marks
+
+| Generic word | Specific replacement |
+|---|---|
+| Strong | "High tensile strength (approx. 400 MPa for mild steel)" |
+| Durable | "High corrosion resistance — anodised aluminium forms a passive oxide layer" or "High hardness — resists surface scratching from daily use" |
+| Good | Identify what specific property is good (hardness? cost? availability?) and name it |
+| Light | "Low density (2.7 g/cm³ for aluminium — approximately one-third the density of steel)" |
+| Rigid | "High Young's modulus (stiffness) — resists elastic deformation under load" |
+
+</Section>
+
+<WorkedExample title="Rewriting four vague answers into mark-worthy ones">
+
+**Q: Explain why mild steel is a suitable material for a structural shelf bracket.**
+
+Vague: "Mild steel is strong and durable, which makes it good for a shelf bracket."
+Rewritten: "Mild steel has a tensile strength of approximately 400 MPa, which means the bracket's arms resist bending when loaded with 5 kg without permanent deformation. It can also be powder-coated to prevent corrosion in the indoor environment where the shelf is mounted."
+
+---
+
+**Q: State one advantage of using MDF for a laser-cut shelf component.**
+
+Vague: "MDF is easy to work with and gives a nice finish."
+Rewritten: "MDF has no grain direction, which means it cuts cleanly on a laser cutter in any orientation without splitting along a grain line."
+
+---
+
+**Q: Give one reason why a tilt switch is used in this circuit.**
+
+Vague: "The tilt switch is appropriate for this product."
+Rewritten: "The tilt switch closes when the product is lifted, activating the LED automatically — without requiring the user to press a separate button."
 </WorkedExample>
 
-<BeamReactionsDiagram />
+<Activity title="M1 quiz and rewrite exercises" time="90 min" grouping="Individual" materials={["Exam paper (M1)", "Black pen for M1 (no pencil)", "Pencil for rewrite exercises"]}>
 
-<Activity title="Show your working" time="35 min" grouping="Individual" materials={["Calculator", "Fill-in-the-steps sheet (formulae printed)", "Beam-balance demo"]}>
-1. **One stress calculation** for a circular section — show every step with units.
-2. **One beam-reaction calculation** using moments.
-3. **State two Factor-of-Safety measures** for a named piece of equipment (e.g. a
-   shelf bracket or a hoist).
+**M1 quiz (0–20 min):** Sit in exam conditions. Complete the mini-quiz. No notes, no discussion, no assistance.
+
+**Self-mark (20–30 min):** Mark scheme distributed. Score your paper. For each question below 100%: circle the word or phrase that lost the mark.
+
+**Rewrite exercise (30–70 min):**
+1. Rewrite each of your own M1 answers that used a generic word. Target: specific property name + measured value or comparison + consequence for the product.
+2. Complete the teacher-provided rewrite set: six vague Section A answers to improve. Each answer must improve from 0–1 marks to 2–3 marks through specificity alone.
+3. Write your own "most likely to go generic" list: the three property words you are most likely to write without thinking. Post this on the inside cover of your folder.
+
+**Units drill (70–85 min):**
+4. Complete the units matching exercise: pair current, voltage, resistance, force, stress with their SI units (A, V, Ω, N, N/mm²). Then convert: 20 mA to A; 4.7 kΩ to Ω; 500 N/mm² to MPa; 2.7 g/cm³ to kg/m³.
+
+**Wrap-up (85–90 min):**
+5. One-sentence reflection on your M1 score: what you would revise before the next assessment.
 </Activity>
 
-<Support title="Need a hand? The steps, pre-laid-out">
-**Stress:** (1) change mm → m. (2) area = π r². (3) stress = force ÷ area. (4) write the unit (N/m²).
+<Support title="Rewrite scaffolds">
 
-**Reaction:** (1) pick one support as the pivot. (2) clockwise moment = force × distance. (3) set it equal to (other reaction × beam length). (4) solve. (5) the two reactions add up to the total load.
+**Three-step rewrite frame:**
+1. Name the specific property: "[material] has high/low [property name]..."
+2. Add a value or comparison: "...approximately [value with units] / compared to [alternative]..."
+3. State the consequence: "...which means [consequence for the product's function or performance]."
 
-Do the first one *with* the worked example beside you, copying the layout.
+**Units conversion card:**
+- mA to A: divide by 1,000 (20 mA = 0.020 A)
+- kΩ to Ω: multiply by 1,000 (4.7 kΩ = 4,700 Ω)
+- N/mm² and MPa are the same unit (1 N/mm² = 1 MPa)
+- g/cm³ to kg/m³: multiply by 1,000 (2.7 g/cm³ = 2,700 kg/m³)
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "What is the formula for stress?",
-    options: ["force × distance", "force ÷ area", "area ÷ force", "force × area"],
-    answer: 1,
-    hint: "Stress is measured in N/m² — newtons over an area.",
-    explain: "Stress = force ÷ area, with units N/m²."
-  },
-  {
-    q: "A beam balances when…",
+    q: "A student writes: 'Aluminium is light, which makes it suitable for the bracket.' What is wrong with this answer?",
     options: [
-      "it is made of steel",
-      "clockwise moments equal anticlockwise moments",
-      "both supports are the same height",
-      "the load is exactly in the middle"
+      "Nothing — 'light' is a valid technical term that examiners accept",
+      "'Light' is a generic description — it should be replaced with the specific property name (low density) and a value (2.7 g/cm³)",
+      "The answer should say 'lightweight' not 'light' — the longer form earns the mark",
+      "The student should have said 'aluminium is strong' rather than 'aluminium is light'"
     ],
     answer: 1,
-    hint: "Equilibrium is about turning effects balancing.",
-    explain: "A beam is in equilibrium when total clockwise moments equal total anticlockwise moments."
+    hint: "Generic words match no mark-scheme bullet point. What specific property does 'light' refer to?",
+    explain: "'Light' is a generic adjective. The specific property is low density. A mark-worthy answer: 'Aluminium has a low density of approximately 2.7 g/cm³ — approximately one-third the density of mild steel (7.8 g/cm³) — which reduces the total mass of the bracket and makes wall mounting easier.'"
   },
   {
-    q: "A hoist must lift 100 kg but is built to hold 400 kg. Its Factor of Safety is…",
-    options: ["1", "2", "4", "400"],
+    q: "In a Paper 4 calculation, a student correctly writes the formula and substitutes correctly but makes an arithmetic error. Which marks do they keep?",
+    options: [
+      "None — the wrong final answer means no marks are awarded for that question",
+      "All marks — if the method is right, arithmetic errors are ignored",
+      "Method marks for the formula and correct substitution, but not the mark for the final answer",
+      "Only the final answer mark — method is assumed if the answer is correct"
+    ],
     answer: 2,
-    hint: "Divide what it can hold by what it must lift.",
-    explain: "Factor of Safety = 400 ÷ 100 = 4 — it's built four times stronger than needed."
+    hint: "Paper 4 uses positive marking — marks are awarded for each correct step.",
+    explain: "Method marks are awarded for each correctly completed step: writing the correct formula, converting units, substituting correctly. If the final arithmetic is wrong, the step marks for correct method are still awarded. This is why showing working is essential — a wrong final answer with correct working can still earn the majority of marks for a multi-step question."
+  },
+  {
+    q: "Convert 20 mA to amperes and 4.7 kΩ to ohms.",
+    options: [
+      "2,000 A and 0.0047 Ω",
+      "0.020 A and 4,700 Ω",
+      "20,000 A and 47,000 Ω",
+      "0.20 A and 470 Ω"
+    ],
+    answer: 1,
+    hint: "milli = x 0.001 (divide by 1,000); kilo = x 1,000 (multiply by 1,000).",
+    explain: "20 mA = 20 x 0.001 = 0.020 A. 4.7 kΩ = 4.7 x 1,000 = 4,700 Ω. These conversions must be done before substituting into Ohm's Law or the resistor formula. Substituting mA directly instead of A is the single most common arithmetic error in Paper 4 electronics calculations."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
+<Section title="Homework" icon="🏠" id="homework">
 
-**Homework:** two calculation questions — one **stress** and one **beam reaction** —
-with full working and units.
+**Home task:** Review your M1 script. For every mark you missed, write a corrected full-mark answer. Then write your three personal rules for avoiding generic vocabulary — in your own words, not copied from the board.
 
-<Extension title="Go deeper">
-Try a beam with **two** loads on it and find both reactions. Show each moment
-separately before you add them.
+<Extension title="Create a mark scheme">
+Write your own Paper 4 Section A question on any topic covered in T1 W1–W6. Then write a mark scheme for your question, including at least two acceptable answers and one example of a NE (not enough) answer. Share with a classmate for peer-review.
 </Extension>
 
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.5 Applied loads & reactions (p.245)", type: "Textbook", href: "https://drive.google.com/file/d/1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.2.6 Moments (p.248)", type: "Textbook", href: "https://drive.google.com/file/d/1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.2.10 Forces (p.258)", type: "Textbook", href: "https://drive.google.com/file/d/1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.1 Basic electronic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Where did I slip in a calculation, and how will I avoid it next time?" />
+<Reflection prompt="Look at your M1 score. Which topic area lost you the most marks — structures, materials, or electronics? Write one sentence about what you will do differently before the next graded moment." />

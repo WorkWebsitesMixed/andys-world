@@ -2,123 +2,130 @@
 grade: 11
 term: 3
 week: 8
-title: "Testing & Evaluation (C7)"
-topic: "Project"
-learningGoal: "test my product objectively against my specification — load, rigidity, circuit — and write an evaluation that judges success against each spec point with evidence and suggests improvements."
-selGoal: "accept honest test results, including shortfalls, and frame them as learning."
+title: "Final Mixed Paper + Exam Mindset"
+topic: "Final Revision"
+learningGoal: "complete a final mixed Paper 4 practice under exam conditions; identify at most two remaining weak points and write an action plan for the final week"
+selGoal: "write the check-back protocol steps on the inside cover of the exam booklet before starting — and actually use them at the end"
 draft: false
 ---
 
-
-Now you find out — honestly — how well your product meets the brief. You **test it
-objectively**, gather a little **user feedback**, and write an **evaluation** that
-judges each spec point with evidence. Honesty scores; spin doesn't.
-
-<Callout type="exam" title="Why this matters" id="why">
-  This is <ExamLink to="project">Criterion 7</ExamLink> (testing & evaluation, 10
-  marks). The examiner rewards **measured evidence** and **justified improvements** —
-  and, just like the written paper, generic words ("strong", "good") score nothing on
-  their own.
-</Callout>
+Two sessions remain before the final revision period closes. This session is the last full timed practice paper — the final data point on exam readiness. The second half of the session focuses on the exam mindset: what to do the day before, the morning of, and in the first 5 minutes of the exam.
 
 <KeyTerms terms={[
-  { term: "Objective testing", definition: "Measuring a result, rather than giving an opinion." },
-  { term: "Test against the spec", definition: "Checking the product point by point against your specification." },
-  { term: "User feedback", definition: "What your real user says after trying the product." },
-  { term: "Justified improvement", definition: "A specific change with a reason — not just 'make it better'." },
+  { term: "Peak performance window", definition: "The 2–3 hour period during which a person's alertness, working memory capacity, and cognitive speed are at their daily maximum. For most people: mid-morning (9–11 am) or early afternoon (2–4 pm). If the exam is in the morning, revision and practice papers in the morning shift your performance peak to that window." },
+  { term: "Pre-exam protocol", definition: "A fixed sequence of actions performed before every exam to create a consistent performance state. Includes: equipment check (calculator, pens, ruler), breathing routine, reading the paper before answering, and writing personal error reminders on the inside cover." },
+  { term: "Cognitive load management", definition: "The process of reducing unnecessary mental work during the exam so that maximum working memory is available for the actual questions. Techniques: write formulas in the margin immediately; number sub-parts; use abbreviations for long terms (TS = tensile strength, FoS = factor of safety) — this frees cognitive capacity for problem-solving." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Exam mindset: the day before and the morning of" icon="🧠" id="mindset">
 
-### 1. Test, don't guess
+### The day before the exam
 
-Measure: how much **load** did it hold? Is it **rigid**? Does the **circuit** work
-every time? Numbers and observations, not opinions.
+**Do:**
+- Review formula cards (one final active recall — close the cards and write the formulas from memory).
+- Review your personal error list (the ten error types, your personal worst offenders).
+- Sleep 8+ hours. Sleep is when consolidation happens — the final night before an exam may be the highest-return sleep of the year.
 
-### 2. Judge against the specification
+**Do not:**
+- Attempt to learn new material. If it is not in long-term memory by the night before, cramming it the night before typically increases anxiety without improving retention.
+- Stay up past midnight. Cognitive speed drops approximately 20% with 6 hours of sleep vs 8 hours. The exam is a speed test as well as a knowledge test.
 
-Go through your **spec point by point**: state the result, say whether it was **met**,
-and back it with evidence. Add brief **user feedback** — did it solve their problem?
+### The morning of the exam
 
-### 3. Suggest justified improvements
+- Eat a breakfast. Glucose is the brain's primary fuel. A missed breakfast reduces cognitive performance.
+- Arrive 15 minutes early. Equipment check: calculator working? Spare pen? Ruler?
+- In the first 5 minutes of the exam: write formulas in the margin before reading the questions. Write: R formula, Vout formula, FoS, stress, beam reaction. This offloads them from working memory to the page.
 
-For anything that fell short (or could be better), propose a **specific, justified**
-improvement. "Add a wider base **because** it tipped at 5 kg" — not "make it stronger".
+### In the exam: the first 5 minutes
+
+1. Write candidate information.
+2. Write formulas in the margin: R = (V_s - V_LED) / I_LED; Vout = V_s x R2 / (R1 + R2); FoS = UL / WL; Stress = F / A; RA = W x d_B / span.
+3. Read the Section B context.
+4. Note total marks per section and allocate time.
+5. Begin.
 
 </Section>
 
-<WorkedExample title="Worked example — one spec point, evaluated">
-1. **Spec point:** "must hold 5 kg".
-2. **Test result:** loaded it to 6 kg before it started to flex.
-3. **Judgement:** **met**, with a margin — evidence: it held 1 kg over the target.
-4. **Improvement:** "a second brace would push the limit higher, *because* the flex started at the mid-rail."
-</WorkedExample>
+<Section title="Final revision consolidation — ten bullet points" icon="📋" id="consolidation">
 
-<Activity title="Test and evaluate" time="Full session" grouping="Individual (load rig shared)" materials={["Load rig & weights", "Test sheet", "User-feedback slip"]}>
-1. **Run objective tests** (load, rigidity, circuit) and record the data.
-2. **Gather brief user feedback** from the person you designed for, if you can.
-3. **Write your evaluation** against each spec point, with **justified improvements**.
+### Everything on one page
+
+**Structures:** (1) Frame/shell/mass types. (2) Tension/compression/bending/shear/torsion. (3) FoS = UL / WL. (4) Stress = F / A (N and mm²). (5) Beam reactions: RA = W x d_B / span; RA + RB = W.
+
+**Materials:** (6) Mild steel: density 7.8 g/cm³, tensile strength 400 MPa. (7) Aluminium: density 2.7 g/cm³ (one-third of steel). (8) MDF: no grain direction, high machinability. (9) CFRP: highest stiffness-to-weight ratio. (10) 6Rs: Reduce/Reuse/Recycle/Refuse/Rethink/Repair.
+
+**Electronics:** (11) IPO: switch = I, resistor = P, LED = O. (12) R = (Vs - V_LED) / I_LED. Convert mA to A first. Choose E12 above. (13) Vout = Vs x R2 / (R1 + R2). R1 = top; R2 = bottom. (14) NTC thermistor: hot → low resistance. LDR: bright → low resistance. (15) Transistor ON when base > 0.6 V.
+
+</Section>
+
+<Activity title="Final mixed practice paper" time="90 min" grouping="Individual (exam conditions)" materials={["Final practice paper (teacher-provided)", "Calculator", "Black pen + pencil", "Ruler"]}>
+
+**Pre-exam protocol (0–5 min):**
+1. Write formulas in the margin (from the list above) before reading questions.
+2. Write your personal top-two error types on the inside cover.
+
+**Paper (5–80 min):**
+3. Section A: first pass (immediate answers) then second pass (ticked skips).
+4. Section B: read all sub-parts before answering; margin plan for 4+ mark answers.
+5. Check-back (final 5 minutes): sub-parts answered? Units? Blanks? Correct command word addressed?
+
+**Post-paper analysis (80–90 min):**
+6. Self-mark using the mark scheme.
+7. Write: (a) total score; (b) improvement from M6 (or comparison); (c) final two remaining weak points.
+8. Write a one-page action plan for the final independent revision week: what to practise, how, and when.
 </Activity>
 
-<Support title="Need a hand? An evaluation frame">
-Use the writing frame for each point: **"Spec point → result → met? → improvement."**
-A **ready-made results table** keeps your data tidy and easy to judge against.
+<Support title="Cognitive load management during the exam">
+
+**Write formulas before reading questions.** Five minutes writing formulas at the start of the exam is the highest-return five minutes of the paper — it removes formula retrieval from working memory, leaving more capacity for the actual questions.
+
+**Use abbreviations.** TS = tensile strength; FoS = factor of safety; WL = working load; UL = ultimate load; E = Young's modulus. Writing abbreviations saves time and keeps answers concise. Define the abbreviation the first time: "TS (tensile strength)" then use TS throughout.
+
+**Number every sub-part before answering.** Write (a)(i), (a)(ii) in the margin before writing any answer — this prevents accidentally combining two separate answers into one paragraph.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Which is an objective test result?",
+    q: "Why is it recommended to write formulas in the exam margin during the first five minutes, before reading the questions?",
     options: [
-      "It feels really solid",
-      "It held 6 kg before flexing",
-      "Everyone thinks it's good",
-      "It looks strong"
+      "The examiner checks the margin for formula knowledge — marks are awarded for formulas written correctly",
+      "Writing formulas offloads them from working memory to the page, freeing cognitive capacity for actual problem-solving during the exam",
+      "The formulas are not given in the paper — they must be memorised and written from memory to be used",
+      "Formula recall is most accurate immediately after entering the exam room due to the peak performance window"
     ],
     answer: 1,
-    hint: "Objective means measured.",
-    explain: "'Held 6 kg before flexing' is measured evidence; the rest are opinions."
+    hint: "Think about working memory — how much can it hold, and what happens when it is full?",
+    explain: "Working memory has limited capacity (approximately 4–7 items simultaneously). If a student is simultaneously recalling a formula, tracking the question context, and performing arithmetic, working memory is near capacity — increasing error rate. Writing formulas on the page at the start of the exam means they are available by looking rather than by recall — freeing working memory for the actual problem-solving. This is the same principle as writing notes before a presentation: offload to reduce in-the-moment cognitive load."
   },
   {
-    q: "What makes a suggested improvement score marks?",
+    q: "The night before an exam, a student discovers a topic they feel uncertain about. What is the most effective action?",
     options: [
-      "It's vague, like 'make it better'",
-      "It's specific and justified with a reason",
-      "It's the longest",
-      "It uses the word 'strong'"
+      "Stay up until midnight reviewing all notes on the uncertain topic — the more time spent, the more is learned",
+      "Do a single focused active recall session on the uncertain topic (30–45 minutes), then sleep 8+ hours — consolidation during sleep is more effective than extended late-night studying",
+      "Accept that the topic is lost — last-minute study has no effect on exam performance",
+      "Study only the topics already mastered — reinforcing strengths is more reliable than learning new content under pressure"
     ],
     answer: 1,
-    hint: "Reason, not just a wish.",
-    explain: "A justified improvement names a specific change and the evidence-based reason for it."
+    hint: "Sleep serves a specific cognitive function — what is it?",
+    explain: "Sleep is when memory consolidation occurs — the hippocampus replays newly learned material and transfers it to long-term memory. A 30–45 minute active recall session on the uncertain topic loads it into working memory, after which 8+ hours of sleep gives the brain the consolidation time needed. Staying up past midnight to study longer reduces the consolidation window and impairs cognitive speed the next morning — a net negative for exam performance."
   },
   {
-    q: "What should you test your product against?",
+    q: "A student completes 40 minutes of Section A and has 5 minutes for check-back. In order of priority, what should they check?",
     options: [
-      "Other students' products",
-      "Your specification, point by point",
-      "How it looks only",
-      "Its cost"
+      "Spelling and grammar — examiners notice poor written communication quality",
+      "Sub-parts all answered → units on calculations → no blanks — in this order",
+      "That every answer is at least two sentences — single-sentence answers rarely earn full marks",
+      "That the answers are consistent with each other — if one answer contradicts another, points are deducted"
     ],
     answer: 1,
-    hint: "Where did you set out what success looks like?",
-    explain: "You test against your specification — each point, with evidence of whether it was met."
+    hint: "What types of error lose marks most reliably in Section A?",
+    explain: "The check-back priority order targets the most reliable mark losses in Section A: (1) unanswered sub-parts (zero marks guaranteed — check first), (2) missing units on calculations (costs the final mark on calculation questions), (3) blanks (any answer earns more than no answer). Spelling and grammar are not marked in Paper 4. Single-sentence answers are often appropriate for 1-mark questions. Consistency between answers is not penalised (marks are awarded independently per question)."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** finalise your **evaluation write-up**.
-
-<Extension title="Go deeper">
-Present your results as a small **data table or graph** — clear evidence reads well to
-a moderator.
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 7)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook", href: "https://drive.google.com/file/d/11tjufYjFFxb4KBQe3iqqDFiU62aPjLDs/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.1 Basic electronic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="How well did my product meet my user's need — with evidence?" />
+<Reflection prompt="After all the sessions of this year: if you had to name the one skill that has improved most between T1 W1 and today, what is it? And if you had to name the one habit you wish you had built earlier, what is it?" />

@@ -2,150 +2,145 @@
 grade: 11
 term: 1
 week: 2
-title: "Structures: Types & Rigidity"
-topic: "Structures"
-learningGoal: "classify structures as shell, frame or mass (and as natural or man-made), and explain how triangulation makes a frame rigid — getting at least five of six examples right."
-selGoal: "add at least one example to my group's shared list, listening to and building on a classmate's idea."
+title: "Sketching 1: Line Confidence & Crating"
+topic: "Sketching 1: Crating"
+learningGoal: "draw a simple structural product in 3D using the crating method, applying thick line to visible edges and thin line to construction edges"
+selGoal: "resist the urge to use a ruler when crating — trust freehand line confidence instead"
 draft: false
 ---
 
-
-Last week you launched your project. Now you start building the **structures
-knowledge** that sits underneath it. Today is about naming the kinds of structure
-around you and understanding the one idea that stops a frame from collapsing:
-**triangulation**.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Structure types and rigidity come up in <ExamLink to="paper4">**both sections of Paper 4**</ExamLink> — the short
-  Section A questions *and* the in-depth Structures question. You'll also use this
-  vocabulary to describe your own <ExamLink to="project">project</ExamLink>'s
-  structure when you write your specification.
-</Callout>
+Good sketching is not about talent — it is about the right habits applied consistently. Today your drawing colleague demonstrates those habits live, and you practise until the technique is in your muscle memory. The crating method works for any 3D object, and once it clicks it becomes your fastest way to communicate a structural idea on paper.
 
 <KeyTerms terms={[
-  { term: "Shell structure", definition: "Gets its strength from its outer surface or skin. Examples: a plastic bottle, an egg, a car body." },
-  { term: "Frame structure", definition: "Made of rigid bars (members) joined together. Examples: a roof truss, a bike frame, scaffolding." },
-  { term: "Mass structure", definition: "Relies on its sheer bulk and weight. Examples: a dam, a thick brick wall." },
-  { term: "Member", definition: "One of the bars or parts that make up a frame structure." },
-  { term: "Triangulation", definition: "Adding a diagonal member to split a shape into triangles, making it rigid." },
-  { term: "Racking", definition: "When a square or rectangular frame leans over and collapses into a parallelogram." },
+  { term: "Crating", definition: "A sketching technique where a 3D object is first enclosed in a rectangular bounding box (the 'crate'), then the object's form is cut out of that box. Starting with the box gives correct proportions before any detail is drawn." },
+  { term: "Thick/thin line", definition: "A convention used in freehand 3D sketches: thick lines mark visible, front-facing edges and silhouettes; thin lines mark construction edges, receding edges, and the crate itself. The contrast between line weights creates the illusion of depth." },
+  { term: "Line confidence", definition: "Drawing a line in a single decisive stroke rather than a series of short overlapping strokes. Feathered lines (multiple scratchy strokes) look hesitant and make sketches harder to read. Confident lines communicate clearly." },
+  { term: "Ellipse", definition: "The shape a circle makes when viewed at an angle. In 3D sketching, circular holes, cylinder ends, and rounded edges must be drawn as ellipses rather than as circles, otherwise the sketch loses its 3D quality." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="The crating method" icon="✏️" id="crating">
 
-### 1. Three families of structure
+### Step 1: Draw the bounding box first
 
-Almost any structure you can name belongs to one of three families — or is a
-combination of them:
+Every 3D object fits inside a rectangular box. Before drawing any detail, sketch the box that would just contain your object — this is the crate. Use **thin, light lines** for the crate itself.
 
-- **Shell** — strength comes from the **outer surface**. A plastic bottle is
-  surprisingly strong for its weight because of its thin curved skin.
-- **Frame** — strength comes from **rigid bars (members) joined together**, like a
-  roof truss or scaffolding.
-- **Mass** — strength comes from **sheer bulk and weight**, like a dam or a
-  thick stone wall.
+Proportion is the hardest part: the crate must have the correct ratio of width, height, and depth. If a shelf bracket is 200 mm wide, 150 mm tall, and 50 mm deep, your crate must reflect those proportions — wide and shallow, not square.
 
-### 2. Natural or man-made (a quick recap)
+### Step 2: Cut the form out of the crate
 
-Remember last week: every structure is also either **natural** (a spider's web, an
-eggshell) or **man-made** (a bridge, a crane). So each structure gets *two* labels
-— its family *and* whether it's natural or man-made.
+Once the crate is drawn, sketch the actual form inside it. An L-shaped bracket uses the top-right corner of the crate; a cylinder uses the full height but only the central width. Remove or lighten the crate lines that fall inside the object.
 
-### 3. What keeps a frame rigid? Triangulation
+### Step 3: Apply thick/thin line weighting
 
-Here's the key idea for your project. A **square** frame is *not* rigid: push it
-sideways and it leans over into a parallelogram — it **racks**. That's because a
-four-sided shape can change its angles while its sides stay the same length.
+- **Thick lines:** the visible front edges, corners facing the viewer, and the silhouette outline of the object.
+- **Thin lines:** the construction edges, receding edges going away from the viewer, and any remaining crate lines used as guides.
 
-A **triangle can't do that.** It's the only polygon that can't be pushed out of
-shape unless you change the length of one of its sides. So if you add a
-**diagonal member** to a square, you split it into two triangles and it becomes
-rigid. That's **triangulation** — and you'll see it everywhere once you look:
-gates, bridges, shelves, bike frames.
+The contrast between thick and thin replaces shading — it does the same job in 10 seconds instead of 10 minutes.
 
-<TriangulationDiagram />
+### Ellipses on 3D faces
 
-<WatchSee items={[
-  { label: "Why triangles make structures strong", href: "https://www.youtube.com/watch?v=ZNwJFd_zlGc", kind: "Video", note: "See triangulation at work in real structural engineering." }
-]} />
+A circular hole on the front face of a block appears as a slightly flattened ellipse, not a circle. The flattening depends on the viewing angle: faces viewed nearly head-on have nearly circular ellipses; faces at a steep angle have very flat ellipses.
+
+Rule of thumb: your ellipses on a standard 3D sketch should be roughly 30–40% compressed (if the circle's diameter is 40 mm, the minor axis of the ellipse is about 12–16 mm).
 
 </Section>
 
-<WorkedExample title="Worked example — classify and explain a stepladder">
-1. **What is it made of?** Separate bars joined together — so it's a **frame** structure (not a shell or a mass).
-2. **Natural or man-made?** Man-made.
-3. **Could it rack?** On its own, the four-sided shapes between the bars could fold flat.
-4. **What stops it?** The A-shape and the spreader form **triangles** — triangulation keeps it rigid and safe to stand on.
+<WorkedExample title="Crating a shelf bracket in three stages">
 
-→ A stepladder is a **man-made frame structure, kept rigid by triangulation.**
+**Stage 1 — Bounding box:** Draw a thin-line box roughly 3:1 width-to-height ratio, shallow depth (about 1/4 of the width). This is the maximum space the bracket occupies.
+
+**Stage 2 — Cut the L-shape:** The bracket is an L-shape. Lightly sketch the horizontal shelf portion (top 1/3 of the crate) and the vertical support (right-hand 1/4 of the crate). Erase or fade the crate lines inside the bracket's solid area.
+
+**Stage 3 — Line weighting:** Go over every visible front edge with a thick, confident stroke. The top edge of the shelf, the front face of the vertical support, the bottom corner. Leave the receding edges thin. The bracket instantly looks 3D.
+
+**Common mistakes to fix:**
+- Crate lines the same weight as the object lines (no depth contrast).
+- Circular mounting holes drawn as circles not ellipses.
+- Feathered lines along the top edge (redraw in one stroke).
 </WorkedExample>
 
-<Activity title="Sort and strengthen" time="30 min" grouping="Table groups" materials={["The six structure photos", "Paper strips & split pins (or straws & string)", "Your group's shared list"]}>
-1. **Sort the six photos.** As a group, agree on each one's **family**
-   (shell / frame / mass) and whether it's **natural or man-made**. Add your
-   answers to your group's **shared list** — make sure *your* voice adds at least
-   one example, and build on what a teammate says.
-2. **Strengthen a frame.** Build (or draw) a square from four strips. Push it —
-   watch it rack. Now add **members** until it's rigid, and be ready to explain
-   *why* your fix works.
+<Activity title="Warm-up and crating practice" time="90 min" grouping="Individual (drawing colleague demonstrates first 30 min)" materials={["A3 cartridge paper", "HB and 2B pencils (or one mechanical pencil)", "No ruler — freehand only"]}>
+
+**Drawing colleague demo (0–30 min):** Watch the demonstration. Take note of:
+- The speed of each stroke — confident, not cautious.
+- How the bounding box goes down before anything else.
+- Where thick lines appear vs thin lines.
+
+**Warm-up (30–45 min):**
+1. Draw 20 single-stroke horizontal lines across the page — no feathering.
+2. Draw 10 ellipses at different sizes — aim for smooth, closed curves.
+3. Draw 5 bounding boxes of different proportions (tall and narrow, wide and shallow, cubic).
+
+**Main practice (45–85 min):**
+4. Crate a mug: cylindrical body with a D-handle. Start with the bounding cylinder (box containing a cylinder), add the handle, apply line weights.
+5. Crate a simple phone stand: a wedge shape with a slot. Box first, cut the wedge, add the slot as an ellipse.
+6. Crate your own structural product idea (from Week 1 brief). Keep it simple — no detail, just the major form.
+
+**Self-review (85–90 min):**
+7. On your three sketches, tick where you have applied thick line correctly, circle any feathered lines, and write one target for next session.
 </Activity>
 
-<Support title="Need a hand? Sentence frames + a worked model">
-Use these frames to talk and write about structures:
+<Support title="Getting crating right">
 
-- *"This is a **[shell / frame / mass]** structure because **[its strength comes from its outer skin / it is made of joined bars / it relies on its bulk]**."*
-- *"I added a **diagonal** member, which splits the square into **triangles**, so it can no longer **rack**."*
+**Proportions feel wrong?** Before drawing, hold up your pencil at arm's length and measure the real proportions of a box on your desk. Width : height : depth. Transfer those ratios to your sketch. Proportion is a skill — practise with objects you can see.
 
-**Worked model:** *"A plastic bottle is a **shell** structure because its strength
-comes from its thin outer surface, not from bars or bulk."*
+**Lines keep feathering?** Speed is the cure. A slow line is a feathered line. Draw faster than feels comfortable — the line will be more confident even if it is slightly less accurate.
+
+**Ellipses come out as flat lines or full circles?** Remember: ellipse, not circle, not dash. Practise drawing ellipses around a point (imagine a clock face, draw an oval around it).
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A roof truss is built from straight bars joined at their ends. Which family is it?",
-    options: ["Shell", "Frame", "Mass", "None of these"],
-    answer: 1,
-    hint: "Where does its strength come from — a skin, its bulk, or its joined bars?",
-    explain: "Its strength comes from rigid bars (members) joined together, so it's a frame structure."
-  },
-  {
-    q: "Why does adding a diagonal make a square frame rigid?",
+    q: "In the crating method, what is drawn first before any object detail?",
     options: [
-      "It makes the frame much heavier",
-      "It splits the square into triangles, which can't be pushed out of shape",
-      "It uses up the spare material",
-      "It turns the frame into a shell structure"
+      "The thickest visible edge of the object to anchor the sketch",
+      "A rectangular bounding box that just contains the whole object",
+      "The most complex surface detail so proportions are established by the details",
+      "A centre line to use as a symmetry axis"
     ],
     answer: 1,
-    hint: "Think about which shape can't change its angles without changing a side's length.",
-    explain: "A diagonal divides the square into two triangles. A triangle can't deform without changing a side length, so the frame can no longer rack."
+    hint: "The crating method gets its name from the 'crate' that is drawn before the object form.",
+    explain: "The bounding box (crate) is drawn first, using thin lines, so the correct proportions of the object are established before any detail is added. Drawing detail first leads to proportion errors that are impossible to fix without starting again. The form is then cut out of the crate."
   },
   {
-    q: "A concrete dam mainly holds back the water because of its…",
-    options: ["thin outer skin", "joined bars", "enormous bulk and weight", "triangulation"],
+    q: "In a thick/thin line sketch, which edges should be drawn with thick lines?",
+    options: [
+      "All lines should be the same weight for consistency and clarity",
+      "Receding edges and construction guidelines that help define depth",
+      "Visible front edges, silhouette outline, and corners facing the viewer",
+      "Only the crate lines so the box stands out from the object form"
+    ],
     answer: 2,
-    hint: "A dam isn't hollow and isn't made of bars — what does it have a lot of?",
-    explain: "A dam is a mass structure: it relies on its sheer bulk and weight to resist the load."
+    hint: "Thick lines face the viewer; thin lines go away from the viewer.",
+    explain: "Thick lines mark the edges closest to the viewer — visible front edges, the silhouette outline, and prominent corners. Thin lines mark the receding edges (going away from the viewer) and any remaining construction or crate lines. The contrast between thick and thin creates the illusion of depth without shading."
+  },
+  {
+    q: "A circular hole on the front face of a 3D sketch should be drawn as:",
+    options: [
+      "A perfect circle, because the front face is viewed head-on",
+      "A straight horizontal line, because depth compresses all circles to lines",
+      "An ellipse — a circle viewed at an angle appears compressed",
+      "A square — circles in technical drawing are always approximated as squares"
+    ],
+    answer: 2,
+    hint: "Even a face viewed nearly head-on has a slight viewing angle in a 3D sketch.",
+    explain: "Any circle on a 3D object appears as an ellipse when viewed at an angle. Even a front face has some slight perspective or viewing angle, so circles should always be drawn as ellipses. The degree of compression depends on the angle: a face nearly perpendicular to the viewer has a nearly circular ellipse; a steeply angled face has a very flat ellipse."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
+<Section title="Homework" icon="🏠" id="homework">
 
-**Homework:** photograph **three structures** at home and label each one's family
-(shell / frame / mass) and whether it's natural or man-made. Bring them next class.
+**Home task:** Sketch three objects from your bedroom using the crating method — one cylindrical, one box-like, one irregular. Apply thick/thin line on all three. Bring the sketches to Week 9 (Sketching 2) for comparison.
 
-<Extension title="Go deeper">
-Pick one structure that is a **combination** of two families (for example, a car —
-shell body on a frame chassis) and explain how each part does its job. Then try the
-**Knowledge Check** in textbook §4.2.1, or write your own tricky "name that
-structure" question to test a partner.
+<Extension title="Analyse a product sketch">
+Find a professional product sketch or design drawing online (search for 'industrial design sketch' or 'product design freehand sketch'). Print or save it. Annotate: where does the designer use thick line? Where do they use thin line? Is the crating still visible? Write three observations about what makes the sketch effective.
 </Extension>
 
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts (p.233)", type: "Textbook", href: "https://drive.google.com/file/d/1MpzpONfpWrzmn62enkh_B4i6vtmMo29n/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.2.3 Strengthening frame structures (p.240)", type: "Textbook", href: "https://drive.google.com/file/d/1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.1 Drawing techniques (p. 84)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.3 Freehand sketching (p. 100)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Which structure type will my project most likely be, and why?" />
+<Reflection prompt="What was the hardest part of the crating method today — proportions, line confidence, or ellipses? What is one specific thing you will practise before next lesson?" />

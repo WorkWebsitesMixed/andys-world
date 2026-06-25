@@ -2,118 +2,187 @@
 grade: 11
 term: 3
 week: 3
-title: "Manufacture of Parts 2 & Sub-assemblies (C6)"
-topic: "Project"
-learningGoal: "finish manufacturing all my parts and begin sub-assemblies, confirming every part on my cutting list is made and checked."
-selGoal: "persevere through fiddly making without rushing or cutting corners on quality."
+title: "Revision: Electronics Calculations"
+topic: "Revision: Electronics"
+learningGoal: "complete resistor calculation, voltage divider calculation, and IPO labelling questions at full marks under timed conditions"
+selGoal: "convert mA to A and kΩ to Ω as the first step in every electronics calculation — before writing the formula"
 draft: false
 ---
 
-
-You finish the last of your parts this week and start bringing them together. The
-trick is to build in **stages** and to **dry-fit** before you commit any glue — it's
-much easier to fix a problem now than after it's stuck.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Still <ExamLink to="project">Criterion 6</ExamLink> (realisation). Careful
-  sub-assembly and dry-fitting are what give you a **square, well-made** product —
-  and the quality of making is marked.
-</Callout>
+Electronics calculations in Paper 4 Section A are reliable mark-earners because the method is always the same. The only variable is the numbers given. If the unit conversion is automatic and the formula is memorised, these questions should be full marks every time.
 
 <KeyTerms terms={[
-  { term: "Sub-assembly", definition: "A section of your product built as a unit before joining to the rest." },
-  { term: "Dry-fit", definition: "Fitting parts together without glue to check they line up." },
-  { term: "Tolerance", definition: "The small allowed difference between the planned and actual size." },
-  { term: "Square", definition: "Corners at a true 90° — essential for a rigid, neat structure." },
+  { term: "Unit conversion priority", definition: "In electronics calculations, unit conversion must happen BEFORE substituting into any formula. Specifically: mA must be converted to A (divide by 1,000) and kΩ must be converted to Ω (multiply by 1,000) before any calculation. The single most common source of wrong answers in Paper 4 electronics questions is failing to convert units before substituting." },
+  { term: "Formula bank", definition: "The three formulas required for IGCSE D&T electronics: (1) R = (Vsupply - V_LED) / I_LED — current-limiting resistor. (2) Vout = Vsupply x R2 / (R1 + R2) — voltage divider. (3) I = V / R — Ohm's law (used to find current through a resistor). All three must be memorised in the given form." },
+  { term: "Sense check", definition: "A quick verification step after any calculation. For electronics: (1) The resistor value should be positive and in the range 10 Ω to 10 MΩ for typical IGCSE circuits. (2) The voltage divider output must be between 0 V and Vsupply. (3) LED current must be less than 20 mA. If your answer fails a sense check, re-examine the calculation." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="The three formulas — guaranteed recall" icon="🔢" id="formulas">
 
-### 1. Build in stages
+### Formula 1: Current-limiting resistor
 
-Don't try to assemble everything at once. Build **sub-assemblies** — a side, a frame,
-a shelf — then join those. It's easier to control quality and to keep things square.
+R = (Vsupply - V_LED) / I_LED
 
-### 2. Dry-fit first
+Steps:
+1. Convert I_LED from mA to A (divide by 1,000).
+2. Subtract V_LED from Vsupply.
+3. Divide the result by I_LED in A.
+4. Choose the nearest standard value ABOVE the result (never below).
 
-Always **dry-fit** before fixing: slot the parts together with no glue and check they
-line up, that the **fit** is right, and that the assembly sits **square**. Adjust now,
-while you still can.
+Standard E12 values (Ω): 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000, 1200, 1500, 1800, 2200, 2700, 3300, 3900, 4700.
+
+### Formula 2: Voltage divider
+
+Vout = Vsupply x R2 / (R1 + R2)
+
+R1 = top resistor (between supply and output junction).
+R2 = bottom resistor (between output junction and 0 V).
+
+Steps:
+1. Convert any kΩ values to Ω.
+2. Calculate R1 + R2.
+3. Calculate R2 / (R1 + R2).
+4. Multiply by Vsupply.
+5. Sense check: 0 V less than Vout less than Vsupply.
+
+### Formula 3: Ohm's Law
+
+V = I x R (voltage = current x resistance)
+
+Rearrangements: I = V / R; R = V / I.
+
+In Paper 4, Ohm's Law is most commonly used to verify the current through a resistor after choosing a standard value.
 
 </Section>
 
-<WorkedExample title="Worked example — dry-fit before you glue">
-1. **Slot** the frame parts together without glue.
-2. **Check square:** measure both diagonals — equal diagonals mean a true 90°.
-3. **Check fit:** is any joint too tight or too loose? Ease or pack it now.
-4. **Only then** apply glue and clamp — confident it will go together right.
+<Section title="IPO labelling: no marks for guessing" icon="⚡" id="ipo">
+
+### The three components and their roles
+
+| Component | IPO role | Why |
+|---|---|---|
+| Switch | Input | The user (or sensor) controls the circuit through the switch — it is the trigger |
+| Resistor | Process | It controls (processes) the current flowing to the output — limits LED current |
+| LED, lamp, buzzer, motor | Output | It produces the visible/audible/physical effect — the result the user wants |
+
+### When there is a sensor (thermistor, LDR)
+
+The sensor is still the Input — it senses the environment and provides a signal to the process stage.
+
+If a transistor is present: the transistor is the Process (it amplifies and switches the current). The resistor (if shown separately from the sensor divider) may still be Process stage.
+
+### What examiners look for
+
+- Correct labelling of all three sections: I, P, O (or Input, Process, Output).
+- Correct assignment: switch/sensor = I; resistor/transistor = P; output device = O.
+- If the question asks to "draw and label the IPO model" — draw a block diagram with labelled arrows, not a circuit diagram.
+
+</Section>
+
+<WorkedExample title="Five electronics calculations with full working">
+
+**Q1 — Resistor for blue LED:**
+Supply = 9 V. V_LED = 3.2 V. I_LED = 20 mA.
+I_LED = 20 / 1000 = 0.020 A.
+R = (9 - 3.2) / 0.020 = 5.8 / 0.020 = 290 Ω.
+Nearest E12 above 290 Ω: 330 Ω.
+
+**Q2 — Voltage divider (LDR in dark):**
+Vsupply = 6 V. LDR (R1) = 80 kΩ = 80,000 Ω. Fixed resistor (R2) = 4 kΩ = 4,000 Ω.
+Vout = 6 x 4,000 / (80,000 + 4,000) = 6 x 4,000 / 84,000 = 6 x 0.0476 = 0.286 V.
+Transistor: 0.286 V is less than 0.6 V — transistor OFF.
+
+**Q3 — Find current through 390 Ω resistor, 9 V supply, 2 V LED:**
+Voltage across resistor = 9 - 2 = 7 V.
+I = V / R = 7 / 390 = 0.01795 A = 17.95 mA.
+Sense check: 17.95 mA is less than 20 mA — LED safe.
+
+**Q4 — Find Vout for given sensor change:**
+R1 (thermistor, cold) = 10,000 Ω. R2 (fixed) = 1,000 Ω. Vsupply = 9 V.
+Vout = 9 x 1,000 / (10,000 + 1,000) = 9 x 1,000 / 11,000 = 0.818 V.
+Transistor: 0.818 V > 0.6 V — transistor ON.
+
+**Q5 — Find Vout for same sensor, hot:**
+R1 (thermistor, hot) = 500 Ω. R2 = 1,000 Ω. Vsupply = 9 V.
+Vout = 9 x 1,000 / (500 + 1,000) = 9 x 1,000 / 1,500 = 6 V.
+Transistor: 6 V >> 0.6 V — transistor firmly ON.
 </WorkedExample>
 
-<Activity title="Finish and fit" time="Full session (technician-managed)" grouping="Staggered stations" materials={["Remaining parts", "Your cutting list", "A try-square or ruler"]}>
-1. **Finish all remaining parts.**
-2. **Dry-fit a sub-assembly** and check it's square and fits.
-3. **Confirm your cutting list is 100% complete** — every part made and checked.
+<Activity title="Electronics calculation drill" time="90 min" grouping="Individual" materials={["Calculator", "Electronics question bank (teacher-provided)", "Formula card (self-written from memory)"]}>
+
+**Formula recall (0–10 min):**
+1. Write all three electronics formulas from memory: resistor formula, voltage divider, Ohm's Law.
+2. Write the E12 standard resistor values from 100 Ω to 4,700 Ω from memory.
+3. Check both lists against the reference on this page. Correct any errors.
+
+**Calculation drill (10–65 min):**
+4. Complete ten electronics calculations from the question bank. For each:
+   - Step 1: Convert units (mA to A; kΩ to Ω) before writing the formula.
+   - Step 2: Write the formula.
+   - Step 3: Substitute.
+   - Step 4: Calculate.
+   - Step 5: Sense check.
+5. Self-mark after each pair of questions (not at the end of all ten).
+
+**IPO labelling (65–80 min):**
+6. For four given circuit diagrams: label each component with its IPO role. One sentence justification for each label.
+
+**Error analysis (80–90 min):**
+7. For any calculation that was wrong: identify the exact step where the error occurred. Was it unit conversion? Formula? Substitution? Arithmetic? Write a note for the inside cover of your folder.
 </Activity>
 
-<Support title="Need a hand? Fallbacks so everyone moves on">
-If machine work is outstanding, the **technician will complete it** so you can move to
-assembly. **Pre-made parts** are available as a fallback — nobody gets stuck waiting.
+<Support title="Electronics calculation support">
+
+**Always convert units as step zero.** Before writing the formula, write: "I_LED = [value] mA = [value / 1000] A" and "R = [value] kΩ = [value x 1000] Ω". Write these on the answer sheet even before writing the formula. This makes the conversion visible to the examiner (earns method marks) and prevents substituting the unconverted value.
+
+**Voltage divider: which is R1 and which is R2?** R1 is the top resistor — the one connected between the supply and the output junction. R2 is the bottom resistor — connected between the junction and 0 V (earth). In the formula, Vout = Vsupply x R2 / (R1 + R2) — the output voltage appears across R2.
+
+**Sense check habit:** After every calculation, write one line: "Sense check: [result] is [within expected range / not within expected range]." If not within range, re-examine before submitting the answer.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Why dry-fit parts before gluing?",
+    q: "A red LED requires 20 mA at a forward voltage of 2 V. The supply is 12 V. What is the minimum resistor value, and which standard E12 value should be chosen?",
     options: [
-      "To save glue only",
-      "To check they line up, fit and sit square — while you can still adjust",
-      "Because glue isn't allowed",
-      "To make the product temporary"
+      "500 Ω minimum; choose 470 Ω (nearest below)",
+      "500 Ω minimum; choose 560 Ω (nearest E12 above 500 Ω)",
+      "2,000 Ω minimum; choose 2,200 Ω",
+      "250 Ω minimum; choose 270 Ω"
     ],
     answer: 1,
-    hint: "What can you still change before the glue sets?",
-    explain: "Dry-fitting lets you check alignment, fit and squareness and fix problems before anything is permanent."
+    hint: "R = (12 - 2) / 0.020. Convert 20 mA to A first. Choose nearest E12 value ABOVE the result.",
+    explain: "I_LED = 20 mA = 0.020 A. R = (12 - 2) / 0.020 = 10 / 0.020 = 500 Ω. The nearest E12 value above 500 Ω is 560 Ω (the E12 series goes: ...470, 560, 680...). Using 560 Ω: actual current = (12 - 2) / 560 = 10 / 560 = 17.9 mA — safely below 20 mA."
   },
   {
-    q: "How can you check a frame is truly square?",
+    q: "A voltage divider has R1 = 2,200 Ω (top) and R2 = 8,200 Ω (bottom). Supply = 9 V. What is Vout?",
     options: [
-      "Look at it from far away",
-      "Measure both diagonals — they should be equal",
-      "Weigh it",
-      "Count the parts"
+      "1.9 V — Vout = 9 x 2,200 / (2,200 + 8,200)",
+      "7.1 V — Vout = 9 x 8,200 / (2,200 + 8,200)",
+      "4.5 V — Vout = 9 x (2,200 + 8,200) / 2 x 9",
+      "9.0 V — Vout equals Vsupply when R2 is larger than R1"
     ],
     answer: 1,
-    hint: "A rectangle's diagonals are equal when its corners are 90°.",
-    explain: "Equal diagonals mean the corners are at a true 90°, so the frame is square."
+    hint: "Vout = Vsupply x R2 / (R1 + R2). R2 is the bottom resistor (8,200 Ω).",
+    explain: "Vout = 9 x 8,200 / (2,200 + 8,200) = 9 x 8,200 / 10,400 = 9 x 0.788 = 7.09 V ≈ 7.1 V. Since R2 (8,200 Ω) is much larger than R1 (2,200 Ω), most of the supply voltage appears across R2 — Vout is high. A transistor connected to this output would be firmly ON (7.1 V >> 0.6 V threshold)."
   },
   {
-    q: "What is a sub-assembly?",
+    q: "In the IPO model, a circuit contains an NTC thermistor, a fixed resistor (in a voltage divider), a BC547 transistor, and a buzzer. Which component is the Process?",
     options: [
-      "A spare part",
-      "A section built as a unit before joining to the rest",
-      "The final finish",
-      "A type of glue"
+      "The NTC thermistor — it senses temperature and controls the circuit",
+      "The fixed resistor — it is always the Process in any sensing circuit",
+      "The BC547 transistor — it amplifies the small base current from the voltage divider to switch the buzzer",
+      "The buzzer — it produces the output that the user responds to"
     ],
-    answer: 1,
-    hint: "Build in stages, not all at once.",
-    explain: "A sub-assembly is a section (a side, a frame) built on its own, then joined to the whole."
+    answer: 2,
+    hint: "In a sensing circuit with a transistor, what component controls the transition from input signal to output action?",
+    explain: "The transistor (BC547) is the Process. It takes the small voltage signal from the voltage divider (Input) and uses it to control a larger collector-emitter current through the buzzer (Output). The thermistor is the Input (it senses the environment). The fixed resistor is part of the Input stage (sets the divider ratio). The buzzer is the Output. The transistor is the amplifying/switching component — the Process."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** none — this is a making-intensive week. Rest your hands!
-
-<Extension title="Go deeper">
-If a sub-assembly has passed its dry-fit, **start the permanent joining** of that one
-section so you're ahead for assembly week.
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 6)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §3.10 Joining & assembly (p.210)", type: "Textbook", href: "https://drive.google.com/file/d/1BtOwD0xbKvAPuWeKjO-QUpXO7YI104r2/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook", href: "https://drive.google.com/file/d/1sw2Urh7Ek7FLInSxxQJqWqAnXsnlXye0/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.1 Basic electronic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.1 Systems and IPO (p. 214)", type: "Textbook", href: "https://drive.google.com/file/d/1-HWfTqCVLKs3nuPyimiNMPm2T3FVct9N/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Are all my parts made to size, and where might fit be a problem?" />
+<Reflection prompt="Before this session, did you convert units automatically — or did you sometimes substitute mA directly as if it were A? After ten calculations with the unit-conversion-first habit, does it feel more automatic?" />

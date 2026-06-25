@@ -2,128 +2,167 @@
 grade: 11
 term: 2
 week: 2
-title: "Modelling & Prototyping (C4)"
-topic: "Project"
-learningGoal: "make a quick 3D model of my chosen structure and find at least two design problems to solve, recording them as development points."
-selGoal: "treat my model's flaws as useful information rather than failure, naming at least one thing the model taught me."
+title: "Working Drawings (C5): Orthographic Projection"
+topic: "Working Drawings"
+learningGoal: "produce a first-angle orthographic drawing of the main structural component with front, side, and plan views; add three dimensions and a title block"
+selGoal: "check that the views are in the correct first-angle positions before adding dimensions"
 draft: false
 ---
 
-
-Now you've chosen your design, it's time to **make it real — roughly and quickly.**
-A cardboard model in ten minutes will teach you things a perfect drawing never
-could. This is where **development** (C4) really starts.
-
-<Callout type="exam" title="Why this matters" id="why">
-  Modelling is the heart of <ExamLink to="project">Criterion 4</ExamLink>
-  (development, 15 marks). The examiner wants to see you **trial and improve** your
-  idea with evidence — not jump straight to the final make.
-</Callout>
+A working drawing communicates manufacturing instructions to anyone who needs to make your product — not just to you. This session teaches first-angle orthographic projection: the British standard for engineering drawings that IGCSE D&T Paper 4 tests directly.
 
 <KeyTerms terms={[
-  { term: "Model / prototype", definition: "A quick, rough version of your product made to learn from, not to keep." },
-  { term: "Sketch model", definition: "A fast model from card or foam to test an idea's shape." },
-  { term: "Mock-up", definition: "A full-size or scale stand-in used to check fit and feel." },
-  { term: "Iteration", definition: "The loop of make → test → improve → make again. 'Fail fast.'" },
-  { term: "Ergonomics", definition: "How well the product fits the human using it." },
-  { term: "Stability", definition: "How well a structure resists tipping or wobbling." },
+  { term: "Orthographic projection", definition: "A drawing method in which an object is represented by two or more views, each showing the object as seen from a specific direction (front, side, plan/top). All views are aligned and at the same scale. Lines in one view project directly into corresponding positions in adjacent views." },
+  { term: "First-angle projection", definition: "The UK standard for orthographic drawing. The side view appears on the LEFT when looking from the RIGHT. The plan view appears BELOW the front view. Identified by the first-angle projection symbol. Used in IGCSE D&T." },
+  { term: "Hidden detail line", definition: "A dashed line (short dashes, evenly spaced) used to show edges or outlines that exist behind the visible face of the view. Hidden detail lines follow the same projection rules as visible lines and must be accurately projected from other views." },
+  { term: "Centre line", definition: "A thin dash-dot line passing through the centre of circular features (holes, cylinders, arcs). Centre lines appear in all views where the circular feature is projected. They extend slightly beyond the outline of the feature." },
+  { term: "Title block", definition: "A standard information block added to every working drawing. Contains: drawing title, scale, date, designer's name, material, finish, and a projection symbol. Positioned in the lower-right corner of the drawing sheet." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Setting up a first-angle orthographic drawing" icon="📐" id="setup">
 
-### 1. Why model at all?
+### The three views
 
-Drawing shows what something *looks* like; a model shows how it *behaves*. Models
-are **cheap and quick**, so you can find problems early — the "**fail fast**"
-idea. Far better a card model tips over now than your finished product in Term 3.
+An orthographic drawing shows at minimum three views:
+1. **Front view (elevation):** The most informative view — shows the main face of the object as seen from the front.
+2. **Side view (end elevation):** Positioned to the LEFT of the front view in first-angle projection.
+3. **Plan view (top view):** Positioned BELOW the front view (first-angle: the view "falls away" from the observer).
 
-### 2. Types of model
+### Projection lines
 
-- **Sketch model** — fast, from card or foam, to test shape.
-- **Block model** — solid stand-in to judge size and proportion.
-- **Mock-up** — a fuller version to check fit and feel.
+Horizontal and vertical projection lines connect corresponding points between views. Every corner of the front view projects horizontally into the side view and vertically into the plan view. These projection lines are drawn as construction lines (thin, light).
 
-### 3. What to test by making
+### The 45-degree miter line
 
-Use your model to check **form, scale, ergonomics and stability** — the things a
-flat drawing hides.
+A 45° construction line is drawn at the corner between the side view position and the plan view position. This transfers the depth dimension from the side view into the plan view without measuring it twice.
 
-<WatchSee items={[
-  { label: "Why cardboard is a great prototyping tool", href: "https://www.youtube.com/watch?v=qxXj2RhKjZY", kind: "Video", note: "Quick, cheap modelling techniques you can use today." }
-]} />
+### Line types
+
+| Line type | Appearance | Use |
+|---|---|---|
+| Visible outline | Continuous thick (0.5–0.7 mm) | Visible edges of the object |
+| Projection/construction | Continuous thin (0.25 mm) | Layout lines — project between views |
+| Hidden detail | Dashed thin | Edges not visible in this view |
+| Centre line | Thin dash-dot | Centre of holes, symmetry axes |
+| Dimension line | Thin, with arrowheads | Shows measured dimension |
 
 </Section>
 
-<WorkedExample title="Worked example — a model finds a hidden problem">
-1. **Make it:** a student builds a card model of their cyclist's gear organiser to scale.
-2. **Load it:** they hang the helmet and shoes on it — and it **tips forward**.
-3. **Diagnose:** the base footprint is too narrow for the load hung out front.
-4. **Develop:** widen the base and add feet — a fix found by *making*, not drawing.
+<Section title="Dimensioning" icon="📏" id="dimensioning">
+
+### Rules for dimensioning
+
+1. **Dimension lines** are thin lines with arrowheads at each end, placed outside the outline of the view.
+2. **Extension lines** project from the object outline to the dimension line — leave a 2 mm gap.
+3. **Dimension values** are placed above the dimension line, centred between the arrowheads. All values in mm.
+4. **Do not duplicate** dimensions — each measurement appears on only one view.
+5. Use **baseline dimensioning** (all from one datum point) rather than chain dimensioning wherever possible.
+
+### What to dimension
+
+For the Component 2 main structural component, the minimum three dimensions:
+- Overall length (longest axis)
+- Overall width
+- Overall height or thickness
+
+Additional for manufacture: joint dimensions (depth of dado, width of rebate), hole diameters, corner radii.
+
+</Section>
+
+<WorkedExample title="Three-view first-angle orthographic of a shelf bracket">
+
+**Object:** L-shaped shelf bracket. 200 mm wide horizontal arm, 150 mm tall vertical arm, 18 mm thick throughout.
+
+**Front view:** Shows the L-shape — horizontal arm width (200 mm), vertical arm height (150 mm). Visible outlines thick continuous.
+
+**Side view (to left of front view):** A rectangle 18 mm wide x 168 mm tall showing the bracket thickness.
+
+**Plan view (below front view):** Shows the bracket from above — a rectangle 200 mm wide x 18 mm deep for the horizontal arm plus 18 mm x 18 mm for the vertical arm top.
+
+**Projection:** Horizontal lines from front view project into side view (same vertical positions). Vertical lines from front view drop into plan view (same horizontal positions). 45° miter transfers depths.
+
+**Dimensions:** 200 mm horizontal (front view), 150 mm vertical (front view), 18 mm thickness (side view).
+
+**Title block:** Title: "Shelf bracket — Component 2". Scale: 1:5. First-angle symbol. Material: 18 mm MDF.
 </WorkedExample>
 
-<Activity title="Build, break, improve" time="55 min" grouping="Modelling-buddy pairs" materials={["Card & foam board", "Glue gun, cutting mat", "Any found materials"]}>
-1. **Build a quick model** of your structure, roughly to scale.
-2. **Find at least two problems** it reveals (does it tip? flex? feel awkward?).
-3. **Sketch a fix** for each problem on your development page.
+<Activity title="First-angle orthographic drawing of main component" time="90 min" grouping="Individual" materials={["A3 paper", "Ruler, 30-60-90 set square, 45-degree set square", "2H pencil for construction, HB for outlines"]}>
+
+**Setup (0–15 min):**
+1. Choose the main structural component of your Component 2 product.
+2. Choose a scale that fills the A3 sheet comfortably with all three views and a title block (typically 1:2 or 1:5).
+3. Plan the layout: mark positions of front view, side view (left of front), plan view (below front), title block (lower right).
+
+**Front view (15–35 min):**
+4. Draw the front view as thin construction outline first. Check proportions against scale.
+
+**Side and plan views (35–60 min):**
+5. Use projection lines to position all key points in the side and plan views.
+6. Draw the 45° miter line and use it to transfer depth from the side view into the plan view.
+
+**Line weights and detail (60–75 min):**
+7. Apply final line weights: thick continuous for visible outlines, thin dashed for hidden detail, thin dash-dot for centre lines.
+8. Add three or more dimensions with correct dimension lines, extension lines, and arrowheads.
+
+**Title block (75–85 min):**
+9. Rule the title block. Fill in: title, scale, projection symbol, material, name, date.
+
+**Self-check (85–90 min):**
+10. Side view to the LEFT of front view? Plan view BELOW front view? Projection lines correctly aligned? Title block complete?
 </Activity>
 
-<Support title="Need a hand? A starting kit + a reframe">
-Grab a **pre-cut card kit** to get going fast — don't worry about neatness, this
-is a thinking tool.
+<Support title="Common orthographic errors">
 
-**Reframe a 'failed' model:** *"My model showed me **………**, so I will **………**."*
-Every flaw you find is a development mark earned.
+**Side view ends up on the right:** In first-angle projection, the right-side view goes to the LEFT (the view falls through the object to the opposite side). Double-check using the first-angle projection symbol.
+
+**Plan view above the front view:** In first-angle, the view from above is placed BELOW the front view. First-angle = views fall away from the observer.
+
+**Dimensions duplicated in two views:** State each dimension once only — in the view where it is most clearly seen.
+
+**Missing hidden detail:** Ask: are there any edges inside the object that cannot be seen in this view direction? If so, they must appear as dashed lines.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Why make a quick model instead of going straight to the final product?",
+    q: "In first-angle orthographic projection, where is the plan view (view from above) positioned on the drawing sheet?",
     options: [
-      "To use up spare card",
-      "To find and fix problems early, cheaply",
-      "Because drawings aren't allowed",
-      "To skip the testing stage"
+      "Above the front view — the top view is placed above",
+      "To the right of the front view — the top view occupies the top-right quadrant",
+      "Below the front view — in first-angle, views fall away from the observer to the opposite side",
+      "Anywhere convenient on the sheet — position is not specified in first-angle"
     ],
-    answer: 1,
-    hint: "Think 'fail fast' — when is a problem cheapest to fix?",
-    explain: "A quick model finds problems early when they're cheap to fix, instead of in the finished product."
+    answer: 2,
+    hint: "In first-angle, the object is between the observer and the projection plane. Views fall away to the far side.",
+    explain: "In first-angle projection, the plan view (looking from above) is placed BELOW the front view. In first-angle, the observer looks through the object onto the projection plane on the far side — so the view from above is projected onto the plane below the object, placing it below the front view on the sheet. Third-angle (US standard) does the opposite."
   },
   {
-    q: "Your model wobbles badly. In coursework terms, that is…",
+    q: "What does a dashed line (hidden detail line) represent in an orthographic view?",
     options: [
-      "a failure to hide",
-      "useful development evidence",
-      "a reason to start again from scratch",
-      "irrelevant to your marks"
+      "A centre line passing through the middle of the object",
+      "An edge or outline that exists on the object but is behind the visible surface in this view",
+      "A dimension line showing a measurement that is not the main dimension",
+      "A construction line used to project between views — to be erased in the final drawing"
     ],
     answer: 1,
-    hint: "Criterion 4 rewards trialling and improving.",
-    explain: "A flaw you find and fix is exactly the trial-and-improve evidence Criterion 4 rewards."
+    hint: "Hidden detail lines show features that exist but cannot be seen from this viewpoint.",
+    explain: "Dashed lines represent hidden detail — edges that exist on or inside the object but are obscured by material in this particular view direction. For example, a drilled hole on the back face of a bracket appears as a dashed circle in the front view. Hidden detail lines use short, consistent dashes."
   },
   {
-    q: "What can a model test that a flat drawing can't show well?",
-    options: ["Its price", "Stability and how it actually balances", "Its colour", "Its name"],
+    q: "How is the depth dimension transferred from the side view to the plan view in an orthographic drawing?",
+    options: [
+      "It is measured again from the component independently",
+      "A 45-degree miter construction line at the corner transfers depth from side view to plan view",
+      "The depth in the plan view always equals the height in the front view",
+      "Projection lines go directly from the side view to the plan view without any miter"
+    ],
     answer: 1,
-    hint: "Think about behaviour in the real world.",
-    explain: "Models reveal real behaviour — stability, fit and feel — that drawings hide."
+    hint: "The 45-degree miter line is a standard technique that avoids measuring the same dimension twice.",
+    explain: "A 45° construction line at the corner between the side view area and the plan view area allows horizontal projections from the side view to be redirected downward into the plan view. This transfers the depth dimension without re-measuring, ensuring consistency between the two views."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** photograph your model and **annotate the problems** you found.
-
-<Extension title="Go deeper">
-Make a **second version** of one feature (say, two different bases) and compare —
-which performs better, and how do you know?
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 4)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.3 Making (modelling & prototypes)", type: "Textbook", href: "https://drive.google.com/file/d/1sw2Urh7Ek7FLInSxxQJqWqAnXsnlXye0/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p.344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §2.1 Drawing techniques (p. 84)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="What did making it reveal that drawing it didn't?" />
+<Reflection prompt="Orthographic drawing is for the person who makes your product, not for you. If you handed your drawing to a classmate who had never seen your design, could they manufacture it accurately? What would they need to ask you about?" />

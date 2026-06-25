@@ -2,129 +2,152 @@
 grade: 11
 term: 2
 week: 7
-title: "CAD/CAM 2: 3D Modelling & Printing (C5)"
-topic: "CAD/CAM"
-learningGoal: "model at least one small part of my product in 3D CAD and set it up for 3D printing, and begin my orthographic working drawing."
-selGoal: "ask for and act on technical feedback on my CAD model rather than defending my first attempt."
+title: "Testing & Evaluation (C7) + Graded M4"
+topic: "Testing and Evaluation"
+learningGoal: "test the finished product against every specification point; write a formal evaluation with met/partially met/not met judgements for each point"
+selGoal: "evaluate honestly — a 'not met' judgement with a reason earns more marks than 'it met everything' without evidence"
 draft: false
 ---
 
+The product is made. The specification was written in T1 W8. This session completes the Component 2 cycle: you test the product against each specification point, record evidence, and write an evaluation that earns marks through honesty and specificity — not through claiming everything is perfect.
 
-Some parts of your product — brackets, connectors, feet — are better **3D printed**
-than laser-cut. This week you learn 3D CAD, set a part up to print, and start the
-**working drawing** that lets someone build your whole product.
-
-<Callout type="exam" title="Why this matters" id="why">
-  This is <ExamLink to="project">Criterion 5</ExamLink> (planning), and 3D CAD rounds
-  out your CAD/CAM skills. The working drawing you begin is the same skill as
-  <ExamLink to="paper1">Paper 1 part (e)</ExamLink> (the full solution drawing).
+<Callout type="exam" title="Graded M4 (50%) — C7 evaluation collected at end of session" id="m4">
+  **Moment 4 (M4, 50%)** is the largest graded moment of the year. Your C7 testing records and evaluation are collected at the end of this session. Each specification point must appear in the evaluation with: (a) the test method used, (b) the test result, and (c) a met/partially met/not met judgement with specific evidence. No generic statements will earn marks.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "3D CAD", definition: "Modelling a part in three dimensions: sketch → extrude → modify." },
-  { term: "Extrude", definition: "Pushing a 2D sketch into a 3D solid." },
-  { term: "Supports", definition: "Temporary printed scaffolding that holds up overhangs while printing." },
-  { term: "Orientation", definition: "How a part sits on the print bed — affects strength, supports and time." },
-  { term: "Orthographic drawing", definition: "Flat views (plan, front, end) of a product drawn to scale." },
+  { term: "Testing protocol", definition: "A predefined procedure for testing a specification point. It specifies: what is measured, how it is measured, what equipment is used, how many measurements are taken, and what constitutes a pass result. A testing protocol ensures the test can be replicated and the result is objective." },
+  { term: "Evaluation", definition: "A critical judgement of how well the product meets the specification, based on testing evidence. An effective evaluation: uses specific test results (not impressions), gives a judgement for each specification point, identifies the cause of any shortfall, and proposes an improvement. An evaluation is not a list of compliments." },
+  { term: "Modification suggestion", definition: "For each specification point that was not fully met, a specific improvement that would change the result. A modification suggestion must be: specific (not 'make it stronger'), feasible (achievable with available processes), and linked to the shortfall (the cause of the 'not met' judgement)." },
+  { term: "User feedback", definition: "Evidence from the target user about whether the product meets their needs. Collected after the user has used or handled the product. User feedback enriches the evaluation — it provides evidence that the designer alone cannot provide (subjective response to aesthetics, comfort of operation, fit into their space)." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="The testing protocol" icon="🧪" id="testing">
 
-### 1. 3D CAD basics
+### Testing each specification point
 
-Most parts follow the same path: **sketch a profile → extrude it into a solid →
-modify** (holes, fillets, cuts). Build your part from simple shapes.
+For each specification point, follow this protocol:
+1. **State the test method:** How will you test this point? What equipment? How many trials?
+2. **Conduct the test:** Record raw data (numbers, pass/fail, measurements).
+3. **Compare to specification:** Does the result meet the criterion and tolerance?
+4. **Judge:** Met / Partially met / Not met.
 
-### 2. When to 3D print vs laser-cut
+### Testing the six spec points from T1 W8
 
-- **3D print** small or complex parts: brackets, connectors, feet, housings.
-- **Laser-cut** flat parts from sheet: panels, plates, frames.
-
-### 3. Print considerations
-
-Think about **orientation** (affects strength and surface), **supports** (needed
-for overhangs), and **time/material** (smaller and flatter prints faster).
-
-<WatchSee items={[
-  { label: "How FDM 3D printing works", href: "https://www.youtube.com/watch?v=C7RowQYwADU", kind: "Video", note: "See how a printer builds a part up layer by layer." }
-]} />
-
-### 4. Begin your working drawing
-
-Start the **orthographic views** of your whole product — plan, front and end — which
-you'll dimension next week.
+| Spec point | Test method |
+|---|---|
+| Load (5 kg static, less than 2 mm deflection) | Apply calibrated 5 kg deadweight for 5 minutes. Measure midspan deflection with a ruler and feeler gauge. |
+| Dimensions (width, depth, height within tolerance) | Measure each overall dimension with a steel rule. Compare to specification value ±1 mm. |
+| Aesthetics (no visible machining marks at 300 mm) | Visual inspection from 300 mm under standard lighting. Record any visible defects. |
+| Material/sustainability (one 6Rs feature stated and visible) | Visual check that the stated feature (e.g. disassembly with screws) is present and functional. |
+| Safety (all edges chamfered or rounded, no sharp projections) | Run a bare hand along all edges and corners. Record any sharp areas. |
+| Circuit (LED lights when switch closed; extinguishes when switch open) | Insert battery. Toggle switch on: record if LED lights. Toggle off: record if LED extinguishes. Repeat 5 times. |
 
 </Section>
 
-<WorkedExample title="Worked example — a corner bracket, print-ready">
-1. **Sketch** the bracket's L-shaped profile.
-2. **Extrude** it to the right thickness.
-3. **Modify:** add fixing holes and a fillet for strength.
-4. **Orient** it flat on the bed so it needs **minimal supports** and prints quickly.
+<Section title="Writing the evaluation" icon="✏️" id="evaluation">
+
+### The three-part evaluation entry
+
+For each specification point, write:
+1. **Test evidence:** what the test found (specific numbers, observations).
+2. **Judgement:** met / partially met / not met.
+3. **Modification suggestion** (if not fully met): what specific change would improve the result.
+
+### Honesty earns marks
+
+Mark schemes for evaluations explicitly credit honest, specific assessment. A statement like "the product easily met the load requirement — no deflection was observed" earns zero marks if no measurement was taken. A statement like "the deflection test recorded 3.2 mm at 5 kg. The specification required less than 2 mm. This specification point was not met. To achieve the required stiffness, the shelf would need to be increased to 24 mm MDF (calculated from the formula in T1 W3) or the shelf span reduced from 200 mm to 160 mm" earns full marks.
+
+### Suggested modifications
+
+A modification suggestion must:
+- Name the specific change (not just "make it better").
+- Link it to the cause of the shortfall.
+- Confirm that the modification is feasible (the process and material exist).
+
+Example: "The aesthetic test showed brush marks visible at 300 mm under side lighting. To meet the specification, the surface should be finished using a spray paint rather than a brush — this would produce a smooth, even coat with no visible application marks."
+
+</Section>
+
+<WorkedExample title="Evaluation entry for two specification points">
+
+**Spec point 1 — Load (5 kg, less than 2 mm deflection):**
+Test: a 5 kg calibrated weight was placed at the shelf midspan for 5 minutes. Deflection measured using a steel rule held against the shelf underside before and after loading. Before: 0 mm. After 5 minutes: 1.6 mm. After removing weight: 0 mm (elastic recovery — permanent set: 0 mm).
+Judgement: MET. The deflection of 1.6 mm is within the specification requirement of less than 2 mm. The elastic recovery to 0 mm confirms the deformation was elastic and no permanent damage occurred.
+
+**Spec point 3 — Dimensions (width must not exceed 550 mm):**
+Test: width measured with a steel rule at three positions along the shelf. Results: 547 mm, 548 mm, 548 mm. Mean: 547.7 mm.
+Judgement: MET. The mean width of 547.7 mm is within the specification limit of 550 mm, with a margin of 2.3 mm. All three measurements were within the ±1 mm manufacturing tolerance stated in C5.
 </WorkedExample>
 
-<Activity title="Model and set up a print" time="50 min" grouping="Workstations (technician supports)" materials={["CAD workstation", "3D printer access", "3D CAD quick-reference"]}>
-1. **Model one part** of your product in 3D CAD.
-2. **Set up the print** — choose orientation and supports.
-3. **Begin the orthographic views** of your whole product.
+<Activity title="Testing and evaluation writing" time="90 min" grouping="Individual" materials={["Finished product", "5 kg deadweight (bag of sand or calibrated weight)", "Steel rule (600 mm)", "Feeler gauge (if available)", "Battery (9 V)", "Pencil and C7 pro forma"]}>
+
+**Testing (0–40 min):**
+1. Set up the product on a flat surface.
+2. Work through the six spec points in order. For each: conduct the test, record raw data, record a judgement. Do not skip any test — a missing test = zero marks for that evaluation entry.
+
+**User test (30–40 min, overlapping with testing):**
+3. Ask a classmate (acting as your user) to operate the switch, place items on the shelf, and assess the finish from 300 mm. Record their comments verbatim.
+
+**Evaluation writing (40–85 min):**
+4. Write a formal evaluation entry for each specification point. Use the three-part format: test evidence + judgement + modification suggestion (if not fully met).
+5. For any "not met" or "partially met" point: write a specific modification suggestion that would improve the result. Explain how the modification addresses the cause of the shortfall.
+
+**Folder final check (85–90 min):**
+6. Count: six spec points tested, six evaluation entries written. All entries have test evidence (numbers or clear observations)? All entries have a judgement? All "not met" entries have a modification suggestion? Submit C7 folder section.
 </Activity>
 
-<Support title="Need a hand? Quick-reference + starter model">
-Keep the **3D CAD quick-reference** open for the sketch → extrude → modify steps,
-and start from a **starter template model** if a blank screen feels daunting. Ask
-the technician for feedback early — then *act on it* rather than defending your
-first try.
+<Support title="Evaluation writing help">
+
+**"My product met all the specification points."** Are you sure — or are you just saying it met them? For each point: show the number. If no test was conducted, the mark scheme cannot credit the evaluation. An evaluation without numbers is an opinion, not an assessment.
+
+**"I do not know how to write the modification suggestion."** The modification must fix the specific cause of the shortfall. If the aesthetic point was not met because of brush marks: the cause is brush application. The modification is to use a spray finish. If the load point was not met because the shelf deflected 3.5 mm: the cause is insufficient stiffness. The modification is to increase shelf thickness or reduce span.
+
+**"User feedback says the product is ugly."** This is valuable evidence, not a problem. Write: "User feedback: '[quote verbatim]'. The aesthetic specification point was therefore partially met by the user's assessment. To improve: [specific modification]."
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Which part is best suited to 3D printing rather than laser-cutting?",
-    options: ["A flat side panel", "A small corner bracket", "A large flat base", "A sheet of acrylic"],
-    answer: 1,
-    hint: "3D printing suits small or complex shapes.",
-    explain: "A small, complex bracket suits 3D printing; flat sheet parts are better laser-cut."
-  },
-  {
-    q: "What is the usual order in basic 3D CAD?",
+    q: "An evaluation statement reads: 'The product looked great and the user was happy with the finish.' Why does this earn zero marks?",
     options: [
-      "Extrude → sketch → modify",
-      "Sketch → extrude → modify",
-      "Modify → sketch → extrude",
-      "Print → sketch → extrude"
+      "It earns full marks — user satisfaction is the primary evaluation criterion",
+      "It contains no test evidence (no measurement or specific observation) and no judgement against the specification criterion",
+      "The word 'great' is too informal — it should use technical vocabulary instead",
+      "The evaluation should describe the product, not the user's reaction"
     ],
     answer: 1,
-    hint: "You draw the profile before giving it depth.",
-    explain: "You sketch a 2D profile, extrude it into a solid, then modify it (holes, fillets)."
+    hint: "Compare to the three-part evaluation format: test evidence + judgement against spec + modification suggestion.",
+    explain: "The statement contains no test evidence (no measurement from 300 mm, no description of the visual inspection method), no specification criterion (the spec point is not quoted), and no judgement against a specific standard. 'Looked great' and 'user was happy' are impressions, not test results. A mark-worthy version would read: 'Visual inspection at 300 mm under standard lighting showed no visible brush marks on the top face. The right-hand side panel showed three brush marks visible at 300 mm. Specification point 4: partially met.'"
   },
   {
-    q: "Why does print orientation matter?",
+    q: "Why does a 'not met' evaluation judgement, written with specific evidence and a modification suggestion, earn more marks than a 'met' judgement without evidence?",
     options: [
-      "It changes the part's colour",
-      "It affects strength, supports needed and print time",
-      "It makes no difference",
-      "It changes the material"
+      "Because mark schemes prefer negative evaluations — they show critical thinking",
+      "Because the mark scheme awards marks for evidence and modification suggestions — a 'met' claim without evidence earns zero, while a 'not met' with evidence and suggestion earns full marks for those components",
+      "Because examiners know students always overstate their product quality, so 'not met' is automatically assumed to be honest",
+      "Because a modification suggestion earns bonus marks not available to products that fully meet the specification"
     ],
     answer: 1,
-    hint: "Think about overhangs and how layers stack.",
-    explain: "Orientation affects strength, how many supports are needed, and how long the print takes."
+    hint: "Marks are awarded for specific components of the evaluation — evidence, judgement, modification — not for the judgement direction.",
+    explain: "The mark scheme awards marks for each component of the evaluation process: conducting and recording a test (evidence), making a specific judgement against the criterion, and proposing a specific modification for unmet points. A 'met' judgement without any test evidence earns zero for the evidence component (and likely zero for the judgement). A 'not met' judgement with a measured result, a specific judgement, and a feasible modification can earn full marks for all three components."
+  },
+  {
+    q: "What makes a modification suggestion specific enough to earn marks?",
+    options: [
+      "It must use technical vocabulary — the more technical the language, the more marks it earns",
+      "It must name the specific change, link it to the cause of the shortfall, and confirm the modification is feasible",
+      "It must reference a textbook section that supports the proposed change",
+      "It must be illustrated with a sketch of the modified component"
+    ],
+    answer: 1,
+    hint: "A modification suggestion should answer: what exactly changes, why does that change fix the problem, and can it actually be done?",
+    explain: "A specific modification suggestion must: (1) name the exact change ('increase shelf thickness from 18 mm to 24 mm' not 'make it stronger'), (2) link the change to the cause of the shortfall ('the 18 mm shelf deflected 3.5 mm because its second moment of area is insufficient at this span — a 24 mm shelf increases the second moment of area by a factor of 2.4'), and (3) confirm feasibility ('24 mm MDF is available from the same supplier'). A vague suggestion like 'make the shelf stronger' provides no information about how to achieve the improvement."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** finish modelling any **small printed parts** of your product.
-
-<Extension title="Go deeper">
-Model a **second printed part** and compare two orientations — which needs fewer
-supports?
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 5)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.6 Use of technology", type: "Textbook", href: "https://drive.google.com/file/d/1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §2.1 Formal drawing techniques (p.110)", type: "Textbook", href: "https://drive.google.com/file/d/1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §1.4 Testing and evaluation (p. 32)", type: "Textbook", href: "https://drive.google.com/file/d/11tjufYjFFxb4KBQe3iqqDFiU62aPjLDs/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="Which parts of my product suit 3D printing, and why?" />
+<Reflection prompt="If you could go back to C3 and make one different decision, knowing what your evaluation showed, what would it be? How would that decision have changed the outcome for one specific specification point?" />

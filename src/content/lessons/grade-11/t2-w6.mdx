@@ -2,124 +2,156 @@
 grade: 11
 term: 2
 week: 6
-title: "Development 2 + Sustainability Review (C4)"
-topic: "Project"
-learningGoal: "refine my design from my test results into a resolved outcome, and review its sustainability with the 6Rs, recording at least two improvements."
-selGoal: "weigh an environmental trade-off in my refinement and own the decision to a partner."
+title: "Manufacture Part 3: Finishing & Circuit Installation (C6)"
+topic: "Manufacture"
+learningGoal: "apply a surface finish to all structural components; install the LED circuit permanently and test function"
+selGoal: "test the circuit after installation — light on when switch closed, light off when switch open, no loose connections"
 draft: false
 ---
 
-
-This week you **resolve** your development — turning your test results into the
-final design you'll plan and make — and you give it a **sustainability check** with
-the 6Rs. After this, your development folder is ready to be marked.
-
-<Callout type="exam" title="Why this matters" id="why">
-  This finishes <ExamLink to="project">Criterion 4</ExamLink> (development) and feeds
-  sustainability into your spec and <ExamLink to="paper1">Paper 1 part (f)</ExamLink>.
-  A resolved design means decisions made **from evidence**, not guesses.
-</Callout>
+The structure is assembled. Two tasks remain before C6 is complete: surface finishing (which determines whether the product meets the aesthetics specification) and circuit installation (which determines whether it meets the electronics specification). Both are assessed together as part of the finished product quality.
 
 <KeyTerms terms={[
-  { term: "Resolving development", definition: "Deciding the final form, materials and joints from your test evidence." },
-  { term: "The 6Rs", definition: "Rethink, Refuse, Reduce, Reuse, Repair, Recycle — the sustainability checklist." },
-  { term: "Design for disassembly", definition: "Designing so parts come apart for repair or recycling." },
-  { term: "Material efficiency", definition: "Using as little material as possible without weakening the product." },
+  { term: "Surface preparation", definition: "The process of preparing a surface before applying a finish coat. For MDF: seal all surfaces with diluted PVA or a specific MDF primer to prevent the finish coat from soaking into the porous material unevenly. Sand between coats to remove raised fibres. Without preparation, paint appears blotchy on MDF." },
+  { term: "Grain raising", definition: "The swelling of timber surface fibres when water-based paint or primer is applied. After the first coat dries, raised fibres feel rough. Sand with 180-grit paper before applying the second coat — this removes the raised fibres and produces a smooth final finish." },
+  { term: "Wire management", definition: "Routing and securing electrical wires so they are hidden from view, protected from mechanical damage, and not pinched or kinked. Wire management includes: running wires in routed channels, securing with cable clips or cable ties, leaving adequate slack at connection points for soldering." },
+  { term: "Solder joint", definition: "A permanent electrical connection made by melting solder (tin-lead or lead-free tin alloy) around wire legs or through-hole component legs. A good solder joint is shiny and conical — it wets the component lead and the pad fully. A cold solder joint is dull and grainy — poor electrical connection." },
+  { term: "Strain relief", definition: "A mechanical clamp or bracket that prevents tension in a wire from being transmitted to the solder joint. Without strain relief, a wire being pulled can lift a solder joint off the pad. For this project, a cable clip near each connection point provides strain relief." },
 ]} />
 
-<Section title="The lesson" icon="📋" id="lesson">
+<Section title="Surface finishing process" icon="🎨" id="finishing">
 
-### 1. Resolve from the evidence
+### Sequence for MDF finishing
 
-A **resolved** development isn't your prettiest idea — it's the one your **tests
-support**. Lock in the final form, materials and joints, and show *why* each choice
-follows from a test result or a spec point.
+1. **Sand bare MDF:** Start with 120-grit to remove machining marks, finish with 180-grit for a smooth surface. Sand with the direction of the face (MDF has no grain but sanding across the face can scuff the surface).
+2. **Seal edges:** MDF edges are highly porous. Apply a coat of diluted PVA (1 part PVA : 3 parts water) or a dedicated MDF edge primer. Allow to dry fully (30–60 minutes).
+3. **First paint coat:** Apply a water-based primer. Leave 30 minutes to dry. The first coat will raise fibres — the surface will feel rough when dry.
+4. **Light sand:** 180-grit. Remove raised fibres without removing paint. Wipe dust.
+5. **Second and third paint coats:** Apply topcoats. Each coat should be thin — several thin coats produce a better finish than one thick coat that runs.
+6. **Finishing touches:** Sand lightly between coats if needed. Final coat should be left without sanding.
 
-### 2. Review with the 6Rs
+### Alternative finishes
 
-Run your product through **Rethink, Refuse, Reduce, Reuse, Repair, Recycle**. Look
-especially at **material efficiency** (use less) and **design for disassembly**
-(can it be repaired or recycled?).
-
-<WatchSee items={[
-  { label: "What are the 6 Rs of sustainability?", href: "https://www.youtube.com/watch?v=yY47lnKgmg4", kind: "Video", note: "A walk through Rethink, Refuse, Reduce, Reuse, Repair, Recycle." }
-]} />
-
-### 3. Trace every change
-
-Each refinement should trace back to **a spec point and a test result**. That trail
-is what earns development marks.
+| Finish | Process | Best for |
+|---|---|---|
+| Spray paint | Rattle can or spray gun | Smooth, even coating; faster than brush |
+| Acrylic paint (brush) | Water-based; multiple coats | Available in school workshop |
+| Wood stain + varnish | Stain then seal with acrylic varnish | Natural wood appearance on pine/hardwood |
+| Clear lacquer | Spray or brush | Protects without changing colour |
 
 </Section>
 
-<WorkedExample title="Worked example — a refinement that's also greener">
-1. **Test finding:** the cyclist organiser's glued joint can't be opened, so it can't be repaired.
-2. **Refine:** swap the glued joint for a **knock-down (KD) fitting**.
-3. **Result:** the organiser is now **repairable *and* recyclable** — a 6Rs win.
-4. **Justify:** the change meets the "repairable" spec point *and* improves Reuse/Recycle.
+<Section title="Circuit installation" icon="⚡" id="circuit">
+
+### Installation sequence
+
+1. **Solder the circuit board** (if using strip board or prototype board): position components on the board, solder all joints, check continuity with a multimeter.
+2. **Test the circuit on the board** before installing it: switch should close the circuit and light the LED. Switch open should extinguish the LED.
+3. **Mount the switch** in its drilled hole in the product. Secure with the mounting nut. Do not overtighten — MDF will crack.
+4. **Mount the LED** in its drilled hole. The longer leg (anode) connects to the resistor. Use a 3 mm LED holder if available to secure the LED without gluing.
+5. **Route wires** through the wire channel. Leave 50 mm extra wire at each connection point for soldering. Secure with cable clips at 150 mm intervals.
+6. **Connect battery clip to circuit.** Red wire to positive rail. Black wire to negative (0 V) rail.
+7. **Final test:** Insert battery. Toggle the switch on — LED lights? Toggle off — LED extinguishes? Check that no components get unusually warm (indicates a wiring error or incorrect resistor).
+
+### Soldering guide
+
+- Tin the iron tip before each joint (apply a small amount of solder to a clean iron tip, wipe on a damp sponge).
+- Heat the joint (component leg and pad together), not the solder.
+- Apply solder to the joint, not to the iron.
+- A good joint: shiny, conical, wets both the lead and the pad. 2–3 seconds total contact.
+- A cold joint: dull, grainy, does not wet fully. Re-melt and add a small amount of fresh solder.
+
+</Section>
+
+<WorkedExample title="Circuit installation log extract">
+
+**Solder test (pre-installation):** Circuit on breadboard — LED lit at 17.9 mA with 390 Ω resistor and 9 V supply. Switch open: LED off. Switch closed: LED on. Function confirmed.
+
+**Switch mounting:** 8 mm hole drilled in right face of product, 30 mm from front face. SPST toggle switch inserted. Mounting nut tightened finger-tight plus one quarter turn with pliers (not over-tightened).
+
+**LED mounting:** 3 mm hole drilled in top panel, 40 mm from front edge, centred on width. LED inserted with longer leg toward front face. Secured with hot-melt glue bead around the base — LED is not removable but is flush with the top surface.
+
+**Wire routing:** Wires run through 8 mm x 5 mm channel routed in underside of top panel. Cable clips at 100 mm intervals. 60 mm wire slack at each solder point.
+
+**Battery compartment:** 9 V battery in clip, clip mounted to inside of removable rear panel with two M3 screws. Panel removed and replaced during final test — battery accessible without tools.
+
+**Final test result:** LED lit when switch closed, extinguished when switch open. No components warm after 5 minutes continuous operation. Circuit installation complete.
 </WorkedExample>
 
-<Activity title="Resolve and review" time="50 min" grouping="Individual, with a partner check" materials={["Your test-results pages", "6Rs prompt cards", "Your materials list"]}>
-1. **Produce your resolved development outcome** — the design you'll plan and make.
-2. **Run a 6Rs review** and record at least two sustainability improvements.
-3. **Update** your specification and materials list to match.
+<Activity title="Finishing and circuit installation" time="90 min" grouping="Individual" materials={["Sandpaper (120 and 180 grit)", "MDF primer and acrylic paint + brush", "Soldering iron, solder, sponge", "LED, resistor, switch, battery clip, 9 V battery", "Drill press and 3 mm, 8 mm bits", "Cable clips, small screwdriver"]}>
+
+**Surface preparation (0–25 min):**
+1. Sand all external surfaces: 120-grit then 180-grit.
+2. Seal MDF edges with diluted PVA or primer. Allow to dry.
+3. Apply first paint coat to all surfaces. Set aside to dry.
+
+**While paint dries — circuit preparation (25–50 min):**
+4. Solder the resistor and LED in series on a strip board or solder directly to switch and LED legs (simplest approach for this project).
+5. Test the circuit before installation (battery in, switch closed = LED on, switch open = LED off).
+6. Drill mounting holes in the product for the switch (8 mm) and LED (3 mm) in the positions documented in C4.
+
+**Circuit installation (50–70 min):**
+7. Mount switch in its hole. Mount LED in its hole.
+8. Route wires through the wire channel. Secure with cable clips.
+9. Connect battery clip. Perform final installed test.
+
+**Second paint coat and finish (70–90 min):**
+10. Light sand between coats if the surface feels rough (grain raise).
+11. Apply second paint coat.
+12. Photograph: finished product from front, from side, circuit visible through open battery panel.
 </Activity>
 
-<Support title="Need a hand? A 6Rs card + a development checklist">
-Use the **6Rs prompt card** and pick the two Rs that fit your product best. Check
-off the **development checklist** — resolved form ✓, materials decided ✓, joints
-decided ✓, each change traced to evidence ✓.
+<Support title="Finishing and circuit troubleshooting">
+
+**Paint uneven or blotchy on MDF?** The edges were not sealed. Diluted PVA seals the porous edge fibres — without it, the topcoat soaks in unevenly. Let the current coat dry, apply diluted PVA to all blotchy areas, allow to dry, then re-apply topcoat.
+
+**LED does not light after installation?** Check in order: (1) battery charged/new? (2) switch mounted correctly (make sure the toggle is in the closed position)? (3) LED polarity correct (longer leg to resistor, not to negative)? (4) all solder joints shiny and well-wetted? A multimeter in continuity mode will identify any open break in the circuit.
+
+**Switch wobbles in its hole?** The hole is too large for the switch body. Pack with epoxy putty around the thread and retighten the mounting nut when cured.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "What does a 'resolved' development mean?",
+    q: "Why must MDF edges be sealed before applying a paint topcoat?",
     options: [
-      "Your favourite-looking idea",
-      "The design your test evidence supports, with final choices made",
-      "Any idea, as long as it's neat",
-      "A brand-new concept"
+      "MDF edges are electrically conductive — the seal prevents short circuits from the LED circuit to the surface",
+      "MDF edges are highly porous and will absorb the topcoat unevenly, producing blotchy areas unless sealed first",
+      "Sealing MDF edges prevents the panel from expanding in humid environments",
+      "The Cambridge mark scheme requires edge sealing to be shown in the C6 photographic record"
     ],
     answer: 1,
-    hint: "Resolve from evidence, not taste.",
-    explain: "A resolved development locks in final choices that are justified by your test results and spec."
+    hint: "Think about what MDF is made of — compressed wood fibres — and what happens when liquid soaks into fibre.",
+    explain: "MDF is made of wood fibres bonded under pressure. The cut edges expose a highly porous cross-section that absorbs liquid paint rapidly and unevenly. Areas with more exposed fibres absorb more paint, producing blotchy, uneven coats. Sealing with diluted PVA or primer fills the surface pores and creates a consistent base, allowing the topcoat to sit on the surface evenly."
   },
   {
-    q: "Swapping a glued joint for a knock-down fitting mainly improves which 6Rs?",
-    options: ["Refuse only", "Repair and Recycle", "Rethink only", "None of them"],
-    answer: 1,
-    hint: "What can you now do with the product at end of life?",
-    explain: "A KD fitting lets the product be taken apart, so it can be repaired and its parts recycled."
-  },
-  {
-    q: "Why trace each refinement back to a spec point and test result?",
+    q: "What are the characteristics of a good solder joint?",
     options: [
-      "To fill the page",
-      "Because that evidence trail is what earns development marks",
-      "To make it longer",
-      "It isn't necessary"
+      "Dull and grey — excess solder prevents the joint from cracking",
+      "Shiny and conical — the solder has wetted both the component lead and the pad fully",
+      "Large and rounded — more solder creates a stronger electrical connection",
+      "Flat and flush with the board — solder should not form a raised cone"
     ],
     answer: 1,
-    hint: "Marks follow justified decisions.",
-    explain: "Showing each change came from evidence is exactly what Criterion 4 rewards."
+    hint: "Solder that has been heated to the right temperature and properly wetted the surfaces has a specific appearance.",
+    explain: "A good solder joint is shiny (indicating the solder reached the correct temperature and flowed properly) and conical (a small cone shape indicating it wetted both the component lead and the pad, creating good mechanical and electrical contact). Dull or grainy joints (cold solder joints) indicate the joint cooled too quickly or was not fully heated — the solder did not wet the surfaces and the electrical connection may be intermittent."
+  },
+  {
+    q: "What is the purpose of strain relief in a wired circuit installation?",
+    options: [
+      "Strain relief increases the voltage available at the LED by reducing resistance in the wire",
+      "Strain relief prevents mechanical tension in a wire from being transmitted to the solder joint and lifting it off the pad",
+      "Strain relief prevents the wire insulation from melting when the soldering iron is held near it",
+      "Strain relief ensures the wire follows the shortest possible path through the circuit housing"
+    ],
+    answer: 1,
+    hint: "What happens to a solder joint if the wire connected to it is pulled?",
+    explain: "If a wire is pulled and there is no strain relief, the tension travels along the wire to the solder joint and can lift the joint off the pad — creating an open circuit. A cable clip placed close to the solder joint (within 30–50 mm) takes the mechanical force before it reaches the joint. The joint then only carries electrical current, not mechanical load."
   }
 ]} />
 
-<Section title="Homework & extension" icon="🏠" id="homework">
-
-**Homework:** make sure all your **C3 and C4 folder pages** are complete and ordered
-for marking.
-
-<Extension title="Go deeper">
-Estimate your **material waste** (offcuts) and redesign one part to reduce it —
-material efficiency in action.
-</Extension>
-
-</Section>
-
 <Resources items={[
-  { label: "Grade 11 — The Project (Criterion 4)", route: "project", type: "Link" },
-  { label: "Collins IGCSE D&T — §1.9 Environment and sustainability (p.101)", type: "Textbook", href: "https://drive.google.com/file/d/1cUp9e9TG8JiBbXEl3qslLpIDmYJmGJSa/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.2.10 Surface treatments (p. 288)", type: "Textbook", href: "https://drive.google.com/file/d/1F8bzARgbX_6J9CRumVRAswfFDgXfydHy/view?usp=sharing" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
 ]} />
 
-<Reflection prompt="What is the most sustainable choice I made, and what did it cost me?" />
+<Reflection prompt="Compare your finished product to your specification from T1 W8. Before writing the formal evaluation next week, what is your instinct: does the product meet the specification? Which points will be hardest to defend?" />
