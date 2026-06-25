@@ -43,7 +43,7 @@ export const GRADES: GradeInfo[] = [
     name: 'Grade 10',
     subject: 'Materials',
     blurb: 'The Materials cohort — properties, processes and sustainable design.',
-    status: 'placeholder',
+    status: 'active',
   },
   {
     id: 11,
@@ -76,8 +76,19 @@ export const WEEKS_PER_TERM = 10;
 
 /** Per-grade, per-term week-count overrides (when a term runs longer than 10 weeks). */
 const WEEKS_OVERRIDE: Partial<Record<number, Partial<Record<TermId, number>>>> = {
+  11: { 3: 20 },
   12: { 1: 12 },
 };
+
+/** First week number of the bonus block, for grades/terms that have one. */
+const BONUS_START: Partial<Record<number, Partial<Record<TermId, number>>>> = {
+  11: { 3: 11 },
+};
+
+/** Returns the first week number of the bonus session block, or undefined if no bonus sessions. */
+export function bonusWeekStart(grade: number, term: number): number | undefined {
+  return BONUS_START[grade]?.[term as TermId];
+}
 
 export function weeksForTerm(term: number, grade?: number): number[] {
   const override = grade !== undefined ? WEEKS_OVERRIDE[grade]?.[term as TermId] : undefined;
