@@ -107,28 +107,65 @@ explains Paper 1, Paper 4 and the Project.
   across all 29 G11 lesson MDX files. Each `📘 Textbook` entry now links directly
   to the relevant section extract. §1.5 + §1.6 share one bundled file.
   Extracts kept at `../textbook-extracts/` locally for re-use.
+- **G11 T2 + T3 rewrite (2026-06-25):** All 30 G11 lessons (T2 W1–10, T3 W1–10)
+  rewritten to match the canonical LaTeX schemes of work at
+  `../Curriculum/Grade11_SchemeOfWork/Term{2,3}.tex`. The LaTeX source is the
+  ground truth for G11; earlier MDX files had drifted. T3 W11–W20 are
+  `sessionType: bonus` — shown on the term page as a separate "Bonus sessions"
+  block (see `bonusWeekStart` in `curriculum.ts`).
+- **Grade 12 T1 (2026-06-25):** 12 lessons authored from scratch (T1 W1–12).
+  Week count override: `WEEKS_OVERRIDE[12][1] = 12` in `curriculum.ts`.
+- **Grade 10 fully populated (2026-06-25):** All 30 lessons written from
+  LaTeX sources at `../Curriculum/2027/10th/LaTeX_sources/Term{1,2,3}.tex`.
+  - T1 (10 lessons): Design communication, mechanisms, electronics (Firefighter Barbie).
+  - T2 (10 lessons): Materials, making, OnShape CAD (Desk Organizer). Three
+    graded moments: M1 Paper 1 (c)(d)(e) W7; M2 folder W8; M3 partial Paper 3 W10.
+  - T3 (10 lessons): Commercial manufacturing, reverse-engineering (Water Bottle).
+    M1 analysis package W6; M2 design+plan package W9; M3 full Paper 3 mock W9.
+  - **G10 does not use `ExamLink`** (Paper 3 not in the route map) — exam refs
+    are plain text inside `Callout` or `Section`.
+  - **G10 does not use `route:` on Resources** — the Resources component hardcodes
+    grade 11 in `routes[r.route](11)`. All G10 textbook links use `href:` instead.
+- **Textbook links comprehensive pass (2026-06-25):** 110 changes across 57
+  files (G10 T1–T3, G11 T1–T3, G12 T1). All `type: "Textbook"` items that have a
+  Drive PDF now carry `href: "https://drive.google.com/open?id=..."`. Existing
+  `file/d/ID/view?usp=sharing` hrefs normalised to `open?id=` format.
+  Sections with no Drive PDF (§2.6 CAD, §3.8–3.9, §3.11–3.13, §5.1–5.2 etc.)
+  remain as plain text labels — add hrefs when those PDFs are uploaded.
 
 ## 7. Content sources (for populating more lessons)
-- **Grade 11 (done):** `../Curriculum/LaTeX_sources/Term{1,2,3}.tex` (each
-  `\section{Week N}` → the `W (90 min)` lesson; ignore `B` bonus sessions),
-  context in `../Curriculum/PLANNING_HANDOFF_Grade11_2027.md`, textbook
-  `../Curriculum/Book.pdf` (Collins, image-only, section extracts at
-  `../textbook-extracts/`).
-- **Grade 10 (Materials) — to populate:** `../Curriculum/Curriculum_2028-2030_Materials/`.
-- **Grade 12 (ICT/Programming) — user-populated:** T1 IGCSE ICT review, T2 empty,
-  T3 Programming. Structure/labels already stubbed in `curriculum.ts`.
+- **Grade 11 (done):** `../Curriculum/Grade11_SchemeOfWork/Term{1,2,3}.tex`
+  (each `\section{Week N}` → 90-min lesson; `\section{Bonus N}` → bonus session
+  with `sessionType: bonus` in frontmatter). Context in
+  `../Curriculum/PLANNING_HANDOFF_Grade11_2027.md`.
+- **Grade 10 (done):** `../Curriculum/2027/10th/LaTeX_sources/Term{1,2,3}.tex`
+  — three projects: Firefighter Barbie (T1), Desk Organizer (T2), Water Bottle
+  reverse-engineering (T3). IGCSE 0445 D&T, Materials option; Papers 1 and 3
+  (no Paper 4; no ExamLink; no Resources `route:` — use `href:` only).
+- **Grade 12 T1 (done):** 12 lessons, 12-week term override.
+  T2 and T3 still empty — not yet planned.
+- **Textbook:** `../Curriculum/Book.pdf` (Collins IGCSE D&T, 375 pp, image-only).
+  Section PDFs on Google Drive — see Section 6 for link format and which sections
+  still need PDFs. Drive links map: see the user's canonical list in the most
+  recent session notes, or grep `open?id=` in any lesson file for the 28 covered IDs.
 - Old site to mine for images/quizzes: `../D&T Classes/D-T-Classes/` (+ `img/`).
 
 ## 8. Open items / next steps
 1. **Grader URL:** `examsUrl` in `src/lib/site.ts` points at the grader **preview**
    (`https://workwebsitesmixed.github.io/exam-grader-v2-preview/`) — swap for the
    production URL when available.
-2. **Populate Grade 10 & Grade 12** lessons (architecture + README ready).
-3. **Media:** curated only — SVG diagrams (authored) for technical concepts; photos
+2. **Grade 12 T2 + T3** — not yet planned or authored. Placeholder stubs show
+   already. Awaiting Andy's curriculum plan for those terms.
+3. **Remaining textbook Drive links** — 29 `type: "Textbook"` items across G10 and
+   G11 still have no `href` because no Drive PDF was provided for those sections:
+   §1.7, §2.4, §2.5, **§2.6 CAD**, §3.8 Finishing, **§3.9** Manufacturing,
+   **§3.11** Scale of production, **§3.12** Polymer processes, **§3.13** Metal
+   processes, §5.1, §5.2. Upload those PDFs to Drive, share the `open?id=` URL,
+   and run the same `patch_links.py` pattern (or share links and I'll patch inline).
+4. **Media:** curated only — SVG diagrams (authored) for technical concepts; photos
    only where real-world needed; Watch/See = web-searched candidates the user
-   approves (never auto-search, never fabricate URLs). Term 2 had videos added;
-   Term 2/3 more can be sourced on request.
-4. **CI nicety:** deploy workflow actions log a "Node 20 deprecated" warning — bump
+   approves (never auto-search, never fabricate URLs).
+5. **CI nicety:** deploy workflow actions log a "Node 20 deprecated" warning — bump
    `actions/checkout`, `setup-node`, `upload-pages-artifact` versions sometime.
 
 ## 9. Working style (the user's established preference)
