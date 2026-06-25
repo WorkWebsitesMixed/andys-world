@@ -2,154 +2,149 @@
 grade: 11
 term: 3
 week: 5
-title: "Revision: Section B Analysis & Extended Questions"
-topic: "Revision: Section B"
-learningGoal: "structure a 6-mark Section B answer with six distinct mark points; identify the two traps in Section B multi-part questions"
-selGoal: "plan six points in the margin before writing a 6-mark answer — never write without planning"
+title: "Assembly 1 — Main Structure (C6) — Graded M1"
+topic: "Making"
+learningGoal: "complete the main structural assembly, wire and test the circuit, and submit the partially assembled product for the M1 graded checkpoint"
+selGoal: "assess my own making quality honestly before submitting — identify one thing I would improve if I had more time, and say it"
 draft: false
 ---
 
-Section B of Paper 4 is where the gap between students who prepared and students who did not becomes visible. It requires applying knowledge to an unfamiliar design context — not just recalling facts. This session teaches the structure and planning techniques for Section B extended answers.
+The main structure is glued and the pegs are set. Today you wire the circuit, integrate the electronics into the structure, and present the assembled product for the M1 graded checkpoint — worth 20% of the term. For the first time, the product exists as a single physical object.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C6 (making, 30 marks)** is assessed on the quality of the whole product, not just individual parts. Today's M1 checkpoint (20% of term) gives you teacher feedback on your making quality so far — while there is still finishing and evaluation time to address any weaknesses.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Context specificity", definition: "The requirement to apply knowledge to the specific design context given in Section B, rather than giving a generic answer. A Section B mark scheme bullet point that reads 'the joint must resist bending forces' means the student must say something about why bending forces are present in THIS specific design context — not just define bending." },
-  { term: "Mark point planning", definition: "Before writing a multi-mark answer, write the mark points in the margin as bullet points. For a 6-mark answer, write 6 bullet points. Then expand each into a sentence. This prevents answers that repeat the same point twice and earn only one mark." },
-  { term: "Sub-part dependency", definition: "In Section B multi-part questions, later sub-parts often use results or decisions from earlier sub-parts. For example: (a) identify the forces on a joint; (b) choose a joint type to resist those forces; (c) explain why the chosen joint is appropriate. Writing an incorrect answer to (a) can make (b) and (c) impossible to answer correctly." },
+  { term: "Soldering", definition: "Joining electronic components using a low-melting-point tin-lead or lead-free alloy. A good solder joint is shiny and slightly convex (volcano shape). A dull, grey, or blobby joint is a 'cold joint' — it has poor electrical contact and will fail under vibration." },
+  { term: "Circuit integration", definition: "Fitting the wired circuit into the product structure — mounting the circuit board, routing wires through cable channels, and fixing the switch in its designed position. Integration is different from just making the circuit work on a breadboard." },
+  { term: "Continuity test", definition: "Using a multimeter on continuity mode (beeps when connected) to check that a solder joint or wire connection is electrically complete. A beep = good connection. Silence = open circuit." },
+  { term: "Quality of making", definition: "The degree to which the finished product matches the design drawing in form, dimension, and finish — clean joints, square frame, no gaps, consistent surface preparation. C6 marks are directly tied to quality of making evidence in the folder." },
 ]} />
 
-<Section title="Section B question types" icon="📄" id="types">
+<Section title="Wiring and circuit integration" icon="⚡" id="wiring">
 
-### Type 1: Explanation questions (2–4 marks)
+### Soldering the circuit
 
-"Explain why [material/join/process] is used in [specific context]."
+If your circuit is to be soldered onto stripboard (not just breadboarded):
 
-Formula: property name → specific value or comparison → consequence for the product in this context.
+1. Plan the layout on the stripboard first — draw the component positions on paper.
+2. Insert components from the component side (smooth face), bend leads to hold in place.
+3. Solder from the copper track side: heat the joint (not the solder) for 2 seconds, feed solder, remove solder, remove iron.
+4. Inspect each joint: shiny, slightly convex, forms a clean fillet around the lead.
+5. Test continuity: beep across each connection. Test function: switch on — LED lights.
 
-For 4 marks: two full explanations (property + value + consequence), each clearly distinct.
+### Integrating the circuit into the product
 
-### Type 2: Calculation questions (3–4 marks)
-
-Structural calculations (FoS, stress, beam reactions) or electronics calculations embedded in the design context. Always show: formula, unit conversion, substitution, result, sense check.
-
-### Type 3: Suggest-and-justify questions (2–4 marks)
-
-"Suggest a suitable material/process/join for [specific application] and justify your choice."
-
-Formula: name the choice → state one specific property that makes it suitable → link to the context → acknowledge one trade-off (for multi-mark answers).
-
-### Type 4: Compare-and-evaluate questions (4–6 marks)
-
-"Compare [two materials/processes/approaches] for use in [context]. Evaluate which is more suitable."
-
-Formula: compare on 2–3 criteria (each a distinct mark point) → make a justified recommendation (1 mark) → acknowledge one trade-off (1 mark).
+1. Mount the circuit board in the bracket. Route wires through the cable channel.
+2. Fix the switch in its designed position (recess, bezel, or drilled hole depending on your design).
+3. Fit the LED in its designed position (top of frame, recess in panel, etc.).
+4. Fix the battery holder in the base cavity. Route the power wires.
+5. Final test: switch on. LED lights. Switch off. LED extinguishes. Both states confirmed.
 
 </Section>
 
-<Section title="Planning a 6-mark extended answer" icon="✏️" id="planning">
+<WorkedExample title="Circuit integration for a cyclist gear organiser">
 
-### The margin plan technique
+**Soldering:**
+- Stripped board layout drawn first. Three components: toggle switch (external), 470Ω resistor, red LED.
+- Soldered in order: resistor first (least heat-sensitive), LED second, switch wire third.
+- All joints inspected: four shiny, one cold joint on the LED anode — re-heated. All shiny now.
+- Continuity test: beep across all expected connections.
 
-Before writing a 6-mark answer:
-1. Write "6 points needed" in the margin.
-2. List 6 bullet points in the margin — one per mark.
-3. Check: are all 6 different? Are any just rephrasing the same point?
-4. Write the answer, one sentence per bullet point.
-5. Stop when all 6 points are covered. Do not write padding.
+**Integration:**
+- Board mounted in 3D-printed bracket with M2 screws.
+- Cable channel in base panel accommodates the power wires.
+- Toggle switch mounted in pre-drilled hole in the lower panel face — sits flush.
+- LED mounted in the top rail recess — glows cleanly when switched on.
+- Final function test: switch on — LED lights. Switch off — LED off. Confirmed.
 
-### What counts as a distinct mark point
-
-A mark scheme awards marks for distinct knowledge claims. The same claim expressed in different words earns only one mark:
-- "MDF is easy to machine" and "MDF can be laser-cut easily" → one mark (same property, same tool).
-- "MDF has no grain direction" and "MDF can be laser-cut in any orientation without splitting" → might be one mark (both reference grain) or two (if the mark scheme separates the property from the consequence).
-
-Always lead with the property name, then the consequence — the two are usually separate mark points.
-
-</Section>
-
-<WorkedExample title="6-mark Section B answer: material comparison in context">
-
-**Context:** A kitchen storage rack is being designed to hold spice jars. The designer is choosing between mild steel (powder-coated) and acrylic for the main shelving surface. Evaluate which material is more suitable. [6 marks]
-
-**Margin plan (6 points):**
-1. Mild steel: tensile strength ~400 MPa — high structural strength.
-2. Mild steel: ferrous — must be powder-coated to prevent rusting in damp kitchen.
-3. Acrylic: transparent — allows visual identification of jar labels from above.
-4. Acrylic: brittle — risk of cracking if a heavy jar drops on it.
-5. Steel: higher stiffness (Young's modulus 200 GPa vs acrylic 3 GPa) — less shelf sag.
-6. Recommendation with justification.
-
-**Written answer:**
-"Mild steel has a tensile strength of approximately 400 MPa compared to acrylic at 55 MPa, giving the steel shelf greater structural capacity to resist the weight of filled spice jars without permanent deformation (1). However, mild steel is ferrous and must be powder-coated to prevent rust in the damp kitchen environment — adding a manufacturing step and cost (2). Acrylic's transparency allows the user to see jar labels through the shelf from above, improving usability in a kitchen context where visual access matters (3). Acrylic is brittle (impact strength approximately 15 kJ/m²) — a dropped heavy jar could crack the shelf, creating a hazard (4). Mild steel's Young's modulus is approximately 200 GPa versus acrylic's 3 GPa, meaning a steel shelf of the same geometry will deflect approximately 67 times less under the same load (5). For a kitchen environment where durability and structural performance outweigh transparency, mild steel (powder-coated) is the more suitable material — it meets the structural and safety requirements without the brittleness risk of acrylic (6)."
+**M1 submission note:** Making log entries W2–W5 complete. Frame square (320/320 mm diagonal). One joint has a visible glue squeeze-out mark — noted.
 </WorkedExample>
 
-<Activity title="Section B planning and extended answer practice" time="90 min" grouping="Individual" materials={["Section B question set (teacher-provided)", "Calculator for any calculations"]}>
+<Activity title="Wiring + integration + M1 check" time="90 min" grouping="Individual (soldering station supervised by technician)" materials={["Assembled frame from W4", "Soldering iron, solder, flux", "Stripboard or PCB", "Switch, resistor, LED, battery holder, wire", "Multimeter", "Small screwdriver, M2 screws", "Camera"]}>
 
-**Technique review (0–15 min):**
-1. Read the four Section B question types on this page. For each type, write one sentence describing what a full-mark answer requires (without looking at the page — recall from the last few minutes of reading).
+**Solder the circuit (0–35 min):**
+1. Draw the stripboard layout. Insert components. Solder each joint.
+2. Inspect joints. Re-heat any cold joints.
+3. Continuity test all connections.
 
-**Planning practice (15–35 min):**
-2. For three given 6-mark Section B questions: write the margin plan only. Do NOT write the full answer yet. Focus: can you identify 6 distinct mark points for each?
-3. Compare your margin plans with a partner. Identify any mark points that are actually the same claim reworded.
+**Integrate into product (35–65 min):**
+4. Mount board in bracket. Route wires.
+5. Fix switch and LED in their designed positions.
+6. Fit battery holder. Route power wires.
+7. Final function test: switch on, LED lights. Switch off, LED off.
 
-**Full answer practice (35–75 min):**
-4. Select two questions from the set. Write complete, planned answers for both. Allocate time: 15 minutes per question.
-5. After both: read back each answer and count the distinct mark points. Is each sentence earning a different mark, or are some sentences padding?
+**M1 quality assessment (65–80 min):**
+8. Set the product on the bench. Look at it as an examiner would.
+9. Note one strength (what is well-made) and one weakness (what could be better).
+10. Write both in your making log: "One thing I am pleased with: ___. One thing I would improve: ___."
 
-**Self-mark and gap analysis (75–90 min):**
-6. Mark scheme for the two questions is distributed. Compare your answer to the mark scheme. For each mark missed: is it a knowledge gap, vocabulary issue, or context-specificity failure (answered generically rather than about THIS design)?
+**Submit for M1 (80–90 min):**
+11. Submit the product + making log (W2–W5) to teacher for M1 checkpoint.
 </Activity>
 
-<Support title="Section B extended answer help">
+<Support title="Soldering problems?">
 
-**Answer feels too long?** Quality over quantity. A well-targeted 6-sentence answer earns more than a 12-sentence answer where only 6 sentences contain mark-worthy content. Write 6 clear sentences, one per mark point, and stop.
+**Cold joint?** The most common cause is insufficient heat time. Heat the joint (the component lead and the copper track) for 2 full seconds before introducing solder. Do not heat the solder — heat the joint, then touch solder to the joint (not to the iron). The solder should flow onto the hot joint.
 
-**Cannot think of 6 distinct points?** Try these angles: material property, material value, consequence for this specific product, trade-off, manufacturing consideration, cost/sustainability. Each of these is typically a separate mark point.
+**Solder bridging between tracks?** Use solder wick (desoldering braid) to absorb excess. Place the wick over the bridge, press with a hot iron. The wick wicks up the excess solder. If no wick available, a continuity test will confirm whether the bridge is causing a short.
 
-**Generic answers losing marks?** For every sentence, ask: could I say this about ANY product? If yes, it is generic. Add the word "because" and a specific feature of THIS context.
+**LED not lighting after integration?** Check polarity: the long leg (anode) connects to the positive power supply side. If polarity is correct, check that the switch is connecting (continuity test across the switch). If the switch is open-circuit when 'on', it is wired backwards — reverse the switch connections.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A Section B question asks for 4 marks on why CFRP is used in aircraft wings. A student writes: 'CFRP is light, stiff, and strong, making it ideal for aircraft.' How many marks does this earn?",
+    q: "What is a 'cold solder joint' and why does it matter?",
     options: [
-      "4 marks — all three properties are named correctly",
-      "1–2 marks — light, stiff, and strong are named but without specific values or aircraft-specific consequences",
-      "0 marks — CFRP is incorrectly described; the question is about aircraft, not composites",
-      "3 marks — each property name earns one mark; the 'ideal for aircraft' phrase earns the final mark"
+      "A cold joint is one made with a cold iron — it looks the same as a good joint but is slightly less shiny",
+      "A cold joint forms when the joint is not hot enough — the solder does not flow properly, creating poor electrical contact that may fail under vibration",
+      "A cold joint is one where too much solder was used — it creates a short circuit between adjacent tracks",
+      "A cold joint is a joint made without flux — it is slightly weaker but still electrically sound"
     ],
     answer: 1,
-    hint: "Apply the vocabulary rule: 'light', 'stiff', 'strong' are generic descriptors without values or context-specific consequences.",
-    explain: "Each property needs: (1) a specific value or comparison (CFRP density approximately 1.6 g/cm³ vs aluminium 2.7 g/cm³), and (2) a context-specific consequence (lower density means lower aircraft mass, which reduces fuel consumption). 'Light, stiff, strong' are generic — they match no specific mark-scheme bullet point. The answer might earn 1 mark for each distinct property mentioned (if the mark scheme is generous) but unlikely to earn 4 marks without values or aircraft-specific consequences."
+    hint: "Think about what solder needs to do to form a good joint: it must flow and bond to both the component lead and the copper track.",
+    explain: "A cold joint forms when the component lead or copper track is not hot enough when the solder is applied. The solder does not flow — it sits on the surface without bonding properly. The result is a dull, grey, or blobby joint with poor electrical conductivity. Cold joints often work when the circuit is new but fail under vibration or as the product ages. Re-heat the joint — the solder should reflow and form a shiny, slightly convex fillet."
   },
   {
-    q: "In a Section B multi-part question, sub-part (b) asks to 'choose a joint suitable for the forces identified in sub-part (a)'. Why does the answer to sub-part (b) depend on sub-part (a)?",
+    q: "After soldering the circuit, the LED does not light when the switch is operated. The continuity test shows a complete circuit through every connection. What is the most likely remaining cause?",
     options: [
-      "It does not — sub-part (b) can be answered independently by choosing any common woodworking joint",
-      "Because sub-part (b) asks for a joint that specifically resists the force type identified in sub-part (a) — if sub-part (a) said 'tension', the joint must resist tension",
-      "Because the mark scheme for sub-part (b) is only revealed after sub-part (a) is marked",
-      "Because a joint cannot be named until the material is identified — the material was identified in sub-part (a)"
+      "The solder used was the wrong type — lead-free solder requires higher temperature",
+      "The LED is installed with reversed polarity — the short leg (cathode) is connected to the positive supply side",
+      "The battery voltage is too low for the LED — the circuit needs a 12 V supply instead of 9 V",
+      "The resistor value is too high — the LED needs at least 100 mA to light"
     ],
     answer: 1,
-    hint: "Sub-parts build on each other. The force type determines which joint is appropriate.",
-    explain: "Sub-part (b) asks for a joint that resists the forces from sub-part (a). If sub-part (a) correctly identified 'tension' at a joint, sub-part (b) should name a joint that resists tension (e.g. a mortise-and-tenon, which resists tension through the mechanical interlock). A student who identified the wrong force in sub-part (a) and then chose a joint for that wrong force may still earn marks in sub-part (b) if their joint choice is consistent with their sub-part (a) answer — but a wrong sub-part (a) makes it harder to earn full marks across the chain."
+    hint: "All solder joints are confirmed good. The circuit is complete. The LED is a polarised component. What does that mean?",
+    explain: "LEDs only conduct in one direction — from anode (long leg, positive) to cathode (short leg, negative). If the LED is installed backwards, the circuit is electrically complete (hence the continuity test passes — the DMM tests continuity at low voltage in both directions) but the LED does not conduct at the operating voltage. Remove the LED from the board, flip it, and re-solder. Standard red LEDs work on a 9 V supply with a 350–470Ω resistor."
   },
   {
-    q: "What is the purpose of the 'margin plan' technique before writing a 6-mark extended answer?",
+    q: "What is the purpose of a continuity test after soldering, before integrating the circuit into the product?",
     options: [
-      "To show the examiner that planning was done — plans in the margin earn bonus marks",
-      "To ensure 6 distinct mark points are identified before writing, preventing repeated claims and wasted sentences",
-      "To satisfy the time allocation — planning forces the student to use the full allocated time for each question",
-      "To convert generic vocabulary into specific property names before committing to the full answer"
+      "To measure the current flowing through the circuit and verify it matches the design calculation",
+      "To confirm that all solder joints provide a complete electrical path — identifying open circuits before the board is permanently mounted in the product",
+      "To confirm that no solder bridges exist between adjacent tracks — identifying short circuits",
+      "To test whether the LED will light at the correct brightness"
     ],
     answer: 1,
-    hint: "The plan is for the student's benefit — it prevents a common error in extended answers.",
-    explain: "The margin plan prevents the most common extended-answer error: repeating the same mark point in different words. Without planning, a student might write 8 sentences that contain only 4 distinct knowledge claims — earning 4 marks for 8 sentences of work. With a 6-point plan, each sentence targets a different mark point. Plans in the margin do not earn separate marks — they are a strategy tool, not a scored component."
+    hint: "A continuity test checks for open circuits. What does it mean if the multimeter beeps?",
+    explain: "A continuity test (multimeter on the beep setting) tests whether two points are electrically connected. After soldering, you test each connection in the circuit design: if there is a cold joint or a missed connection, there will be no beep. Testing before integration means that if any connection fails, the board is on the bench (easy to access and re-solder) rather than mounted inside the product structure (difficult to access). The continuity test does not measure current or check brightness — it only confirms connection exists."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Complete your T3 W5 making log entry. Include: circuit integration photograph (LED lit, switch visible), one quality strength, and one quality weakness. Write a sentence about what you will focus on in the finishing phase.
+
+<Extension title="Circuit troubleshooting guide">
+Write a one-page troubleshooting guide for your specific circuit: a flowchart or decision tree for diagnosing the three most common faults (LED not lighting, LED always on, LED dim). This is both a useful reference for W5 and good revision for the electronics questions in Paper 4.
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.6 Structural joints (p. 257)", type: "Textbook", href: "https://drive.google.com/file/d/1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §3.5 Composite materials (p. 182)", type: "Textbook", href: "https://drive.google.com/file/d/16PSGhJVNQvk7AxcWBNJRRLdpMDbPS0AO/view?usp=sharing" },
+  { label: "Component 2 Project — C6 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §4.4 Electronics: soldering (p. 299)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="When you compared your margin plan with a partner, how many of your 6 'distinct' points were actually the same claim reworded? What does that tell you about how you generate ideas under time pressure?" />
+<Reflection prompt="How does the physical product compare to what you imagined when you were designing it in Term 1? What is the most significant difference — form, size, or quality?" />

@@ -2,133 +2,131 @@
 grade: 11
 term: 3
 week: 11
-sessionType: "bonus"
-title: "Bonus B1: Structures Calculation Extension"
-topic: "Structures"
-learningGoal: "solve multi-load beam reaction problems and bending moment diagrams; calculate stress in non-rectangular cross-sections"
-selGoal: "set up the equilibrium equations before calculating — never guess which reaction is larger"
+sessionType: bonus
+title: "Workshop Safety, Symbols & Makerspace Induction"
+topic: "Safety"
+learningGoal: "pass the makerspace induction quiz with 100% — identify the hazard, PPE requirement, and emergency procedure for every machine and tool in the D&T workshop"
+selGoal: "take safety rules seriously as professional standards, not as obstacles — name one situation where a safety rule genuinely protects someone"
 draft: false
 ---
 
-This bonus session extends the structures content from the main sessions into territory that appears at the top of Paper 4 Section B difficulty. Two-point-load beams, combined stress, and hollow section calculations push beyond the single-load worked examples in the main sessions.
+You cannot use the makerspace until you complete the induction. This session covers every machine, every hazard, and every emergency procedure you will encounter during Term 3 making. The induction quiz at the end must be passed at 100% — there is no partial credit for workshop safety.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Safe working is assessed in <ExamLink to="project">Component 2</ExamLink> criterion **C6 (making)**. The mark scheme includes marks for evidence of safe working practices — correct PPE, correct tool selection, and safe machine operation visible in the making log photographs. Beyond the marks: an injury in the makerspace is a real event with real consequences.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Principle of moments", definition: "For a beam in equilibrium (not rotating and not moving): the sum of all clockwise moments about any point equals the sum of all anticlockwise moments about the same point. This principle allows beam reactions to be calculated for any number of loads at any position." },
-  { term: "Bending moment", definition: "The product of a force and the perpendicular distance from the force to the point being considered. Measured in N·m or N·mm. A bending moment diagram (BMD) shows how the bending moment varies along the length of a beam — essential for identifying the critical section (where bending moment is maximum)." },
-  { term: "Hollow section advantage", definition: "A hollow tube (circular or rectangular) has a higher second moment of area (I) for the same mass of material compared to a solid section of the same outer dimensions. This means hollow sections are more efficient structurally — they resist bending with less material. Used in bicycle frames, scaffolding, and aircraft fuselage frames." },
-  { term: "Second moment of area (I)", definition: "A geometric property of a cross-section that determines its resistance to bending. For a solid rectangle: I = b x h³ / 12, where b is the width and h is the height. For a hollow rectangle: I = I_outer minus I_inner. Higher I means less deflection for the same applied force — a deep I-beam is more efficient than a wide flat plate of the same area." },
+  { term: "PPE (Personal Protective Equipment)", definition: "Equipment worn to reduce the risk of injury: safety glasses (eye protection from chips and laser flash), apron (protection from hot debris), ear protection (for sustained machine noise above 85 dB), dust mask (for sanding or machining wood composites). PPE must be worn — not kept in a pocket." },
+  { term: "COSHH", definition: "Control of Substances Hazardous to Health. In D&T: wood dust (respiratory hazard from MDF), acrylic fumes (from laser cutting without extraction), solvent fumes (from lacquers and adhesives). COSHH requires adequate ventilation or an extraction system before any operation producing dust or fumes." },
+  { term: "Emergency stop", definition: "A large red button (or pull-cord) that immediately cuts power to all moving parts of a machine. Location must be known before the machine is switched on. Never bypass an emergency stop." },
+  { term: "Safe area / exclusion zone", definition: "The area around a machine where only the operator may stand while the machine is running. Exclusion zones prevent bystanders being struck by ejected material or moving parts." },
 ]} />
 
-<Section title="Two-point-load beam reactions" icon="🔧" id="two-loads">
+<Section title="Machine-by-machine safety guide" icon="⚠️" id="safety">
 
-### Setting up the equilibrium equations
+### Laser cutter
 
-For a beam with two point loads W1 at position a from A, and W2 at position b from A (span L):
+- PPE: safety glasses, closed-toe shoes
+- Hazards: laser flash (do not look directly into the beam); fumes from cutting (always run extraction fan; never cut PVC or polycarbonate)
+- Emergency: lid-open = laser stops immediately (interlock). Emergency stop cuts all power.
+- Safe practice: never leave the machine unattended during a cut job
 
-**Taking moments about A (to find RB):**
-RB x L = W1 x a + W2 x b
-RB = (W1 x a + W2 x b) / L
+### Pillar drill
 
-**Sum of vertical forces (to find RA):**
-RA + RB = W1 + W2
-RA = W1 + W2 - RB
+- PPE: safety glasses (no gloves — loose glove can catch in the chuck)
+- Hazards: rotating chuck, ejected material if bit breaks; work piece spinning if not clamped
+- Emergency: power isolator on the machine body
+- Safe practice: always clamp the workpiece; lower the bit slowly; clear swarf with a brush, not fingers
 
-**Check:** RA + RB = W1 + W2 (must balance)
+### Band saw / scroll saw
 
-### Why take moments about A?
+- PPE: safety glasses, dust mask for MDF cutting
+- Hazards: blade contact; material kickback on band saw
+- Emergency: foot-operated kill switch or red button
+- Safe practice: keep fingers at least 50 mm from the blade; do not cut curves tighter than the blade width
 
-Taking moments about A eliminates RA from the moment equation (RA has zero moment arm about A), leaving only RB as the unknown. This allows direct calculation of RB. Once RB is known, RA follows from vertical equilibrium.
+### Soldering station
 
-</Section>
+- PPE: safety glasses, well-ventilated area (solder flux fumes)
+- Hazards: burns (iron tip 300–450°C); flux fume inhalation
+- Emergency: unplug the iron; burns station has running water adjacent
+- Safe practice: return iron to stand when not in use; never hold work with bare hands while soldering
 
-<Section title="Hollow section stress calculation" icon="📐" id="hollow">
+### Hand tools (chisels, knives, saws)
 
-### Stress in a hollow rectangular tube
-
-For a hollow tube carrying a tensile force F:
-Stress = F / A_net
-
-Where A_net is the net cross-sectional area: A_outer minus A_inner.
-
-Example: Outer section 50 mm x 50 mm. Wall thickness 5 mm. Inner section: (50-2x5) mm x (50-2x5) mm = 40 mm x 40 mm.
-A_outer = 50 x 50 = 2,500 mm².
-A_inner = 40 x 40 = 1,600 mm².
-A_net = 2,500 - 1,600 = 900 mm².
-
-If F = 9,000 N: Stress = 9,000 / 900 = 10 N/mm² = 10 MPa.
-
-### Comparing solid vs hollow for the same stress
-
-A solid 50 x 50 mm section has A = 2,500 mm². At 9,000 N: stress = 3.6 MPa.
-The hollow section achieves 10 MPa — higher stress for the same force, but uses 900/2500 = 36% of the material.
-
-For the same stress: the hollow section supports the same force with less than half the cross-section area and therefore much less mass. This is the structural efficiency of hollow sections.
+- PPE: safety glasses for chiselling; cut-resistant glove for holding the work when using a knife
+- Hazards: cutting toward the body; slipping tools
+- Safe practice: always cut away from the body; clamp or bench-stop the work before cutting
 
 </Section>
 
-<WorkedExample title="Two-point-load beam with three reactions">
+<Activity title="Makerspace induction + quiz" time="45 min" grouping="Whole class then individual" materials={["Induction quiz (teacher issued)", "Machine identification sheet", "PPE items to handle and name"]}>
 
-**Scenario:** A steel bracket supports a shelf. The shelf carries a uniformly distributed load (but for this problem, two concentrated loads): W1 = 200 N at 300 mm from A, W2 = 150 N at 700 mm from A. Span = 1,000 mm.
+**Guided walk-around (0–20 min):**
+1. Teacher leads the group to each machine. At each machine: identify the PPE required, name one hazard, locate the emergency stop.
 
-**Step 1 — Take moments about A:**
-RB x 1,000 = 200 x 300 + 150 x 700 = 60,000 + 105,000 = 165,000 N·mm.
-RB = 165,000 / 1,000 = 165 N.
+**PPE identification (20–30 min):**
+2. Pick up and correctly identify each item of PPE: when is it used? Why?
 
-**Step 2 — Vertical equilibrium:**
-RA + RB = W1 + W2 = 200 + 150 = 350 N.
-RA = 350 - 165 = 185 N.
-
-**Check:** RA + RB = 185 + 165 = 350 N = W1 + W2. Correct.
-
-**Interpretation:** Support A carries 185 N (53%), support B carries 165 N (47%). W1 is closer to A (300 mm from A vs 700 mm from B) — so A carries more. Result is consistent with expectation.
-</WorkedExample>
-
-<Activity title="Two-load beam problems and hollow section calculations" time="45 min" grouping="Individual" materials={["Calculator", "Section B structures question bank"]}>
-
-**Two-load beam problems (0–25 min):**
-1. Complete four two-point-load beam reaction problems from the question bank. For each:
-   - Set up the moments equation about the left support.
-   - Calculate the right reaction.
-   - Calculate the left reaction from equilibrium.
-   - Verify: RA + RB = total load.
-
-**Hollow section calculations (25–40 min):**
-2. For two given hollow section profiles: calculate the net cross-sectional area and the stress for a given axial force. Compare to a solid section of the same outer dimensions.
-
-**Reflection (40–45 min):**
-3. Write one sentence: for the same outer dimensions and the same applied force, what is the advantage of the hollow section over the solid section?
+**Induction quiz (30–45 min):**
+3. Complete the quiz individually: 100% required to use the makerspace. If any question is answered incorrectly, re-read the relevant section and retake until 100% is achieved.
 </Activity>
+
+<Support title="Quiz question unclear?">
+
+**Not sure which PPE is required for a specific machine?** Ask the technician — they are the safety authority in the makerspace, not the textbook. The technician's instruction takes precedence.
+
+**Emergency stop location not obvious?** Look for the large red circular button (often mounted on a post near the machine) or a red pull-cord. If you cannot find it before the machine is switched on, do not switch the machine on — ask the technician to show you.
+</Support>
 
 <SelfCheck questions={[
   {
-    q: "A simply supported beam has a span of 2,000 mm. W1 = 300 N acts at 500 mm from A. W2 = 200 N acts at 1,500 mm from A. What is RB?",
+    q: "You are laser cutting an acrylic sheet. The extraction fan is not working. What should you do?",
     options: [
-      "175 N — RB = (300 x 500 + 200 x 1,500) / 2,000 = (150,000 + 300,000) / 2,000 = 450,000 / 2,000 = 225 N",
-      "225 N — taking moments about A: RB x 2,000 = 300 x 500 + 200 x 1,500 = 450,000. RB = 225 N",
-      "250 N — equal share of the total load (500 N / 2)",
-      "150 N — RB carries only W2 (200 N) adjusted for its position"
+      "Open a window and continue cutting — natural ventilation is sufficient",
+      "Stop and do not cut until the extraction fan is repaired or an alternative ventilation method is confirmed by the technician",
+      "Cut quickly to minimise fume exposure time",
+      "Wear a dust mask and continue — the mask filters acrylic fumes"
     ],
     answer: 1,
-    hint: "Take moments about A. RB x span = sum of (each force x its distance from A).",
-    explain: "Taking moments about A: RB x 2,000 = (300 x 500) + (200 x 1,500) = 150,000 + 300,000 = 450,000 N·mm. RB = 450,000 / 2,000 = 225 N. Check: RA = (300 + 200) - 225 = 275 N. Verify: 275 + 225 = 500 N = 300 + 200. Correct."
+    hint: "Acrylic fumes are a COSHH hazard. What is the correct control measure?",
+    explain: "Acrylic fumes (methyl methacrylate and combustion products) are a health hazard requiring extraction ventilation as the primary control measure. Without the extraction fan, fume concentration in the room will rise above safe levels. Opening a window is insufficient — it does not provide the local extraction at the cutting zone. A dust mask does not filter organic vapours. The correct action is to stop work until the extraction is restored."
   },
   {
-    q: "Why do structural engineers prefer hollow rectangular or circular tube sections over solid sections of the same outer dimensions?",
+    q: "Why should gloves NOT be worn when operating a pillar drill?",
     options: [
-      "Hollow sections are weaker but cheaper, making them economical for non-critical structures",
-      "Hollow sections have the same or higher resistance to bending for significantly less material mass — they are structurally more efficient",
-      "Hollow sections are easier to connect to other members using bolts — the bolt passes through the hollow interior",
-      "Hollow sections distribute compressive loads more evenly than solid sections because the load travels around the perimeter"
+      "Gloves reduce grip and make it harder to hold the drill handle",
+      "Gloves can catch in the rotating chuck and pull the hand into the drill, causing a serious injury",
+      "Gloves are not required because pillar drills do not produce hazardous dust",
+      "Gloves are only required for drills with bits larger than 10 mm"
     ],
     answer: 1,
-    hint: "The key term here is 'second moment of area' — what property determines bending resistance?",
-    explain: "Bending resistance is determined by the second moment of area (I = b x h³ / 12 for a rectangle). A hollow section concentrates material at the outer edges — the furthest from the neutral axis — where it contributes most to bending resistance. A solid section wastes material near the centre where its contribution to bending resistance is minimal. For the same mass of material, a hollow section achieves a higher I and therefore higher bending resistance. This is why I-beams, RSJs, and tube sections dominate structural engineering over solid sections."
+    hint: "Think about what happens if the rotating chuck catches a loose fabric glove.",
+    explain: "A rotating chuck can snag loose glove material and wind the hand toward the drill in fractions of a second — faster than a person can react. This is called 'entanglement' and is one of the most serious machine hazards. For pillar drills, the correct PPE is safety glasses only — no gloves. The workpiece is protected by clamping it to the table, not by holding it with gloved hands."
+  },
+  {
+    q: "Where should a soldering iron be placed when not actively being used?",
+    options: [
+      "On the workbench next to the component being soldered",
+      "In its stand — with the hot tip pointing away from the user and toward the back of the bench",
+      "On a piece of scrap card to protect the bench surface",
+      "Switched off and unplugged after every single solder joint"
+    ],
+    answer: 1,
+    hint: "The iron tip is 300–450°C. What happens if it is left on the bench?",
+    explain: "A soldering iron left on the bench (not in its stand) can roll, fall, or be knocked — causing burns to the user or others, and starting a fire if it contacts flammable material. The iron stand holds the iron safely with the hot tip pointing away from the operator. Switching off and unplugging after every joint is unnecessary and shortens the iron's life — but the iron must always be returned to the stand between joints."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Write the workshop safety rules for one machine of your choice in your own words — as if explaining them to a younger student who has never used that machine. This forces you to understand the rule rather than copy it. Bring it to the next bonus session.
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.3 Structural forces (p. 238)", type: "Textbook", href: "https://drive.google.com/file/d/1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.2.5 Structural stability (p. 249)", type: "Textbook", href: "https://drive.google.com/file/d/1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a/view?usp=sharing" },
+  { label: "Component 2 Project — C6 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.3 Making (health and safety, p. 30)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="Two-load beam reactions require more steps than single-load. Which step is most likely to produce an error — and what habit prevents it?" />
+<Reflection prompt="Which machine or tool in the makerspace do you feel least confident operating safely? What specific information or practice do you need before using it?" />

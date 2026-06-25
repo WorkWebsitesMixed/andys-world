@@ -2,187 +2,139 @@
 grade: 11
 term: 3
 week: 3
-title: "Revision: Electronics Calculations"
-topic: "Revision: Electronics"
-learningGoal: "complete resistor calculation, voltage divider calculation, and IPO labelling questions at full marks under timed conditions"
-selGoal: "convert mA to A and kΩ to Ω as the first step in every electronics calculation — before writing the formula"
+title: "Manufacture Parts 1 (C6)"
+topic: "Making"
+learningGoal: "complete all remaining individual parts (hand-tool or machine-cut), check each against the cutting list, and continue the photographic making log"
+selGoal: "measure twice before every cut — name the habit I'm building, not just the task I'm completing"
 draft: false
 ---
 
-Electronics calculations in Paper 4 Section A are reliable mark-earners because the method is always the same. The only variable is the numbers given. If the unit conversion is automatic and the formula is memorised, these questions should be full marks every time.
+All parts need to be cut and finished before assembly can begin. This session completes any parts not finished in Week 2: hand-tool cuts, drilled holes, filed edges, and the 3D-printed bracket (collected from last session's print queue). By the end of this session every component on your cutting list exists as a real, measurable object.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C6 (making, 30 marks)** rewards accuracy and quality in manufacture. Parts that match the cutting list dimensions, have clean edges, and fit correctly in a dry assembly earn more marks than parts that are approximately right. The making log entry from this session is evidence that you worked precisely.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Unit conversion priority", definition: "In electronics calculations, unit conversion must happen BEFORE substituting into any formula. Specifically: mA must be converted to A (divide by 1,000) and kΩ must be converted to Ω (multiply by 1,000) before any calculation. The single most common source of wrong answers in Paper 4 electronics questions is failing to convert units before substituting." },
-  { term: "Formula bank", definition: "The three formulas required for IGCSE D&T electronics: (1) R = (Vsupply - V_LED) / I_LED — current-limiting resistor. (2) Vout = Vsupply x R2 / (R1 + R2) — voltage divider. (3) I = V / R — Ohm's law (used to find current through a resistor). All three must be memorised in the given form." },
-  { term: "Sense check", definition: "A quick verification step after any calculation. For electronics: (1) The resistor value should be positive and in the range 10 Ω to 10 MΩ for typical IGCSE circuits. (2) The voltage divider output must be between 0 V and Vsupply. (3) LED current must be less than 20 mA. If your answer fails a sense check, re-examine the calculation." },
+  { term: "Dry assembly", definition: "Fitting all parts together without glue or permanent fixings, to check that joints align, dimensions match, and the product is the correct size. Dry assembly before gluing is the cheapest way to find a problem." },
+  { term: "Marking out", definition: "Transferring dimensions from the working drawing onto the raw material using a pencil, marking gauge, or scriber, before cutting. Marking out accurately is what makes a cut accurate — you cannot cut more precisely than you mark." },
+  { term: "Tolerance check", definition: "Measuring each finished part with a rule or calipers and comparing the result to the cutting list dimension. Any part outside the tolerance (typically ±1 mm for structural parts, ±0.2 mm for laser-cut joints) needs to be re-cut before assembly." },
+  { term: "Chamfer / deburr", definition: "Removing the sharp edge left by sawing, laser cutting, or drilling. A 45° chamfer (cut with a block plane or file) or deburring with sandpaper makes joints easier to assemble and removes potential injury points." },
 ]} />
 
-<Section title="The three formulas — guaranteed recall" icon="🔢" id="formulas">
+<Section title="Completing all parts" icon="🔨" id="parts">
 
-### Formula 1: Current-limiting resistor
+### Parts manufacturing sequence
 
-R = (Vsupply - V_LED) / I_LED
+1. Collect any 3D-printed parts from the print queue. Measure: do they match the design dimensions? Remove support material with pliers.
+2. Mark out any hand-cut parts (parts not in the laser file). Use the working drawing, not the cutting list, as the source of dimensions — the cutting list is a summary; the drawing has detail.
+3. Cut hand-cut parts: use the appropriate tool for the material (tenon saw for timber, coping saw for curves, hand file for fine fitting).
+4. Drill any holes (peg holes, cable exits, circuit mounting). Use the correct drill bit size — undersize is better than oversize for a first pass.
+5. Chamfer or deburr all cut edges.
 
-Steps:
-1. Convert I_LED from mA to A (divide by 1,000).
-2. Subtract V_LED from Vsupply.
-3. Divide the result by I_LED in A.
-4. Choose the nearest standard value ABOVE the result (never below).
+### Dry assembly check
 
-Standard E12 values (Ω): 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000, 1200, 1500, 1800, 2200, 2700, 3300, 3900, 4700.
+Before this session ends, dry-assemble your main structure (no glue). Check:
+- Do all joints fit? Not too tight (parts split under force) and not too loose (joints rattle)?
+- Is the overall height, width, and depth within 3 mm of the working drawing?
+- Are the peg holes in the right positions relative to each other?
+- Does the circuit fit in its allocated space?
 
-### Formula 2: Voltage divider
-
-Vout = Vsupply x R2 / (R1 + R2)
-
-R1 = top resistor (between supply and output junction).
-R2 = bottom resistor (between output junction and 0 V).
-
-Steps:
-1. Convert any kΩ values to Ω.
-2. Calculate R1 + R2.
-3. Calculate R2 / (R1 + R2).
-4. Multiply by Vsupply.
-5. Sense check: 0 V less than Vout less than Vsupply.
-
-### Formula 3: Ohm's Law
-
-V = I x R (voltage = current x resistance)
-
-Rearrangements: I = V / R; R = V / I.
-
-In Paper 4, Ohm's Law is most commonly used to verify the current through a resistor after choosing a standard value.
+If anything does not fit: note it in the making log and adjust before next session.
 
 </Section>
 
-<Section title="IPO labelling: no marks for guessing" icon="⚡" id="ipo">
+<WorkedExample title="Parts completion for a cyclist gear organiser">
 
-### The three components and their roles
+**From print queue:** Switch bracket collected. Support material removed. Measured: 59 × 39 mm (design: 60 × 40 mm — 1 mm short in both directions due to PLA shrinkage). Acceptable — mounting holes still align. Note in making log.
 
-| Component | IPO role | Why |
-|---|---|---|
-| Switch | Input | The user (or sensor) controls the circuit through the switch — it is the trigger |
-| Resistor | Process | It controls (processes) the current flowing to the output — limits LED current |
-| LED, lamp, buzzer, motor | Output | It produces the visible/audible/physical effect — the result the user wants |
+**Hand-cut parts:**
+- Four peg blanks from 12 mm birch dowel, 80 mm long each. Marked with a marking gauge ring, cut with a tenon saw. Ends filed flat.
+- One cable exit strip (10 × 80 mm) from 3 mm acrylic offcut. Scribed and snapped.
 
-### When there is a sensor (thermistor, LDR)
-
-The sensor is still the Input — it senses the environment and provides a signal to the process stage.
-
-If a transistor is present: the transistor is the Process (it amplifies and switches the current). The resistor (if shown separately from the sensor divider) may still be Process stage.
-
-### What examiners look for
-
-- Correct labelling of all three sections: I, P, O (or Input, Process, Output).
-- Correct assignment: switch/sensor = I; resistor/transistor = P; output device = O.
-- If the question asks to "draw and label the IPO model" — draw a block diagram with labelled arrows, not a circuit diagram.
-
-</Section>
-
-<WorkedExample title="Five electronics calculations with full working">
-
-**Q1 — Resistor for blue LED:**
-Supply = 9 V. V_LED = 3.2 V. I_LED = 20 mA.
-I_LED = 20 / 1000 = 0.020 A.
-R = (9 - 3.2) / 0.020 = 5.8 / 0.020 = 290 Ω.
-Nearest E12 above 290 Ω: 330 Ω.
-
-**Q2 — Voltage divider (LDR in dark):**
-Vsupply = 6 V. LDR (R1) = 80 kΩ = 80,000 Ω. Fixed resistor (R2) = 4 kΩ = 4,000 Ω.
-Vout = 6 x 4,000 / (80,000 + 4,000) = 6 x 4,000 / 84,000 = 6 x 0.0476 = 0.286 V.
-Transistor: 0.286 V is less than 0.6 V — transistor OFF.
-
-**Q3 — Find current through 390 Ω resistor, 9 V supply, 2 V LED:**
-Voltage across resistor = 9 - 2 = 7 V.
-I = V / R = 7 / 390 = 0.01795 A = 17.95 mA.
-Sense check: 17.95 mA is less than 20 mA — LED safe.
-
-**Q4 — Find Vout for given sensor change:**
-R1 (thermistor, cold) = 10,000 Ω. R2 (fixed) = 1,000 Ω. Vsupply = 9 V.
-Vout = 9 x 1,000 / (10,000 + 1,000) = 9 x 1,000 / 11,000 = 0.818 V.
-Transistor: 0.818 V > 0.6 V — transistor ON.
-
-**Q5 — Find Vout for same sensor, hot:**
-R1 (thermistor, hot) = 500 Ω. R2 = 1,000 Ω. Vsupply = 9 V.
-Vout = 9 x 1,000 / (500 + 1,000) = 9 x 1,000 / 1,500 = 6 V.
-Transistor: 6 V >> 0.6 V — transistor firmly ON.
+**Dry assembly:**
+- Frame assembled without glue. All slots fit correctly — slight resistance, no force needed. Height 281 mm, width 151 mm (drawing: 280 × 150 — within 1 mm). Peg holes align. Circuit bracket sits in base cavity without fouling the base panel. Ready for glue-up.
 </WorkedExample>
 
-<Activity title="Electronics calculation drill" time="90 min" grouping="Individual" materials={["Calculator", "Electronics question bank (teacher-provided)", "Formula card (self-written from memory)"]}>
+<Activity title="Parts completion + dry assembly" time="90 min" grouping="Individual (technician on hand)" materials={["All laser-cut parts from W2", "3D-printed bracket from print queue", "Hand tools: tenon saw, coping saw, drill, files, sandpaper", "Calipers, rule", "Camera"]}>
 
-**Formula recall (0–10 min):**
-1. Write all three electronics formulas from memory: resistor formula, voltage divider, Ohm's Law.
-2. Write the E12 standard resistor values from 100 Ω to 4,700 Ω from memory.
-3. Check both lists against the reference on this page. Correct any errors.
+**Collect and check 3D print (0–10 min):**
+1. Collect your 3D-printed bracket. Remove supports. Measure two key dimensions. Record in making log.
 
-**Calculation drill (10–65 min):**
-4. Complete ten electronics calculations from the question bank. For each:
-   - Step 1: Convert units (mA to A; kΩ to Ω) before writing the formula.
-   - Step 2: Write the formula.
-   - Step 3: Substitute.
-   - Step 4: Calculate.
-   - Step 5: Sense check.
-5. Self-mark after each pair of questions (not at the end of all ten).
+**Mark out and cut hand-tool parts (10–60 min):**
+2. Mark out all remaining parts using the working drawing. Check: have you identified your datum edge?
+3. Cut each part. Measure after cutting. Compare to cutting list.
+4. Chamfer all laser-cut edges (light sanding, 120 grit). Deburr drilled holes.
 
-**IPO labelling (65–80 min):**
-6. For four given circuit diagrams: label each component with its IPO role. One sentence justification for each label.
+**Dry assembly (60–80 min):**
+5. Dry-assemble the main structure without glue. Check overall dimensions.
+6. Note any joint that is too tight or too loose. Note any part that is out of position.
 
-**Error analysis (80–90 min):**
-7. For any calculation that was wrong: identify the exact step where the error occurred. Was it unit conversion? Formula? Substitution? Arithmetic? Write a note for the inside cover of your folder.
+**Making log (80–90 min):**
+7. Photograph the dry assembly. Write the log entry: parts completed, quality checks, problems found, changes planned for W4.
 </Activity>
 
-<Support title="Electronics calculation support">
+<Support title="Joint too tight or too loose?">
 
-**Always convert units as step zero.** Before writing the formula, write: "I_LED = [value] mA = [value / 1000] A" and "R = [value] kΩ = [value x 1000] Ω". Write these on the answer sheet even before writing the formula. This makes the conversion visible to the examiner (earns method marks) and prevents substituting the unconverted value.
+**Too tight — parts won't slide together?** Laser kerf compensation was insufficient. Use a small file or sandpaper wrapped around a dowel to widen the slot by 0.1–0.2 mm at a time. Do not force the joint — birch ply splits along the grain under axial force.
 
-**Voltage divider: which is R1 and which is R2?** R1 is the top resistor — the one connected between the supply and the output junction. R2 is the bottom resistor — connected between the junction and 0 V (earth). In the formula, Vout = Vsupply x R2 / (R1 + R2) — the output voltage appears across R2.
+**Too loose — joint rattles?** Kerf compensation was too generous, or the slot was cut oversize. Options: (1) re-cut the mating part with a corrected slot width; (2) add a shim (thin strip of same material glued into the slot to narrow it); (3) if only slightly loose, PVA glue will fill the gap on final assembly.
 
-**Sense check habit:** After every calculation, write one line: "Sense check: [result] is [within expected range / not within expected range]." If not within range, re-examine before submitting the answer.
+**3D print dimensions wrong by more than 2 mm?** PLA shrinks 0.3–0.5% as it cools. A 60 mm dimension becomes approximately 59.7 mm — 0.3 mm undersize. This is normal and usually unimportant. If critical mounting holes are misaligned by more than 1 mm, re-print the part with dimensions scaled up by 0.5%.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A red LED requires 20 mA at a forward voltage of 2 V. The supply is 12 V. What is the minimum resistor value, and which standard E12 value should be chosen?",
+    q: "Why is a dry assembly performed before gluing, rather than after?",
     options: [
-      "500 Ω minimum; choose 470 Ω (nearest below)",
-      "500 Ω minimum; choose 560 Ω (nearest E12 above 500 Ω)",
-      "2,000 Ω minimum; choose 2,200 Ω",
-      "250 Ω minimum; choose 270 Ω"
-    ],
-    answer: 1,
-    hint: "R = (12 - 2) / 0.020. Convert 20 mA to A first. Choose nearest E12 value ABOVE the result.",
-    explain: "I_LED = 20 mA = 0.020 A. R = (12 - 2) / 0.020 = 10 / 0.020 = 500 Ω. The nearest E12 value above 500 Ω is 560 Ω (the E12 series goes: ...470, 560, 680...). Using 560 Ω: actual current = (12 - 2) / 560 = 10 / 560 = 17.9 mA — safely below 20 mA."
-  },
-  {
-    q: "A voltage divider has R1 = 2,200 Ω (top) and R2 = 8,200 Ω (bottom). Supply = 9 V. What is Vout?",
-    options: [
-      "1.9 V — Vout = 9 x 2,200 / (2,200 + 8,200)",
-      "7.1 V — Vout = 9 x 8,200 / (2,200 + 8,200)",
-      "4.5 V — Vout = 9 x (2,200 + 8,200) / 2 x 9",
-      "9.0 V — Vout equals Vsupply when R2 is larger than R1"
-    ],
-    answer: 1,
-    hint: "Vout = Vsupply x R2 / (R1 + R2). R2 is the bottom resistor (8,200 Ω).",
-    explain: "Vout = 9 x 8,200 / (2,200 + 8,200) = 9 x 8,200 / 10,400 = 9 x 0.788 = 7.09 V ≈ 7.1 V. Since R2 (8,200 Ω) is much larger than R1 (2,200 Ω), most of the supply voltage appears across R2 — Vout is high. A transistor connected to this output would be firmly ON (7.1 V >> 0.6 V threshold)."
-  },
-  {
-    q: "In the IPO model, a circuit contains an NTC thermistor, a fixed resistor (in a voltage divider), a BC547 transistor, and a buzzer. Which component is the Process?",
-    options: [
-      "The NTC thermistor — it senses temperature and controls the circuit",
-      "The fixed resistor — it is always the Process in any sensing circuit",
-      "The BC547 transistor — it amplifies the small base current from the voltage divider to switch the buzzer",
-      "The buzzer — it produces the output that the user responds to"
+      "Because the examiner requires a photograph of the dry assembly for C6",
+      "Because glue takes time to dry, so dry assembly saves time by skipping the drying step",
+      "Because dry assembly reveals fit problems before they become permanent — once glued, a misaligned joint cannot be separated without damage",
+      "Because the product must be assembled without glue first so it can be tested structurally before the adhesive is applied"
     ],
     answer: 2,
-    hint: "In a sensing circuit with a transistor, what component controls the transition from input signal to output action?",
-    explain: "The transistor (BC547) is the Process. It takes the small voltage signal from the voltage divider (Input) and uses it to control a larger collector-emitter current through the buzzer (Output). The thermistor is the Input (it senses the environment). The fixed resistor is part of the Input stage (sets the divider ratio). The buzzer is the Output. The transistor is the amplifying/switching component — the Process."
+    hint: "Think about what happens if you discover a joint is 5 mm out of position after the PVA has cured.",
+    explain: "Dry assembly lets you find fit problems while they are still cheap to fix. A slot that is 2 mm too short, a peg that is in the wrong position, or a panel that is out of square — these are all fixable before gluing. After gluing and curing, PVA joints in birch ply are typically stronger than the wood — separating them damages the material. Dry assembly is the last point at which you can fix problems without destroying parts."
+  },
+  {
+    q: "A student cuts a peg from a 12 mm dowel with a tenon saw. The peg measures 78 mm long; the cutting list says 80 mm. What should the student do?",
+    options: [
+      "Accept the part — 2 mm is negligible for a wooden peg",
+      "Discard the peg and cut a new one from fresh dowel",
+      "Check whether 78 mm still meets the function requirement (does the peg still extend sufficiently to hold the user's items?), then decide",
+      "Glue a 2 mm shim to the end of the peg to make up the difference"
+    ],
+    answer: 2,
+    hint: "Tolerance depends on function. Does 2 mm matter for this specific part?",
+    explain: "A 2 mm shortfall on a 80 mm peg means the peg is 78 mm long — 97.5% of the design length. Whether this matters depends on what the peg holds. If it holds items by resting on the peg (and 78 mm still provides sufficient bearing length), the part is acceptable. If the peg length was dimensioned to reach a socket in the opposite panel, 2 mm short will leave the joint insecure. Check the function before deciding — this is exactly the kind of decision C6 rewards when documented."
+  },
+  {
+    q: "What is the purpose of chamfering or deburring laser-cut edges?",
+    options: [
+      "To change the colour of the edge by removing the burned char",
+      "To remove sharp edges that could cause injury and to make joints easier to assemble",
+      "To increase the surface area of the edge for a stronger glue joint",
+      "To satisfy the examiner requirement for edge finishing in C6"
+    ],
+    answer: 1,
+    hint: "Think about what the laser does to the edge of the material, and what the effect is on assembly and safety.",
+    explain: "Laser cutting leaves a slightly charred edge that can be sharp, particularly on acrylic and thin plywood. Chamfering (running a block plane or file at 45° along the edge) or light sanding removes the char and the sharpness. This serves two purposes: safety (the user will handle the product, so sharp edges are a hazard) and assembly (a chamfer on the leading edge of a joining part helps it slide into a slot without catching)."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Complete your T3 W3 making log entry. Photograph the dry assembly. Mark on the photograph any joint or dimension that is outside tolerance and note what you plan to do about it in W4.
+
+<Extension title="Joint strength test">
+Before gluing: clamp one joint from your dry assembly and apply a lateral load (push sideways on the top of one panel). Observe how much the joint moves before and after adding a dry brace. Calculate (roughly) how much stiffer the structure becomes with the brace in place. This mirrors the kind of structural analysis you studied in Paper 4.
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.4.1 Basic electronic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/file/d/1mZSNX1ai9OxE7I57sOQYha39x81vGBww/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.1 Systems and IPO (p. 214)", type: "Textbook", href: "https://drive.google.com/file/d/1-HWfTqCVLKs3nuPyimiNMPm2T3FVct9N/view?usp=sharing" },
+  { label: "Component 2 Project — C6 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.3 Making (p. 30)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="Before this session, did you convert units automatically — or did you sometimes substitute mA directly as if it were A? After ten calculations with the unit-conversion-first habit, does it feel more automatic?" />
+<Reflection prompt="Which part of today's making required the most precision — and did you achieve it? If a measurement was off, where in the process did the error enter: marking out, cutting, or measuring after the cut?" />

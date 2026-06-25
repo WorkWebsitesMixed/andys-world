@@ -2,158 +2,138 @@
 grade: 11
 term: 2
 week: 1
-title: "Development: Refining Your Selected Idea (C4)"
-topic: "Design Development"
-learningGoal: "apply four development moves to the selected C3 idea: material refinement, joint refinement, dimension change, and circuit integration"
-selGoal: "make at least one development move that changes the structural principle — not just the colour or size"
+title: "Paper 1 Post-Mock: Part (a) Function Points"
+topic: "Exam Skill"
+learningGoal: "describe the fixed seven-part structure of Paper 1 and write four valid, specific function points for a given structural product within a 6-minute timer"
+selGoal: "reframe my Term 1 mock errors as useful data — annotate one mistake and one strength before starting any new practice"
 draft: false
 ---
 
-Term 2 opens with your selected idea from T1 W10 in hand. Development is not the same as redrawing the same idea more neatly. Each development move must answer a specific question: what was wrong or uncertain in C3, and how does this change fix it? By the end of this session you have a C4 folder section with at least four documented development moves.
+Term 2 opens by returning your Term 1 Paper 1 mock. The first twenty minutes are diagnostic: what went well, what did not, and what to fix. After that you practise the most trainable part of the paper — part (a) function points — until you can produce four strong ones inside six minutes.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="paper1">**Paper 1**</ExamLink> is worth **25% of your IGCSE** and follows the same seven-part template every time. Part (a) is always the first 4–6 marks and it is entirely about reading what a product **does** — not what it looks like. Nail part (a) and you start every exam with early confidence.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Development move", definition: "A single, deliberate change to the design that can be explained and justified. A development move must: identify a problem or uncertainty in the previous version, show the proposed change, and explain how the change improves the product against the specification. 'I made it bigger' is not a development move. 'I increased the shelf depth from 150 mm to 210 mm because the user's A4 textbook is 210 mm deep and the previous version would not have contained it' is a development move." },
-  { term: "Iterative design", definition: "A design process where successive versions of a product are tested and refined based on feedback, testing, or analysis. Each iteration builds on the previous one. The IGCSE coursework process is explicitly iterative: C3 → C4 → C5 → C6 → C7." },
-  { term: "Design rationale", definition: "The reasoning behind a design decision. A design rationale for a joint choice includes: the forces acting on the joint, the material being joined, the manufacturing process available, and why this joint type handles those conditions better than alternatives." },
-  { term: "Circuit integration", definition: "The process of incorporating the electronic circuit into the structural product so that the circuit is hidden, protected, and operable. Development of circuit integration decisions includes: where the switch is positioned (user access), where the LED is positioned (visibility), how the wires are routed (hidden within the structure), and how the battery is accessed (for replacement)." },
+  { term: "Function point", definition: "A statement of what a product must do — specific, testable, and linked to use. 'It must hold five textbooks upright without tipping when one is removed' is a function point. 'It must be useful' is not — it cannot be tested." },
+  { term: "Paper 1 template", definition: "The seven-part structure (a–g) used in every Paper 1 exam. Parts always appear in the same order. Knowing the template means you are never surprised by what is being asked." },
+  { term: "Generic word", definition: "A vague descriptor that applies to almost any product — 'strong', 'good', 'easy', 'nice'. Examiners reject generic words unless immediately justified with a specific reason." },
+  { term: "Post-mock remediation", definition: "Reviewing a graded test to identify exactly where marks were lost and what specific habit to change. Remediation is the fastest way to improve on the next attempt." },
 ]} />
 
-<Section title="Four types of development move" icon="🔄" id="moves">
+<Section title="The Paper 1 template" icon="📝" id="template">
 
-### Move 1: Material refinement
+### Seven parts, every time
 
-Look at the material stated in C3. Ask: is it the best choice for this specific product, for this specific user, given the school workshop constraints?
+| Part | What it asks | Typical marks |
+|------|--------------|---------------|
+| (a) | Function points — what must the product do? | 4–6 |
+| (b) | Two different sketched approaches | 8 |
+| (c) | Three annotated design ideas | 12 |
+| (d) | Evaluate and justify one idea | 6 |
+| (e) | Construction / joining detail | 6 |
+| (f) | Sustainability point | 4 |
+| (g) | Modification or improvement | 4 |
 
-A material refinement move involves:
-- Identifying the reason the original material is problematic (too heavy, not available, too expensive, poor machinability).
-- Proposing an alternative with specific material justification (not just "better" — which property is improved?).
-- Sketching the revised component in the new material with annotations.
+**Total: 50 marks, 1 hour 15 minutes.** Roughly 1.5 minutes per mark. Part (a) at 4–6 marks = 6–9 minutes — stick to that limit so you have enough time for the mark-rich parts (c) and (e).
 
-### Move 2: Joint refinement
+### What makes a strong function point?
 
-Look at every joint in C3. For each joint, ask: what force acts on this joint? Does the joint type resist that force effectively?
-
-Common joint refinements:
-- A butt joint was shown at a corner under bending — replace with a bridle joint or reinforce with a dowel.
-- A mortise and tenon was shown in a location where quick disassembly is required — replace with a KD fitting.
-- An adhesive bond was shown at a joint under tension — reinforce with a mechanical fastener.
-
-### Move 3: Dimension change
-
-Go back to the specification. For each dimension in C3, check it against the spec. If a dimension does not meet a spec point, this is a required change — not optional.
-
-Dimension changes include:
-- Shelf depth increased to match the user's A4 textbook depth.
-- Bracket wall thickness increased to meet the load calculation (FoS must exceed 2.0).
-- Circuit housing enlarged to accommodate the battery clip and switch.
-
-### Move 4: Circuit integration
-
-This move documents where and how the circuit components fit into the structure. It must show:
-- Switch position (where the user operates it — accessible without removing objects from the shelf).
-- LED position (where light is needed — aimed at the working surface).
-- Wire routing (hidden within a channel, channel dimensions stated).
-- Battery access (a removable panel or accessible compartment for battery replacement).
+A function point answers: *what must this product do?* It must be **specific** (naming a quantity, action, or context), **testable** (you could check whether it passes or fails), and **user-linked** (connected to what the user needs). Avoid describing form or materials — those belong in later parts.
 
 </Section>
 
-<Section title="Drawing development moves" icon="✏️" id="drawing">
+<WorkedExample title="Upgrading weak function points for a cyclist gear organiser">
 
-### Before-and-after format
+| # | Weak version | Strong version |
+|---|-------------|----------------|
+| 1 | Must be useful | Must hold a full-face helmet securely without it rolling off |
+| 2 | Must be strong | Must support a total static load of at least 4 kg without bending |
+| 3 | Must have space | Must provide separate storage for at least three item types so the cyclist sees everything at a glance |
+| 4 | Must have a light | Must include a switch-operated LED the cyclist can turn on when loading gear in a dim garage |
 
-Each development move should be presented as:
-1. **Before:** a small sketch of the original C3 detail.
-2. **Change label:** one sentence identifying the problem and the proposed solution.
-3. **After:** a revised sketch showing the change.
-4. **Justification:** 1–2 sentences linking the change to the specification.
-
-This format is consistent with the Paper 1 part (d) format — practising it now means part (d) in the exam is familiar.
-
-### Scale and annotation
-
-Development sketches do not need to be full product drawings. A detail of a single joint, a cross-section through the shelf, or a plan view of the circuit placement is sufficient. Annotate each sketch: material, dimension, function, or force label as appropriate.
-
-</Section>
-
-<WorkedExample title="Four documented development moves for a desk organiser">
-
-**Move 1 — Material:** C3 used 12 mm pine for the vertical back panel. Pine has visible grain and may split along grain lines when drilled. Changed to 12 mm MDF — no grain direction, predictable drilling without splitting, smooth laser-cut finish. Meets Spec point 4 (consistent finish visible at 300 mm).
-
-**Move 2 — Joint:** C3 showed a butt joint at the shelf-to-back panel connection. Under a 5 kg vertical load, the butt joint is in shear at the nail points — low strength. Changed to a housed joint (dado joint): a 12 mm channel routed in the back panel receives the shelf, distributing the shear load over the full shelf thickness. Meets Spec point 1 (5 kg load without 2 mm deflection).
-
-**Move 3 — Dimension:** C3 shelf depth was 150 mm. User's A4 textbook is 210 mm deep — the original shelf would not contain it. Increased shelf depth to 220 mm (210 mm textbook plus 10 mm clearance at front). Meets Spec point 3 (product dimensions match user's storage items).
-
-**Move 4 — Circuit integration:** Added a circuit housing diagram. Toggle switch on the right-hand face, 30 mm from the front edge (accessible without removing items). Red LED on the top face, angled 15° toward the desk surface (illuminates working surface). Wire channel: 8 mm wide x 5 mm deep routed in the underside of the shelf. Battery compartment: a removable MDF panel on the rear face secured with two M3 screws.
+**The upgrade rule:** Read your function point and ask "could this apply to a kitchen shelf?" If yes, it is too generic — add a user or context detail.
 </WorkedExample>
 
-<Activity title="C4 development documentation" time="90 min" grouping="Individual" materials={["Your C3 sketches from T1 W10", "Your specification from T1 W8", "A3 layout paper", "Pencil and 30-60-90 set square"]}>
+<Activity title="Post-mock review + timed part (a)" time="90 min" grouping="Individual" materials={["Returned Term 1 mock script", "New context sheet from teacher", "Mark scheme extract"]}>
 
-**Review and plan (0–15 min):**
-1. Place your C3 sketches and specification side by side.
-2. For each specification point: does C3 meet it? Circle any point that is not clearly met.
-3. List four development moves (one from each category: material, joint, dimension, circuit integration). Write the move title and the specification point it addresses before drawing anything.
+**Post-mock review (0–20 min):**
+1. Collect your returned Term 1 M3 mock script.
+2. On the script, mark ✓ one thing you did correctly and ✗ one answer where you lost marks you should not have.
+3. For the ✗ answer write one sentence: "Next time I will ____."
 
-**Development sketches (15–75 min):**
-4. Complete four before-and-after development move sketches. Each must have: (a) a before sketch, (b) a change label naming the problem and the fix, (c) an after sketch with relevant annotations, (d) one or two sentences of justification linking to the specification point number.
+**Timed part (a) (20–50 min):**
+4. Teacher issues a new context (a structural product brief you have not seen before).
+5. Set a 6-minute timer. Write four function points. Stop at 6 minutes.
+6. Self-mark against the criteria: each point must be specific and testable to score.
 
-**Circuit integration drawing (75–85 min):**
-5. Draw a plan view (top-down) of the product with circuit components placed: switch, LED, battery, and wire channel. Label each component and state its position relative to the nearest edge (e.g. "switch: 30 mm from right face, 20 mm from front face").
-
-**Self-check (85–90 min):**
-6. For each development move: can you identify the problem it solves and the specification point it addresses? If not, add the link before finishing.
+**Review and target-setting (50–90 min):**
+7. Discuss common patterns from the Term 1 mock: which errors appeared most often?
+8. Write your one Paper 1 improvement target for this term and put it in your folder.
 </Activity>
 
-<Support title="Development move blockers">
+<Support title="Struggling with function points?">
 
-**"I do not know what to change."** Start with the specification. Find the spec point with the most specific number (the load, the dimension, the electrical voltage). Now check: does your C3 explicitly meet this number? If yes, show it. If uncertain, that is a development move — add the calculation or the measurement that proves it.
+**Can't think of four different points?** Use these four categories: (1) what does it hold or support? (2) how does the user access or operate it? (3) what safety or stability condition must it meet? (4) what does the circuit feature do for the user?
 
-**"All my ideas look the same as C3."** Look at the joint, not the overall form. Even if the outer shape stays the same, the internal joints and the circuit integration are always development territory. The switch position and LED angle are concrete decisions that can be shown clearly.
+**Points feel too similar?** Each point should describe a different type of function. If two points both start "It must hold…", one of them is a repeat.
 
-**"I do not know where to put the circuit."** Start with the user: which hand do they use? Which direction does the product face? The switch goes where the user's hand naturally reaches. Then route wires in channels away from load-bearing areas.
+**Vague language sneaking in?** After writing each point, test it: can I check this with a ruler, a set of weights, or a stopwatch? If not, add a quantity or a condition.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Which of the following is a valid development move?",
+    q: "A student writes: 'The organiser must be big enough for the user's belongings.' What is wrong with this as a function point?",
     options: [
-      "Making the product blue instead of brown",
-      "Increasing the shelf depth from 150 mm to 220 mm because the user's A4 textbook is 210 mm deep and the original shelf would not have contained it",
-      "Redrawing the C3 sketch more neatly on clean A3 paper",
-      "Adding colour rendering to make the sketch look more professional"
+      "It describes a physical dimension, which belongs in the specification not the function points",
+      "It is generic and untestable — 'big enough' has no measurable standard and applies to almost anything",
+      "It mentions the user, which is not appropriate in part (a)",
+      "It is too long — function points must be under ten words"
     ],
     answer: 1,
-    hint: "A development move must identify a problem in the previous version and explain how the change fixes it against the specification.",
-    explain: "Option B is the only valid development move. It identifies the problem (original shelf too shallow), states the change (increase to 220 mm), and justifies it against a measured user need (A4 textbook 210 mm deep). Changing colour, redrawing neatly, and adding rendering are presentation improvements — not development moves. Development is about improving the design's ability to meet the specification."
+    hint: "Ask: could you set up a test to check whether this passes or fails? What would you measure?",
+    explain: "'Big enough' cannot be tested without a specific quantity. A strong version would say 'must hold a full-face helmet and two 750 ml water bottles simultaneously' — that can be tested with the actual items. Generic words like 'enough', 'good', and 'suitable' need replacing with specific quantities or conditions."
   },
   {
-    q: "Why does the before-and-after development format match Paper 1 part (d)?",
+    q: "How much time should you spend on Paper 1 part (a) in the real exam?",
     options: [
-      "It does not — Paper 1 part (d) asks for a completely new design idea, not a development",
-      "Because part (d) also requires showing a change, explaining the reason for the change, and stating how the change improves the design",
-      "Because part (d) is a materials question and before-and-after compares two materials",
-      "Because part (d) requires exactly four development moves, matching the four types learned today"
+      "About 20 minutes — it sets up all the other parts so it deserves the most time",
+      "The full remaining time after finishing parts (b)–(g)",
+      "Roughly 6–9 minutes, based on 1.5 minutes per mark for a 4–6 mark question",
+      "Exactly 4 minutes — one minute per function point"
     ],
-    answer: 1,
-    hint: "Think about what part (d) of Paper 1 asks: 'show a development of one of your ideas'.",
-    explain: "Paper 1 part (d) asks students to show a development of one idea — they must sketch a change and explain why it improves the design. This is exactly the before-and-after format used in C4. Practising the C4 format means that when part (d) appears in the exam, the structure (before, change label, after, justification) is already automatic."
+    answer: 2,
+    hint: "Paper 1 is 75 minutes for 50 marks. Work out the rate per mark.",
+    explain: "75 minutes ÷ 50 marks = 1.5 minutes per mark. Part (a) is typically 4–6 marks, so it deserves 6–9 minutes. Spending 20 minutes on part (a) leaves too little time for the mark-rich parts (c) and (e), which together account for 20 marks."
   },
   {
-    q: "In circuit integration development, which decision is most important for the user experience?",
+    q: "Which of these is the best function point for a wall-mounted display shelf?",
     options: [
-      "The colour of the LED — warm white vs cool white changes the mood of the lighting",
-      "The position of the switch — it must be accessible without the user removing objects from the shelf",
-      "The brand of resistor — premium resistors have tighter tolerance and more reliable performance",
-      "The wire colour — matching wire colours makes the inside of the product look professional"
+      "The shelf must be attractive and look good in any room",
+      "The shelf must be made of wood because wood is a natural material",
+      "The shelf must support a static load of at least 5 kg without deflecting more than 2 mm at the centre",
+      "The shelf must be easy to use and convenient for the owner"
     ],
-    answer: 1,
-    hint: "Circuit integration development is about function — how the circuit interacts with the user through the product.",
-    explain: "The switch position is the primary usability decision in circuit integration. If the switch is obscured by stored objects, the user cannot operate the circuit — the product fails its function. LED angle and battery accessibility are secondary usability decisions. Wire colour and resistor brand are not usability decisions at all."
+    answer: 2,
+    hint: "A function point describes what the product does, not what it looks like or is made from.",
+    explain: "Option C is a strong function point: it states what the shelf must do (support a load), gives a specific quantity (5 kg), and adds a measurable performance limit (deflection ≤ 2 mm). It can be tested with weights and a ruler. The other options describe aesthetics (A), material (B — material belongs in the spec), or use generic words without measurable standards (D)."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Write four function points for your own project product. Use the four-category prompt from the Support box. Bring them to Week 2 — you will use them when building your evaluation matrix.
+
+<Extension title="Analyse a past Paper 1 mark scheme">
+Download the mark scheme for a Paper 1 past paper. Look at model answers for part (a) across three different papers. What patterns do you notice in the language used? Write three observations about what the mark scheme consistently rewards.
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §1.3 Development and evaluation (p. 26)", type: "Textbook", href: "https://drive.google.com/file/d/1IbAZ2IFent68VPoS1lmI2x6wJUvJu0jB/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Your IGCSE — Paper 1 overview", route: "paper1", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.8 Product design application (p. 78)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="Which development move was hardest to justify — and why? Does that difficulty tell you something about what was uncertain in your C3 design?" />
+<Reflection prompt="What was the most useful thing your Term 1 mock error told you about your current Paper 1 habit? What is the single change you will make this term?" />

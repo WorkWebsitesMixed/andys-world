@@ -2,158 +2,129 @@
 grade: 11
 term: 3
 week: 13
-sessionType: "bonus"
-title: "Bonus B3: Electronics — Transistors, Relays & Logic Gates"
-topic: "Electronics"
-learningGoal: "explain how an NPN transistor switches an output load; describe how a relay isolates a low-voltage control circuit from a high-voltage load; identify AND and OR gate truth tables"
-selGoal: "draw the transistor switch circuit from memory — base, collector, emitter, and load in the correct positions"
+sessionType: bonus
+title: "Section A Quick-Fire 2"
+topic: "Exam Skill"
+learningGoal: "answer 20 Section A-style short-answer questions across all five Paper 4 topics under timed conditions, and identify which two topics to prioritise for August revision"
+selGoal: "accept a low score on unfamiliar topics as useful information rather than as a verdict — it tells me where to go next, not what I'm worth"
 draft: false
 ---
 
-The main sessions covered sensors and voltage dividers. This bonus session extends into the switching and logic components that allow those sensing circuits to control high-power loads and make multi-condition decisions. These topics appear at the top of Paper 4 Section B difficulty.
+Section A of Paper 4 asks short, direct questions across the whole syllabus: one-mark, two-mark, and three-mark items covering electronics, structures, mechanisms, materials, and sustainability. This bonus session is a full timed drill — 20 questions, 40 minutes — followed by a detailed topic-by-topic analysis.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="paper4">Paper 4</ExamLink> Section A is worth approximately 30 marks and covers the broadest range of topics. Unlike Section B (which is project-based and contextual), Section A tests recall directly. Drilling short-answer questions now identifies knowledge gaps while there is still time to address them before November.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "NPN transistor (BC547)", definition: "A semiconductor switching component with three terminals: Base (B), Collector (C), and Emitter (E). When a small current flows into the Base (via a base resistor), a much larger current can flow from Collector to Emitter. This amplification (or switching) allows a small sensing signal to control a large output load. 'NPN' refers to the doping sequence of the three semiconductor layers." },
-  { term: "Base resistor", definition: "A resistor placed in series with the base of a transistor to limit the base current. The transistor switches ON when the base voltage exceeds approximately 0.6 V — the base resistor sets the base current to a safe value. Without it, excess base current can destroy the transistor." },
-  { term: "Relay", definition: "An electromechanical switch: a small electromagnet coil is activated by the transistor's collector-emitter current, which mechanically opens or closes contacts in a separate (electrically isolated) higher-voltage circuit. A relay allows a 9 V control circuit to safely switch a 240 V AC mains load (e.g. a room heater) without direct electrical connection between the circuits." },
-  { term: "Logic gate", definition: "An electronic component that performs a Boolean logic operation on one or two binary input signals (0 = LOW voltage; 1 = HIGH voltage) and produces one binary output. Basic gates: AND (output 1 only when all inputs are 1), OR (output 1 when any input is 1), NOT (output inverts the input), NAND (AND then NOT), NOR (OR then NOT)." },
-  { term: "Truth table", definition: "A table listing all possible combinations of input values (0 and 1) and the corresponding output value for a logic gate or combination of gates. For a 2-input gate: 4 rows (00, 01, 10, 11). Used to verify gate behaviour and to design logic systems." },
+  { term: "Short-answer recall", definition: "Retrieving a specific fact or principle quickly and accurately, without context to prompt it. 'State the function of a current-limiting resistor in an LED circuit' is short-answer recall. This is different from extended writing — it requires precision, not length." },
+  { term: "Topic weighting", definition: "The approximate proportion of Section A marks allocated to each topic area across past papers. Electronics typically carries 8–10 marks; structures 6–8 marks; mechanisms 4–6 marks; materials 4–6 marks; sustainability 2–4 marks. Weight your revision accordingly." },
+  { term: "Spaced retrieval", definition: "Practising recall after a gap — not immediately after studying. A question you can answer two days after the lesson is genuinely learned. A question you can only answer in the same lesson is not yet retained. This bonus session is spaced retrieval for the content from Terms 1 and 2." },
 ]} />
 
-<Section title="The NPN transistor as a switch" icon="⚡" id="transistor">
+<Section title="Section A topic coverage" icon="📖" id="topics">
 
-### Circuit configuration
+### Five topic areas and key facts to know
 
-The standard NPN switch circuit:
-1. Output device (LED, buzzer, motor) connects between the collector and the positive supply.
-2. Emitter connects directly to 0 V (earth).
-3. Base connects to the output junction of the voltage divider, through a base resistor (typically 10 kΩ).
+**Electronics (8–10 marks per paper)**
+- Ohm's Law: V = IR; resistor calculation for LED circuit
+- Series vs parallel circuits: current and voltage behaviour
+- Component symbols: resistor, LED, switch, battery, transistor, LDR, thermistor
+- Transistor as a switch: base, collector, emitter; threshold voltage behaviour
 
-When Vout from the voltage divider exceeds approximately 0.6 V, the transistor switches ON — current flows from collector to emitter through the output device.
+**Structures (6–8 marks per paper)**
+- Forces: tension, compression, shear, torsion — define each with an example
+- Triangulation: why triangles are rigid (cannot deform without changing side length)
+- Beam deflection: where the maximum deflection occurs in a simply supported beam
+- Factor of safety: why structures are designed to carry more than expected load
 
-### Collector current and load
+**Mechanisms (4–6 marks per paper)**
+- Gear ratio: driven/driver or driver/driven — output speed vs torque
+- Cam types: eccentric, snail, pear-shaped — output motion of each
+- Linkage types: parallel linkage, bell-crank — change of direction
 
-When ON, the collector current (Ic) flows through the output device. The transistor acts as a near-short-circuit between collector and emitter — the output device determines the current (Ic = (Vsupply - V_device_forward) / R_device or V_supply / R_device for resistive loads).
+**Materials (4–6 marks per paper)**
+- Hardwood vs softwood: what the terms mean (not always hardness)
+- Material properties: ductile, malleable, brittle, tough — with examples
+- Composite materials: why fibres in a matrix outperform either constituent alone
 
-The base current (Ib) is: Ib = (Vb - 0.6) / R_base.
-The ratio Ic / Ib is the current gain (hFE), typically 100–500 for a BC547.
-
-### Flyback diode
-
-When a transistor switches OFF a relay coil or a motor (inductive load), the collapsing magnetic field generates a reverse voltage spike that can destroy the transistor. A flyback diode (placed in reverse across the coil) clamps this spike. Always required for inductive loads.
-
-</Section>
-
-<Section title="The relay" icon="🔌" id="relay">
-
-### How a relay works
-
-1. Transistor switches ON → current flows through the relay coil.
-2. The coil creates a magnetic field → attracts an iron armature.
-3. The armature movement closes (or opens) the relay contacts.
-4. The contacts are in the high-voltage load circuit — completely electrically separate from the low-voltage control circuit.
-
-### Why use a relay rather than a transistor directly?
-
-A relay switches its contacts regardless of the contact voltage or current — it can switch 240 V AC at 10 A, which a BC547 transistor cannot. It also provides galvanic isolation — no electrical connection between the control circuit and the load circuit, preventing high voltages from reaching the sensing/control electronics.
+**Sustainability (2–4 marks per paper)**
+- 6Rs: Refuse, Reduce, Reuse, Recycle, Repair, Rethink — a specific example for each
+- Carbon footprint and embedded energy
+- Life cycle assessment: extraction, manufacturing, use, disposal
 
 </Section>
 
-<Section title="Logic gates: AND and OR" icon="💻" id="logic">
+<Activity title="20-question timed drill + topic analysis" time="45 min" grouping="Individual — exam conditions for questions, then open discussion" materials={["Question set (teacher issued)", "Calculator", "Topic score sheet"]}>
 
-### AND gate
+**Timed drill (0–40 min):**
+1. Teacher issues 20 questions — 4 from each topic area.
+2. 2 minutes per question average. Work in silence.
+3. No notes, no textbook.
 
-Output is 1 (HIGH) only when ALL inputs are 1.
-
-| A | B | Output (A AND B) |
-|---|---|---|
-| 0 | 0 | 0 |
-| 0 | 1 | 0 |
-| 1 | 0 | 0 |
-| 1 | 1 | 1 |
-
-**Application:** A burglar alarm that triggers only when BOTH a PIR sensor AND a door sensor are activated — prevents false alarms from either sensor alone.
-
-### OR gate
-
-Output is 1 (HIGH) when ANY input is 1.
-
-| A | B | Output (A OR B) |
-|---|---|---|
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 1 |
-| 1 | 1 | 1 |
-
-**Application:** A hospital call light that activates when a patient presses EITHER the bed button OR the bathroom button — either input alone is sufficient to trigger the nurse call.
-
-</Section>
-
-<WorkedExample title="Design a transistor + relay circuit for a temperature-controlled heater">
-
-**Context:** An NTC thermistor is connected as the top resistor (R1) in a voltage divider with a 5 kΩ fixed resistor (R2). Supply = 12 V. The relay connects a 240 V mains heater. The system should switch the heater ON when the temperature drops (thermistor resistance increases).
-
-**Analysis:**
-- Cold temperature → NTC thermistor (R1) increases → Vout = 12 x R2 / (R1 + R2) decreases as R1 increases. Wait — that gives LOW Vout when cold. But we need the heater ON when cold (HIGH signal needed).
-- Solution: swap R1 and R2 — place the thermistor as R2 (bottom) and fixed resistor as R1 (top).
-- Cold → thermistor R2 is HIGH → Vout = 12 x R2 / (R1 + R2) increases → transistor switches ON → relay activates → heater turns on.
-
-**Circuit design:**
-- R1 (fixed) = 5 kΩ (top). Thermistor (R2) at bottom.
-- At 0°C: thermistor = 10 kΩ. Vout = 12 x 10,000 / (5,000 + 10,000) = 12 x 0.667 = 8.0 V. Transistor ON. Heater ON. Correct.
-- At 25°C: thermistor = 5 kΩ. Vout = 12 x 5,000 / (5,000 + 5,000) = 6 V. Transistor ON. Heater still ON (transition point needs adjustment).
-- At 40°C: thermistor = 2 kΩ. Vout = 12 x 2,000 / (5,000 + 2,000) = 3.43 V. Transistor ON.
-
-To adjust the switch point: change R1. A larger R1 reduces Vout at high temperature, eventually switching the transistor OFF. To get transistor OFF at 40°C (thermistor 2 kΩ): need Vout less than 0.6 V. R1 must be much larger than 2 kΩ (e.g. 100 kΩ gives Vout = 12 x 2/102 = 0.24 V — transistor OFF).
-</WorkedExample>
-
-<Activity title="Transistor, relay, and logic gate design" time="45 min" grouping="Individual" materials={["Logic gate truth table worksheet", "Transistor circuit design sheet"]}>
-
-**Transistor switch circuit (0–15 min):**
-1. Draw the complete NPN transistor switch circuit from memory: voltage divider (R1 and R2 with an LDR as one), base resistor, BC547 transistor (B, C, E labelled), LED load between collector and positive supply, flyback diode if relevant.
-
-**Relay circuit (15–25 min):**
-2. Extend the circuit from step 1: replace the LED with a relay coil. Draw the relay contacts in the separate high-voltage circuit. Add a flyback diode across the relay coil.
-3. Explain in two sentences why the relay is needed instead of connecting the transistor directly to the high-voltage load.
-
-**Logic gate truth tables (25–40 min):**
-4. Complete truth tables for: AND gate (2 inputs), OR gate (2 inputs), NAND gate (AND then NOT), NOR gate (OR then NOT).
-5. For each gate: give a real-world product application where that specific logic behaviour is useful.
-
-**Section B question (40–45 min):**
-6. Attempt a past Paper 4 Section B question on electronic control systems (teacher-provided or from the question bank).
+**Self-mark and topic analysis (40–45 min):**
+4. Teacher issues answers. Mark your own responses.
+5. On the topic score sheet: record marks per topic (out of 4 each).
+6. Circle the lowest-scoring topic: this is your August revision priority 1.
+7. Circle the second-lowest: this is priority 2.
 </Activity>
+
+<Support title="Multiple topics scoring low?">
+
+**Three or more topics under 2/4?** This is not unusual at this stage in Term 3 — you have been making, not revising theory. The August revision block is specifically designed for this gap. Today's drill tells you where to start. Use the topic list above as a structured syllabus.
+
+**Mechanisms specifically difficult?** Mechanisms (gears, cams, linkages) has the least overlap with the project brief. If you scored 0–1/4, plan two dedicated mechanisms revision sessions in August: Collins §5.2, worked examples, and then past paper questions for that topic only.
+</Support>
 
 <SelfCheck questions={[
   {
-    q: "In an NPN transistor switch, which terminal receives the control signal from the voltage divider output?",
+    q: "A gear train has a driver gear with 12 teeth and a driven gear with 36 teeth. What is the gear ratio and what happens to the speed?",
     options: [
-      "The Collector — the voltage divider connects to the collector, which controls the collector-emitter current",
-      "The Base — the small base current from the voltage divider controls the larger collector-emitter current",
-      "The Emitter — the emitter receives the control signal and connects to the output load",
-      "Any terminal — the transistor is symmetric and can be connected in any orientation"
+      "Gear ratio 1:3 — speed increases by a factor of 3",
+      "Gear ratio 3:1 — speed decreases by a factor of 3",
+      "Gear ratio 3:1 — speed increases by a factor of 3",
+      "Gear ratio 1:3 — speed decreases by a factor of 3"
     ],
     answer: 1,
-    hint: "The transistor has three terminals: B, C, E. Which one receives a small signal that controls a larger current?",
-    explain: "The Base (B) receives the control signal from the voltage divider (via a base resistor). A small base current (Ib) controls a much larger collector-emitter current (Ic). The ratio Ic/Ib is the current gain (hFE ≈ 100–500). The Collector connects to the output device (LED, relay coil) and the positive supply. The Emitter connects to 0 V. The transistor is not symmetric — connecting B, C, E in the wrong orientation prevents switching."
+    hint: "Gear ratio = driven teeth ÷ driver teeth. Does a larger driven gear speed up or slow down?",
+    explain: "Gear ratio = driven ÷ driver = 36 ÷ 12 = 3:1. A gear ratio of 3:1 means the output (driven gear) turns once for every 3 turns of the input (driver gear) — the output speed is one-third of the input speed. Torque increases by the same factor of 3. A larger driven gear always reduces speed and increases torque."
   },
   {
-    q: "A 2-input AND gate has inputs A=1, B=0. What is the output?",
+    q: "A thermistor has a resistance of 10 kΩ at 20°C. What happens to its resistance as temperature increases?",
     options: [
-      "1 — because at least one input is HIGH (A=1)",
-      "0 — because NOT all inputs are HIGH; AND requires all inputs to be 1 for a HIGH output",
-      "Undefined — a mixed input state cannot be processed by a simple AND gate",
-      "0.5 — the output is the average of the two inputs"
+      "Resistance increases",
+      "Resistance decreases (for an NTC thermistor — the most common type)",
+      "Resistance stays constant — thermistors are temperature-independent",
+      "Resistance first increases then decreases above 50°C"
     ],
     answer: 1,
-    hint: "AND: output is 1 only when ALL inputs are 1. A=1, B=0 — are all inputs 1?",
-    explain: "An AND gate's output is 1 ONLY when all inputs are simultaneously 1. With A=1 and B=0, not all inputs are 1 — therefore the output is 0. An OR gate would give output 1 here (because at least one input is 1). Digital logic works only with binary values (0 or 1) — fractional outputs and undefined states do not occur in ideal digital logic gates."
+    hint: "NTC stands for Negative Temperature Coefficient. What does that mean for resistance?",
+    explain: "An NTC (Negative Temperature Coefficient) thermistor decreases in resistance as temperature increases. At 20°C the resistance might be 10 kΩ; at 50°C it might be 3 kΩ. This makes NTC thermistors useful as temperature sensors in circuits: as the environment warms, resistance falls, current increases, and this change can trigger a transistor switch or drive an output device. Most school thermistors are NTC type."
+  },
+  {
+    q: "Explain why a triangulated structure is more rigid than a rectangular frame of the same materials.",
+    options: [
+      "Triangles use more material per joint, so they are heavier and therefore harder to move",
+      "A triangle cannot change shape without changing the length of at least one side — a rectangle can deform into a parallelogram without any member changing length",
+      "Triangulated frames use smaller members, which are individually stiffer in compression",
+      "Triangles distribute load to more joints, reducing the force at each point"
+    ],
+    answer: 1,
+    hint: "Think about the geometry: what is unique about a triangle compared to a quadrilateral when you try to deform it?",
+    explain: "A triangle is the only polygon that is geometrically rigid: if all three sides are fixed in length, the shape cannot change. A rectangle, however, can deform into a parallelogram with no change in side length — only the angles change. This is why rectangular frames rack sideways under a lateral load. Adding a diagonal member creates two triangles and eliminates the racking. Triangulation is the structural principle behind truss bridges, tower cranes, and roof structures."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Using your topic score sheet, open the Collins textbook to the chapter for your lowest-scoring topic. Read the key sections. Write five facts from memory (close the book first). Check them against the text. Repeat for any you got wrong. Do this before the next bonus session.
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4.3 Switches (p. 310)", type: "Textbook", href: "https://drive.google.com/file/d/11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY/view?usp=sharing" },
+  { label: "Your IGCSE — Paper 4 overview", route: "paper4", type: "Internal" },
+  { label: "Collins IGCSE D&T — §4.1 Electronic systems (p. 278)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §5.1 Structures (p. 340)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §5.2 Mechanisms (p. 356)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="The relay provides galvanic isolation between control and load circuits. Can you think of two products in your home that likely use a relay — and why isolation is important in each?" />
+<Reflection prompt="Which topic in today's drill felt the most unfamiliar — the one where you had to guess? What is one specific fact from that topic that you are going to learn this week?" />

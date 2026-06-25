@@ -2,156 +2,141 @@
 grade: 11
 term: 2
 week: 6
-title: "Manufacture Part 3: Finishing & Circuit Installation (C6)"
-topic: "Manufacture"
-learningGoal: "apply a surface finish to all structural components; install the LED circuit permanently and test function"
-selGoal: "test the circuit after installation — light on when switch closed, light off when switch open, no loose connections"
+title: "Development 2 + Sustainability (C4) — Graded M2"
+topic: "Design Development"
+learningGoal: "complete a second development iteration with a sustainability focus, then compile and submit the C3 + C4 folder section for the M2 graded checkpoint"
+selGoal: "step back from the detail and evaluate the overall quality of my development evidence — what story does the folder tell an examiner?"
 draft: false
 ---
 
-The structure is assembled. Two tasks remain before C6 is complete: surface finishing (which determines whether the product meets the aesthetics specification) and circuit installation (which determines whether it meets the electronics specification). Both are assessed together as part of the finished product quality.
+The second development session combines two things: a focused look at materials and sustainability decisions, and the closure of your C4 evidence. At the end of this session you submit your C3 and C4 folder pages for the M2 graded checkpoint — worth 30% of the term.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C4 (development) is worth 15 marks**. The M2 submission today captures your C3 (20 marks) and C4 evidence in one checkpoint — together they represent 35 marks of your 100-mark project. C4 marks come specifically from evidence that you changed your design in response to testing. "Same design as Week 4 with no changes" scores near zero.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Surface preparation", definition: "The process of preparing a surface before applying a finish coat. For MDF: seal all surfaces with diluted PVA or a specific MDF primer to prevent the finish coat from soaking into the porous material unevenly. Sand between coats to remove raised fibres. Without preparation, paint appears blotchy on MDF." },
-  { term: "Grain raising", definition: "The swelling of timber surface fibres when water-based paint or primer is applied. After the first coat dries, raised fibres feel rough. Sand with 180-grit paper before applying the second coat — this removes the raised fibres and produces a smooth final finish." },
-  { term: "Wire management", definition: "Routing and securing electrical wires so they are hidden from view, protected from mechanical damage, and not pinched or kinked. Wire management includes: running wires in routed channels, securing with cable clips or cable ties, leaving adequate slack at connection points for soldering." },
-  { term: "Solder joint", definition: "A permanent electrical connection made by melting solder (tin-lead or lead-free tin alloy) around wire legs or through-hole component legs. A good solder joint is shiny and conical — it wets the component lead and the pad fully. A cold solder joint is dull and grainy — poor electrical connection." },
-  { term: "Strain relief", definition: "A mechanical clamp or bracket that prevents tension in a wire from being transmitted to the solder joint. Without strain relief, a wire being pulled can lift a solder joint off the pad. For this project, a cable clip near each connection point provides strain relief." },
+  { term: "Sustainability in design", definition: "Reducing the negative environmental or social impact of a product through deliberate design choices — choice of material (recycled, renewable, low-process), finish (water-based, no finish), end-of-life (disassembly for recycling), or reduced material use through efficient cutting." },
+  { term: "Life cycle thinking", definition: "Considering a product's environmental impact at each stage: raw material extraction, manufacturing, use, and disposal. A design can reduce impact at any of these stages." },
+  { term: "Nesting", definition: "Arranging cut parts on a sheet so that the gaps between them are minimised, reducing waste material. A tightly nested laser-cut layout can reduce material waste by 20–40% compared to an un-nested layout." },
+  { term: "C4 development evidence", definition: "The folder pages that document your development: model photographs, test-results tables, sketched design changes, and a comparison of before and after each change. Without these, there is nothing for the examiner to mark." },
 ]} />
 
-<Section title="Surface finishing process" icon="🎨" id="finishing">
+<Section title="Sustainability and development" icon="🌱" id="sustainability">
 
-### Sequence for MDF finishing
+### Where sustainability decisions happen in C4
 
-1. **Sand bare MDF:** Start with 120-grit to remove machining marks, finish with 180-grit for a smooth surface. Sand with the direction of the face (MDF has no grain but sanding across the face can scuff the surface).
-2. **Seal edges:** MDF edges are highly porous. Apply a coat of diluted PVA (1 part PVA : 3 parts water) or a dedicated MDF edge primer. Allow to dry fully (30–60 minutes).
-3. **First paint coat:** Apply a water-based primer. Leave 30 minutes to dry. The first coat will raise fibres — the surface will feel rough when dry.
-4. **Light sand:** 180-grit. Remove raised fibres without removing paint. Wipe dust.
-5. **Second and third paint coats:** Apply topcoats. Each coat should be thin — several thin coats produce a better finish than one thick coat that runs.
-6. **Finishing touches:** Sand lightly between coats if needed. Final coat should be left without sanding.
+Sustainability is not a separate task — it lives inside your development decisions:
 
-### Alternative finishes
+| Decision | Sustainability dimension |
+|---------|----------------------|
+| Material choice (birch ply vs MDF) | Birch ply: FSC-certified, no formaldehyde binder. MDF: synthetic resin binder, not recyclable |
+| Finish (oil vs lacquer) | Hardwax oil: plant-based, breathable, repairable. Lacquer: solvent-based, VOC emissions |
+| Cutting layout | Tight nesting minimises offcut waste |
+| Joining method | Knock-down fittings allow disassembly and recyclable components at end of life |
+| Electronics | Low-power LED less than 0.5 W vs traditional bulb 3–10 W |
 
-| Finish | Process | Best for |
-|---|---|---|
-| Spray paint | Rattle can or spray gun | Smooth, even coating; faster than brush |
-| Acrylic paint (brush) | Water-based; multiple coats | Available in school workshop |
-| Wood stain + varnish | Stain then seal with acrylic varnish | Natural wood appearance on pine/hardwood |
-| Clear lacquer | Spray or brush | Protects without changing colour |
+Pick two decisions from your own design and justify them in sustainability terms.
 
-</Section>
+### Closing your C4 evidence
 
-<Section title="Circuit installation" icon="⚡" id="circuit">
-
-### Installation sequence
-
-1. **Solder the circuit board** (if using strip board or prototype board): position components on the board, solder all joints, check continuity with a multimeter.
-2. **Test the circuit on the board** before installing it: switch should close the circuit and light the LED. Switch open should extinguish the LED.
-3. **Mount the switch** in its drilled hole in the product. Secure with the mounting nut. Do not overtighten — MDF will crack.
-4. **Mount the LED** in its drilled hole. The longer leg (anode) connects to the resistor. Use a 3 mm LED holder if available to secure the LED without gluing.
-5. **Route wires** through the wire channel. Leave 50 mm extra wire at each connection point for soldering. Secure with cable clips at 150 mm intervals.
-6. **Connect battery clip to circuit.** Red wire to positive rail. Black wire to negative (0 V) rail.
-7. **Final test:** Insert battery. Toggle the switch on — LED lights? Toggle off — LED extinguishes? Check that no components get unusually warm (indicates a wiring error or incorrect resistor).
-
-### Soldering guide
-
-- Tin the iron tip before each joint (apply a small amount of solder to a clean iron tip, wipe on a damp sponge).
-- Heat the joint (component leg and pad together), not the solder.
-- Apply solder to the joint, not to the iron.
-- A good joint: shiny, conical, wets both the lead and the pad. 2–3 seconds total contact.
-- A cold joint: dull, grainy, does not wet fully. Re-melt and add a small amount of fresh solder.
+Your C4 folder section should contain, in order:
+1. Sketch model photograph (Week 4)
+2. Problem annotations on that photograph
+3. Test-results table (Week 5): spec point / method / result / pass? / change
+4. Sketched design changes (what you changed and why)
+5. Re-test result confirming the change fixed the problem
+6. Sustainability decision notes (this session)
 
 </Section>
 
-<WorkedExample title="Circuit installation log extract">
+<WorkedExample title="Sustainability justification for a cyclist gear organiser">
 
-**Solder test (pre-installation):** Circuit on breadboard — LED lit at 17.9 mA with 390 Ω resistor and 9 V supply. Switch open: LED off. Switch closed: LED on. Function confirmed.
+**Material:** 18 mm birch plywood selected over MDF. Birch ply is manufactured with lower formaldehyde adhesives and is produced from sustainably managed European forests (FSC). MDF uses urea-formaldehyde resin which off-gasses during cutting and is not easily recycled at end of life.
 
-**Switch mounting:** 8 mm hole drilled in right face of product, 30 mm from front face. SPST toggle switch inserted. Mounting nut tightened finger-tight plus one quarter turn with pliers (not over-tightened).
+**Finish:** Hardwax oil rather than acrylic lacquer. Oil is plant-derived (linseed, sunflower, carnauba wax), applied cold, and can be re-applied locally when worn without stripping the whole surface. Lacquer requires solvent thinners and full re-coating.
 
-**LED mounting:** 3 mm hole drilled in top panel, 40 mm from front edge, centred on width. LED inserted with longer leg toward front face. Secured with hot-melt glue bead around the base — LED is not removable but is flush with the top surface.
-
-**Wire routing:** Wires run through 8 mm x 5 mm channel routed in underside of top panel. Cable clips at 100 mm intervals. 60 mm wire slack at each solder point.
-
-**Battery compartment:** 9 V battery in clip, clip mounted to inside of removable rear panel with two M3 screws. Panel removed and replaced during final test — battery accessible without tools.
-
-**Final test result:** LED lit when switch closed, extinguished when switch open. No components warm after 5 minutes continuous operation. Circuit installation complete.
+**Cutting layout:** The four laser-cut acrylic switch covers are nested within a 100 × 200 mm sheet rather than cut from four separate strips — saves approximately 60 cm² of acrylic offcut.
 </WorkedExample>
 
-<Activity title="Finishing and circuit installation" time="90 min" grouping="Individual" materials={["Sandpaper (120 and 180 grit)", "MDF primer and acrylic paint + brush", "Soldering iron, solder, sponge", "LED, resistor, switch, battery clip, 9 V battery", "Drill press and 3 mm, 8 mm bits", "Cable clips, small screwdriver"]}>
+<Activity title="Sustainability notes + M2 folder submission" time="90 min" grouping="Individual (teacher circulates to check completeness before submission)" materials={["All C3 and C4 folder pages", "Development notes from Weeks 4 and 5", "Sustainability decision sheet"]}>
 
-**Surface preparation (0–25 min):**
-1. Sand all external surfaces: 120-grit then 180-grit.
-2. Seal MDF edges with diluted PVA or primer. Allow to dry.
-3. Apply first paint coat to all surfaces. Set aside to dry.
+**Sustainability section (0–25 min):**
+1. Pick two material or process decisions in your design. For each, write: what you chose, what the alternative was, and why your choice reduces environmental impact.
+2. Annotate your cutting plan (or sketch one) to show nesting — label the total sheet size and note what area is waste.
 
-**While paint dries — circuit preparation (25–50 min):**
-4. Solder the resistor and LED in series on a strip board or solder directly to switch and LED legs (simplest approach for this project).
-5. Test the circuit before installation (battery in, switch closed = LED on, switch open = LED off).
-6. Drill mounting holes in the product for the switch (8 mm) and LED (3 mm) in the positions documented in C4.
+**C4 folder order check (25–55 min):**
+3. Lay out your C4 evidence in order: model photo → test table → design changes → re-test.
+4. If any section is missing (no re-test? no measured result?), write it up now.
+5. Add the sustainability notes as the final page of C4.
 
-**Circuit installation (50–70 min):**
-7. Mount switch in its hole. Mount LED in its hole.
-8. Route wires through the wire channel. Secure with cable clips.
-9. Connect battery clip. Perform final installed test.
-
-**Second paint coat and finish (70–90 min):**
-10. Light sand between coats if the surface feels rough (grain raise).
-11. Apply second paint coat.
-12. Photograph: finished product from front, from side, circuit visible through open battery panel.
+**M2 submission (55–90 min):**
+6. Final read-through of C3 and C4 together. Does the story make sense: ideas → selection → testing → development → sustainability?
+7. Submit C3 + C4 folder pages to teacher.
 </Activity>
 
-<Support title="Finishing and circuit troubleshooting">
+<Support title="Sustainability section feels thin?">
 
-**Paint uneven or blotchy on MDF?** The edges were not sealed. Diluted PVA seals the porous edge fibres — without it, the topcoat soaks in unevenly. Let the current coat dry, apply diluted PVA to all blotchy areas, allow to dry, then re-apply topcoat.
+**Can't justify the material choice?** Look at what your chosen material is made from and how it is processed. Birch ply comes from managed forests with a water-based glue option. Acrylic is petroleum-derived, not biodegradable — but long-lasting and repairable (a sustainability argument). Steel is recyclable and high-strength per unit weight. Find the trade-off and name it.
 
-**LED does not light after installation?** Check in order: (1) battery charged/new? (2) switch mounted correctly (make sure the toggle is in the closed position)? (3) LED polarity correct (longer leg to resistor, not to negative)? (4) all solder joints shiny and well-wetted? A multimeter in continuity mode will identify any open break in the circuit.
+**Nesting seems too simple?** A hand-drawn sketch of your laser-cut parts arranged on an A4 sheet, with dimensions labelled, is sufficient. The key is showing you thought about waste minimisation — not producing a perfect CAD layout.
 
-**Switch wobbles in its hole?** The hole is too large for the switch body. Pack with epoxy putty around the thread and retighten the mounting nut when cured.
+**Test results page incomplete?** Write what you can reconstruct: "During the Week 5 test, the base tipped under asymmetric load. I added a rear brace (see sketched change, p. X). I then re-applied 4 kg symmetrically and 3 kg asymmetrically — no tipping observed." Reconstructed evidence is better than nothing but aim to capture results in real time next time.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Why must MDF edges be sealed before applying a paint topcoat?",
+    q: "Why does C4 reward evidence of design changes after testing, rather than just evidence that the final design is good?",
     options: [
-      "MDF edges are electrically conductive — the seal prevents short circuits from the LED circuit to the surface",
-      "MDF edges are highly porous and will absorb the topcoat unevenly, producing blotchy areas unless sealed first",
-      "Sealing MDF edges prevents the panel from expanding in humid environments",
-      "The Cambridge mark scheme requires edge sealing to be shown in the C6 photographic record"
+      "Because Cambridge wants to see as many folder pages as possible",
+      "Because C4 is the development criterion — it rewards the process of finding a problem and improving the design, not the quality of the final result alone",
+      "Because a design that did not need changes must have been designed without using the specification",
+      "Because only designs with changes can proceed to manufacturing"
     ],
     answer: 1,
-    hint: "Think about what MDF is made of — compressed wood fibres — and what happens when liquid soaks into fibre.",
-    explain: "MDF is made of wood fibres bonded under pressure. The cut edges expose a highly porous cross-section that absorbs liquid paint rapidly and unevenly. Areas with more exposed fibres absorb more paint, producing blotchy, uneven coats. Sealing with diluted PVA or primer fills the surface pores and creates a consistent base, allowing the topcoat to sit on the surface evenly."
+    hint: "The word 'development' implies change over time. What does the mark scheme look for as evidence of development?",
+    explain: "C4 marks come from the iteration loop: test, modify, re-test. A student who tests, finds a problem, and shows a change with evidence of re-testing has demonstrated development. A student whose folder only shows the final polished design — with no evidence of what was tested and changed — cannot score C4 marks even if the final product is excellent, because the examiner has no evidence that any development happened."
   },
   {
-    q: "What are the characteristics of a good solder joint?",
+    q: "A student wants to justify choosing MDF over birch plywood for sustainability reasons. Which argument is valid?",
     options: [
-      "Dull and grey — excess solder prevents the joint from cracking",
-      "Shiny and conical — the solder has wetted both the component lead and the pad fully",
-      "Large and rounded — more solder creates a stronger electrical connection",
-      "Flat and flush with the board — solder should not form a raised cone"
+      "MDF is produced from waste wood fibres that would otherwise be landfilled, so it can reduce wood waste from other manufacturing processes",
+      "MDF is a natural material because it comes from wood, so it is automatically more sustainable than acrylic",
+      "MDF is cheaper, so fewer resources are used in production",
+      "MDF does not absorb moisture, so it lasts longer and requires less frequent replacement"
     ],
-    answer: 1,
-    hint: "Solder that has been heated to the right temperature and properly wetted the surfaces has a specific appearance.",
-    explain: "A good solder joint is shiny (indicating the solder reached the correct temperature and flowed properly) and conical (a small cone shape indicating it wetted both the component lead and the pad, creating good mechanical and electrical contact). Dull or grainy joints (cold solder joints) indicate the joint cooled too quickly or was not fully heated — the solder did not wet the surfaces and the electrical connection may be intermittent."
+    answer: 0,
+    hint: "Look for an argument that references the actual production process or material origin, not just cost or durability.",
+    explain: "MDF is manufactured from waste wood fibres and sawdust — material that would otherwise be discarded from other processes. This is a valid sustainability argument: it reduces waste from the broader timber industry. The other options are not valid sustainability arguments: 'natural material' does not automatically mean sustainable; cost is not a sustainability criterion; moisture resistance is a durability argument, not a sustainability one."
   },
   {
-    q: "What is the purpose of strain relief in a wired circuit installation?",
+    q: "What does 'nesting' mean in the context of laser cutting, and why does it matter for sustainability?",
     options: [
-      "Strain relief increases the voltage available at the LED by reducing resistance in the wire",
-      "Strain relief prevents mechanical tension in a wire from being transmitted to the solder joint and lifting it off the pad",
-      "Strain relief prevents the wire insulation from melting when the soldering iron is held near it",
-      "Strain relief ensures the wire follows the shortest possible path through the circuit housing"
+      "Nesting means storing cut parts inside each other after cutting to save shelf space",
+      "Nesting means arranging cut parts on the sheet as tightly as possible to minimise offcut material waste",
+      "Nesting means using one machine to do both cutting and engraving in a single pass",
+      "Nesting means laminating two sheets together before cutting to increase the material thickness"
     ],
     answer: 1,
-    hint: "What happens to a solder joint if the wire connected to it is pulled?",
-    explain: "If a wire is pulled and there is no strain relief, the tension travels along the wire to the solder joint and can lift the joint off the pad — creating an open circuit. A cable clip placed close to the solder joint (within 30–50 mm) takes the mechanical force before it reaches the joint. The joint then only carries electrical current, not mechanical load."
+    hint: "Think about what happens to the sheet of acrylic or plywood that was not cut into parts.",
+    explain: "Nesting means arranging the outlines of all the parts you need to cut as closely together as possible on the raw sheet, minimising the amount of unused material left over as offcut waste. A poorly nested layout might waste 40% of the sheet; a tightly nested layout might waste less than 15%. Since manufacturing the raw sheet required energy and resources, reducing waste has a direct sustainability impact."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Review your M2 submission in your mind. What is the weakest page — the one with the least evidence? Write a brief note about what you would add to that page if you had one more hour. Keep this note in your folder — it will guide your working drawing preparation in Weeks 7–9.
+
+<Extension title="Full life cycle analysis">
+Choose your product material and trace its full life cycle: (1) extraction of raw material, (2) processing into the sheet product, (3) cutting in the makerspace, (4) use in the user's home, (5) disposal. At which stage is the environmental impact highest? What is one design decision that would reduce impact at that specific stage?
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.10 Surface treatments (p. 288)", type: "Textbook", href: "https://drive.google.com/file/d/1F8bzARgbX_6J9CRumVRAswfFDgXfydHy/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/file/d/1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK/view?usp=sharing" },
+  { label: "Component 2 Project — C4 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §3.1 Sustainability and environment (p. 222)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §2.1 Materials: woods (p. 112)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="Compare your finished product to your specification from T1 W8. Before writing the formal evaluation next week, what is your instinct: does the product meet the specification? Which points will be hardest to defend?" />
+<Reflection prompt="Look at your submitted C3 and C4 folder pages as if you were an examiner who knows nothing about your project. Can you follow the development story — ideas, selection, testing, changes — from those pages alone? What is missing?" />

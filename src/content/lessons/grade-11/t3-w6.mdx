@@ -2,137 +2,147 @@
 grade: 11
 term: 3
 week: 6
-title: "Mixed Past Paper Practice (Graded M6)"
-topic: "Past Paper Practice"
-learningGoal: "complete a mixed past paper under exam conditions; apply the Section A triage strategy and the Section B margin plan technique from previous sessions"
-selGoal: "apply one new technique from T3 that was not used in M5 — and note whether it changed the outcome"
+title: "Assembly 2 + Electronics Integration (C6)"
+topic: "Making"
+learningGoal: "complete the electronics integration into the product structure, apply the first finish coat, and photograph the product at this stage for C6"
+selGoal: "slow down for the finishing phase — the difference between a good product and an excellent one is usually in the final 20% of the making time"
 draft: false
 ---
 
-The penultimate graded moment of the year. M6 is a mixed past paper — real Cambridge IGCSE D&T 0445 questions across all topic areas. No simulation — real paper, real mark scheme, real conditions.
+The structure is assembled and the circuit is tested. Now the two come together permanently. Today you fix the electronic components into their final positions, route all wiring cleanly, and apply the first coat of surface finish. The product is almost complete.
 
-<Callout type="exam" title="Graded M6 (70%) — mixed past paper, exam conditions" id="m6">
-  **Moment 6 (M6, 70%)** is the second most heavily weighted graded moment of the year. Conditions: exam conditions throughout. The paper contains both Paper 1 and Paper 4 Section A + B content. Bring a calculator. Use a black pen for Section A/B written answers. Use a pencil for all sketches (Paper 1 parts).
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C6 (making, 30 marks)** includes marks for finish quality and attention to detail. The difference between a 20/30 and a 28/30 in C6 is usually in the finishing — clean surfaces, consistent colouring, neat wiring. Photographs at this stage are evidence for those marks.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "Command word", definition: "The instruction word in an exam question that tells you what type of response is required. Key command words: State (brief fact, no explanation needed), Describe (say what it looks like or how it works), Explain (give the reason why), Calculate (show full working), Justify (give specific evidence-based reasons for a choice), Evaluate (make a judgement with evidence for and against)." },
-  { term: "Mark allocation reading", definition: "Always read the marks available for a question before writing the answer. A 1-mark question needs one specific point. A 4-mark question needs four distinct points. A 6-mark question needs six. The number of marks tells you the number of distinct points required — not the length of the answer." },
-  { term: "Check-back protocol", definition: "A final review technique: after completing the paper, check (1) all sub-parts answered, (2) units stated on all calculations, (3) no questions left blank. Three minutes of check-back can recover 2–4 marks from small errors." },
+  { term: "Surface preparation", definition: "Sanding and cleaning the surface before applying a finish. For birch ply: sand with 120 grit (removes tool marks), then 180 grit (smooths the surface), then 240 grit (final preparation). Always sand in the direction of the grain. Remove all dust before applying finish." },
+  { term: "Hardwax oil", definition: "A plant-based surface finish (linseed oil, carnauba wax) that penetrates the wood rather than sitting on the surface. Applied thinly with a cloth, left to penetrate for 20 minutes, then buffed. Requires two coats (12 h between coats)." },
+  { term: "Cable management", definition: "Routing wires neatly inside the product structure — through channels, tied with cable ties, or secured with clips. Neat cable management is both a quality indicator and a functional necessity: loose wires can catch, break, or interfere with moving parts." },
+  { term: "Strain relief", definition: "Securing a wire to the product structure close to its connection point, so that any pulling force on the wire is taken by the securing point rather than by the solder joint. A hot-glue bead around the wire entry to a connector is a simple strain relief." },
 ]} />
 
-<Section title="Pre-exam technique review" icon="🎯" id="technique">
+<Section title="Finishing and electronics integration" icon="✨" id="finishing">
 
-### Command words: what each requires
+### Surface preparation sequence
 
-| Command word | What to write | Typical marks |
-|---|---|---|
-| State | One specific fact. No explanation. | 1 |
-| Identify | Name or label the item. | 1 |
-| Describe | What it looks like, what it does, how it works — no reason needed. | 1–2 |
-| Explain | State the fact AND give the reason. "X is used because Y." | 2–3 |
-| Calculate | Show formula, units, substitution, result, unit. | 2–4 |
-| Suggest | Propose a specific example. Justification needed for multi-mark. | 2–3 |
-| Justify | Give specific evidence-based reasons for a choice made. | 2–4 |
-| Evaluate | Make a judgement (good/bad, better/worse) with evidence for and against. | 4–6 |
+1. **120 grit:** sand all external faces, following the grain. Remove all tool marks and rough areas.
+2. **180 grit:** re-sand all faces. The surface should feel smooth to the touch.
+3. **240 grit:** final pass. Remove any remaining scratches from the 180-grit stage.
+4. **Dust removal:** use a tack cloth or clean dry brush. No dust should remain in the grain.
+5. **Apply finish coat 1:** thin coat, following manufacturer instructions. Work the finish into the grain with the cloth.
 
-### First-pass / second-pass strategy
+### Electronics integration
 
-1. **First pass (Section A):** Answer every question you know immediately. Skip any question that requires thought. Mark skipped questions with a tick.
-2. **Second pass (Section A):** Return to ticked questions. Attempt each — even a partial answer. Never leave blank.
-3. **Section B:** Read all sub-parts before answering any. Margin plan for 4+ mark questions. Answer in order.
+1. Fix the circuit board permanently into the bracket using M2 screws or hot glue.
+2. Route all wires through channels. Secure at intermediate points with cable clips or hot glue blobs.
+3. Apply strain relief at the switch connection and at the battery holder wires.
+4. Fix the battery holder in the base cavity. Ensure the battery can be replaced without disassembling the product.
+5. Final function test: switch on, LED lights, switch off, LED off. Photograph.
 
 </Section>
 
-<Section title="The ten most common error types in Paper 4" icon="⚠️" id="errors">
+<WorkedExample title="Finishing + integration for a cyclist gear organiser">
 
-1. **Unit not stated after calculation.** "350" instead of "350 Ω" — often costs the final mark.
-2. **mA substituted as A** in the resistor formula or Ohm's Law.
-3. **Generic vocabulary** — "strong", "light", "durable" without values.
-4. **Beam reaction formula inverted** — RA calculated as if closer to load, not farther.
-5. **Wrong FoS direction** — dividing working load by ultimate instead of the reverse.
-6. **Section B answers not linked to context** — true statement, but not about THIS design.
-7. **Thermistor/LDR position confused** — top vs bottom in voltage divider for the required response.
-8. **First-angle projection side view on the wrong side** — plan view above instead of below.
-9. **Specification points not measurable** — "it must look good" type non-testable criteria.
-10. **Evaluation without evidence** — "the product met the specification" without any test result.
+**Surface prep:**
+- Sanded all faces: 120 → 180 → 240 grit. Grain direction followed on all panels. Top rail required extra 120-grit pass to remove saw marks at one end.
+- Tack cloth applied. Surface felt smooth, no grit remaining.
 
-Study this list. Identify which of the ten you are most likely to commit. Write it on the inside cover of your exam paper before starting.
+**Finish coat 1:**
+- Hardwax oil applied with lint-free cloth. Thin coat, worked into grain. Left 20 minutes. Buffed lightly. Surface shows a slight sheen — consistent across all faces. Good.
 
-</Section>
+**Electronics:**
+- Circuit board fixed in bracket with M2 × 6 screws.
+- Power wires routed through base cable channel, secured with two hot-glue blobs.
+- Switch secured with lock-nut in front panel hole.
+- Battery holder fixed in base cavity — battery slides in and out without removing any panel.
+- Strain relief: hot glue bead at switch wire entry.
+- Function test passed. Photograph taken: LED lit, switch visible.
+</WorkedExample>
 
-<Activity title="Graded M6 mixed past paper" time="90 min" grouping="Individual (exam conditions)" materials={["M6 past paper (teacher-provided)", "Calculator", "Black pen", "Pencil for sketches", "Ruler"]}>
+<Activity title="Finish coat 1 + electronics integration" time="90 min" grouping="Individual (technician on hand)" materials={["Sandpaper: 120, 180, 240 grit", "Tack cloth", "Hardwax oil or chosen finish", "Lint-free cloth", "Hot glue gun or M2 screws", "Cable clips or cable ties", "Camera"]}>
 
-**Before starting (3 min):**
-1. Write your personal error type from the list of ten on the inside front cover of the paper.
-2. Read the Section B context before answering Section A.
+**Surface preparation (0–30 min):**
+1. Sand all external faces: 120, 180, 240 grit, in order. Follow the grain.
+2. Remove all dust with tack cloth.
 
-**Section A (40 min):**
-3. First pass: answer all questions you know immediately.
-4. Second pass: return to skipped questions. Attempt every question.
+**Finish coat 1 (30–45 min):**
+3. Apply a thin coat of finish to all external faces.
+4. Leave to penetrate (check product instructions). Buff lightly.
+5. Photograph the finish at this stage.
 
-**Section B (40 min):**
-5. Read all sub-parts of each Section B question before answering.
-6. Margin plan for any question worth 4 marks or more.
-7. Link all answers to the Section B design context.
+**Electronics integration (45–80 min):**
+6. Permanently fix the circuit board in the bracket.
+7. Route and secure all wiring. Apply strain relief at connection points.
+8. Fix battery holder. Test battery access.
+9. Final function test. Photograph: LED lit, switch visible from user position.
 
-**Check-back (7 min):**
-8. Check: sub-parts all answered? Units on all calculations? No blanks?
-
-After the paper is marked (next session): compare score to M5. Identify which of the ten error types you committed and which you successfully avoided.
+**Making log (80–90 min):**
+10. Write the W6 making log entry: surface prep sequence, finish coat 1 status, electronics integration completed, function test result.
 </Activity>
 
-<Support title="In-exam support techniques">
+<Support title="Finish not going on evenly?">
 
-**Question feels impossible:** Write what you know about the topic — even if you cannot answer the specific question directly. A definition of the relevant term, a related fact, or a formula may earn partial marks.
+**Blotchy oil finish?** Usually caused by dust or grease on the surface before application. Strip the coat (naphtha or mineral spirits on a cloth, follow ventilation rules) and re-sand from 180 grit. Ensure no fingerprints on the surface before applying the finish.
 
-**Running out of time:** In the final 3 minutes, write one key phrase for any unanswered question: the relevant term, a formula, or a property name. This can earn 1 mark per question — multiple 1-mark recoveries matter.
+**Oil soaking in too fast on end grain?** End grain is more porous than face grain and absorbs finish faster, leaving a darker or patchy appearance. Apply a thin sealing coat to end grain first (rubbed in with fingertip), leave to set for 5 minutes, then apply the main coat. This reduces over-absorption.
 
-**Cannot remember a value:** Use a comparative statement: "Aluminium is less dense than mild steel" earns the ORA mark even without stating 2.7 g/cm³. "A higher FoS is needed in safety-critical applications" earns marks even if the specific FoS value is forgotten.
+**Wire too short to reach the switch?** Extend with a splice: strip both ends, twist together, solder, cover with heat-shrink tubing. A soldered and heat-shrunk splice is permanent and clean. Twisted-only connections are not acceptable — they corrode and fail.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A question reads: 'Explain why triangulation is used in the structure shown. [3 marks]'. What must the answer include?",
+    q: "Why is 'strain relief' important at the switch wire connection?",
     options: [
-      "A definition of triangulation (one sentence) — 'triangulation means adding a diagonal member to a rectangular frame'",
-      "What triangulation is, why it increases structural stability in this type of structure, and how it applies to the specific loading condition shown",
-      "A sketch of a triangulated structure — diagrams earn marks in explanation questions",
-      "The name of a real-world structure that uses triangulation as an example"
-    ],
-    answer: 1,
-    hint: "Three marks = three distinct points. 'Explain' = state the fact AND give the reason for each point.",
-    explain: "For 3 marks on an 'Explain' question: (1) what triangulation does (a diagonal member converts a deformable rectangle into a rigid triangle), (2) why this increases stability (a triangle has only one possible shape for given side lengths — it cannot deform under load), (3) how it applies to this context (the diagonal member carries the applied force as compression or tension, preventing the frame from collapsing). Each point earns one mark. A definition alone earns 1 mark. A sketch alone typically earns 0 unless the question specifically asks for a diagram."
-  },
-  {
-    q: "An electronics calculation question is worth 4 marks. The answer shows the correct formula and correct substitution but the final arithmetic gives a wrong number, and no unit is stated. How many marks are earned?",
-    options: [
-      "0 marks — wrong answer and no unit means no credit",
-      "1 mark — only the formula is correct",
-      "2–3 marks — formula correct (1 mark) and substitution correct (1 mark); unit missing costs 1 mark; wrong arithmetic costs 1 mark",
-      "4 marks — method marks are awarded even for wrong answers in Paper 4"
+      "Strain relief prevents electrical noise from entering the circuit through the switch wire",
+      "Strain relief means the wire cannot rotate around the switch shaft when the switch is operated",
+      "Strain relief takes any pulling force on the wire at the body of the product rather than at the solder joint, preventing the joint from breaking",
+      "Strain relief is only required on mains-voltage circuits, not low-voltage battery circuits"
     ],
     answer: 2,
-    hint: "Paper 4 uses method marks. Each correct step earns its own mark independently.",
-    explain: "For a 4-mark calculation: typically 1 mark for writing the correct formula, 1 mark for correct substitution (including correct unit conversion), 1 mark for the correct numerical result, and 1 mark for stating the correct unit. If the formula and substitution are correct but the arithmetic is wrong and the unit is missing, marks are earned for: formula (1) and substitution (1) = 2 marks. The mark for the correct result and the mark for the unit are both lost. Showing all working is essential to earn the method marks even when the final answer is wrong."
+    hint: "Think about what happens to a solder joint when you pull the wire connected to it.",
+    explain: "A solder joint is not designed to take mechanical force — it is designed to be an electrical connection. If a user pulls the wire going to the switch (perhaps while changing the battery), the force goes straight to the solder joint and can break it. Strain relief — a cable tie, a hot-glue bead, or a cable clip attached to the product body — means the wire is secured near the connection point, so any pulling force is absorbed by the product structure before it reaches the solder joint."
   },
   {
-    q: "What does 'Evaluate' mean as an exam command word, and how does it differ from 'Explain'?",
+    q: "What is the correct order of sandpaper grades for surface preparation before finishing, and why?",
     options: [
-      "They mean the same thing — both require a reason to be given for a statement",
-      "Evaluate requires a judgement (better/worse, suitable/unsuitable) with evidence for and against; Explain requires only a reason without a judgement",
-      "Evaluate is used only in Section B; Explain is used only in Section A",
-      "Evaluate requires a calculation; Explain requires only a written statement"
+      "240, 180, 120 — starting fine and getting coarser removes material progressively",
+      "120, 240, 180 — start rough, finish with a medium grade to key the surface for the finish",
+      "120, 180, 240 — start coarser to remove tool marks and work progressively finer to smooth the surface",
+      "180, 180, 180 — using the same grade three times is more effective than changing grades"
+    ],
+    answer: 2,
+    hint: "Each grade of sandpaper removes the scratches left by the previous coarser grade. Which direction should this sequence go?",
+    explain: "Starting with 120 grit removes tool marks and rough spots quickly. 180 grit removes the deeper scratches left by 120. 240 grit smooths the finer marks left by 180, leaving a surface that is smooth enough for finish application. Working from coarser to finer means each stage removes the marks of the previous stage. Skipping grades means the finer paper works much longer to remove the coarser marks — or they remain visible under the finish."
+  },
+  {
+    q: "Why is it important that the battery holder in the finished product can be accessed without disassembling any panel?",
+    options: [
+      "Cambridge requires battery holders to be accessible for inspection during marking",
+      "The battery must be replaceable by the user without tools — a battery that requires disassembly to replace means the product fails this functional requirement",
+      "Battery holders must be visible in the making log photograph",
+      "Batteries must be rechargeable in situ, which requires the holder to be exposed"
     ],
     answer: 1,
-    hint: "The root of 'evaluate' is 'value' — assigning relative worth or quality. 'Explain' means give a reason.",
-    explain: "Explain: state the fact and give the reason why. No judgement required. Example: 'Explain why MDF is used here — MDF has no grain direction (fact), so it can be laser-cut without splitting regardless of orientation (reason).' Evaluate: make a judgement about relative quality or suitability, with evidence for and against. Example: 'Evaluate whether mild steel or acrylic is more suitable for the shelf — [evidence for steel] [evidence for acrylic] [judgement: steel is more suitable because...].' The judgement sentence is what makes an evaluation; it is not required for an explanation."
+    hint: "Think about who uses the product after it is made — and what they need to do when the battery runs out.",
+    explain: "The user (a cyclist) will need to replace the battery during the product's life. If the battery holder is inaccessible without removing a panel or disassembling the frame, the user cannot perform routine maintenance. This would be a functional failure of the design — it would not meet the specification point 'must be maintainable by the user'. Accessible battery replacement is a standard design requirement for any battery-powered product."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Complete the T3 W6 making log entry. Photograph: (1) the product after finish coat 1, showing a consistent surface; (2) the circuit integrated, with LED lit. The second finish coat is in W7 — bring the product in clean and dust-free.
+
+<Extension title="Surface finish comparison">
+Research three different finishes suitable for birch plywood: hardwax oil, Danish oil, and water-based acrylic lacquer. Compare them across four criteria: environmental impact, ease of application, repairability, and surface protection level. Which would you choose for a product used outdoors? Which for a product handled daily indoors?
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.4.3 Switches (p. 310)", type: "Textbook", href: "https://drive.google.com/file/d/11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY/view?usp=sharing" },
+  { label: "Component 2 Project — C6 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §2.5 Finishing (p. 190)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.4 Electronics (p. 299)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="Which of the ten error types did you commit in M6 — and was it the one you predicted before starting? What does the match (or mismatch) tell you about your self-awareness as an exam candidate?" />
+<Reflection prompt="Stand back and look at your product at the end of this session. Does it look like the product you designed in Term 1? What changed — and was the change an improvement, a compromise, or a mistake you plan to address in the evaluation?" />

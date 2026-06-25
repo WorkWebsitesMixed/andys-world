@@ -2,154 +2,146 @@
 grade: 11
 term: 2
 week: 5
-title: "Manufacture Part 2: Joining & Assembly (C6)"
-topic: "Manufacture"
-learningGoal: "assemble the main structural components using appropriate joints and adhesives; achieve a square, stable assembly that passes a dry-fit test before gluing"
-selGoal: "dry-fit the whole assembly before applying any adhesive — every joint must close without force"
+title: "Development by Testing (C4)"
+topic: "Design Development"
+learningGoal: "run an objective load or stability test on my model and build my light circuit on a breadboard, recording objective results and at least one design change they call for"
+selGoal: "record an unflattering test result honestly — treat it as data, not as failure"
 draft: false
 ---
 
-Cutting is the foundation; joining is the structure. A perfectly cut component assembled with a misaligned joint produces a product that fails the specification. This session covers the joining methods for your project — from timber joints through adhesives to mechanical fasteners — and the dry-fit protocol that prevents errors from being glued permanently in place.
+Last week you built a model and found problems visually. Today you find problems with measurements. An objective test — actual weights, actual readings, before-and-after data — is what turns a model into development evidence. You also breadboard the switch-and-LED circuit to confirm it works before you commit it to your product.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C4 (development, 15 marks)** rewards objective testing — not opinion. "It looks stable" scores nothing. "It held 4.2 kg without deflecting, but tipped at 5.1 kg when the load was placed asymmetrically, so I added a rear brace and re-tested to 5.5 kg" earns marks. The iteration loop — test → modify → re-test — is what C4 is looking for.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Dry fit", definition: "Assembling all components without any adhesive to check that every joint closes correctly and the overall assembly is square. Dry fitting reveals misaligned joints, components that are too long, or assembly sequences that do not work, before any adhesive is applied. It is mandatory before gluing." },
-  { term: "Squareness check", definition: "Verifying that an assembled frame or box is at 90° in all relevant planes. Method: measure both diagonals — if the two diagonal measurements are equal, the assembly is square. If they differ, the longer diagonal indicates which corner must be pushed in to correct the square." },
-  { term: "PVA (polyvinyl acetate)", definition: "The standard woodworking adhesive for MDF and timber joints. Applied to both mating surfaces, left to become tacky (1–2 minutes), then clamped. Full cure: 24 hours. Working time: approximately 5–10 minutes (enough for a complex assembly if dry fit is practised first)." },
-  { term: "Clamp pressure", definition: "The force applied by clamps to squeeze glued joints together. Adequate clamp pressure ensures the PVA film is thin and uniform, maximising bond strength. Insufficient pressure leaves glue-thick joints that are weaker. Excess pressure squeezes all glue out — also weaker. Target: glue squeezes out uniformly around all edges of the joint." },
-  { term: "Mechanical fastener", definition: "A non-adhesive joining method: screws, nails, bolts, KD fittings. Mechanical fasteners allow disassembly and are used where joints must be demountable or where clamps cannot reach. For MDF, use coarse-thread (cross-headed) screws with a pilot hole to prevent splitting." },
+  { term: "Objective testing", definition: "Testing that produces a measurable result — a number, a pass/fail against a specification point — rather than an opinion. 'It held 5 kg without tipping' is objective. 'It seemed stable enough' is not." },
+  { term: "Fair test", definition: "A test in which only one variable changes at a time. To test load capacity, you apply a standard weight in a standard position — the same way every time — so results can be compared before and after a design change." },
+  { term: "Iteration loop", definition: "The cycle of test → result → design change → re-test. Each loop produces a development point and evidence. One loop is minimum for C4; two or three loops show genuine development." },
+  { term: "Breadboarding", definition: "Building a temporary version of an electronic circuit on a solderless breadboard, allowing components to be inserted and removed without soldering. Used to confirm a circuit works before committing it to the permanent product." },
 ]} />
 
-<Section title="Joint types for the project" icon="🔨" id="joints">
+<Section title="Testing your structure and your circuit" icon="🔬" id="testing">
 
-### Timber joints used in the project
+### Setting up a structural test
 
-| Joint | Best for | Forces resisted | Assembly note |
-|---|---|---|---|
-| Butt + PVA | Simple corner in non-load-bearing area | Shear (limited) | Requires 90° alignment and clamping |
-| Housed (dado) joint | Shelf-to-panel horizontal connection | Vertical shear, pull-out | Dado must match shelf thickness exactly |
-| Dowel joint | Butt joint reinforcement | Tension, alignment | Requires accurate drilling jig |
-| KD fitting (cam lock) | Demountable joints | Tension, alignment | No adhesive — mechanical clamping only |
-| Screw + pilot hole | Fixing circuit housing panel | Withdrawal force | Countersink head flush with surface |
+Choose a spec point that you can measure — most likely the load specification or a stability condition.
 
-### Adhesives
+1. **State the test:** "I will apply [X] kg at [position] and observe whether the structure deflects more than [Y] mm or tips."
+2. **Set up the fair test:** same weight, same position, same surface each time.
+3. **Record the result:** photograph + measurement. Does it pass or fail the spec point?
+4. **Design change:** if it fails, record what you changed and re-test.
 
-| Adhesive | Materials | Set time | Notes |
-|---|---|---|---|
-| PVA | MDF, hardwood, softwood | 24 hr full cure, 1 hr working strength | Apply to both faces; clamp; wipe squeeze-out |
-| Epoxy resin | Metal-to-metal, metal-to-wood | 5 min to 2 hr depending on type | Mix equal parts; apply thin coat; ventilate |
-| Superglue (CA) | Small parts, MDF edge sealing | 30–60 seconds | No clamping; surface must be oil-free |
+Common load test: stack weights (textbooks, water bottles) on the critical point of the structure. Measure any deflection at the centre or tip with a rule. Compare before and after a design modification.
 
-</Section>
+### Breadboarding the circuit
 
-<Section title="The dry-fit and glue-up sequence" icon="🔄" id="sequence">
+The circuit you designed in Term 1 (switch → current-limiting resistor → LED) needs to be built and confirmed working before you integrate it into the product.
 
-### Step 1: Dry fit
+Components you need:
+- A 9 V battery and holder
+- Your chosen switch (toggle, push-to-make, or reed)
+- A current-limiting resistor (calculated value from Term 1)
+- An LED
 
-1. Assemble ALL components without adhesive. Check every joint closes.
-2. Measure diagonals. Are they equal? If not, identify the cause before continuing.
-3. Run through the glue-up sequence mentally: which joint goes first? Which needs to be clamped while the next is assembled?
-4. Pre-position clamps so they are within reach.
-
-### Step 2: Glue-up
-
-1. Apply PVA to both mating surfaces of the first joint. Use a spreader for even coverage — avoid large glue-free areas (bond failures) or excessive glue (squeeze-out that stains visible surfaces).
-2. Close the joint. Apply clamp pressure — check for squeeze-out around all edges of the joint.
-3. Check square immediately with a try square or diagonal measurement. Adjust if necessary before the PVA begins to set.
-4. Add the next joint while the first is still uncured (PVA bonds between surfaces — multiple joints curing simultaneously is fine if you work quickly).
-
-### Step 3: Post-cure check
-
-After the PVA has cured (minimum 1 hour for working strength, 24 hours for full strength):
-1. Remove clamps.
-2. Check squareness again.
-3. Test rigidity: apply a light twisting force. The assembly should feel solid with no flex at the joints.
+Connect them in series on the breadboard. Operate the switch — the LED should light. If it does not: check the LED polarity (long leg to positive), check the connections are in the same rail, check the resistor value is not too high.
 
 </Section>
 
-<WorkedExample title="Dry fit and glue-up of a three-component shelf unit">
+<WorkedExample title="Testing a cyclist gear organiser — two iterations">
 
-**Components:** Back panel (300 x 220 x 18 mm MDF), two side panels (150 x 300 x 18 mm MDF), one shelf (220 x 150 x 18 mm MDF — slides into dado in back panel).
+**Test 1 — Load, 4 kg static:** Three 1.5 kg water bottles placed on the horizontal member at height 200 mm. Result: structure held without tipping, deflection at top = 3 mm. Passes the load spec.
 
-**Dry fit:** Slot the shelf into the dado in the back panel. Attach both side panels to the back panel (butt joints at corners). Measure diagonal A (top-left to bottom-right): 378 mm. Measure diagonal B (top-right to bottom-left): 375 mm. Difference: 3 mm — not square. Push the bottom-left corner toward top-right while measuring until both diagonals read 376 mm. Assembly is now square.
+**Test 2 — Asymmetric load:** All three bottles placed on one side only. Result: structure tips at 2.7 kg (fails spec — user may load unevenly). Development change: widen the base from 150 mm to 210 mm and add a rear horizontal tie at 50 mm from the floor.
 
-**Glue-up sequence:**
-1. Apply PVA to both faces of the dado joint (shelf-to-back panel). Slide shelf in. Clamp. Check horizontal level.
-2. While dado is clamping: apply PVA to the back panel face where the left side panel butts. Attach left side panel. Clamp. Measure diagonals — adjust to square.
-3. Apply PVA for right side panel. Attach and clamp.
-4. Leave all clamps on for 1 hour.
+**Re-test after change:** Same asymmetric load to 3.5 kg — no tipping. Passes.
+
+**Circuit test:** Toggle switch → 470Ω resistor → red LED on 9 V supply. LED lit on first attempt. Switch operates cleanly.
 </WorkedExample>
 
-<Activity title="Dry fit, glue-up, and squareness check" time="90 min" grouping="Individual" materials={["Your cut components from T2 W4", "PVA adhesive and spreader", "G-clamps and sash clamps (request from store)", "Try square (300 mm)", "Steel rule (600 mm)", "Damp cloth (for PVA wipe-down)"]}>
+<Activity title="Load test + breadboard" time="90 min" grouping="Individual (technician supervises breadboard station)" materials={["Model from Week 4", "Weights (water bottles or book set)", "Ruler / tape measure", "Breadboard kit: battery, switch, resistor, LED", "Camera (phone)"]}>
 
-**Dry fit (0–20 min):**
-1. Assemble all structural components without adhesive. Each joint must close cleanly. If any joint requires force, stop and investigate — do not force it.
-2. Measure both diagonals. Record: diagonal A = ___mm, diagonal B = ___mm. Difference = ___mm. Target: less than 2 mm difference.
-3. Plan the glue-up sequence. Write down the order: joint 1 first, then joint 2, etc. Set up all clamps.
+**Load or stability test (0–45 min):**
+1. State your test: spec point, weight, position, pass/fail criterion.
+2. Set up and run the test. Photograph the result.
+3. Record: does it pass or fail? By how much?
+4. If it fails, make one design change and re-test. Record before and after.
 
-**Glue-up (20–55 min):**
-4. Apply PVA to joint 1. Close, clamp, check square.
-5. Apply PVA to joint 2. Close, clamp, check square again.
-6. Continue for all joints. Work without pausing — PVA working time is 5–10 minutes.
-7. Final diagonal check after all clamps applied. Adjust if necessary.
+**Breadboard the circuit (45–75 min):**
+5. Using your Term 1 circuit diagram and resistor calculation, build the circuit on a breadboard.
+6. Operate the switch. Does the LED light?
+7. If not: check LED polarity, check connections, check resistor is not open-circuit.
+8. Note which switch type you chose for your product and confirm it operates as expected in the physical test.
 
-**Circuit housing and battery panel (55–75 min):**
-8. Screw the circuit housing to the inside of the product. Use pilot holes. Do not over-tighten (MDF splits). The housing panel should be removable — use screws, not adhesive.
-
-**Clean-up and record (75–90 min):**
-9. Wipe all PVA squeeze-out with a damp cloth before it cures.
-10. Photograph the clamped assembly. Record in your C6 log: which joints were glued, which were screwed, PVA applied to both faces (yes/no).
+**Record and tidy (75–90 min):**
+9. Write up your test-results table: spec point / test condition / result / pass? / change made.
+10. Note any changes the results call for in your final product.
 </Activity>
 
-<Support title="Assembly problems">
+<Support title="Test not giving clear results?">
 
-**Joint will not close despite correct dimensions:** The dado depth or width may be slightly over-cut, leaving a gap. Pack the gap with a thin sliver of MDF and PVA — once cured, plane or sand flush.
+**Result is ambiguous — hard to say pass or fail?** Go back to your specification. The spec point should have a measurable standard. If it says "must feel stable", revise it: "must not tip when 5 kg is applied at the outermost point". Now you have a pass/fail.
 
-**Diagonals will not equalise:** Check that all corner joints are at 90° before gluing. If one component is cut slightly non-square (a trapezoid instead of a rectangle), the assembly cannot be square. Identify the non-square component by placing it on a known-flat surface with a try square.
+**Circuit not lighting?** Work systematically: (1) Is the battery charged? Check with a voltmeter or test light. (2) Is the LED polarity correct? Flip it. (3) Are all jumper wires in the same column of the breadboard (not bridging rows accidentally)? (4) Is the resistor value reasonable — not too high (LED dim or off)?
 
-**PVA squeezing out excessively:** Too much adhesive was applied. For future joints, reduce the amount. Wipe all squeeze-out immediately with a damp cloth — dried PVA resists most paint finishes.
+**Can't fit the breadboard test into one session?** Prioritise the structural test — it gives C4 development evidence directly. The circuit test can run in parallel while the structure re-test cure time allows.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Why must a dry fit be completed before applying any adhesive?",
+    q: "A student writes: 'The model seemed to hold the weight fine, so I did not make any changes.' Is this good C4 development evidence?",
     options: [
-      "The dry fit is required by the Cambridge mark scheme for C6 evidence",
-      "Dry fitting reveals misaligned joints and sequence problems before they are glued permanently in place",
-      "PVA must be applied to pre-assembled joints — it does not bond between surfaces that were never in contact",
-      "Dry fitting pre-stretches the joint surfaces, improving adhesive penetration during glue-up"
+      "Yes — if the test passed, no changes are needed and the development is complete",
+      "No — 'seemed to hold' is subjective and does not record an objective measurement or a pass/fail against a spec point",
+      "Yes — C4 only requires one test, and passing is better evidence than failing",
+      "No — C4 requires at least ten tests to score full marks"
     ],
     answer: 1,
-    hint: "Think about what happens if you discover a joint problem after the PVA has cured.",
-    explain: "A dry fit reveals every assembly problem when they can still be corrected: a joint that does not close, a component that is too long, a sequence that cannot work mechanically. Once PVA has cured (1–24 hours), fixing a misaligned joint requires destructive removal. The cost of a dry fit (5–10 minutes) is trivially small compared to rebuilding a glued assembly."
+    hint: "What does 'objective testing' mean, and does 'seemed to hold' qualify?",
+    explain: "'Seemed to hold' is opinion, not evidence. Strong C4 evidence records: (1) the exact test condition (X kg at Y position), (2) a measurable result (deflection = 3 mm, no tipping), (3) a pass/fail judgement against the spec point. Even a test that passes should be recorded with the measurement — the record is the evidence that the test actually happened."
   },
   {
-    q: "During a squareness check on a rectangular assembly, diagonal A measures 378 mm and diagonal B measures 372 mm. What must be done?",
+    q: "Why is the iteration loop (test → modify → re-test) important for C4 marks, even if the first test passes?",
     options: [
-      "Nothing — a 6 mm difference is within the acceptable tolerance of ±5 mm per diagonal",
-      "Push the corners on the longer diagonal together until both diagonals are equal",
-      "Disassemble and re-cut the components — a non-square assembly cannot be corrected during glue-up",
-      "Add a diagonal brace between the two corners on the shorter diagonal"
+      "It is not — a single passing test is sufficient for C4 marks",
+      "It shows the examiner that the student genuinely engaged with their design rather than just describing it",
+      "It is required only if the first test fails",
+      "Cambridge requires at least five iterations before marking C4"
     ],
     answer: 1,
-    hint: "A square has equal diagonals. The longer diagonal connects the corners that are too far apart.",
-    explain: "When diagonals are unequal, the assembly is a parallelogram rather than a rectangle. Pushing the two corners at the ends of the longer diagonal (378 mm) toward each other — while the PVA is still wet — reduces that diagonal and increases the other until they equalise. This corrects the square. A 6 mm difference indicates a non-trivial misalignment requiring correction before the PVA sets."
+    hint: "C4 is called 'development', not 'testing'. What does development imply?",
+    explain: "Development implies change over time in response to evidence. One test with one result shows testing. An iteration — test, find a problem or confirm a weak point, modify, re-test — shows development. Even if the first test passes the basic spec, an extension test (asymmetric load, repeated load, edge case) can still reveal improvements. The examiner is looking for evidence that the design evolved in response to real data."
   },
   {
-    q: "Which adhesive characteristic makes PVA suitable for timber and MDF joints, but not for joining metal components?",
+    q: "When breadboarding a switch-LED circuit, the LED does not light when the switch is operated. What should you check first?",
     options: [
-      "PVA sets too quickly for metal joints — it cures in seconds, making accurate alignment impossible",
-      "PVA bonds by penetrating porous fibres — it works on timber and MDF but cannot bond non-porous metal surfaces effectively",
-      "PVA is too thick to apply to the precision surfaces required for metal joints",
-      "PVA requires a temperature above 80°C to cure, which would warp metal components"
+      "Replace the LED immediately — a non-lighting LED is always faulty",
+      "Add a second battery to increase the supply voltage",
+      "Check the LED polarity — the long leg (anode) must connect to the positive supply side",
+      "Remove the current-limiting resistor — it may be blocking too much current"
     ],
-    answer: 1,
-    hint: "Think about why PVA is called a 'woodworking adhesive' — what is special about wood compared to metal?",
-    explain: "PVA bonds by penetrating the porous cellular structure of timber and manufactured boards (MDF, plywood). The PVA polymer anchors into the fibres on both mating surfaces. Metal surfaces are non-porous — PVA cannot penetrate and achieves only a weak surface bond. For metal-to-metal or metal-to-timber joints, use epoxy resin (which bonds chemically to the surface rather than mechanically penetrating fibres) or mechanical fasteners."
+    answer: 2,
+    hint: "LEDs are polarised components — they only conduct in one direction.",
+    explain: "The most common reason an LED does not light on first breadboard assembly is reversed polarity: the short leg (cathode) is connected to the positive side. Flipping the LED fixes this in seconds. Replacing the LED wastes time. Adding a second battery risks exceeding the LED's voltage rating. Removing the resistor risks burning out the LED even if the polarity is then correct."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Write up your test-results table neatly for the folder. For each test, include: spec point tested, method, result (with measurement), pass/fail, and any change made. Photograph the model at each stage if you have not already done so.
+
+<Extension title="Second structural test">
+Design and run a second structural test on a different specification point — for example, test rigidity (does the frame rack under a sideways push?) or stability (does the base slide on a smooth surface?). Record the method, result, and any change. Add it to your C4 development pages.
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.9 Joining techniques (p. 280)", type: "Textbook", href: "https://drive.google.com/file/d/1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B/view?usp=sharing" },
+  { label: "Component 2 Project — C4 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.3 Making", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.4 Evaluation", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §4.4 Electronics (p. 299)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="Which joint in your assembly was hardest to get square — and what would you change about the marking out or cutting stage to make it easier next time?" />
+<Reflection prompt="Did your product do what your spec promised? What is your evidence? Was there a result that surprised you — and what does it mean for your final design?" />

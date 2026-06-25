@@ -2,152 +2,144 @@
 grade: 11
 term: 2
 week: 7
-title: "Testing & Evaluation (C7) + Graded M4"
-topic: "Testing and Evaluation"
-learningGoal: "test the finished product against every specification point; write a formal evaluation with met/partially met/not met judgements for each point"
-selGoal: "evaluate honestly — a 'not met' judgement with a reason earns more marks than 'it met everything' without evidence"
+title: "CAD/CAM 1: 2D Laser Cutting"
+topic: "CAD/CAM"
+learningGoal: "produce a laser-ready 2D vector file of at least two parts of my product, applying correct line types and nested layout, ready to cut in Week 8 or 9"
+selGoal: "persist through a software problem — identify what I don't know, find a solution, and not wait for the teacher to rescue me"
 draft: false
 ---
 
-The product is made. The specification was written in T1 W8. This session completes the Component 2 cycle: you test the product against each specification point, record evidence, and write an evaluation that earns marks through honesty and specificity — not through claiming everything is perfect.
+This week you move from drawing on paper to drawing for a machine. The laser cutter follows the vector paths you create — so every line you draw is an instruction to the machine. Get the file right this week and the cutter does the precise work. Get it wrong and the machine cuts the wrong parts.
 
-<Callout type="exam" title="Graded M4 (50%) — C7 evaluation collected at end of session" id="m4">
-  **Moment 4 (M4, 50%)** is the largest graded moment of the year. Your C7 testing records and evaluation are collected at the end of this session. Each specification point must appear in the evaluation with: (a) the test method used, (b) the test result, and (c) a met/partially met/not met judgement with specific evidence. No generic statements will earn marks.
+<Callout type="exam" title="Why this matters" id="why">
+  CAD/CAM evidence is required for <ExamLink to="project">Component 2</ExamLink> criterion **C5 (working drawings and plans), worth 15 marks**. The mark scheme asks for evidence that you used digital tools to plan and communicate your design. A screen-captured CAD file plus a photo of a laser-cut part is the standard evidence for this.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "Testing protocol", definition: "A predefined procedure for testing a specification point. It specifies: what is measured, how it is measured, what equipment is used, how many measurements are taken, and what constitutes a pass result. A testing protocol ensures the test can be replicated and the result is objective." },
-  { term: "Evaluation", definition: "A critical judgement of how well the product meets the specification, based on testing evidence. An effective evaluation: uses specific test results (not impressions), gives a judgement for each specification point, identifies the cause of any shortfall, and proposes an improvement. An evaluation is not a list of compliments." },
-  { term: "Modification suggestion", definition: "For each specification point that was not fully met, a specific improvement that would change the result. A modification suggestion must be: specific (not 'make it stronger'), feasible (achievable with available processes), and linked to the shortfall (the cause of the 'not met' judgement)." },
-  { term: "User feedback", definition: "Evidence from the target user about whether the product meets their needs. Collected after the user has used or handled the product. User feedback enriches the evaluation — it provides evidence that the designer alone cannot provide (subjective response to aesthetics, comfort of operation, fit into their space)." },
+  { term: "Vector file", definition: "A digital drawing defined by mathematical paths (lines, curves, polygons) rather than pixels. Vector files can be scaled to any size without losing quality and can be sent directly to a laser cutter or vinyl cutter as cutting paths." },
+  { term: "Cut line", definition: "In laser cutting software, a vector line set to the cutting colour (usually red or a specific named layer). The laser follows this path at full power to cut through the material." },
+  { term: "Engrave / score line", definition: "A vector line or filled area set to a lower-power setting. Engraving burns the surface; scoring makes a shallow cut for folding. Both are controlled by the colour or layer assigned in the software." },
+  { term: "Kerf", definition: "The width of material removed by the laser beam — typically 0.1–0.3 mm for a 60 W CO2 laser on plywood. Joints designed to fit exactly on-screen will be 0.1–0.3 mm too loose in reality. Designers compensate by making slot widths slightly smaller in the file." },
 ]} />
 
-<Section title="The testing protocol" icon="🧪" id="testing">
+<Section title="Designing for the laser cutter" icon="💻" id="laser">
 
-### Testing each specification point
+### File requirements
 
-For each specification point, follow this protocol:
-1. **State the test method:** How will you test this point? What equipment? How many trials?
-2. **Conduct the test:** Record raw data (numbers, pass/fail, measurements).
-3. **Compare to specification:** Does the result meet the criterion and tolerance?
-4. **Judge:** Met / Partially met / Not met.
+Most school laser cutters accept SVG, DXF, or AI files. The key rules:
 
-### Testing the six spec points from T1 W8
+- All cut lines: **0.001 pt stroke weight** in the designated cut colour (check your machine's configuration — usually red #FF0000 or a named layer)
+- All engrave areas: **filled** in the designated engrave colour (usually black)
+- No raster images in the cut layer
+- All dimensions in mm (set document units before drawing)
+- Outer boundary of each part is a single closed path
 
-| Spec point | Test method |
-|---|---|
-| Load (5 kg static, less than 2 mm deflection) | Apply calibrated 5 kg deadweight for 5 minutes. Measure midspan deflection with a ruler and feeler gauge. |
-| Dimensions (width, depth, height within tolerance) | Measure each overall dimension with a steel rule. Compare to specification value ±1 mm. |
-| Aesthetics (no visible machining marks at 300 mm) | Visual inspection from 300 mm under standard lighting. Record any visible defects. |
-| Material/sustainability (one 6Rs feature stated and visible) | Visual check that the stated feature (e.g. disassembly with screws) is present and functional. |
-| Safety (all edges chamfered or rounded, no sharp projections) | Run a bare hand along all edges and corners. Record any sharp areas. |
-| Circuit (LED lights when switch closed; extinguishes when switch open) | Insert battery. Toggle switch on: record if LED lights. Toggle off: record if LED extinguishes. Repeat 5 times. |
+### Setting up your parts file
 
-</Section>
+1. Open your CAD application (Inkscape is free; Illustrator or Fusion 360 also work).
+2. Set up a document the same size as your sheet material (e.g. 600 × 400 mm for an A2 sheet of 3 mm ply).
+3. Draw each part to scale. Use the dimension tool to verify key measurements.
+4. Assign cut lines to the cut layer/colour.
+5. Nest parts on the sheet: arrange tightly, leaving at least 5 mm clearance from the sheet edge and from each other.
 
-<Section title="Writing the evaluation" icon="✏️" id="evaluation">
+### Kerf compensation
 
-### The three-part evaluation entry
-
-For each specification point, write:
-1. **Test evidence:** what the test found (specific numbers, observations).
-2. **Judgement:** met / partially met / not met.
-3. **Modification suggestion** (if not fully met): what specific change would improve the result.
-
-### Honesty earns marks
-
-Mark schemes for evaluations explicitly credit honest, specific assessment. A statement like "the product easily met the load requirement — no deflection was observed" earns zero marks if no measurement was taken. A statement like "the deflection test recorded 3.2 mm at 5 kg. The specification required less than 2 mm. This specification point was not met. To achieve the required stiffness, the shelf would need to be increased to 24 mm MDF (calculated from the formula in T1 W3) or the shelf span reduced from 200 mm to 160 mm" earns full marks.
-
-### Suggested modifications
-
-A modification suggestion must:
-- Name the specific change (not just "make it better").
-- Link it to the cause of the shortfall.
-- Confirm that the modification is feasible (the process and material exist).
-
-Example: "The aesthetic test showed brush marks visible at 300 mm under side lighting. To meet the specification, the surface should be finished using a spray paint rather than a brush — this would produce a smooth, even coat with no visible application marks."
+For laser-cut joints (finger joints, slotted connections):
+- Target slot width = material thickness minus 0.2 mm (compensates for the kerf burning away the fit)
+- Test your kerf on a scrap piece before cutting the real parts
 
 </Section>
 
-<WorkedExample title="Evaluation entry for two specification points">
+<WorkedExample title="Nesting two parts for a gear organiser base">
 
-**Spec point 1 — Load (5 kg, less than 2 mm deflection):**
-Test: a 5 kg calibrated weight was placed at the shelf midspan for 5 minutes. Deflection measured using a steel rule held against the shelf underside before and after loading. Before: 0 mm. After 5 minutes: 1.6 mm. After removing weight: 0 mm (elastic recovery — permanent set: 0 mm).
-Judgement: MET. The deflection of 1.6 mm is within the specification requirement of less than 2 mm. The elastic recovery to 0 mm confirms the deformation was elastic and no permanent damage occurred.
+**Parts to cut:** Base panel (200 × 150 mm) and two side uprights (200 × 80 mm each) from 6 mm birch ply.
 
-**Spec point 3 — Dimensions (width must not exceed 550 mm):**
-Test: width measured with a steel rule at three positions along the shelf. Results: 547 mm, 548 mm, 548 mm. Mean: 547.7 mm.
-Judgement: MET. The mean width of 547.7 mm is within the specification limit of 550 mm, with a margin of 2.3 mm. All three measurements were within the ±1 mm manufacturing tolerance stated in C5.
+**Sheet size:** 600 × 400 mm.
+
+**Nesting layout:** Base panel placed at top-left with 5 mm margin. Two uprights placed side-by-side to the right of the base panel, with 5 mm between them. Total used area: 290 × 200 mm. Unused sheet area can be used for smaller parts or kept for re-test samples.
+
+**Cut lines:** All outlines in red (#FF0000), 0.001 pt stroke. Slot openings at the top of each upright for the horizontal member: slot width = 5.8 mm (6 mm material minus 0.2 mm kerf compensation).
 </WorkedExample>
 
-<Activity title="Testing and evaluation writing" time="90 min" grouping="Individual" materials={["Finished product", "5 kg deadweight (bag of sand or calibrated weight)", "Steel rule (600 mm)", "Feeler gauge (if available)", "Battery (9 V)", "Pencil and C7 pro forma"]}>
+<Activity title="CAD file — two parts ready to cut" time="90 min" grouping="Individual at CAD stations" materials={["CAD application (Inkscape / Illustrator / Fusion 360)", "Working sketch from folder", "Sheet size specifications from teacher", "Calipers or rule for measuring existing material"]}>
 
-**Testing (0–40 min):**
-1. Set up the product on a flat surface.
-2. Work through the six spec points in order. For each: conduct the test, record raw data, record a judgement. Do not skip any test — a missing test = zero marks for that evaluation entry.
+**Setup (0–15 min):**
+1. Open your CAD application. Set document units to mm and canvas size to your sheet dimensions.
+2. Measure your actual material with calipers. Note the exact thickness — this controls slot dimensions.
 
-**User test (30–40 min, overlapping with testing):**
-3. Ask a classmate (acting as your user) to operate the switch, place items on the shelf, and assess the finish from 300 mm. Record their comments verbatim.
+**Draw parts (15–70 min):**
+3. Draw at least two parts of your product: typically the main structural panels or the base.
+4. Add any internal slots or holes. Apply kerf compensation to slot widths.
+5. Assign all cut lines to the cut layer/colour.
 
-**Evaluation writing (40–85 min):**
-4. Write a formal evaluation entry for each specification point. Use the three-part format: test evidence + judgement + modification suggestion (if not fully met).
-5. For any "not met" or "partially met" point: write a specific modification suggestion that would improve the result. Explain how the modification addresses the cause of the shortfall.
-
-**Folder final check (85–90 min):**
-6. Count: six spec points tested, six evaluation entries written. All entries have test evidence (numbers or clear observations)? All entries have a judgement? All "not met" entries have a modification suggestion? Submit C7 folder section.
+**Nest and check (70–90 min):**
+6. Arrange both parts on the sheet with 5 mm clearance. No overlaps.
+7. Use the dimension tool to verify key dimensions match your design.
+8. Save as SVG or DXF. Screenshot the nested layout and put it in your folder as C5 evidence.
 </Activity>
 
-<Support title="Evaluation writing help">
+<Support title="Software not cooperating?">
 
-**"My product met all the specification points."** Are you sure — or are you just saying it met them? For each point: show the number. If no test was conducted, the mark scheme cannot credit the evaluation. An evaluation without numbers is an opinion, not an assessment.
+**Lines not cutting correctly?** The most common issue is stroke weight. In Inkscape: select all cut lines, open Object then Fill and Stroke, set stroke to 0.001 pt and the correct cut colour. Thick strokes (e.g. 1 mm) may be interpreted as engrave or ignored by the laser software.
 
-**"I do not know how to write the modification suggestion."** The modification must fix the specific cause of the shortfall. If the aesthetic point was not met because of brush marks: the cause is brush application. The modification is to use a spray finish. If the load point was not met because the shelf deflected 3.5 mm: the cause is insufficient stiffness. The modification is to increase shelf thickness or reduce span.
+**Parts not dimensionally accurate?** Check your document scale: if you drew in a default px document and the laser software interprets it as inches, every dimension is wrong. Set the document to mm and verify with the ruler tool before drawing anything.
 
-**"User feedback says the product is ugly."** This is valuable evidence, not a problem. Write: "User feedback: '[quote verbatim]'. The aesthetic specification point was therefore partially met by the user's assessment. To improve: [specific modification]."
+**Inkscape specific:** Use Extensions → Generate from Path → Interpolate for slot arrays, or simply draw rectangles for slots and use Align and Distribute to space them evenly.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "An evaluation statement reads: 'The product looked great and the user was happy with the finish.' Why does this earn zero marks?",
+    q: "A student creates a laser cut file in which the cut lines have a stroke weight of 2 pt. What is likely to happen when the file is sent to the laser cutter?",
     options: [
-      "It earns full marks — user satisfaction is the primary evaluation criterion",
-      "It contains no test evidence (no measurement or specific observation) and no judgement against the specification criterion",
-      "The word 'great' is too informal — it should use technical vocabulary instead",
-      "The evaluation should describe the product, not the user's reaction"
+      "The laser will cut the lines as normal — stroke weight does not affect laser cutting",
+      "The laser will cut twice along each line to match the 2 pt thickness",
+      "The laser software may not recognise the lines as cut paths, or may interpret the thick stroke as an engrave region",
+      "The file will be automatically converted to 0.001 pt by the laser software"
     ],
-    answer: 1,
-    hint: "Compare to the three-part evaluation format: test evidence + judgement against spec + modification suggestion.",
-    explain: "The statement contains no test evidence (no measurement from 300 mm, no description of the visual inspection method), no specification criterion (the spec point is not quoted), and no judgement against a specific standard. 'Looked great' and 'user was happy' are impressions, not test results. A mark-worthy version would read: 'Visual inspection at 300 mm under standard lighting showed no visible brush marks on the top face. The right-hand side panel showed three brush marks visible at 300 mm. Specification point 4: partially met.'"
+    answer: 2,
+    hint: "Laser cutters look for specific properties in vector lines — what properties does the software use to decide what to cut?",
+    explain: "Most laser cutting software identifies cut paths by a combination of stroke colour and stroke weight. A 2 pt stroke may be rendered as a filled region in the laser software, which it treats as an engrave area rather than a cut path. Some software will simply ignore unusually thick lines. Always use the minimum stroke weight (0.001 pt or 'hairline') for cut lines."
   },
   {
-    q: "Why does a 'not met' evaluation judgement, written with specific evidence and a modification suggestion, earn more marks than a 'met' judgement without evidence?",
+    q: "What is kerf compensation and why is it necessary when designing laser-cut joints?",
     options: [
-      "Because mark schemes prefer negative evaluations — they show critical thinking",
-      "Because the mark scheme awards marks for evidence and modification suggestions — a 'met' claim without evidence earns zero, while a 'not met' with evidence and suggestion earns full marks for those components",
-      "Because examiners know students always overstate their product quality, so 'not met' is automatically assumed to be honest",
-      "Because a modification suggestion earns bonus marks not available to products that fully meet the specification"
+      "Kerf compensation is adding extra material around each part to prevent the laser from burning the edges",
+      "Kerf compensation adjusts slot dimensions to account for the small amount of material removed by the laser beam, ensuring joints fit correctly",
+      "Kerf compensation is the process of cooling the cut parts before assembling them",
+      "Kerf compensation is required only when cutting materials thicker than 10 mm"
     ],
     answer: 1,
-    hint: "Marks are awarded for specific components of the evaluation — evidence, judgement, modification — not for the judgement direction.",
-    explain: "The mark scheme awards marks for each component of the evaluation process: conducting and recording a test (evidence), making a specific judgement against the criterion, and proposing a specific modification for unmet points. A 'met' judgement without any test evidence earns zero for the evidence component (and likely zero for the judgement). A 'not met' judgement with a measured result, a specific judgement, and a feasible modification can earn full marks for all three components."
+    hint: "If you draw a slot exactly 6 mm wide for a 6 mm sheet, will the parts fit after cutting?",
+    explain: "The laser beam removes material as it cuts — typically 0.1–0.3 mm wide. A slot drawn exactly 6 mm wide will be slightly wider after cutting (6 mm + kerf), meaning the real slot will be 6.1–6.3 mm and the joint will be loose. Kerf compensation makes the slot dimension slightly smaller in the file (e.g. 5.8 mm) so that after the laser removes 0.2 mm from each wall, the actual slot ends up at the target 6 mm."
   },
   {
-    q: "What makes a modification suggestion specific enough to earn marks?",
+    q: "Which of the following is evidence that qualifies for C5 (working drawings and plans) in the Component 2 mark scheme?",
     options: [
-      "It must use technical vocabulary — the more technical the language, the more marks it earns",
-      "It must name the specific change, link it to the cause of the shortfall, and confirm the modification is feasible",
-      "It must reference a textbook section that supports the proposed change",
-      "It must be illustrated with a sketch of the modified component"
+      "A hand-drawn isometric sketch of the product with dimensions noted in pencil",
+      "A photograph of the finished product",
+      "A screenshot of the nested CAD layout plus a photograph of a laser-cut part produced from that file",
+      "A printed page from a furniture catalogue showing a similar product"
     ],
-    answer: 1,
-    hint: "A modification suggestion should answer: what exactly changes, why does that change fix the problem, and can it actually be done?",
-    explain: "A specific modification suggestion must: (1) name the exact change ('increase shelf thickness from 18 mm to 24 mm' not 'make it stronger'), (2) link the change to the cause of the shortfall ('the 18 mm shelf deflected 3.5 mm because its second moment of area is insufficient at this span — a 24 mm shelf increases the second moment of area by a factor of 2.4'), and (3) confirm feasibility ('24 mm MDF is available from the same supplier'). A vague suggestion like 'make the shelf stronger' provides no information about how to achieve the improvement."
+    answer: 2,
+    hint: "C5 is about working drawings and plans — it needs to show that you used a digital tool to communicate the design for manufacture.",
+    explain: "C5 requires evidence that the student planned and communicated their design for manufacture using digital tools. A screenshot of the CAD nested layout shows the planning. A photograph of the cut part produced from that file shows the plan was executed. Together, they demonstrate the complete CAD/CAM workflow. A hand sketch, a finished product photo, or a catalogue image do not demonstrate this."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** If your CAD file is not yet ready to cut (fewer than two parts complete), finish it at home. Check: (1) all cut lines in correct colour/weight, (2) dimensions verified with the dimension tool, (3) parts nested on the sheet with clearance.
+
+<Extension title="Finger joint generator">
+Research how to generate a finger joint (box joint) pattern in Inkscape or another CAD tool. Most have a plugin or extension for this. Design one corner of your product using a finger joint. Calculate the tab width and number of tabs for your material thickness. How does this joint compare to your current planned join method in terms of strength and assembly?
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §1.4 Testing and evaluation (p. 32)", type: "Textbook", href: "https://drive.google.com/file/d/11tjufYjFFxb4KBQe3iqqDFiU62aPjLDs/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Component 2 Project — C5 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.5 CAD/CAM (p. 50)", type: "Textbook" },
+  { label: "Collins IGCSE D&T — §1.3 Making (digital fabrication, p. 30)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="If you could go back to C3 and make one different decision, knowing what your evaluation showed, what would it be? How would that decision have changed the outcome for one specific specification point?" />
+<Reflection prompt="Which part of setting up the CAD file took longer than you expected? What would you do differently the next time you set up a laser-cut file from scratch?" />

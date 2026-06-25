@@ -2,163 +2,144 @@
 grade: 11
 term: 2
 week: 4
-title: "Manufacture Part 1: Marking Out & Cutting (C6)"
-topic: "Manufacture"
-learningGoal: "mark out all components from your working drawings; cut the main structural components to dimension with tolerances within 1 mm"
-selGoal: "mark out before cutting — measure twice, mark once, cut once"
+title: "Modelling & Prototyping (C4)"
+topic: "Design Development"
+learningGoal: "make a quick 3D model of my chosen structure and identify at least two design problems it reveals, recording them as development points with sketched fixes"
+selGoal: "treat my model's flaws as useful information — name at least one thing the model taught me that drawing alone did not"
 draft: false
 ---
 
-Manufacturing begins. C6 is the practical evidence of your Component 2 project. This session covers the first half of the making process: transferring dimensions from your C5 working drawings to the material, and making accurate cuts. The quality of everything that follows depends on accurate marking out.
+You selected your design last week. Now you build a quick version of it to find out what drawing cannot tell you: whether the proportions feel right in 3D, whether the base is stable, whether the joints actually fit. A model that falls apart or tips over in the next ten minutes is a success — it just saved you from making those same mistakes in the makerspace.
 
-<Callout type="info" title="C6 manufacturing record requirement" id="c6">
-  As you manufacture, photograph each stage: marked-out components before cutting, components after cutting, after joining, and after finishing. These photos form your C6 manufacturing record and are submitted alongside the finished product. Photograph before discarding any offcuts or templates.
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C4 (development) is worth 15 marks**. The mark scheme specifically looks for evidence that you made and tested something physical — not just drew more ideas. A model photograph with annotated problems found scores strongly; a page of refined drawings with no physical testing does not.
 </Callout>
 
 <KeyTerms terms={[
-  { term: "Datum", definition: "A fixed reference point from which all measurements are taken. Using a single datum edge (usually the straightest factory edge of a sheet) minimises accumulated measurement error — each measurement is independent and starts from the same reference, rather than being measured from the last mark." },
-  { term: "Marking gauge", definition: "A tool used to scribe a line parallel to a reference edge at a set distance. It has a fence (rides along the edge) and a marking pin. Used for setting out rebate depths, dado positions, and parallel lines along a timber face or edge." },
-  { term: "Try square", definition: "An L-shaped precision tool used to mark or check 90-degree angles. The stock (short arm) is pressed against the reference face; the blade (long arm) is perpendicular. Lines scribed along the blade are guaranteed to be square to the reference face." },
-  { term: "Kerf", definition: "The width of material removed by a saw cut. Typically 2–3 mm for a hand saw, 1–2 mm for a scroll saw. Always cut on the waste side of the line (the side to be removed), leaving the marked line intact on the component to be used." },
-  { term: "Tolerance", definition: "The acceptable range of variation from a nominal dimension. For this project, a tolerance of ±1 mm is acceptable for most dimensions. A specification dimension of 200 mm means any value from 199 mm to 201 mm is acceptable." },
+  { term: "Sketch model", definition: "A rough, quick 3D representation of a design built from cheap materials (card, foam, tape) to test form, proportion, and basic stability. It is not meant to look finished — it is meant to reveal problems fast." },
+  { term: "Development point", definition: "A specific design problem found during modelling or testing, recorded with the evidence (what happened) and a proposed fix (what you will change). Development points are the core of C4 evidence." },
+  { term: "Fail fast", definition: "The principle that finding a design flaw early — in a model made from card — is far cheaper than finding the same flaw in the finished product made from plywood and laser-cut acrylic. Models are meant to fail so the final product does not." },
+  { term: "Ergonomics", definition: "How well a product fits the human body and the human action required to use it. A model lets you test ergonomics by actually picking it up, placing things on it, and operating the switch as your user would." },
 ]} />
 
-<Section title="Marking out: the sequence" icon="📏" id="marking-out">
+<Section title="Why model before making" icon="🔧" id="modelling">
 
-### Step 1: Select and prepare the datum edge
+### What drawing cannot tell you
 
-Before making any marks, identify the datum edge of your material — typically the factory-cut straight edge. Check it with a try square against the face. If not perfectly square, rip a straight edge with a hand plane or circular saw guide before using it as a datum.
+A technical drawing fixes dimensions on paper but cannot tell you:
+- Whether the product feels stable when you load one side
+- Whether the switch is in a place the user can reach without awkward movement
+- Whether two parts that fit on paper actually fit in 3D when assembled
 
-### Step 2: Mark the overall blank dimensions
+A 30-minute card model answers all three — and costs almost nothing.
 
-Using the try square and a pencil (for wood/MDF) or scriber (for metal):
-1. From the datum edge, mark the full width of the component (not the final width — the blank with material to spare).
-2. From the datum end, mark the full length.
-3. Cross-hatch the waste areas immediately (marks the regions to be removed — prevents cutting the wrong side).
+### Types of model, matched to purpose
 
-### Step 3: Mark the joint positions
+| Type | Purpose | Material |
+|------|---------|----------|
+| Sketch model | Check overall form and proportion | Card, foam, tape |
+| Block model | Check scale and ergonomics | Foam board, clay |
+| Scale model | Check spatial fit within 400 × 400 mm | Card at 1:2 scale |
+| Mock-up | Test a specific detail (joint, switch position) | Offcuts of real material |
 
-Using the marking gauge and try square:
-1. Set the marking gauge to the rebate or dado depth. Scribe the depth line along the edge.
-2. Using a try square, mark the shoulder lines (the positions where the dado or rebate starts and ends).
-3. Mark the waste area within the joint with hatching.
+For this session: build a sketch model at roughly 1:1 scale so you can test it with real objects (your user's items, the actual load).
 
-### Step 4: Mark drilling positions
+### Recording development points
 
-For holes (LED hole, wire exit hole, mounting holes):
-1. Mark the centre of each hole with crossed lines.
-2. Use a centre punch (for metal) or awl (for wood/MDF) to create a starting point for the drill bit — prevents the bit wandering at the start of the cut.
-
-</Section>
-
-<Section title="Cutting: technique by process" icon="🔧" id="cutting">
-
-### Hand saw
-
-Hold the workpiece firmly against a bench stop or in a vice. Start the cut with a pull stroke (fine teeth pull the saw into the material — safer to start). Maintain a consistent angle (approximately 45° to the workpiece surface for general cuts). Let the saw do the work — do not force the blade.
-
-### Scroll saw / band saw
-
-Set the fence parallel to the blade for rip cuts. Never force the material — let the blade feed at its own pace. Keep fingers away from the blade line by at least 50 mm (use a push stick for narrow rip cuts). After cutting, check the dimension with a steel rule immediately.
-
-### Laser cutter (MDF/acrylic)
-
-All geometry is transferred from the C5 drawing CAD file. Check: scale is correct in the software, material thickness matches the cut settings. Run a small test cut on a scrap piece first to verify kerf width and ensure dimensions are accurate after cutting.
-
-### Drill press
-
-Clamp the workpiece to the table — never hold it freehand for large holes. Select the correct bit size: 3 mm for LED (standard 3 mm LED), 2 mm for wires, countersink for fixing holes. Set depth stop to prevent drilling through (unless a through-hole is required).
+For each problem the model reveals, write a development point with three parts:
+1. **What happened:** "The base tips forward when I place the helmet on the top peg."
+2. **Why it matters:** "This means the product would fall in use and could damage the helmet."
+3. **What I will change:** "I will widen the base footprint from 150 mm to 220 mm and add a rear brace."
 
 </Section>
 
-<WorkedExample title="Marking out a dado joint for a shelf bracket">
+<WorkedExample title="A card model of a cyclist gear organiser reveals two problems">
 
-**Component:** MDF back panel, 220 mm wide x 300 mm tall x 18 mm thick. A shelf (also 18 mm MDF) slots into a dado 12 mm deep.
+**Build:** A rough card frame — two vertical side panels, three horizontal pegs, a rectangular base. Assembly with masking tape, approx 1:1 scale.
 
-**Step 1 — Datum:** Bottom factory edge is the datum. Check square.
+**Problem 1 found:** When a 900 g helmet is placed on the top peg, the whole frame tips forward. **Fix:** Widen the base to 200 mm depth and add a rear horizontal member at the bottom to counterbalance.
 
-**Step 2 — Shelf height position:** From datum, measure 120 mm up. Mark a horizontal pencil line. This is the bottom shoulder of the dado.
+**Problem 2 found:** The switch position (planned at the top of the left panel) is above arm reach for a seated user. **Fix:** Move the switch to the front face of the base at 120 mm height — reachable without stretching.
 
-**Step 3 — Dado width:** From the 120 mm line, measure 18 mm up. Mark a second horizontal line. This is the top shoulder. The 18 mm gap between the lines matches the shelf thickness. Cross-hatch the area between.
-
-**Step 4 — Dado depth:** Set the marking gauge to 12 mm. Run along both face edges of the panel, scribing depth lines on both edges. These are cut-off lines when chiselling.
-
-**Step 5 — Waste hatching:** Hatch the area inside the dado (the wood to be removed) clearly. The finished component uses the wood above and below the dado, not inside it.
+**Development points:** Two problems found in 20 minutes of building. Neither would have appeared from the plan drawing alone.
 </WorkedExample>
 
-<Activity title="Mark out and cut all components" time="90 min" grouping="Individual" materials={["Your C5 working drawings", "Material prepared to blank size", "Try square, steel rule (600 mm), marking gauge", "Pencil/scriber, centre punch, awl", "Saw (hand saw or scroll saw as appropriate)", "Steel rule for post-cut checking"]}>
+<Activity title="Build, break, fix" time="90 min" grouping="Individual (technician supports)" materials={["Card, foam board, corrugated card", "Masking tape, PVA", "Scissors, craft knife, cutting mat", "Your chosen design sketch and specification"]}>
 
-**Preparation check (0–10 min):**
-1. Line up your C5 working drawings and identify every component to be cut in this session. Write a cut list: component name, material, quantity, dimensions (length x width x thickness).
-2. Confirm you have all materials and tools at your bench before starting.
+**Model briefing (0–15 min):**
+1. Decide what scale and what type of model best tests your design's main uncertainties. Plan it in two minutes, then start cutting — do not over-plan the model itself.
 
-**Datum and first marks (10–25 min):**
-3. Select the datum edge for your main sheet material. Check with a try square.
-4. Mark the first component blank from the datum. Cross-hatch waste.
+**Build (15–70 min):**
+2. Construct a rough model of your structure. Prioritise the structural skeleton first (load-bearing frame), then add the main features (pegs, shelves, circuit position).
+3. As you build, note anything that is fiddly or does not fit — these are development points in the making.
 
-**Joint positions and hole centres (25–45 min):**
-5. Mark all joint positions using the marking gauge and try square. Cross-hatch waste inside joint areas.
-6. Mark all hole centres with crossed lines. Use a centre punch or awl on each centre mark.
-
-**Cutting (45–80 min):**
-7. Cut components in this sequence: large panels first, then small parts from offcuts. Cut on the waste side of every line.
-8. After each cut, measure with a steel rule immediately and compare to the C5 dimension. Record any variance.
-
-**Post-cut check (80–90 min):**
-9. Complete the cut list: tick each component. Record actual dimensions versus nominal. Note any components that need re-cutting or adjustment. Photograph all marked and cut components before tidying up.
+**Test and record (70–90 min):**
+4. Load the model with the actual weight your spec requires (use water bottles, books, or weights). Does it hold? Does it tip? Does it flex?
+5. Operate the switch position as your user would. Is it accessible?
+6. Record at least two development points: what happened, why it matters, what you will change.
 </Activity>
 
-<Support title="Marking and cutting accuracy">
+<Support title="Model not coming together?">
 
-**Lines not square?** The try square must be held firmly against the reference face before scribing. If the stock is not seated flat, the blade is not perpendicular. Check by scribing a line, flipping the square, and scribing the same line again from the opposite side — the two lines should coincide.
+**Structure too floppy?** Real structures are rigid because of triangulation. Add a diagonal brace across any rectangular panel and the floppy rectangle becomes rigid in seconds — the same principle works in card.
 
-**Cuts consistently 2–3 mm over?** You are cutting on the line (removing the line itself). The cut must be on the WASTE side — leave the pencil line visible on the finished component.
+**Parts not fitting?** Score card along fold lines with a blunt tool before folding — the edges will be crisp. For joints, cut tabs (1 cm extension on each part) that slot into slits in the adjacent part.
 
-**Laser cut dimensions slightly smaller than specified?** Kerf takes material from both sides of the cut line. If a 200 mm wide part comes out at 197 mm, the kerf is 3 mm — offset the CAD shape by 1.5 mm on each side in the software to compensate.
+**Can't think of two development points?** Load it (does anything move that shouldn't?), hold it (does it feel like the right size for your user?), reach for the switch (is it in the right place?). Three tests, guaranteed to find something.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Why is it important to mark all measurements from a single datum edge rather than measuring from the previous mark?",
+    q: "Why does Component 2 C4 specifically require evidence of physical modelling or testing, not just more design drawings?",
     options: [
-      "Measuring from the previous mark is actually faster and more accurate",
-      "Using a datum edge ensures each measurement is independent — errors do not accumulate from one mark to the next",
-      "The datum edge is required by the school's health and safety policy for all cutting operations",
-      "Only the datum edge has the correct factory measurements — other edges may have been cut incorrectly"
+      "Because making models is easier than drawing and gives weaker students an advantage",
+      "Because C4 marks require evidence that the student tested their design against specification points — a physical test provides objective data that drawing cannot",
+      "Because Cambridge requires photographs in the folder and photographs must show a physical model",
+      "Because digital CAD is not allowed at this stage of the project"
     ],
     answer: 1,
-    hint: "Think about what happens if each mark is ±0.5 mm from the previous one over ten marks.",
-    explain: "When measuring chain-style (each mark from the previous one), small errors accumulate — a consistent 0.5 mm overmark on each of ten positions creates a 5 mm total error on the last mark. Using a single datum means each measurement error is independent and limited to ±0.5 mm regardless of how many marks are made. This is called baseline or datum dimensioning and matches the C5 dimensioning approach."
+    hint: "What can a physical test tell you that a drawing on paper cannot?",
+    explain: "C4 is the 'development' criterion. Development means testing an idea against specification points and using the results to refine it. A physical model under load tells you whether the structure is stable, whether it meets the load spec, and whether the switch is in a usable position — information that cannot be read from a drawing. The mark scheme rewards objective testing evidence, not just more design drawings."
   },
   {
-    q: "What is a 'kerf' and why does it matter when cutting to a marked line?",
+    q: "A student's card model tips forward when loaded with the specified weight. What should the student do?",
     options: [
-      "The angle of the saw blade relative to the workpiece surface",
-      "The width of material removed by the saw blade — the cut must be on the waste side of the line",
-      "The maximum depth a saw can cut in one pass without binding",
-      "The distance between the saw blade and the fence on a scroll saw"
+      "Scrap the design and start again with a new idea from scratch",
+      "Add more weight to the back of the model as permanent ballast in the final product",
+      "Record this as a development point — note what happened, why it matters, and what design change will fix it",
+      "Reduce the specified load in the specification so the model passes"
     ],
-    answer: 1,
-    hint: "A saw removes material. The width it removes comes from somewhere.",
-    explain: "Kerf is the width of material removed by the saw cut (typically 2–3 mm for a hand saw, 1–2 mm for a scroll saw, less for laser cutting). If you cut on the line rather than on the waste side, the kerf removes the line and up to 2–3 mm of your finished component. Always cut so the kerf is in the waste area, leaving the pencil line intact on the component to be used."
+    answer: 2,
+    hint: "A model problem is not a failure — it is data. What does the mark scheme reward?",
+    explain: "A model that tips is exactly the kind of finding C4 rewards. You record it as a development point: describe what happened (tipped at X kg), why it matters (product would fall in use), and what change fixes it (widen base footprint, add rear brace). This shows the examiner that your development was genuine — you made something, tested it, found a real problem, and responded to the evidence."
   },
   {
-    q: "When drilling a hole in MDF for an LED, why should the workpiece be clamped to the drill press table rather than held by hand?",
+    q: "What is the difference between a sketch model and a scale model?",
     options: [
-      "Clamping is required by school rules for all drilling operations regardless of material",
-      "As the drill bit breaks through, it can grab the material and spin it rapidly — clamping prevents injury",
-      "MDF is too soft to be held by hand — it will compress under the pressure",
-      "Hand-holding prevents the drill bit from achieving the correct speed for clean drilling"
+      "A sketch model is drawn on paper; a scale model is drawn on a computer",
+      "A sketch model is built at full 1:1 size; a scale model is always built at exactly 1:10",
+      "A sketch model is a rough quick build to test form and proportion; a scale model is a carefully proportioned build to test spatial fit and dimensions",
+      "There is no difference — both terms mean the same thing in D&T"
     ],
-    answer: 1,
-    hint: "Think about what the drill bit does as it exits the underside of the material.",
-    explain: "As a drill bit breaks through the underside of a workpiece, it can catch and grab the material. For a freehand-held workpiece, this can spin the workpiece at high speed — causing injury and damaging the component. Clamping the workpiece to the drill press table (or using a bench vice) prevents this. The risk is greatest with large-diameter bits and thin materials like MDF and acrylic."
+    answer: 2,
+    hint: "Think about the purpose of each type of model.",
+    explain: "A sketch model is built quickly and roughly — its purpose is to reveal problems with form, proportion, and stability, not to look polished. A scale model is built to a consistent ratio (e.g. 1:2) so you can test whether the product fits within constraints like the 400 × 400 mm limit. Each type answers different questions. For this session, a rough sketch model at roughly 1:1 scale is most useful because you can test it with the actual user's items."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Photograph your model and annotate the photograph to show the problems you found and the fixes you plan. Add the photograph and annotations to your C4 folder pages.
+
+<Extension title="Second variant">
+Build a second version of one specific feature of your model — the joint at a critical corner, or the base configuration — using a different approach. Compare the two versions: which is more stable? Which is easier to assemble? Add this comparison to your development page.
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.9 Joining techniques (p. 280)", type: "Textbook", href: "https://drive.google.com/file/d/1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §4.2.10 Surface treatments (p. 288)", type: "Textbook", href: "https://drive.google.com/file/d/1F8bzARgbX_6J9CRumVRAswfFDgXfydHy/view?usp=sharing" },
+  { label: "Component 2 Project — C4 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.3 Making (modelling and prototypes)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="When you measured your cut components against the C5 dimensions, where was the largest variance? Is the variance within your tolerance of ±1 mm — and if not, what would you do differently when cutting the next component?" />
+<Reflection prompt="What did making the model teach you that drawing the design had not? Name one specific thing you will change in your design as a result." />

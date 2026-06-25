@@ -2,160 +2,145 @@
 grade: 11
 term: 3
 week: 9
-title: "Final Session: Q&A, Formula Drill, and Exam Ready"
-topic: "Exam Preparation"
-learningGoal: "demonstrate formula recall for all five key formulas without notes; answer any remaining content questions before the final independent revision period"
-selGoal: "leave this session knowing exactly what to do in the first 5 minutes of the exam"
+title: "Testing & Evaluation + Folder Completion — Graded M3"
+topic: "Evaluation"
+learningGoal: "run objective tests of my product against the specification, write the C7 evaluation, and submit the complete project folder for the M3 graded checkpoint"
+selGoal: "write an evaluation that is honestly critical — an evaluation that says everything was perfect is not credible and does not earn marks"
 draft: false
 ---
 
-The final main session of the year. No new content. This session is student-led: questions, formulas, and the last practised run of the pre-exam protocol before the independent revision period begins.
+The product is made and photographed. Now you find out how good it is by testing it against the specification and writing an honest evaluation. Term 3 closes with the M3 graded checkpoint — worth 40% of the term — which is the complete folder submission: C1 through C7.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2</ExamLink> criterion **C7 (evaluation, 15 marks)** closes the project. It rewards honest, evidence-based evaluation: what the product does well, what it does not, and what you would change in a redesign. C7 that says everything is perfect scores 0–3/15. C7 that identifies specific weaknesses with test evidence and proposes specific improvements scores 12–15/15.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Formula recall drill", definition: "A timed exercise where all five key formulas are written from memory without notes: (1) current-limiting resistor, (2) voltage divider, (3) Ohm's Law, (4) FoS, (5) stress. Target: all five written correctly in under 90 seconds — the time available in the first 5 minutes of the exam before the first question." },
-  { term: "Open Q&A", definition: "An open session where students raise any content question from any topic covered this year. The session is student-led — the teacher responds to questions raised, not a prepared lesson. Questions can be about calculation method, terminology, exam technique, or anything else from T1–T3." },
-  { term: "Independent revision plan", definition: "A structured home study plan for the period between the final school session and the November 2027 exam. The plan should include: spaced repetition of the weakest topics (from M6 analysis), two or more full timed past papers under exam conditions, daily formula recall drills." },
+  { term: "Specification testing", definition: "Systematically testing the finished product against each specification point — not just checking by eye but measuring, timing, loading, or observing against a specific criterion. Pass or fail against each specification point. Evidence of actual testing." },
+  { term: "C7 evaluation structure", definition: "The standard structure for a strong C7: (1) test results against specification, (2) strengths identified from test results, (3) weaknesses identified from test results, (4) proposed improvements with reasoning. Each section linked to specific evidence." },
+  { term: "Proposed improvement", definition: "A specific change to the design or making process that would address a weakness found in testing. 'Make it better' is not an improvement. 'Increase the base width from 150 mm to 200 mm to improve stability under asymmetric loading as shown in the tipping test' is a proposed improvement." },
+  { term: "Folder completion", definition: "All C1–C7 criterion sections present, in order, with no missing pages. The folder is the only thing the examiner marks — if evidence is not in the folder, it does not exist for marking purposes." },
 ]} />
 
-<Section title="The five essential formulas" icon="🔢" id="formulas">
+<Section title="Testing the finished product" icon="🔬" id="testing">
 
-Write each from memory before looking at this page. Then check.
+### Setting up specification tests
 
-**Formula 1 — Current-limiting resistor:**
-R = (Vsupply - V_LED) / I_LED
-[Convert I_LED from mA to A before substituting]
+You built a test plan in T2 W9. Today you run those tests on the actual finished product:
 
-**Formula 2 — Voltage divider:**
-Vout = Vsupply x R2 / (R1 + R2)
-[R1 = top; R2 = bottom. Vout must be between 0 V and Vsupply]
+1. **Load test:** Apply the specified load (e.g. 4 kg) at the critical point. Measure deflection or check for tipping. Pass or fail?
+2. **Function test:** Switch on — LED lights. Switch off — LED extinguishes. Battery accessible without tools. Pass or fail?
+3. **Dimension test:** Measure overall width, height, depth. Compare to the specification maximum (400 mm). Pass or fail?
+4. **Stability test:** Load one side only with half the total specified load. Does the product tip? Pass or fail?
+5. **Usability test:** Simulate the user's action — load and unload the product as your user would. Is every item accessible? Is the switch in a usable position? Pass or fail on each point?
 
-**Formula 3 — Ohm's Law:**
-V = I x R (rearranges to I = V / R and R = V / I)
+Record each test: method, result (measurement), pass/fail. Photograph where possible.
 
-**Formula 4 — Factor of Safety:**
-FoS = Ultimate load / Working load
-[FoS > 1.0 for safe design. FoS = 2.0 means twice the working load before failure]
+### Writing C7
 
-**Formula 5 — Stress:**
-Stress = Force / Area
-[Force in N, Area in mm², Result in N/mm² = MPa]
+Three sections:
 
-**Bonus formula — Beam reaction:**
-RA = W x (distance from load to B) / span
-[Check: RA + RB = W]
+**Section 1 — Strengths:** Spec points the product passes. Link each strength to the test result. Do not list opinions — list evidence.
+
+**Section 2 — Weaknesses:** Spec points the product fails or partially fails, plus quality issues from the snagging list that could not be fixed. Be specific — name the dimension or specification point that is not met.
+
+**Section 3 — Proposed improvements:** For each weakness, a specific improvement: what you would change, how, and why it would fix the issue. Include whether the improvement would affect other specification points.
 
 </Section>
 
-<Section title="Pre-exam protocol — the exact sequence" icon="🎯" id="protocol">
+<WorkedExample title="C7 evaluation extract — cyclist gear organiser">
 
-### Five minutes at the start of every Paper 4 exam
+**Test results:**
+- Load test (4 kg, symmetric): deflection at top = 2 mm. Specification: max 5 mm. **PASS**
+- Stability test (2 kg asymmetric): no tipping at 2 kg. Tipped at 2.4 kg. Specification: must not tip at 2 kg. **PASS**
+- Dimension: 151 mm × 201 mm × 283 mm. All within 400 mm. **PASS**
+- Circuit: LED lights on switch-on, extinguishes on switch-off. Battery accessible without tools. **PASS**
+- Usability: helmet hooks securely on top peg. Water bottle clips in lower pegs. Switch reachable at standing reach. **PASS**
 
-1. Write candidate number and name.
-2. Write formulas in the margin: R, Vout, FoS, Stress, RA.
-3. Write personal error list on inside cover: mA → A, top/bottom divider, beam reaction direction, unit after calculation.
-4. Read Section B context.
-5. Note marks per section. Allocate: Section A = 40 minutes, Section B = 75 minutes, review = 5 minutes.
-6. Begin Section A, first pass.
+**Weakness identified:** Peg no. 3 is 3° off-vertical (snagging list W7). This is not a specification failure (the spec does not specify peg angle) but is a quality issue visible on close inspection.
 
-This protocol should take exactly 5 minutes. Practise it today — time yourself.
+**Proposed improvement:** In a redesign, peg holes would be drilled using a pillar drill with a fence jig to ensure perpendicularity. The hand drill used in T3 W3 allowed slight wander — a pillar drill eliminates this. Alternatively, a CNC-cut guide jig for hand drilling would achieve the same result without a pillar drill.
+</WorkedExample>
 
-### Five minutes at the end of every Paper 4 exam
+<Activity title="Testing + C7 evaluation + folder submission" time="90 min" grouping="Individual (testing equipment available from teacher)" materials={["Finished product", "Weights, ruler, calipers (for tests)", "Camera", "Folder — all C1–C7 sections", "C7 writing template"]}>
 
-1. Check: every sub-part answered?
-2. Check: unit stated after every calculation?
-3. Check: any complete blanks? Write a partial attempt for each.
-4. Stop.
+**Specification tests (0–35 min):**
+1. Run each test from your T2 W9 test plan.
+2. Record: spec point, test method, result (with measurement), pass/fail.
+3. Photograph any test that can be photographed (product under load, LED lit, etc.).
 
-</Section>
+**C7 writing (35–70 min):**
+4. Write Section 1 (Strengths): at least two strengths, each linked to a specific test result.
+5. Write Section 2 (Weaknesses): at least two weaknesses, each named specifically — spec point or quality issue.
+6. Write Section 3 (Improvements): a specific improvement for each weakness, with reasoning.
 
-<Section title="Open Q&A — common end-of-year questions" icon="💬" id="qa">
-
-### "Which topics come up most often in Paper 4?"
-
-Structures (types, forces, FoS, stress, beam reactions) and materials (properties, justification) appear in Section A every year. Electronics (IPO, resistor, voltage divider) appears in 80%+ of recent papers. Sustainability (6Rs) appears in Section A and sometimes Section B. Orthographic projection and specification writing appear occasionally in Section B.
-
-### "What is the hardest question in Section A?"
-
-Beam reaction calculations with two point loads (not covered in depth this year — see bonus sessions). Composite material property questions that require comparing two properties simultaneously. Voltage divider with the sensor in an unusual position.
-
-### "What is the most reliable source of marks in Section B?"
-
-An explain-and-justify question with 4–6 marks on materials selection — if you apply the three-part format (property + value + consequence for this context), full marks are consistently available.
-
-### "How much does my coursework count?"
-
-Component 2 coursework (the project) is worth 60% of the IGCSE D&T grade. Paper 1 (design communication) is 20%. Paper 4 (Section A + B) is 20%. Your project grade is set — the remaining papers determine where you fall within your coursework band.
-
-</Section>
-
-<Activity title="Formula drill, Q&A, and independent revision plan" time="90 min" grouping="Individual and class" materials={["Formula card (blank — write it yourself)", "Independent revision plan template (teacher-provided)", "Any remaining exam questions for individual Q&A"]}>
-
-**Formula recall drill (0–15 min):**
-1. Write all five formulas (plus beam reaction) from memory in 90 seconds. No notes.
-2. Check against this page. For any formula that was wrong or missing: write it three times from memory with a 30-second gap between each writing.
-
-**Timed pre-exam protocol (15–25 min):**
-3. On a blank sheet of paper, run through the five-minute pre-exam protocol exactly as it will happen in the exam room. Time yourself. It should take 5 minutes or less.
-
-**Open Q&A (25–55 min):**
-4. Students raise questions. Any topic from T1–T3. Teacher responds to questions as raised. Write down any answer that resolves a question you had.
-
-**Independent revision plan (55–80 min):**
-5. Complete the independent revision plan template:
-   - My two weakest topics from M6: [topic 1] and [topic 2].
-   - Revision activity for topic 1: [specific — e.g. "Complete 15 structures Section A questions per day, self-mark"].
-   - Revision activity for topic 2: [specific].
-   - Formula drill schedule: ["Write all formulas from memory, morning of each revision day"].
-   - Full timed past paper dates: [two dates before the exam, with exam conditions — alone, timed, no notes].
-   - Final review: ["Day before exam: formula recall + personal error list review. No new material."]
-
-**Send-off (80–90 min):**
-6. Share your independent revision plan with the teacher for feedback.
-7. Final reflection: write one sentence — what are you most confident about, and one sentence — what are you still working on.
+**Folder final check and submission (70–90 min):**
+7. Check all seven criteria sections are present: C1, C2, C3, C4, C5, C6, C7.
+8. Check the making log is complete (W2–W8).
+9. Submit the complete folder to teacher for M3 marking.
 </Activity>
+
+<Support title="C7 feels too positive?">
+
+**Everything passed the spec?** If all your tests pass, your evaluation should still identify what could be improved in a production version — a faster assembly method, a more accurate process, a material substitution that would reduce cost or environmental impact. C7 does not require failures — it requires critical thinking.
+
+**Weaknesses feel like excuses?** The difference: an excuse says why the problem is not your fault ('the drill slipped'). An improvement says what you would do differently to prevent it. Focus on the improvement, not the excuse.
+
+**Can't write three full sections in 35 minutes?** Write in bullet points first, then convert to sentences. Three bullets per section = enough content for a 10/15 C7. Complete sentences and full explanations push you toward 12–15/15.
+</Support>
 
 <SelfCheck questions={[
   {
-    q: "All five formulas are written in the first five minutes of the exam. What is the primary benefit of this action?",
+    q: "A student's C7 evaluation begins: 'Overall my product is very good and it met all the specification points I set. I am very happy with it.' What mark is this likely to receive for C7?",
     options: [
-      "It demonstrates to the examiner that the formulas were memorised — and earns bonus marks",
-      "It offloads the formulas from working memory to the page, freeing cognitive capacity for problem-solving during the exam",
-      "It ensures the formulas are available even if the student forgets them during the exam — they can copy from the margin",
-      "It satisfies the check-back protocol requirement to verify formulas are correct before answering"
-    ],
-    answer: 1,
-    hint: "This was covered in T3 W8 — apply the cognitive load management reasoning.",
-    explain: "Writing formulas on the page at the start of the exam offloads them from working memory. Working memory has limited capacity — formulas that must be recalled actively during problem-solving compete with the arithmetic, the question context, and the writing itself. With formulas on the page, recall is replaced by recognition (looking at the margin), freeing working memory for the problem. This is the primary benefit — not bonus marks (there are none) and not the check-back protocol (which is at the end)."
-  },
-  {
-    q: "Component 2 coursework is worth what percentage of the final IGCSE D&T grade?",
-    options: [
-      "20% — the same as Paper 1 and Paper 4",
-      "40% — double the weighting of each paper",
-      "60% — the largest single component of the IGCSE grade",
-      "80% — papers and coursework are split 20/80"
+      "15/15 — the product met all spec points so the evaluation is correct and complete",
+      "8–10/15 — good identification of test results but limited critical analysis",
+      "3–5/15 — no specific test results, no named weaknesses, no proposed improvements — no evidence of critical evaluation",
+      "0/15 — any positive statement about a product automatically earns zero in C7"
     ],
     answer: 2,
-    hint: "Paper 1 = 20%, Paper 4 = 20%. The three components must add to 100%.",
-    explain: "The IGCSE D&T 0445 assessment structure: Component 2 (coursework) = 60%, Paper 1 (design communication) = 20%, Paper 4 (written paper) = 20%. This means the project work completed throughout G11 determines 60% of the final grade. The two papers together account for the remaining 40%. A student who has strong coursework can achieve a good grade even with moderate paper performance — and vice versa."
+    hint: "What does C7 require that this evaluation does not include?",
+    explain: "C7 rewards critical analysis: specific test results, specific weaknesses identified from those results, and specific proposed improvements. This evaluation contains no specific test results ('very good' is not a measurement), no named weaknesses, and no proposed improvements. Without these, the mark scheme cannot award marks in the upper bands. The mark is likely 3–5/15 — reflecting some engagement with the evaluation task but no evidence-based analysis."
   },
   {
-    q: "In the final 5 minutes of the Paper 4 check-back, which missed item costs the most marks if discovered?",
+    q: "Why must a proposed improvement in C7 be specific rather than general?",
     options: [
-      "A spelling error in a materials term — examiners deduct marks for incorrect spelling of technical terms",
-      "A complete blank on a 4-mark sub-part question — anything written may earn 1–2 marks",
-      "A units error on a 1-mark calculation — the unit costs the final mark",
-      "A generic vocabulary term in a 2-mark answer — costs both marks"
+      "Cambridge requires a specific word count for each improvement",
+      "A specific improvement demonstrates that the student understands what caused the weakness and how the design or process would need to change — a vague improvement suggests the cause is not understood",
+      "General improvements are penalised because they could apply to any product",
+      "Specific improvements are easier to mark because they have a definitive right answer"
     ],
     answer: 1,
-    hint: "Which item represents the largest mark loss per minute of check-back time?",
-    explain: "A complete blank on a 4-mark question costs 4 marks. A units error on a 1-mark calculation costs 1 mark. A generic vocabulary term on a 2-mark answer costs 1–2 marks (but the question is already partially answered). A blank 4-mark question that can be partially answered in 60 seconds of check-back time (earning 1–2 marks) represents the highest return on check-back time investment. Spelling is not penalised in Paper 4 provided the intended term is recognisable."
+    hint: "What does a specific improvement tell the examiner about the student's understanding of the problem?",
+    explain: "A specific improvement like 'increase the base width from 150 mm to 200 mm to prevent tipping under asymmetric load' tells the examiner: (1) the student identified the specific cause of the failure (base too narrow), (2) they know what change would address it (widen the base), and (3) they know why it would help (physics of stability). A vague improvement like 'make the base bigger' tells the examiner none of these things — it could have been written without understanding the problem at all."
+  },
+  {
+    q: "What is the minimum folder content that must be present for full marks across all Component 2 criteria?",
+    options: [
+      "C6 (making) and C7 (evaluation) only — the other criteria are not mandatory",
+      "C1, C2, C3, C4, C5, C6, and C7 — all seven criteria must have evidence in the folder",
+      "C3, C4, C5, C6, and C7 — design research (C1) and brief (C2) are not assessed separately",
+      "Any five of the seven criteria — the student can choose which five to submit"
+    ],
+    answer: 1,
+    hint: "Component 2 is marked across all criteria C1–C7. What happens if one criterion has no evidence?",
+    explain: "All seven criteria (C1–C7) are assessed by the examiner. If a criterion has no evidence in the folder, it scores zero — regardless of how well the other criteria are evidenced. C1 (research) through C7 (evaluation) together total 100 marks. Missing one criterion can cost 10–20 marks depending on which criterion it is. The folder must contain evidence for all seven."
   }
 ]} />
 
+<Section title="Homework" icon="🏠" id="homework">
+
+**Home task:** Review your submitted folder once it is returned. Note the criteria where you scored strongest and where you scored weakest. Write one sentence per criterion explaining what additional evidence would have increased that criterion's mark. This exercise prepares you for the post-project debrief and for any moderation review.
+
+<Extension title="Market evaluation">
+Imagine your product is being sold commercially. Research one comparable product available in a retail store or online. Compare it to yours across four criteria: materials, price point, quality of finish, and user features. Write a two-paragraph evaluation: in what ways does your product match or exceed the commercial product? In what ways does the commercial product surpass yours? What design decision accounts for each difference?
+</Extension>
+
+</Section>
+
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/file/d/1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9/view?usp=sharing" },
-  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/file/d/1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d/view?usp=sharing" },
+  { label: "Component 2 Project — C7 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.4 Evaluation (p. 40)", type: "Textbook" },
 ]} />
 
-<Reflection prompt="In one sentence: what was the most useful thing you learned in D&T this year — not the most interesting, not the most difficult, but the most useful for your life or your exam? And in one sentence: what do you wish you had spent more time on?" />
+<Reflection prompt="If you were starting this project again with the knowledge you have now — at the end — what is the one thing you would do differently in the design phase (before making began) that would have produced a better product?" />
