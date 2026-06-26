@@ -62,4 +62,18 @@ const sessions = defineCollection({
   }),
 });
 
-export const collections = { lessons, sessions };
+/**
+ * The `blocks` collection. One .mdx file = one block in a block-structured course.
+ * Routing: /course/[courseId]/block/[blockId]
+ * Convention: src/content/blocks/<courseId>/block-<id>.mdx
+ */
+const blocks = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/blocks' }),
+  schema: z.object({
+    courseId: z.string(),
+    blockId: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { lessons, sessions, blocks };

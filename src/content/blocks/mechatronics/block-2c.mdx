@@ -1,0 +1,183 @@
+---
+courseId: mechatronics
+blockId: 2c
+draft: false
+---
+
+The capstone. Every student designs and builds her own physically locked safe from scratch. To open it, a challenger must solve three sequential puzzles embedded in the firmware. The safe connects to the internet: hints arrive via a personal Telegram bot, the unlock code changes every hour (synced to NTP time), failed attempts are logged to a Google Sheet, and the teacher holds a secret admin URL that can unlock any safe remotely. The physical enclosure is 3D printed and finished to look like a real product.
+
+## Weekly breakdown
+
+| Week | Classes | Focus |
+|------|---------|-------|
+| 21 | 41–42 | Project kickoff · system architecture · OLED screen manager |
+| 22 | 43–44 | Servo bolt mechanism · Fusion 360 CAD |
+| 23 | 45 | Stage 1: Binary decoder puzzle |
+| 24 | 46 | Stage 2: Morse code input |
+| 25 | 47–48 | Stage 3: NTP time-based code · full state machine |
+| 26 | 49–50 | Telegram hints · admin remote unlock · Google Sheets log |
+| 27 | 51–52 | LiPo power chain · enclosure CAD |
+| 28 | 53–56 | Print · final assembly · end-to-end testing |
+
+## System architecture
+
+Each safe has:
+- **3 buttons** (UP / DOWN / CONFIRM)
+- **OLED 128×64** — all UI lives here
+- **Servo** — drives a 3D-printed bolt (locked/unlocked)
+- **RGB LED + buzzer** — state feedback
+- **Wi-Fi** — NTP sync, Telegram, Google Sheets, admin webhook
+- **LiPo battery → TP4056 charger → MT3608 boost converter → 5 V**
+
+### State machine overview
+
+```cpp
+enum class SafeState {
+  LOCKED, STAGE1, STAGE2, STAGE3, UNLOCKED, LOCKOUT
+};
+
+SafeState state = SafeState::LOCKED;
+unsigned long lockoutUntil = 0;
+const unsigned long LOCKOUT_MS = 1800000UL;  // 30 min
+
+void setState(SafeState next) {
+  state = next;
+  switch (next) {
+    case SafeState::STAGE1:   initStage1(); break;
+    case SafeState::STAGE2:   initStage2(); break;
+    case SafeState::STAGE3:   initStage3(); break;
+    case SafeState::UNLOCKED: unlockBolt(); break;
+    case SafeState::LOCKOUT:
+      lockoutUntil = millis() + LOCKOUT_MS;
+      lockBolt();
+      break;
+    default: break;
+  }
+}
+```
+
+## Stage 1 — Binary decoder puzzle
+
+A random 8-bit number is displayed in binary on the OLED. The challenger must enter the correct decimal value using UP/DOWN/CONFIRM buttons.
+
+```cpp
+const int BTN_UP      = 34;
+const int BTN_DOWN    = 35;
+const int BTN_CONFIRM = 32;
+
+int  s1Target = 0;
+int  s1Guess  = 0;
+
+void initStage1() {
+  s1Target = random(0, 256);
+  s1Guess  = 0;
+  // Display target in binary on OLED, show guess below
+}
+
+void handleStage1(char btn) {
+  if (btn == 'U') s1Guess = constrain(s1Guess + 1, 0, 255);
+  if (btn == 'D') s1Guess = constrain(s1Guess - 1, 0, 255);
+  if (btn == 'C') {
+    if (s1Guess == s1Target) setState(SafeState::STAGE2);
+    else                     buzz(200);   // wrong answer
+  }
+}
+```
+
+## Stage 2 — Morse code input
+
+The OLED shows a random 3-letter word in Morse notation. The challenger taps it back using the CONFIRM button: short press = dot, long press = dash.
+
+```cpp
+const char* MORSE_TABLE[] = {
+  ".-",   "-...", "-.-.", "-..",  ".",     // A B C D E
+  "..-.", "--.",  "....", "..",   ".---",  // F G H I J
+  "-.-",  ".-..", "--",   "-.",   "---",   // K L M N O
+  ".--.", "--.-", ".-.",  "...",  "-",     // P Q R S T
+  "..-",  "...-", ".--",  "-..-","-.--",  // U V W X Y
+  "--.."                                   // Z
+};
+
+// Timing thresholds
+const int DOT_MAX_MS  = 300;   // press < 300 ms → dot
+const int DASH_MIN_MS = 400;   // press ≥ 400 ms → dash
+const int GAP_LETTER  = 1200;  // gap > 1200 ms → next letter
+```
+
+## Stage 3 — NTP hourly code
+
+The access code is derived from the current hour using a mixing function baked into the firmware. The secret is the algorithm — not the hour, which anyone can read from a clock.
+
+```cpp
+#include <time.h>
+
+const int SALT = 1337;   // unique per student — keep this private
+
+int generateCode(int hour) {
+  // Both sides (safe + challenger) can compute this
+  // from the public information (current hour) + secret (SALT)
+  return (hour * 73 + SALT * 17) % 9000 + 1000;
+}
+
+int getCurrentCode() {
+  struct tm t;
+  getLocalTime(&t);
+  return generateCode(t.tm_hour);
+}
+```
+
+The challenger enters the 4-digit code using UP/DOWN to change each digit and CONFIRM to advance. Five wrong codes trigger a 30-minute lockout.
+
+## Telegram hints + admin unlock
+
+```cpp
+int hintCount = 0;
+const int MAX_HINTS = 3;
+
+void sendHint(String chatId) {
+  if (hintCount >= MAX_HINTS) {
+    bot.sendMessage(chatId, "No more hints this round.", "");
+    return;
+  }
+  String hint = "";
+  switch (state) {
+    case SafeState::STAGE1:
+      if (hintCount == 0) hint = "The number is less than 200.";
+      if (hintCount == 1) hint = "The leftmost bit is 1.";
+      if (hintCount == 2) hint = "It's between 128 and 160.";
+      break;
+    case SafeState::STAGE2:
+      if (hintCount == 0) hint = "First letter is a vowel.";
+      break;
+    default:
+      hint = "You are on Stage 3. Think: what time is it right now?";
+  }
+  bot.sendMessage(chatId, hint, "");
+  hintCount++;
+}
+```
+
+```cpp
+// Teacher admin URL: /admin?key=secret → unlocks any safe remotely
+#include <ESPAsyncWebServer.h>
+
+AsyncWebServer adminServer(80);
+const String ADMIN_KEY = "marymount2027secret";
+
+void setupAdminServer() {
+  adminServer.on("/admin", HTTP_GET, [](AsyncWebServerRequest* req) {
+    if (req->hasParam("key") &&
+        req->getParam("key")->value() == ADMIN_KEY) {
+      setState(SafeState::UNLOCKED);
+      req->send(200, "text/plain", "Safe unlocked remotely.");
+    } else {
+      req->send(403, "text/plain", "Forbidden.");
+    }
+  });
+  adminServer.begin();
+}
+```
+
+## What you build
+
+A physically locking, internet-connected smart safe with a unique theme chosen by each student — from "secret agent" to "pirate chest." The enclosure is fully 3D printed and finished. Guests at the Block 2D public demo will try to crack it live; the student explains the engineering while they try.

@@ -1,0 +1,188 @@
+---
+courseId: mechatronics
+blockId: 2b
+draft: false
+---
+
+Block 2B is a class project: one device, chosen by vote at the end of Block 2A, built together across six weeks. Three tracks are available — the class picks one. All three are cloud-connected, all three solve a real problem, and all three follow the same weekly rhythm: design on paper first, then build in stages, with a working demo at the end.
+
+## Weekly breakdown (all tracks)
+
+| Week | Classes | Focus |
+|------|---------|-------|
+| 15 | 29–30 | System design · component list · wiring diagram |
+| 16 | 31–32 | Core mechanics (servo / RFID / keypad) |
+| 17 | 33–34 | Sensing layer (load cell / solenoid / OLED display) |
+| 18 | 35–36 | Cloud connectivity (Telegram / Google Sheets / Adafruit IO) |
+| 19 | 37–38 | Integration testing · edge-case handling |
+| 20 | 39–40 | Final assembly · enclosure · **Demo Day** |
+
+---
+
+## Track 1 — Smart Pet Feeder
+
+An automatic pet feeder with a servo auger, a load cell to measure dispensed food, an ESP32-CAM for live video, and an NTP-scheduled feeding time sent via Telegram.
+
+### Key components
+
+- Servo motor (auger mechanism)
+- HX711 load cell amplifier + 500 g load cell
+- ESP32-CAM (OV2640 camera)
+- NTP time client (`configTime`)
+- Telegram bot for remote feeding + live snapshot
+
+### Core firmware snippets
+
+```cpp
+#include <ESP32Servo.h>
+#include <HX711.h>
+
+Servo auger;
+HX711 scale;
+
+const int SERVO_PIN  = 13;
+const int DOUT_PIN   = 4;
+const int CLK_PIN    = 5;
+const float PORTION_G = 30.0;   // grams per feeding
+
+void dispense() {
+  float startWeight = scale.get_units(5);
+  auger.write(90);             // rotate auger
+  while (scale.get_units(3) - startWeight < PORTION_G) {
+    delay(100);
+  }
+  auger.write(0);              // stop
+}
+```
+
+```cpp
+// NTP scheduled feeding — check every minute
+#include <time.h>
+
+void checkSchedule() {
+  struct tm t;
+  if (!getLocalTime(&t)) return;
+  // Feed at 08:00 and 18:00
+  if ((t.tm_hour == 8 || t.tm_hour == 18) && t.tm_min == 0) {
+    dispense();
+    bot.sendMessage(CHAT_ID, "Fed! Dispensed " + String(PORTION_G) + "g", "");
+  }
+}
+```
+
+---
+
+## Track 2 — Smart Locker
+
+An RFID-access locker: only registered cards unlock the bolt. Every access attempt is logged to a Google Sheet. A Telegram bot lets the admin lock/unlock remotely and view the log.
+
+### Key components
+
+- MFRC522 RFID reader + UID-whitelisted access
+- 12 V solenoid lock + MOSFET driver (IRLZ44N)
+- Google Apps Script webhook for logging (HTTPS POST)
+- Telegram bot for admin commands (`/lock`, `/unlock`, `/log`)
+
+### Core firmware snippets
+
+```cpp
+#include <MFRC522.h>
+
+MFRC522 rfid(SS_PIN, RST_PIN);
+
+bool isAuthorised(String uid) {
+  // Whitelist: add known card UIDs here
+  String allowed[] = {"A1B2C3D4", "04:1A:2B:3C"};
+  for (auto& id : allowed) {
+    if (uid.equalsIgnoreCase(id)) return true;
+  }
+  return false;
+}
+
+void loop() {
+  if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial()) return;
+
+  String uid = "";
+  for (byte i = 0; i < rfid.uid.size; i++) {
+    uid += String(rfid.uid.uidByte[i], HEX);
+  }
+
+  if (isAuthorised(uid)) {
+    openSolenoid();
+    logToSheets(uid, "GRANTED");
+  } else {
+    logToSheets(uid, "DENIED");
+  }
+}
+```
+
+```cpp
+// MOSFET-driven solenoid (12 V supply, IRLZ44N gate on GPIO 26)
+const int SOLENOID_PIN = 26;
+const int OPEN_MS      = 3000;
+
+void openSolenoid() {
+  digitalWrite(SOLENOID_PIN, HIGH);
+  delay(OPEN_MS);
+  digitalWrite(SOLENOID_PIN, LOW);
+}
+```
+
+---
+
+## Track 3 — IoT Vending Machine
+
+A multi-slot vending machine controlled by a 4×4 keypad: select an item code, check the OLED display for price and stock, and the servo dispenser drops the item. Stock levels publish to an Adafruit IO dashboard in real time.
+
+### Key components
+
+- 4×4 membrane keypad
+- 128×64 OLED display (SSD1306, I²C)
+- Servo dispenser mechanism (one per slot)
+- Adafruit IO MQTT dashboard (stock + revenue feed)
+
+### Core firmware snippets
+
+```cpp
+#include <Keypad.h>
+#include <Adafruit_SSD1306.h>
+
+// Simple menu state machine
+enum class VMState { IDLE, ITEM_SELECTED, DISPENSING };
+VMState state = VMState::IDLE;
+int selectedSlot = -1;
+
+void handleKey(char key) {
+  if (state == VMState::IDLE && key >= '1' && key <= '4') {
+    selectedSlot = key - '1';    // slots 0–3
+    showItemInfo(selectedSlot);
+    state = VMState::ITEM_SELECTED;
+  } else if (state == VMState::ITEM_SELECTED && key == '#') {
+    dispenseSlot(selectedSlot);
+    state = VMState::IDLE;
+  } else if (key == '*') {       // cancel
+    state = VMState::IDLE;
+    showIdle();
+  }
+}
+```
+
+```cpp
+// Servo dispenser per slot
+#include <ESP32Servo.h>
+
+Servo dispensers[4];
+const int SERVO_PINS[]   = {13, 14, 15, 16};
+const int DISPENSE_ANGLE = 90;
+
+void dispenseSlot(int slot) {
+  dispensers[slot].write(DISPENSE_ANGLE);
+  delay(600);
+  dispensers[slot].write(0);
+  publishStock(slot, --stock[slot]);   // update Adafruit IO
+}
+```
+
+## What you build
+
+One fully functional, cloud-connected device — whichever track the class chose. By Demo Day (Class 40) the device works end-to-end: physical interaction triggers real cloud events visible from any browser or phone.

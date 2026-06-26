@@ -3,16 +3,18 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
 import Card from '../../../../components/Card.astro';
-import { COURSES, getCourse, getSprint } from '../../../../lib/courses';
+import { COURSES, getCourse, getSprint, type CourseInfo } from '../../../../lib/courses';
 import { routes } from '../../../../lib/url';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  return COURSES.flatMap((c) =>
-    c.sprints.map((s) => ({
-      params: { courseId: c.id, sprint: String(s.id) },
-    })),
-  );
+  return COURSES
+    .filter((c): c is Extract<CourseInfo, { structure: 'sprint' }> => c.structure === 'sprint')
+    .flatMap((c) =>
+      c.sprints.map((s) => ({
+        params: { courseId: c.id, sprint: String(s.id) },
+      })),
+    );
 }) satisfies GetStaticPaths;
 
 const { courseId, sprint } = Astro.params;

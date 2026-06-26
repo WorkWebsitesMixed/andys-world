@@ -1,0 +1,116 @@
+---
+courseId: mechatronics
+blockId: 1b
+draft: false
+---
+
+The wireless stack from Block 1A — ESP-NOW + Bluepad32 — is transplanted into two new robot bodies and taken to competition. Block 1B introduces differential drive (two independent motors for steering), servo-actuated grippers, and a new challenge: the robots have to survive a real competition against each other on Class 20.
+
+## Weekly breakdown
+
+| Week | Classes | Focus |
+|------|---------|-------|
+| 6 | 11–12 | Differential drive · two-motor mixing |
+| 7 | 13–14 | Chassis assembly · encoder-less dead-reckoning |
+| 8 | 15–16 | Servo gripper · competition rules |
+| 9 | 17–18 | Strategy + tuning · quadratic throttle curve |
+| 10 | 19–20 | Rehearsal · **Competition Day** |
+
+## Competition formats
+
+**Disk Derby (20×20 cm robot)** — push the opponent's discs off a circular platform while keeping yours on. Compact chassis, strong motors.
+
+**Path Attack Pro (15×15 cm robot)** — follow a line-taped course, knock targets off pedestals. Precision wins.
+
+## Key skills
+
+- Two-motor differential drive: mixing throttle + steering signals into left/right wheel speeds
+- Servo control with `ESP32Servo` (attach, write angle)
+- Quadratic throttle curve for smoother low-speed control
+- Wireless dead-band handling (500 ms timeout → motors off)
+- Competition strategy: weight placement, traction, attack angle
+
+## The firmware
+
+### Differential drive mixing
+
+```cpp
+#include <Arduino.h>
+
+// Left motor: IN1, IN2, ENA (PWM CH 0)
+// Right motor: IN3, IN4, ENB (PWM CH 1)
+const int L_IN1=25, L_IN2=26, L_ENA=27;
+const int R_IN3=32, R_IN4=33, R_ENB=14;
+const int FREQ=5000, BITS=8;
+
+void setupMotors() {
+  pinMode(L_IN1,OUTPUT); pinMode(L_IN2,OUTPUT);
+  pinMode(R_IN3,OUTPUT); pinMode(R_IN4,OUTPUT);
+  ledcSetup(0, FREQ, BITS); ledcAttachPin(L_ENA, 0);
+  ledcSetup(1, FREQ, BITS); ledcAttachPin(R_ENB, 1);
+}
+
+// throttle: -255 (reverse) to +255 (forward)
+// steering: -255 (left)    to +255 (right)
+void drive(int throttle, int steering) {
+  int left  = constrain(throttle + steering, -255, 255);
+  int right = constrain(throttle - steering, -255, 255);
+
+  // left wheel
+  digitalWrite(L_IN1, left  >= 0 ? HIGH : LOW);
+  digitalWrite(L_IN2, left  >= 0 ? LOW  : HIGH);
+  ledcWrite(0, abs(left));
+
+  // right wheel
+  digitalWrite(R_IN3, right >= 0 ? HIGH : LOW);
+  digitalWrite(R_IN4, right >= 0 ? LOW  : HIGH);
+  ledcWrite(1, abs(right));
+}
+```
+
+### Quadratic throttle curve
+
+Gives finer control at slow speeds without losing full-power headroom:
+
+```cpp
+// Apply before passing values to drive()
+int curve(int raw) {   // raw: -255 to +255
+  float norm    = raw / 255.0f;          // -1.0 to +1.0
+  float curved  = norm * norm * norm;   // x³ preserves sign
+  return (int)(curved * 255);
+}
+```
+
+### Servo gripper
+
+```cpp
+#include <ESP32Servo.h>
+
+Servo gripper;
+const int SERVO_PIN  = 13;
+const int GRIP_OPEN  = 0;    // degrees — open position
+const int GRIP_CLOSE = 90;   // degrees — gripping position
+
+void setup() {
+  gripper.attach(SERVO_PIN);
+  gripper.write(GRIP_OPEN);
+}
+
+// In loop(): if (myPad->l1()) gripper.write(GRIP_CLOSE);
+//            else             gripper.write(GRIP_OPEN);
+```
+
+### 500 ms wireless watchdog in the receiver
+
+```cpp
+void loop() {
+  if (millis() - lastPkt > 500) { drive(0, 0); return; }
+  int t = curve(cmd.throttle);
+  int s = curve(cmd.steering);
+  drive(t, s);
+}
+```
+
+## What you build
+
+Two competition robots sharing one ESP-NOW receiver firmware. Both are driven live from a Bluetooth gamepad on Competition Day — an in-class tournament where students compete head-to-head in their chosen format.

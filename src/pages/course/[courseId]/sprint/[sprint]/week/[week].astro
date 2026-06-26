@@ -5,18 +5,20 @@ import { join } from 'node:path';
 import BaseLayout from '../../../../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../../../../components/Breadcrumbs.astro';
 import CodeFile from '../../../../../../components/CodeFile.astro';
-import { COURSES, getCourse, getSprint } from '../../../../../../lib/courses';
+import { COURSES, getCourse, getSprint, type CourseInfo } from '../../../../../../lib/courses';
 import { routes } from '../../../../../../lib/url';
 import { getCollection, render } from 'astro:content';
 
 export const getStaticPaths = (async () => {
-  return COURSES.flatMap((c) =>
-    c.sprints.flatMap((s) =>
-      s.weeks.map((w) => ({
-        params: { courseId: c.id, sprint: String(s.id), week: String(w) },
-      })),
-    ),
-  );
+  return COURSES
+    .filter((c): c is Extract<CourseInfo, { structure: 'sprint' }> => c.structure === 'sprint')
+    .flatMap((c) =>
+      c.sprints.flatMap((s) =>
+        s.weeks.map((w) => ({
+          params: { courseId: c.id, sprint: String(s.id), week: String(w) },
+        })),
+      ),
+    );
 }) satisfies GetStaticPaths;
 
 const { courseId, sprint, week } = Astro.params;
@@ -77,7 +79,7 @@ const Content = rendered?.Content;
           <span class="sprint-tag" style={`--sprint-color: ${sprintInfo.color}`}>
             Sprint {sprintNum} · {sprintInfo.name}
           </span>
-          <span class="week-tag">Week {weekNum} of {course.sprints.flatMap((s) => s.weeks).length}</span>
+          <span class="week-tag">Week {weekNum} of {course.structure === 'sprint' ? course.sprints.flatMap((s) => s.weeks).length : weekNum}</span>
           <h1>{session.data.title}</h1>
           <p class="payoff">{session.data.payoff}</p>
         </header>

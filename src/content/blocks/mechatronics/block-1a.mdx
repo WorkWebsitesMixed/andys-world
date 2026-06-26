@@ -1,0 +1,150 @@
+---
+courseId: mechatronics
+blockId: 1a
+draft: false
+---
+
+From blinking an LED to steering a radio-controlled boat across open water — all in five weeks. Block 1A moves fast: PlatformIO on day one, a working motor driver by the end of week two, and a race-ready paddle boat assembled and tested by week five. The engineering stack — ESP32, C++, ESP-NOW wireless, and a Bluetooth gamepad — is the same one used throughout the whole year.
+
+## Weekly breakdown
+
+| Week | Classes | Focus |
+|------|---------|-------|
+| 1 | 1–2 | PlatformIO setup · C++ syntax · GPIO & digital read |
+| 2 | 3–4 | PWM motor control · H-Bridge wiring |
+| 3 | 5–6 | Wireless with ESP-NOW: sender / receiver pair |
+| 4 | 7–8 | Bluetooth gamepad (Bluepad32) → ESP-NOW sender |
+| 5 | 9–10 | Boat assembly · calibration · Race Day |
+
+## Key skills
+
+- Setting up PlatformIO in VS Code (`platformio.ini`, board = `esp32dev`)
+- C++ variables, `pinMode`, `digitalWrite`, `digitalRead`
+- PWM via `ledcSetup` / `ledcWrite` for variable motor speed
+- H-Bridge (L298N) for forward/reverse
+- Peer-to-peer wireless with ESP-NOW (no router needed)
+- Bluepad32 library: reading a PS4/Xbox gamepad connected directly to ESP32
+- Reading analogue joystick axes and mapping them to motor commands
+
+## The firmware in stages
+
+### Stage 1 — First sketch: button + LED
+
+```cpp
+#include <Arduino.h>
+
+const int LED_PIN    = 2;
+const int BUTTON_PIN = 4;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);  // HIGH when not pressed
+}
+
+void loop() {
+  int state = digitalRead(BUTTON_PIN);
+  if (state == LOW) {         // button pressed → LOW
+    digitalWrite(LED_PIN, HIGH);
+    Serial.println("Button pressed");
+  } else {
+    digitalWrite(LED_PIN, LOW);
+  }
+}
+```
+
+### Stage 2 — PWM motor control
+
+```cpp
+#include <Arduino.h>
+
+const int IN1 = 25, IN2 = 26, ENA = 27;
+const int PWM_CH = 0, PWM_FREQ = 5000, PWM_BITS = 8;
+
+void setupMotor() {
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  ledcSetup(PWM_CH, PWM_FREQ, PWM_BITS);
+  ledcAttachPin(ENA, PWM_CH);
+}
+
+void motorForward(int speed) {   // speed: 0–255
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  ledcWrite(PWM_CH, speed);
+}
+
+void motorStop() {
+  ledcWrite(PWM_CH, 0);
+}
+```
+
+### Stage 3 — Wireless: ESP-NOW receiver (boat firmware)
+
+```cpp
+#include <Arduino.h>
+#include <esp_now.h>
+#include <WiFi.h>
+
+typedef struct { int throttle; int steering; } ControlPacket;
+ControlPacket cmd;
+unsigned long lastPkt = 0;
+
+void onReceive(const uint8_t*, const uint8_t* data, int) {
+  memcpy(&cmd, data, sizeof(cmd));
+  lastPkt = millis();
+}
+
+void setup() {
+  WiFi.mode(WIFI_STA);
+  esp_now_init();
+  esp_now_register_recv_cb(onReceive);
+  setupMotor();
+}
+
+void loop() {
+  if (millis() - lastPkt > 500) { motorStop(); return; }
+  motorForward(cmd.throttle);
+}
+```
+
+### Stage 4 — Bluetooth gamepad → ESP-NOW sender
+
+```cpp
+#include <Arduino.h>
+#include <Bluepad32.h>
+#include <esp_now.h>
+#include <WiFi.h>
+
+uint8_t receiverMAC[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF}; // replace with boat's MAC
+
+typedef struct { int throttle; int steering; } ControlPacket;
+ControlPacket pkt;
+GamepadPtr myPad = nullptr;
+
+void onConnected(GamepadPtr gp)   { myPad = gp; }
+void onDisconnected(GamepadPtr)   { myPad = nullptr; }
+
+void setup() {
+  BP32.setup(&onConnected, &onDisconnected);
+  WiFi.mode(WIFI_STA);
+  esp_now_init();
+  esp_now_peer_info_t peer{}; 
+  memcpy(peer.peer_addr, receiverMAC, 6);
+  esp_now_add_peer(&peer);
+}
+
+void loop() {
+  BP32.update();
+  if (!myPad || !myPad->isConnected()) return;
+
+  pkt.throttle = map(myPad->axisY(), -512, 511, -255, 255);
+  pkt.steering = map(myPad->axisX(), -512, 511, -255, 255);
+  esp_now_send(receiverMAC, (uint8_t*)&pkt, sizeof(pkt));
+  delay(20);
+}
+```
+
+## What you build
+
+A single-motor RC paddle boat driven by a submerged paddle wheel. A Bluetooth gamepad on shore controls throttle and direction in real time via a peer-to-peer ESP-NOW link — no Wi-Fi router, no internet required. Race Day is the last class of the block.

@@ -3,6 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 import { COURSES } from '../lib/courses';
 import { routes } from '../lib/url';
+
+function courseTag(course: (typeof COURSES)[number]): string {
+  if (course.structure === 'sprint') {
+    const total = course.sprints.flatMap((s) => s.weeks).length;
+    return `${total} sessions`;
+  }
+  return `${course.blocks.length} blocks · ${course.blocks[course.blocks.length - 1].classRange[1]} classes`;
+}
 ---
 
 <BaseLayout title="Extracurricular Courses">
@@ -22,18 +30,11 @@ import { routes } from '../lib/url';
           href={routes.course(course.id)}
           eyebrow="After school · Mixed grades"
           title={course.name}
-          tag={`${course.sprints.flatMap((s) => s.weeks).length} sessions`}
+          tag={courseTag(course)}
         >
           {course.tagline}
         </Card>
       ))}
-
-      {/* Placeholder for Electronics — coming later */}
-      <div class="card-placeholder">
-        <span class="eyebrow">Coming soon</span>
-        <h3>Electronics</h3>
-        <p class="muted">Circuits, sensors, and physical computing. Details to follow.</p>
-      </div>
     </div>
   </section>
 </BaseLayout>
@@ -49,17 +50,4 @@ import { routes } from '../lib/url';
     gap: 1.25rem;
     padding-bottom: 3rem;
   }
-
-  .card-placeholder {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    background: var(--bg-1);
-    border: 1px dashed var(--line-strong);
-    border-radius: var(--radius);
-    padding: 1.25rem 1.35rem;
-    opacity: 0.55;
-  }
-  .card-placeholder h3 { margin: 0; font-size: 1.15rem; color: var(--text-dim); }
-  .card-placeholder p { margin: 0; font-size: 0.92rem; }
 </style>

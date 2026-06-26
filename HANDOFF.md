@@ -161,8 +161,14 @@ explains Paper 1, Paper 4 and the Project.
   **Download .py** button (links to `public/python/filename`).
 - All `.py` files + `sample_grades.csv` + `sample_notes.txt` live in `public/python/` (served as
   static downloads) and are read at build time via `fs.readFileSync` in the week page.
-- **Electronics course** placeholder shown on `/extracurricular` — add as a second entry in
-  `COURSES` array in `src/lib/courses.ts` when ready.
+- **Mechatronics** course added at `/course/mechatronics/` — 6 blocks × 60 classes across 30 weeks.
+  - Block structure (not sprint/week): `CourseInfo` is now a discriminated union `{ structure: 'sprint' | 'block' }`.
+  - New `blocks` content collection (`src/content/blocks/mechatronics/block-1a.mdx` → `block-2d.mdx`).
+  - Route: `/course/mechatronics/block/[blockId]` — one rich page per block with C++ code, tables, copy buttons.
+  - Copy buttons on fenced code blocks injected by a client-side script in the block page (no line numbers).
+  - Block 2B shows all three tracks (Pet Feeder / Smart Locker / Vending Machine) on one URL.
+  - `src/pages/course/[courseId]/block/[blockId].astro` — new block page with prev/next navigation.
+  - Source of truth for content: `../Curriculum/mechatronics_course/*.tex` files.
 
 ## 8. Open items / next steps
 1. **Grader URL:** `examsUrl` in `src/lib/site.ts` points at the grader **preview**

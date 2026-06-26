@@ -28,18 +28,33 @@ const course = getCourse(courseId)!;
   </section>
 
   <section class="container">
-    <div class="sprint-grid">
-      {course.sprints.map((sprint) => (
-        <Card
-          href={routes.sprint(courseId, sprint.id)}
-          eyebrow={`Sprint ${sprint.id}`}
-          title={sprint.name}
-          tag={`${sprint.weeks.length} sessions`}
-        >
-          Weeks {sprint.weeks[0]}–{sprint.weeks[sprint.weeks.length - 1]}
-        </Card>
-      ))}
-    </div>
+    {course.structure === 'sprint' ? (
+      <div class="grid">
+        {course.sprints.map((sprint) => (
+          <Card
+            href={routes.sprint(courseId, sprint.id)}
+            eyebrow={`Sprint ${sprint.id}`}
+            title={sprint.name}
+            tag={`${sprint.weeks.length} sessions`}
+          >
+            Weeks {sprint.weeks[0]}–{sprint.weeks[sprint.weeks.length - 1]}
+          </Card>
+        ))}
+      </div>
+    ) : (
+      <div class="grid">
+        {course.blocks.map((block) => (
+          <Card
+            href={routes.block(courseId, block.id)}
+            eyebrow={block.label}
+            title={block.name}
+            tag={`Weeks ${block.weekRange[0]}–${block.weekRange[1]}`}
+          >
+            {block.deliverable}
+          </Card>
+        ))}
+      </div>
+    )}
   </section>
 </BaseLayout>
 
@@ -48,7 +63,7 @@ const course = getCourse(courseId)!;
   .head h1 { margin: 0.4rem 0 0.6rem; }
   .lede { max-width: 42rem; }
 
-  .sprint-grid {
+  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
     gap: 1.25rem;

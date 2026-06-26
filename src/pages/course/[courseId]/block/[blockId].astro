@@ -1,0 +1,286 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { COURSES, getCourse, getBlock, type CourseInfo } from '../../../../lib/courses';
+import { routes } from '../../../../lib/url';
+import { getCollection, render } from 'astro:content';
+
+export const getStaticPaths = (async () => {
+  return COURSES
+    .filter((c): c is Extract<CourseInfo, { structure: 'block' }> => c.structure === 'block')
+    .flatMap((c) =>
+      c.blocks.map((b) => ({
+        params: { courseId: c.id, blockId: b.id },
+      })),
+    );
+}) satisfies GetStaticPaths;
+
+const { courseId, blockId } = Astro.params;
+const course = getCourse(courseId)!;
+const blockInfo = getBlock(course, blockId)!;
+
+const allBlocks = await getCollection('blocks', (b) => b.data.courseId === courseId);
+const block = allBlocks.find((b) => b.data.blockId === blockId);
+
+const rendered = block ? await render(block) : null;
+const Content = rendered?.Content;
+
+// Prev / next block
+const blocks = course.structure === 'block' ? course.blocks : [];
+const idx = blocks.findIndex((b) => b.id === blockId);
+const prevBlock = idx > 0 ? blocks[idx - 1] : undefined;
+const nextBlock = idx < blocks.length - 1 ? blocks[idx + 1] : undefined;
+---
+
+<BaseLayout title={`Mechatronics · ${blockInfo.label}: ${blockInfo.name}`}>
+  <article class="container block-page">
+    <Breadcrumbs
+      items={[
+        { label: 'Extracurricular', href: routes.extracurricular() },
+        { label: course.name, href: routes.course(courseId) },
+        { label: `${blockInfo.label}: ${blockInfo.name}` },
+      ]}
+    />
+
+    <header class="block-head">
+      <span class="block-tag" style={`--block-color: ${blockInfo.color}`}>
+        {blockInfo.label} · Weeks {blockInfo.weekRange[0]}–{blockInfo.weekRange[1]}
+      </span>
+      <span class="class-tag">Classes {blockInfo.classRange[0]}–{blockInfo.classRange[1]}</span>
+      <h1>{blockInfo.name}</h1>
+      <p class="deliverable">{blockInfo.deliverable}</p>
+    </header>
+
+    {Content ? (
+      <div class="block-prose">
+        <Content />
+      </div>
+    ) : (
+      <div class="placeholder">
+        <p>Content for this block is being prepared.</p>
+      </div>
+    )}
+
+    <nav class="prev-next" aria-label="Block navigation">
+      {prevBlock ? (
+        <a class="prev-next-link" href={routes.block(courseId, prevBlock.id)}>
+          <span class="nav-dir">← Previous</span>
+          <span class="nav-title">{prevBlock.label} · {prevBlock.name}</span>
+        </a>
+      ) : <span />}
+      {nextBlock && (
+        <a class="prev-next-link next" href={routes.block(courseId, nextBlock.id)}>
+          <span class="nav-dir">Next →</span>
+          <span class="nav-title">{nextBlock.label} · {nextBlock.name}</span>
+        </a>
+      )}
+    </nav>
+  </article>
+</BaseLayout>
+
+<script>
+  // Inject copy buttons on all fenced code blocks in the block prose area
+  document.querySelectorAll<HTMLElement>('.block-prose pre').forEach((pre) => {
+    const btn = document.createElement('button');
+    btn.textContent = 'Copy';
+    btn.className = 'code-copy-btn';
+    btn.setAttribute('aria-label', 'Copy code');
+
+    pre.style.position = 'relative';
+    pre.appendChild(btn);
+
+    btn.addEventListener('click', () => {
+      const code = pre.querySelector('code');
+      const text = code ? code.textContent ?? '' : pre.textContent ?? '';
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+  });
+</script>
+
+<style>
+  .block-page {
+    padding-block: 1.5rem 4rem;
+    max-width: var(--readw);
+  }
+
+  .block-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-block: 1rem 2rem;
+  }
+
+  .block-tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--block-color);
+  }
+
+  .class-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+
+  .block-head h1 {
+    margin: 0.3rem 0 0.2rem;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  .deliverable {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0;
+    max-width: 38rem;
+  }
+
+  /* ── Prose styles ── */
+  .block-prose {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+
+  .block-prose :global(h2) {
+    font-size: 1.25rem;
+    color: var(--text);
+    margin: 2rem 0 0.6rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .block-prose :global(h3) {
+    font-size: 1.05rem;
+    color: var(--text);
+    margin: 1.4rem 0 0.4rem;
+  }
+
+  .block-prose :global(p) { margin: 0.6rem 0; }
+
+  .block-prose :global(ul),
+  .block-prose :global(ol) {
+    padding-left: 1.4rem;
+    margin: 0.6rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .block-prose :global(li) { font-size: 0.95rem; }
+
+  /* Tables */
+  .block-prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+
+  .block-prose :global(th) {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--line-strong);
+    padding: 0.4rem 0.6rem;
+  }
+
+  .block-prose :global(td) {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  .block-prose :global(tr:last-child td) { border-bottom: none; }
+
+  /* Code blocks */
+  .block-prose :global(pre) {
+    position: relative;
+    background: #0d1117;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .block-prose :global(code:not(pre code)) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    color: var(--accent);
+  }
+
+  /* Injected copy button */
+  :global(.code-copy-btn) {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    background: transparent;
+    color: var(--text-faint);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  :global(.code-copy-btn:hover) { color: var(--text); }
+  :global(.code-copy-btn.copied) { color: var(--ok); border-color: var(--ok); }
+
+  /* Prev / next */
+  .prev-next {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .prev-next-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    max-width: 45%;
+    color: var(--text-dim);
+  }
+
+  .prev-next-link.next { align-items: flex-end; text-align: right; }
+  .prev-next-link:hover { color: var(--text); }
+
+  .nav-dir {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+
+  .nav-title { font-size: 0.9rem; font-weight: 500; }
+
+  .placeholder {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--bg-1);
+    padding: 1.5rem;
+    color: var(--text-faint);
+  }
+</style>

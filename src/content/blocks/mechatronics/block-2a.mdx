@@ -1,0 +1,155 @@
+---
+courseId: mechatronics
+blockId: 2a
+draft: false
+---
+
+Three standalone IoT devices in four weeks — each one sends data to the real internet. Block 2A is the gateway from physical computing to connected computing: the ESP32 joins a Wi-Fi network for the first time, and each mini-build explores a different IoT pattern (push notifications, a local web server, and MQTT cloud publishing). The last class is a vote that determines the class's Block 2B project.
+
+## Weekly breakdown
+
+| Week | Classes | Focus |
+|------|---------|-------|
+| 11 | 21–23 | Mini-build 1: Telegram bot — motion detection, temperature alerts |
+| 12–13 | 24–26 | Mini-build 2: Mood lamp — NeoPixel strip, async web server, colour picker |
+| 14 | 27–28 | Mini-build 3: Auto plant waterer + MQTT · **Vote for Block 2B** |
+
+## Key skills
+
+- Connecting ESP32 to Wi-Fi (`WiFi.begin`, `WiFi.waitForConnectResult`)
+- Secure HTTPS requests with `WiFiClientSecure` + `UniversalTelegramBot`
+- PIR sensor edge detection (rising edge only — not every loop)
+- `ESPAsyncWebServer`: serving HTML + handling HTTP GET params
+- `FastLED` / NeoPixel: setting colours, rainbow effects, breathing animation
+- Soil moisture sensor (analogue read, ADC calibration)
+- Relay module for pump control
+- MQTT publish with `Adafruit_MQTT_Client` to Adafruit IO
+
+## Mini-build 1 — Telegram alert bot
+
+```cpp
+#include <Arduino.h>
+#include <WiFi.h>
+#include <WiFiClientSecure.h>
+#include <UniversalTelegramBot.h>
+
+const char* SSID      = "YourSchoolWiFi";
+const char* PASSWORD  = "YourPassword";
+const char* BOT_TOKEN = "123456789:ABCdef_paste_yours_here";
+const char* CHAT_ID   = "987654321";
+
+WiFiClientSecure secureClient;
+UniversalTelegramBot bot(BOT_TOKEN, secureClient);
+
+const int PIR_PIN = 5;
+bool lastState    = false;
+
+void setup() {
+  Serial.begin(115200);
+  secureClient.setInsecure();
+  WiFi.begin(SSID, PASSWORD);
+  while (WiFi.status() != WL_CONNECTED) delay(500);
+  pinMode(PIR_PIN, INPUT);
+}
+
+void loop() {
+  bool motion = digitalRead(PIR_PIN);
+  if (motion && !lastState) {    // rising edge only
+    bot.sendMessage(CHAT_ID, "Motion detected!", "");
+  }
+  lastState = motion;
+  delay(100);
+}
+```
+
+## Mini-build 2 — Web-controlled mood lamp
+
+```cpp
+#include <Arduino.h>
+#include <WiFi.h>
+#include <ESPAsyncWebServer.h>
+#include <FastLED.h>
+
+const int NUM_LEDS = 30;
+const int LED_PIN  = 5;
+CRGB leds[NUM_LEDS];
+
+AsyncWebServer server(80);
+bool effectRunning = false;
+
+void setup() {
+  FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
+  FastLED.setBrightness(60);
+  WiFi.begin("YourWiFi", "YourPassword");
+  while (WiFi.status() != WL_CONNECTED) delay(500);
+
+  // /color?r=255&g=0&b=100  — set solid colour
+  server.on("/color", HTTP_GET, [](AsyncWebServerRequest* req) {
+    int r = req->getParam("r")->value().toInt();
+    int g = req->getParam("g")->value().toInt();
+    int b = req->getParam("b")->value().toInt();
+    fill_solid(leds, NUM_LEDS, CRGB(r, g, b));
+    FastLED.show();
+    effectRunning = false;
+    req->send(200, "text/plain", "OK");
+  });
+
+  // /effect  — start rainbow cycle
+  server.on("/effect", HTTP_GET, [](AsyncWebServerRequest* req) {
+    effectRunning = true;
+    req->send(200, "text/plain", "OK");
+  });
+
+  server.begin();
+}
+
+static uint8_t hue = 0;
+
+void loop() {
+  if (effectRunning) {
+    fill_rainbow(leds, NUM_LEDS, hue++, 7);
+    FastLED.show();
+    delay(20);
+  }
+}
+```
+
+## Mini-build 3 — Auto plant waterer with MQTT
+
+```cpp
+#include <Arduino.h>
+#include <WiFi.h>
+#include <Adafruit_MQTT.h>
+#include <Adafruit_MQTT_Client.h>
+
+const int SOIL_PIN       = 34;
+const int RELAY_PIN      = 26;
+const int DRY_THRESHOLD  = 2800;   // ADC > this → soil is dry
+const unsigned long PUMP_MS = 3000;
+
+WiFiClient client;
+Adafruit_MQTT_Client mqtt(&client, "io.adafruit.com", 1883,
+                           "your_username", "your_aio_key");
+Adafruit_MQTT_Publish moisture(&mqtt, "your_username/feeds/moisture");
+
+void ensureMQTT() {
+  while (!mqtt.connected()) mqtt.connect();
+}
+
+void loop() {
+  ensureMQTT();
+  int raw = analogRead(SOIL_PIN);
+  moisture.publish((float)raw);          // publish to Adafruit IO dashboard
+
+  if (raw > DRY_THRESHOLD) {
+    digitalWrite(RELAY_PIN, HIGH);       // pump on
+    delay(PUMP_MS);
+    digitalWrite(RELAY_PIN, LOW);
+  }
+  delay(30000);                          // check every 30 s
+}
+```
+
+## What you build
+
+Three working devices you take home: a Telegram bot that texts you when something moves, an LED strip lamp you control from any phone browser, and a self-watering pot that publishes soil moisture to a live dashboard. The block ends with a class vote that decides the project everyone builds together in Block 2B.
