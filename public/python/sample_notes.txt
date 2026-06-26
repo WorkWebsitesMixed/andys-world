@@ -1,0 +1,50 @@
+STUDY NOTES — INTRODUCTION TO PYTHON
+=====================================
+
+WHAT IS PYTHON?
+Python is a high-level, interpreted programming language created by Guido van Rossum
+and first released in 1991. It is known for its clear, readable syntax that resembles
+plain English. Python is used in web development, data science, artificial intelligence,
+automation, and scientific computing.
+
+VARIABLES AND DATA TYPES
+A variable is a named storage location in memory.
+Python has four main basic data types:
+- int   : whole numbers e.g. 42
+- float : decimal numbers e.g. 3.14
+- str   : text strings e.g. "Hello"
+- bool  : True or False values
+
+CONTROL FLOW
+if statements execute code only when a condition is True.
+elif allows checking additional conditions.
+else runs when no condition is True.
+while loops repeat code while a condition stays True.
+for loops iterate over a sequence of values.
+
+FUNCTIONS
+A function is a reusable block of code defined with the def keyword.
+Functions can accept parameters and return values using return.
+Calling a function executes its code from wherever it is called.
+
+LISTS AND DICTIONARIES
+A list is an ordered, mutable collection: e.g. [1, 2, 3]
+A dictionary stores key-value pairs: e.g. {"name": "Ana", "age": 17}
+Use .append() to add to a list and del dict[key] to remove from a dict.
+
+FILE I/O
+open("file.txt", "r") opens a file for reading.
+open("file.txt", "w") opens a file for writing (overwrites existing content).
+open("file.txt", "a") opens a file for appending.
+Use with open(...) as f: to ensure the file is closed automatically.
+
+APIs
+An API (Application Programming Interface) lets programs communicate with
+external services over the internet. HTTP GET requests fetch data. The response
+is usually in JSON format, which Python parses as a dictionary.
+
+ARTIFICIAL INTELLIGENCE
+Large Language Models (LLMs) are trained on vast amounts of text data.
+They generate responses by predicting the next word based on context.
+A system instruction tells the model how to behave throughout a session.
+Prompt engineering is the practice of writing effective instructions for AI models.

@@ -150,6 +150,20 @@ explains Paper 1, Paper 4 and the Project.
   recent session notes, or grep `open?id=` in any lesson file for the 28 covered IDs.
 - Old site to mine for images/quizzes: `../D&T Classes/D-T-Classes/` (+ `img/`).
 
+## 7b. Extracurricular courses (added 2026-06-26)
+- **Python Programming** course added at `/course/python/` with 4 sprints × 27 weeks.
+- Architecture: new `sessions` content collection (`src/content/sessions/python/*.mdx`),
+  `src/lib/courses.ts` (parallel to `curriculum.ts`), new route builders in `url.ts`.
+- Nav: "Extracurricular" link added to header (violet, `--accent-2`), links to `/extracurricular` index.
+- Session pages: lighter structure — sprint tag, week number, payoff, learning goals, code files.
+- **`CodeFile.astro`** component: Shiki syntax highlighting (`github-dark` theme), no line numbers,
+  **Copy button** (clipboard API copies `pre.textContent` — zero line numbers in paste),
+  **Download .py** button (links to `public/python/filename`).
+- All `.py` files + `sample_grades.csv` + `sample_notes.txt` live in `public/python/` (served as
+  static downloads) and are read at build time via `fs.readFileSync` in the week page.
+- **Electronics course** placeholder shown on `/extracurricular` — add as a second entry in
+  `COURSES` array in `src/lib/courses.ts` when ready.
+
 ## 8. Open items / next steps
 1. **Grader URL:** `examsUrl` in `src/lib/site.ts` points at the grader **preview**
    (`https://workwebsitesmixed.github.io/exam-grader-v2-preview/`) — swap for the

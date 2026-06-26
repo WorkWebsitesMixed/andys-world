@@ -1,0 +1,275 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../../../../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../../../../components/Breadcrumbs.astro';
+import CodeFile from '../../../../../../components/CodeFile.astro';
+import { COURSES, getCourse, getSprint } from '../../../../../../lib/courses';
+import { routes } from '../../../../../../lib/url';
+import { getCollection, render } from 'astro:content';
+
+export const getStaticPaths = (async () => {
+  return COURSES.flatMap((c) =>
+    c.sprints.flatMap((s) =>
+      s.weeks.map((w) => ({
+        params: { courseId: c.id, sprint: String(s.id), week: String(w) },
+      })),
+    ),
+  );
+}) satisfies GetStaticPaths;
+
+const { courseId, sprint, week } = Astro.params;
+const sprintNum = Number(sprint);
+const weekNum = Number(week);
+
+const course = getCourse(courseId)!;
+const sprintInfo = getSprint(course, sprintNum)!;
+
+const allSessions = await getCollection('sessions', (s) => s.data.courseId === courseId);
+const session = allSessions.find((s) => s.data.sprint === sprintNum && s.data.week === weekNum);
+
+// Prev / next within the same sprint
+const sprintSessions = allSessions
+  .filter((s) => s.data.sprint === sprintNum && !s.data.draft)
+  .sort((a, b) => a.data.week - b.data.week);
+
+const idx = sprintSessions.findIndex((s) => s.data.week === weekNum);
+const prev = idx > 0 ? sprintSessions[idx - 1] : undefined;
+const next = idx >= 0 && idx < sprintSessions.length - 1 ? sprintSessions[idx + 1] : undefined;
+
+// Read code file contents from public/python/ at build time
+function readPyFile(filename: string): string {
+  try {
+    return readFileSync(join(process.cwd(), 'public', 'python', filename), 'utf-8');
+  } catch {
+    return `# File not found: ${filename}`;
+  }
+}
+
+const fileContents = (session?.data.files ?? []).map((f) => ({
+  ...f,
+  code: readPyFile(f.filename),
+}));
+
+const rendered = session ? await render(session) : null;
+const Content = rendered?.Content;
+---
+
+<BaseLayout
+  title={session
+    ? `${course.name} · Week ${weekNum} · ${session.data.title}`
+    : `${course.name} · Week ${weekNum}`}
+>
+  <article class="container session">
+    <Breadcrumbs
+      items={[
+        { label: 'Extracurricular', href: routes.extracurricular() },
+        { label: course.name, href: routes.course(courseId) },
+        { label: sprintInfo.name, href: routes.sprint(courseId, sprintNum) },
+        { label: `Week ${weekNum}` },
+      ]}
+    />
+
+    {session ? (
+      <>
+        <header class="session-head">
+          <span class="sprint-tag" style={`--sprint-color: ${sprintInfo.color}`}>
+            Sprint {sprintNum} · {sprintInfo.name}
+          </span>
+          <span class="week-tag">Week {weekNum} of {course.sprints.flatMap((s) => s.weeks).length}</span>
+          <h1>{session.data.title}</h1>
+          <p class="payoff">{session.data.payoff}</p>
+        </header>
+
+        <div class="goals-block">
+          <h2 class="goals-heading">Learning goals</h2>
+          <ul class="goals-list">
+            {session.data.learningGoals.map((g) => <li>{g}</li>)}
+          </ul>
+        </div>
+
+        {Content && (
+          <div class="prose">
+            <Content />
+          </div>
+        )}
+
+        {fileContents.length > 0 && (
+          <section class="files-section">
+            <h2 class="files-heading">Session files</h2>
+            <p class="files-blurb muted">
+              Open each file in VS Code. Click <strong>Copy</strong> for clean code
+              (no line numbers), or <strong>Download .py</strong> to save the file directly.
+            </p>
+            {fileContents.map((f) => (
+              <CodeFile code={f.code} filename={f.filename} label={f.label} />
+            ))}
+          </section>
+        )}
+
+        <nav class="prev-next" aria-label="Session navigation">
+          {prev ? (
+            <a class="prev-next-link" href={routes.session(courseId, sprintNum, prev.data.week)}>
+              <span class="nav-dir">← Previous</span>
+              <span class="nav-title">Week {prev.data.week} · {prev.data.title}</span>
+            </a>
+          ) : <span />}
+          {next && (
+            <a class="prev-next-link next" href={routes.session(courseId, sprintNum, next.data.week)}>
+              <span class="nav-dir">Next →</span>
+              <span class="nav-title">Week {next.data.week} · {next.data.title}</span>
+            </a>
+          )}
+        </nav>
+      </>
+    ) : (
+      <div class="placeholder">
+        <span class="sprint-tag" style={`--sprint-color: ${sprintInfo.color}`}>
+          Sprint {sprintNum} · {sprintInfo.name}
+        </span>
+        <h1>Week {weekNum}</h1>
+        <div class="card">
+          <p>📝 <strong>This session is being prepared.</strong></p>
+          <p class="muted">The page is ready — content will appear here once it's written.</p>
+          <a class="back" href={routes.sprint(courseId, sprintNum)}>← Back to {sprintInfo.name}</a>
+        </div>
+      </div>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .session {
+    padding-block: 1.5rem 4rem;
+    max-width: var(--readw);
+  }
+
+  .session-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-block: 1rem 1.5rem;
+  }
+
+  .sprint-tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--sprint-color);
+  }
+
+  .week-tag {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+
+  .session-head h1 {
+    margin: 0.3rem 0 0.2rem;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  .payoff {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0;
+  }
+
+  .goals-block {
+    background: var(--bg-1);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.4rem;
+    margin-block: 1.5rem;
+  }
+
+  .goals-heading {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 0.75rem;
+  }
+
+  .goals-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .goals-list li {
+    font-size: 0.93rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .prose {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    margin-block: 1.5rem;
+  }
+
+  .files-section { margin-block: 2rem; }
+
+  .files-heading {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin: 0 0 0.4rem;
+  }
+
+  .files-blurb {
+    font-size: 0.88rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .prev-next {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .prev-next-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    max-width: 45%;
+    color: var(--text-dim);
+  }
+  .prev-next-link.next { align-items: flex-end; text-align: right; }
+  .prev-next-link:hover { color: var(--text); }
+
+  .nav-dir {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+
+  .nav-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  /* Placeholder */
+  .placeholder { padding-block: 1rem; }
+  .placeholder h1 { margin: 0.4rem 0 1.2rem; }
+  .card {
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--bg-1);
+    padding: 1.5rem;
+  }
+  .card p { margin: 0 0 0.5rem; }
+  .back { display: inline-block; margin-top: 1rem; }
+</style>

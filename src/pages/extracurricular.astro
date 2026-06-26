@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/Card.astro';
+import { COURSES } from '../lib/courses';
+import { routes } from '../lib/url';
+---
+
+<BaseLayout title="Extracurricular Courses">
+  <section class="container head">
+    <span class="eyebrow">After School</span>
+    <h1>Extracurricular Courses</h1>
+    <p class="muted lede">
+      Courses for students who want to go further — open to any grade, running after school.
+      Each course builds a real, demoable project over the year.
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="course-grid">
+      {COURSES.map((course) => (
+        <Card
+          href={routes.course(course.id)}
+          eyebrow="After school · Mixed grades"
+          title={course.name}
+          tag={`${course.sprints.flatMap((s) => s.weeks).length} sessions`}
+        >
+          {course.tagline}
+        </Card>
+      ))}
+
+      {/* Placeholder for Electronics — coming later */}
+      <div class="card-placeholder">
+        <span class="eyebrow">Coming soon</span>
+        <h3>Electronics</h3>
+        <p class="muted">Circuits, sensors, and physical computing. Details to follow.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { padding-block: 2.5rem 1.5rem; }
+  .head h1 { margin: 0.4rem 0 0.6rem; }
+  .lede { max-width: 42rem; }
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    gap: 1.25rem;
+    padding-bottom: 3rem;
+  }
+
+  .card-placeholder {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--bg-1);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.35rem;
+    opacity: 0.55;
+  }
+  .card-placeholder h3 { margin: 0; font-size: 1.15rem; color: var(--text-dim); }
+  .card-placeholder p { margin: 0; font-size: 0.92rem; }
+</style>

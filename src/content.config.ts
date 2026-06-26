@@ -30,4 +30,36 @@ const lessons = defineCollection({
   }),
 });
 
-export const collections = { lessons };
+/**
+ * The `sessions` collection. One .mdx file = one extracurricular class session.
+ * Routing is derived from courseId/sprint/week frontmatter.
+ * Convention: src/content/sessions/<courseId>/s<sprint>-w<week>.mdx
+ */
+const sessions = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/sessions' }),
+  schema: z.object({
+    courseId: z.string(),
+    sprint: z.number().int().min(1),
+    week: z.number().int().min(1),
+    title: z.string(),
+    /** Short topic tag shown on sprint overview cards. */
+    topic: z.string(),
+    /** The main concept or technique introduced this session. */
+    coreSkill: z.string(),
+    /** One sentence: what the student builds or achieves by the end. */
+    payoff: z.string(),
+    learningGoals: z.array(z.string()),
+    /** Python files shipped with this session (served from /python/). */
+    files: z
+      .array(
+        z.object({
+          filename: z.string(),
+          label: z.string(),
+        }),
+      )
+      .default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { lessons, sessions };

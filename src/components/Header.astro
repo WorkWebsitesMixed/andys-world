@@ -3,6 +3,7 @@ import { site } from '../lib/site';
 import { routes } from '../lib/url';
 import { GRADES } from '../lib/curriculum';
 import DisplaySettings from './DisplaySettings.astro';
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -16,6 +17,12 @@ import DisplaySettings from './DisplaySettings.astro';
       {GRADES.map((g) => (
         <a href={routes.grade(g.id)}>{g.name}</a>
       ))}
+      <a
+        href={routes.extracurricular()}
+        class:list={['extra', { active: currentPath.includes('/extracurricular') || currentPath.includes('/course/') }]}
+      >
+        Extracurricular
+      </a>
       <a class="exams" href={site.examsUrl} target="_blank" rel="noopener">
         {site.examsLabel} <span aria-hidden="true">↗</span>
       </a>
@@ -82,6 +89,10 @@ import DisplaySettings from './DisplaySettings.astro';
     white-space: nowrap;
   }
   .nav a:hover { color: var(--text); }
+  .nav .extra { color: var(--accent-2); }
+  .nav .extra:hover { color: var(--text); }
+  .nav .extra.active { color: var(--accent-2); font-weight: 500; }
+
   .nav .exams {
     color: var(--accent);
     border: 1px solid var(--line-strong);

@@ -27,4 +27,11 @@ export const routes = {
   project: (g: number | string) => url(`grade/${g}/project`),
   paper1: (g: number | string) => url(`grade/${g}/paper-1`),
   paper4: (g: number | string) => url(`grade/${g}/paper-4`),
+
+  /** Extracurricular courses: course → sprint → week. */
+  extracurricular: () => url('extracurricular'),
+  course: (c: string) => url(`course/${c}`),
+  sprint: (c: string, s: number | string) => url(`course/${c}/sprint/${s}`),
+  session: (c: string, s: number | string, w: number | string) =>
+    url(`course/${c}/sprint/${s}/week/${w}`),
 };
