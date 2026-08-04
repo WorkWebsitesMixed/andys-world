@@ -24,8 +24,8 @@
     <fieldset>
       <legend>Theme</legend>
       <div class="seg" role="group" aria-label="Theme">
-        <button type="button" data-pref="theme" data-value="dark">Dark</button>
         <button type="button" data-pref="theme" data-value="light">Light</button>
+        <button type="button" data-pref="theme" data-value="dark">Dark</button>
         <button type="button" data-pref="theme" data-value="contrast">High&nbsp;contrast</button>
       </div>
     </fieldset>
@@ -131,7 +131,7 @@
 
 <script>
   type PrefKey = 'theme' | 'spacing' | 'calm';
-  const DEFAULTS: Record<PrefKey, string> = { theme: 'dark', spacing: 'normal', calm: '0' };
+  const DEFAULTS: Record<PrefKey, string> = { theme: 'light', spacing: 'normal', calm: '0' };
   const STORAGE: Record<PrefKey, string> = {
     theme: 'aw:theme',
     spacing: 'aw:spacing',

@@ -1,0 +1,153 @@
+---
+import katex from 'katex';
+
+/**
+ * A worked formula, laid out the way the mark scheme wants it:
+ *   formula  →  substitution  →  result
+ *
+ * Paper 4 Section B awards method marks for showing the rearranged formula and
+ * the substituted values, not just the answer. Splitting the three stages onto
+ * their own labelled rows makes that habit visible every time a formula appears.
+ *
+ *   <Formula
+ *     name="Factor of safety"
+ *     equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+ *     substitution="\text{FoS} = \frac{200\ \text{N}}{50\ \text{N}}"
+ *     result="\text{FoS} = 4.0"
+ *     note="A FoS of 4 is a comfortable margin for a domestic shelf."
+ *   />
+ *
+ * Only `equation` is required — drop `substitution`/`result` when stating a
+ * formula in the abstract. For maths inside a sentence use `$...$` in the MDX.
+ */
+interface Props {
+  /** Optional caption above the formula, e.g. "Factor of safety". */
+  name?: string;
+  /** The formula in symbols (TeX, no delimiters). */
+  equation: string;
+  /** The same formula with the numbers put in (TeX). */
+  substitution?: string;
+  /** The final line, including units (TeX). */
+  result?: string;
+  /** Plain-prose note under the formula — what the answer means. */
+  note?: string;
+}
+
+const { name, equation, substitution, result, note } = Astro.props;
+
+const tex = (src: string) =>
+  katex.renderToString(src, { displayMode: true, throwOnError: false, strict: false });
+
+const rows = [
+  { key: 'formula', label: 'Formula', src: equation },
+  { key: 'substitute', label: 'Substitute', src: substitution },
+  { key: 'result', label: 'Result', src: result },
+].filter((r): r is { key: string; label: string; src: string } => Boolean(r.src));
+---
+
+<figure class="formula">
+  {name && <figcaption class="formula__name">{name}</figcaption>}
+  <div class="formula__rows">
+    {
+      rows.map((r) => (
+        <div class="formula__row" data-row={r.key}>
+          <span class="formula__label">{r.label}</span>
+          <span class="formula__math" set:html={tex(r.src)} />
+        </div>
+      ))
+    }
+  </div>
+  {note && <p class="formula__note">{note}</p>}
+</figure>
+
+<style>
+  .formula {
+    margin: 1.25rem 0;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+  }
+
+  .formula__name {
+    font-family: var(--font-head);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+    margin-bottom: 0.6rem;
+  }
+
+  .formula__rows {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .formula__row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  /* The answer line is the one students are marked on — give it the accent wash. */
+  .formula__row[data-row='result'] {
+    background: var(--accent-wash);
+  }
+
+  .formula__label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    text-align: right;
+  }
+
+  .formula__row[data-row='result'] .formula__label {
+    color: var(--accent);
+  }
+
+  /* KaTeX sets its own display margins; we control spacing from the row. */
+  .formula__math :global(.katex-display) {
+    margin: 0;
+    text-align: left;
+  }
+  /* KaTeX centres display math via `.katex-display > .katex`. Left-align it so the
+     formula, the substitution and the result all start on the same x — that
+     vertical alignment is what makes the three stages readable as one method. */
+  .formula__math :global(.katex-display > .katex) {
+    text-align: left;
+  }
+  .formula__math :global(.katex) {
+    font-size: 1.05em;
+    color: var(--text);
+  }
+
+  /* A long equation scrolls inside its own row rather than widening the page. */
+  .formula__math {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.15rem;
+  }
+
+  .formula__note {
+    margin: 0.7rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+
+  /* Narrow screens: labels sit above their line so the maths keeps full width. */
+  @media (max-width: 34rem) {
+    .formula__row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+    .formula__label {
+      text-align: left;
+    }
+  }
+</style>

@@ -58,20 +58,29 @@ A triangle cannot be deformed without changing the length of one of its sides. A
 
 ### Stress
 
-Stress = Force / Area
-
-If a force of 500 N acts on a cross-section of 50 mm², the stress is 500 / 50 = 10 N/mm² (which equals 10 MPa).
+<Formula
+  name="Stress"
+  equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
+  substitution="\text{Stress} = \frac{500\ \text{N}}{50\ \text{mm}^2}"
+  result="\text{Stress} = 10\ \text{N/mm}^2 = 10\ \text{MPa}"
+  note="A force of 500 N acting on a cross-section of 50 mm². Note that N/mm² and MPa are the same unit."
+/>
 
 A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load.
 
 ### Factor of Safety
 
-FoS = Failure Load / Working Load
-
 **Example:** A shelf bracket fails (permanently deforms) at 200 N. It is designed to carry a maximum load of 50 N.
-FoS = 200 / 50 = 4.0
 
-A FoS of 4.0 means the bracket could carry four times its working load before failing. For structures that affect human safety (buildings, bridges), FoS values of 2.5–6 are typical.
+<Formula
+  name="Factor of safety"
+  equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+  substitution="\text{FoS} = \frac{200\ \text{N}}{50\ \text{N}}"
+  result="\text{FoS} = 4.0"
+  note="The bracket could carry four times its working load before failing."
+/>
+
+For structures that affect human safety (buildings, bridges), FoS values of 2.5–6 are typical.
 
 </Section>
 
@@ -88,13 +97,23 @@ A simply supported beam rests on two supports (A and B). When a load W is applie
 
 Example: A beam 4 m long, supported at A (left) and B (right). A load of 600 N is applied 1 m from A.
 
-Moment of load about A = 600 N x 1 m = 600 N·m (clockwise)
-Moment of RB about A = RB x 4 m (anticlockwise)
+The load turns the beam clockwise about A; the reaction at B turns it anticlockwise. At
+equilibrium the two are equal:
 
-Setting equal: RB x 4 = 600, so RB = 150 N
-Then: RA = 600 - 150 = 450 N
+<Formula
+  name="Moments about A"
+  equation="R_B \times 4\ \text{m} = 600\ \text{N} \times 1\ \text{m}"
+  substitution="R_B = \frac{600\ \text{N}\cdot\text{m}}{4\ \text{m}}"
+  result="R_B = 150\ \text{N}"
+/>
 
-Check: 450 + 150 = 600 N (correct — equals total load).
+<Formula
+  name="Vertical equilibrium"
+  equation="R_A = W - R_B"
+  substitution="R_A = 600\ \text{N} - 150\ \text{N}"
+  result="R_A = 450\ \text{N}"
+  note="Check: 450 + 150 = 600 N — the reactions equal the total load."
+/>
 
 </Section>
 
@@ -114,16 +133,40 @@ For your Component 2 project, you must use **at least two** different joining me
 
 <WorkedExample title="Three calculations in sequence">
 
-**Q1 — FoS:** A shelf is designed to hold 30 kg (approximately 300 N). It fails at 1,200 N. FoS = 1200 / 300 = 4.0. Is this adequate for a domestic shelf? Yes — a FoS of 4 provides comfortable safety margin.
+**Q1 — FoS:** A shelf is designed to hold 30 kg (approximately 300 N). It fails at 1,200 N.
 
-**Q2 — Stress:** The vertical support of the shelf bracket is 25 mm x 25 mm square section timber. The maximum compressive load is 300 N.
-Stress = Force / Area = 300 / (25 x 25) = 300 / 625 = 0.48 N/mm² (well within timber's compressive strength of ~30 N/mm²).
+<Formula
+  equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+  substitution="\text{FoS} = \frac{1200\ \text{N}}{300\ \text{N}}"
+  result="\text{FoS} = 4.0"
+  note="Adequate for a domestic shelf — a FoS of 4 gives a comfortable safety margin."
+/>
+
+**Q2 — Stress:** The vertical support of the shelf bracket is 25 mm × 25 mm square section timber. The maximum compressive load is 300 N.
+
+<Formula
+  equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
+  substitution="\text{Stress} = \frac{300\ \text{N}}{25 \times 25\ \text{mm}^2} = \frac{300}{625}"
+  result="\text{Stress} = 0.48\ \text{N/mm}^2"
+  note="Well within timber's compressive strength of about 30 N/mm²."
+/>
 
 **Q3 — Beam reaction:** The shelf (length 600 mm) is supported at the wall (A, left) and a bracket tip (B, right). A load of 400 N acts 200 mm from A.
-Moment about A: RB x 600 = 400 x 200 = 80,000 N·mm
-RB = 80,000 / 600 = 133 N
-RA = 400 - 133 = 267 N
-Check: 267 + 133 = 400 N.
+
+<Formula
+  name="Moments about A"
+  equation="R_B \times 600 = 400 \times 200"
+  substitution="R_B = \frac{80{,}000\ \text{N}\cdot\text{mm}}{600\ \text{mm}}"
+  result="R_B = 133\ \text{N}"
+/>
+
+<Formula
+  name="Vertical equilibrium"
+  equation="R_A = W - R_B"
+  substitution="R_A = 400\ \text{N} - 133\ \text{N}"
+  result="R_A = 267\ \text{N}"
+  note="Check: 267 + 133 = 400 N — the reactions balance the load."
+/>
 </WorkedExample>
 
 <Activity title="Structures diagnostic and four exercises" time="90 min" grouping="Individual" materials={["Graph paper or squared paper", "Ruler", "Calculator"]}>
@@ -147,10 +190,10 @@ Show all working: formula, substitution, calculation, units.
 
 <Support title="Calculation and classification support">
 
-**FoS calculation strip:**
-- FoS = Failure Load / Working Load
-- Working Load = Failure Load / FoS
-- Failure Load = Working Load x FoS
+**FoS calculation strip:** — the same relationship, rearranged three ways.
+- $\text{FoS} = \dfrac{\text{Failure Load}}{\text{Working Load}}$
+- $\text{Working Load} = \dfrac{\text{Failure Load}}{\text{FoS}}$
+- $\text{Failure Load} = \text{Working Load} \times \text{FoS}$
 
 **Beam reaction method card:**
 1. Draw the beam, mark supports A and B, mark load with position.
@@ -212,11 +255,11 @@ Build a square frame from four drinking straws (tape at corners). Test its rigid
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 227)", type: "Textbook", href: "https://drive.google.com/open?id=1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9" },
-  { label: "Collins IGCSE D&T — §4.2.3 Strengthening frames (p. 239)", type: "Textbook", href: "https://drive.google.com/open?id=1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y" },
-  { label: "Collins IGCSE D&T — §4.2.5 Loads and reactions (p. 249)", type: "Textbook", href: "https://drive.google.com/open?id=1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a" },
-  { label: "Collins IGCSE D&T — §4.2.6 Moments (p. 253)", type: "Textbook", href: "https://drive.google.com/open?id=1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje" },
-  { label: "Collins IGCSE D&T — §4.2.9 Structural joints (p. 265)", type: "Textbook", href: "https://drive.google.com/open?id=1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B" },
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 233)", type: "Textbook", href: "https://drive.google.com/open?id=1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9" },
+  { label: "Collins IGCSE D&T — §4.2.3 Strengthening frames (p. 240)", type: "Textbook", href: "https://drive.google.com/open?id=1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y" },
+  { label: "Collins IGCSE D&T — §4.2.5 Loads and reactions (p. 245)", type: "Textbook", href: "https://drive.google.com/open?id=1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a" },
+  { label: "Collins IGCSE D&T — §4.2.6 Moments (p. 248)", type: "Textbook", href: "https://drive.google.com/open?id=1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje" },
+  { label: "Collins IGCSE D&T — §4.2.9 Structural joints (p. 255)", type: "Textbook", href: "https://drive.google.com/open?id=1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B" },
   { label: "Collins IGCSE D&T — §4.2.10 Forces in structures (p. 269)", type: "Textbook", href: "https://drive.google.com/open?id=1F8bzARgbX_6J9CRumVRAswfFDgXfydHy" },
 ]} />
 

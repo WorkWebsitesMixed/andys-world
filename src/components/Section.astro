@@ -36,33 +36,80 @@ const slug =
 </section>
 
 <style>
+  /* Sections are separated by a rule *above* them, spanning the full column, so
+     the line reads as a boundary between sections rather than as an underline
+     belonging to the heading. The generous padding above it does the rest —
+     what separates sections is the ratio of the outer gap to the inner one. */
   .lesson-section {
-    margin-block: 2.5rem;
+    counter-increment: sec;
+    margin-block: 3.5rem 0;
+    padding-top: 2.25rem;
+    border-top: 1px solid var(--line);
   }
+  /* No rule above the first section — nothing precedes it to divide from. */
+  .lesson-section:first-of-type {
+    margin-top: 2rem;
+    padding-top: 0;
+    border-top: none;
+  }
+
   .sec-title {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    font-size: 1.3rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 1rem;
+    gap: 0.55rem;
+    /* Was 1.3rem against a 1.25rem h3 — a step too small to register as a
+       level change. The section title now clearly outranks its subheadings. */
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 1.1rem;
   }
-  .sec-icon {
-    display: inline-grid;
+
+  /* The section's ordinal. Lessons follow a fixed house order, so numbering
+     tells a student where they are and how much is left — the cue that matters
+     most below 1280px, where the floating section navigator is not shown. */
+  .sec-title::before {
+    content: counter(sec);
+    flex: none;
+    display: grid;
     place-items: center;
-    width: 1.9rem;
-    height: 1.9rem;
-    font-size: 1rem;
-    border-radius: var(--radius-sm);
-    background: var(--accent-wash);
-    border: 1px solid var(--line-strong);
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0;
   }
-  .v-violet .sec-icon {
-    background: var(--accent-2-wash);
+  .v-violet .sec-title::before {
+    background: var(--accent-2);
   }
+
+  /* The number is now the block marker, so the icon drops its chip and sits as
+     a plain glyph — two boxes side by side read as clutter. */
+  .sec-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
   .sec-body :global(p) { margin-block: 0.75rem; }
   .sec-body :global(ul),
   .sec-body :global(ol) { padding-left: 1.4rem; margin-block: 0.75rem; }
   .sec-body :global(li) { margin-block: 0.35rem; }
+
+  /* Subheadings are pulled well below the section title and given room above,
+     so they group with the text that follows them rather than floating free. */
+  .sec-body :global(h3) {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin-block: 1.9rem 0.5rem;
+  }
+  .sec-body :global(h3:first-child) { margin-top: 0; }
+  .sec-body :global(h4) {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-block: 1.4rem 0.4rem;
+  }
 </style>

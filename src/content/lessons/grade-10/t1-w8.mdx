@@ -24,13 +24,13 @@ The circuit is more than wires and components — it is a set of precise decisio
 
 <Section title="Ohm's Law and the current-limiting resistor" icon="🔧" id="ohms-law">
 
-### Ohm's Law: V = I × R
+### Ohm's Law: $V = I \times R$
 
 Three forms — one formula, three rearrangements:
 
-- **V = I × R** (find voltage if you know current and resistance)
-- **I = V / R** (find current if you know voltage and resistance)
-- **R = V / I** (find resistance if you know voltage and current) ← most used in this project
+- $V = I \times R$ (find voltage if you know current and resistance)
+- $I = \dfrac{V}{R}$ (find current if you know voltage and resistance)
+- $R = \dfrac{V}{I}$ (find resistance if you know voltage and current) ← most used in this project
 
 ### Calculating a current-limiting resistor for an LED
 
@@ -49,16 +49,18 @@ After calculating R, always choose the **nearest standard resistor value above**
 <WorkedExample title="Calculating R for an LED in the Firefighter Barbie circuit">
 **Given:** Supply voltage = 9 V. LED forward voltage = 2 V. LED current = 20 mA.
 
-**Step 1 — Write the formula:**
-R = (Vsupply − VLED) / ILED
+**Step 1 — Convert mA to A** before substituting: $20\ \text{mA} = 0.020\ \text{A}$.
 
-**Step 2 — Convert mA to A:**
-20 mA = 0.020 A
+**Step 2 — Formula, substitution, result:**
 
-**Step 3 — Substitute:**
-R = (9 − 2) / 0.020 = 7 / 0.020 = 350 Ω
+<Formula
+  name="Current-limiting resistor"
+  equation="R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
+  substitution="R = \frac{9\ \text{V} - 2\ \text{V}}{0.020\ \text{A}} = \frac{7\ \text{V}}{0.020\ \text{A}}"
+  result="R = 350\ \Omega"
+/>
 
-**Step 4 — Choose nearest standard value above 350 Ω:**
+**Step 3 — Choose nearest standard value above 350 Ω:**
 From the E12 series: 390 Ω is the next value above 350 Ω.
 
 **Answer:** Use a 390 Ω resistor. This keeps the LED current just below 20 mA (safe), with no risk of burning the LED.
@@ -101,7 +103,8 @@ In the bonus session: a mixed Section A set on circuit symbols, IPO labelling, s
 </Activity>
 
 <Support title="Scaffolds for calculations and transistor circuit">
-**Formula strip:** V = IR, I = V/R, R = V/I — keep on your desk. For the LED resistor, always use R = (Vsupply − VLED) / ILED, not plain V/I.
+**Formula strip** — keep on your desk: $V = IR$ · $I = \frac{V}{R}$ · $R = \frac{V}{I}$.
+For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$, not plain $\frac{V}{I}$.
 
 **Partially completed transistor diagram:** If the full circuit drawing is too open, use the version with the transistor symbol and supply connections already drawn — add the base resistor, base connection from the voltage divider, motor symbol, and all labels.
 
@@ -158,8 +161,8 @@ Research one reason why transistors replaced mechanical relays in modern electro
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.4.4 Resistors (p. 316)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
-  { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
+  { label: "Collins IGCSE D&T — §4.4.4 Resistors (p. 316)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
+  { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
 ]} />
 
 <Reflection prompt="How does the transistor 'make the decision' to open the door? Describe the chain from rising temperature to spinning motor in four steps — without looking at your notes." />

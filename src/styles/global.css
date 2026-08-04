@@ -22,35 +22,37 @@
   --font-body: 'Inter Variable', system-ui, sans-serif;
   --font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Code', monospace;
 
-  /* --- Surfaces (near-black, layered) ------------------------------------- */
-  --bg: #06090e;          /* page background */
-  --bg-1: #0b1018;        /* raised surface */
-  --bg-2: #111824;        /* card surface */
-  --bg-3: #18222f;        /* hover / inset */
-  --line: #1f2c3a;        /* hairline borders */
-  --line-strong: #2c3e52;
+  /* --- Surfaces (light — the default) ------------------------------------- */
+  /* The page is a soft blue-grey so that white cards read as raised surfaces.
+     Keep --bg and --bg-1 distinct: if both go white the card edges disappear. */
+  --bg: #eef1f6;          /* page background */
+  --bg-1: #ffffff;        /* raised surface */
+  --bg-2: #ffffff;        /* card surface */
+  --bg-3: #e4e9f0;        /* hover / inset */
+  --line: #cfd8e3;        /* hairline borders */
+  --line-strong: #a8b6c6;
 
   /* --- Text --------------------------------------------------------------- */
-  --text: #e7eef5;        /* primary body */
-  --text-dim: #9fb0c0;    /* secondary */
-  --text-faint: #7b8ca0;  /* captions, meta — kept ≥4.5:1 on --bg */
+  --text: #0d1620;        /* primary body */
+  --text-dim: #41525f;    /* secondary */
+  --text-faint: #586978;  /* captions, meta — kept ≥4.5:1 on --bg */
 
-  /* --- Accent: electric (blue) cyan --------------------------------------- */
-  --accent: #34e0ff;
-  --accent-bright: #7df0ff;
-  --accent-deep: #0bb6d6;
-  --accent-ink: #04222a;          /* text on accent fills */
-  --accent-glow: rgba(52, 224, 255, 0.35);
-  --accent-wash: rgba(52, 224, 255, 0.08);
+  /* --- Accent: deep cyan (≥4.5:1 on white for links/text) ----------------- */
+  --accent: #0a7488;
+  --accent-bright: #0b91ab;
+  --accent-deep: #0a7488;
+  --accent-ink: #ffffff;          /* text on accent fills */
+  --accent-glow: rgba(10, 116, 136, 0.22);
+  --accent-wash: rgba(10, 116, 136, 0.08);
 
-  /* secondary accent for SEL/affective notes — warm violet to pair with cyan */
-  --accent-2: #b98cff;
-  --accent-2-wash: rgba(185, 140, 255, 0.10);
+  /* secondary accent for SEL/affective notes — violet to pair with the cyan */
+  --accent-2: #6d3df0;
+  --accent-2-wash: rgba(109, 61, 240, 0.08);
 
-  /* --- Feedback ----------------------------------------------------------- */
-  --ok: #4ce0a6;
-  --warn: #ffcf6b;
-  --bad: #ff6b81;
+  /* --- Feedback (tuned for white: each ≥5:1) ------------------------------ */
+  --ok: #0f7a52;
+  --warn: #9a6100;
+  --bad: #c62b40;
 
   /* --- Geometry ----------------------------------------------------------- */
   --radius: 12px;
@@ -60,10 +62,10 @@
   --readw: 52rem;         /* readable measure / unified lesson column */
   --header-h: 64px;       /* sticky header height — used for scroll-margin-top and .bar */
 
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
-            0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
+            0 8px 24px rgba(13, 22, 32, 0.08);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* ===========================================================================
@@ -73,32 +75,39 @@
    =========================================================================== */
 
 /* Light theme — for readers who find dark backgrounds hard (e.g. astigmatism). */
-:root[data-theme='light'] {
-  --bg: #f5f7fa;
-  --bg-1: #ffffff;
-  --bg-2: #ffffff;
-  --bg-3: #eef2f7;
-  --line: #d8e0ea;
-  --line-strong: #b3c2d2;
+/* Dark — the original near-black identity, now opt-in via the Aa Display menu. */
+:root[data-theme='dark'] {
+  --bg: #06090e;
+  --bg-1: #0b1018;
+  --bg-2: #111824;
+  --bg-3: #18222f;
+  --line: #1f2c3a;
+  --line-strong: #2c3e52;
 
-  --text: #0d1620;
-  --text-dim: #41525f;
-  --text-faint: #586978;
+  --text: #e7eef5;
+  --text-dim: #9fb0c0;
+  --text-faint: #7b8ca0;
 
-  --accent: #0a7488;        /* deeper cyan: ≥4.5:1 on white for links/text */
-  --accent-bright: #0b91ab;
-  --accent-deep: #0a7488;
-  --accent-ink: #ffffff;
-  --accent-glow: rgba(10, 116, 136, 0.22);
-  --accent-wash: rgba(10, 116, 136, 0.08);
+  --accent: #34e0ff;        /* electric cyan: reads only on a near-black surface */
+  --accent-bright: #7df0ff;
+  --accent-deep: #0bb6d6;
+  --accent-ink: #04222a;
+  --accent-glow: rgba(52, 224, 255, 0.35);
+  --accent-wash: rgba(52, 224, 255, 0.08);
 
-  --accent-2: #6d3df0;
-  --accent-2-wash: rgba(109, 61, 240, 0.08);
+  --accent-2: #b98cff;
+  --accent-2-wash: rgba(185, 140, 255, 0.10);
 
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset,
-            0 8px 24px rgba(13, 22, 32, 0.08);
+  /* Feedback colours are per-theme: these are tuned for near-black and would
+     drop to ~1.5:1 on white, so they must not leak into the light default. */
+  --ok: #4ce0a6;
+  --warn: #ffcf6b;
+  --bad: #ff6b81;
 
-  color-scheme: light;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
+            0 8px 30px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
 }
 
 /* High-contrast (dark) — maximal legibility for low vision. */
@@ -123,6 +132,11 @@
 
   --accent-2: #e0bbff;
   --accent-2-wash: rgba(224, 187, 255, 0.18);
+
+  /* Brighter than the dark theme's, so they stay legible on pure black. */
+  --ok: #6effc4;
+  --warn: #ffdb7d;
+  --bad: #ff97a8;
 
   color-scheme: dark;
 }

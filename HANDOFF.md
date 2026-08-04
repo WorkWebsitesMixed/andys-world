@@ -32,13 +32,27 @@ Andy's own brand (not Marymount-branded). Replaces an old hand-coded site.
 - **Drafts:** `draft: true` hides a lesson in production, shows it in `npm run dev`.
 
 ## 3. Design system & UX
-- Dark, near-black surface · **electric blue-cyan accent** (`#34e0ff`) · Space
-  Grotesk + Inter (self-hosted) · faint physics grid + glow. Tokens in
+- **Light is the default theme (changed 2026-08-04).** Soft blue-grey page
+  (`--bg: #eef1f6`) with white cards · **deep cyan accent** (`#0a7488`, ≥4.5:1 on
+  white) · Space Grotesk + Inter (self-hosted) · faint physics grid + glow. Tokens in
   `src/styles/global.css`.
+- **Token structure:** `:root` holds the **light** palette; `:root[data-theme='dark']`
+  and `:root[data-theme='contrast']` override it. There is deliberately **no
+  `[data-theme='light']` block** — a stored `light` preference falls through to
+  `:root`. The near-black surface + `#34e0ff` electric cyan is now the *dark* theme.
+- **Feedback colours (`--ok`/`--warn`/`--bad`) are defined per theme** and must stay
+  that way. The dark values drop to ~1.5:1 on white; the light values are each ≥5:1.
+  If you add a theme, define all three.
 - **Display preferences** (header "Aa Display", saved in `localStorage`, applied
-  pre-paint): theme **Dark / Light / High-contrast**, text spacing **Normal /
+  pre-paint): theme **Light / Dark / High-contrast**, text spacing **Normal /
   Roomy**, **Calm mode** (hides grid/glow/motion). New components must look right in
   all three themes.
+- **Lesson sections are numbered.** `.lesson-body` sets `counter-reset: sec` and
+  `Section.astro` increments it, so every `<Section>` in a lesson is numbered 1..n
+  down the page (all the house-structure components render a `<Section>`). Sections
+  are divided by a `border-top` spanning the column — a boundary *between* sections,
+  not an underline on the heading. Section `h2` is 1.55rem against a 1.05rem `h3`;
+  keep that gap, a student reported the old 1.3/1.25 step was unreadable as hierarchy.
 - **Floating section navigator** (`LessonNav.astro`), scroll-spy, ≥1280px only.
 - Accessibility baseline: alt text required on images, WCAG-checked contrast,
   keyboard/`prefers-reduced-motion` support.
@@ -133,6 +147,53 @@ explains Paper 1, Paper 4 and the Project.
   Sections with no Drive PDF (§2.6 CAD, §3.8–3.9, §3.11–3.13, §5.1–5.2 etc.)
   remain as plain text labels — add hrefs when those PDFs are uploaded.
 
+- **Textbook link audit & repair (2026-08-04):** all 139 `type: "Textbook"` items re-checked
+  against the actual Drive files. 53 edits across 34 lesson files; build stayed 0/0/0.
+  - **Dead link fixed:** the §1.8 Drive ID in 10 lessons was 32 chars (a dropped `E`). Correct ID
+    is `1LALQ16ljZjug0gE7WVoN2HaEERnwFK-4`. Recovered via
+    `curl "https://drive.google.com/embeddedfolderview?id=13ILaFGNhBhK1Ol2k_OUVbGOYx7tpiBxW"`,
+    which returns plain HTML listing all 27 filenames + IDs with no auth. **Use that trick again**
+    if a link breaks — the MCP Drive connector is on the personal account and cannot see these files
+    (owned by `andres.forero@marymount.edu.co`), though `get_file_metadata` on a known ID works.
+  - **Wrong file fixed:** four §4.4.4/.5/.7 refs in `g10/t1-w8`, `t1-w9` pointed at
+    `s4-4-electronics`; repointed to `s4-4-3-switches`. Their page numbers were already correct.
+  - **~30 page numbers corrected** against verified section-start pages (see the vault note for the
+    full § → page table). Extracts are at `../Curriculum/2027/textbook-extracts/`.
+  - **Known defect:** `s1-3-making.pdf` starts at printed p. 36, but §1.3 opens on p. 35 — that page
+    is the last page of `s1-2-design-ideas.pdf`. Labels cite p. 36 deliberately. A corrected
+    re-split is ready at `../Curriculum/2027/textbook-extracts/s1-3-making-FIXED.pdf`; if it is
+    uploaded in place, flip the 7 §1.3 labels to p. 35.
+  - `s4-2-4-structural-members.pdf` (§4.2.4, pp. 242–244) is on Drive as
+    `1Gef_9F-ldqFU3wRb5XPN1_FYC2yuFzaS` but is not linked from any lesson.
+  - Note: **PDF pages are image-only.** To find where a section starts, render with `pdftoppm` and
+    read the page-top strips — `pdftotext` returns nothing.
+  - **The 29 previously-unlinked refs are now linked too.** They were never a missing-PDF
+    problem: they cited section numbers from a *different edition*. Remapped per-lesson —
+    "§2.6 CAD" → §1.6 Use of technology (p. 63), "§5.2 Mechanisms" → §4.3 (p. 265),
+    "§3.12/§3.13" → §3.9 Shaping (p. 204), "§2.5 Finishing" → §3.11 Finishes (p. 222),
+    "§2.4 Adhesives" → §3.10 Joining and assembly (p. 210). Two "§3.11 Scale of production"
+    references were **dropped** — this edition has no such section (chapter 3 ends at §3.11
+    Finishes; chapter 5 is one unnumbered chapter, "The Project", p. 346, so no §5.1/§5.2).
+    `g10/t3-w4` and `t3-w5` deliberately carry **both** §1.7 (p. 72) and §1.8 (p. 78) for
+    product analysis — Andy will pick one later. Full table: vault note §4b.
+
+- **Maths rendering (2026-08-04):** `remark-math` + `rehype-katex` wired into
+  `astro.config.mjs`; maths compiles to static MathML + HTML at build time (no client JS,
+  screen-reader accessible). `katex/dist/katex.min.css` is imported by **`LessonLayout`,
+  not `BaseLayout`** — only lesson pages carry the stylesheet.
+  - **`Formula.astro`** — the house component for calculations. Renders
+    equation → substitution → result on labelled rows, result row in the accent wash,
+    all three left-aligned on a shared baseline (that's the Paper 4 mark-scheme method).
+    Props: `name?`, `equation` (required), `substitution?`, `result?`, `note?`. It calls
+    `katex.renderToString` directly, since MDX props are not markdown and `$…$` would not
+    be processed there. Verified in dark, light and high-contrast.
+  - Inline `$…$` / display `$$…$$` work in lesson prose. Authoring rules and TeX
+    conventions are in `src/content/lessons/README.md` under **Maths**.
+  - Converted so far: `g11/t1-w3`, `t1-w6`, `t2-w10`, `g10/t1-w8`, `t1-w9` (12 formulas).
+  - **Watch out:** `g12/t1-w1` and `t1-w7` use `$` for Excel absolute references. Those are
+    all inside backticks/code fences/JS prop strings, which remark-math ignores — but never
+    write a bare `$B$2` in prose or it will be parsed as maths.
+
 ## 7. Content sources (for populating more lessons)
 - **Grade 11 (done):** `../Curriculum/Grade11_SchemeOfWork/Term{1,2,3}.tex`
   (each `\section{Week N}` → 90-min lesson; `\section{Bonus N}` → bonus session
@@ -176,12 +237,9 @@ explains Paper 1, Paper 4 and the Project.
    production URL when available.
 2. **Grade 12 T2 + T3** — not yet planned or authored. Placeholder stubs show
    already. Awaiting Andy's curriculum plan for those terms.
-3. **Remaining textbook Drive links** — 29 `type: "Textbook"` items across G10 and
-   G11 still have no `href` because no Drive PDF was provided for those sections:
-   §1.7, §2.4, §2.5, **§2.6 CAD**, §3.8 Finishing, **§3.9** Manufacturing,
-   **§3.11** Scale of production, **§3.12** Polymer processes, **§3.13** Metal
-   processes, §5.1, §5.2. Upload those PDFs to Drive, share the `open?id=` URL,
-   and run the same `patch_links.py` pattern (or share links and I'll patch inline).
+3. **Textbook links — COMPLETE (2026-08-04).** All 137 `type: "Textbook"` items resolve to
+   the right file at a page inside it: 0 dead, 0 out-of-range, 0 unlinked. Nothing left to
+   upload — the 27 extracts cover the whole book (printed 8–376).
 4. **Media:** curated only — SVG diagrams (authored) for technical concepts; photos
    only where real-world needed; Watch/See = web-searched candidates the user
    approves (never auto-search, never fabricate URLs).

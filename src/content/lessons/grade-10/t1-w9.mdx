@@ -55,12 +55,25 @@ An **LDR (Light Dependent Resistor)** works on the same principle, but responds 
 **Circuit:** 9 V battery, 10 kΩ fixed resistor in series with a 10 kΩ NTC thermistor.
 
 **At room temperature (thermistor = 10 kΩ):**
-Junction voltage = 9 × 10,000 / (10,000 + 10,000) = 9 × 0.5 = 4.5 V
+
+<Formula
+  name="Voltage divider"
+  equation="V_{\text{out}} = V_{\text{in}} \times \frac{R_2}{R_1 + R_2}"
+  substitution="V_{\text{out}} = 9\ \text{V} \times \frac{10{,}000\ \Omega}{10{,}000\ \Omega + 10{,}000\ \Omega}"
+  result="V_{\text{out}} = 4.5\ \text{V}"
+/>
 
 Transistor base threshold ≈ 0.7 V — but 4.5 V is much higher than 0.7 V, so why isn't the transistor already on? Because there is a **base resistor** (typically 10–47 kΩ) between the junction and the base, which limits base current so the transistor stays in the linear region rather than saturating at room temperature.
 
 **At elevated temperature (thermistor = 1 kΩ):**
-Junction voltage = 9 × 10,000 / (1,000 + 10,000) = 9 × 0.909 = 8.2 V → transistor fully saturated → motor at full speed.
+
+<Formula
+  name="Voltage divider"
+  equation="V_{\text{out}} = V_{\text{in}} \times \frac{R_2}{R_1 + R_2}"
+  substitution="V_{\text{out}} = 9\ \text{V} \times \frac{10{,}000\ \Omega}{1{,}000\ \Omega + 10{,}000\ \Omega}"
+  result="V_{\text{out}} = 8.2\ \text{V}"
+  note="The transistor is now fully saturated — motor at full speed."
+/>
 
 In practice, the trigger point is set by the value of the base resistor and the transistor's gain. For this project, hand warmth (≈35°C) should be sufficient to trigger the motor.
 </WorkedExample>
@@ -159,8 +172,8 @@ Describe what would happen if you replaced the thermistor with an LDR in the Fir
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §4.4.7 Transducers (p. 326)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
-  { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
+  { label: "Collins IGCSE D&T — §4.4.7 Transducers (p. 326)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
+  { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
   { label: "Collins IGCSE D&T — §1.5 Health and safety (p. 55)", type: "Textbook", href: "https://drive.google.com/open?id=1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0" },
 ]} />
 

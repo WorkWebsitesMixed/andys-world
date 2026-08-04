@@ -48,7 +48,45 @@ callout `id="why"` to put it in the side navigator) ·
 `<Extension title="Go deeper"> … </Extension>` (optional stretch) ·
 `<Figure src="…" alt="…" caption="…" />` (alt text required) ·
 `<WatchSee items={[{label,href,kind?,note?}]} />` (curated external video links) ·
-`<ExamLink to="paper1|paper4|project|igcse">…</ExamLink>` (Grade 11 reference pages).
+`<ExamLink to="paper1|paper4|project|igcse">…</ExamLink>` (Grade 11 reference pages) ·
+`<Formula … />` (see below).
+
+## Maths
+
+Never write an equation as plain prose (`Stress = Force / Area`) — it reads as text and
+does not match the exam paper or the textbook.
+
+**Inside a sentence**, use `$…$`: "the factor of safety $\text{FoS} = 4.0$ means…".
+**On its own line**, use `$$…$$`. Both are rendered to static MathML + HTML at build
+time, so there is no client-side JavaScript and screen readers get real maths.
+
+**For a calculation, use `<Formula>`** — it lays the work out the way the mark scheme
+wants it, one stage per line:
+
+```mdx
+<Formula
+  name="Factor of safety"
+  equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+  substitution="\text{FoS} = \frac{200\ \text{N}}{50\ \text{N}}"
+  result="\text{FoS} = 4.0"
+  note="A FoS of 4 is a comfortable margin for a domestic shelf."
+/>
+```
+
+Only `equation` is required — drop `substitution`/`result` to state a formula in the
+abstract. Paper 4 Section B gives method marks for the rearranged formula and the
+substituted values, so show all three stages whenever there are numbers.
+
+Conventions: `\text{…}` for words and units so they are upright, `\ ` for the thin gap
+before a unit (`200\ \text{N}`), `\times` for multiplication (never a letter `x`),
+`\frac{}{}` for division, and `{,}` for a thousands separator (`80{,}000`).
+
+Use `\frac` inside a sentence and reserve `\dfrac` for a fraction that stands on its own
+line — `\dfrac` forces a full-size fraction, which makes surrounding lines sit unevenly.
+
+Note for Grade 12 Excel lessons: `$` for absolute references is safe inside backticks
+or a code fence, which is where it already lives. Do not write a bare `$B$2` in prose —
+it would be parsed as maths.
 
 **Never import anything in lesson files** — all components and route helpers are injected automatically.
 For inline links to the exam hub pages, use `<ExamLink to="project|paper1|paper4|igcse">`.

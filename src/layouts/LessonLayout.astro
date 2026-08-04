@@ -1,5 +1,8 @@
 ---
 import { render } from 'astro:content';
+// KaTeX's stylesheet, loaded here rather than in BaseLayout so that only lesson
+// pages carry it. Styles `$...$` / `$$...$$` in prose and the <Formula> component.
+import 'katex/dist/katex.min.css';
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Goals from '../components/Goals.astro';
@@ -22,6 +25,7 @@ import Support from '../components/Support.astro';
 import Extension from '../components/Extension.astro';
 import ExamLink from '../components/ExamLink.astro';
 import Figure from '../components/Figure.astro';
+import Formula from '../components/Formula.astro';
 import WatchSee from '../components/WatchSee.astro';
 import ProjectExamples from '../components/ProjectExamples.astro';
 import TriangulationDiagram from '../components/diagrams/TriangulationDiagram.astro';
@@ -59,6 +63,7 @@ const mdxComponents = {
   Extension,
   ExamLink,
   Figure,
+  Formula,
   WatchSee,
   ProjectExamples,
   TriangulationDiagram,
@@ -139,5 +144,11 @@ const crumbs = [
   .lesson-body :global(> p:first-child) {
     font-size: 1.08rem;
     color: var(--text-dim);
+  }
+  /* Origin for the section numbering rendered by Section.astro. Every numbered
+     block in the house structure is a <Section>, so the count restarts per
+     lesson and runs 1..n down the page. */
+  .lesson-body {
+    counter-reset: sec;
   }
 </style>
