@@ -52,49 +52,9 @@ You'll attempt your single highest-starred item — this time, prompt cards are 
 
 </Section>
 
-<Section title="Theory: Paper 1 — Data, file sizes, binary & data types" icon="📖" id="theory">
-
-### Why binary?
-
-Computers use binary (base 2 — only 0s and 1s) because electronic circuits have two states: **on** (1) and **off** (0). Each digit is called a **bit**.
-
-### Units of data
-
-| Unit | Size |
-|---|---|
-| Bit | Single 0 or 1 |
-| Byte | 8 bits |
-| Kilobyte (KB) | 1 024 bytes |
-| Megabyte (MB) | 1 024 KB |
-| Gigabyte (GB) | 1 024 MB |
-| Terabyte (TB) | 1 024 GB |
-
-Both 1 024 and 1 000 are accepted by examiners (binary vs SI convention).
-
-### File size calculation
-
-For an image: **file size (bits) = width (px) × height (px) × colour depth (bits)**
-
-Example: an image 800 × 600 pixels with 24-bit colour:
-- 800 × 600 × 24 = **11 520 000 bits**
-- ÷ 8 = **1 440 000 bytes**
-- ÷ 1 024 = **1 406.25 KB ≈ 1.37 MB**
-
-Walk through every step — don't jump to the final unit. Examiners award marks for intermediate steps.
-
-### Data types
-
-| Type | What it stores | Example | Key exam point |
-|---|---|---|---|
-| Integer | Whole numbers | 42, -7 | Cannot store decimals |
-| Real / Float | Decimal numbers | 3.14, -0.5 | Used for measurements |
-| Boolean | True / False | Checkbox, switch | Only two possible values |
-| String / Text | Characters | "Hello", "SW1A 1AA" | Phone numbers stored as string, not integer |
-| Date | Calendar dates | 2026-06-23 | Allows date arithmetic |
-
-**Classic exam trap:** a phone number like "01234 567890" must be stored as a **string**, not an integer. Storing it as an integer removes the leading zero and prevents formatting like spaces or hyphens.
-
-</Section>
+<Callout type="info" title="This week's Paper 1 theory">
+  Data, file sizes, binary, and data types is covered in full in your <WeekLink grade={12} term={1} week={15}>B3 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
+</Callout>
 
 <WorkedExample title="File size calculation step by step">
 **Question:** "A digital photograph is 1200 × 900 pixels. Each pixel uses 16 bits of colour. Calculate the file size in megabytes."

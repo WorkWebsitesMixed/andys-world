@@ -1,0 +1,103 @@
+---
+grade: 12
+term: 1
+week: 24
+sessionType: b
+title: "Peer Review & Final Export"
+topic: "Peer review, corrections & export"
+learningGoal: "review a peer's report against a structural checklist, make corrections to my own report from their feedback, and export a final compiled PDF."
+selGoal: "give peer feedback that names a specific section or line — not just 'looks good' or 'needs more detail.'"
+draft: false
+---
+
+<WeekLink grade={12} term={1} week={12}>This week's main session</WeekLink> closes the Chemistry report the same way: peer review against a checklist, corrections, final PDF export and submission. This is the last B session of Block B — both the W and B slots finish this arc together.
+
+<Callout type="tip" title="Why this matters" id="why">
+  The checklist below is deliberately structural, not subject-specific — a classmate who wrote about a completely different topic can still tell you whether your report has a caption on every table, a working citation for every claim, and a conclusion that actually answers its own introduction. That's a genuinely useful kind of feedback, and it doesn't require them to know anything about your topic.
+</Callout>
+
+<SelfCheck title="Retrieval quiz — B11: writing your report" questions={[
+  {
+    q: "What does 'substantially complete' mean for this report, before today's session?",
+    options: [
+      "Every word perfectly phrased",
+      "All five sections attempted, table/figure referenced, at least 3 citations",
+      "Only the Introduction and Conclusion written",
+      "A minimum word count reached, regardless of content"
+    ],
+    answer: 1,
+    hint: "Think about content and structure, not polish.",
+    explain: "Substantially complete means every section has real content, the evidence (table/figure) is referenced from the text, and citations are in place — polish and phrasing come later, today."
+  },
+  {
+    q: "You're stuck on a section. Which is the more useful question to ask?",
+    options: [
+      "\"I don't know what to do.\"",
+      "\"My table compiles but the caption isn't showing above it.\"",
+      "\"Can you just tell me what to write?\"",
+      "\"Is LaTeX supposed to be this hard?\""
+    ],
+    answer: 1,
+    hint: "A specific question names exactly what's broken.",
+    explain: "A specific, targeted question can be answered in one sentence. A vague one can't — it forces whoever's helping to guess what's actually wrong."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Peer review checklist", definition: "A structural list of things to check in someone else's document — present, working, and correctly formatted — independent of judging the content's quality." },
+  { term: "Compile warning vs error", definition: "An error stops the PDF from building; a warning (e.g. an unresolved reference) still produces a PDF, but with something wrong inside it — both need checking." },
+  { term: "Final export", definition: "Downloading the compiled PDF from Overleaf as the actual submitted file — not a link to the editable project." },
+]} />
+
+<Section title="Peer review checklist" icon="🔍" id="topic">
+
+Swap projects with a partner. Check their report against this list — tick or flag each line, and write one specific comment per flagged item:
+
+| Check | Look for |
+|---|---|
+| Compiles cleanly | No errors in the log. Warnings about unresolved references (`??`) should be fixed by recompiling twice. |
+| Every table has a caption and a label | `\caption{}` and `\label{}` present, and referenced from the text with `\ref{}` — not just "the table above." |
+| Every figure has a caption and a label | Same check, for `\includegraphics{}` figures. |
+| At least 3 citations, all resolving | No `[?]` in the compiled PDF — every `\cite{}` has a matching `.bib` entry. |
+| Conclusion answers the Introduction | The question or problem raised at the start has a stated answer at the end — not a new, unrelated point. |
+| One claim, one piece of evidence, throughout | Flag any sentence that states an opinion with nothing backing it. |
+
+A comment like "`Table~\ref{tab:solar}` caption is missing — add `\caption{}` before `\label{}`" is useful. "Looks good" is not — it doesn't tell the writer what to check.
+
+</Section>
+
+<WorkedExample title="Vague feedback → specific feedback">
+Vague: *"Your conclusion needs more detail."*
+
+Specific: *"Your conclusion states Project C is the best option but doesn't reference `Table~\ref{tab:solar}` — a reader can't check the claim without flipping back to guess which numbers you mean."*
+
+The specific version names the **exact section**, the **exact problem** (a missing reference, not vague "detail"), and **why it matters** to a reader. That's the difference between feedback someone can act on in five minutes and feedback that just tells them to try harder.
+</WorkedExample>
+
+<Activity title="Review, correct, export" time="35 min" grouping="Pairs, then individual" materials={["Laptop", "Overleaf — your report project", "The peer review checklist above"]}>
+1. Swap your Overleaf project link with a partner. Spend 10 minutes reviewing theirs against the checklist, writing specific comments.
+2. Swap back. Read their feedback on your report.
+3. Spend 15 minutes making corrections — fix every flagged item, not just the easy ones.
+4. Compile a final time. Confirm: no errors, no `[?]` citations, no unresolved `??` references.
+5. Download the final PDF (**Menu → Download PDF**) and submit it.
+</Activity>
+
+<Support title="Mark scheme — final compile checklist">
+Before exporting, confirm all of these in your compiled PDF:
+
+- No red error panel in Overleaf.
+- Every citation shows a number, not `[?]`.
+- Every table and figure reference shows a number, not `??`.
+- Every table and figure has a caption underneath (tables) or below (figures).
+- The reference list (`\printbibliography`) appears at the end and lists every source you cited.
+</Support>
+
+<Resources items={[
+  { label: "Overleaf documentation: downloading a compiled PDF", type: "Link" },
+]} />
+
+<Callout type="info" title="After today">
+  Block B ends here, for both sessions. You've now built two structured LaTeX documents from the same underlying skill: a Chemistry lab report, and a report in a field you chose yourself. That second one is the one worth remembering — the tool transfers, but only if you've used it on something that was actually yours.
+</Callout>
+
+<Reflection prompt="One thing LaTeX does better than Word or Canva for this kind of document. One thing that was genuinely harder. Be specific to your own report, not a general answer." />

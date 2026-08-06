@@ -1,0 +1,114 @@
+---
+grade: 12
+term: 1
+week: 14
+sessionType: b
+title: "Networks — LAN, WAN, Internet & Protocols"
+topic: "Networks"
+learningGoal: "distinguish LAN from WAN and wired from wireless with a justified scenario, explain the difference between client-server and peer-to-peer networks, and state the purpose of HTTP, FTP, SMTP and IMAP/POP3."
+selGoal: "connect a new term to something I already know, rather than memorising it as an isolated fact."
+draft: false
+---
+
+B2 builds on B1 and pairs with <WeekLink grade={12} term={1} week={2}>this week's main session</WeekLink>. Every B session opens the same way: a quick retrieval check on last week's topic, then new material.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Networks questions reward precision over vocabulary. Saying "the internet is a WAN" earns nothing on its own — the mark is in explaining *why*: geographic scope, and who owns the infrastructure.
+</Callout>
+
+Last week was hardware, input/output devices, storage, and RAM vs ROM.
+
+<SelfCheck title="Retrieval quiz — B1: hardware & storage" questions={[
+  {
+    q: "A student says their essay disappeared after a power cut. What kind of memory was it stored in before saving?",
+    options: ["ROM", "RAM", "A hard disk", "An SSD"],
+    answer: 1,
+    hint: "Which of these loses its contents the instant power is removed?",
+    explain: "Unsaved work sits in RAM — volatile memory that's wiped the moment power is lost. Saved work is written to non-volatile storage (hard disk or SSD) and survives."
+  },
+  {
+    q: "Which storage type would you choose for a device that needs to survive being dropped, and why?",
+    options: [
+      "Magnetic hard disk — highest capacity",
+      "Optical disc — cheapest to produce",
+      "Solid-state drive — no moving parts",
+      "ROM — non-volatile"
+    ],
+    answer: 2,
+    hint: "Physical robustness comes from the absence of one specific thing.",
+    explain: "Solid-state storage has no moving parts, so there's nothing inside to be damaged by a physical shock — unlike a magnetic disk's spinning platter and moving read head."
+  },
+  {
+    q: "A barcode reader is an example of which category of device?",
+    options: ["Output", "Storage", "Input", "Processing"],
+    answer: 2,
+    hint: "It captures data from the outside world and sends it to the computer.",
+    explain: "A barcode reader is an input device — it captures a barcode pattern and converts it into a digital product code."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "LAN (Local Area Network)", definition: "A network covering a small geographic area, typically owned and managed by one organisation — e.g. a school network." },
+  { term: "WAN (Wide Area Network)", definition: "A network covering a large geographic area, using infrastructure owned by multiple organisations — the internet is the largest example." },
+  { term: "Client-server network", definition: "Clients request resources; a central server manages and provides them, with centralised security and backups." },
+  { term: "Peer-to-peer network", definition: "Every device shares resources equally, with no central server — simpler and cheaper, but no centralised control." },
+  { term: "Protocol", definition: "A set of rules governing how data is formatted and transmitted between devices, so hardware from different manufacturers can communicate." },
+]} />
+
+<Section title="Building today's topic" icon="💬" id="topic">
+
+### LAN vs WAN — what's a school network compared to the internet?
+
+Both connect computers, so what actually separates them? Two things: **geographic area** and **ownership**. A LAN covers a small area — one building or site — and is usually owned by a single organisation. A WAN covers a large area — cities, countries, the whole planet — and runs on infrastructure owned by many different organisations. The internet is the largest WAN there is.
+
+### Wired vs wireless — why would a hospital prefer wired?
+
+Wireless wins on mobility and ease of adding devices. Wired wins on reliability, speed, and security — no signal to intercept, no interference to fight. A hospital needs monitoring equipment to stay connected without interruption and needs patient data to stay secure, so wired is usually the safer default in critical areas, even though the rest of the building might run wireless for convenience.
+
+### Client-server vs peer-to-peer — which for a school of 500 students?
+
+Client-server, and the reason is centralisation: one place to manage accounts, apply security policy, and run backups. Peer-to-peer is simpler and cheaper with no single point of failure, which suits a small home network of two or three devices — but at 500 users, the lack of central control becomes a liability rather than a convenience.
+
+### Protocols — what does HTTP actually *do*?
+
+Not "let you browse the internet" — that's the effect, not the mechanism. HTTP governs the rules for how a browser requests a web page and how a server responds: the format of that request and that response. Build the rest of the table the same way — one governing purpose each, not a vague description:
+
+| Protocol | Governs |
+|---|---|
+| HTTP / HTTPS | Requesting and sending web pages between browser and server (HTTPS adds encryption) |
+| FTP | Transferring files between computers |
+| SMTP | Sending email |
+| IMAP / POP3 | Receiving email — IMAP keeps mail on the server; POP3 downloads and often removes it |
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (protocols)">
+**Question:** "HTTP is used to send emails." Is this correct? Explain.
+
+Weak: *"No, that's wrong."*
+
+Improved: *"No. SMTP is the protocol used to send email. HTTP governs the transfer of web pages between a web server and a browser — it has no role in sending or receiving email."*
+
+The improvement earns marks by **naming the correct protocol** for the task described, not just rejecting the wrong one, and by stating **what HTTP actually governs** instead of only what it doesn't do.
+</WorkedExample>
+
+<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook"]}>
+Attempt all three before checking the mark scheme below.
+
+1. Explain, with a reason, why a large multinational company would use a WAN rather than a LAN to connect its offices in different countries.
+2. A small design studio of four freelancers wants to share files between their laptops without buying a server. Would client-server or peer-to-peer suit them better? Justify your answer.
+3. State the protocol used to receive email that keeps a copy on the server so it can be read from multiple devices, and explain why that matters for someone who checks email on both a phone and a laptop.
+</Activity>
+
+<Support title="Mark scheme — check your answers">
+1. A WAN, because the offices are in **different countries** — too large a geographic area for a LAN — and the connection between them needs infrastructure owned by external providers (e.g. internet service providers), which is exactly what a WAN uses.
+2. **Peer-to-peer** — with only four devices and no need for centralised management, a server would be an unnecessary cost. Each laptop can share files directly with the others.
+3. **IMAP** — it keeps the email on the server rather than downloading and removing it, so the same inbox stays in sync and accessible whether the user checks it on their phone or their laptop.
+</Support>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (networks & protocols)", type: "Past paper" },
+  { label: "Networks and protocols — revision reference", type: "Link" },
+]} />
+
+<Reflection prompt="Pick one protocol from today's table and explain it to someone who has never heard the term — in one sentence, without using the word 'internet'." />

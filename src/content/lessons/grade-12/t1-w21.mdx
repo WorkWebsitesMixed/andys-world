@@ -1,0 +1,146 @@
+---
+grade: 12
+term: 1
+week: 21
+sessionType: b
+title: "Tables, Figures & Citations for Your Report"
+topic: "LaTeX: tables, figures, citations"
+learningGoal: "build a results or comparison table with booktabs, insert a labelled figure with a cross-reference using graphicx, and add a working citation from a .bib file with biblatex."
+selGoal: "add one package at a time and compile after each, instead of adding all three and troubleshooting a wall of errors at once."
+draft: false
+---
+
+<WeekLink grade={12} term={1} week={9}>This week's main session</WeekLink> adds four packages to the Chemistry report — `mhchem`, `graphicx`, `booktabs`, `biblatex`. Your report doesn't need chemical equations, so this session covers three of the four: the ones that make almost any structured document look professional and stay consistent.
+
+<Callout type="tip" title="Why this matters" id="why">
+  A table typed with spaces and dashes looks fine until you edit one row and the columns stop lining up. A citation typed as `[1]` by hand looks fine until you insert a new source in the middle and have to renumber every one that follows by hand. `booktabs` and `biblatex` exist because both of those problems are common, and both are entirely avoidable.
+</Callout>
+
+<SelfCheck title="Retrieval quiz — B8: choosing your report" questions={[
+  {
+    q: "Which kind of document is Canva usually the better choice for?",
+    options: [
+      "A 12-page report with data tables and 25 citations",
+      "A one-page flyer with a large photo",
+      "A lab report with 40 chemical formulas",
+      "A document that needs auto-updating cross-references"
+    ],
+    answer: 1,
+    hint: "Think image-first, no data, no citations.",
+    explain: "Canva wins on short, visual, image-led documents with nothing structured to track. LaTeX's advantage shows up once you add tables, citations or cross-references."
+  },
+  {
+    q: "You copied your Chemistry report project in Overleaf to start your own report. What should you keep unchanged?",
+    options: [
+      "The preamble — margins, encoding, document class",
+      "The chemistry content in the body",
+      "The project's original name",
+      "Nothing — start completely from scratch"
+    ],
+    answer: 0,
+    hint: "The plumbing doesn't depend on the topic.",
+    explain: "The preamble sets up how the document is typeset, not what it says — it works identically for a Chemistry report or a business case study. Only the body content changes."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "graphicx", definition: "Package that lets you insert image files into a document with \\includegraphics{}." },
+  { term: "booktabs", definition: "Package that produces clean, professional table rules (\\toprule, \\midrule, \\bottomrule) instead of Word-style boxed grid lines." },
+  { term: "biblatex", definition: "Package that manages a bibliography from a separate .bib file — citations and the reference list format and renumber automatically." },
+  { term: ".bib file", definition: "A plain-text file holding your sources in a structured format, one entry per source, referenced from the document with \\cite{}." },
+  { term: "\\label{} / \\ref{}", definition: "\\label{} tags a figure or table; \\ref{} inserts its number anywhere in the text — and updates automatically if the figure moves." },
+]} />
+
+<Section title="Three packages, one report" icon="📊" id="topic">
+
+### Tables with booktabs
+
+```latex
+\usepackage{booktabs}
+
+\begin{table}[h]
+\centering
+\caption{Comparison of three regional solar projects}
+\label{tab:solar}
+\begin{tabular}{lcc}
+\toprule
+Project & Capacity (MW) & Cost per MW (USD) \\
+\midrule
+Project A & 40 & 1.2M \\
+Project B & 25 & 1.5M \\
+Project C & 60 & 1.0M \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+Only `\toprule`, `\midrule` and `\bottomrule` — no vertical lines, no boxed grid. That's a deliberate typographic convention, not a limitation: publication tables avoid vertical rules because they add clutter without adding information.
+
+### Figures with graphicx
+
+```latex
+\usepackage{graphicx}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{project-photo.jpg}
+\caption{Prototype chassis, side view}
+\label{fig:chassis}
+\end{figure}
+```
+
+Refer to it in your text with `Figure~\ref{fig:chassis}` — not "the figure below." If you add a second figure before this one later, `\ref{}` updates the number automatically. A hand-typed "Figure 1" doesn't.
+
+### Citations with biblatex
+
+Add to the preamble:
+
+```latex
+\usepackage[style=numeric, sorting=none]{biblatex}
+\addbibresource{refs.bib}
+```
+
+Create a `refs.bib` file (New File in Overleaf) with one entry per source:
+
+```
+@online{iea2023,
+  author = {International Energy Agency},
+  title = {Renewables 2023},
+  year = {2023},
+  url = {https://www.iea.org/reports/renewables-2023}
+}
+```
+
+Cite it in text with `\cite{iea2023}`, and add `\printbibliography` before `\end{document}` to generate the full reference list.
+
+</Section>
+
+<WorkedExample title="Plain-text table → booktabs table">
+Weak: a paragraph reading *"Project A has 40 MW capacity and costs 1.2M per MW, Project B has 25 MW and costs 1.5M per MW..."*
+
+Improved: the three-row `booktabs` table above — same data, instantly scannable, and referenced from the text as `Table~\ref{tab:solar}` instead of "the numbers above."
+
+The improvement isn't just visual. A reader (or examiner, or reviewer) can compare three numbers across a row in half a second in table form; the same comparison buried in a sentence takes real effort to extract.
+</WorkedExample>
+
+<Activity title="Add a table and a citation" time="25 min" grouping="Individual" materials={["Laptop", "Overleaf — your report project from B8", "At least one real source for your topic"]}>
+1. Add `\usepackage{booktabs}` to your preamble. Build one table relevant to your topic — even 3 rows of made-up placeholder data is fine for now.
+2. Add `\usepackage[style=numeric, sorting=none]{biblatex}` and `\addbibresource{refs.bib}` to your preamble.
+3. Create `refs.bib` and add one real source about your topic.
+4. Cite it in your Introduction with `\cite{}`, and add `\printbibliography` at the end of the document.
+5. Compile. If the citation shows as `[?]`, you're missing `\printbibliography` or need to compile twice (Overleaf sometimes needs a second pass to resolve references).
+</Activity>
+
+<Support title="Mark scheme — troubleshooting checklist">
+- **Citation shows `[?]` instead of a number** → check you added `\printbibliography`, and try compiling a second time.
+- **"File 'refs.bib' not found"** → check the filename matches exactly, including the `.bib` extension, in both the file itself and `\addbibresource{}`.
+- **Table columns misaligned** → count your `&` symbols — one fewer than the number of columns per row, and every row must have the same count.
+- **Figure doesn't appear** → check the image file was uploaded to the Overleaf project, and the filename in `\includegraphics{}` matches exactly.
+</Support>
+
+<Resources items={[
+  { label: "Overleaf documentation: tables with booktabs", type: "Link" },
+  { label: "Overleaf documentation: bibliography management with biblatex", type: "Link" },
+]} />
+
+<Reflection prompt="Which of the three — table, figure, or citation — took the longest to get working? What was the actual error, and what fixed it?" />

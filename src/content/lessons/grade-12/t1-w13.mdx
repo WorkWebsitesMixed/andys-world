@@ -1,0 +1,127 @@
+---
+grade: 12
+term: 1
+week: 13
+sessionType: b
+title: "Hardware, Input/Output Devices, Storage & RAM vs ROM"
+topic: "Hardware & storage"
+learningGoal: "name input and output devices and the data each captures or presents, distinguish hard copy from soft copy, classify storage as magnetic, optical or solid-state with an advantage of each, and explain why RAM is volatile while ROM is not."
+selGoal: "answer honestly when I don't know a term, rather than guessing silently and losing track of what I actually need to learn."
+draft: false
+---
+
+This is your **B session** — a separate 45-minute class, every week, alongside your main Paper 2/3 practical session. B sessions build your Paper 1 theory, one topic at a time, and end the week before the exam. B1 pairs with <WeekLink grade={12} term={1} week={1}>this week's main session</WeekLink> but has its own slot on the timetable.
+
+<Callout type="exam" title="Why this matters" id="why">
+  Paper 1 tests the theory behind the tools you use in Paper 2 and Paper 3 — not just definitions, but the exact wording examiners are trained to award marks for. "Fast" earns zero. "Higher clock speed" earns one mark. A full, correctly-linked explanation earns two. That precision is what every B session drills.
+</Callout>
+
+There's no prior B session to retrieve from this week — this is a baseline check on general ICT knowledge you already have. Treat it the same way every week from now on: no notes, work it out, then move on.
+
+<SelfCheck title="Retrieval quiz — baseline check" questions={[
+  {
+    q: "Which of these is an input device?",
+    options: ["Monitor", "Speaker", "Scanner", "Printer"],
+    answer: 2,
+    hint: "An input device captures data and sends it to the computer — not the other way round.",
+    explain: "A scanner captures a physical document or image and converts it into a digital form the computer can process. The other three are all output devices."
+  },
+  {
+    q: "What does 'volatile' mean when describing computer memory?",
+    options: [
+      "It can be written to and read from",
+      "It loses its contents when power is removed",
+      "It is very fast",
+      "It is used to store the operating system"
+    ],
+    answer: 1,
+    hint: "Think about what happens to RAM the moment you switch off the power.",
+    explain: "Volatile memory loses its contents as soon as power is removed. RAM is volatile; ROM is non-volatile."
+  },
+  {
+    q: "A printed copy of a document is an example of what kind of output?",
+    options: ["Soft copy", "Hard copy", "Digital copy", "Temporary copy"],
+    answer: 1,
+    hint: "The opposite of what you see on a monitor.",
+    explain: "Hard copy is physical, permanent output — printed on paper. Soft copy is temporary, on-screen output."
+  },
+  {
+    q: "Which storage type has no moving parts?",
+    options: ["Magnetic hard disk", "DVD", "Solid-state drive", "Blu-ray disc"],
+    answer: 2,
+    hint: "This is also the newest and generally fastest of the three storage types.",
+    explain: "Solid-state drives (SSDs) store data electronically with no moving parts, making them faster and more robust than magnetic or optical storage."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Input device", definition: "Hardware that captures data from the outside world and converts it into a form the computer can process — e.g. keyboard, mouse, scanner, microphone, barcode reader." },
+  { term: "Output device", definition: "Hardware that presents processed data to the user — e.g. monitor (soft copy), printer (hard copy), speakers (audio)." },
+  { term: "Volatile / non-volatile", definition: "Volatile memory loses its contents when power is removed (RAM). Non-volatile memory keeps its contents without power (ROM, hard disk, SSD)." },
+  { term: "RAM (Random Access Memory)", definition: "Volatile working memory that holds the operating system and currently running programs while the computer is on." },
+  { term: "ROM (Read-Only Memory)", definition: "Non-volatile memory that holds the boot instructions the computer needs to start up, before an operating system has loaded." },
+]} />
+
+<Section title="Building today's topic" icon="💬" id="topic">
+
+### Input devices — beyond keyboard and mouse
+
+Name an input device that isn't a keyboard or a mouse, and for each one ask what data it captures and in what form:
+
+- **Scanner** — a physical document or image → a digital image file.
+- **Microphone** — sound → digital audio.
+- **Barcode reader** — a printed barcode → a product code.
+- **Sensor** (temperature, light, pressure) — a physical condition → a numeric reading, sampled continuously.
+
+The exam wants the *specific* capture, not just "it takes in data." A microphone doesn't "input sound" for full marks — it "converts sound waves into a digital audio signal the computer can store and process."
+
+### Output devices — what's actually different about them
+
+A monitor and a printer both show you the result of processing, so what's the real distinction? **Permanence.** A monitor gives soft copy — temporary, on-screen, gone when you turn it off. A printer gives hard copy — permanent, physical, exists independently of the computer. That single word, *permanent* vs *temporary*, is what the mark scheme is checking for.
+
+### Storage: what happens to data in RAM when the power goes off?
+
+Nothing survives — that's the volatile/non-volatile distinction, and it's the single most-tested idea in this topic. Three physical storage types, each with a trade-off:
+
+| Type | Examples | Advantage | Disadvantage |
+|---|---|---|---|
+| Magnetic | Hard disk drive (HDD) | High capacity, low cost per GB | Moving parts — fragile, slower |
+| Optical | DVD, Blu-ray | Portable, cheap to produce | Slower; scratch damage |
+| Solid-state | SSD, USB drive | Fast, no moving parts, robust | More expensive per GB |
+
+### RAM vs ROM — the question that catches almost everyone
+
+"Why can't the computer boot from RAM alone?" Work it through: RAM is volatile, so the instant power is removed, it's empty. If the boot instructions lived only in RAM, there would be nothing there to read when the computer is switched back on. ROM is non-volatile — it keeps the boot instructions safe with no power at all, which is exactly why it's ROM's job and not RAM's.
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (input devices)">
+**Question:** "A shop uses a device to read barcodes on products at the checkout. Describe how this device works."
+
+Weak: *"A scanner is used to put pictures into a computer."*
+
+Improved: *"A barcode reader captures the pattern of black and white lines printed on a product's barcode, and converts it into a digital product code that the computer can look up in a database to find the price and description."*
+
+The improvement earns marks by naming the **specific device** for the scenario (not a generic scanner), stating **exactly what it captures** (the barcode pattern), and explaining **what happens to the data** (converted to a code, used to look something up) — not just that data "goes into the computer."
+</WorkedExample>
+
+<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook", "This lesson's key terms"]}>
+Answer each in full sentences — no single-word answers score marks on Paper 1. Don't check the mark scheme until you've genuinely attempted all three.
+
+1. A user says their laptop "lost everything" after a power cut while a document was open but unsaved. Explain why this happened, using the term *volatile* in your answer.
+2. Name a suitable storage device for backing up a school's entire student record archive, and justify your choice with one advantage.
+3. State one advantage of solid-state storage over magnetic storage, and explain **why** that advantage exists (not just what it is).
+</Activity>
+
+<Support title="Mark scheme — check your answers">
+1. The laptop lost the document because it was held in **RAM**, which is **volatile** — its contents are lost the instant power is removed. Only work that had already been saved to non-volatile storage (the hard disk or SSD) survives a power cut.
+2. **Magnetic hard disk** — high capacity at low cost per GB, which suits a large archive where speed matters less than storing a lot of data affordably. (A solid-state answer with "fast access, no moving parts" is also creditable if the scenario justifies needing speed.)
+3. Solid-state storage has **no moving parts**, so it is more robust against physical shock and generally faster, because there is no read head that needs to physically move to locate data — unlike a magnetic disk, where the head must seek to the correct track before it can read.
+</Support>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (hardware, storage)", type: "Past paper" },
+  { label: "Input/output devices and storage types — revision reference", type: "Link" },
+]} />
+
+<Reflection prompt="Write one sentence, from memory and without checking your notes, explaining why a computer needs both RAM and ROM. If you can't, that's exactly what to review before next week's retrieval quiz." />

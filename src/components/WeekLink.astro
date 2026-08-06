@@ -1,0 +1,26 @@
+---
+/**
+ * Inline link from one lesson to another week's page — e.g. a main session
+ * pointing to its paired B session, or vice versa. Registered in LessonLayout's
+ * MDX map, so lessons use it without importing:
+ *   <WeekLink grade={12} term={1} week={13}>B1</WeekLink>
+ */
+import { routes } from '../lib/url';
+
+interface Props {
+  grade: number;
+  term: number;
+  week: number;
+}
+
+const { grade, term, week } = Astro.props;
+const href = routes.week(grade, term, week);
+---
+
+<a class="week-link" href={href}><slot /></a>
+
+<style>
+  .week-link {
+    border-bottom: 1px dashed currentColor;
+  }
+</style>

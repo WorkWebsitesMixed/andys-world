@@ -1,0 +1,112 @@
+---
+grade: 12
+term: 1
+week: 17
+sessionType: b
+title: "Systems Life Cycle, Software Types & Health/Ergonomics"
+topic: "Systems & software"
+learningGoal: "sequence the six stages of the systems life cycle and explain what testing does that development can't, distinguish operating system from application from utility software, and name a physical health risk of long-term computer use with its countermeasure."
+selGoal: "resist the urge to name a familiar example (like Microsoft Word) before checking it actually fits the category being asked about."
+draft: false
+---
+
+B5 builds on B4 and pairs with <WeekLink grade={12} term={1} week={5}>this week's main session</WeekLink>. Same shape every week: retrieval, then new material.
+
+<Callout type="exam" title="Why this matters" id="why">
+  "Microsoft Word is an operating system" is a real, recurring exam-answer mistake. Software-type questions are won or lost on knowing exactly what each category's job is — not on recognising brand names.
+</Callout>
+
+Last week was safety and security — threats, countermeasures, and backups.
+
+<SelfCheck title="Retrieval quiz — B4: safety & security" questions={[
+  {
+    q: "An employee deliberately deletes company files out of anger before resigning. What category of threat is this?",
+    options: ["Accidental", "Malicious external", "Malicious internal", "Not a threat — it's their data too"],
+    answer: 2,
+    hint: "The person has legitimate access, but is misusing it on purpose.",
+    explain: "This is malicious internal — a deliberate act of harm carried out by someone inside the organisation who already has legitimate access."
+  },
+  {
+    q: "What does encryption actually do to data?",
+    options: [
+      "Deletes it permanently after use",
+      "Converts it into a coded format that only a key can decode",
+      "Compresses it to save storage space",
+      "Backs it up automatically to another location"
+    ],
+    answer: 1,
+    hint: "Think about what an attacker would see if they intercepted the data.",
+    explain: "Encryption scrambles data using an algorithm, so only someone with the correct key can convert it back into a readable form."
+  },
+  {
+    q: "Why should a backup be stored off-site rather than in the same building as the original data?",
+    options: [
+      "Off-site backups are always faster to restore",
+      "It's cheaper to store data off-site",
+      "A single disaster, like a fire, could destroy both the original and an on-site backup",
+      "On-site backups are illegal under data protection law"
+    ],
+    answer: 2,
+    hint: "Think about what a fire or flood would do to two copies stored in the same place.",
+    explain: "If a backup shares the same building as the original, the same disaster (fire, flood, theft) can destroy both at once, defeating the purpose of having a backup at all."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Systems Development Life Cycle (SDLC)", definition: "The six stages of building a system: Analysis, Design, Development, Testing, Implementation, Evaluation. Iterative — problems found in Testing send work back to Development." },
+  { term: "Operating system", definition: "Software that manages hardware, provides the user interface, and manages files — e.g. Windows, macOS. Not a task-specific application." },
+  { term: "Application software", definition: "Software designed for a specific user task — e.g. a word processor, a spreadsheet, a game." },
+  { term: "Utility software", definition: "Software for system maintenance rather than user tasks — e.g. antivirus, disk defragmenter, file compression." },
+  { term: "RSI (repetitive strain injury)", definition: "Pain or damage caused by repeated motion, such as typing or mouse use over long periods." },
+]} />
+
+<Section title="Building today's topic" icon="💬" id="topic">
+
+### The systems life cycle — what if you were building a new school database?
+
+Six stages, in order: **Analysis** (what does the school actually need?) → **Design** (plan the structure) → **Development** (build it) → **Testing** (does it work?) → **Implementation** (put it into real use) → **Evaluation** (did it succeed?). The key exam question is: *"What happens in Testing that can't happen in Development?"* Testing uses real or realistic data under real conditions — and when it finds errors, the process loops back to Development. That loop-back is what makes SDLC iterative, not a straight line.
+
+### Software types — the distinction that's easy to get wrong
+
+An **operating system** manages the hardware itself, provides the interface you interact with, and manages files — Windows, macOS, the layer everything else runs on top of. **Application software** does one specific job for the user — a word processor, a spreadsheet, a browser. **Utility software** doesn't do a user's task at all; it maintains the system — antivirus scanning for threats, a defragmenter reorganising a disk, a compression tool shrinking file sizes. The exam trap almost writes itself: *"Microsoft Word is an operating system."* It isn't — it's application software, because it performs one specific task (document editing) rather than managing the hardware.
+
+### Health and ergonomics — what can long-term computer use actually cause?
+
+Three physical problems, each with a specific cause and a specific fix, not a vague "take breaks":
+
+- **RSI** (repetitive strain injury) — caused by repeated keyboard/mouse motion; countered with a wrist rest and correct hand position.
+- **Eye strain** — caused by screen glare or incorrect viewing distance; countered with an anti-glare screen and regular breaks (the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds).
+- **Back/neck pain** — caused by poor posture; countered with an adjustable chair and correct monitor height, level with the eyes.
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (software types)">
+**Question:** "State the type of software Microsoft Word is, and explain why."
+
+Weak: *"Microsoft Word is an operating system because it's very important software."*
+
+Improved: *"Microsoft Word is application software, because it performs one specific task — creating and editing documents — for the user. An operating system, by contrast, manages the computer's hardware and provides the environment in which applications like Word run."*
+
+The improvement earns marks by giving the **correct category**, then explaining the **defining feature of that category** (a specific user task) and contrasting it precisely with what an operating system actually does.
+</WorkedExample>
+
+<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook"]}>
+Attempt all three before checking the mark scheme below.
+
+1. A school is building a new library catalogue system. Testing reveals the search function returns incorrect results. Which SDLC stage does the team return to, and why can't this problem simply be fixed during Implementation?
+2. State the type of software antivirus is, and explain why it doesn't fit either of the other two categories.
+3. A student develops wrist pain after months of daily laptop use for schoolwork. Name the condition and one specific countermeasure.
+</Activity>
+
+<Support title="Mark scheme — check your answers">
+1. The team returns to **Development** — Testing found a functional error (incorrect search results), and fixing the underlying logic is a development task, not an implementation one. Implementation is about putting a *working* system into real use; you can't implement a system that doesn't work correctly yet.
+2. Antivirus is **utility software** — it doesn't perform a specific user task (ruling out application software) and it doesn't manage hardware or provide the user interface (ruling out operating system); its job is system maintenance, scanning for and removing threats.
+3. **RSI (repetitive strain injury)**. Countermeasure: a wrist rest to support correct hand position and reduce strain during typing (a break schedule or an ergonomic mouse are also acceptable).
+</Support>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (systems life cycle & software)", type: "Past paper" },
+  { label: "SDLC stages and software categories — revision reference", type: "Link" },
+]} />
+
+<Reflection prompt="Name one piece of software you used this week for each of the three categories — operating system, application, utility — without using any example from today's lesson." />

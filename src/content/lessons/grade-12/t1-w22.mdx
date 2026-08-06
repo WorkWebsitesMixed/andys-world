@@ -1,0 +1,102 @@
+---
+grade: 12
+term: 1
+week: 22
+sessionType: b
+title: "Your Report's Structure"
+topic: "Report structure & content planning"
+learningGoal: "map each section of a structured report to what it should contain for my chosen topic, and produce a one-sentence content plan for every section before writing full prose."
+selGoal: "plan every section before writing any of them in full, rather than starting with the section I find easiest and improvising the rest later."
+draft: false
+---
+
+<WeekLink grade={12} term={1} week={10}>This week's main session</WeekLink> is a joint one — the ICT teacher maps the LaTeX format, the Chemistry teacher maps what belongs in each section. Your report doesn't have a subject-specialist in the room, so this session does both jobs at once: a shared structure, with content guidance for whichever track you picked.
+
+<Callout type="tip" title="Why this matters" id="why">
+  A report with the right LaTeX commands but a vague plan for what goes where still reads badly. Format and content aren't separate problems — they're solved together, section by section. That's what this session plans before <WeekLink grade={12} term={1} week={23}>B11</WeekLink> turns the plan into full prose.
+</Callout>
+
+<SelfCheck title="Retrieval quiz — B9: tables, figures & citations" questions={[
+  {
+    q: "In a booktabs table, which of these should you avoid?",
+    options: [
+      "\\toprule, \\midrule, \\bottomrule",
+      "Vertical lines between columns",
+      "A \\caption{}",
+      "A \\label{}"
+    ],
+    answer: 1,
+    hint: "Publication-style tables deliberately leave this out.",
+    explain: "booktabs tables avoid vertical rules — they add visual clutter without adding information. Only horizontal rules at the top, after the header, and at the bottom."
+  },
+  {
+    q: "A citation compiles as [?] instead of a number. What's the most likely fix?",
+    options: [
+      "Delete the citation and rewrite the sentence",
+      "Add \\printbibliography and compile again",
+      "Change biblatex to mhchem",
+      "Rename the .bib file to .tex"
+    ],
+    answer: 1,
+    hint: "The reference list has to actually be generated somewhere in the document.",
+    explain: "Without \\printbibliography, biblatex has nothing to resolve citations against. Adding it — and sometimes compiling a second time — fixes the [?]."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Report skeleton", definition: "The standard section order of a structured report: Introduction, Body sections, Data/Evidence, Conclusion, References." },
+  { term: "Content plan", definition: "A one-sentence statement of what a section will argue or show, written before the full prose — a plan, not a draft." },
+  { term: "Claim vs evidence", definition: "A claim is a statement your report makes; evidence is the specific fact, figure or source that supports it. Every claim in a report needs at least one piece of evidence." },
+]} />
+
+<Section title="Mapping your report" icon="🧭" id="topic">
+
+### The shared skeleton
+
+Every track uses the same five-part structure — only the content inside each part changes:
+
+| Section | Medicine | Management / Business | Engineering |
+|---|---|---|---|
+| **Introduction** | The health question and why it matters, with one statistic | The company or idea, and the question the report answers | The project and the design problem it solves |
+| **Body section 1** | What existing research/data shows | Market or competitor context | Requirements and constraints |
+| **Body section 2** | Your analysis of that evidence | Your analysis (costs, risks, options) | Design choices made and why |
+| **Data/Evidence** | A table of study data or comparison figures | A table of financial or comparison figures | A table of material/component choices, or a test-result figure |
+| **Conclusion** | What the evidence supports, and its limits | A recommendation, with a stated risk or trade-off | Whether the design met the requirements, and what you'd change |
+
+### Claim, then evidence — for every section
+
+A section that only states opinions ("solar power is a good option") earns nothing without evidence attached ("...because Project C in `Table~\ref{tab:solar}` delivers the lowest cost per MW of the three"). Before writing full prose next week, plan each section as one sentence: *this section will claim X, supported by Y.*
+
+</Section>
+
+<WorkedExample title="Weak content plan → improved content plan">
+Weak plan for a Conclusion: *"Wrap up the report and say what I think."*
+
+Improved plan: *"Conclude that Project C is the strongest option because it has the lowest cost per MW (`Table~\ref{tab:solar}`), but note the limitation that capacity data alone doesn't account for land availability, which the report didn't investigate."*
+
+The improved version names the **specific claim**, the **specific evidence** backing it, and a **specific limitation** — three things a reader can actually check against the rest of the report. "Wrap up and say what I think" gives the writer nothing to aim for when they sit down to write it in full.
+</WorkedExample>
+
+<Activity title="Plan every section" time="25 min" grouping="Individual" materials={["Laptop", "Your report project from B8/B9", "The section-mapping table above"]}>
+For each of the five sections in your report, write **one sentence**: what this section will claim, and what evidence backs it. Not full prose yet — that's next week.
+
+1. Introduction — the question or problem, and the one fact that makes it worth reporting on.
+2. Body section 1 — the context or existing evidence you'll present.
+3. Body section 2 — your own analysis of that evidence.
+4. Data/Evidence — what your table or figure will show.
+5. Conclusion — your claim, its evidence, and one honest limitation.
+</Activity>
+
+<Support title="Mark scheme — self-check your plan">
+Read back each of your five sentences and check:
+
+- Does it name a **specific** claim, not a general topic restated? ("Solar is interesting" is not a claim. "Project C has the lowest cost per MW" is.)
+- Does it name the **evidence** — a table, a source, a comparison — not just assert the claim on its own?
+- If two sentences say almost the same thing, one of your sections is redundant — merge them now, before writing full prose.
+</Support>
+
+<Resources items={[
+  { label: "Report structure checklist (Introduction / Body / Evidence / Conclusion)", type: "Link" },
+]} />
+
+<Reflection prompt="Which of your five sections has the weakest evidence right now? What would you need to find or measure before B11 to strengthen it?" />

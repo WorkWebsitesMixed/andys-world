@@ -11,7 +11,7 @@ import {
   weeksForTerm,
   defaultWeekTitle,
   getTermFocus,
-  bonusWeekStart,
+  bSessionStart,
 } from '../../../../lib/curriculum';
 import { routes } from '../../../../lib/url';
 import { getTermLessons } from '../../../../lib/lessons';
@@ -32,9 +32,9 @@ const byWeek = new Map(lessons.map((l) => [l.data.week, l]));
 const weeks = weeksForTerm(termNum, gradeNum);
 const focus = getTermFocus(gradeNum, termNum);
 
-const bonusStart = bonusWeekStart(gradeNum, termNum);
-const mainWeeks = bonusStart ? weeks.filter((w) => w < bonusStart) : weeks;
-const bonusWeeks = bonusStart ? weeks.filter((w) => w >= bonusStart) : [];
+const bStart = bSessionStart(gradeNum, termNum);
+const mainWeeks = bStart ? weeks.filter((w) => w < bStart) : weeks;
+const bWeeks = bStart ? weeks.filter((w) => w >= bStart) : [];
 ---
 
 <BaseLayout title={`${info.name} · ${termLabel(termNum)}`}>
@@ -53,7 +53,7 @@ const bonusWeeks = bonusStart ? weeks.filter((w) => w >= bonusStart) : [];
   </section>
 
   <section class="container">
-    {bonusWeeks.length > 0 && <h2 class="section-heading">Main Sessions</h2>}
+    {bWeeks.length > 0 && <h2 class="section-heading">Main Sessions</h2>}
     <div class="grid">
       {mainWeeks.map((w) => {
         const lesson = byWeek.get(w);
@@ -72,20 +72,22 @@ const bonusWeeks = bonusStart ? weeks.filter((w) => w >= bonusStart) : [];
       })}
     </div>
 
-    {bonusWeeks.length > 0 && (
+    {bWeeks.length > 0 && (
       <>
-        <h2 class="section-heading bonus-heading">Bonus Sessions</h2>
-        <p class="muted bonus-blurb">45-minute sessions running in the same weeks as the main programme.</p>
+        <h2 class="section-heading b-heading">B Sessions</h2>
+        <p class="muted b-blurb">
+          A separate, mandatory 45-minute class each week — not the main session, and not optional.
+        </p>
         <div class="grid">
-          {bonusWeeks.map((w) => {
+          {bWeeks.map((w) => {
             const lesson = byWeek.get(w);
             const ready = Boolean(lesson);
-            const bonusNum = w - bonusStart! + 1;
+            const bNum = w - bStart! + 1;
             return (
               <Card
                 href={routes.week(gradeNum, termNum, w)}
-                eyebrow={`Bonus B${bonusNum}`}
-                title={lesson?.data.title ?? `Bonus B${bonusNum}`}
+                eyebrow={`B${bNum}`}
+                title={lesson?.data.title ?? `B${bNum}`}
                 tag={ready ? lesson!.data.topic : 'Coming soon'}
                 muted={!ready}
               >
@@ -110,8 +112,8 @@ const bonusWeeks = bonusStart ? weeks.filter((w) => w >= bonusStart) : [];
     color: var(--text-dim);
     margin: 2rem 0 0.75rem;
   }
-  .bonus-heading { margin-top: 3rem; }
-  .bonus-blurb { margin: -0.25rem 0 0.75rem; font-size: 0.875rem; }
+  .b-heading { margin-top: 3rem; }
+  .b-blurb { margin: -0.25rem 0 0.75rem; font-size: 0.875rem; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));

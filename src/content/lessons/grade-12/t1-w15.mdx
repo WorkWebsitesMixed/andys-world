@@ -1,0 +1,109 @@
+---
+grade: 12
+term: 1
+week: 15
+sessionType: b
+title: "Data, File Sizes, Binary & Data Types"
+topic: "Data & binary"
+learningGoal: "explain why computers use binary, convert between bits, bytes, KB, MB, GB and TB, calculate the file size of an image from its dimensions and colour depth, and match a data type to a real value with a reason."
+selGoal: "show every step of a calculation, not just the final number, even when I'm confident it's right."
+draft: false
+---
+
+B3 builds on B2 and pairs with <WeekLink grade={12} term={1} week={3}>this week's main session</WeekLink>. Same shape every week: retrieval, then new material.
+
+<Callout type="exam" title="Why this matters" id="why">
+  File-size calculations are one of the few Paper 1 questions with a single correct numeric answer — and the mark scheme awards partial credit for correct working even when the final number is wrong. Show every step.
+</Callout>
+
+Last week was networks — LAN, WAN, wired vs wireless, client-server vs peer-to-peer, and protocols.
+
+<SelfCheck title="Retrieval quiz — B2: networks" questions={[
+  {
+    q: "A company connects offices in five different countries. Which type of network do they need?",
+    options: ["LAN", "WAN", "Peer-to-peer only", "None — offices can't be networked across countries"],
+    answer: 1,
+    hint: "Think about geographic area.",
+    explain: "A WAN (Wide Area Network) covers a large geographic area and uses infrastructure owned by multiple organisations — exactly what's needed to connect offices across countries."
+  },
+  {
+    q: "Which protocol governs the sending of email?",
+    options: ["HTTP", "FTP", "SMTP", "IMAP"],
+    answer: 2,
+    hint: "IMAP and POP3 are both about receiving, not sending.",
+    explain: "SMTP (Simple Mail Transfer Protocol) is used to send email. IMAP and POP3 are used to receive it."
+  },
+  {
+    q: "A home network of three laptops shares files directly with no central server. What type of network is this?",
+    options: ["Client-server", "Peer-to-peer", "WAN", "LAN and WAN combined"],
+    answer: 1,
+    hint: "No central device is managing or storing shared resources.",
+    explain: "In a peer-to-peer network, every device shares resources equally with no central server controlling access."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Binary", definition: "A number system using only two digits, 0 and 1. Computers use it because electronic circuits naturally have two states — on and off." },
+  { term: "Bit / byte", definition: "A bit is a single binary digit (0 or 1). A byte is 8 bits. Storage units scale up from there: KB, MB, GB, TB." },
+  { term: "Data type", definition: "The kind of value a piece of data represents — text/string, integer, real/float, Boolean, or date — which determines how it can be stored and processed." },
+]} />
+
+<Section title="Building today's topic" icon="💬" id="topic">
+
+### Why do computers use binary?
+
+Not because it's efficient for humans — it obviously isn't. It's because electronic circuits have exactly **two** reliable states: on and off. Binary's two digits map directly onto that physical reality. Paper 1 rarely asks you to do binary arithmetic — the concept (why binary, not how to convert) is what gets tested.
+
+### The storage unit ladder
+
+bit → byte → KB → MB → GB → TB, each one roughly a thousand times the last. "How many bytes in a kilobyte?" has two acceptable answers — 1024 (the technically correct power-of-two value) or 1000 (the SI approximation) — examiners accept either, so don't panic about which one a question implies unless it tells you.
+
+### File size calculation — walk through every step
+
+*"An image is 800 × 600 pixels, and each pixel uses 24 bits of colour. What is the file size?"*
+
+$$
+800 \times 600 \times 24 = 11{,}520{,}000 \text{ bits}
+$$
+$$
+11{,}520{,}000 \div 8 = 1{,}440{,}000 \text{ bytes} \approx 1.37 \text{ MB}
+$$
+
+Three steps, every time: total pixels × bits per pixel = total bits. Divide by 8 to get bytes. Convert up to a sensible unit. Skipping the divide-by-8 step is the single most common way this question loses marks.
+
+### Data types — why does it matter, not just what they're called?
+
+Text/string, integer, real/float, Boolean, date — naming them is the easy half. The exam wants to know *why the choice matters*: store a phone number as an integer, and its leading zero silently disappears (`0412...` becomes `412...`), because integers don't keep leading zeros. Store it as text instead, and the exact digits are preserved.
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (binary)">
+**Question:** "Explain why a computer's data is ultimately represented in binary."
+
+Weak: *"Because computers only understand 1s and 0s."*
+
+Improved: *"A computer's electronic circuits have two stable states — on and off. Binary uses exactly two digits, 0 and 1, so each digit can be represented directly by one of those two states, making binary the natural number system for electronic hardware."*
+
+The improvement earns marks by explaining **the physical reason** (two circuit states), not just restating that computers "understand" binary as if it were a given.
+</WorkedExample>
+
+<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook", "Calculator"]}>
+Show full working for the calculation — the final answer alone will not earn full marks.
+
+1. An image is 1000 × 800 pixels, using 8 bits of colour per pixel. Calculate the file size in bytes, then convert to a sensible unit.
+2. A form asks for a UK postcode (e.g. "SW1A 1AA"). State the most appropriate data type, and explain why an integer would be unsuitable.
+3. Explain, in one sentence, why the Boolean data type is suitable for storing an answer to "Is this customer over 18?"
+</Activity>
+
+<Support title="Mark scheme — check your answers">
+1. $1000 \times 800 \times 8 = 6{,}400{,}000$ bits. $6{,}400{,}000 \div 8 = 800{,}000$ bytes ≈ **0.76 MB**.
+2. **Text/string** — a postcode contains letters as well as digits, and treating it as a number would be meaningless (you can't do arithmetic on a postcode) and would also risk losing formatting such as the space in the middle.
+3. A Boolean stores exactly one of two values, true or false — which matches a yes/no question like "is this customer over 18?" precisely, with no wasted storage or ambiguity.
+</Support>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (data representation)", type: "Past paper" },
+  { label: "File size calculations and data types — revision reference", type: "Link" },
+]} />
+
+<Reflection prompt="Redo the 800×600, 24-bit image calculation from memory, without looking back at this page. Check your answer against the worked version above." />

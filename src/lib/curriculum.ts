@@ -77,17 +77,23 @@ export const WEEKS_PER_TERM = 10;
 /** Per-grade, per-term week-count overrides (when a term runs longer than 10 weeks). */
 const WEEKS_OVERRIDE: Partial<Record<number, Partial<Record<TermId, number>>>> = {
   11: { 3: 20 },
-  12: { 1: 12 },
+  12: { 1: 24 },
 };
 
-/** First week number of the bonus block, for grades/terms that have one. */
-const BONUS_START: Partial<Record<number, Partial<Record<TermId, number>>>> = {
+/**
+ * First week number of the B-session block, for grades/terms that run a second,
+ * separately-timetabled weekly session alongside the main class. This is a real
+ * scheduled class, not optional enrichment — G11 T3 (45-min block) and G12 (the
+ * "B" session on the timetable) both use it.
+ */
+const B_SESSION_START: Partial<Record<number, Partial<Record<TermId, number>>>> = {
   11: { 3: 11 },
+  12: { 1: 13 },
 };
 
-/** Returns the first week number of the bonus session block, or undefined if no bonus sessions. */
-export function bonusWeekStart(grade: number, term: number): number | undefined {
-  return BONUS_START[grade]?.[term as TermId];
+/** Returns the first week number of the B-session block, or undefined if this grade/term has none. */
+export function bSessionStart(grade: number, term: number): number | undefined {
+  return B_SESSION_START[grade]?.[term as TermId];
 }
 
 export function weeksForTerm(term: number, grade?: number): number[] {

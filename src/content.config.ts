@@ -16,8 +16,10 @@ const lessons = defineCollection({
   schema: z.object({
     grade: z.number().int(),
     term: z.number().int().min(1).max(3),
-    week: z.number().int().min(1).max(20),
-    sessionType: z.enum(['main', 'bonus']).default('main'),
+    week: z.number().int().min(1).max(24),
+    /** 'b' = a separate, mandatory weekly session distinct from the main class
+     *  (e.g. G11 T3's 45-min enrichment block, G12's B sessions) — not optional. */
+    sessionType: z.enum(['main', 'b']).default('main'),
     title: z.string(),
     /** Single topic tag, e.g. "Structures". */
     topic: z.string(),

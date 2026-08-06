@@ -1,0 +1,124 @@
+---
+grade: 12
+term: 1
+week: 20
+sessionType: b
+title: "The Right Tool for the Document"
+topic: "LaTeX for your own field"
+learningGoal: "explain when a structured document (tables, citations, cross-references) is better built in LaTeX than in Word or Canva, reuse the LaTeX skeleton from your Chemistry report for a document of your own choosing, and write its Introduction section."
+selGoal: "pick a real topic I'm genuinely curious about for this report, rather than the first thing that comes to mind, since I'll be writing about it for the next five weeks."
+draft: false
+---
+
+B sessions are back — five weeks, a different shape from before. Your <WeekLink grade={12} term={1} week={8}>W8 session this week</WeekLink> starts teaching LaTeX from scratch, for a Chemistry lab report. This session uses the exact same tool, the same week — but points it at a document from your own field instead.
+
+<Callout type="tip" title="Why this matters" id="why">
+  A fair question: didn't Canva already win the CV argument? Yes — for a one-page, photo-led, visually designed document, a tool built by designers for exactly that job will usually beat hand-written LaTeX, and pretending otherwise is a losing pitch. But a CV is the easiest case for Canva and the hardest case for LaTeX: short, image-heavy, no data, no citations. Flip those conditions — a multi-page document with tables, numbers and sources that need to stay consistent when you edit — and the advantage flips too. That's the kind of document these five weeks are about.
+</Callout>
+
+There's no B-session content to retrieve from last week — the topic has changed completely. Instead, work through this diagnostic: for each document, would you genuinely rather build it in Canva or in LaTeX?
+
+<SelfCheck title="Canva or LaTeX?" questions={[
+  {
+    q: "A one-page flyer advertising a school event, with a large photo and bold colours.",
+    options: ["Canva", "LaTeX", "Either, no real difference", "Neither — use Word"],
+    answer: 0,
+    hint: "Think about which tool is built for visual, image-first layout.",
+    explain: "Canva wins here — drag-and-drop visual design, built-in image handling, no data or citations to keep consistent."
+  },
+  {
+    q: "A 12-page report with 4 data tables and 25 cited sources that need to stay numbered correctly as you edit.",
+    options: ["Canva", "LaTeX", "Either, no real difference", "Neither — use Word"],
+    answer: 1,
+    hint: "Think about what happens to a Word document's reference list after you insert a source in the middle.",
+    explain: "LaTeX wins here — `biblatex` renumbers and reformats every citation and table automatically, every time you compile. Canva has no concept of a citation at all."
+  },
+  {
+    q: "A business card with your name, role and a small logo.",
+    options: ["Canva", "LaTeX", "Either, no real difference", "Neither — use Word"],
+    answer: 0,
+    hint: "Same logic as the flyer — tiny, entirely visual, no data.",
+    explain: "Canva again. There's no structured content here for LaTeX to add value to — it's pure graphic design."
+  },
+  {
+    q: "A lab report with 40 chemical equations that must render with correct subscripts and reaction arrows.",
+    options: ["Canva", "LaTeX", "Either, no real difference", "Neither — use Word"],
+    answer: 1,
+    hint: "This is the exact problem your W8 session is solving right now.",
+    explain: "LaTeX, via the `mhchem` package — see your W8 session. Canva and Word both force you to fake subscripts and arrows by hand, 40 times, with no consistency guarantee."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Markup language", definition: "A language where you write plain-text instructions (like \\section{}) that a compiler turns into a formatted document — you describe structure, not pixels." },
+  { term: "Compile", definition: "The step that converts LaTeX source into a PDF. Changes are invisible until you compile — unlike Word or Canva." },
+  { term: "Structured document", definition: "A document built from consistent, labelled parts — sections, tables, figures, citations — rather than freely placed text and images." },
+  { term: "Citation / bibliography", definition: "A reference to a source, tracked so its number and formatting update automatically everywhere it's used and listed." },
+  { term: "Template skeleton", definition: "The reusable preamble and section structure of a document, written once and reused for new content of the same kind." },
+]} />
+
+<Section title="Choosing your report" icon="🗂" id="topic">
+
+### Same tool, different subject
+
+Your W8 session is building a Chemistry lab report skeleton — a preamble, section headings, and (from next week) tables, a figure and a bibliography. Every one of those commands works exactly the same way for a document that has nothing to do with Chemistry. That's the whole idea of a template: write the structure once, reuse it for new content.
+
+Pick whichever of these is closest to something you're genuinely interested in — or bring your own idea if none of them fit:
+
+| If you're interested in… | Write a… | Why LaTeX helps |
+|---|---|---|
+| Medicine | A short literature-review write-up on a health topic (e.g. "the effect of screen time on adolescent sleep") | Citations to real sources via `biblatex`, plus a data table if you find one |
+| Management / Business | A data-driven case study or mini business plan (e.g. analysing a company's strategy, or your own idea) | A financial or comparison table via `booktabs`, cited sources for your claims |
+| Engineering | A design-justification report for a project (a D&T piece, a RoboJam build, anything you've made) | A figure of your project, a table of component or material choices, cited datasheets or standards |
+
+Whichever you pick, your report needs: an Introduction, 2–3 body sections, one table, one figure, and at least 3 cited sources, by <WeekLink grade={12} term={1} week={23}>B11</WeekLink>. From here on, this lesson uses generic placeholder text like `[your topic]` — swap in your own throughout.
+
+### Reusing the skeleton, not rebuilding it
+
+You don't start from a blank file. Your Chemistry report already has a working preamble — `\documentclass`, margins, encoding — proven to compile. Copy it, strip the Chemistry content, keep the plumbing.
+
+```latex
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+
+\section{Introduction}
+% Your content goes here.
+
+\end{document}
+```
+
+</Section>
+
+<WorkedExample title="Weak Introduction → improved Introduction">
+Weak: *"This report is about renewable energy. It is important and many people are interested in it."*
+
+Improved: *"Colombia generated 70\% of its electricity from hydropower in 2023, a source increasingly vulnerable to drought. This report examines whether solar power is a realistic complement, using cost and capacity data from three regional projects."*
+
+The improvement earns credibility by naming a **specific figure**, a **specific problem** the figure implies, and a **specific question** the report will answer — not a general statement that the topic "is important." The same test applies to your own Introduction, whatever the topic: replace the general claim with the number or fact that made you pick it.
+</WorkedExample>
+
+<Activity title="Set up your report" time="25 min" grouping="Individual" materials={["Laptop", "Overleaf (browser)", "Your Chemistry report project, for copying"]}>
+1. In Overleaf, open your Chemistry lab report project. Use **Menu → Copy Project**, and rename the copy to your report's title.
+2. In the new copy, delete everything in the body except `\section{Introduction}`.
+3. Write your Introduction: 3–5 sentences, including at least one specific fact or figure — not a general statement.
+4. Compile. Fix any errors before calling it done.
+5. Save the project link — you'll return to this exact project every B session for the next four weeks.
+</Activity>
+
+<Support title="Copying an Overleaf project — step by step">
+1. Open your Chemistry project.
+2. Click **Menu** (top-left) → **Copy Project**.
+3. Give the copy a new name — not "Copy of Chemistry Lab Report."
+4. The preamble (everything before `\begin{document}`) can stay exactly as it is — margins and encoding don't change per topic.
+5. Delete the Chemistry-specific body content. Keep the structure: `\section{}`, blank lines for paragraphs.
+</Support>
+
+<Resources items={[
+  { label: "Overleaf documentation: copying and renaming a project", type: "Link" },
+  { label: "Report topic ideas by track (Medicine / Management / Engineering)", type: "Link" },
+]} />
+
+<Reflection prompt="Would you rather build a CV in LaTeX, or the report you just started? Write one sentence explaining the difference in what makes each document easy or hard to build well." />

@@ -1,0 +1,106 @@
+---
+grade: 12
+term: 1
+week: 18
+sessionType: b
+title: "Email, Internet vs Intranet & Environmental Impact"
+topic: "Communication & environment"
+learningGoal: "distinguish To, CC and BCC in an email scenario, identify the features of a phishing email, explain what an intranet has that the public internet doesn't, and state an environmental impact of IT with a countermeasure."
+selGoal: "carry a habit from an earlier B session into this one — checking a term against its exact definition rather than a rough sense of what it means."
+draft: false
+---
+
+B6 builds on B5 and pairs with <WeekLink grade={12} term={1} week={6}>this week's main session</WeekLink>. Same shape every week: retrieval, then new material.
+
+<Callout type="exam" title="Why this matters" id="why">
+  This is the last new-topic B session before B7's full drill — the exam is close. Email and environmental-impact questions are short but frequent on Paper 1, and they're some of the easiest marks available if the distinctions are precise.
+</Callout>
+
+Last week was systems life cycle, software types, and health/ergonomics.
+
+<SelfCheck title="Retrieval quiz — B5: systems & software" questions={[
+  {
+    q: "In the systems life cycle, testing finds a serious error. Which stage does the project return to?",
+    options: ["Analysis", "Development", "Implementation", "Evaluation"],
+    answer: 1,
+    hint: "Which stage is responsible for actually building/fixing the system?",
+    explain: "The project returns to Development — testing found the error, but fixing it is a development task. This loop-back is what makes SDLC iterative."
+  },
+  {
+    q: "Which of these is utility software?",
+    options: ["Microsoft Word", "Windows", "A disk defragmenter", "A web browser"],
+    answer: 2,
+    hint: "It's not the interface layer, and it's not doing a specific user task — it's maintaining the system.",
+    explain: "A disk defragmenter is utility software — it maintains the system rather than performing a specific user task (which rules out application software) or managing hardware/providing the interface (which rules out an operating system)."
+  },
+  {
+    q: "A student develops eye strain after long screen sessions. What is the most direct countermeasure?",
+    options: [
+      "A wrist rest",
+      "An adjustable chair",
+      "An anti-glare screen and regular breaks",
+      "A faster processor"
+    ],
+    answer: 2,
+    hint: "Match the countermeasure to the specific cause — glare and continuous close-range focus.",
+    explain: "Eye strain is caused by glare and prolonged close-range focus, so an anti-glare screen plus regular breaks (e.g. the 20-20-20 rule) directly addresses the cause."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "To / CC / BCC", definition: "To: the primary recipient. CC (carbon copy): copied recipients, visible to everyone. BCC (blind carbon copy): copied recipients, hidden from everyone else." },
+  { term: "Phishing", definition: "A deceptive email designed to trick the recipient into revealing personal information or credentials, often by impersonating a trusted source." },
+  { term: "Intranet", definition: "A private network, built on the same technology as the internet, restricted to one organisation's internal use." },
+  { term: "Carbon footprint", definition: "The total greenhouse gas emissions caused by an activity — for IT, largely driven by the energy consumption of data centres and device manufacturing." },
+]} />
+
+<Section title="Building today's topic" icon="💬" id="topic">
+
+### Email components — what's actually different about To, CC and BCC?
+
+**To** is the primary recipient — the person the message is for. **CC** copies other people in, and *everyone* can see who else was CC'd. **BCC** does the same, but *invisibly* — no other recipient can see who was BCC'd, including other BCC recipients. An **attachment** is a separate file sent alongside the email, not embedded in the body — and it's also the most common way malware reaches a computer, which is why the risk is worth naming explicitly.
+
+### Spotting phishing
+
+Revisit last unit's threats from a communication angle: how do you actually *identify* a phishing email, rather than just define the word? A generic greeting ("Dear Customer" instead of your name), urgent or threatening language ("your account will be closed in 24 hours"), a link whose domain doesn't match the organisation it claims to be from, and a sender address that looks close to genuine but isn't quite right — these are the specific tells, not "it looked suspicious."
+
+### Internet vs intranet — what does a company intranet have that the public internet doesn't?
+
+Restricted access. An intranet runs on the same underlying technology as the internet, but it's walled off — only people inside the organisation can reach it, and its content (internal documents, staff directories, company announcements) has no public visibility at all. The internet is open to anyone; an intranet, by design, is not.
+
+### Environmental impact — what problems does IT actually cause?
+
+Three, each with its own countermeasure: **energy consumption** from data centres running continuously (countered by cloud computing efficiencies — shared infrastructure used more efficiently than many small in-house servers); **e-waste** — toxic materials inside discarded devices (countered by device recycling programmes); and the **carbon footprint** of manufacturing and running hardware at scale (countered partly by energy-saving modes and longer device lifecycles).
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (internet vs intranet)">
+**Question:** "Explain one difference between the internet and a company intranet."
+
+Weak: *"The internet is for everyone and an intranet is private."*
+
+Improved: *"An intranet is a private network restricted to one organisation, built on the same technology as the internet but with no public access — only staff within that organisation can view its content, such as internal documents or announcements. The internet has no such restriction and is accessible to anyone."*
+
+The improvement earns marks by naming **what technology underlies both** (which shows understanding, not just contrast), and by giving a **concrete example of restricted content**, not just the word "private."
+</WorkedExample>
+
+<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook"]}>
+Attempt all three before checking the mark scheme below.
+
+1. A teacher emails a class list to all students, using BCC for every recipient. Explain why BCC is the correct choice here rather than CC.
+2. List two specific features of an email that would suggest it is a phishing attempt.
+3. State one environmental impact of IT and one realistic countermeasure that reduces it.
+</Activity>
+
+<Support title="Mark scheme — check your answers">
+1. **BCC** hides the recipient list from every student, so no student can see the email addresses of their classmates — important for privacy when sending to a large group who don't need to see each other's contact details. CC would expose every address to everyone.
+2. Any two of: a generic greeting instead of the recipient's name; urgent or threatening language pushing for immediate action; a link whose domain doesn't match the claimed organisation; a sender address that looks similar to a genuine one but isn't exact.
+3. **E-waste** — discarded devices contain toxic materials that harm the environment if not disposed of properly. Countermeasure: **device recycling programmes**, which recover materials safely rather than sending them to landfill. (Energy consumption / carbon footprint with cloud efficiency or energy-saving modes is equally acceptable.)
+</Support>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (communication & environment)", type: "Past paper" },
+  { label: "Email, internet/intranet and environmental impact — revision reference", type: "Link" },
+]} />
+
+<Reflection prompt="Look at a real email in your own inbox. Was it sent To you, CC'd, or BCC'd — and how do you know?" />

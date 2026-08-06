@@ -65,46 +65,9 @@ The question always specifies the wrap type. Choosing the wrong one loses the ma
 
 </Section>
 
-<Section title="Theory: Paper 1 — Safety, security & countermeasures" icon="📖" id="theory">
-
-### Categories of threat
-
-| Category | Examples |
-|---|---|
-| Malicious external | Virus, hacking, phishing, ransomware |
-| Malicious internal | Disgruntled employee leaking data |
-| Accidental | User deleting files, hardware failure, natural disaster |
-
-### Logical countermeasures (software/policy)
-
-- **Encryption** — converts data into coded form; only someone with the correct key can read it. Even if intercepted, the data cannot be understood.
-- **Passwords** — should be long, complex and unique. Two-factor authentication adds a second check (something you know + something you have).
-- **Antivirus** — detects and removes known malware.
-- **Firewall** — filters incoming and outgoing network traffic according to rules.
-- **Access levels** — different users see different data; a cashier can't access salary records.
-
-### Physical countermeasures (hardware/environment)
-
-- Locked server room (key or keypad).
-- Security passes / ID badges for staff.
-- CCTV monitoring.
-- Biometric entry (fingerprint, retina scan).
-- Cable locks on laptops.
-
-### Backups
-
-- **Full backup** — a complete copy of all data. Takes longer; restoring is straightforward.
-- **Incremental backup** — only backs up files changed since the last backup. Faster to run; restoring requires the last full backup plus all incrementals.
-- **Off-site storage** — essential so a fire or flood doesn't destroy the backup along with the original.
-
-### Phishing vs hacking
-
-- **Phishing** — deceives the user into revealing credentials (fake login pages, urgent emails asking you to "verify your account").
-- **Hacking** — exploits a technical vulnerability in a system.
-
-**Exam weak-answer trap:** "Encryption keeps data safe." → *"Encryption converts data into a coded format using an algorithm; only a recipient with the correct decryption key can read it, so intercepted data cannot be understood."*
-
-</Section>
+<Callout type="info" title="This week's Paper 1 theory">
+  Safety, security, threats and countermeasures is covered in full in your <WeekLink grade={12} term={1} week={16}>B4 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
+</Callout>
 
 <WorkedExample title="Mail merge: tracing a common failure">
 Scenario: A student runs the mail merge wizard, inserts a field called `{First Name}`, previews the results and sees `{First Name}` displayed literally — not the actual name.

@@ -1,0 +1,122 @@
+---
+grade: 12
+term: 1
+week: 16
+sessionType: b
+title: "Safety, Security, Threats & Countermeasures"
+topic: "Safety & security"
+learningGoal: "categorise a data threat as malicious external, malicious internal, or accidental, explain what encryption actually does to data, distinguish full from incremental backup, and explain why backups are stored off-site."
+selGoal: "notice when I'm describing what a threat does rather than explaining the mechanism behind it, and fix it before I submit an answer."
+draft: false
+---
+
+B4 builds on B3 and pairs with <WeekLink grade={12} term={1} week={4}>this week's main session</WeekLink>. Same shape every week: retrieval, then new material.
+
+<Callout type="exam" title="Why this matters" id="why">
+  "Encryption keeps data safe" is a description, not an explanation, and earns zero marks on its own. Paper 1 rewards *mechanism*: what actually happens to the data, and why that stops an attacker.
+</Callout>
+
+Last week was data, file sizes, binary, and data types.
+
+<SelfCheck title="Retrieval quiz — B3: data & binary" questions={[
+  {
+    q: "Why do computers represent data in binary?",
+    options: [
+      "Binary is faster to process than decimal",
+      "Electronic circuits have exactly two reliable states — on and off",
+      "Binary uses less storage than any other number system",
+      "It's a historical convention with no technical reason"
+    ],
+    answer: 1,
+    hint: "Think about the physical hardware, not the maths.",
+    explain: "Electronic circuits have two stable states, on and off, which map directly onto binary's two digits, 0 and 1."
+  },
+  {
+    q: "An image is 500 × 400 pixels with 8 bits of colour per pixel. How many bits is that in total, before converting to bytes?",
+    options: ["3,600", "160,000", "1,600,000", "20,000"],
+    answer: 2,
+    hint: "Multiply all three numbers together: width × height × bits per pixel.",
+    explain: "500 × 400 × 8 = 1,600,000 bits. (Dividing by 8 afterwards would give 200,000 bytes.)"
+  },
+  {
+    q: "Why would storing a UK phone number as an integer cause a problem?",
+    options: [
+      "Integers can't store numbers that large",
+      "Leading zeros would be lost",
+      "Integers are slower to search than text",
+      "There is no problem — integer is the correct choice"
+    ],
+    answer: 1,
+    hint: "Think about what a phone number typically starts with.",
+    explain: "Integers don't preserve leading zeros, so a number like 0412 345 678 would become 412345678 — the leading zero silently disappears."
+  }
+]} />
+
+<KeyTerms terms={[
+  { term: "Malicious threat", definition: "A deliberate attempt to harm data or systems — from outside the organisation (e.g. hacking) or inside it (e.g. a disgruntled employee)." },
+  { term: "Accidental threat", definition: "Unintentional harm to data — accidental deletion, hardware failure, natural disaster." },
+  { term: "Encryption", definition: "Scrambling data using an algorithm so that only someone with the correct key can decode and read it, even if the data is intercepted." },
+  { term: "Two-factor authentication", definition: "Requiring two separate proofs of identity to log in — typically something you know (a password) plus something you have (a code sent to your phone)." },
+  { term: "Full / incremental backup", definition: "A full backup copies all data every time. An incremental backup copies only what changed since the last backup — faster, but restoring requires the full backup plus every incremental since." },
+]} />
+
+<Section title="Building today's topic" icon="💬" id="topic">
+
+### What could go wrong with a company's data?
+
+Build the list, then sort it into three categories, because the category is what the exam actually tests:
+
+- **Malicious external** — hacking, phishing, a virus sent from outside.
+- **Malicious internal** — an employee deliberately misusing access they legitimately have.
+- **Accidental** — deletion by mistake, hardware failure, fire or flood.
+
+The same event can sit in different categories depending on intent — a deleted file is accidental; the same file deleted deliberately by an angry ex-employee is malicious internal. The exam wants you to reason about intent, not just name the threat.
+
+### Countermeasures — logical
+
+**Encryption** doesn't just "keep data safe" — it *scrambles* data using an algorithm, so that only someone holding the correct key can decode it back into something readable. That's why encrypted data intercepted in transit is still useless to whoever intercepted it. Passwords, two-factor authentication, antivirus software, firewalls, and access levels (different users see different data) all work alongside encryption as separate layers, not substitutes for it.
+
+### Countermeasures — physical
+
+Lock and key, security passes, CCTV, biometric entry, cable locks — physical measures protect the hardware itself, which logical measures like encryption can't do on their own. A stolen unencrypted laptop is a data breach regardless of how good the firewall was.
+
+### Backups — why off-site, and what's the difference between full and incremental?
+
+*"Why is a backup stored off-site?"* Because a backup stored in the same building as the original is destroyed by the same fire, flood, or theft that destroys the original — it isn't really a backup at all if it shares the same risk. A **full backup** copies everything, every time — simple to restore from, but slow to create. An **incremental backup** copies only what's changed since the last backup — fast to create, but restoring means reassembling the full backup plus every incremental since, in order.
+
+### Phishing vs hacking
+
+*"How is phishing different from hacking?"* Hacking exploits a technical vulnerability in a system. Phishing exploits a human one — it deceives the user into voluntarily handing over their own credentials, no technical break-in required.
+
+</Section>
+
+<WorkedExample title="Weak answer → improved answer (encryption)">
+**Question:** "Explain how encryption protects data that is intercepted during transmission."
+
+Weak: *"Encryption keeps data safe."*
+
+Improved: *"Encryption converts data into a coded format using an algorithm, so that only someone with the correct decryption key can turn it back into readable data. If the data is intercepted during transmission, the attacker only has the scrambled version and cannot understand it without the key."*
+
+The improvement earns marks by explaining the **mechanism** — data is converted using an algorithm — and by linking that mechanism directly to **why it stops the specific threat** described in the question (interception).
+</WorkedExample>
+
+<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook"]}>
+Attempt all three before checking the mark scheme below.
+
+1. A school employee accidentally deletes the entire student record folder. Which threat category does this belong to, and why?
+2. A company backs up its server every night, keeping only the changes since the previous night's backup. What type of backup strategy is this, and what's the main disadvantage if a restore is needed?
+3. Explain, with a reason, why a fingerprint scanner at a server room door is a physical rather than a logical security measure.
+</Activity>
+
+<Support title="Mark scheme — check your answers">
+1. **Accidental** — there was no intent to cause harm; the deletion happened by mistake, which is what defines this category regardless of how serious the consequence is.
+2. This is an **incremental backup strategy**. The main disadvantage is that restoring requires the last full backup *plus every incremental backup since*, applied in the correct order — more steps, and a longer restore process than a full backup would need.
+3. It's **physical** because it controls who can physically enter a location (the server room) — it protects the hardware itself, not the data through software or algorithms, which is what makes something a logical measure instead.
+</Support>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (safety & security)", type: "Past paper" },
+  { label: "Threats, countermeasures and backup strategies — revision reference", type: "Link" },
+]} />
+
+<Reflection prompt="Pick one threat from today's list and write both a logical and a physical countermeasure for it — in your own words, not copied from the notes above." />

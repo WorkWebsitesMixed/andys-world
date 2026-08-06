@@ -1,0 +1,153 @@
+---
+grade: 12
+term: 1
+week: 19
+sessionType: b
+title: "Full MCQ Drill & Final Revision List"
+topic: "Revision drill"
+learningGoal: "answer Paper 1 style MCQs across all six B-session topics at exam pace, and identify — from evidence, not instinct — the specific topics that need independent revision before the exam."
+selGoal: "trust the drill's evidence over my gut feeling about which topics I'm strong in."
+draft: false
+---
+
+This is the **final B session** — B sessions end here, before the real exam. There's no new topic today: this is a full drill across everything from B1–B6, timed to exam pace, followed by the personal revision list you'll actually use to study.
+
+<Callout type="exam" title="Why this matters" id="why">
+  A drill under time pressure reveals gaps that untimed review hides. If you can answer a question correctly with unlimited time but not in 30 seconds, that's still a gap — the real exam won't give you unlimited time either.
+</Callout>
+
+<Section title="Timed MCQ drill" icon="⏱️" id="drill">
+
+Set a timer for **30 seconds per question** before you start — that's the real exam's pace. Don't stop to look anything up. Answer everything, mark it immediately after, and be completely honest with yourself about what you didn't know versus what you guessed correctly.
+
+<SelfCheck title="Full drill — B1 to B6" questions={[
+  {
+    q: "Why is data stored in RAM lost when the power is switched off?",
+    options: ["RAM is slower than ROM", "RAM is volatile", "RAM has less capacity than a hard disk", "RAM is a type of input device"],
+    answer: 1,
+    hint: "B1 — volatile vs non-volatile.",
+    explain: "RAM is volatile memory — it loses its contents the instant power is removed. ROM is non-volatile and keeps its contents without power."
+  },
+  {
+    q: "Which storage type has no moving parts?",
+    options: ["Magnetic hard disk", "DVD", "Solid-state drive", "Blu-ray disc"],
+    answer: 2,
+    hint: "B1 — the newest of the three storage types.",
+    explain: "Solid-state drives store data electronically, with no moving parts, making them faster and more robust than magnetic or optical storage."
+  },
+  {
+    q: "A school's network covers one building and is owned by the school itself. What type of network is this?",
+    options: ["WAN", "LAN", "Internet", "Intranet only"],
+    answer: 1,
+    hint: "B2 — small area, single owner.",
+    explain: "A LAN (Local Area Network) covers a small geographic area and is typically owned and managed by a single organisation."
+  },
+  {
+    q: "Which protocol is used to send email?",
+    options: ["HTTP", "FTP", "SMTP", "IMAP"],
+    answer: 2,
+    hint: "B2 — not the two protocols used for receiving.",
+    explain: "SMTP (Simple Mail Transfer Protocol) sends email. IMAP and POP3 receive it."
+  },
+  {
+    q: "Why do computers represent data in binary?",
+    options: [
+      "Binary is easier for humans to read",
+      "Electronic circuits have exactly two reliable states",
+      "Binary uses the least storage of any number system",
+      "It is required by international law"
+    ],
+    answer: 1,
+    hint: "B3 — think about the hardware, not the maths.",
+    explain: "Electronic circuits have two stable states, on and off, which map directly onto binary's two digits."
+  },
+  {
+    q: "An image is 400 × 300 pixels with 8 bits of colour per pixel. How many bytes is that?",
+    options: ["120,000", "15,000", "960,000", "1,200"],
+    answer: 1,
+    hint: "B3 — multiply all three, then divide by 8 for bytes.",
+    explain: "400 × 300 × 8 = 960,000 bits. 960,000 ÷ 8 = 120,000 bytes. (At 8 bits per pixel, bytes and pixel count come out equal — a useful shortcut to sanity-check your working.)"
+  },
+  {
+    q: "What does encryption do to data?",
+    options: [
+      "Deletes it after a set time",
+      "Converts it into a coded format that only a key can decode",
+      "Automatically backs it up",
+      "Compresses it to save space"
+    ],
+    answer: 1,
+    hint: "B4 — think about what an attacker would see if they intercepted it.",
+    explain: "Encryption scrambles data using an algorithm, so only someone with the correct key can convert it back into readable form."
+  },
+  {
+    q: "Why is an off-site backup safer than an on-site-only backup?",
+    options: [
+      "Off-site backups are always automatic",
+      "A single disaster could destroy both the original and an on-site backup",
+      "On-site backups are slower",
+      "There is no real difference"
+    ],
+    answer: 1,
+    hint: "B4 — think about fire or flood.",
+    explain: "If the backup shares the same building as the original, one disaster (fire, flood, theft) can destroy both copies at once."
+  },
+  {
+    q: "In the systems life cycle, which stage directly follows Development?",
+    options: ["Analysis", "Testing", "Evaluation", "Implementation"],
+    answer: 1,
+    hint: "B5 — the stage that checks the system actually works.",
+    explain: "Testing follows Development. If testing finds errors, the process loops back to Development before moving on to Implementation."
+  },
+  {
+    q: "Which type of software is an antivirus program?",
+    options: ["Operating system", "Application software", "Utility software", "Firmware"],
+    answer: 2,
+    hint: "B5 — it maintains the system rather than performing a user task.",
+    explain: "Antivirus is utility software — it maintains the system (scanning for threats) rather than performing a specific user task or managing hardware."
+  },
+  {
+    q: "What is the main risk associated with an email attachment?",
+    options: [
+      "It always exceeds storage limits",
+      "It can carry malware",
+      "It can't be opened on mobile devices",
+      "It is automatically deleted after 30 days"
+    ],
+    answer: 1,
+    hint: "B6 — one of the most common ways a threat reaches a computer.",
+    explain: "Attachments are a common way for malware to reach a computer, since opening an infected file can execute malicious code."
+  },
+  {
+    q: "What does a company intranet have that the public internet does not?",
+    options: [
+      "Faster loading speeds",
+      "Restricted access, limited to the organisation",
+      "No use of HTTP",
+      "Unlimited storage"
+    ],
+    answer: 1,
+    hint: "B6 — think about who can reach it.",
+    explain: "An intranet uses the same underlying technology as the internet but restricts access to one organisation, with no public visibility."
+  }
+]} />
+
+</Section>
+
+<Activity title="Final revision list" time="7 min" grouping="Individual" materials={["Your marked drill", "Paper or notebook"]}>
+Look back at exactly which questions you got wrong or guessed on — not how you feel about each topic in general.
+
+1. List every topic (B1–B6) where you scored below 60% on the drill above.
+2. For each one, write the single specific thing you need to review — not "networks," but "the difference between client-server and peer-to-peer," for example.
+3. This list is your independent study agenda before the real exam. Keep it somewhere you'll actually look at it again.
+</Activity>
+
+<Callout type="info" title="After today">
+  B sessions end here. Your W7 session this week is the last structured class preparation before you sit Papers 1, 2 and 3 in your official sittings. From next week, the timetable's B slot moves to LaTeX — a different kind of class entirely, applied somewhere other than a science report.
+</Callout>
+
+<Resources items={[
+  { label: "Cambridge IGCSE ICT 0417 — Paper 1 past papers (full papers, mixed topics)", type: "Past paper" },
+]} />
+
+<Reflection prompt="Before you leave today: name the one B-session topic you'd most want a second explanation of. Ask for it now, while there's still time before the exam to get it." />
