@@ -1,0 +1,78 @@
+---
+/**
+ * Injection moulding tool cross-section: the 8 labelled parts students
+ * must be able to reproduce and label. Theme-aware inline SVG.
+ */
+const caption =
+  'Granules feed from the hopper into the heated barrel, where a screw melts and pushes the polymer through the nozzle and sprue into the mould cavity. Cooling channels solidify the part; ejector pins push it out.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 230" role="img" aria-labelledby="im-t im-d" class="dg">
+    <title id="im-t">Injection moulding tool cross-section</title>
+    <desc id="im-d">{caption}</desc>
+
+    <!-- Hopper -->
+    <polygon points="40,20 90,20 75,55 55,55" class="part" />
+    <text x="65" y="14" text-anchor="middle" class="lbl">1 Hopper</text>
+
+    <!-- Barrel -->
+    <rect x="75" y="60" width="220" height="34" class="part" />
+    <text x="185" y="52" text-anchor="middle" class="lbl">2 Heated barrel</text>
+
+    <!-- Screw (zigzag inside barrel) -->
+    <path d="M85,77 L110,68 L135,86 L160,68 L185,86 L210,68 L235,86 L260,68 L285,77"
+          class="screw" />
+    <text x="185" y="107" text-anchor="middle" class="lbl">3 Screw</text>
+
+    <!-- Nozzle -->
+    <polygon points="295,64 320,72 320,82 295,90" class="part" />
+    <text x="308" y="52" text-anchor="middle" class="lbl-sm">4 Nozzle</text>
+
+    <!-- Sprue -->
+    <polygon points="320,72 340,80 340,86 320,82" class="part" />
+
+    <!-- Mould (two halves) with cavity -->
+    <rect x="340" y="40" width="90" height="110" class="mould" />
+    <path d="M370,60 Q385,95 370,130 L400,130 Q415,95 400,60 Z" class="cavity" />
+    <line x1="385" y1="40" x2="385" y2="150" class="splitline" />
+    <text x="385" y="30" text-anchor="middle" class="lbl-sm">6 Mould cavity</text>
+
+    <!-- Cooling channels -->
+    <circle cx="352" cy="55" r="4" class="channel" />
+    <circle cx="352" cy="135" r="4" class="channel" />
+    <circle cx="418" cy="55" r="4" class="channel" />
+    <circle cx="418" cy="135" r="4" class="channel" />
+    <text x="385" y="168" text-anchor="middle" class="lbl-sm">8 Cooling channels</text>
+
+    <!-- Ejector pins -->
+    <line x1="360" y1="150" x2="360" y2="175" class="pin" />
+    <line x1="410" y1="150" x2="410" y2="175" class="pin" />
+    <text x="385" y="195" text-anchor="middle" class="lbl-sm">7 Ejector pins</text>
+
+    <text x="65" y="205" text-anchor="middle" class="lbl">5 Sprue — channel into the cavity</text>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .part { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; stroke-linejoin: round; }
+  .screw { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .mould { fill: var(--bg-2); stroke: var(--text); stroke-width: 2.5; }
+  .cavity { fill: var(--bg); stroke: var(--accent); stroke-width: 2; }
+  .splitline { stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .channel { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 1.5; }
+  .pin { stroke: var(--text); stroke-width: 2.5; }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 11px; }
+  .lbl-sm { fill: var(--text-dim); font-family: var(--font-body); font-size: 10px; }
+</style>

@@ -1,10 +1,11 @@
 ---
 /**
  * A simply-supported beam with one load and two support reactions.
- * Matches the Week 7 worked example (200 N load, R1 = 50 N, R2 = 150 N).
+ * Matches the Structures worked example: a 4 m beam, 600 N load 1 m
+ * from support A, giving RB = 150 N and RA = 450 N.
  */
 const caption =
-  'A beam on two supports. The downward load is balanced by upward reactions R₁ and R₂. Taking moments about a support lets you find each reaction.';
+  'A 4 m beam on two supports, A and B. A 600 N load 1 m from A is balanced by upward reactions at each support. Taking moments about A gives RB; equilibrium then gives RA.';
 ---
 
 <figure class="diagram">
@@ -24,20 +25,24 @@ const caption =
     <polygon points="70,80 58,102 82,102" class="support" />
     <polygon points="330,80 318,102 342,102" class="support" />
 
-    <!-- Load (down) at 1.5 m from left -->
-    <line x1="270" y1="22" x2="270" y2="66" class="arrow" marker-end="url(#bm-arrow)" />
-    <text x="278" y="30" text-anchor="start">200 N</text>
+    <!-- Load (down) at 1 m from left (A) -->
+    <line x1="130" y1="22" x2="130" y2="66" class="arrow" marker-end="url(#bm-arrow)" />
+    <text x="138" y="30" text-anchor="start">600 N</text>
 
     <!-- Reactions (up) -->
     <line x1="70" y1="140" x2="70" y2="106" class="arrow" marker-end="url(#bm-arrow)" />
-    <text x="70" y="158" text-anchor="middle">R₁ = 50 N</text>
+    <text x="70" y="158" text-anchor="middle">RA = 450 N</text>
 
     <line x1="330" y1="140" x2="330" y2="106" class="arrow" marker-end="url(#bm-arrow)" />
-    <text x="330" y="158" text-anchor="middle">R₂ = 150 N</text>
+    <text x="330" y="158" text-anchor="middle">RB = 150 N</text>
+
+    <!-- Support labels -->
+    <text x="70" y="118" text-anchor="middle" class="dim">A</text>
+    <text x="330" y="118" text-anchor="middle" class="dim">B</text>
 
     <!-- Distances -->
-    <text x="170" y="60" text-anchor="middle" class="dim">1.5 m</text>
-    <text x="300" y="60" text-anchor="middle" class="dim">0.5 m</text>
+    <text x="100" y="60" text-anchor="middle" class="dim">1 m</text>
+    <text x="230" y="60" text-anchor="middle" class="dim">3 m</text>
   </svg>
   <figcaption>{caption}</figcaption>
 </figure>

@@ -1,0 +1,72 @@
+---
+/**
+ * The four motion types: rotary, linear, reciprocating, oscillating.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'Rotary spins continuously around a fixed axis. Linear moves in a straight line, one direction only. Reciprocating moves back and forth along a straight line. Oscillating moves back and forth along an arc.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 170" role="img" aria-labelledby="mt-t mt-d" class="dg">
+    <title id="mt-t">The four motion types</title>
+    <desc id="mt-d">{caption}</desc>
+    <defs>
+      <marker id="mt-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- Rotary: circle + curved arrow all the way round -->
+    <g>
+      <circle cx="70" cy="70" r="30" class="member" />
+      <path d="M70,40 A30,30 0 1 1 42,58" class="arrow" marker-end="url(#mt-arrow)" />
+      <text x="70" y="128" text-anchor="middle" class="lbl">Rotary</text>
+    </g>
+
+    <!-- Linear: single arrow, one direction, on a line -->
+    <g>
+      <line x1="160" y1="70" x2="270" y2="70" class="guide" />
+      <line x1="170" y1="70" x2="255" y2="70" class="arrow" marker-end="url(#mt-arrow)" />
+      <text x="215" y="128" text-anchor="middle" class="lbl">Linear</text>
+    </g>
+
+    <!-- Reciprocating: double-headed arrow, straight line -->
+    <g>
+      <line x1="310" y1="70" x2="420" y2="70" class="guide" />
+      <line x1="325" y1="70" x2="405" y2="70" class="arrow" marker-start="url(#mt-arrow)" marker-end="url(#mt-arrow)" />
+      <text x="365" y="128" text-anchor="middle" class="lbl">Reciprocating</text>
+    </g>
+
+    <!-- Oscillating: arc with double-headed curved arrow, like a pendulum -->
+    <g>
+      <circle cx="490" cy="42" r="2.5" class="pivot" />
+      <line x1="490" y1="42" x2="490" y2="46" class="guide" />
+      <path d="M460,95 A46,46 0 0 1 520,95" class="guide-arc" />
+      <path d="M470,88 A40,40 0 0 1 510,88" class="arrow" marker-start="url(#mt-arrow)" marker-end="url(#mt-arrow)" />
+      <line x1="490" y1="46" x2="465" y2="90" class="member" />
+      <text x="490" y="128" text-anchor="middle" class="lbl">Oscillating</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  .member { fill: none; stroke: var(--text); stroke-width: 3; }
+  .guide { stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .guide-arc { fill: none; stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .pivot { fill: var(--text); }
+  .fill-accent { fill: var(--accent); }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 13px; }
+</style>

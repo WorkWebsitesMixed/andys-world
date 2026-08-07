@@ -1,0 +1,68 @@
+---
+/**
+ * Blow moulding vs vacuum forming, side by side — the key exam distinction:
+ * blow moulding produces a sealed hollow container; vacuum forming can only
+ * produce an open-topped shape. Theme-aware inline SVG.
+ */
+const caption =
+  'Blow moulding: a hollow parison inflates inside a closed mould, producing a sealed container. Vacuum forming: a flat sheet is pulled onto an open mould by suction, producing only an open-topped shape.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 220" role="img" aria-labelledby="bv-t bv-d" class="dg">
+    <title id="bv-t">Blow moulding vs vacuum forming</title>
+    <desc id="bv-d">{caption}</desc>
+    <defs>
+      <marker id="bv-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- LEFT: Blow moulding — closed mould, inflated parison -->
+    <g>
+      <rect x="30" y="40" width="18" height="130" class="mould" />
+      <rect x="130" y="40" width="18" height="130" class="mould" />
+      <path d="M55,55 C40,90 40,130 55,155 C70,175 108,175 123,155 C138,130 138,90 123,55 C108,40 70,40 55,55 Z" class="bottle" />
+      <line x1="89" y1="20" x2="89" y2="42" class="arrow" marker-end="url(#bv-arrow)" />
+      <text x="89" y="14" text-anchor="middle" class="lbl-sm">air</text>
+      <text x="89" y="195" text-anchor="middle" class="lbl">Blow moulding</text>
+      <text x="89" y="210" text-anchor="middle" class="sub">closed mould → sealed container</text>
+    </g>
+
+    <!-- RIGHT: Vacuum forming — open mould, sheet draped over -->
+    <g transform="translate(280,0)">
+      <line x1="30" y1="80" x2="180" y2="80" class="sheet" />
+      <path d="M30,80 Q60,150 105,150 Q150,150 180,80" class="sheet-formed" />
+      <polygon points="70,110 90,150 110,110" class="tray-mould" />
+      <line x1="65" y1="170" x2="65" y2="185" class="arrow" marker-end="url(#bv-arrow)" />
+      <line x1="145" y1="170" x2="145" y2="185" class="arrow" marker-end="url(#bv-arrow)" />
+      <text x="105" y="200" text-anchor="middle" class="lbl-sm">vacuum (air pulled out beneath)</text>
+      <text x="105" y="20" text-anchor="middle" class="lbl">Vacuum forming</text>
+      <text x="105" y="34" text-anchor="middle" class="sub">open mould → open-topped shape only</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .mould { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .bottle { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2.5; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .sheet { stroke: var(--text-faint); stroke-width: 2; stroke-dasharray: 4 3; }
+  .sheet-formed { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .tray-mould { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 12px; }
+  .lbl-sm { fill: var(--text-dim); font-family: var(--font-body); font-size: 10px; }
+  .sub { fill: var(--text-faint); font-family: var(--font-body); font-size: 10px; }
+</style>

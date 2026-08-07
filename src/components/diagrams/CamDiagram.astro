@@ -1,0 +1,92 @@
+---
+/**
+ * A pear cam with a roller follower, plus the displacement diagram
+ * (follower height vs cam rotation angle) tracing rise / dwell / fall.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'A pear cam rotates against a roller follower. As the lobe passes under the follower it rises, the circular section holds it at dwell, then it falls back — traced here against rotation angle.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 220" role="img" aria-labelledby="cam-t cam-d" class="dg">
+    <title id="cam-t">Pear cam, roller follower, and the rise-dwell-fall trace</title>
+    <desc id="cam-d">{caption}</desc>
+    <defs>
+      <marker id="cam-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- LEFT: physical cam + roller follower -->
+    <g>
+      <!-- Pear cam profile: circular body + one lobe -->
+      <path d="M100,140
+               C74,140 54,120 54,96
+               C54,72 74,52 98,52
+               C104,52 108,44 118,30
+               C128,44 122,56 116,58
+               C132,64 146,80 146,96
+               C146,122 126,140 100,140 Z"
+            class="cam" />
+      <circle cx="100" cy="96" r="4" class="pivot" />
+
+      <!-- Roller follower touching the lobe tip -->
+      <circle cx="118" cy="14" r="10" class="roller" />
+      <line x1="118" y1="24" x2="118" y2="4" class="guide" />
+
+      <!-- Rotation arrow -->
+      <path d="M100,66 A30,30 0 0 1 128,90" class="arrow" marker-end="url(#cam-arrow)" />
+
+      <text x="100" y="172" text-anchor="middle" class="lbl">Pear cam</text>
+      <text x="118" y="200" text-anchor="middle" class="sub">roller follower</text>
+    </g>
+
+    <!-- RIGHT: displacement diagram — follower height vs angle -->
+    <g transform="translate(220,0)">
+      <line x1="20" y1="170" x2="320" y2="170" class="axis" />
+      <line x1="20" y1="170" x2="20" y2="30" class="axis" />
+      <text x="170" y="200" text-anchor="middle" class="sub">rotation angle (0°–360°)</text>
+      <text x="12" y="25" text-anchor="middle" class="sub">height</text>
+
+      <!-- Trace: rise (0-90) dwell (90-180) fall (180-270) low dwell (270-360) -->
+      <path d="M20,150 C50,60 70,40 100,40 L180,40 C210,40 230,110 260,150 L320,150"
+            class="trace" />
+
+      <line x1="60" y1="180" x2="60" y2="172" class="tick" />
+      <line x1="140" y1="180" x2="140" y2="172" class="tick" />
+      <line x1="220" y1="180" x2="220" y2="172" class="tick" />
+      <line x1="300" y1="180" x2="300" y2="172" class="tick" />
+
+      <text x="60" y="192" text-anchor="middle" class="lbl">Rise</text>
+      <text x="140" y="192" text-anchor="middle" class="lbl">Dwell</text>
+      <text x="220" y="192" text-anchor="middle" class="lbl">Fall</text>
+      <text x="300" y="192" text-anchor="middle" class="lbl">Dwell</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .cam { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; stroke-linejoin: round; }
+  .pivot { fill: var(--text); }
+  .roller { fill: var(--bg); stroke: var(--text); stroke-width: 2.5; }
+  .guide { stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .axis { stroke: var(--text-dim); stroke-width: 1.5; }
+  .trace { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+  .tick { stroke: var(--text-faint); stroke-width: 1.5; }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 12px; }
+  .sub { fill: var(--text-faint); font-family: var(--font-body); font-size: 11px; }
+</style>

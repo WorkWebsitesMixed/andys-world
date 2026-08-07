@@ -1,0 +1,84 @@
+---
+/**
+ * NPN transistor as a switch: base, collector, emitter, driving a motor.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'A small current into the base switches the transistor on, allowing a much larger current to flow from collector to emitter — through the motor — to 0 V.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 380 220" role="img" aria-labelledby="tr-t tr-d" class="dg">
+    <title id="tr-t">NPN transistor switching a motor</title>
+    <desc id="tr-d">{caption}</desc>
+    <defs>
+      <marker id="tr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- +V rail -->
+    <line x1="40" y1="20" x2="340" y2="20" class="wire" />
+    <text x="30" y="16" text-anchor="end" class="lbl">+V</text>
+
+    <!-- Motor between +V and collector -->
+    <circle cx="230" cy="55" r="18" class="motor" />
+    <text x="230" y="60" text-anchor="middle" class="mlbl">M</text>
+    <line x1="230" y1="20" x2="230" y2="37" class="wire" />
+    <line x1="230" y1="73" x2="230" y2="95" class="wire" />
+
+    <!-- Transistor body: circle with base/collector/emitter -->
+    <circle cx="230" cy="120" r="30" class="member" />
+    <line x1="215" y1="95" x2="215" y2="145" class="member" />
+    <line x1="215" y1="105" x2="230" y2="95" class="member" />
+    <line x1="215" y1="135" x2="230" y2="150" class="member" />
+    <line x1="225" y1="145" x2="230" y2="150" class="arrow" marker-end="url(#tr-arrow)" />
+
+    <!-- Base input from voltage divider -->
+    <line x1="150" y1="120" x2="215" y2="120" class="wire" />
+    <rect x="120" y="105" width="30" height="30" class="box" />
+    <text x="135" y="123" text-anchor="middle" class="sub2">R /</text>
+    <text x="135" y="134" text-anchor="middle" class="sub2">therm.</text>
+    <text x="135" y="95" text-anchor="middle" class="lbl">from voltage divider</text>
+
+    <!-- Emitter to 0V -->
+    <line x1="230" y1="150" x2="230" y2="185" class="wire" />
+    <line x1="200" y1="185" x2="260" y2="185" class="gnd" />
+    <line x1="210" y1="192" x2="250" y2="192" class="gnd2" />
+    <line x1="218" y1="199" x2="242" y2="199" class="gnd3" />
+    <text x="230" y="212" text-anchor="middle" class="lbl">0 V</text>
+
+    <!-- Labels -->
+    <text x="180" y="112" text-anchor="middle" class="term">B</text>
+    <text x="238" y="90" text-anchor="middle" class="term">C</text>
+    <text x="245" y="155" text-anchor="middle" class="term">E</text>
+    <text x="270" y="55" text-anchor="start" class="lbl">motor (output)</text>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 380px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  .wire { stroke: var(--text); stroke-width: 2; }
+  .member { fill: none; stroke: var(--text); stroke-width: 2.5; stroke-linejoin: round; }
+  .motor { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; }
+  .mlbl { fill: var(--text); font-family: var(--font-head); font-weight: 700; font-size: 15px; }
+  .box { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .gnd { stroke: var(--text); stroke-width: 2.5; }
+  .gnd2 { stroke: var(--text); stroke-width: 2; }
+  .gnd3 { stroke: var(--text); stroke-width: 1.5; }
+  .lbl { fill: var(--text-dim); font-family: var(--font-body); font-size: 11px; }
+  .sub2 { fill: var(--text-faint); font-family: var(--font-body); font-size: 9px; }
+  .term { fill: var(--accent); font-family: var(--font-head); font-weight: 700; font-size: 12px; }
+</style>

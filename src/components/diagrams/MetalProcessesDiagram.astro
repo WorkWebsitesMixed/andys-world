@@ -1,0 +1,80 @@
+---
+/**
+ * Three metal-forming processes side by side: die casting, impact extrusion,
+ * deep drawing. Theme-aware inline SVG.
+ */
+const caption =
+  'Die casting: molten metal forced into a die under pressure. Impact extrusion: a punch strikes a solid slug, forcing metal upward into a thin-walled tube. Deep drawing: a punch pulls a flat sheet into a die to form a cup.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 200" role="img" aria-labelledby="mp-t mp-d" class="dg">
+    <title id="mp-t">Die casting, impact extrusion and deep drawing</title>
+    <desc id="mp-d">{caption}</desc>
+    <defs>
+      <marker id="mp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- Die casting: molten metal injected into die halves -->
+    <g>
+      <rect x="20" y="50" width="16" height="90" class="die" />
+      <rect x="116" y="50" width="16" height="90" class="die" />
+      <path d="M36,70 L116,70 L116,120 L36,120 Z" class="molten" />
+      <line x1="8" y1="95" x2="34" y2="95" class="arrow" marker-end="url(#mp-arrow)" />
+      <text x="10" y="88" text-anchor="start" class="lbl-sm">molten</text>
+      <text x="76" y="160" text-anchor="middle" class="lbl">Die casting</text>
+      <text x="76" y="174" text-anchor="middle" class="sub">forced in, cools, ejected</text>
+    </g>
+
+    <!-- Impact extrusion: punch strikes slug, metal flows up around punch -->
+    <g transform="translate(190,0)">
+      <rect x="20" y="90" width="80" height="40" class="die" />
+      <rect x="45" y="60" width="30" height="30" class="slug" />
+      <path d="M40,90 L40,60 L60,50 L80,60 L80,90 Z" class="tube" />
+      <line x1="60" y1="20" x2="60" y2="48" class="arrow" marker-end="url(#mp-arrow)" />
+      <rect x="52" y="8" width="16" height="12" class="punch" />
+      <text x="60" y="160" text-anchor="middle" class="lbl">Impact extrusion</text>
+      <text x="60" y="174" text-anchor="middle" class="sub">punch strikes; metal flows up</text>
+    </g>
+
+    <!-- Deep drawing: sheet drawn down into die by punch -->
+    <g transform="translate(380,0)">
+      <rect x="20" y="90" width="30" height="50" class="die" />
+      <rect x="110" y="90" width="30" height="50" class="die" />
+      <path d="M50,90 Q80,140 80,140 Q80,140 110,90" class="cup" />
+      <line x1="80" y1="90" x2="80" y2="140" class="guide" />
+      <line x1="80" y1="35" x2="80" y2="85" class="arrow" marker-end="url(#mp-arrow)" />
+      <rect x="65" y="20" width="30" height="16" class="punch" />
+      <text x="80" y="160" text-anchor="middle" class="lbl">Deep drawing</text>
+      <text x="80" y="174" text-anchor="middle" class="sub">flat sheet pulled into cup</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .die { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .molten { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2; }
+  .slug { fill: var(--bg-2); stroke: var(--text); stroke-width: 1.5; }
+  .tube { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2; }
+  .cup { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+  .guide { stroke: var(--text-faint); stroke-width: 1.2; stroke-dasharray: 3 3; }
+  .punch { fill: var(--bg); stroke: var(--text); stroke-width: 2.5; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 12px; }
+  .lbl-sm { fill: var(--text-dim); font-family: var(--font-body); font-size: 9px; }
+  .sub { fill: var(--text-faint); font-family: var(--font-body); font-size: 10px; }
+</style>

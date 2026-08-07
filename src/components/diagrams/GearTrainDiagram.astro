@@ -1,0 +1,60 @@
+---
+/**
+ * A simple two-gear train: a small driver and a larger driven gear,
+ * showing the speed-reduction / torque-increase trade-off.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'A small driver gear turns a larger driven gear. The driven gear has more teeth, so it takes more than one driver rotation to complete a full turn — output speed falls and output torque rises.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 360 190" role="img" aria-labelledby="gt-t gt-d" class="dg">
+    <title id="gt-t">A simple gear train</title>
+    <desc id="gt-d">{caption}</desc>
+    <defs>
+      <marker id="gt-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- Driver gear (small) -->
+    <g>
+      <circle cx="100" cy="100" r="34" class="gear" />
+      <circle cx="100" cy="100" r="4" class="pivot" />
+      <path d="M100,66 A34,34 0 0 1 128,84" class="arrow" marker-end="url(#gt-arrow)" />
+      <text x="100" y="150" text-anchor="middle" class="lbl">Driver</text>
+      <text x="100" y="165" text-anchor="middle" class="sub">fewer teeth · fast</text>
+    </g>
+
+    <!-- Driven gear (large) -->
+    <g>
+      <circle cx="230" cy="100" r="56" class="gear" />
+      <circle cx="230" cy="100" r="4" class="pivot" />
+      <path d="M230,44 A56,56 0 0 1 275,72" class="arrow" marker-end="url(#gt-arrow)" />
+      <text x="230" y="172" text-anchor="middle" class="lbl">Driven</text>
+      <text x="230" y="-8" />
+      <text x="230" y="185" text-anchor="middle" class="sub">more teeth · slow, more torque</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 360px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  .gear { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; stroke-dasharray: 4 3; }
+  .pivot { fill: var(--text); }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 13px; }
+  .sub { fill: var(--text-faint); font-family: var(--font-body); font-size: 10px; }
+</style>

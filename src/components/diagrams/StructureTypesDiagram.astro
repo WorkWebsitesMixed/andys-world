@@ -1,0 +1,70 @@
+---
+/**
+ * Frame, shell and mass structures — how each carries a load.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'Frame: separate members carry the load, the gaps carry nothing. Shell: the outer skin itself carries the load. Mass: the whole solid volume is in compression.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 190" role="img" aria-labelledby="stt-t stt-d" class="dg">
+    <title id="stt-t">Frame, shell and mass structures</title>
+    <desc id="stt-d">{caption}</desc>
+    <defs>
+      <marker id="stt-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- FRAME: triangulated bracket, members only -->
+    <g>
+      <polygon points="30,150 130,150 130,60" class="member" />
+      <line x1="30" y1="150" x2="130" y2="60" class="member accent" />
+      <line x1="80" y1="42" x2="80" y2="58" class="arrow" marker-end="url(#stt-arrow)" />
+      <text x="80" y="175" text-anchor="middle" class="lbl">Frame</text>
+      <text x="80" y="30" text-anchor="middle" class="sub">members carry load</text>
+    </g>
+
+    <!-- SHELL: dome outline, skin carries load -->
+    <g>
+      <path d="M210,150 A70,70 0 0 1 350,150 Z" class="member" />
+      <line x1="280" y1="42" x2="280" y2="70" class="arrow" marker-end="url(#stt-arrow)" />
+      <line x1="230" y1="60" x2="242" y2="82" class="arrow" marker-end="url(#stt-arrow)" />
+      <line x1="330" y1="60" x2="318" y2="82" class="arrow" marker-end="url(#stt-arrow)" />
+      <text x="280" y="175" text-anchor="middle" class="lbl">Shell</text>
+      <text x="280" y="30" text-anchor="middle" class="sub">skin carries load</text>
+    </g>
+
+    <!-- MASS: solid block, entire volume compressed -->
+    <g>
+      <rect x="430" y="90" width="100" height="60" class="solid" />
+      <line x1="450" y1="42" x2="450" y2="86" class="arrow" marker-end="url(#stt-arrow)" />
+      <line x1="480" y1="42" x2="480" y2="86" class="arrow" marker-end="url(#stt-arrow)" />
+      <line x1="510" y1="42" x2="510" y2="86" class="arrow" marker-end="url(#stt-arrow)" />
+      <text x="480" y="175" text-anchor="middle" class="lbl">Mass</text>
+      <text x="480" y="30" text-anchor="middle" class="sub">whole volume compressed</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  .member { fill: none; stroke: var(--text); stroke-width: 3; stroke-linejoin: round; }
+  .accent { stroke: var(--accent); }
+  .solid { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 14px; }
+  .sub { fill: var(--text-faint); font-family: var(--font-body); font-size: 11px; }
+</style>

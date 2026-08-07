@@ -1,0 +1,80 @@
+---
+/**
+ * Two quality-control tools: a go/no-go gauge (pass/fail without measuring
+ * an exact value) and a torque meter (checks cap-opening torque against a
+ * tolerance range). Theme-aware inline SVG.
+ */
+const caption =
+  'A go/no-go gauge: the GO end must fit the part, the NO-GO end must not — a pass/fail check with no exact measurement. A torque meter: measures the twisting force needed to open a cap against a target range, e.g. 0.5–1.5 N·m.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 460 190" role="img" aria-labelledby="qc-t qc-d" class="dg">
+    <title id="qc-t">Go/no-go gauge and torque meter</title>
+    <desc id="qc-d">{caption}</desc>
+
+    <!-- Go/no-go gauge -->
+    <g>
+      <rect x="20" y="70" width="70" height="16" class="tool" />
+      <rect x="90" y="66" width="30" height="24" class="go-end" />
+      <text x="105" y="63" text-anchor="middle" class="lbl-sm">GO</text>
+      <rect x="0" y="72" width="20" height="12" class="nogo-end" />
+      <text x="10" y="63" text-anchor="middle" class="lbl-sm">NO-GO</text>
+
+      <!-- part being checked -->
+      <rect x="140" y="60" width="34" height="36" rx="4" class="part" />
+      <text x="80" y="130" text-anchor="middle" class="lbl">Go/no-go gauge</text>
+      <text x="80" y="144" text-anchor="middle" class="sub">pass / fail, no exact value</text>
+    </g>
+
+    <!-- Torque meter -->
+    <g transform="translate(250,0)">
+      <circle cx="80" cy="70" r="34" class="dial" />
+      <line x1="80" y1="70" x2="100" y2="52" class="needle" />
+      <circle cx="80" cy="70" r="3" class="pivot" />
+      <text x="80" y="35" text-anchor="middle" class="lbl-sm">0.5–1.5 N·m</text>
+
+      <!-- cap being twisted -->
+      <circle cx="150" cy="70" r="18" class="cap" />
+      <line x1="114" y1="70" x2="132" y2="70" class="wire" />
+      <path d="M140,55 A20,20 0 0 1 160,70" class="arrow" marker-end="url(#qc-arrow)" />
+
+      <text x="115" y="130" text-anchor="middle" class="lbl">Torque meter</text>
+      <text x="115" y="144" text-anchor="middle" class="sub">checks cap-opening torque</text>
+    </g>
+
+    <defs>
+      <marker id="qc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 460px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .tool { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .go-end { fill: var(--ok, #4ade80); stroke: var(--text); stroke-width: 2; opacity: 0.55; }
+  .nogo-end { fill: var(--bad, #f87171); stroke: var(--text); stroke-width: 2; opacity: 0.55; }
+  .part { fill: var(--bg-2); stroke: var(--accent); stroke-width: 2; }
+  .dial { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; }
+  .needle { stroke: var(--accent); stroke-width: 2.5; }
+  .pivot { fill: var(--text); }
+  .cap { fill: var(--bg-2); stroke: var(--text); stroke-width: 2; }
+  .wire { stroke: var(--text); stroke-width: 2; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 12px; }
+  .lbl-sm { fill: var(--text-dim); font-family: var(--font-body); font-size: 10px; }
+  .sub { fill: var(--text-faint); font-family: var(--font-body); font-size: 10px; }
+</style>

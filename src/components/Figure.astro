@@ -3,21 +3,36 @@
  * A captioned image with required alt text (UDL). Use for photographs/diagrams
  * hosted as image files. For inline SVG concept diagrams, use the components in
  * components/diagrams/ instead.
+ *
+ * `src` is resolved through url(), so pass a path relative to public/, e.g.
+ * src="images/tools/pillar-drill.jpg" — no need to prefix the base path.
  */
+import { url } from '../lib/url';
+
 interface Props {
   src: string;
   alt: string;
   caption?: string;
   /** Optional max display width, e.g. "32rem". */
   width?: string;
+  /** Attribution line for an openly-licensed photo, e.g. "Luke Milburn, CC BY 2.0, via Wikimedia Commons". */
+  credit?: string;
+  /** Link the credit line to the image's source page. */
+  creditHref?: string;
 }
 
-const { src, alt, caption, width } = Astro.props;
+const { src, alt, caption, width, credit, creditHref } = Astro.props;
+const resolvedSrc = /^(https?:)?\/\//.test(src) ? src : url(src);
 ---
 
 <figure class="figure" style={width ? `--fig-w:${width}` : undefined}>
-  <img src={src} alt={alt} loading="lazy" decoding="async" />
+  <img src={resolvedSrc} alt={alt} loading="lazy" decoding="async" />
   {caption && <figcaption>{caption}</figcaption>}
+  {credit && (
+    <p class="credit">
+      {creditHref ? <a href={creditHref} target="_blank" rel="noopener noreferrer">{credit}</a> : credit}
+    </p>
+  )}
 </figure>
 
 <style>
@@ -35,5 +50,15 @@ const { src, alt, caption, width } = Astro.props;
     text-align: center;
     max-width: 38rem;
     margin-inline: auto;
+  }
+  .credit {
+    margin-top: 0.2rem;
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    text-align: center;
+  }
+  .credit a {
+    color: inherit;
+    border-bottom: 1px dashed currentColor;
   }
 </style>

@@ -1,0 +1,36 @@
+---
+/**
+ * A link out to a pre-filled Wikimedia Commons media search — openly licensed
+ * photos to supplement a hand-drawn diagram. Not Google Images: everything
+ * indexed on Commons carries a real licence, which matters on a school site.
+ */
+interface Props {
+  /** The search term, e.g. "roof truss bridge". Kept short and concrete. */
+  term: string;
+}
+
+const { term } = Astro.props;
+const href = `https://commons.wikimedia.org/w/index.php?title=Special:MediaSearch&search=${encodeURIComponent(term)}&type=image`;
+---
+
+<p class="more-images">
+  <span class="ic" aria-hidden="true">🖼️</span>
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    See more real photos of {term} on Wikimedia Commons
+  </a>
+</p>
+
+<style>
+  .more-images {
+    margin-block: 0.25rem 1.75rem;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+  }
+  .ic {
+    margin-right: 0.3rem;
+  }
+  .more-images a {
+    color: var(--accent);
+    border-bottom: 1px dashed currentColor;
+  }
+</style>

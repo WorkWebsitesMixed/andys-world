@@ -1,0 +1,75 @@
+---
+/**
+ * The Charpy impact test: a raised pendulum swings down, strikes a notched
+ * sample, and the height it reaches on the far side shows how much energy
+ * the sample absorbed. Theme-aware inline SVG.
+ */
+const caption =
+  'A pendulum is released from a fixed height and swings down to strike a notched sample. A tough sample absorbs more energy, so the pendulum swings less high on the far side — a brittle sample absorbs little, so the pendulum swings almost as high as it started.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 380 210" role="img" aria-labelledby="ch-t ch-d" class="dg">
+    <title id="ch-t">The Charpy impact test</title>
+    <desc id="ch-d">{caption}</desc>
+    <defs>
+      <marker id="ch-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+
+    <!-- Pivot -->
+    <circle cx="190" cy="20" r="4" class="pivot" />
+
+    <!-- Start position (raised, faded) -->
+    <g class="faded">
+      <line x1="190" y1="20" x2="90" y2="55" class="arm" />
+      <circle cx="90" cy="55" r="14" class="hammer" />
+    </g>
+
+    <!-- Swing arc -->
+    <path d="M90,55 A175,175 0 0 1 290,55" class="guide-arc" />
+
+    <!-- Impact position (vertical, solid) -->
+    <line x1="190" y1="20" x2="190" y2="175" class="arm accent" />
+    <circle cx="190" cy="175" r="14" class="hammer accent-fill" />
+
+    <!-- Sample being struck -->
+    <rect x="160" y="182" width="60" height="10" class="sample" />
+    <polygon points="188,182 192,182 190,188" class="notch" />
+
+    <!-- Rebound arrow (lower height than start) -->
+    <line x1="230" y1="90" x2="255" y2="65" class="arrow" marker-end="url(#ch-arrow)" />
+
+    <text x="90" y="30" text-anchor="middle" class="lbl-sm">start</text>
+    <text x="270" y="55" text-anchor="middle" class="lbl-sm">rebound height</text>
+    <text x="190" y="205" text-anchor="middle" class="lbl">notched sample</text>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 380px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+  .pivot { fill: var(--text); }
+  .arm { stroke: var(--text); stroke-width: 2.5; }
+  .accent { stroke: var(--accent); }
+  .hammer { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .accent-fill { fill: var(--accent-wash); stroke: var(--accent); }
+  .faded { opacity: 0.4; }
+  .guide-arc { fill: none; stroke: var(--text-faint); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  .sample { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .notch { fill: var(--bg); stroke: var(--text); stroke-width: 1; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .lbl { fill: var(--text-dim); font-family: var(--font-body); font-size: 11px; }
+  .lbl-sm { fill: var(--text-faint); font-family: var(--font-body); font-size: 10px; }
+</style>
