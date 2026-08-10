@@ -4,21 +4,20 @@ term: 1
 week: 4
 title: "Paper 2 Document Production: Microsoft Word"
 topic: "Document production"
-learningGoal: "apply named styles, set up headers and footers with field codes, perform a mail merge and set image text-wrapping in Microsoft Word to mark-scheme standard."
-selGoal: "follow the mail merge steps in order without skipping — try each step from memory first, then use the prompt card if I'm stuck."
+learningGoal: "apply named styles, set up headers and footers with field codes, and set image text-wrapping in Microsoft Word to mark-scheme standard."
+selGoal: "check the actual setting behind each task — Styles panel, field code, wrap type — rather than trusting that the result merely looks right."
 draft: false
 ---
 
-Paper 2 opens with document production in Microsoft Word. The marks test whether you followed the exact sequence — applying a named style is not the same as changing the font to look similar, and a mail merge with the wrong field names earns zero even if the letter looks right. Today you practise each task until the process is reliable.
+Paper 2 opens with document production in Microsoft Word. The marks test whether you followed the exact sequence — applying a named style is not the same as changing the font to look similar, and the mark scheme checks exactly what's specified, not what merely looks right. Today you practise each task until the process is reliable.
 
 <Callout type="exam" title="Why this matters" id="why">
-  **Paper 2** (2.5 hours) covers document production (Word), databases (Access) and presentations (PowerPoint). Document production accounts for the first section. The most common losses are: applying a font change instead of a named style, omitting field codes from headers/footers, and failing to merge from a data source at all. All three are drilled today.
+  **Paper 2** (2.5 hours) covers document production (Word), databases (Access) and presentations (PowerPoint). Document production accounts for the first section. The most common losses are: applying a font change instead of a named style, omitting field codes from headers/footers, and choosing the wrong image text-wrap setting. All three are drilled today.
 </Callout>
 
 <KeyTerms terms={[
   { term: "Named style", definition: "A saved set of formatting (font, size, spacing, colour) given a name, e.g. 'Heading 1'. Applying the named style — not just making the text look similar — is what earns the mark." },
-  { term: "Field code", definition: "An instruction in a header, footer or mail merge that inserts live data — e.g. the current filename, date, or a merge field from a data source." },
-  { term: "Mail merge", definition: "Combining a main document with a data source to produce personalised copies — e.g. one letter template + a spreadsheet of names = one letter per row." },
+  { term: "Field code", definition: "An instruction in a header or footer that inserts live data — e.g. the current filename or date — instead of fixed typed text." },
   { term: "Text wrapping", definition: "How body text flows around an image. The question specifies exactly which wrap type to apply — choosing the wrong one loses the mark." },
 ]} />
 
@@ -44,20 +43,7 @@ Insert → Header (or Footer) → Edit Header, then insert field codes as specif
 
 After inserting: right-click the field → Update Field to confirm it shows correct data. Close Header and Footer when done.
 
-### Task 3 — Mail merge (8 steps)
-
-1. Mailings → Start Mail Merge → **Step-by-Step Mail Merge Wizard**.
-2. Select document type (Letters, Labels, etc.).
-3. Use the current document as the starting document.
-4. Select recipients → Use an existing list → browse to the data file (`.csv` or `.xlsx`).
-5. Confirm column headers match what the question asks for — field names are case-sensitive.
-6. Insert merge fields: Mailings → Insert Merge Field → select the field name.
-7. Preview results — check each merge field shows the correct data.
-8. Finish & Merge → Edit Individual Documents → All → OK.
-
-**Common failures:** attaching the wrong data file, inserting fields that don't match the column headers, merging directly to the printer instead of a new document.
-
-### Task 4 — Image text wrapping
+### Task 3 — Image text wrapping
 
 Click the image → Picture Tools Format → Wrap Text → choose the wrap type named in the question (Square, Through, In Line with Text, Top and Bottom, etc.).
 
@@ -69,12 +55,12 @@ The question always specifies the wrap type. Choosing the wrong one loses the ma
   Safety, security, threats and countermeasures is covered in full in your <WeekLink grade={12} term={1} week={16}>B4 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
 </Callout>
 
-<WorkedExample title="Mail merge: tracing a common failure">
-Scenario: A student runs the mail merge wizard, inserts a field called `{First Name}`, previews the results and sees `{First Name}` displayed literally — not the actual name.
+<WorkedExample title="Typed date vs field code: tracing a common failure">
+Scenario: the question asks for a footer showing "today's date, updated automatically." A student types `10/08/2026` directly into the footer. It displays correctly today.
 
-**Why it happened:** the data source column is called `FirstName` (no space), but the student inserted a field called `First Name` (with a space). The field names don't match.
+**Why it fails:** typed text is not a field code — it never changes and it isn't what the mark scheme is checking for. Right-click the text → Toggle Field Codes would show plain characters, not `{ DATE }`. A visually correct date on marking day earns nothing if it isn't actually a field.
 
-**Fix:** in step 4 of the wizard, open the data source and check the exact column headers. Insert the field with the name exactly as it appears in the column header.
+**Fix:** delete the typed text. Insert → Quick Parts → Field → choose `Date`, tick "Update automatically", OK. Right-click → Update Field to confirm it refreshes to the current date.
 </WorkedExample>
 
 <Activity title="Document production task + self-mark" time="50 min" grouping="Individual" materials={["Laptop", "Microsoft Word", "Past paper task", "Mark scheme"]}>
@@ -82,18 +68,16 @@ Scenario: A student runs the mail merge wizard, inserts a field called `{First N
 2. Before declaring done, verify:
    - Named styles applied via the Styles panel, not manually.
    - Header/footer contains field codes (not typed text) where specified.
-   - Mail merge produced multiple merged letters, not just the template.
    - Image text wrapping matches the question.
 3. Self-mark against the mark scheme. Annotate green / red / ★. Add starred items to your deduction card.
 </Activity>
 
-<Support title="Mail merge rescue steps">
-If the merge didn't produce individual letters:
+<Support title="Document production checklist">
+Before submitting, run through this in order:
 
-1. Mailings → Edit Recipient List — confirm the data source is attached.
-2. Check field names: Mailings → Insert Merge Field → the dropdown should show your column headers.
-3. Preview Results — at least one merged version should show real data.
-4. If preview shows field codes literally (e.g. `«First Name»`): the column header doesn't match the inserted field name. Start again from step 4 of the wizard.
+- [ ] Every specified style applied via the Styles panel — not manual formatting that merely looks the same.
+- [ ] Every specified field code inserted via Insert → Quick Parts → Field — not typed text.
+- [ ] Every image's text wrap matches exactly what the question names.
 </Support>
 
 <SelfCheck questions={[
@@ -139,15 +123,15 @@ If the merge didn't produce individual letters:
 
 Write a one-sentence explanation of **why** each of the three most common mark losses today happens — don't describe the fix, explain the mistake.
 
-<Extension title="Multi-condition mail merge filter">
-In step 4 of the Mail Merge Wizard, click "Filter…" and add a condition — e.g. only merge rows where the City column equals "Bogotá". Preview the results to confirm only matching rows appear.
+<Extension title="Modify a named style">
+Right-click a named style in the Styles panel → Modify → change its font colour. Apply that style to several headings across the document, then check: did every instance update at once? That single global update is exactly why the mark scheme insists on named styles instead of manual formatting.
 </Extension>
 
 </Section>
 
 <Resources items={[
   { label: "Cambridge IGCSE ICT 0417 — Paper 2 past papers (document production section)", type: "Past paper" },
-  { label: "Microsoft Word mail merge reference", type: "Link" },
+  { label: "Microsoft Word styles, field codes and text-wrapping reference", type: "Link" },
 ]} />
 
-<Reflection prompt="Mail merge has 8 steps. Which specific step do you find hardest to remember? Write that step in your own words and why it matters." />
+<Reflection prompt="Of today's three tasks — named styles, field codes, text wrapping — which one are you most likely to skip checking properly under exam pressure? Write down the exact check you'll do for it before declaring any task finished." />
