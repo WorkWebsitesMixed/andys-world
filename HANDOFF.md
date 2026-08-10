@@ -69,11 +69,32 @@ Components (all auto-available in MDX — **never add imports to lesson files**;
 for the full authoring guide**):
 `Goals` (auto, from frontmatter), `KeyTerms`, `WorkedExample`, `Activity`,
 `SelfCheck` (formative only — instant client-side feedback, **nothing stored**;
-wrong → hint, correct → explanation + lock), `Resources`, `Reflection`, `Callout`,
-`Section`, `Support` (collapsible scaffold), `Extension` (optional stretch),
-`Figure` (image + required alt), `WatchSee` (curated external video links),
-`ExamLink`, `ProjectExamples`, and theme-aware SVG diagrams in
-`src/components/diagrams/` (Triangulation, Forces, Circuit, BeamReactions).
+wrong → hint, correct → explanation + lock — hardcodes `id="self-check"` in its
+internal `<Section>`, so **only one per page**), `Resources`, `Reflection`,
+`Callout`, `Section`, `Support` (collapsible scaffold), `Extension` (optional
+stretch), `WatchSee` (curated external video links), `ExamLink`, `WeekLink`
+(inline link to another week's page — e.g. a main session ↔ its paired B
+session), `ProjectExamples`.
+- **`Figure`** (image + required alt) — `src` resolves through `url()`, so pass a
+  path relative to `public/`, e.g. `src="images/tools/pillar-drill.jpg"`, no base
+  prefix needed. Optional `credit`/`creditHref` render a linked attribution line
+  under the caption — use for any openly-licensed photo (see §6 real-photo note).
+- **`MoreImages`** (`term` prop) — a "see more real photos of X" link. Currently
+  points at **Google Images** (`google.com/search?...&tbm=isch`), a deliberate,
+  informed choice by Andy (2026-08-07) after Wikimedia's `Special:MediaSearch`
+  returned empty for several multi-word queries even though Commons has matching
+  content — its relevance matching doesn't handle compound tool/joint names well.
+  Known tradeoff: unlike a Commons search, results aren't licence-filtered or
+  moderated by us.
+- **Theme-aware SVG diagrams** in `src/components/diagrams/` (12 as of
+  2026-08-06): `TriangulationDiagram`, `ForcesDiagram`, `CircuitDiagram`,
+  `BeamReactionsDiagram`, `StructureTypesDiagram`, `StructuralJointsDiagram`,
+  `MotionTypesDiagram`, `SliderCrankDiagram`, `CamDiagram`,
+  `TransistorSwitchDiagram`, `GearTrainDiagram`, `InjectionMouldingDiagram`,
+  `BlowVacuumFormingDiagram`, `MetalProcessesDiagram`, `CharpyTestDiagram`,
+  `QCGaugesDiagram`. Same pattern for a new one: inline `<svg>` in a
+  `<figure class="diagram">`, `title`/`desc` for a11y, CSS vars only
+  (`var(--text)`, `var(--accent)`, etc.) so it recolours per theme automatically.
 
 ## 5. The coursework brief (CANONICAL — reworked June 2026)
 **Open, person-first.** Students design a structural product for **a real person
@@ -125,10 +146,12 @@ explains Paper 1, Paper 4 and the Project.
   rewritten to match the canonical LaTeX schemes of work at
   `../Curriculum/Grade11_SchemeOfWork/Term{2,3}.tex`. The LaTeX source is the
   ground truth for G11; earlier MDX files had drifted. T3 W11–W20 are
-  `sessionType: bonus` — shown on the term page as a separate "Bonus sessions"
-  block (see `bonusWeekStart` in `curriculum.ts`).
+  `sessionType: 'b'` (renamed from `'bonus'` 2026-08-06 — see below) — shown on
+  the term page as a separate "B sessions" block (`bSessionStart()` in
+  `curriculum.ts`).
 - **Grade 12 T1 (2026-06-25):** 12 lessons authored from scratch (T1 W1–12).
-  Week count override: `WEEKS_OVERRIDE[12][1] = 12` in `curriculum.ts`.
+  Week count override: `WEEKS_OVERRIDE[12][1] = 12` (later 24 — see below) in
+  `curriculum.ts`.
 - **Grade 10 fully populated (2026-06-25):** All 30 lessons written from
   LaTeX sources at `../Curriculum/2027/10th/LaTeX_sources/Term{1,2,3}.tex`.
   - T1 (10 lessons): Design communication, mechanisms, electronics (Firefighter Barbie).
@@ -194,16 +217,71 @@ explains Paper 1, Paper 4 and the Project.
     all inside backticks/code fences/JS prop strings, which remark-math ignores — but never
     write a bare `$B$2` in prose or it will be parsed as maths.
 
+- **Section separation + light-default (2026-08-04):** section `h2` step, `border-top`
+  boundary rule, section numbering via CSS counter, light made the default theme
+  (dark/high-contrast still one click away). Fixed a real defect on the way in: light
+  never redefined `--ok`/`--warn`/`--bad`, so quiz feedback was near-invisible on white.
+
+- **G12 B-session curriculum + bonus→B rename (2026-08-06):** G12 has a second,
+  mandatory 45-min weekly class (the "B session") alongside the 90-min main class —
+  same mechanism G11 T3 already used (extra week numbers appended after the main
+  block via `WEEKS_OVERRIDE`/`B_SESSION_START` in `curriculum.ts`). Both were
+  mislabelled "Bonus" (implying optional); renamed site-wide to "B" —
+  `sessionType: 'bonus' → 'b'`, `BONUS_START → B_SESSION_START`,
+  `bonusWeekStart() → bSessionStart()`, UI pill "Bonus B*n*" → "B*n*".
+  - `WEEKS_OVERRIDE[12][1]` 12 → **24** (12 W sessions + 12 B sessions).
+  - **B1–B7** (weeks 13–19): restored to full 45-min lessons from `Term1.tex`'s
+    Socratic scripts — previously compressed into a duplicate "Theory" section
+    inside each `t1-w1..w7.mdx`; that duplicate is now a one-line `<Callout>`
+    pointer to the paired B session via `<WeekLink>`.
+  - **B8–B12** (weeks 20–24): no scheme existed for this slot (`Term1.tex` says
+    "Block B: W only"). Design decision, not restoration — mirrors what the W8–W12
+    Chemistry-lab-report unit already proves LaTeX is good at (`mhchem`,
+    `graphicx`, `booktabs`, `biblatex`: structured multi-page documents with
+    tables/figures/citations) rather than a CV-building idea that was tried and
+    dropped (a hand-built LaTeX CV template couldn't beat Andy's own Canva CV on
+    one-page visual design — see the vault note for the full comparison). Students
+    write a report in their own field (most are Medicine/Management-bound, a
+    minority Engineering), reusing the Chemistry report's LaTeX skeleton rather
+    than three separate templates.
+  - Added **`WeekLink.astro`** (mirrors `ExamLink`'s pattern) for W↔B cross-links.
+
+- **Structures/mechanics/manufacturing diagrams + real tool photos (2026-08-06/07):**
+  audited G10/G11 for missing visuals — found 4 diagram components already built
+  and registered but **used in zero lessons**. Built 12 total (see §4) and wired
+  them into their actual teaching lessons; also sourced, downloaded and hosted 16
+  openly-licensed real photos of workshop tools/equipment from Wikimedia Commons
+  (`public/images/tools/`, credits in `public/images/tools/CREDITS.md`, attribution
+  rendered live via `Figure`'s `credit`/`creditHref`). Verify a Commons candidate
+  visually before committing to a lesson — two initial picks were wrong at a glance
+  (an industrial sheet-metal laser rig for what should read as a desktop laser
+  cutter; a sash-clamp search returning irrelevant scanned book pages — "bar clamp"
+  found the real thing). `junior-hacksaw.jpg` was sourced but never placed — the
+  term isn't actually used anywhere in the G10/G11 content, so it wasn't forced in.
+
+- **Firefighter Barbie façade guide (2026-08-10):** `facade_guide.html`
+  (self-contained dimensioned-drawing/assembly guide for the teacher-made 13
+  Ember Lane façade, generated from `facade.py` — source at
+  `../class_materials/10th_grade/firefighter_barbie_facade/`) hosted at
+  `public/g10/firefighter-barbie/facade_guide.html` and linked as a `Resources`
+  item in G10 T1 **W1** (handed out as the fixed constraint), **W2** (dimensioned
+  drawings for orthographic projection), and **W10** (install/assembly
+  reference) — matches the weeks the guide's own README calls out. Extended
+  `Resources.astro`'s `href` to resolve relative (`public/`-rooted) paths through
+  `url()`, mirroring `Figure`'s `src` handling, so a lesson can link a static
+  file without an MDX import.
+
 ## 7. Content sources (for populating more lessons)
 - **Grade 11 (done):** `../Curriculum/Grade11_SchemeOfWork/Term{1,2,3}.tex`
-  (each `\section{Week N}` → 90-min lesson; `\section{Bonus N}` → bonus session
-  with `sessionType: bonus` in frontmatter). Context in
+  (each `\section{Week N}` → 90-min lesson; `\section{Bonus N}` → B session
+  with `sessionType: 'b'` in frontmatter). Context in
   `../Curriculum/PLANNING_HANDOFF_Grade11_2027.md`.
 - **Grade 10 (done):** `../Curriculum/2027/10th/LaTeX_sources/Term{1,2,3}.tex`
   — three projects: Firefighter Barbie (T1), Desk Organizer (T2), Water Bottle
   reverse-engineering (T3). IGCSE 0445 D&T, Materials option; Papers 1 and 3
   (no Paper 4; no ExamLink; no Resources `route:` — use `href:` only).
-- **Grade 12 T1 (done):** 12 lessons, 12-week term override.
+- **Grade 12 T1 (done):** 24 weeks (12 W main sessions + 12 B sessions,
+  `WEEKS_OVERRIDE[12][1] = 24`), from `../Curriculum/2027/12th/LaTeX_sources/Term1.tex`.
   T2 and T3 still empty — not yet planned.
 - **Textbook:** `../Curriculum/Book.pdf` (Collins IGCSE D&T, 375 pp, image-only).
   Section PDFs on Google Drive — see Section 6 for link format and which sections
@@ -232,19 +310,43 @@ explains Paper 1, Paper 4 and the Project.
   - Source of truth for content: `../Curriculum/mechatronics_course/*.tex` files.
 
 ## 8. Open items / next steps
-1. **Grader URL:** `examsUrl` in `src/lib/site.ts` points at the grader **preview**
-   (`https://workwebsitesmixed.github.io/exam-grader-v2-preview/`) — swap for the
-   production URL when available.
+1. **Grader URL — DONE (2026-08-10).** `examsUrl` in `src/lib/site.ts` now points at the
+   production grader (`exam-grader/grader.html?src=...` Apps Script endpoint), not the preview.
 2. **Grade 12 T2 + T3** — not yet planned or authored. Placeholder stubs show
    already. Awaiting Andy's curriculum plan for those terms.
 3. **Textbook links — COMPLETE (2026-08-04).** All 137 `type: "Textbook"` items resolve to
    the right file at a page inside it: 0 dead, 0 out-of-range, 0 unlinked. Nothing left to
    upload — the 27 extracts cover the whole book (printed 8–376).
-4. **Media:** curated only — SVG diagrams (authored) for technical concepts; photos
-   only where real-world needed; Watch/See = web-searched candidates the user
-   approves (never auto-search, never fabricate URLs).
+4. **Media:** SVG diagrams (authored) for technical concepts where a schematic
+   teaches best; real photos (Wikimedia Commons, openly licensed, credited — see §6)
+   for physical tools/equipment a student has zero background with; Watch/See =
+   web-searched candidates the user approves (never auto-search, never fabricate
+   URLs). Never fabricate a photo of a real person or claim a generated image is
+   real. **G10/G11 audit done (2026-08-06/07)** — structures, mechanics, circuits,
+   manufacturing processes and testing equipment all now have a diagram or photo;
+   materials (MDF/acrylic/plywood/etc.) were deliberately deprioritised since
+   students handle them physically most weeks. Not yet audited: G12.
 5. **CI nicety:** deploy workflow actions log a "Node 20 deprecated" warning — bump
    `actions/checkout`, `setup-node`, `upload-pages-artifact` versions sometime.
+6. **About page — built, NOT pushed.** `src/pages/about.astro`, `public/about/`,
+   the footer link (`Footer.astro`) and the `about` route (`url.ts`) are complete
+   and committed-ready but deliberately held out of every push so far — Andy
+   wants to decide separately when it goes live. Check `git status` before
+   assuming a "push everything" instruction includes it; ask if unclear.
+7. **GitHub Actions/Pages outages happen and look like your fault.** Hit one
+   2026-08-06: `git push` succeeded but the deploy workflow failed at job setup
+   ("Service Unavailable" resolving action images) and later hung in "waiting"
+   indefinitely — not a code problem. Check
+   `curl -s https://www.githubstatus.com/api/v2/summary.json` before assuming a
+   broken push or a broken workflow; retrying mid-outage just repeats the same
+   failure. A `git push` succeeding does **not** mean the Pages deploy ran —
+   they're separate steps; check `gh run list` too.
+8. **MDX bare `{...}` outside a code span breaks the build.** Hit this twice —
+   once from `Table~\ref{...}` in prose, once from a `<style>` block with real
+   CSS braces (`{ display: grid; }`). MDX parses any `{...}` in body content as a
+   JS expression, code fences and inline `` `code` `` spans excepted. Wrap
+   LaTeX-ish snippets in backticks; for layout, use inline `style="..."`
+   attributes on a `<div>` instead of a `<style>` block in lesson MDX.
 
 ## 9. Working style (the user's established preference)
 **Discuss before implementing** on significant decisions: propose + recommend, get

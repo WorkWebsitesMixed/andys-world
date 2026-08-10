@@ -10,10 +10,8 @@ export const site = {
   description:
     "Student-facing Design & Technology lessons by Andrés Forero — organised by grade, term and week.",
 
-  /**
-   * Link out to Andy's separate exam-grader project.
-   * Currently the preview build; swap for the production URL when confirmed.
-   */
-  examsUrl: 'https://workwebsitesmixed.github.io/exam-grader-v2-preview/',
+  /** Link out to Andy's separate exam-grader project. */
+  examsUrl:
+    'https://workwebsitesmixed.github.io/exam-grader/grader.html?src=https://script.google.com/macros/s/AKfycbyeQbG1xIFVgK6XNeZ1iECYOBll4rv4zrICDPMcj2xGQwhUNvPhkGJN-gAWD4D5M9KeDQ/exec',
   examsLabel: 'Exams',
 } as const;

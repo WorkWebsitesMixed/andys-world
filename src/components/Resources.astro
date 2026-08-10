@@ -1,12 +1,16 @@
 ---
 import Section from './Section.astro';
-import { routes } from '../lib/url';
+import { routes, url } from '../lib/url';
 
 type RouteTarget = 'paper1' | 'paper4' | 'project' | 'igcse';
 
 interface Resource {
   label: string;
-  /** Raw URL — use for external links or anything not in the routes helper. */
+  /**
+   * URL — external links pass a full http(s) URL as-is; a path relative to
+   * `public/` (e.g. "g10/firefighter-barbie/facade_guide.html") is resolved
+   * through `url()` so it stays correct under the GitHub Pages base path.
+   */
   href?: string;
   /**
    * Internal route shorthand. Resolves to the correct base-aware URL so MDX
@@ -38,8 +42,12 @@ const icons: Record<string, string> = {
   <ul class="resources">
     {items.map((r) => {
       const icon = (r.type && icons[r.type]) || '🔗';
-      const href = r.href ?? (r.route ? routes[r.route](11) : undefined);
-      const isExternal = href?.startsWith('http');
+      const isExternal = /^https?:\/\//.test(r.href ?? '');
+      const href = r.route
+        ? routes[r.route](11)
+        : r.href && !isExternal
+          ? url(r.href)
+          : r.href;
       return (
         <li>
           <span class="ricon" aria-hidden="true">{icon}</span>
