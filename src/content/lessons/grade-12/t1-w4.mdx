@@ -122,16 +122,16 @@ If the merge didn't produce individual letters:
     explain: "Insert → Quick Parts → Field → FileName inserts a field code that automatically displays the current document filename. Typing the filename manually is not a field code and may not earn the mark."
   },
   {
-    q: "Which countermeasure would best protect data if a company laptop is stolen?",
+    q: "The question specifies 'wrap text: Square' for an image. You leave the default 'In Line with Text' setting instead. Does this earn the mark?",
     options: [
-      "Antivirus software",
-      "A firewall",
-      "Encryption of the hard drive",
-      "Regular backups"
+      "Yes — the image is still visible and positioned near the text.",
+      "No — the wrap type must match exactly what the question specifies.",
+      "Yes, as long as the image doesn't overlap any text.",
+      "Only if the image is also resized to fit the paragraph."
     ],
-    answer: 2,
-    hint: "The threat is physical theft. The data is now in someone else's hands.",
-    explain: "Encryption protects the data even after the device is stolen — without the decryption key, the thief cannot read the files. Antivirus and firewalls protect against software threats, not physical theft."
+    answer: 1,
+    hint: "The question always names a specific wrap type — the mark scheme checks for that exact setting.",
+    explain: "Wrap type is checked exactly as specified. 'In Line with Text' is a different setting from 'Square', so it loses the mark even if the page still looks reasonable."
   }
 ]} />
 

@@ -56,20 +56,12 @@ You'll attempt your single highest-starred item — this time, prompt cards are 
   Data, file sizes, binary, and data types is covered in full in your <WeekLink grade={12} term={1} week={15}>B3 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
 </Callout>
 
-<WorkedExample title="File size calculation step by step">
-**Question:** "A digital photograph is 1200 × 900 pixels. Each pixel uses 16 bits of colour. Calculate the file size in megabytes."
+<WorkedExample title="Wrong save format: tracing a common failure">
+Scenario: the question paper says "Save the file as Task2_Chart.xlsx." A student's Excel is set to save as `.xls` by default, and they click Save without checking the "Save as type" dropdown. The file saves as `Task2_Chart.xls`.
 
-Step 1: 1200 × 900 = **1 080 000 pixels**
+**Why it fails:** the filename and extension have to match the instruction exactly. `.xls` and `.xlsx` are different formats to the marker's checking script — a perfect chart in the wrong-extension file can earn zero for that entire task.
 
-Step 2: 1 080 000 × 16 = **17 280 000 bits**
-
-Step 3: ÷ 8 = **2 160 000 bytes**
-
-Step 4: ÷ 1 024 = **2 109.375 KB**
-
-Step 5: ÷ 1 024 = **≈ 2.06 MB**
-
-Show every step even if the question only asks for the final answer — marks are often awarded along the way.
+**Fix:** before saving anything in a timed paper, open Save As once and check the "Save as type" dropdown matches what the question asks for, then type the filename exactly as given — don't rely on the default.
 </WorkedExample>
 
 <Activity title="Paper 3 past paper — exam conditions" time="55 min" grouping="Individual" materials={["Laptop", "Paper 3 past paper", "Mark scheme (for debrief)"]}>
@@ -90,40 +82,40 @@ Show every step even if the question only asks for the final answer — marks ar
 
 <SelfCheck questions={[
   {
-    q: "An image is 640 × 480 pixels with a colour depth of 8 bits per pixel. What is the file size in bytes?",
+    q: "You finish the VLOOKUP task with 3 minutes left and haven't started the chart question (4 marks). What's the best use of the remaining time?",
     options: [
-      "2 457 600 bytes",
-      "307 200 bytes",
-      "2 457 600 bits",
-      "38 400 bytes"
+      "Keep refining the VLOOKUP formula in case it isn't perfect.",
+      "Attempt the chart — even a partially correct chart can pick up some of its marks.",
+      "Leave the chart blank and re-check spelling elsewhere in the file.",
+      "Ask to have extra time added."
     ],
     answer: 1,
-    hint: "Width × height gives pixels. Pixels × colour depth gives bits. Bits ÷ 8 gives bytes.",
-    explain: "640 × 480 = 307 200 pixels. 307 200 × 8 = 2 457 600 bits. 2 457 600 ÷ 8 = 307 200 bytes."
+    hint: "An untouched 4-mark question guarantees zero for those marks; a rushed attempt might not.",
+    explain: "Partial credit is available on most tasks. A blank answer guarantees zero marks; even a quick, imperfect attempt at the chart has a chance of earning some of the 4 marks."
   },
   {
-    q: "A school database stores student telephone numbers. Which data type should be used?",
+    q: "You mark your own paper and get a formula wrong but genuinely don't know why the correct version works. Which annotation should you use?",
     options: [
-      "Integer — it is a number.",
-      "Real — it may contain decimal points.",
-      "String — it may have leading zeros, spaces or special characters.",
-      "Boolean — it is either present or absent."
+      "Green — it was close enough.",
+      "Red only, with no further action.",
+      "★ Star — and write it on your deduction card.",
+      "Leave it unmarked since you don't understand it yet."
     ],
     answer: 2,
-    hint: "Think about whether you'd ever do arithmetic on a phone number.",
-    explain: "Phone numbers must be strings because they can contain leading zeros, spaces and dashes that would be lost if stored as integers. You never add or subtract phone numbers."
+    hint: "The star is specifically for 'wrong, and I don't know why' — that's exactly this situation.",
+    explain: "Star means wrong-and-don't-know-why. Starred items go on the deduction card, which is what drives what gets targeted in Week 7."
   },
   {
-    q: "Which is the correct sequence for working out image file size?",
+    q: "The paper says to save your file as 'Task1_Sales.xlsx'. Which of these risks losing all the marks for that file?",
     options: [
-      "Width + height, then × colour depth, then ÷ 8",
-      "Width × height × colour depth ÷ 8",
-      "Width × height ÷ colour depth × 8",
-      "Colour depth × 8 × width"
+      "Task1_Sales.xlsx — saved exactly as given",
+      "Task1_sales.xlsx — different capitalisation",
+      "Task1 Sales.xlsx — a space instead of the underscore",
+      "Both b and c"
     ],
-    answer: 1,
-    hint: "Pixels first, then bits, then bytes.",
-    explain: "Width × height gives total pixels. Pixels × colour depth (bits) gives total bits. Divide by 8 to convert bits to bytes."
+    answer: 3,
+    hint: "\"Use the exact filename, don't change it\" means exact — capitalisation and punctuation included.",
+    explain: "The marking script checks for the filename exactly as specified. Any deviation — capitalisation, spaces, punctuation — can mean the file isn't recognised as the answer at all."
   }
 ]} />
 
@@ -131,8 +123,8 @@ Show every step even if the question only asks for the final answer — marks ar
 
 For each item on your deduction card, write **one sentence** explaining exactly why you lost the mark — not what the right answer was, but *why* your answer was wrong.
 
-<Extension title="Binary units drill">
-Without looking at your notes: write the sequence bit → byte → KB → MB → GB → TB and the number of each that makes the next. Then check. Repeat until you can write it from memory in under 30 seconds.
+<Extension title="Chart with two data series">
+Build a chart from a data set with two numerical series (e.g. "Sales" and "Target" per month). Choose the chart type that lets you compare both directly, add a legend that distinguishes them, and make sure both axes are still fully labelled.
 </Extension>
 
 </Section>

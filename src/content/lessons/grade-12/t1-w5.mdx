@@ -135,22 +135,22 @@ Before running the query, check:
     explain: "'Apply' applies the settings to the current slide only. 'Apply to All' applies them to every slide in the presentation. This is the most commonly missed step."
   },
   {
-    q: "Which SDLC stage involves using realistic data to check whether the system works correctly?",
+    q: "You need every customer whose Country is 'Spain' OR whose Country is 'Portugal'. How should the criteria be entered in Design view?",
     options: [
-      "Analysis",
-      "Design",
-      "Testing",
-      "Implementation"
+      "'Spain' and 'Portugal' both in the Country Criteria row.",
+      "'Spain' in the Country Criteria row, 'Portugal' in the Country 'or' row.",
+      "'Spain' in Criteria, 'Portugal' typed in a separate calculated field.",
+      "Run two separate queries — Access cannot combine two values in one field with OR."
     ],
-    answer: 2,
-    hint: "This stage comes after development and before the system goes live.",
-    explain: "Testing uses realistic (or real) data to identify errors. Any errors found loop back to Development. Testing happens before Implementation (going live)."
+    answer: 1,
+    hint: "OR conditions on the same field still go on different rows.",
+    explain: "Each acceptable value for the same field goes on its own row — Criteria row for the first, the 'or' row for the second. Putting both on the same row would require both to be true at once, which is impossible for a single field."
   }
 ]} />
 
 <Section title="Homework & extension" icon="🏠" id="homework">
 
-Write the six SDLC stages from memory, in order, with one sentence for each describing what happens at that stage.
+Write the AND vs OR criteria placement rule from memory, in one sentence for each case. Then check it against today's table — is your wording precise enough to earn the mark, not just correct in spirit?
 
 <Extension title="Query with a calculated field">
 In an Access database, create a query that includes a calculated field: `TotalCost: [UnitPrice]*[Quantity]`. Add a criterion that only shows rows where TotalCost is greater than 100. Note: you can't put a criterion on a calculated field in the Criteria row directly — try the `Having` option or use a filter after running.

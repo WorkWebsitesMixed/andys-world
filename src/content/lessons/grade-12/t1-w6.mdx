@@ -54,16 +54,12 @@ Self-mark against the mark scheme. Annotate green / red / ★. Write your **top 
   Email, internet vs intranet, and environmental impact is covered in full in your <WeekLink grade={12} term={1} week={18}>B6 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
 </Callout>
 
-<WorkedExample title="Weak answer → improved answer (intranet vs internet)">
-**Question:** "A company uses an intranet. State two differences between a company intranet and the internet."
+<WorkedExample title="Time allocation: tracing a common failure">
+Scenario: a student spends 70 minutes on the Word section (guide: ~55–65 min), leaving only 30 minutes between Access and PowerPoint combined (guide: ~70–90 min).
 
-Weak: *"The intranet is private and the internet is public."* (1 mark — only one difference, stated vaguely)
+**Why it happened:** perfecting details that were already earning marks — re-checking formatting that was already correct — instead of moving on once the required elements were in place.
 
-Improved:
-1. *"The intranet can only be accessed by authorised employees of the company; the internet can be accessed by anyone."*
-2. *"The intranet contains internal company documents and resources; the internet contains publicly available information from organisations worldwide."*
-
-Each improved answer gives a **specific difference** with enough detail for the examiner to award the mark.
+**Fix:** treat the time guide as a checkpoint, not a target. If a section is running long, finish the current step, do a quick check against the mark scheme's obvious requirements (styles applied, field codes present, mail merge run), and move on even if it doesn't feel fully polished. An unfinished PowerPoint task guarantees zero for those marks; a slightly-imperfect Word task usually doesn't.
 </WorkedExample>
 
 <Activity title="Paper 2 past paper — exam conditions" time="60 min" grouping="Individual" materials={["Laptop", "MS Word", "MS Access", "MS PowerPoint", "Paper 2 past paper"]}>
@@ -86,40 +82,40 @@ Prioritise in this order:
 
 <SelfCheck questions={[
   {
-    q: "You receive an email from 'security@yourbank.com' saying your account will be locked unless you click a link and verify your details within 2 hours. The link goes to 'yourbank-secure-login.fakesite.co'. What type of attack is this?",
+    q: "You're 65 minutes into Word (on target) but realise the mail merge wizard isn't producing individual letters, and you've already spent 5 minutes on it. What's the best move?",
     options: [
-      "Hacking",
-      "Phishing",
-      "Ransomware",
-      "A denial-of-service attack"
+      "Keep troubleshooting the merge until it works — it's worth several marks.",
+      "Skip the merge for now, complete every other Word task, and return to it if time remains.",
+      "Move straight to Access and PowerPoint, abandoning the merge entirely.",
+      "Ask your teacher to explain the fix."
     ],
     answer: 1,
-    hint: "The goal is to trick you into entering your credentials — not to exploit a technical vulnerability.",
-    explain: "This is phishing: a deceptive message designed to trick the user into revealing credentials via a fake login page. Hacking exploits technical vulnerabilities; ransomware encrypts files; DoS attacks flood a server."
+    hint: "This exact scenario is one of the two time-critical decisions named in today's strategy section.",
+    explain: "Don't let one stuck task sink the whole section. Complete everything else first, then return to the merge with whatever time is left — a half-finished set of other tasks costs more marks than one unfixed merge."
   },
   {
-    q: "A company stores its staff handbook, internal policies and training videos on a private network accessible only to employees. What is this called?",
+    q: "You open the Access section with 50 minutes left. What should you do before entering any query criteria?",
     options: [
-      "The internet",
-      "A WAN",
-      "An intranet",
-      "A peer-to-peer network"
-    ],
-    answer: 2,
-    hint: "It's internal, restricted, and contains company-specific content.",
-    explain: "An intranet is a private network accessible only to authorised users (usually employees). It hosts internal content like policies and training materials, unlike the public internet."
-  },
-  {
-    q: "A user sends an email to three colleagues. One address is in 'To', one in 'CC' and one in 'BCC'. Which statement is correct?",
-    options: [
-      "All three recipients can see each other's addresses.",
-      "The BCC recipient's address is hidden from the other two recipients.",
-      "CC recipients do not receive the email.",
-      "BCC recipients can reply to all recipients."
+      "Start typing criteria immediately to save time.",
+      "Re-read the question carefully for AND vs OR before entering anything.",
+      "Run a blank query first to see all the records.",
+      "Skip straight to the report or form, and do the query last."
     ],
     answer: 1,
-    hint: "BCC stands for blind carbon copy — blind meaning the others can't see it.",
-    explain: "BCC recipients receive the email but their address is not visible to the To or CC recipients. The To and CC recipients can see each other's addresses."
+    hint: "One wrong row choice makes the whole result set wrong — re-reading costs seconds; a wrong query costs the whole task.",
+    explain: "AND vs OR determines which row the criteria go on. Getting this wrong produces a completely different (and incorrect) result set, so it's worth the few seconds to re-read before typing anything."
+  },
+  {
+    q: "With 10 minutes left, you have one unfinished Word task and one untouched PowerPoint transition setting. Which should you prioritise?",
+    options: [
+      "Keep polishing the Word task since you're already there.",
+      "Finish the Word task to a submittable state first, then start the untouched item if time allows.",
+      "Switch to PowerPoint immediately and leave Word as-is.",
+      "Split the time exactly in half between the two."
+    ],
+    answer: 1,
+    hint: "A finished task earns more than a half-finished one — but an untouched task guarantees zero.",
+    explain: "Complete any task you're mid-way through first — it's closer to full marks. Then use remaining time on untouched items, since even a correct first step on those earns something."
   }
 ]} />
 
@@ -127,8 +123,8 @@ Prioritise in this order:
 
 For each of your three starred items from today, write the correct technique from memory — not from the mark scheme. Then check against the scheme and correct any errors.
 
-<Extension title="Environmental impact analysis">
-Find the energy consumption figure for one large data centre (publicly reported by a technology company). Calculate how many average homes that could power for a year. What countermeasures does the company claim to use?
+<Extension title="Query with a calculated field and a criterion together">
+In Access, build a single query that includes a calculated field (e.g. `TotalCost: [UnitPrice]*[Quantity]`) **and** a criterion on a different field (e.g. `Category = "Electronics"`) at the same time. Run it and check the result set only shows Electronics rows, each with a correctly calculated total.
 </Extension>
 
 </Section>

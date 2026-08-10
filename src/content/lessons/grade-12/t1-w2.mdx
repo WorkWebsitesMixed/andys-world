@@ -66,14 +66,12 @@ File → Preview in Browser (F12). Check: links open the correct page, images di
   Networks — LAN vs WAN, wired vs wireless, and protocols is covered in full in your <WeekLink grade={12} term={1} week={14}>B2 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
 </Callout>
 
-<WorkedExample title="Weak answer → improved answer (protocols)">
-**Question:** "A user wants to visit a website. State the protocol used and explain what it does."
+<WorkedExample title="Inline style vs external stylesheet: tracing a common failure">
+Scenario: A student needs a white background with Arial body text. They select the body text, use Format → Font to change it to Arial, and Format → Background for the colour. Design view looks correct.
 
-Weak: *"HTTP is used. It lets you browse the internet."*
+**Why it fails:** the question specified "use a stylesheet." Both changes were applied directly to the HTML (inline), not through an external `.css` file. The page can look pixel-identical and still earn zero marks.
 
-Improved: *"HTTP (HyperText Transfer Protocol) is used. It governs the rules for how web pages are requested by a browser and sent by a web server, defining the format of the request and response messages."*
-
-The improvement earns marks by naming the protocol correctly, **expanding the acronym**, and explaining **what the protocol actually governs** (the request-response format between browser and server).
+**Fix:** undo both changes. Create/open the `.css` file, write the two rules there (`body { background-color: #ffffff; font-family: Arial; }`), then attach it via Format → CSS → Attach Style Sheet. Confirm the same visual result now comes from the external file, not from Font/Background.
 </WorkedExample>
 
 <Activity title="Web authoring task + self-mark" time="50 min" grouping="Individual" materials={["Laptop", "Expression Web", "Past paper task", "Mark scheme"]}>
@@ -122,22 +120,22 @@ Before submitting, run through this in order:
     explain: "An internal hyperlink uses the relative path to the local file: contact.html. External links start with https://."
   },
   {
-    q: "Which statement correctly distinguishes LAN from WAN?",
+    q: "An image's Alternate Text field is set to 'IMG_4521.jpg'. Does this earn the mark for alt text?",
     options: [
-      "A LAN is always wireless; a WAN is always wired.",
-      "A LAN covers a small geographic area owned by one organisation; a WAN covers a large area using shared infrastructure.",
-      "A LAN is faster than the internet.",
-      "A WAN connects devices in one building."
+      "Yes — every image needs some text in that field.",
+      "No — alt text must describe the image, not repeat the filename.",
+      "Yes, as long as the file actually exists at that name.",
+      "Only if the image also has a visible caption."
     ],
     answer: 1,
-    hint: "Focus on geographic area and ownership — not speed or connection type.",
-    explain: "The key distinction is geographic scope (small vs large) and ownership (single organisation vs shared/public infrastructure)."
+    hint: "Alt text is read by screen readers and shown if the image fails to load — a filename tells them nothing about the image.",
+    explain: "The mark scheme requires a genuine description of what the image shows. A filename earns zero even though the field isn't empty."
   }
 ]} />
 
 <Section title="Homework & extension" icon="🏠" id="homework">
 
-Review the protocols table from today's theory section. For each protocol, write one mark-scheme-quality sentence explaining what it does — without looking at your notes.
+Review today's Expression Web checklist. For each item, write one mark-scheme-quality sentence explaining exactly what the examiner is checking for — without looking at your notes.
 
 <Extension title="Build a two-page mini-site">
 Create a second HTML page and link the two pages to each other with hyperlinks. Share the same external stylesheet between both pages. Test that changing one rule in the CSS updates both pages.

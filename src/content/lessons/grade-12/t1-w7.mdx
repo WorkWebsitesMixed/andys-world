@@ -55,15 +55,15 @@ At the end of the session, each student states — out loud — one specific thi
 </Callout>
 
 <WorkedExample title="Mark-scheme precision in action">
-**Question:** "Explain what is meant by encryption."
+**Question:** "Explain why the formula `=VLOOKUP(A2,E2:G50,3,TRUE)` might return an incorrect result."
 
-Zero-mark answer: *"Encryption keeps data safe."*
+Zero-mark answer: *"The formula is wrong."*
 
-One-mark answer: *"Encryption converts data into a coded format so that it cannot be read without a key."*
+One-mark answer: *"TRUE causes an approximate match instead of an exact one."*
 
-Two-mark answer: *"Encryption converts data into a coded format using an algorithm. Only a recipient with the correct decryption key can decode and read the data, so even if the data is intercepted during transmission it cannot be understood."*
+Two-mark answer: *"The last argument, TRUE, tells VLOOKUP to accept an approximate match. If A2's value isn't found exactly in the table, VLOOKUP returns the closest match below it instead of an error — which can silently return the wrong row's data."*
 
-The two-mark answer earns both marks by: (1) stating what encryption does to the data (converts/codes it), and (2) explaining the mechanism (requires a key to reverse; protects intercepted data). "Keeps data safe" earns nothing because it describes the goal, not the mechanism.
+The two-mark answer earns both marks by: (1) naming the exact cause (the TRUE argument), and (2) explaining the mechanism (what "approximate match" actually does, and why that's dangerous). "The formula is wrong" earns nothing — it names a symptom, not a mechanism.
 </WorkedExample>
 
 <Activity title="Personal gap reattempt" time="50 min" grouping="Individual" materials={["Laptop", "Your deduction card", "Past paper questions targeting your gaps", "Prompt cards (after 2 minutes if needed)"]}>
@@ -98,37 +98,37 @@ If it still doesn't work, write a specific question to ask your teacher: not "I 
     explain: "The student should target their starred items directly, proportional to marks lost. VLOOKUP first (most marks), then PowerPoint footer, then LAN/WAN. Generic revision wastes the session."
   },
   {
-    q: "The mark scheme awards 2 marks for explaining encryption. Which answer earns both marks?",
+    q: "The mark scheme awards 2 marks for 'fully labelled chart'. Which answer/action earns both marks?",
     options: [
-      "Encryption keeps data private.",
-      "Encryption scrambles data so it cannot be read.",
-      "Encryption converts data into a coded format using an algorithm; only a recipient with the correct key can decode and read it.",
-      "Encryption is used for security on the internet."
+      "Adding a chart title only.",
+      "Leaving the default chart with no titles or labels.",
+      "Adding a chart title, axis titles on both axes, and data labels if the question specifies them.",
+      "Adding axis titles only, with no chart title."
     ],
     answer: 2,
-    hint: "Two marks need two distinct points. What does encryption do, and what does that achieve?",
-    explain: "Option C gives both marks: (1) it converts data into a coded format using an algorithm, and (2) only the correct key can decode it — protecting intercepted data. The other options state a benefit without explaining the mechanism."
+    hint: "Two marks need two distinct requirements met, not just one of them.",
+    explain: "\"Fully labelled\" means chart title AND axis titles on both axes, plus data labels when asked for — a partial set of these (option A or D) earns partial credit at best, and the default chart (B) earns nothing."
   },
   {
-    q: "In the Paper 1 MCQ drill you get a question about SMTP wrong. What is the most useful thing to do next?",
+    q: "In a Paper 3 practice drill you get a bar-vs-line chart question wrong. What is the most useful thing to do next?",
     options: [
-      "Look up the correct answer and move on.",
-      "Write why each wrong option is wrong, not just what the right answer is.",
-      "Re-read the networks chapter in full.",
-      "Skip it — SMTP is low-probability."
+      "Look up the correct chart type and move on.",
+      "Write down, for the specific data described, why each wrong chart type doesn't fit — not just which one does.",
+      "Re-read the whole chart-types table from Week 1.",
+      "Skip it — chart-type questions are low mark value."
     ],
     answer: 1,
-    hint: "Understanding why wrong answers are wrong prevents you from choosing them again.",
-    explain: "Writing why each wrong option is wrong forces active discrimination, not passive memorisation. This is far more effective for MCQs than noting the right answer alone."
+    hint: "Understanding why the wrong options are wrong prevents you from choosing them again on a different data set.",
+    explain: "Writing why each wrong chart type doesn't fit forces active discrimination between options, rather than passively memorising one correct answer for one specific question."
   }
 ]} />
 
 <Section title="Homework & extension" icon="🏠" id="homework">
 
-Your Paper 1 revision list from today is your independent study agenda. Before the real exam, cover every topic on the list — starting with the ones you starred.
+Your personal deduction profile (Weeks 3 + 6 combined) is your independent study agenda for Papers 2 and 3. Before the real exam, practise every starred skill until you can do it without a prompt card.
 
 <Extension title="Teach it">
-Pick one topic from your revision list and explain it out loud as if teaching someone who has never studied ICT. Use no notes. If you can explain it clearly, you understand it; if you can't, you've found your next gap.
+Pick one skill from your deduction profile — a formula, a mail merge step, an Access query technique — and explain it out loud as if teaching someone who has never used the software. Use no notes. If you can explain it clearly, you understand it; if you can't, you've found your next gap.
 </Extension>
 
 </Section>

@@ -70,14 +70,14 @@ A "fully labelled" chart needs a **chart title**, **axis titles** for both axes,
   Hardware, input/output devices, storage, and RAM vs ROM is covered in full in your <WeekLink grade={12} term={1} week={13}>B1 session</WeekLink> this week — not here. This page is your Paper 2/3 practical session only.
 </Callout>
 
-<WorkedExample title="Weak answer → improved answer (storage)">
-**Question:** "Explain why solid-state storage is more suitable than a hard disk drive for a laptop."
+<WorkedExample title="Weak formula → improved formula (nested IF)">
+**Question:** "A student's result is 'Distinction' if the score is 80 or above, 'Pass' if 50 or above, otherwise 'Fail'. Write a formula for cell B2."
 
-Weak: *"SSDs are better because they are faster."*
+Weak: `=IF(A2>=50,"Pass","Fail")` — only handles two outcomes; Distinction is never returned.
 
-Improved: *"Solid-state drives have no moving parts, making them more robust against physical shock — important in a portable device. They also offer faster data access because there is no read head that needs to seek to the correct track."*
+Improved: `=IF(A2>=80,"Distinction",IF(A2>=50,"Pass","Fail"))` — the second IF is nested inside the first `value_if_false` argument, so scores are tested highest-threshold-first and every one of the three outcomes is reachable.
 
-The improvement earns marks by giving **two distinct advantages**, each **linked to the laptop context** with a reason.
+The improvement earns marks by **testing the highest threshold first** and **nesting the second IF in the correct argument** — reversing the order (testing `>=50` first) would wrongly label an 85 as "Pass".
 </WorkedExample>
 
 <Activity title="Excel task + self-mark + deduction card" time="50 min" grouping="Individual" materials={["Laptop", "Excel past paper task", "Mark scheme", "Index card"]}>
@@ -127,16 +127,16 @@ Then write the skeleton from the table above and fill in the arguments from the 
     explain: "A line chart shows trends over time. A bar chart compares separate categories with no time relationship."
   },
   {
-    q: "Why must the computer's boot instructions be stored in ROM rather than RAM?",
+    q: "A VLOOKUP is copied down 20 rows. The table_array was entered as E2:G50 (no $ signs). What happens?",
     options: [
-      "ROM is faster than RAM",
-      "ROM retains its contents without power, so the instructions are there when the computer starts",
-      "RAM cannot be read by the processor",
-      "ROM has larger storage capacity"
+      "Nothing — Excel always keeps a lookup table fixed automatically.",
+      "The range shifts down with each copied row, eventually looking up the wrong table or an empty one.",
+      "Excel adds the $ signs automatically the first time you copy the formula.",
+      "The formula returns an error immediately in the first cell."
     ],
     answer: 1,
-    hint: "Think about what happens to RAM contents when the power goes off.",
-    explain: "ROM is non-volatile — it keeps data without power. RAM loses everything when switched off, so boot instructions stored in RAM would be gone before the computer could read them."
+    hint: "Without $, every part of a cell reference moves with the formula when it's copied.",
+    explain: "Without $ signs, the whole range reference shifts down by the same number of rows as the copy — the further down you copy, the further the lookup table drifts from where the data actually is."
   }
 ]} />
 
