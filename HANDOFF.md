@@ -271,6 +271,43 @@ explains Paper 1, Paper 4 and the Project.
   `url()`, mirroring `Figure`'s `src` handling, so a lesson can link a static
   file without an MDX import.
 
+- **G12 T1 real past-paper links + cleanup (2026-08-10/11):** W1–W6 Resources
+  now link the actual Cambridge IGCSE ICT 0417 question paper, mark scheme
+  (and source files where the sitting has happened) from Drive, hosted outside
+  the repo since they're copyrighted CAIE material — same approach as the
+  textbook section PDFs. W3 and W6 are live mocks (2025 Oct/Nov papers); their
+  source-file zips are deliberately withheld until each mock is actually sat
+  (staged locally at `~/Videos/g12_past_papers/hold_until_mock_is_sat/`, with an
+  MDX comment in each lesson marking where to add the link once it's done — check
+  before assuming these are still pending). Once the real links were in, the old
+  generic "Cambridge IGCSE ICT 0417 — Paper N past papers" placeholder row (no
+  href, now a duplicate) was removed from all six weeks; the distinct skill-
+  reference row in each (Excel functions, CSS, Access queries, etc.) stayed.
+
+- **G11 T1 brief consistency fix (2026-08-11):** Week 1 stated "four fixed
+  constraints" that didn't match the canonical open brief on the Project
+  overview page (`src/pages/grade/11/project.astro`, §5) — a hardcoded 5 kg
+  minimum load (the real brief leaves load open: "a weight you state, measure
+  and test"), a fixed "two joining methods" requirement (joints are actually a
+  listed design decision), a narrowed "light circuit" (canonical: light,
+  indicator or similar), and it was missing two real constraints — the
+  400×400mm/≥150mm footprint and the workshop material palette. Rewrote the
+  constraints list, `KeyTerms`, `learningGoal`, and the `SelfCheck` question
+  that graded on the old wrong answers. Also dropped "The product must support
+  5 kg" from Week 1's two worked-example briefs — Week 1 teaches the
+  qualitative brief (C1); a specific measured load is a specification point
+  (C2, taught in Week 8), and neither brief's real items would plausibly need
+  5 kg anyway. Week 3's "you must use at least two joining methods" reworded
+  to state joining method is an open design decision, matching the fix above.
+  **Left untouched:** the 5 kg figure used as a running worked example across
+  T1 W7–W10 and T2 W1/W5 — it's derived from a measured real object (a 4.3 kg
+  textbook stack, rounded up with a safety margin), not asserted as a fixed
+  constraint, and stays internally consistent across those weeks. Also spotted
+  but **not yet fixed**: Week 1's worked example is titled "Three radically
+  different briefs" but only shows two (Brief A, Brief B), and the closing line
+  "All three constraints are met" doesn't match either the old or new
+  constraint count — pre-existing, unrelated to this fix.
+
 ## 7. Content sources (for populating more lessons)
 - **Grade 11 (done):** `../Curriculum/Grade11_SchemeOfWork/Term{1,2,3}.tex`
   (each `\section{Week N}` → 90-min lesson; `\section{Bonus N}` → B session
