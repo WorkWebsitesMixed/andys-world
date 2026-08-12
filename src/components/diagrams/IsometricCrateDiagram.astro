@@ -1,0 +1,75 @@
+---
+/**
+ * Isometric crating of the cam disc from the W3 worked example: box face on
+ * 30-degree axes, midpoints marked, ellipse inscribed, then the finished
+ * disc with front/back ellipses and tangent lines.
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'Crating a disc in isometric: draw the isometric square face on 30-degree axes, mark the midpoint of each side and connect them into an ellipse, then offset a back ellipse by the depth and join the two with tangent lines.';
+
+// Isometric rhombus (the square face) from a 30-degree edge of length 50.
+const dx = 43;
+const dy = 25;
+const depthX = 18;
+const depthY = 11;
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 220" role="img" aria-labelledby="ic-t ic-d" class="dg">
+    <title id="ic-t">Isometric crating of a cam disc</title>
+    <desc id="ic-d">{caption}</desc>
+
+    <!-- Step 1: isometric box -->
+    <g transform="translate(90,120)">
+      <polygon points={`0,0 ${-dx},${-dy} 0,${-2 * dy} ${dx},${-dy}`} class="construct" />
+      <line x1="0" y1="0" x2="0" y2={-2 * dy} class="axis-hint" />
+      <text x="0" y="65" text-anchor="middle" class="lbl">1 — Isometric box</text>
+    </g>
+
+    <!-- Step 2: mark midpoints, inscribe ellipse -->
+    <g transform="translate(280,120)">
+      <polygon points={`0,0 ${-dx},${-dy} 0,${-2 * dy} ${dx},${-dy}`} class="construct" />
+      <ellipse cx="0" cy={-dy} rx={dx} ry={dy} class="construct" />
+      <circle cx="0" cy="0" r="2.5" class="dot" />
+      <circle cx={-dx} cy={-dy} r="2.5" class="dot" />
+      <circle cx="0" cy={-2 * dy} r="2.5" class="dot" />
+      <circle cx={dx} cy={-dy} r="2.5" class="dot" />
+      <text x="0" y="65" text-anchor="middle" class="lbl">2 — Inscribe the ellipse</text>
+    </g>
+
+    <!-- Step 3: finished disc — front + back ellipse, tangent lines -->
+    <g transform="translate(460,120)">
+      <polygon points={`0,0 ${-dx},${-dy} 0,${-2 * dy} ${dx},${-dy}`} class="construct ghost" />
+      <g transform={`translate(${depthX},${depthY})`}>
+        <ellipse cx="0" cy={-dy} rx={dx} ry={dy} class="final-back" />
+      </g>
+      <line x1={-dx} y1={-dy} x2={-dx + depthX} y2={-dy + depthY} class="final-line" />
+      <line x1="0" y1={-2 * dy} x2={depthX} y2={-2 * dy + depthY} class="final-line" />
+      <ellipse cx="0" cy={-dy} rx={dx} ry={dy} class="final" />
+      <text x="0" y="65" text-anchor="middle" class="lbl">3 — Front + back ellipse</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .construct { fill: none; stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .ghost { opacity: 0.5; }
+  .axis-hint { stroke: var(--text-faint); stroke-width: 1; stroke-dasharray: 2 2; }
+  .dot { fill: var(--accent); }
+  .final { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; }
+  .final-back { fill: var(--bg-2); stroke: var(--text-dim); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .final-line { stroke: var(--text); stroke-width: 2; }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 13px; }
+</style>

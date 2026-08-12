@@ -1,0 +1,60 @@
+---
+/**
+ * Crating a mug in three steps: bounding box, construction guides, carved
+ * final form. Mirrors the W1 worked example (crate → carve).
+ * Theme-aware inline SVG.
+ */
+const caption =
+  'Crating in three steps: draw the bounding box first, add light construction guides for the rim and handle, then carve the final outline — the box stays as faint working, not something to erase.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 560 210" role="img" aria-labelledby="cr-t cr-d" class="dg">
+    <title id="cr-t">Crating a mug in three steps</title>
+    <desc id="cr-d">{caption}</desc>
+
+    <!-- Step 1: the box -->
+    <g transform="translate(10,0)">
+      <rect x="30" y="30" width="100" height="110" class="construct" />
+      <text x="80" y="185" text-anchor="middle" class="lbl">1 — Crate the box</text>
+    </g>
+
+    <!-- Step 2: guides -->
+    <g transform="translate(200,0)">
+      <rect x="30" y="30" width="100" height="110" class="construct" />
+      <ellipse cx="80" cy="30" rx="40" ry="10" class="construct" />
+      <line x1="40" y1="140" x2="120" y2="140" class="construct" />
+      <rect x="128" y="55" width="24" height="46" class="construct" />
+      <text x="90" y="185" text-anchor="middle" class="lbl">2 — Add guides</text>
+    </g>
+
+    <!-- Step 3: carve the final form -->
+    <g transform="translate(390,0)">
+      <rect x="30" y="30" width="100" height="110" class="construct ghost" />
+      <ellipse cx="80" cy="30" rx="40" ry="10" class="construct ghost" />
+      <path d="M40,30 A40,10 0 0 0 120,30 L120,132 A40,10 0 0 1 40,132 Z" class="final" />
+      <ellipse cx="80" cy="132" rx="40" ry="10" class="final-line" />
+      <path d="M120,55 C150,58 150,98 120,101" class="final-line" />
+      <text x="90" y="185" text-anchor="middle" class="lbl">3 — Carve the form</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 560px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+  .construct { fill: none; stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .ghost { opacity: 0.5; }
+  .final { fill: var(--bg-3); stroke: var(--text); stroke-width: 2.5; }
+  .final-line { fill: none; stroke: var(--text); stroke-width: 2.5; stroke-linecap: round; }
+  .lbl { fill: var(--text); font-family: var(--font-head); font-weight: 600; font-size: 13px; }
+</style>
