@@ -4,6 +4,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Callout from '../../../components/Callout.astro';
 import Section from '../../../components/Section.astro';
 import ProjectExamples from '../../../components/ProjectExamples.astro';
+import Resources from '../../../components/Resources.astro';
 import { getGrade } from '../../../lib/curriculum';
 import { routes } from '../../../lib/url';
 
@@ -163,6 +164,20 @@ const phases = [
           </li>
         ))}
       </ol>
+    </Section>
+
+    <Section title="Real project examples & grade criteria" icon="📂">
+      <p>
+        Three complete Component 2 projects from real past students, plus the
+        official grade criteria document — read these to see what a finished
+        folder and product actually look like, and exactly what's being marked.
+      </p>
+      <Resources items={[
+        { label: 'Real Component 2 example — Project 1', type: 'Example', href: 'https://drive.google.com/file/d/1Ok63GVkbjp15Ih9C3oaaVD31rC6581zh/view?usp=drive_link' },
+        { label: 'Real Component 2 example — Project 2', type: 'Example', href: 'https://drive.google.com/file/d/1SfctdW0VkjMvp8lfzXQQiSH2N93vbhLf/view?usp=drive_link' },
+        { label: 'Real Component 2 example — Project 3', type: 'Example', href: 'https://drive.google.com/file/d/1luLuPRongAMl_vvmGRmx2NxBjyUmXcoC/view?usp=drive_link' },
+        { label: 'Official grade criteria', type: 'Mark scheme', href: 'https://drive.google.com/file/d/1IlxRfk3nCUJ21JB-PylXamLX3R8rsajU/view?usp=drive_link' },
+      ]} />
     </Section>
 
     <div class="back">
