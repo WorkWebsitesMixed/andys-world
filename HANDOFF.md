@@ -86,13 +86,14 @@ session), `ProjectExamples`.
   content — its relevance matching doesn't handle compound tool/joint names well.
   Known tradeoff: unlike a Commons search, results aren't licence-filtered or
   moderated by us.
-- **Theme-aware SVG diagrams** in `src/components/diagrams/` (12 as of
-  2026-08-06): `TriangulationDiagram`, `ForcesDiagram`, `CircuitDiagram`,
+- **Theme-aware SVG diagrams** in `src/components/diagrams/` (15 as of
+  2026-08-12): `TriangulationDiagram`, `ForcesDiagram`, `CircuitDiagram`,
   `BeamReactionsDiagram`, `StructureTypesDiagram`, `StructuralJointsDiagram`,
   `MotionTypesDiagram`, `SliderCrankDiagram`, `CamDiagram`,
   `TransistorSwitchDiagram`, `GearTrainDiagram`, `InjectionMouldingDiagram`,
   `BlowVacuumFormingDiagram`, `MetalProcessesDiagram`, `CharpyTestDiagram`,
-  `QCGaugesDiagram`. Same pattern for a new one: inline `<svg>` in a
+  `QCGaugesDiagram`, `CratingDiagram`, `OrthographicViewsDiagram`,
+  `IsometricCrateDiagram`. Same pattern for a new one: inline `<svg>` in a
   `<figure class="diagram">`, `title`/`desc` for a11y, CSS vars only
   (`var(--text)`, `var(--accent)`, etc.) so it recolours per theme automatically.
 
@@ -307,6 +308,60 @@ explains Paper 1, Paper 4 and the Project.
   different briefs" but only shows two (Brief A, Brief B), and the closing line
   "All three constraints are met" doesn't match either the old or new
   constraint count — pre-existing, unrelated to this fix.
+
+- **G10 T1 accuracy pass + real content (2026-08-12):** started from Andy
+  spotting that W1 said "the door is pre-made" — it's the **façade** that's
+  pre-made, the door is the student's own design. Fixing that led to a wider
+  pass on Grade 10 Term 1 (Firefighter Barbie):
+  - **Real bugs found and fixed:** W10 described "pre-drilled motor-mount
+    holes" that don't exist on the real built façade — it's a **T-slot
+    field** (4 slots, no fixed position, deliberately open). W5's crank-vs-cam
+    decision table was missing that the motor cradle holds the shaft
+    **horizontal** while the door hinge is **vertical** — a cam works
+    directly off the cradle, a crank has to solve that axis change itself;
+    added a row + callout. W8/W9 specified a **BC547** transistor (100 mA)
+    for a TT gearmotor that stalls near 700 mA — swapped to **BD139/TIP120**
+    per the façade project's own README, which had flagged this as an owed
+    fix. Source of truth for the physical build:
+    `../class_materials/10th_grade/firefighter_barbie_facade/HANDOFF.md`.
+  - **W1 gained a "Your user and context, in detail" section** (not a
+    separate project-overview page like G11 has — this project is Term-1
+    only) — the two users (trapped occupant vs. arriving firefighter), the
+    façade's fixed-vs-open scope, and that this is a one-term practice run
+    before G11's year-long Component 2.
+  - **W1 rewritten as a story + simplified language, site-wide for this
+    lesson (2026-08-12):** G10 is students' first year of high school. The
+    project-launch section used to open with the circuit chain (thermistor →
+    transistor → motor) before explaining why it matters; rewritten to lead
+    with the trapped occupant and the arriving firefighter, neither able to
+    open the door by hand, with technical vocabulary held for the
+    constraints table. Wording simplified throughout the rest of the lesson;
+    SelfCheck answers and scaffold frames left untouched (exam-accuracy
+    content, not prose). See `[[g10-writing-style]]` in Claude's memory —
+    this register applies to G10 specifically, not G11/G12.
+  - **W2's activity gap fixed:** W1/W3/W4/W5 all had a step that produces
+    real project-folder evidence; W2 was entirely generic ("the given
+    object"/"the given product"). Added two project-folder tasks: an
+    orthographic sketch of the student's own door leaf concept, and function
+    points for the Firefighter Barbie door itself (feeding into the Week 3
+    spec).
+  - **Real photos added** in `public/images/g10/` (Andy's own originals, not
+    Wikimedia — no `credit`/`creditHref` needed): a crating warm-up sheet
+    (W1), the assembled façade (W1), an orthographic L-bracket drawing (W2),
+    a rendered isometric cam disc (W3) — each placed via `Figure` next to
+    the matching new SVG diagram or worked example. Sourced from Andy via
+    Drive; downloaded through the Drive MCP connector (`download_file_content`
+    saves oversized results to a local file automatically — read the JSON,
+    `base64.b64decode` the `content` field). Converted from source PNGs to
+    JPEG (quality 85) for size — ~2 MB → ~200 KB each, no visible loss on
+    photo content; keep doing this for future photo uploads of scanned/
+    photographed work.
+  - **G11 project page (`/grade/11/project`) gained a "Real project examples
+    & grade criteria" Resources section**: 3 real past-student Component 2
+    projects + the official grade criteria, all hosted on Drive (files are
+    30–144 MB, over GitHub's 100 MB hard limit — never put raw project PDFs
+    in the repo). `Resources.astro`'s icon map gained an `Example: '📄'`
+    type for this.
 
 ## 7. Content sources (for populating more lessons)
 - **Grade 11 (done):** `../Curriculum/Grade11_SchemeOfWork/Term{1,2,3}.tex`
