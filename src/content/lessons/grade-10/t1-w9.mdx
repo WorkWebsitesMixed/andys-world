@@ -18,7 +18,7 @@ This is the session where the circuit becomes real. You have the symbols, the Oh
 <KeyTerms terms={[
   { term: "NTC thermistor", definition: "A resistor whose resistance decreases as temperature increases. NTC = Negative Temperature Coefficient. Used as a heat sensor in the Firefighter Barbie circuit." },
   { term: "Voltage divider", definition: "Two resistors in series across a supply. The voltage at the junction between them is a fraction of the supply, determined by the ratio of the two resistances. Used to convert the thermistor's resistance change into a voltage change that drives the transistor base." },
-  { term: "Base threshold", definition: "The minimum voltage at the transistor base terminal required to switch it on. Approximately 0.6–0.7 V for a silicon NPN transistor (BC547)." },
+  { term: "Base threshold", definition: "The minimum voltage at the transistor base terminal required to switch it on. Approximately 0.6–0.7 V for a silicon NPN transistor (BD139 or TIP120 — both rated for the current a stalled gearmotor draws)." },
   { term: "PPE (Personal Protective Equipment)", definition: "Safety equipment worn in the makerspace: safety glasses, apron, closed-toe shoes. Required before entering the workshop — no exceptions." },
   { term: "Safety symbol categories", definition: "Mandatory (blue circle — you must do this), Prohibition (red circle with diagonal bar — you must not do this), Warning (yellow triangle — a hazard is present)." },
 ]} />
@@ -100,7 +100,7 @@ You must correctly identify all safety symbols shown before you are signed off f
 
 </Section>
 
-<Activity title="Circuit building and safety induction" time="90 min (W session) + 45 min (B session)" grouping="Individual (circuit) / Group (safety)" materials={["NTC thermistors (10 kΩ)", "NPN transistors (BC547)", "DC motors", "9 V batteries", "Fixed resistors (10 kΩ)", "Breadboards", "Pre-stripped leads", "Safety symbol flashcards"]}>
+<Activity title="Circuit building and safety induction" time="90 min (W session) + 45 min (B session)" grouping="Individual (circuit) / Group (safety)" materials={["NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "9 V batteries", "Fixed resistors (10 kΩ)", "Breadboards", "Pre-stripped leads", "Safety symbol flashcards"]}>
 **W session:**
 1. Build the complete Firefighter Barbie circuit on a breadboard: thermistor voltage divider → base resistor → NPN transistor base → motor at collector. No soldering required.
 2. Test: warm the thermistor with your hand or breath. Does the motor activate? If not, check each connection methodically (see Support notes).

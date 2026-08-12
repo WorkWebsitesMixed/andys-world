@@ -55,8 +55,13 @@ As the cam rotates through 360°:
 | Adjustability | Change arm length | Change cam profile |
 | Complexity | Lower — fewer parts | Slightly higher — cam + follower |
 | IGCSE exam coverage | Covered in §4.3.2 | Covered in §4.3.1 |
+| Motor shaft vs door hinge | Needs extra work — the cradle holds the motor shaft **horizontal**, but the door hinges on a **vertical** axis, so a crank must solve that change of axis itself | Works directly — a cam takes drive straight off the horizontal shaft, no extra linkage needed |
 
-**For the Firefighter Barbie project:** a crank gives a defined, predictable stroke — good for a door that must open a fixed distance. A pear cam gives a dwell period — good if the door must stay open long enough for the firefighter to enter. Both are valid choices; your written justification must use these technical reasons, not "I prefer the cam" or "the crank is simpler."
+<Callout type="warn" title="Check the geometry before you commit">
+  The motor cradle on the façade deck holds the motor shaft **horizontal**. The door hinges on a **vertical** axis (it swings inward, like a real door). A cam converts horizontal rotation into the door's motion with no extra parts. A crank arm, on the other hand, naturally produces motion in the plane it rotates in — which is not the plane the door swings in, so a crank arrangement needs you to design an extra link or mount to bridge the two axes. This is a genuine, open engineering problem — not a hint that crank is the "wrong" answer, just that it costs you more design work if you choose it.
+</Callout>
+
+**For the Firefighter Barbie project:** a crank gives a defined, predictable stroke — good for a door that must open a fixed distance. A pear cam gives a dwell period — good if the door must stay open long enough for the firefighter to enter, and it fits the horizontal-shaft cradle without extra linkage. Both are valid choices; your written justification must use these technical reasons, not "I prefer the cam" or "the crank is simpler."
 
 <CamDiagram />
 
