@@ -363,6 +363,52 @@ explains Paper 1, Paper 4 and the Project.
     in the repo). `Resources.astro`'s icon map gained an `Example: '📄'`
     type for this.
 
+- **G12 T1 B-session (B1–B7) real Paper 1 links (2026-08-18):** W1–W6's
+  Resources already linked real practical (Paper 2/3) papers per session
+  since each sitting tests one specific skill; the B-session (theory Paper 1)
+  weeks are different — every real Paper 1 sitting mixes *all* syllabus
+  topics in one paper, so there's no such thing as "the networks paper."
+  Fixed this properly instead of picking arbitrarily: extracted text from
+  all 21 current-syllabus Paper 1 papers in
+  `../class_materials/12th_grade/past_IGCSE/` (`pdftotext -layout` — these
+  theory papers, unlike the image-only textbook extracts, have clean
+  extractable text), keyword-scored them per B-session topic, then read the
+  actual leading candidates' questions to confirm fit before picking one
+  question paper + mark scheme per B-session:
+  - B1 (hardware/storage/RAM-ROM): 2024 Oct/Nov 0417/12 — Q4/Q5 are input vs
+    output devices, RAM vs ROM, backing storage.
+  - B2 (networks): 2023 Oct/Nov 0417/11 — Q5 bridge vs router, IP address,
+    routing table.
+  - B3 (data/binary/file size): 2023 May/June 0417/11 — Q1 data-type MCQ
+    (ISBN), file-size reduction methods. Weakest fit of the seven — none of
+    the 21 papers had a dedicated binary-conversion or colour-depth
+    question; this was the best available.
+  - B4 (safety/security): 2025 Oct/Nov 0417/12 — Q8 pharming + prevention,
+    Q10 backup benefits/drawbacks.
+  - B5 (systems life cycle/software/health): 2023 Feb/March 0417/12 — Q1
+    software types, Q3 documentation, Q15 direct changeover vs parallel
+    running. No RSI/eye-strain content in this one; traded off against the
+    stronger life-cycle/software coverage.
+  - B6 (email/intranet/environment): 2023 May/June 0417/13 — strong
+    intranet/BCC/email coverage.
+  - B7 (full MCQ drill/final revision): 2025 Oct/Nov 0417/13 — broadest
+    mixed-topic spread, picked deliberately as a different variant from B4's
+    2025 Oct/Nov 0417/12 pick.
+  - **Upload path note:** the Drive MCP `create_file` tool takes file
+    content as an inline base64 string parameter — there is no
+    file-path/streaming option, and even the smallest of these PDFs (120 KB
+    → ~180K base64 chars) blows past the per-turn output limit. No
+    rclone/gdrive/gcloud CLI was available locally either. Copied the 14
+    chosen files into a new local `../class_materials/12th_grade/
+    past_IGCSE/theory/` folder (originals untouched) and had Andy upload
+    that folder himself; he pasted back 14 Drive share links, which were
+    matched to filenames via `get_file_metadata` on each ID before wiring
+    them in (screenshots of a Drive folder listing don't guarantee the
+    pasted link order matches, so always verify by ID, not by position).
+    Files ended up owned by `andres.forero@marymount.edu.co`, same account
+    as the existing W1–W6 links, with the same `anyone:reader` sharing —
+    confirmed via `get_file_permissions`.
+
 ## 7. Content sources (for populating more lessons)
 - **Grade 11 (done):** `../Curriculum/Grade11_SchemeOfWork/Term{1,2,3}.tex`
   (each `\section{Week N}` → 90-min lesson; `\section{Bonus N}` → B session
