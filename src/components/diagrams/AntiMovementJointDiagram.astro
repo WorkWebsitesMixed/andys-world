@@ -1,0 +1,82 @@
+---
+/**
+ * Two ways of fixing a cantilevered arm to a backboard, under the same
+ * moment: screws alone let the joint rotate/peel open; a glued-and-screwed
+ * corner block spreads that moment over a wide bearing face and holds it
+ * closed. Illustrates why the joint choice must follow the force analysis.
+ */
+const caption =
+  'Left: screws alone resist the arm sliding (shear) but let it rotate open under a moment — the top screw is pulled, the joint peels apart. Right: a glued-and-screwed corner block spreads the same moment over a wide bearing face, holding the joint closed.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 460 210" role="img" aria-labelledby="am-t am-d" class="dg">
+    <title id="am-t">Screws alone vs a corner block, under the same moment</title>
+    <desc id="am-d">{caption}</desc>
+    <defs>
+      <marker id="am-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-warn" />
+      </marker>
+    </defs>
+
+    <!-- ===== Panel A: screws alone (rotating open) ===== -->
+    <g>
+      <!-- Backboard -->
+      <rect x="30" y="20" width="14" height="150" class="board" />
+      <!-- Arm, rotated slightly open to show peeling -->
+      <g transform="rotate(-7 44 60)">
+        <rect x="44" y="55" width="130" height="10" class="beam" />
+        <circle cx="60" cy="60" r="3.5" class="screw" />
+        <circle cx="60" cy="30" r="3.5" class="screw-loose" />
+      </g>
+      <!-- Original (unrotated) outline, dashed, for comparison -->
+      <rect x="44" y="55" width="130" height="10" class="ghost" />
+
+      <!-- Peel gap callout -->
+      <path d="M 60,30 Q 50,42 60,55" class="warn-arrow" marker-end="url(#am-arrow)" />
+      <text x="100" y="195" text-anchor="middle" class="lbl">Screws alone</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="228" y1="15" x2="228" y2="195" class="divider" />
+
+    <!-- ===== Panel B: corner block (holds closed) ===== -->
+    <g transform="translate(210 0)">
+      <!-- Backboard -->
+      <rect x="30" y="20" width="14" height="150" class="board" />
+      <!-- Arm, level -->
+      <rect x="44" y="55" width="130" height="10" class="beam" />
+      <!-- Corner block (triangle) under the joint -->
+      <polygon points="44,65 44,105 84,65" class="block" />
+      <circle cx="60" cy="60" r="3.5" class="screw" />
+      <circle cx="60" cy="90" r="3.5" class="screw" />
+
+      <text x="100" y="195" text-anchor="middle" class="lbl">+ corner block</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 460px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .board { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .beam { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .ghost { fill: none; stroke: var(--text-faint); stroke-width: 1; stroke-dasharray: 3 3; }
+  .block { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2; }
+  .screw { fill: var(--accent); }
+  .screw-loose { fill: none; stroke: var(--warn, #f59e0b); stroke-width: 2; }
+  .warn-arrow { stroke: var(--warn, #f59e0b); stroke-width: 2; fill: none; }
+  .fill-warn { fill: var(--warn, #f59e0b); }
+  .divider { stroke: var(--line); stroke-width: 1; }
+  text { fill: var(--text-dim); font-family: var(--font-body); font-size: 13px; }
+  .lbl { fill: var(--text); font-size: 13px; font-weight: 600; }
+</style>

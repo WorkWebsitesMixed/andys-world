@@ -21,6 +21,7 @@ Because SKILLS starts this term at W3, this is also the *first* SKILLS session t
 <KeyTerms terms={[
   { term: "Engineering chain", definition: "Structure type → forces it carries → stress and FoS in the critical member → joint that resists those forces. Each stage's answer determines the next stage's method — treating them as four separate topics is the single biggest reason students lose marks on Paper 4 Section B's structures questions." },
   { term: "Cantilever", definition: "A structural member fixed at one end only, with the other end free and loaded. Unlike a simply supported beam (two supports sharing the load), a cantilever's single fixed end must resist the entire reaction force and the entire moment. Shelf brackets, diving boards, and wall-mounted arms are cantilevers." },
+  { term: "Moment", definition: "A turning effect produced by a force acting at some perpendicular distance from a pivot or fixing point. It is not the same as the force itself — the same force produces a bigger moment the further it acts from the fixing, which is why a long arm is harder to hold rigid than a short one carrying the same load." },
   { term: "Method of sections", definition: "A technique for finding the force in one specific member of a truss by imagining a cut through it and applying equilibrium to just that piece, rather than the whole structure. Used when you need one member's force, not all of them." },
   { term: "Anti-movement detail", definition: "A joint feature added specifically to resist rotation or working-loose under a moment — a gusset plate, corner block, or diagonal brace — as distinct from a joint that only resists the parts sliding apart (which fasteners alone are good at)." },
 ]} />
@@ -45,10 +46,54 @@ The regular class teaches these as four sections. They are actually one decision
 |---|---|---|---|
 | 1. Classify | Is load carried by members, by a skin, or by solid volume? | Frame / shell / mass | Which force analysis applies |
 | 2. Forces | What force does each member carry, and where is it highest? | Tension, compression, shear, bending — identify by inspection | Which member to calculate |
-| 3. Stress & FoS | Is the critical member strong enough, with margin? | $\text{Stress} = F/A$; $\text{FoS} = \text{Failure Load} / \text{Working Load}$ | Whether the joint needs to resist a force, a moment, or both |
+| 3. Stress & FoS | Is the critical member strong enough, with margin? | Stress = Force ÷ Area; FoS = Failure Load ÷ Working Load | Whether the joint needs to resist a force, a moment, or both |
 | 4. Join | What joint resists exactly what stage 2–3 found? | Match joint to the dominant force (tension, shear, or moment) | — the point of the whole chain |
 
-The exam trap this table exists to prevent: choosing a joint (say, glue and a butt joint) before you've worked out whether the connection needs to resist a sliding force, a pulling-apart force, or a *rotating* one. Those need different joints, and stage 4 only makes sense once stages 1–3 are done.
+The exam trap this table exists to prevent: choosing a joint (say, glue and a butt joint) before you've worked out whether the connection needs to resist a sliding force, a pulling-apart force, or a *rotating* one. Those need different joints, and stage 4 only makes sense once stages 1–3 are done. The rest of this session works through stages 2–4 properly, with the formulas defined term by term, before you run the whole chain on your own project.
+
+</Section>
+
+<Section title="Moments: the concept the regular class doesn't cover" icon="🔄" id="moments">
+
+Every beam calculation you've done so far — including the regular class's simply supported beam — has two supports sharing the load. A **cantilever** only has one: fixed at one end, free and loaded at the other. That single fixed end has to do the job both supports were doing together, which means it must resist two separate things at once: the load itself, and the **moment** the load creates by acting at a distance from the fixing.
+
+A moment is a turning effect: force multiplied by the perpendicular distance from where the force acts to the pivot (here, the fixing point). It's why a long-handled wrench needs less force than a short one to undo the same bolt — same turning effect, bigger distance, smaller force needed. For a cantilever, the load plays the role of the force, and the arm length plays the role of the distance.
+
+<Formula
+  name="Moment"
+  equation="M = F \times d"
+  note="M = the moment, in newton-metres (N·m) — the turning effect at the fixed end. F = the force (the load), in newtons (N). d = the perpendicular distance from the force to the fixing, in metres (m). Doubling either F or d doubles the moment the fixing must resist."
+/>
+
+<CantileverDiagram />
+
+This is genuinely new, not just a repeat of the regular class: a simply supported beam's two reactions are just forces (in newtons); a cantilever's single fixed end must resist a force *and* a moment (in newton-metres) — a different unit, describing a different kind of resistance. That distinction is exactly what SelfCheck Question 1 below is testing.
+
+</Section>
+
+<Section title="Stress and Factor of Safety: full method" icon="📐" id="stress-fos">
+
+**Stress** tells you how concentrated a force is inside a material — the same force spread over a small area is far more likely to cause failure than the same force spread over a large one, which is why doubling a member's cross-section doesn't just make it heavier, it directly reduces the stress inside it.
+
+<Formula
+  name="Direct stress"
+  equation="\text{Stress} = \frac{F}{A}"
+  substitution="\text{Stress} = \frac{500\ \text{N}}{50\ \text{mm}^2}"
+  result="\text{Stress} = 10\ \text{N/mm}^2 = 10\ \text{MPa}"
+  note="Stress = the internal force per unit area, in newtons per square millimetre (N/mm²), which is the same unit as megapascals (MPa). F = the force acting on the member, in newtons (N). A = the cross-sectional area the force acts over, in square millimetres (mm²). A thicker cross-section spreads the same force over more area, so stress falls even though the force hasn't changed."
+/>
+
+**Factor of Safety (FoS)** exists because no material or manufacturing process is perfectly predictable — timber has knots, glue lines vary, a load might briefly spike above what you designed for. FoS is the margin you build in on purpose.
+
+<Formula
+  name="Factor of safety"
+  equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+  substitution="\text{FoS} = \frac{200\ \text{N}}{50\ \text{N}}"
+  result="\text{FoS} = 4.0"
+  note="FoS = Factor of Safety, a dimensionless ratio (no units) — how many times stronger the structure is than it needs to be. Failure Load = the load at which the structure actually breaks or permanently deforms, in newtons (N), usually found by testing. Working Load = the maximum load the structure is designed to carry in normal use, in newtons (N). Higher FoS = a bigger margin, but also more material than strictly needed — structural engineers pick a value (typically 2–6) that balances safety against cost and weight."
+/>
+
+Both formulas answer different questions and both feed stage 4: stress tells you whether the *material* is strong enough; FoS tells you how much margin you have. A member can pass on stress and still need a carefully chosen joint — which is exactly what the worked example below shows.
 
 </Section>
 
@@ -56,31 +101,35 @@ The exam trap this table exists to prevent: choosing a joint (say, glue and a bu
 
 The site's running Term 2 worked example is a wall-mounted pegboard frame that must hold a cyclist's helmet, shoes and tools — spec point: **holds 4 kg**. Here's the chain run on it, the way you'll run it on your own project this session.
 
-1. **Classify.** The frame's horizontal support arms projecting from a vertical backboard are the load-bearing members — this is a **frame structure**. The most-loaded arm is a **cantilever**: fixed to the backboard at one end, free and loaded at the other — not a simply supported beam like the ones in the regular class.
+1. **Classify.** The frame's horizontal support arms projecting from a vertical backboard are the load-bearing members — this is a **frame structure**. The most-loaded arm is a **cantilever**: fixed to the backboard at one end, free and loaded at the other.
 
-2. **Forces.** A cantilever's fixed end resists the *entire* load and the *entire* moment, because there's no second support to share it with. Worst case: all 4 kg (≈40 N, taking g ≈ 10 N/kg) on the lowest arm.
+2. **Forces.** Worst case: all 4 kg (≈40 N, taking g ≈ 10 N/kg) on the lowest, longest arm, 150 mm from the backboard.
 
 <Formula
   name="Moment at the fixed end"
   equation="M = F \times d"
   substitution="M = 40\ \text{N} \times 0.15\ \text{m}"
   result="M = 6\ \text{N}\cdot\text{m}"
-  note="Arm length 150 mm. Compare to a simply-supported beam of the same span: there, two supports would share this — here, one joint takes all of it."
+  note="F = the load at the free end, 40 N. d = the arm length, 0.15 m (150 mm). M = the moment the backboard fixing must resist, 6 N·m. Compare to a simply-supported beam of the same span: there, two supports would share the load between them and there would be no moment to resist at either — here, one joint takes all of it."
 />
 
-3. **Stress & FoS.** The vertical backboard upright carries this load in direct compression. A 20 mm x 20 mm timber upright:
+3. **Stress & FoS.** The vertical backboard upright carries this load in direct compression. A 20 mm × 20 mm timber upright:
 
 <Formula
   name="Stress in the upright"
   equation="\text{Stress} = \frac{F}{A}"
   substitution="\text{Stress} = \frac{40\ \text{N}}{20 \times 20\ \text{mm}^2}"
   result="\text{Stress} = 0.1\ \text{N/mm}^2"
-  note="Timber's compressive strength is roughly 30 N/mm² along the grain — FoS here is about 300. The timber is nowhere near failing."
+  note="F = the load carried by the upright, 40 N. A = its cross-sectional area, 20 mm × 20 mm = 400 mm². Timber's compressive strength along the grain is roughly 30 N/mm², so FoS here is about 30 ÷ 0.1 = 300 — the timber is nowhere near failing."
 />
 
 That FoS of 300 is the point of running the whole chain: the raw material is massively over-strong for this load. **The moment from stage 2, not the material stress from stage 3, is the actual design problem** — and only the joint can solve it.
 
-4. **Join.** Screws alone resist the arm sliding out of the backboard (shear) — but the 6 N·m moment wants to *rotate* the arm downward, peeling the screws out rather than shearing them. That needs an **anti-movement detail**: a glued-and-screwed corner block under the arm, spreading the moment over a wide bearing area instead of concentrating it on two screw shanks. This is why the joint choice follows from the force analysis, not from what looks tidy.
+4. **Join.** Screws alone resist the arm sliding out of the backboard (shear) — but the 6 N·m moment wants to *rotate* the arm downward, peeling the screws out rather than shearing them. That needs an **anti-movement detail**: a glued-and-screwed corner block under the arm, spreading the moment over a wide bearing area instead of concentrating it on two screw shanks.
+
+<AntiMovementJointDiagram />
+
+<MoreImages term="corner block bracket joint reinforcement" />
 
 </WorkedExample>
 
@@ -94,6 +143,8 @@ That FoS of 300 is the point of running the whole chain: the raw material is mas
 | Dowel + glue | Shear, some tension | Glue line resists pull-apart if area is large enough | Panel-to-panel joints, low moment |
 | KD (knock-down) fitting | Tension and compression | Mechanical cam/bolt interlock, no glue needed | Where disassembly is a spec requirement |
 
+<StructuralJointsDiagram />
+
 **The rule:** identify the dominant force from stage 2 of the chain first, then pick the joint that resists *that* force specifically — not the joint that's fastest to make or looks the most professional.
 
 </Section>
@@ -105,6 +156,8 @@ For a truss with many members, you don't need to solve the whole structure to fi
 The bending you saw qualitatively in the regular class (top of a beam in compression, bottom in tension) can be plotted along the whole length of a member as a **bending moment diagram** — and the shear force at every point as a **shear force diagram**. You won't calculate these at IGCSE, but recognising what they represent is exactly the kind of "beyond" vocabulary that separates a working knowledge of structures from an engineer's.
 
 Real structures use all four stages of the chain at once, continuously: a bridge's deck is a frame in bending, its cables are ties in pure tension, its towers are struts in compression, and every one of those connections was chosen for the specific force it has to resist. A mezzanine floor in a building does the same thing at a smaller scale. That's the chain, at full size.
+
+<MoreImages term="cantilever bridge truss real structural engineering" />
 
 </Extension>
 
