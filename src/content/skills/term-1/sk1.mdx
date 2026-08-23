@@ -6,42 +6,182 @@ mapsToWeek: 3
 title: "Structures consolidated"
 hook: "End-to-end in one session"
 badges: ["project-lock session"]
-masteryGoal: "By the end of the session I will command the whole Structures topic end-to-end — classifying any structure, labelling its force members, calculating stress and FoS, and selecting a joining method — as a connected engineering chain, not four separate lists — and I will leave with my own project's user and load case decided, not generic."
-tutorGoal: "By the end of the session I will prepare to range across all four sub-topics as the Structures expert in the regular class, helping peers with whichever area they are weakest on."
+masteryGoal: "command the whole Structures topic end-to-end — classifying any structure, labelling its force members, calculating stress and FoS, and selecting a joining method — as a connected engineering chain, not four separate lists — and leave with my own project's user and load case decided, not generic."
+tutorGoal: "range across all four sub-topics as the Structures expert in the regular class, helping peers with whichever area they are weakest on."
 ---
 
-## Maps to
+The regular class at Week 3 consolidates four Structures sub-topics you already have the foundation for: types and rigidity, forces, loads/moments/FoS, and joining. This session doesn't reteach them — it runs all four as **one connected engineering chain**, applied live to a real project, then hands you the tutoring cue you'll use to help the other 42 do the same thing on Wednesday.
 
-Regular Week 3 — a consolidation lesson covering all four Structures sub-topics: types & rigidity; forces & structural members; loads, moments & Factor of Safety; joining & reinforcing. Students already have this foundation from prior teaching — the regular class consolidates; SKILLS goes engineering-deep across all four as one connected problem.
+Because SKILLS starts this term at W3, this is also the *first* SKILLS session the eighteen of you attend — and several of you haven't settled on a specific project yet. So before any structures content, this session does something the regular class can't: it forces your brief to exist.
 
-Because SKILLS starts this term at W3, this is also the first SKILLS session the 18 attend, and several have not yet settled on a specific project — generic ideas, no real user, or just indecision. The structures analysis below is run on *their own* project rather than a generic example, so committing to it is not optional.
+<Callout type="exam" title="Why this matters" id="why">
+  Structures calculations are the single most heavily-tested area of <ExamLink to="paper4">Paper 4 Section B</ExamLink>, and the structure you analyse today becomes the load-bearing core of your <ExamLink to="project">Component 2 project</ExamLink>. Get the brief locked and the chain connected now, and both get easier for the rest of the year.
+</Callout>
 
-## Preview
+<KeyTerms terms={[
+  { term: "Engineering chain", definition: "Structure type → forces it carries → stress and FoS in the critical member → joint that resists those forces. Each stage's answer determines the next stage's method — treating them as four separate topics is the single biggest reason students lose marks on Paper 4 Section B's structures questions." },
+  { term: "Cantilever", definition: "A structural member fixed at one end only, with the other end free and loaded. Unlike a simply supported beam (two supports sharing the load), a cantilever's single fixed end must resist the entire reaction force and the entire moment. Shelf brackets, diving boards, and wall-mounted arms are cantilevers." },
+  { term: "Method of sections", definition: "A technique for finding the force in one specific member of a truss by imagining a cut through it and applying equilibrium to just that piece, rather than the whole structure. Used when you need one member's force, not all of them." },
+  { term: "Anti-movement detail", definition: "A joint feature added specifically to resist rotation or working-loose under a moment — a gusset plate, corner block, or diagonal brace — as distinct from a joint that only resists the parts sliding apart (which fasteners alone are good at)." },
+]} />
 
-*Lock the brief first* (see run sheet): one line, forced — "For [a named user], to [a specific need], carrying [a real load]." No user or load stated means it isn't decided yet. Then a rapid end-to-end tour: structure type → what forces it carries → stress and FoS in a key member → how to join it. The engineering chain.
+<Section title="Lock the brief" icon="📌" id="brief">
 
-## Deepen
+Before any structures content: say your one-line brief out loud, forced into this shape —
 
-Connecting the four areas: truss classification and triangulation; identifying ties and struts by inspection; full stress and FoS calculation (σ = F/A; moments); joint selection with anti-movement detail (gussets, corner blocks, KD fittings); why each choice follows from the force analysis.
+> "For **[a named user]**, to **[a specific need]**, carrying **[a real load]**."
 
-## Taste beyond
+No named user and no stated load means it isn't decided yet — "a stand for stuff" is not a brief. If you can't fill in all three blanks specifically, that is today's real priority, because the rest of this session — and Wednesday's regular class — runs the structures analysis on *your own* project, not a generic example.
 
-The method of sections (cutting a truss to find member forces algebraically); shear-force and bending-moment diagrams as a concept; real structural engineering — how a bridge or mezzanine uses all four areas together.
+**Check yourself:** does your load have a number attached (a mass, or at least "the weight of X")? If not, estimate one now — you'll refine it, but you need something to calculate against today.
 
-## TA prep
+</Section>
 
-*Breadth is the challenge.* You may be called on for any of the four sub-topics in the regular class. Prepare a mental map: "If a peer is stuck on … I ask …" Common error: treating structures as four isolated vocabulary lists. Tutoring cue: *"If you know the structure type, what forces must it carry — and where is the stress highest?"*
+<Section title="The engineering chain" icon="🔗" id="chain">
 
-A second, quieter cue for this week: several peers in the regular class will also still be undecided on their project — if one is stuck, ask *"Who is it for, and what's the heaviest thing it has to hold?"* rather than suggesting a product.
+The regular class teaches these as four sections. They are actually one decision chain, each stage constraining the next:
 
-## Challenge
+| Stage | Question you ask | Method | Feeds into |
+|---|---|---|---|
+| 1. Classify | Is load carried by members, by a skin, or by solid volume? | Frame / shell / mass | Which force analysis applies |
+| 2. Forces | What force does each member carry, and where is it highest? | Tension, compression, shear, bending — identify by inspection | Which member to calculate |
+| 3. Stress & FoS | Is the critical member strong enough, with margin? | $\text{Stress} = F/A$; $\text{FoS} = \text{Failure Load} / \text{Working Load}$ | Whether the joint needs to resist a force, a moment, or both |
+| 4. Join | What joint resists exactly what stage 2–3 found? | Match joint to the dominant force (tension, shear, or moment) | — the point of the whole chain |
 
-Run the full structures problem on *your own project*, not a generic truss: (1) classify its main structure and identify members as tie or strut; (2) find the reactions and calculate stress in the heaviest-loaded member; (3) design and justify a joint for the most critical connection. If the project is too vague to do this, that is the signal to fix the brief before next week.
+The exam trap this table exists to prevent: choosing a joint (say, glue and a butt joint) before you've worked out whether the connection needs to resist a sliding force, a pulling-apart force, or a *rotating* one. Those need different joints, and stage 4 only makes sense once stages 1–3 are done.
 
-## Run sheet
+</Section>
 
-0–8 lock the one-line brief (user + need + load) — no exceptions; 8–15 rapid engineering-chain tour; 15–30 deep across all four connected, applied live to each student's own structure; 30–37 advanced analysis taste; 37–45 TA breadth prep + challenge.
+<WorkedExample title="Running the chain on the class example — a cyclist's gear organiser">
 
-## Take-away
+The site's running Term 2 worked example is a wall-mounted pegboard frame that must hold a cyclist's helmet, shoes and tools — spec point: **holds 4 kg**. Here's the chain run on it, the way you'll run it on your own project this session.
 
-Write a one-page flow chart: structure type → forces → calculations → joints — for your own project. If your one-line brief still isn't locked, that is this week's priority before SK2.
+1. **Classify.** The frame's horizontal support arms projecting from a vertical backboard are the load-bearing members — this is a **frame structure**. The most-loaded arm is a **cantilever**: fixed to the backboard at one end, free and loaded at the other — not a simply supported beam like the ones in the regular class.
+
+2. **Forces.** A cantilever's fixed end resists the *entire* load and the *entire* moment, because there's no second support to share it with. Worst case: all 4 kg (≈40 N, taking g ≈ 10 N/kg) on the lowest arm.
+
+<Formula
+  name="Moment at the fixed end"
+  equation="M = F \times d"
+  substitution="M = 40\ \text{N} \times 0.15\ \text{m}"
+  result="M = 6\ \text{N}\cdot\text{m}"
+  note="Arm length 150 mm. Compare to a simply-supported beam of the same span: there, two supports would share this — here, one joint takes all of it."
+/>
+
+3. **Stress & FoS.** The vertical backboard upright carries this load in direct compression. A 20 mm x 20 mm timber upright:
+
+<Formula
+  name="Stress in the upright"
+  equation="\text{Stress} = \frac{F}{A}"
+  substitution="\text{Stress} = \frac{40\ \text{N}}{20 \times 20\ \text{mm}^2}"
+  result="\text{Stress} = 0.1\ \text{N/mm}^2"
+  note="Timber's compressive strength is roughly 30 N/mm² along the grain — FoS here is about 300. The timber is nowhere near failing."
+/>
+
+That FoS of 300 is the point of running the whole chain: the raw material is massively over-strong for this load. **The moment from stage 2, not the material stress from stage 3, is the actual design problem** — and only the joint can solve it.
+
+4. **Join.** Screws alone resist the arm sliding out of the backboard (shear) — but the 6 N·m moment wants to *rotate* the arm downward, peeling the screws out rather than shearing them. That needs an **anti-movement detail**: a glued-and-screwed corner block under the arm, spreading the moment over a wide bearing area instead of concentrating it on two screw shanks. This is why the joint choice follows from the force analysis, not from what looks tidy.
+
+</WorkedExample>
+
+<Section title="Joint selection: matching the joint to the force" icon="🔩" id="joints">
+
+| Joint | What it resists well | Anti-movement detail | Use when the chain shows… |
+|---|---|---|---|
+| Screws / bolts alone | Shear (sliding apart) | None — can work loose under a moment | Pure tension or shear, no significant moment |
+| Corner block (glued + screwed) | Shear and moment | Wide bearing face spreads the rotational force | A cantilevered or overhanging member |
+| Gusset plate | Shear and moment, at a truss node | Plate ties multiple members together at once | A truss joint carrying several member forces |
+| Dowel + glue | Shear, some tension | Glue line resists pull-apart if area is large enough | Panel-to-panel joints, low moment |
+| KD (knock-down) fitting | Tension and compression | Mechanical cam/bolt interlock, no glue needed | Where disassembly is a spec requirement |
+
+**The rule:** identify the dominant force from stage 2 of the chain first, then pick the joint that resists *that* force specifically — not the joint that's fastest to make or looks the most professional.
+
+</Section>
+
+<Extension title="Taste beyond: the method of sections, and where this goes next">
+
+For a truss with many members, you don't need to solve the whole structure to find one member's force — you use the **method of sections**: imagine cutting straight through the member you care about, then apply equilibrium (sum of forces = 0, sum of moments = 0) to just the piece on one side of the cut. It's algebra, not measurement, and it's how real structural engineers isolate the one member that matters instead of solving everything at once.
+
+The bending you saw qualitatively in the regular class (top of a beam in compression, bottom in tension) can be plotted along the whole length of a member as a **bending moment diagram** — and the shear force at every point as a **shear force diagram**. You won't calculate these at IGCSE, but recognising what they represent is exactly the kind of "beyond" vocabulary that separates a working knowledge of structures from an engineer's.
+
+Real structures use all four stages of the chain at once, continuously: a bridge's deck is a frame in bending, its cables are ties in pure tension, its towers are struts in compression, and every one of those connections was chosen for the specific force it has to resist. A mezzanine floor in a building does the same thing at a smaller scale. That's the chain, at full size.
+
+</Extension>
+
+<Activity title="Lock, tour, apply, TA-prep" time="45 min" grouping="Individual, with HOD circulating" materials={["Your project notes (or a blank page if undecided)", "Calculator", "Squared paper"]}>
+
+**0–8 min — Lock the brief.** Write your one-line brief. No exceptions: named user, specific need, real load with a number. If you're genuinely stuck, the HOD talks to you 1:1 while the rest start the tour.
+
+**8–15 min — Rapid engineering-chain tour.** Walk through the four-stage table as a class, using the cyclist example above as the shared reference.
+
+**15–30 min — Apply the chain to your own structure.** Using your locked brief:
+1. Classify your project's main structure (frame / shell / mass) and identify which members are ties and which are struts.
+2. Find the reactions (or the moment, if any member is a cantilever) and calculate stress in the heaviest-loaded member.
+3. Design and justify a joint for the most critical connection — name the dominant force it must resist and the anti-movement detail that resists it.
+
+If your project is too vague to do this, that's the signal — fix the brief before SK2, not during it.
+
+**30–37 min — Taste beyond.** Method of sections and bending/shear diagrams, as above — a name for where this goes if you carry on past IGCSE.
+
+**37–45 min — TA breadth prep.** Read the TA prep box below and rehearse the cue out loud with a partner before Wednesday.
+</Activity>
+
+<Support title="TA prep: covering all four sub-topics">
+
+**Breadth is the challenge this week** — in the regular class you may be asked about any of the four sub-topics, not just the one you find easiest. Prepare a mental map: *"If a peer is stuck on [X], I ask [Y]."*
+
+**Common error to watch for:** treating structures as four isolated vocabulary lists instead of one chain. A peer who can define "frame structure" but can't say what force it carries has memorised stage 1 without connecting it to stage 2.
+
+**Your main tutoring cue:** *"If you know the structure type, what forces must it carry — and where is the stress highest?"* — it forces the peer to move along the chain instead of stopping at a definition.
+
+**A second, quieter cue for this week:** several peers in the regular class will also still be undecided on their project. If one is stuck, ask *"Who is it for, and what's the heaviest thing it has to hold?"* rather than suggesting a product yourself — the brief has to be theirs.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A shelf bracket is screwed to a wall at one end only, with the shelf load applied at the free end. Compared to a simply supported beam carrying the same load, what is different about the wall fixing?",
+    options: [
+      "Nothing — both cases share the load equally between two points",
+      "The fixing must resist the full reaction force but no moment, since there is only one support",
+      "The fixing must resist the full reaction force AND the full moment, since it is the only support",
+      "The fixing carries less force than a simply supported beam would, because it is closer to the load"
+    ],
+    answer: 2,
+    hint: "A cantilever has one fixed end, not two supports — what does that one end have to resist that a shared support wouldn't?",
+    explain: "A cantilever's single fixed end must resist both the entire reaction force AND the entire moment created by the load, because there is no second support to share either with. This is why cantilever joints (like the shelf bracket's wall fixing) need anti-movement detail that a simply-supported beam's supports often don't."
+  },
+  {
+    q: "A worked chain finds that a structural member has a Factor of Safety of 300 against direct stress, but the joint connecting it is failing in practice. What does this most likely mean?",
+    options: [
+      "The FoS calculation must be wrong, since a FoS that high is impossible",
+      "The member's raw material strength was never the limiting factor — the joint needs to resist a moment or force the material stress calculation didn't capture",
+      "The structure should be rebuilt from a completely different material",
+      "A FoS of 300 means the joint is also perfectly safe, so the failure must be a manufacturing defect"
+    ],
+    answer: 1,
+    hint: "Stage 3 of the chain (stress in the material) and stage 4 (the joint) are testing different things — what might stage 3's huge FoS be missing?",
+    explain: "A very high FoS on direct stress just means the raw cross-section is strong enough — it says nothing about whether the joint can resist a moment (a rotating/peeling force) or a repeated/dynamic load. This is exactly the situation in the worked example: the timber upright was nowhere near failing, but the joint still needed a specific anti-movement detail because the moment, not the material stress, was the real design problem."
+  },
+  {
+    q: "Why does the engineering chain say to identify the dominant force (stage 2) before choosing a joint (stage 4), rather than picking a joint first?",
+    options: [
+      "Because different joints resist different forces well — screws alone resist shear but not a rotating moment, so the joint choice depends on which force is actually present",
+      "Because it doesn't actually matter which joint is chosen, as long as it looks neat",
+      "Because stage 4 always uses the same joint regardless of the force, so the order doesn't matter",
+      "Because moments only exist in metal structures, never in timber ones"
+    ],
+    answer: 0,
+    hint: "Look at the joint-selection table — what's different about what a corner block resists compared to plain screws?",
+    explain: "Joints are not interchangeable: screws or dowels alone resist shear (sliding) well but can work loose under a moment (a rotating/peeling force), while a corner block or gusset spreads that moment over a wider bearing area. Picking the joint before identifying the dominant force from stage 2 risks choosing one that looks fine but fails under the specific force the structure actually carries."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 233)", type: "Textbook", href: "https://drive.google.com/open?id=1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9" },
+  { label: "Collins IGCSE D&T — §4.2.5 Loads and reactions (p. 245)", type: "Textbook", href: "https://drive.google.com/open?id=1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a" },
+  { label: "Collins IGCSE D&T — §4.2.6 Moments (p. 248)", type: "Textbook", href: "https://drive.google.com/open?id=1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje" },
+  { label: "Collins IGCSE D&T — §4.2.9 Structural joints (p. 255)", type: "Textbook", href: "https://drive.google.com/open?id=1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B" },
+  { label: "Your Component 2 project brief", type: "Link", route: "project" },
+  { label: "Regular Week 3 — Structures: Everything in One Session", type: "Link", href: "/grade/11/term/1/week/3" },
+]} />

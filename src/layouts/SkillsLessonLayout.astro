@@ -1,0 +1,175 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+// KaTeX's stylesheet, loaded here rather than in BaseLayout so that only
+// lesson-shaped pages carry it. Styles `$...$` / `$$...$$` and <Formula>.
+import 'katex/dist/katex.min.css';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SkillsGoals from '../components/SkillsGoals.astro';
+import PrevNext from '../components/PrevNext.astro';
+import LessonNav from '../components/LessonNav.astro';
+import type { SkillsTermInfo } from '../lib/skills';
+import { routes } from '../lib/url';
+
+// Components made available inside SKILLS card MDX bodies without an
+// explicit import — same library the regular lessons use, so a SKILLS card
+// reads and behaves exactly like a regular class.
+import KeyTerms from '../components/KeyTerms.astro';
+import WorkedExample from '../components/WorkedExample.astro';
+import Activity from '../components/Activity.astro';
+import SelfCheck from '../components/SelfCheck.astro';
+import Resources from '../components/Resources.astro';
+import Callout from '../components/Callout.astro';
+import Section from '../components/Section.astro';
+import Support from '../components/Support.astro';
+import Extension from '../components/Extension.astro';
+import WeekLink from '../components/WeekLink.astro';
+import ExamLink from '../components/ExamLink.astro';
+import Figure from '../components/Figure.astro';
+import Formula from '../components/Formula.astro';
+import WatchSee from '../components/WatchSee.astro';
+import MoreImages from '../components/MoreImages.astro';
+import TriangulationDiagram from '../components/diagrams/TriangulationDiagram.astro';
+import ForcesDiagram from '../components/diagrams/ForcesDiagram.astro';
+import CircuitDiagram from '../components/diagrams/CircuitDiagram.astro';
+import BeamReactionsDiagram from '../components/diagrams/BeamReactionsDiagram.astro';
+import StructureTypesDiagram from '../components/diagrams/StructureTypesDiagram.astro';
+import StructuralJointsDiagram from '../components/diagrams/StructuralJointsDiagram.astro';
+import MotionTypesDiagram from '../components/diagrams/MotionTypesDiagram.astro';
+import SliderCrankDiagram from '../components/diagrams/SliderCrankDiagram.astro';
+import CamDiagram from '../components/diagrams/CamDiagram.astro';
+import TransistorSwitchDiagram from '../components/diagrams/TransistorSwitchDiagram.astro';
+import GearTrainDiagram from '../components/diagrams/GearTrainDiagram.astro';
+import CratingDiagram from '../components/diagrams/CratingDiagram.astro';
+import OrthographicViewsDiagram from '../components/diagrams/OrthographicViewsDiagram.astro';
+import IsometricCrateDiagram from '../components/diagrams/IsometricCrateDiagram.astro';
+
+interface Props {
+  card: CollectionEntry<'skills'>;
+  termInfo: SkillsTermInfo;
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+}
+
+const { card, termInfo, prev, next } = Astro.props;
+const { term, code, title, hook, badges, mapsToWeek, masteryGoal, tutorGoal } = card.data;
+
+const { Content } = await render(card);
+
+const mdxComponents = {
+  KeyTerms,
+  WorkedExample,
+  Activity,
+  SelfCheck,
+  Resources,
+  Callout,
+  Section,
+  Support,
+  Extension,
+  WeekLink,
+  ExamLink,
+  Figure,
+  Formula,
+  WatchSee,
+  MoreImages,
+  TriangulationDiagram,
+  ForcesDiagram,
+  CircuitDiagram,
+  BeamReactionsDiagram,
+  StructureTypesDiagram,
+  StructuralJointsDiagram,
+  MotionTypesDiagram,
+  SliderCrankDiagram,
+  CamDiagram,
+  TransistorSwitchDiagram,
+  GearTrainDiagram,
+  CratingDiagram,
+  OrthographicViewsDiagram,
+  IsometricCrateDiagram,
+};
+
+const crumbs = [
+  { label: 'Skills', href: routes.skills() },
+  { label: termInfo.label, href: routes.skillsTerm(term) },
+  { label: code },
+];
+
+const mapsToWeekHref = routes.week(11, termInfo.targetGradeTerm, mapsToWeek);
+---
+
+<BaseLayout title={`SKILLS ${code} — ${title}`} description={`SKILLS · ${termInfo.label} · ${code} — ${title}`}>
+  <LessonNav />
+
+  <article class="lesson container" data-lesson-root>
+    <Breadcrumbs items={crumbs} />
+
+    <header class="lesson-head">
+      <div class="meta">
+        <span class="pill skill">{code}</span>
+        <span class="pill dim">45 min</span>
+        <span class="pill">
+          Maps to <a href={mapsToWeekHref}>Grade 11 Week {mapsToWeek}</a>
+        </span>
+        {badges.map((b) => <span class="pill badge">{b}</span>)}
+      </div>
+      <h1 class="glow-text">{title}</h1>
+      <p class="hook">{hook}</p>
+    </header>
+
+    <SkillsGoals masteryGoal={masteryGoal} tutorGoal={tutorGoal} />
+
+    <div class="lesson-body">
+      <Content components={mdxComponents} />
+    </div>
+
+    <PrevNext prev={prev} next={next} />
+  </article>
+</BaseLayout>
+
+<style>
+  /* Same unified column as the regular lesson pages. */
+  .lesson {
+    max-width: var(--readw);
+    padding-block: 2rem 1rem;
+  }
+  .lesson-head { margin: 1.5rem 0 0.5rem; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+  .pill a { color: var(--accent); }
+  .pill.skill {
+    color: var(--accent-2);
+    border-color: var(--accent-2);
+    background: var(--accent-2-wash);
+  }
+  .pill.dim { opacity: 0.65; }
+  .pill.badge {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .hook {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0.2rem 0 0;
+  }
+  .lesson-body :global(> p:first-child) {
+    font-size: 1.08rem;
+    color: var(--text-dim);
+  }
+  .lesson-body {
+    counter-reset: sec;
+  }
+</style>
