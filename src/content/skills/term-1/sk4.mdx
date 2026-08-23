@@ -10,34 +10,155 @@ masteryGoal: "design, build and calculate the light circuit fully — correct sy
 tutorGoal: "prepare to be the bench helper for circuit building in this week's class."
 ---
 
-## Maps to
+The regular class hands you a formula — R = (Vsupply − V_LED) / I_LED — and it works. This session shows you *why* it works, by deriving it from Ohm's Law properly, then extends it to something the regular class only offers as an optional homework extension: what happens with two LEDs, in series or in parallel. You'll need both today, because you're the one at the bench when a peer's circuit doesn't light up.
 
-Regular Week 6 — drawing, building and testing the low-voltage switch-operated light; the current-limiting resistor.
+<Callout type="exam" title="Why this matters" id="why">
+  Every circuit calculation on <ExamLink to="paper4">Paper 4</ExamLink> is Ohm's Law wearing a different formula — once you see the resistor formula as Ohm's Law applied to one component's share of the voltage, every future circuit question becomes the same three steps, not a new formula to memorise.
+</Callout>
 
-## Preview
+<KeyTerms terms={[
+  { term: "Ohm's Law", definition: "The fundamental relationship between voltage, current and resistance in a circuit: V = IR. It applies to any single resistive component, not just 'the resistor' — you can use it on the LED, the resistor, or the whole circuit, as long as you use that component's own voltage and current." },
+  { term: "Voltage division", definition: "In a series circuit, the supply voltage is shared between components in proportion to their resistance — each component only 'sees' its own share. This is why the resistor formula subtracts V_LED from Vsupply first: the resistor's own voltage is whatever is left over after the LED has taken its share." },
+  { term: "Series circuit (current)", definition: "In series, the SAME current flows through every component — there is only one path. If you add a second LED in series, both LEDs and the resistor all carry the identical current." },
+  { term: "Parallel circuit (voltage)", definition: "In parallel, every branch has the SAME voltage across it (both ends connect to the same two points), but the current can differ between branches, and each branch typically needs its own resistor sized for its own component." },
+  { term: "Transistor (as a switch)", definition: "A three-terminal semiconductor component that lets a small current into its base terminal control a much larger current flowing from collector to emitter — effectively an electronically-controlled switch, with no moving parts. Used when a small signal (from a sensor, or a microcontroller) needs to switch something that draws more current than the signal source can supply directly." },
+]} />
 
-Circuit symbols; input–process–output; series vs parallel; switch types; the current-limiting resistor.
+<Section title="Ohm's Law, and why the resistor formula IS Ohm's Law" icon="🔢" id="ohms-law">
 
-## Deepen
+<Formula
+  name="Ohm's Law"
+  equation="V = IR"
+  note="V = the voltage across a component, in volts (V). I = the current flowing through it, in amperes (A). R = its resistance, in ohms (Ω). This applies to any single component on its own — the LED has its own V and I, the resistor has its own V and I, and they're not automatically the same numbers."
+/>
 
-Ohm's law (V = IR); calculating the resistor from the supply and LED drop; series vs parallel behaviour; choosing the switch for the user.
+In the LED circuit, the resistor and the LED are in series, so the same current (I) flows through both — but the supply voltage splits between them: the LED "uses" its own forward voltage (V_LED), and whatever's left over is the resistor's share.
 
-## Taste beyond
+<Formula
+  name="The resistor's own voltage"
+  equation="V_R = V_{\text{supply}} - V_{\text{LED}}"
+  note="V_R = the voltage across the resistor specifically, in volts (V) — not the full supply voltage. V_supply = the battery voltage. V_LED = the LED's forward voltage, fixed by the LED itself regardless of the circuit around it."
+/>
 
-Transistors as switches; sensors (LDR, thermistor); input–process–output *systems*; a glimpse of logic / programmable control.
+Now apply Ohm's Law to the resistor alone, using its own voltage and the shared current:
 
-## TA prep
+<Formula
+  name="Resistor value (Ohm's Law, rearranged for R)"
+  equation="R = \frac{V_R}{I} = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
+  note="This is the exact formula the regular class gives you — it isn't a separate rule to memorise, it's Ohm's Law (R = V/I) applied specifically to the resistor's own voltage share, with I being the shared series current."
+/>
 
-Help peers wire and test safely; common errors — LED polarity, missing resistor, loose connections; tutoring cue: *"Trace the current from + all the way to − — where does it stop?"*
+That's the whole derivation. Once you see it this way, any new circuit configuration is just "find each component's own V and I, then apply V = IR" — not a new formula to look up.
 
-## Challenge
+</Section>
 
-Design a sensor-triggered version of the light (e.g. an LDR night-light) as a stretch extension.
+<Section title="Series vs parallel: what changes when there's a second LED" icon="🔀" id="series-parallel">
 
-## Run sheet
+The regular class's homework extension asks this question; here's the full method, worked twice.
 
-0–10 preview; 10–26 Ohm's law & resistor calc; 26–36 sensors/systems taste; 36–45 TA rehearsal + challenge.
+</Section>
 
-## Take-away
+<WorkedExample title="Two red LEDs: series vs parallel, on a 9 V supply">
 
-Calculate the resistor for a different LED and supply voltage.
+Both LEDs: forward voltage 2 V, operating current 20 mA (0.020 A). Supply: 9 V.
+
+**Series (both LEDs share the same current, one resistor):**
+
+<Formula
+  name="Series — one resistor for both LEDs"
+  equation="R = \frac{V_{\text{supply}} - V_{\text{LED1}} - V_{\text{LED2}}}{I_{\text{LED}}}"
+  substitution="R = \frac{9\ \text{V} - 2\ \text{V} - 2\ \text{V}}{0.020\ \text{A}} = \frac{5\ \text{V}}{0.020\ \text{A}}"
+  result="R = 250\ \Omega \rightarrow \text{use } 270\ \Omega \text{ (nearest E12 value above)}"
+  note="Each LED takes its own 2 V share; the resistor only needs to drop what's left (5 V), because in series the same current passes through everything — one resistor is enough for both LEDs together."
+/>
+
+**Parallel (each LED branch has its own resistor, same voltage across both branches):**
+
+<Formula
+  name="Parallel — one resistor PER branch"
+  equation="R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
+  substitution="R = \frac{9\ \text{V} - 2\ \text{V}}{0.020\ \text{A}} = \frac{7\ \text{V}}{0.020\ \text{A}}"
+  result="R = 350\ \Omega \rightarrow \text{use } 390\ \Omega \text{ (each branch, same as the regular class's single-LED answer)}"
+  note="In parallel, each branch sees the full supply voltage independently, so each needs its own resistor sized exactly like a single-LED circuit — you cannot share one resistor between parallel branches, because each branch's current is separate."
+/>
+
+**The design consequence:** series uses one resistor but both LEDs go dark together if either fails (they're on the same current path); parallel uses two resistors but each LED is independent — if one fails, the other keeps working. For a product where reliability matters more than component count, parallel is the safer choice, even though it costs one extra resistor.
+
+</WorkedExample>
+
+<Extension title="Taste beyond: transistors, sensors, and where this becomes a system">
+
+A resistor and an LED are a fixed circuit — they do the same thing every time the switch closes. A **transistor** changes that: a small current into its base terminal switches on a much larger current from collector to emitter, so a tiny signal can control something the signal itself couldn't power directly.
+
+<TransistorSwitchDiagram />
+
+The diagram above drives a motor, but the same principle switches a brighter LED array, a buzzer, or anything else that draws more current than a small sensor signal can supply. Combine that with a sensor — an LDR (light-dependent resistor, its resistance falls as light increases) or a thermistor (resistance changes with temperature) — and you have an **input–process–output system** that reacts to the world automatically, rather than only to a switch a person presses. This is a first taste of what a microcontroller does at a much larger scale: sense, decide, act.
+
+</Extension>
+
+<Activity title="Ohm's Law derivation, series/parallel calc, TA rehearsal" time="45 min" grouping="Individual, HOD circulating as bench helper" materials={["Calculator", "Squared paper", "Your breadboard components from the regular class if already built"]}>
+
+**0–10 min — Preview.** Recap circuit symbols, IPO, switch types from the regular class.
+
+**10–26 min — Ohm's Law and the resistor derivation.** Work through the derivation above on paper: write V = IR, then derive the resistor formula step by step yourself before checking against the boxed version. Then complete the series/parallel worked example with your own LED colours (use the textbook's forward voltage table for a colour other than red).
+
+**26–36 min — Sensors and systems, taste.** Read the transistor/sensor extension. Sketch an IPO diagram for an LDR night-light: input (LDR), process (transistor switching the LED on when resistance rises past a threshold), output (LED).
+
+**36–45 min — TA rehearsal + Challenge.** Read the TA prep box and rehearse the wiring-fault cue with a partner. Then complete the challenge: design a sensor-triggered version of your own circuit (an LDR night-light is the standard example) as a labelled sketch — this is a stretch extension, not required for your core circuit.
+</Activity>
+
+<Support title="TA prep: the bench-helper checklist">
+
+**This is a key TA week** — you're the one circulating with a multimeter or just your eyes while peers build on breadboards, and wiring faults are common and fixable if you know where to look.
+
+**Common errors to check for, in order:** (1) LED polarity — the longer leg is the anode (+); (2) missing resistor — a bare LED across the battery burns out in seconds; (3) loose breadboard connections — a wire not fully seated in its row.
+
+**Your tutoring cue:** *"Trace the current from + all the way to − — where does it stop?"* — this makes the peer walk the actual current path component by component, which finds a broken connection or a missing part far faster than randomly re-checking everything.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "The resistor formula R = (Vsupply − V_LED) / I_LED is best understood as:",
+    options: [
+      "A special rule for LED circuits that has nothing to do with Ohm's Law",
+      "Ohm's Law (V = IR, rearranged to R = V/I) applied specifically to the resistor's own share of the voltage, using the current that flows through the whole series circuit",
+      "A rule that only works for one specific LED colour and supply voltage",
+      "An approximation that is less accurate than measuring the resistor directly"
+    ],
+    answer: 1,
+    hint: "What is V_supply minus V_LED actually calculating — whose voltage is that?",
+    explain: "Vsupply − V_LED is the resistor's own voltage (V_R) — what's left after the LED takes its fixed forward-voltage share. Dividing that by the current (which is the same everywhere in a series circuit) is exactly R = V/I, Ohm's Law, applied to the resistor specifically. It isn't a separate rule — recognising this means you can derive any similar formula rather than memorising it."
+  },
+  {
+    q: "Two identical LEDs are wired in parallel, each needing 20 mA. Why does each branch need its own resistor, rather than sharing one?",
+    options: [
+      "Because parallel circuits are always more expensive than series circuits by design",
+      "Because in parallel, each branch has its own current, and one shared resistor would not correctly limit the current in both branches independently",
+      "Because LEDs in parallel do not need current limiting at all",
+      "Because sharing a resistor between parallel branches is technically possible but illegal"
+    ],
+    answer: 1,
+    hint: "In series, the current is shared and identical everywhere. In parallel, what's shared instead?",
+    explain: "In parallel, each branch has the same voltage across it but can carry a different current — the branches are independent current paths. A single shared resistor cannot correctly limit each branch's current separately, so each parallel branch needs its own correctly-sized resistor. This is the opposite of series, where one resistor can protect both LEDs because they share the same current."
+  },
+  {
+    q: "A peer's LED circuit isn't lighting up. Using the tutoring cue 'trace the current from + to −,' they find the LED does light momentarily then goes dark permanently. What is the most likely cause?",
+    options: [
+      "The switch is in the wrong position",
+      "The resistor is missing or far too low in value, so excess current burned out the LED",
+      "The LED is correctly oriented and everything is working as intended",
+      "The battery voltage is too low to light any LED"
+    ],
+    answer: 1,
+    hint: "'Lit briefly then died' is a classic symptom of a specific, very common wiring fault covered in this session.",
+    explain: "An LED that lights briefly then fails permanently has almost certainly drawn excess current — either the current-limiting resistor is missing, or its value is far too low. Without correct current limiting, an LED draws far more than its rated 20 mA and burns out within seconds. A wrong switch position would simply mean no current flows at all (LED never lights); reversed polarity means it never lights either, since a diode only conducts one way."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §4.1 Systems and IPO (p. 230)", type: "Textbook", href: "https://drive.google.com/open?id=1-HWfTqCVLKs3nuPyimiNMPm2T3FVct9N" },
+  { label: "Collins IGCSE D&T — §4.4.1 Basic electronic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
+  { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/open?id=1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK" },
+  { label: "Regular Week 6 — The Required Project Circuit", type: "Link", href: "/grade/11/term/1/week/6" },
+]} />

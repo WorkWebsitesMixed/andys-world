@@ -10,34 +10,151 @@ masteryGoal: "explain why concrete is reinforced and how composites work, and ap
 tutorGoal: "prepare to lead the composites and sustainability matching task."
 ---
 
-## Maps to
+The regular class at Week 5 gives you the what: concrete is reinforced with steel, composites combine a matrix and a reinforcement, and the 6Rs are six sustainability strategies. This session gives you the why and the where — precisely which part of a beam needs rebar and why it goes exactly there, precisely why fibre orientation matters in a composite, and a genuine number to put behind "sustainable" instead of the word alone.
 
-Regular Week 5 — concrete, plastics, composites; the 6Rs.
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="paper4">Paper 4</ExamLink> rewards "the product must use X because Y, tested by Z" — a real 6Rs justification with a number beats "it must be sustainable" every time, and this session gives you the calculation to back it up.
+</Callout>
 
-## Preview
+<KeyTerms terms={[
+  { term: "Neutral axis", definition: "The layer through a loaded beam's cross-section where bending stress is exactly zero — above it the material is in compression, below it in tension (for a simply supported beam sagging under load). First introduced in SK1's engineering chain; here it explains exactly where reinforcement needs to go." },
+  { term: "Fibre orientation", definition: "The direction the reinforcing fibres run within a composite's matrix. A composite is strongest along the fibre direction and much weaker across it (anisotropic) — unlike a metal, which is roughly equally strong in every direction (isotropic). Woven fabrics run fibres in two directions at once to balance this." },
+  { term: "Embodied energy", definition: "The total energy consumed to extract, process, and manufacture a material into its usable form, before the product is even made — measured in megajoules per kilogram (MJ/kg). A material can be recyclable and still have a high environmental cost if its embodied energy is high (aluminium is the classic example: highly recyclable, but energy-intensive to produce from ore)." },
+  { term: "Life-cycle assessment (LCA)", definition: "A systematic evaluation of a product's environmental impact across its whole life: raw material extraction, manufacture, use, and disposal — not just one stage. A material that looks sustainable at the disposal stage (recyclable) can still be a poor overall choice if its manufacture stage has a high embodied energy." },
+]} />
 
-Concrete (strong in compression, weak in tension → rebar); thermoplastics vs thermosets; composites; the 6Rs.
+<Section title="Reinforcement, precisely: where and why" icon="🏛️" id="where">
 
-## Deepen
+The regular class tells you concrete is reinforced because it's weak in tension. SK1's engineering chain already gave you the tool to find exactly *where* that tension is: the **neutral axis**. In a loaded, simply supported beam, the top face is in compression, the bottom face is in tension, and the neutral axis runs through the middle at zero stress.
 
-*Where* rebar is placed (the tension zone, below the neutral axis) and why; composite = matrix + reinforcement giving strength-to-weight.
+<ReinforcedConcreteDiagram />
 
-## Taste beyond
+That's precisely why rebar sits in the lower zone, close to the bottom face — as far from the neutral axis as possible, on the tension side, where concrete is weakest and steel's tensile strength (≈400 MPa) is needed most. Rebar placed near the neutral axis, or in the compression zone, would do almost nothing — it would be sitting in the part of the beam concrete already handles well.
 
-Pre-stressed concrete; fibre orientation in composites; life-cycle assessment and embodied energy — a quantitative taste.
+**Pre-stressed concrete** takes this one step further: steel cables are tensioned *before* the concrete is poured, then released once it has cured. The cables try to shorten, squeezing the concrete into compression everywhere — including the zone that would otherwise be in tension under load. The structure now starts from a compressed state, so it can absorb more tensile load before the concrete ever experiences net tension. This is why pre-stressed beams can span further, or be made thinner, than ordinary reinforced ones.
 
-## TA prep
+</Section>
 
-Help peers add real sustainability points to specs; common error — assuming "recyclable" is automatic; tutoring cue: *"What actually happens to it at end of life?"*
+<Section title="Composites: why fibre orientation is the real variable" icon="🧵" id="composites">
 
-## Challenge
+A composite's strength isn't just "matrix + reinforcement" — it depends heavily on **which direction** the reinforcement runs, because a fibre only carries load effectively along its own length.
 
-Do a mini life-cycle comparison of two material choices for the product.
+| Fibre layout | Strength along fibres | Strength across fibres | Used when… |
+|---|---|---|---|
+| Unidirectional (all fibres one way) | Very high | Low | The load direction is known and fixed (a bicycle frame tube along its length) |
+| Woven (fibres in two directions) | High in both weave directions | Lower than unidirectional, but balanced | Load direction varies or isn't fully known (a boat hull, a car panel) |
+| Random / chopped strand mat | Moderate, roughly equal in all directions | Moderate | Cheap, general-purpose reinforcement where peak strength isn't critical |
 
-## Run sheet
+This is why a CFRP bicycle frame's tubes have fibres running along the tube's length (where the main bending and tension loads act), while a boat hull — which takes load from every direction as it moves through water — uses woven cloth. A metal, by contrast, is roughly **isotropic**: equally strong whichever way you test it, because its internal grain structure isn't deliberately aligned the way a composite's fibres are.
 
-0–10 preview; 10–25 reinforcement & composites; 25–35 LCA taste; 35–45 TA cue + challenge.
+</Section>
 
-## Take-away
+<Section title="A number behind 'sustainable': embodied energy" icon="🌍" id="lca">
 
-Find the recycling code on three plastic products and identify the polymer.
+"Recyclable" is not the same question as "low-impact" — a material can be fully recyclable and still expensive to the environment to produce in the first place. **Embodied energy** puts a number on that production cost.
+
+<Formula
+  name="Embodied energy of a component"
+  equation="EE = m \times ee"
+  note="EE = total embodied energy of the component, in megajoules (MJ). m = the component's mass, in kilograms (kg). ee = the material's specific embodied energy, in megajoules per kilogram (MJ/kg) — a published value that differs hugely by material: roughly 8–10 MJ/kg for softwood, 20–35 MJ/kg for mild steel, and 150–200 MJ/kg for virgin aluminium."
+/>
+
+That gap between steel and aluminium is the point: aluminium is prized for being lightweight and endlessly recyclable, but producing virgin aluminium from ore is roughly five to seven times more energy-intensive per kilogram than producing steel. A full life-cycle comparison has to weigh that production cost against how much *less* material a lighter design might need — which is exactly the kind of trade-off a "recyclable" label alone doesn't tell you.
+
+</Section>
+
+<WorkedExample title="A real LCA comparison: bracket arm, steel vs aluminium">
+
+Using SK2's same bracket arm (20 mm × 20 mm section, 150 mm long) for the cyclist gear organiser — mass roughly 0.14 kg in mild steel (density 7.8 g/cm³), or roughly 0.05 kg in aluminium (density 2.7 g/cm³) at the same size.
+
+<Formula
+  name="Embodied energy — mild steel arm"
+  equation="EE = m \times ee"
+  substitution="EE = 0.14\ \text{kg} \times 25\ \text{MJ/kg}"
+  result="EE \approx 3.5\ \text{MJ}"
+  note="m = 0.14 kg (the steel arm's mass at this size). ee = 25 MJ/kg, a mid-range published value for mild steel."
+/>
+
+<Formula
+  name="Embodied energy — aluminium arm"
+  equation="EE = m \times ee"
+  substitution="EE = 0.05\ \text{kg} \times 175\ \text{MJ/kg}"
+  result="EE \approx 8.75\ \text{MJ}"
+  note="m = 0.05 kg (the aluminium arm — lighter at the same size, because aluminium is roughly a third the density of steel). ee = 175 MJ/kg, a mid-range published value for virgin aluminium."
+/>
+
+**The finding:** even though the aluminium arm uses less than half the mass, its embodied energy is more than double the steel arm's — because aluminium's specific embodied energy is so much higher per kilogram. A justification that says "aluminium is more sustainable because it's lighter" is incomplete without this calculation; a justification that includes it is genuinely distinction-level. (This doesn't mean aluminium is always the wrong choice — where recycled aluminium is used, its embodied energy drops sharply, which is itself a strong sustainability argument if you can source it.)
+
+</WorkedExample>
+
+<Extension title="Taste beyond: a full life-cycle view">
+
+A true life-cycle assessment doesn't stop at manufacture — it follows the product through raw material extraction, manufacture, transport, use (does it consume energy while in service?), and end-of-life (landfill, recycling, or reuse), quantifying the environmental impact at every stage. Professional LCA software (like SimaPro or GaBi) can compare two entire product designs this way, not just two materials.
+
+<MoreImages term="life cycle assessment diagram cradle to grave" />
+
+</Extension>
+
+<Activity title="Composites matching and the LCA challenge" time="45 min" grouping="Individual, HOD circulating" materials={["Calculator", "The composites/6Rs notes from the regular class if already started"]}>
+
+**0–10 min — Preview.** Recap concrete reinforcement, thermoplastics vs thermosets, composites, and the 6Rs from the regular class as a rapid-fire round.
+
+**10–25 min — Reinforcement and composites, deep.** Sketch a loaded beam, mark the neutral axis, and shade the tension zone — check your answer against the diagram above. Then complete a fibre-orientation matching task: given three products (bicycle frame tube, boat hull, chopped-strand garden furniture), identify which fibre layout each most likely uses and why.
+
+**25–35 min — LCA taste.** Follow the worked example above with your own numbers: pick two materials for one component of your own project, estimate the mass of each version, and calculate embodied energy for both using the specific-energy values given.
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: do a mini life-cycle comparison of two material choices for your own project — mass, specific embodied energy, and a one-sentence conclusion that a generic "recyclable" claim would have missed.
+</Activity>
+
+<Support title="TA prep: beyond 'recyclable'">
+
+**Common error to watch for:** a peer writes "recyclable" as if that settles the sustainability question on its own. It doesn't — recyclability is about end-of-life, not about the energy cost of making the material in the first place.
+
+**Your tutoring cue:** *"What actually happens to it at end of life?"* — push past the label. If they say "it gets recycled," follow up with *"And how much energy did it take to make in the first place?"* — that's the embodied-energy half of the picture most students never mention.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Rebar in a reinforced concrete beam is placed near the bottom face rather than near the neutral axis. Why?",
+    options: [
+      "The bottom face is closer to the ground, so it is easier to install rebar there during construction",
+      "The bottom face is in tension (for a beam sagging under load) and concrete is weak in tension — the neutral axis carries almost no stress, so rebar there would do very little",
+      "Rebar must always be placed as low as possible in any beam, regardless of the loading direction",
+      "The bottom face is in compression, which is where steel performs best"
+    ],
+    answer: 1,
+    hint: "Where is stress highest, and which type of stress is concrete weak in?",
+    explain: "For a simply supported beam sagging under load, the bottom face is in tension and concrete is weak in tension — this is exactly where reinforcement is needed. The neutral axis, in the middle, carries almost zero stress, so placing rebar there would add cost and weight without adding useful strength. The top face is in compression, which concrete already handles well without help."
+  },
+  {
+    q: "A CFRP bicycle frame tube uses unidirectional fibres running along the tube's length, while a boat hull uses woven fabric. Why the difference?",
+    options: [
+      "Woven fabric is always stronger than unidirectional fibre, so the boat hull is simply using the better material",
+      "The bicycle tube's main loads act predictably along its length, so fibres are aligned there for maximum strength; the boat hull takes load from many directions, so woven fabric balances strength across two directions instead of maximizing it in one",
+      "Unidirectional fibre cannot be used in tube shapes, only in flat panels",
+      "The choice is purely aesthetic and has no effect on structural performance"
+    ],
+    answer: 1,
+    hint: "A composite is strongest ALONG its fibre direction and weaker across it — which product has a predictable load direction, and which doesn't?",
+    explain: "Composites are anisotropic — strong along the fibre direction, much weaker across it. A bicycle frame tube experiences load mainly along its length, so unidirectional fibres maximise strength exactly where it's needed. A boat hull takes load unpredictably from many directions as it moves through water, so woven fabric (fibres in two directions) balances strength rather than concentrating it in one direction that might not match the actual load."
+  },
+  {
+    q: "A designer chooses aluminium over steel for a bracket because 'aluminium is more sustainable — it's lighter and fully recyclable.' What is missing from this justification?",
+    options: [
+      "Nothing — lighter and recyclable is a complete sustainability argument",
+      "The designer should have chosen steel instead, since steel is always the more sustainable choice",
+      "The embodied energy of producing virgin aluminium (roughly 5-7 times higher per kg than steel) is not accounted for — a full comparison needs mass AND specific embodied energy, not just mass or recyclability alone",
+      "Weight has no relevance to sustainability at all"
+    ],
+    answer: 2,
+    hint: "Being lighter reduces mass, but embodied energy = mass × specific embodied energy — what's the other factor in that formula?",
+    explain: "Embodied energy = mass x specific embodied energy. Aluminium's lower mass at the same size only tells half the story — its specific embodied energy per kilogram is roughly 5-7 times higher than steel's, because producing virgin aluminium from ore is extremely energy-intensive. In the worked example, the lighter aluminium arm still had more than double the embodied energy of the steel one. A complete sustainability justification needs both numbers, not just the mass reduction."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §3.5 Composites (p. 184)", type: "Textbook", href: "https://drive.google.com/open?id=16PSGhJVNQvk7AxcWBNJRRLdpMDbPS0AO" },
+  { label: "Collins IGCSE D&T — §1.9 Environment and sustainability (p. 101)", type: "Textbook", href: "https://drive.google.com/open?id=1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle" },
+  { label: "Regular Week 5 — Types of Materials 2: Composites, Plastics & Sustainability", type: "Link", href: "/grade/11/term/1/week/5" },
+]} />

@@ -1,0 +1,78 @@
+---
+/**
+ * Why rebar goes in the tension zone: a loaded beam's top face is in
+ * compression, its bottom face in tension, with a neutral axis (zero
+ * stress) between them. Concrete handles compression well but tension
+ * poorly, so rebar is placed exactly where the tension is — below the
+ * neutral axis, near the bottom face.
+ */
+const caption =
+  "A loaded concrete beam: the top face is in compression, the bottom face in tension, with a neutral axis of zero stress between them. Concrete alone resists the compression zone well but cracks under tension, so steel reinforcing bars are placed in the tension zone, near the bottom face, where concrete is weakest.";
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 380 190" role="img" aria-labelledby="rc-t rc-d" class="dg">
+    <title id="rc-t">Reinforced concrete beam cross-section</title>
+    <desc id="rc-d">{caption}</desc>
+    <defs>
+      <marker id="rc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+      <marker id="rc-arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent2" />
+      </marker>
+    </defs>
+
+    <!-- Beam block -->
+    <rect x="60" y="40" width="260" height="80" class="beam" />
+
+    <!-- Neutral axis -->
+    <line x1="60" y1="80" x2="320" y2="80" class="neutral" />
+    <text x="330" y="84" text-anchor="start" class="dim">Neutral axis</text>
+
+    <!-- Compression arrows (top, pointing inward) -->
+    <line x1="110" y1="30" x2="140" y2="30" class="arrow" marker-end="url(#rc-arrow)" />
+    <line x1="270" y1="30" x2="240" y2="30" class="arrow" marker-end="url(#rc-arrow)" />
+    <text x="190" y="22" text-anchor="middle" class="lbl">Compression (top)</text>
+
+    <!-- Tension arrows (bottom, pointing outward) -->
+    <line x1="150" y1="150" x2="120" y2="150" class="arrow2" marker-end="url(#rc-arrow2)" />
+    <line x1="230" y1="150" x2="260" y2="150" class="arrow2" marker-end="url(#rc-arrow2)" />
+    <text x="190" y="168" text-anchor="middle" class="lbl2">Tension (bottom)</text>
+
+    <!-- Rebar: row of circles near the bottom face -->
+    <circle cx="90" cy="110" r="5" class="rebar" />
+    <circle cx="130" cy="110" r="5" class="rebar" />
+    <circle cx="190" cy="110" r="5" class="rebar" />
+    <circle cx="250" cy="110" r="5" class="rebar" />
+    <circle cx="290" cy="110" r="5" class="rebar" />
+    <line x1="60" y1="120" x2="20" y2="140" class="leader" />
+    <text x="16" y="155" text-anchor="end" class="lbl2">Rebar, in the tension zone</text>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 420px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .beam { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .neutral { stroke: var(--text-faint); stroke-width: 1.5; stroke-dasharray: 4 3; }
+  .arrow { stroke: var(--accent); stroke-width: 2.5; fill: none; }
+  .arrow2 { stroke: var(--accent-2); stroke-width: 2.5; fill: none; }
+  .fill-accent { fill: var(--accent); }
+  .fill-accent2 { fill: var(--accent-2); }
+  .rebar { fill: var(--accent-2); stroke: var(--text); stroke-width: 1; }
+  .leader { stroke: var(--text-faint); stroke-width: 1; }
+  text { fill: var(--text-dim); font-family: var(--font-body); font-size: 12px; }
+  .dim { fill: var(--text-faint); font-size: 11px; }
+  .lbl { fill: var(--accent); font-size: 12px; }
+  .lbl2 { fill: var(--accent-2); font-size: 12px; }
+</style>

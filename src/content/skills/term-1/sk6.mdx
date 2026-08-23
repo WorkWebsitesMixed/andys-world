@@ -10,34 +10,125 @@ masteryGoal: "write a top-band specification (ACCESS FM) in which every point is
 tutorGoal: "prepare to coach peers in turning research into measurable spec points."
 ---
 
-## Maps to
+The regular class gives you the three-part specification template — criterion, measure, justification — and today it's graded (M2). This session adds the one word that separates a good specification from a distinction one: **traceable**. Every point in a top-band specification can be followed backwards, in one unbroken chain, to a specific piece of research. If any link in that chain is missing, the point isn't distinction standard yet, however well-written it sounds.
 
-Regular Week 8 — research analysed into a justified, measurable specification (Criterion 2).
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 2</ExamLink> rewards exactly this traceability, and it's assessed today as <ExamLink to="paper4">M2, worth 30% of your term grade</ExamLink> — this session is the difference between a specification that merely follows the template and one that actually earns the top band.
+</Callout>
 
-## Preview
+<KeyTerms terms={[
+  { term: "Traceability chain", definition: "The unbroken link from a specific research finding, through a specification point, to a named test method. Distinction-level specifications can be read backwards: pick any spec point, and there's exactly one piece of research it came from and exactly one test that proves whether it was met." },
+  { term: "Constraint", definition: "A hard boundary condition the product MUST satisfy — not a matter of degree, a pass/fail limit. 'Must not exceed 400 mm in any dimension' is a constraint: violating it isn't a worse design, it's a disqualifying one." },
+  { term: "Criterion", definition: "A performance target the product is evaluated against, where doing better is meaningfully better — not a hard pass/fail line. 'Should support as much load as possible above the 5 kg minimum' has a floor (5 kg, itself a constraint) but also headroom above it that counts as genuine improvement." },
+  { term: "BS/ISO standard", definition: "A published, independently-verified requirement for a category of product (e.g. furniture stability, electrical safety) — British Standards (BS) or International Organization for Standardization (ISO). Referencing a real standard in a specification is a professional-level justification, because it draws on tested, external evidence rather than the designer's own judgement alone." },
+]} />
 
-Primary vs secondary research; ACCESS FM; what makes a spec point measurable and justified.
+<Section title="Traceable: the standard the regular class doesn't name" icon="🔗" id="traceable">
 
-## Deepen
+The regular class's three-part template (criterion + measure + justification) gets you most of the way to a measurable, justified spec point. **Traceable** adds one more test: can you point to the *exact* research finding that produced this specific number?
 
-What lifts Criterion 2 to distinction — every point measurable, justified, traceable; reading the C2 mark scheme.
+| Level | Example | The problem |
+|---|---|---|
+| Justified, not traceable | "The product must support 5 kg, because the user stores heavy items." | "Heavy items" isn't a specific finding — where did 5 kg come from? |
+| Traceable | "The product must support 5 kg, because the user's textbook collection was measured at 4.3 kg on kitchen scales during the Week 1 interview, plus a safety margin." | The number (5 kg) traces to an exact measurement (4.3 kg), from an exact source (Week 1 interview), with the margin explicitly stated as a deliberate addition, not a guess. |
 
-## Taste beyond
+A distinction-level specification survives the question "where exactly did that number come from?" for every single point. If your answer to that question is "I estimated it" or "it seemed about right," the point is justified in form but not yet traceable in substance — go back to the research and either find the number or generate it (measure something, ask the user a follow-up question).
 
-Engineering requirements and standards (BS/ISO); writing *testable* requirements; constraints vs criteria.
+</Section>
 
-## TA prep
+<Section title="Constraints vs criteria: not every requirement is the same kind" icon="⚖️" id="constraints-criteria">
 
-Help peers make spec points measurable; common error — vague "must be strong"; tutoring cue: *"How would you measure whether it passed?"*
+Real engineering requirements documents separate these two explicitly, and mixing them up weakens a specification's precision:
 
-## Challenge
+| | Constraint | Criterion |
+|---|---|---|
+| Nature | Hard boundary — pass/fail | Performance target — degree matters |
+| Example | "Must fit within 400 × 400 mm" | "Should hold as much load as practically achievable above the 5 kg minimum" |
+| Consequence of missing it | The design is disqualified, however good it is otherwise | The design scores lower, but is still valid |
+| How to write it | State the exact limit, no room for interpretation | State the floor (which is itself a constraint) AND the direction of "better" |
 
-Rewrite three weak spec points into measurable, justified ones with a test for each.
+Most weak specifications write everything as if it were a criterion ("should be as sustainable as possible") when some of it is actually a hard constraint the design cannot violate at all ("must operate below 50 V DC — SELV safety limit"). Separating the two in your own head, even if the write-up doesn't use these exact words, sharpens which points are truly non-negotiable.
 
-## Run sheet
+</Section>
 
-0–10 preview; 10–25 distinction-level spec; 25–35 standards taste; 35–45 TA cue + challenge.
+<WorkedExample title="Making one spec point fully traceable, with a real standard">
 
-## Take-away
+**Weak:** "The product must be safe."
 
-Draft your own product's specification to distinction standard.
+**Justified but not fully traceable:** "The product must have rounded edges, tested by running a finger along all edges, because sharp edges are dangerous."
+
+**Traceable, with a real standard:** "The electrical circuit must operate at 12 V DC, verified by checking the power supply rating, because any voltage below 50 V DC meets the SELV (Safety Extra-Low Voltage) standard referenced in BS EN 61140 — this is a **constraint**, not a target, since exceeding it disqualifies the design regardless of any other benefit." The traceability chain here is complete: standard (BS EN 61140) → specific limit (50 V DC) → the design's actual value (12 V DC, well within it) → test method (checking the power supply rating).
+
+</WorkedExample>
+
+<Extension title="Taste beyond: what a professional requirements document looks like">
+
+Engineering requirements documents in industry go further still: every requirement gets a unique ID, a rationale field (the traceability chain, formalised), a verification method (test, inspection, analysis, or demonstration), and is explicitly tagged as either a constraint or a target. Some organisations even trace requirements forward to which test in the verification plan proves each one — the same "trace it backward, trace it forward" discipline you're practising today, just with more formal paperwork around it.
+
+</Extension>
+
+<Activity title="Traceability audit and the rewrite challenge" time="45 min" grouping="Individual, HOD circulating" materials={["Your research notes and specification draft from the regular class", "Pencil"]}>
+
+**0–10 min — Preview.** Recap primary vs secondary research, ACCESS FM, and the three-part template from the regular class.
+
+**10–25 min — Distinction-level spec.** For three of your own specification points (or the teacher-provided weak examples if yours aren't written yet), trace each one backward: name the exact research finding it came from. If you can't, that point isn't traceable yet — fix it now.
+
+**25–35 min — Standards taste.** Read the constraints-vs-criteria table. For your own project, identify one requirement that is a hard constraint (cannot be violated) and one that is a criterion (has headroom for improvement above a floor).
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: rewrite three weak specification points into fully measurable, justified, AND traceable ones, each with a named test.
+</Activity>
+
+<Support title="TA prep: 'how would you measure whether it passed?'">
+
+**Common error to watch for:** a peer writes "must be strong" (or similarly vague) as a specification point — this fails at the very first hurdle, before traceability is even relevant.
+
+**Your tutoring cue:** *"How would you measure whether it passed?"* — if they can't answer with an actual test (a number, a tool, a procedure), the point isn't a specification yet, it's a wish.
+
+**Once they have a measure:** push one step further with *"Where did that number come from?"* — that's the traceability check, and it's what separates a good spec from a distinction one.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A specification point states: 'The product must support 5 kg, because the user needs it to hold heavy books.' What makes this justified but NOT fully traceable?",
+    options: [
+      "The point is not measurable, because '5 kg' is not a specific enough number",
+      "'Heavy books' is not a specific research finding — there's no exact measurement or source that produced the number 5 kg, so the chain from research to spec point is incomplete",
+      "The point does not include a test method, so it fails the measurable requirement, not the traceable one",
+      "Nothing is wrong — this is already a distinction-level specification point"
+    ],
+    answer: 1,
+    hint: "Traceability means you can point to the EXACT research finding a number came from — is 'heavy books' exact?",
+    explain: "The point has a measurable criterion (5 kg) and a stated justification (heavy books), so by the regular class's three-part template it looks complete. But 'heavy books' is vague — it doesn't say WHERE the 5 kg figure came from. A traceable version would say something like '5 kg, because the user's book collection was measured at 4.3 kg during the Week 1 interview, plus a safety margin' — now the number has an exact, checkable source."
+  },
+  {
+    q: "A product specification states both 'must fit within 400 x 400 mm' and 'should hold as much load as practically achievable above the 5 kg minimum.' What is the key difference between these two requirements?",
+    options: [
+      "There is no meaningful difference — both are ordinary specification points",
+      "The size limit is a constraint (a hard pass/fail boundary that disqualifies the design if violated); the load target is a criterion (a floor, with headroom above it counting as genuine improvement)",
+      "The load requirement is a constraint and the size requirement is a criterion — the reverse of what it appears",
+      "Both requirements are constraints because they both use the word 'must' or 'should'"
+    ],
+    answer: 1,
+    hint: "Which one has a hard, non-negotiable limit — and which one has room to do BETTER without being disqualified?",
+    explain: "The size limit (400 x 400 mm) is a constraint: exceeding it disqualifies the design outright, regardless of how good it is otherwise — there's no partial credit for 'almost fitting.' The load target has a hard floor (5 kg is itself a constraint — the design must clear it), but above that floor, holding more load is a genuine improvement, not a pass/fail line — that headroom-above-a-floor structure is what makes it a criterion, not just a constraint."
+  },
+  {
+    q: "A specification point cites 'BS EN 61140 (SELV standard)' as its justification for keeping circuit voltage below 50 V DC. What advantage does this have over a justification the student invents themselves?",
+    options: [
+      "None — a standard is no more credible than a student's own reasoning",
+      "It draws on independently-verified, published external evidence rather than the designer's personal judgement alone, which is a professional-level form of justification",
+      "Standards are only used in professional engineering and are never appropriate in a student specification",
+      "It makes the specification point a criterion instead of a constraint"
+    ],
+    answer: 1,
+    hint: "Where does a BS/ISO standard's authority come from, compared to a student's own stated opinion?",
+    explain: "A BS/ISO standard is independently developed, tested, and published — referencing one means the specification point is backed by external, verified evidence rather than resting solely on the designer's own reasoning. This is exactly the kind of justification that distinguishes a professional-standard specification from a student-standard one, and it's available to use whenever a real standard exists for the aspect of the product being specified (safety limits are a common and accessible example)."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §1.8 Product design (p. 78)", type: "Textbook", href: "https://drive.google.com/open?id=1LALQ16ljZjug0gE7WVoN2HaEERnwFK-4" },
+  { label: "Collins IGCSE D&T — §5 The Project (p. 344)", type: "Textbook", href: "https://drive.google.com/open?id=1oTBnwF8QotHpfBxZg5mZDKLmBZdw5d_d" },
+  { label: "Regular Week 8 — Research & Specification (C2) + Graded M2", type: "Link", href: "/grade/11/term/1/week/8" },
+]} />
