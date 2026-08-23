@@ -78,4 +78,34 @@ const blocks = defineCollection({
   }),
 });
 
-export const collections = { lessons, sessions, blocks };
+/**
+ * The `skills` collection. One .mdx file = one 45-min SKILLS enrichment card.
+ * SKILLS is the optional, ungraded near-peer TA / advanced-enrichment strand
+ * for the Grade 11 (Systems & Control) cohort — each card maps 1:1 to that
+ * week's regular G11 topic. Routing: /skills/term/[term]/[code].
+ * Convention: src/content/skills/term-<term>/<code>.mdx (e.g. term-1/sk1.mdx).
+ */
+const skills = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/skills' }),
+  schema: z.object({
+    term: z.enum(['1', '2', '3', 'revision']),
+    /** Card code as used in the source docs, e.g. "SK1", "SR1". */
+    code: z.string(),
+    /** Position within the term, for ordering and prev/next. */
+    order: z.number().int(),
+    /** The regular Grade 11 week this card previews (1:1 mapping). */
+    mapsToWeek: z.number().int(),
+    title: z.string(),
+    /** Short tagline shown under the title. */
+    hook: z.string(),
+    /** Extra flags shown as pills, e.g. "project-lock session", "key TA week". */
+    badges: z.array(z.string()).default([]),
+    /** "By the end of the session I will…" — go-deeper goal. */
+    masteryGoal: z.string(),
+    /** "By the end of the session I will…" — TA/leadership prep goal. */
+    tutorGoal: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { lessons, sessions, blocks, skills };

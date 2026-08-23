@@ -1,0 +1,75 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Card from '../../../components/Card.astro';
+import { SKILLS_TERMS, getSkillsTerm } from '../../../lib/skills';
+import { routes } from '../../../lib/url';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (() => {
+  return SKILLS_TERMS.map((t) => ({ params: { term: t.id } }));
+}) satisfies GetStaticPaths;
+
+const { term } = Astro.params;
+const info = getSkillsTerm(term!)!;
+
+const cards = (await getCollection('skills', (s) => s.data.term === term && !s.data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<BaseLayout title={`SKILLS — ${info.label}`}>
+  <section class="container head">
+    <Breadcrumbs items={[{ label: 'Skills', href: routes.skills() }, { label: info.label }]} />
+    <span class="eyebrow">SKILLS Enrichment</span>
+    <h1>{info.label}</h1>
+    {info.status === 'active' ? (
+      <>
+        <p class="muted">{info.intro}</p>
+        <p class="ta-model"><strong>The TA model.</strong> {info.taModel}</p>
+      </>
+    ) : (
+      <p class="notice">📝 {info.label} SKILLS cards haven't been written yet — this page will fill in once they are.</p>
+    )}
+  </section>
+
+  {cards.length > 0 && (
+    <section class="container">
+      <div class="grid">
+        {cards.map((c) => (
+          <Card
+            href={routes.skillsSession(term!, c.data.code)}
+            eyebrow={`${c.data.code} · Maps to W${c.data.mapsToWeek}`}
+            title={c.data.title}
+            tag={c.data.hook}
+          >
+            {c.data.masteryGoal}
+          </Card>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .head { padding-block: 2rem 1rem; }
+  .head h1 { margin: 0.4rem 0 0.6rem; }
+  .head p { max-width: 52rem; }
+  .ta-model { color: var(--text-dim); }
+  .notice {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+    color: var(--text-dim);
+    font-size: 0.95rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: 1rem;
+    padding-bottom: 3rem;
+  }
+</style>

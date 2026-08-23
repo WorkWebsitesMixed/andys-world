@@ -19,6 +19,7 @@ export function url(path: string = ''): string {
 /** Convenience builders for the grade → term → week hierarchy. */
 export const routes = {
   home: () => url(),
+  about: () => url('about'),
   grade: (g: number | string) => url(`grade/${g}`),
   term: (g: number | string, t: number | string) => url(`grade/${g}/term/${t}`),
   week: (g: number | string, t: number | string, w: number | string) =>
@@ -35,4 +36,9 @@ export const routes = {
   session: (c: string, s: number | string, w: number | string) =>
     url(`course/${c}/sprint/${s}/week/${w}`),
   block: (c: string, b: string) => url(`course/${c}/block/${b}`),
+
+  /** SKILLS enrichment: term → 45-min card, e.g. term "1", code "sk1". */
+  skills: () => url('skills'),
+  skillsTerm: (t: string) => url(`skills/term/${t}`),
+  skillsSession: (t: string, code: string) => url(`skills/term/${t}/${code.toLowerCase()}`),
 };

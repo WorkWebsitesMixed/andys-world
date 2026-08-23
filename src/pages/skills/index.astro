@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+import { SKILLS_TERMS } from '../../lib/skills';
+import { routes } from '../../lib/url';
+---
+
+<BaseLayout title="SKILLS Enrichment">
+  <section class="container head">
+    <span class="eyebrow">Grade 11 · Systems &amp; Control</span>
+    <h1>SKILLS Enrichment</h1>
+    <p class="muted lede">
+      An optional, ungraded strand for ~18 advanced Grade 11 students — 45 minutes a week,
+      before their regular slot. It has three jobs at once: stretch the top students to
+      distinction-level mastery and a taste beyond the IGCSE; run as a flipped preview, so
+      they meet each week's topic here first; and train them as near-peer TAs who then help
+      the rest of the class in that same week's regular session.
+    </p>
+    <p class="muted lede">
+      Not graded — enrichment and leadership, not assessment. Each SKILLS session runs before
+      that week's regular class, so the topic is still new to the group when they meet it here.
+    </p>
+  </section>
+
+  <section class="container">
+    <div class="term-grid">
+      {SKILLS_TERMS.map((t) => (
+        <Card
+          href={routes.skillsTerm(t.id)}
+          eyebrow={t.eyebrow}
+          title={t.label}
+          muted={t.status !== 'active'}
+        >
+          {t.blurb}
+        </Card>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .head { padding-block: 2.5rem 1.5rem; }
+  .head h1 { margin: 0.4rem 0 0.6rem; }
+  .lede { max-width: 42rem; }
+  .lede + .lede { margin-top: 0.75rem; }
+
+  .term-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: 1.25rem;
+    padding-bottom: 3rem;
+  }
+</style>

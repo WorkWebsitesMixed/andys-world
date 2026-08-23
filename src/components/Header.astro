@@ -23,6 +23,12 @@ const currentPath = Astro.url.pathname;
       >
         Extracurricular
       </a>
+      <a
+        href={routes.skills()}
+        class:list={['extra', { active: currentPath.includes('/skills') }]}
+      >
+        Skills
+      </a>
       <a class="exams" href={site.examsUrl} target="_blank" rel="noopener">
         {site.examsLabel} <span aria-hidden="true">↗</span>
       </a>
