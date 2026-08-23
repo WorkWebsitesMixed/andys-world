@@ -10,34 +10,149 @@ masteryGoal: "justify a material choice for a structural member using precise pr
 tutorGoal: "prepare to run the properties-table activity with a group."
 ---
 
-## Maps to
+The regular class at Week 4 gives you the vocabulary: hardwoods, softwoods, manufactured boards, ferrous and non-ferrous metals, and the working properties that justify a choice. This session doesn't re-teach that list — it takes the one word that ruins most Paper 4 answers ("strong") and forces it apart into the precise, separately-measurable properties an examiner is actually looking for, then goes one property further than the regular class ever gets: **stiffness**, which is not the same thing as strength at all.
 
-Regular Week 4 — woods and metals; properties and selection.
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="paper4">Paper 4 Section B</ExamLink> routinely asks you to "justify a material choice, referring to two working properties" — and a generic word like "strong" scores zero, no matter how confident the answer sounds. This session gives you the precision that turns a zero-mark answer into a full-mark one, and a genuine engineering distinction (strength vs stiffness) most students never separate.
+</Callout>
 
-## Preview
+<KeyTerms terms={[
+  { term: "Tensile strength", definition: "The maximum stress a material can withstand while being stretched (pulled apart) before it breaks. Measured in N/mm² (MPa). Mild steel's is roughly 400 MPa; pure aluminium's is roughly 270 MPa." },
+  { term: "Compressive strength", definition: "The maximum stress a material can withstand while being squashed before it fails (crushes, buckles, or shatters). Concrete is a special case: very high compressive strength but very low tensile strength — which is exactly why it needs reinforcing steel in tension zones." },
+  { term: "Stiffness (Young's modulus)", definition: "How much a material resists being stretched or bent elastically — NOT the same as strength. A stiff material barely deforms under load and springs straight back; a strong material simply doesn't break. Steel is both stronger and roughly three times stiffer than aluminium, which is why identical tensile strength does not mean identical resistance to bending." },
+  { term: "Toughness", definition: "The ability to absorb impact energy without fracturing — resistance to a sudden shock load, not a steady one. Measured with an impact test (e.g. the Charpy test), not a slow pull test. A material can be strong but brittle (low toughness) — cast iron is a classic example." },
+  { term: "Grain structure / dislocations", definition: "Metals are made of many microscopic crystal grains. Inside each grain, rows of atoms can slip past each other along planes of weakness (dislocations) when stressed — this microscopic slipping is what a metal bending or stretching permanently actually is, at the atomic scale." },
+]} />
 
-Hardwood/softwood, ferrous/non-ferrous; working properties (strength, hardness, toughness, workability).
+<Section title="Pulling apart 'strong': four separate properties" icon="🔬" id="precision">
 
-## Deepen
+"Strong" collapses at least four independent properties into one vague word — and a material can score high on one and low on another:
 
-Precise meanings of tensile/compressive strength, stiffness, toughness, hardness; why mild steel vs aluminium for a given load; manufactured boards.
+| If your justification says… | The precise property is… | Because it's about resisting… |
+|---|---|---|
+| "It won't snap when pulled/stretched" | Tensile strength | Being pulled apart |
+| "It won't crush or buckle under load" | Compressive strength | Being squashed |
+| "It won't bend or flex under load" | Stiffness (Young's modulus) | Elastic deformation — NOT the same as breaking |
+| "It won't shatter if dropped or knocked" | Toughness | A sudden impact, not a steady load |
 
-## Taste beyond
+Cast iron is the sharpest example of why this split matters: high compressive strength (fine in a column), but low toughness (it shatters, doesn't bend, on impact) — strong by one measure, and the wrong choice wherever impact resistance matters, like a vehicle chassis. "Cast iron is strong" is technically true and completely useless as a justification.
 
-The stress–strain curve (elastic vs plastic, yield, ultimate strength) qualitatively; stiffness as Young's modulus; why metals deform (grain structure, dislocations) — a taste.
+</Section>
 
-## TA prep
+<Section title="Strength vs stiffness: the distinction the regular class doesn't make" icon="📏" id="stiffness">
 
-Help peers complete the properties table; common error — "strong" used generically; tutoring cue: *"Strong in what way — tension or compression?"*
+A material's tensile strength tells you the stress at which it *breaks*. Its stiffness tells you how much it *deflects* — bends or stretches — under a load well below that breaking point. These are independent: a material can be strong and flexible (a fishing rod), or strong and rigid (a steel beam), or weak and flexible (a rubber band).
 
-## Challenge
+<Formula
+  name="Young's modulus (stiffness)"
+  equation="E = \frac{\sigma}{\varepsilon}"
+  note="E = Young's modulus, in gigapascals (GPa) — a measure of stiffness, not strength. σ (sigma) = the stress applied, in N/mm². ε (epsilon) = the strain produced — how much the material stretches as a fraction of its original length (no units; e.g. 0.001 means it stretched by 0.1%). A higher E means the same stress produces less strain — the material is stiffer, deflecting less for the same load."
+/>
 
-Select materials for a riser carrying 5 kg and justify with properties *and* a sustainability trade-off.
+This is genuinely beyond what the regular class calculates, but the comparison is simple to state: mild steel's Young's modulus is roughly **200 GPa**; aluminium's is roughly **70 GPa** — steel is about three times stiffer, independent of which alloy of either you pick. Two members of identical size and identical load will deflect roughly in inverse proportion to their stiffness, so the aluminium one bends noticeably more even if it's nowhere near breaking.
 
-## Run sheet
+<StressStrainDiagram />
 
-0–10 preview; 10–25 properties deep; 25–35 stress–strain taste; 35–45 TA cue + challenge.
+</Section>
 
-## Take-away
+<WorkedExample title="Same load, same size, same strength margin — different bend">
 
-Note one product where the "wrong" material was clearly chosen, and why.
+**The question:** the wall-mounted gear organiser's support arm (150 mm cantilever, 4 kg / 40 N load — the same one from SK1) is made from a 20 mm × 20 mm bar. Compare a mild steel version to an aluminium version of *identical* dimensions.
+
+**Strength check (both pass):** mild steel's tensile strength (≈400 MPa) and aluminium's (≈270 MPa) are both far above the direct stress this load produces (from SK1: ≈0.1 N/mm²) — both have a huge FoS. On a strength justification alone, either material looks fine.
+
+**Stiffness check (this is what actually differs):** steel's Young's modulus (≈200 GPa) is about three times aluminium's (≈70 GPa). Because deflection is inversely proportional to stiffness for the same load and size, **the aluminium arm will sag roughly three times more than the steel one** under the same 40 N load — even though neither is anywhere near breaking.
+
+**Full-mark justification:** "I chose mild steel over aluminium for the support arm because, although both materials have a large safety margin against breaking under this load, steel's Young's modulus (≈200 GPa) is roughly three times aluminium's (≈70 GPa). The arm will visibly sag under 4 kg of gear if made from aluminium at this size, even though it won't fail — steel keeps the deflection small enough that the organiser looks and feels rigid in use."
+
+**Why this scores over a generic answer:** it names two different properties (strength *and* stiffness), states that they answer different questions, and links the numerical difference to a real consequence a user would notice (visible sag) — not just "steel is stronger."
+
+</WorkedExample>
+
+<Section title="Toughness, precisely: the Charpy test" icon="💥" id="toughness">
+
+Toughness can't be measured by pulling slowly — it's about a sudden shock. Real materials testing uses an **impact test**: a raised pendulum is released and swings down to strike a notched sample; how high it swings on the *far* side tells you how much energy the sample absorbed before breaking.
+
+<CharpyTestDiagram />
+
+A tough material (most steels at room temperature) absorbs a lot of energy — the pendulum loses most of its swing. A brittle material (cast iron, most ceramics, some plastics when cold) absorbs very little — the pendulum swings almost as high as it started. This is precisely why "strong" and "tough" are not interchangeable: a material can resist a slow, steady load perfectly well and still shatter the first time something drops on it.
+
+</Section>
+
+<Extension title="Taste beyond: why metals actually deform">
+
+Zoom into a piece of steel and you'd see it isn't one continuous block — it's made of millions of microscopic crystal grains, packed together like an irregular 3D jigsaw. Inside each grain, atoms sit in an ordered lattice, and along certain planes of weakness (**dislocations**), rows of atoms can slip past their neighbours when the material is stressed enough.
+
+That microscopic slipping *is* what "the metal bent" means at the atomic scale — the elastic region on the stress-strain curve above is the lattice stretching without slipping (it springs back); the plastic region is dislocations actually sliding (permanent — it doesn't spring back). Heat-treating a metal (annealing, quenching, tempering) works by changing how easily dislocations can move, which is why the same steel can be made softer and more workable, or harder and more brittle, without changing its chemical composition at all.
+
+<MoreImages term="metal grain structure dislocations micrograph" />
+
+</Extension>
+
+<Activity title="Precision properties and the riser challenge" time="45 min" grouping="Individual, HOD circulating" materials={["Calculator", "Squared paper", "The properties table from the regular class (if already started)"]}>
+
+**0–10 min — Preview.** Walk the "pulling apart 'strong'" table together — practise saying each precise property out loud before writing anything.
+
+**10–25 min — Properties, precisely.** For four material pairs (mild steel / aluminium, oak / MDF, cast iron / mild steel, aluminium / copper), write one sentence each on: which has higher tensile strength, which is stiffer, and which is tougher — using the numbers from this session, not "it depends."
+
+**25–35 min — Stress-strain and dislocations, taste.** Sketch the stress-strain curve from memory, labelling the elastic region, yield point, and UTS. State in one sentence what a dislocation is.
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: **select a material for a riser that must carry 5 kg, and justify it using at least one strength-family property, stiffness, AND a sustainability trade-off** — three separate justifications, not one generic one.
+</Activity>
+
+<Support title="TA prep: 'strong in what way?'">
+
+**The single most common error you'll see in the regular class:** a student writes "strong" (or "durable," or "sturdy") with no further qualification. That word alone is worth zero marks no matter how correct the material choice actually is.
+
+**Your tutoring cue:** *"Strong in what way — tension, compression, or against being bent?"* — force the peer to pick one of the four precise properties from the table above and finish the sentence with a "because."
+
+**If they've already named a property but stopped there:** push one step further — *"What would happen to the product if that property were low?"* — that's the "consequence" half every justification needs.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "Two support arms are identical in size and carry the same load. One is mild steel, one is aluminium. Both have a Factor of Safety well above 1 against breaking. What is most likely to still be different between them?",
+    options: [
+      "Nothing — if the FoS is high for both, they will behave identically in every respect",
+      "The aluminium arm will deflect (bend/sag) noticeably more than the steel one, because it has a much lower Young's modulus, even though neither is close to failing",
+      "The steel arm will deflect more, because it is heavier",
+      "The FoS values prove the materials have identical stiffness"
+    ],
+    answer: 1,
+    hint: "FoS tells you about breaking. Stiffness (Young's modulus) tells you about a completely separate thing — how much it bends before it gets anywhere near breaking.",
+    explain: "A high Factor of Safety on both materials only tells you neither is close to failing (strength). It says nothing about stiffness. Since steel's Young's modulus (≈200 GPa) is roughly three times aluminium's (≈70 GPa), the aluminium arm will deflect roughly three times more under the same load, for the same size — a real, noticeable difference in how rigid the product feels, even though both 'pass' on strength."
+  },
+  {
+    q: "A material has a high compressive strength but a low toughness. Which product application is it a poor choice for?",
+    options: [
+      "A column supporting a steady, unmoving weight — this plays to its strength",
+      "Something that might be knocked or dropped, where a sudden impact is likely",
+      "Anything indoors, since toughness only matters outdoors",
+      "A product where appearance matters more than function"
+    ],
+    answer: 1,
+    hint: "Toughness is about absorbing a sudden shock, not a steady load. Which everyday event is a shock, not a steady load?",
+    explain: "Toughness measures resistance to sudden impact, not steady compressive load. A material can have excellent compressive strength (resists a steady squashing force, like cast iron in a column) while having poor toughness (shatters if struck or dropped) — these are independent properties. Cast iron is the textbook example: strong in compression, but brittle under impact."
+  },
+  {
+    q: "On a stress-strain curve, what physically happens to a metal's internal structure once it passes the yield point, that does NOT happen in the elastic region before it?",
+    options: [
+      "The atoms stop existing in an ordered lattice at all",
+      "Dislocations allow rows of atoms to slip permanently past each other, so the deformation no longer reverses when the load is removed",
+      "The material's chemical composition changes",
+      "Nothing different happens — yield is just an arbitrary label on the graph"
+    ],
+    answer: 1,
+    hint: "The elastic region springs back. The plastic region (past yield) doesn't. What's physically different at the atomic scale?",
+    explain: "Below the yield point, the crystal lattice stretches elastically and springs back fully when the load is removed — no permanent change. Past the yield point, dislocations let rows of atoms slip permanently past their neighbours; this plastic deformation does not reverse when the load is removed, which is exactly why the material is now permanently bent or stretched. The chemical composition doesn't change — only the atoms' relative positions do."
+  }
+]} />
+
+<Resources items={[
+  { label: "Collins IGCSE D&T — §3.1 Types of materials (p. 166)", type: "Textbook", href: "https://drive.google.com/open?id=1AkkrutnyjCg0mVjlA5QxY5YDsqeQzcJh" },
+  { label: "Collins IGCSE D&T — §3.4 Wood (p. 177)", type: "Textbook", href: "https://drive.google.com/open?id=18W7jfbqGnuZzPl2dYSFWuU6dgThP5KXk" },
+  { label: "Collins IGCSE D&T — §3.6 Metals (p. 188)", type: "Textbook", href: "https://drive.google.com/open?id=1MpzpONfpWrzmn62enkh_B4i6vtmMo29n" },
+  { label: "Collins IGCSE D&T — §4.2.7 Materials and structures (p. 251)", type: "Textbook", href: "https://drive.google.com/open?id=1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA" },
+  { label: "Regular Week 4 — Types of Materials 1: Wood & Metal", type: "Link", href: "/grade/11/term/1/week/4" },
+]} />
