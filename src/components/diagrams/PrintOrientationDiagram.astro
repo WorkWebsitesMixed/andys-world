@@ -1,0 +1,65 @@
+---
+/**
+ * The same L-shaped bracket 3D-printed in two orientations: printed with
+ * the overhang unsupported by anything below it needs scaffolding support
+ * material; rotated so the same feature is built up from the plate, it
+ * needs little or none.
+ */
+const caption =
+  'The same L-bracket printed in two orientations. Left: the horizontal arm overhangs empty space, so the printer must add scaffolding support material underneath it, layer by layer, which is then broken away and wasted. Right: rotated so the arm builds up from the plate directly, needing little or no support.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 460 210" role="img" aria-labelledby="po-t po-d" class="dg">
+    <title id="po-t">Print orientation: overhang needing support vs none</title>
+    <desc id="po-d">{caption}</desc>
+
+    <!-- ===== Panel A: poor orientation, overhang + supports ===== -->
+    <g>
+      <!-- build plate -->
+      <line x1="20" y1="150" x2="190" y2="150" class="plate" />
+      <!-- vertical part -->
+      <rect x="40" y="70" width="16" height="80" class="part" />
+      <!-- horizontal overhang arm -->
+      <rect x="56" y="70" width="90" height="14" class="part" />
+      <!-- support scaffolding under the arm -->
+      <line x1="70" y1="84" x2="70" y2="150" class="support" />
+      <line x1="90" y1="84" x2="90" y2="150" class="support" />
+      <line x1="110" y1="84" x2="110" y2="150" class="support" />
+      <line x1="130" y1="84" x2="130" y2="150" class="support" />
+      <text x="105" y="185" text-anchor="middle" class="lbl">Overhang — needs support</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="228" y1="15" x2="228" y2="195" class="divider" />
+
+    <!-- ===== Panel B: good orientation, arm builds from plate ===== -->
+    <g transform="translate(230 0)">
+      <line x1="20" y1="150" x2="190" y2="150" class="plate" />
+      <!-- rotated: arm now stands upright from plate, vertical part lies flat -->
+      <rect x="40" y="60" width="14" height="90" class="part" />
+      <rect x="54" y="136" width="90" height="14" class="part" />
+      <text x="105" y="185" text-anchor="middle" class="lbl">Rotated — builds from the plate</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 460px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .plate { stroke: var(--text); stroke-width: 3; }
+  .part { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2; }
+  .support { stroke: var(--warn, #f59e0b); stroke-width: 1.5; stroke-dasharray: 2 2; }
+  text { fill: var(--text-dim); font-family: var(--font-body); font-size: 12px; }
+  .lbl { fill: var(--text); font-size: 12px; font-weight: 600; }
+  .divider { stroke: var(--line); stroke-width: 1; }
+</style>

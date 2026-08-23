@@ -1,0 +1,128 @@
+---
+term: '2'
+code: SK9
+order: 9
+mapsToWeek: 9
+title: "Working drawings (C5)"
+hook: "Drawings you could build from"
+badges: []
+masteryGoal: "produce a fully dimensioned, BS-correct working drawing a maker could build from unaided."
+tutorGoal: "prepare to help peers with orthographic projection and BS dimensioning."
+---
+
+The regular class's checklist gets a working drawing to "complete" — three views, dimensions, title block, third-angle symbol. This session pushes two things the regular class only offers as an optional extension: assembly and sectional views, taught properly rather than left for anyone with spare time. It also opens the door to a vocabulary real engineering drawings use that goes beyond a single dimension number.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 5</ExamLink> rewards a working drawing set someone unfamiliar with your project could actually build from — and a drawing missing an internal feature (a cable channel, an assembly relationship) fails that test even if every external dimension is present and correct.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Assembly drawing", definition: "A drawing showing how separate components fit together, usually with each part numbered and a parts list alongside — communicates assembly order and the relationship between parts, not just one part's own dimensions." },
+  { term: "Exploded view", definition: "A drawing showing all the components of an assembly pulled apart along their assembly axis, but still aligned, so the order and direction of assembly is visible at a glance — commonly used in flat-pack furniture instructions for exactly this reason." },
+  { term: "Sectional view", definition: "A drawing showing the object as if cut through a chosen plane, revealing internal geometry (a cable channel, an internal cavity) that would otherwise need several hidden-detail dashed lines to describe — often clearer than hidden detail for genuinely complex internal features." },
+  { term: "GD&T (Geometric Dimensioning & Tolerancing)", definition: "A formal symbolic system for specifying not just a dimension's size, but its exact geometric requirements — flatness, perpendicularity, position relative to a reference — using standardised symbols in a feature control frame, rather than a plain dimension number and a general tolerance." },
+]} />
+
+<Section title="Assembly, exploded, and sectional views — taught, not left optional" icon="🧩" id="views">
+
+The regular class's Week 8 extension mentions a section view as optional extra rigour. Here's the full set of three views a complete working-drawing package uses, and when each earns its place:
+
+| View type | Shows | Use when |
+|---|---|---|
+| Assembly | How separate components fit together, numbered with a parts list | Your product has more than one major sub-assembly (a base + a bracket + a circuit panel) |
+| Exploded | Components pulled apart along the assembly axis, still aligned | The assembly ORDER isn't obvious from the assembled view alone |
+| Sectional | The object cut through a chosen plane, revealing internal geometry | An internal feature (cable channel, cavity) would otherwise need several hidden-detail lines to describe clearly |
+
+**Choosing a section plane:** pick the plane that passes through the internal feature you need to show, in a direction that keeps the section simple to read — usually straight through the centre of the feature, not at an angle. Hatch the cut surfaces at 45° to distinguish "material that was cut through" from "material you're looking at the surface of."
+
+</Section>
+
+<WorkedExample title="Adding an assembly, exploded, and sectional view to the gear organiser drawing set">
+
+**Assembly view:** base panel, two side uprights, top rail, and the switch bracket, numbered 1–4, with a small parts list in the corner naming each and its material.
+
+**Exploded view:** the same four parts pulled apart vertically along the assembly axis, still aligned above/below where they connect — makes clear the side uprights attach to the base first, then the top rail connects the uprights, then the switch bracket clips on last.
+
+**Sectional view:** a cutting plane straight through the base panel where the internal cable channel runs from the switch bracket to the battery compartment — revealing the channel's depth and width, which no combination of hidden-detail dashed lines on the exterior views could show as clearly. Cut surfaces hatched at 45°.
+
+**Why all three matter for C5:** the assembly and exploded views prove the maker can understand assembly *order*, not just individual part dimensions; the sectional view proves an internal feature invisible from outside is still fully specified — together, exactly what "someone could build this unaided" requires.
+
+</WorkedExample>
+
+<Extension title="Taste beyond: GD&T — dimensioning beyond a single number">
+
+A plain dimension ("50 mm ±1 mm") only specifies size. Real engineering drawings often need to specify *geometric* requirements too — is a face actually flat, not just the right size? Is a hole positioned exactly relative to an edge, not just somewhere within a size tolerance? **GD&T** answers this with standardised symbols in a **feature control frame** — a small rectangular box attached to the dimension, containing a symbol (flatness, perpendicularity, position, and many others), a tolerance value, and often a reference to a **datum** (a fixed reference surface everything else is measured from).
+
+| Symbol meaning | What it controls | Why a plain dimension can't |
+|---|---|---|
+| Flatness | How flat a surface actually is, regardless of its size | A face can be the right length and width and still be warped |
+| Perpendicularity | Whether two faces are truly at 90°, not just close | Two faces can each be individually "the right size" and still not meet squarely |
+| Position | Whether a hole is exactly where it should be relative to a datum, not just "somewhere in range" | A hole's diameter can be perfect while its location drifts |
+
+You won't be expected to apply full GD&T at IGCSE, but recognising that "dimensioned" and "geometrically correct" are different questions — and that a symbolic system exists specifically for the second one — is exactly the kind of engineering-standards literacy that separates a working knowledge of technical drawing from a professional one.
+
+</Extension>
+
+<Activity title="Adding assembly/exploded/section views, GD&T taste, TA-prep" time="45 min" grouping="Individual, HOD + drawing colleague circulating" materials={["Your working drawing from the regular Week 8/9 class", "A3 paper", "Ruler, technical pen, set square"]}>
+
+**0–10 min — Preview.** Recap third-angle projection, plan and elevations, scale, and BS dimensioning from the regular class.
+
+**10–25 min — Complete BS drawing.** Add an assembly view (numbered parts, parts list) to your working drawing set. If your product has an internal feature not visible from outside, add a sectional view through it.
+
+**25–35 min — GD&T taste.** Read the extension box. Identify one feature on your own product where flatness or perpendicularity — not just a size dimension — genuinely matters for the product to work correctly.
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: produce a dimensioned assembly drawing plus one sectional view for your product.
+</Activity>
+
+<Support title="TA prep: 'could someone build it from this alone?'">
+
+**Common error to watch for:** a missing or ambiguous dimension — a feature that's drawn but never actually measured on the page, leaving a maker to guess.
+
+**Your tutoring cue:** *"Could someone build it from this alone?"* — the direct test for completeness; if the honest answer involves "well, they'd have to guess that bit," the drawing isn't finished yet.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A product has an internal cable channel that isn't visible from any external view. The working drawing represents it using several hidden-detail dashed lines across multiple views. What might a sectional view offer instead?",
+    options: [
+      "Nothing — hidden-detail lines are always the correct and only way to show internal features",
+      "A single clear view showing the channel's actual shape and dimensions directly, which can be easier to read than piecing together several hidden-detail lines across different views",
+      "A sectional view is only used for showing external surface finish, not internal geometry",
+      "Sectional views replace the need for dimensions entirely"
+    ],
+    answer: 1,
+    hint: "Hidden-detail lines show that a feature exists somewhere behind the visible surface — what does cutting straight through the feature let you show more directly?",
+    explain: "A sectional view cuts through the object at a chosen plane, showing the internal feature's actual cross-sectional shape and dimensions directly and clearly, in one view — rather than requiring a reader to mentally combine several dashed hidden-detail lines across multiple views to infer the same geometry. For a genuinely complex internal feature, a section view is often significantly clearer, which is exactly why it's taught here as a standard tool rather than left as an optional extra."
+  },
+  {
+    q: "Two faces of a bracket are each measured at the correct length and width, but the bracket doesn't sit flush when assembled. What kind of requirement might be missing from the drawing, beyond the plain size dimensions?",
+    options: [
+      "A colour specification",
+      "A geometric requirement such as perpendicularity — the two faces could each individually be the right SIZE while not actually meeting at a true 90°, which a plain dimension does not check",
+      "A larger overall tolerance on both dimensions",
+      "Nothing can be done — size dimensions are always sufficient to guarantee correct assembly"
+    ],
+    answer: 1,
+    hint: "The faces are individually the right size, but do the drawing's dimensions say anything about the ANGLE between them?",
+    explain: "A plain size dimension only controls how big a feature is — it says nothing about geometric relationships like flatness or perpendicularity. Two faces can each independently measure the correct length and width while the angle between them drifts away from true 90°, causing an assembly problem a size-only dimension would never catch. This is exactly the gap GD&T's perpendicularity symbol is designed to close, by specifying the geometric relationship explicitly, not just the size."
+  },
+  {
+    q: "What is the main purpose of an exploded view, as distinct from an assembly view?",
+    options: [
+      "An exploded view shows only the finished, assembled product with no parts visible",
+      "An exploded view pulls the components apart along the assembly axis while keeping them aligned, making the ORDER and direction of assembly visible at a glance — useful when that order isn't obvious from the assembled view alone",
+      "An exploded view is only used for electronic components, never for structural ones",
+      "An exploded view and an assembly view are the same thing with different names"
+    ],
+    answer: 1,
+    hint: "Think about flat-pack furniture instructions — why do they pull the parts apart rather than just showing the finished product?",
+    explain: "An assembly view shows the finished, fitted-together arrangement (often numbered with a parts list). An exploded view specifically pulls the components apart along their assembly axis while keeping them visually aligned, so a maker can see the ORDER and direction each part needs to be added — exactly the reason flat-pack furniture instructions use exploded views: the assembled view alone doesn't make the build sequence clear."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C5 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.6 Technical drawing (p. 58)", type: "Textbook", href: "https://drive.google.com/open?id=1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0" },
+  { label: "Regular Week 9 — Working Drawings (C5)", type: "Link", href: "/grade/11/term/2/week/9" },
+]} />

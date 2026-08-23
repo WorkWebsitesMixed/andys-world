@@ -1,0 +1,153 @@
+---
+term: '2'
+code: SK10
+order: 10
+mapsToWeek: 10
+title: "Paper 4 past paper test"
+hook: "Owning Paper 4"
+badges: ["key TA week"]
+masteryGoal: "command Paper 4 structure: attack Section A efficiently for breadth marks and Section B Structures at top band, including full calculation method."
+tutorGoal: "prepare to be the Paper 4 structures expert in post-test discussions, helping peers diagnose exactly where marks were lost."
+---
+
+Today's regular class sits a full, graded Paper 4 past paper (M3) — Section A across the whole syllabus, Section B on Structures for this cohort. This session brings every structures tool from the whole year — the engineering chain (T1 SK1), stress and FoS (T1 SK1), the cantilever moment (T1 SK1) — together as one connected Section B answer, and gives you the exam-marking vocabulary to diagnose exactly where a peer's answer earned or lost marks afterward.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="paper4">Paper 4</ExamLink> is worth 25% of your IGCSE, and today's session is graded as M3, worth 40% of this term. Section B Structures rewards full, connected working — exactly the engineering chain you built in T1 SK1, now under timed exam pressure.
+</Callout>
+
+<Callout type="warn" title="Motor checkpoint — SKILLS only, before the end of this session" id="motor-checkpoint">
+  If you chose the DC motor option at SK5, this is your deadline: demonstrate the motor working reliably on breadboard for HOD sign-off before the end of this session. If it isn't ready, you revert to the standard LED circuit — record the reversion in your development log as a design decision. It still counts as valid C4 evidence; it's a decision, not a failure.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Method marks", definition: "Marks awarded for correctly completing a step of a calculation — the right formula, a correct substitution — independent of whether the final numerical answer is right. Introduced in T1 SK5; today it's applied to a full multi-step Section B calculation chain rather than a single formula." },
+  { term: "Accuracy marks", definition: "The mark specifically for the correct final numerical answer, with correct units — separate from method marks. A correct method with one arithmetic slip can still earn every method mark and only lose the accuracy mark." },
+  { term: "Error-carried-forward (ECF)", definition: "A mark scheme convention: if an early step in a multi-part calculation is wrong, but every step after it correctly follows the METHOD using that wrong number, the later steps still earn their method marks. One early mistake does not automatically zero out an entire multi-step calculation, as long as the method from that point on is sound." },
+]} />
+
+<Section title="Section B Structures: the whole engineering chain, under exam conditions" icon="🔗" id="section-b">
+
+T1 SK1 built a four-stage engineering chain: classify → forces → stress/FoS → join. A top-band Section B Structures answer runs that exact chain, connected, under timed exam pressure — not four separate calculations that happen to be on the same page.
+
+<Formula
+  name="Direct stress (T1 SK1)"
+  equation="\text{Stress} = \frac{F}{A}"
+  note="F = force in newtons (N). A = cross-sectional area in mm². Result in N/mm² (= MPa)."
+/>
+
+<Formula
+  name="Factor of Safety (T1 SK1)"
+  equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+  note="Both loads in newtons (N). FoS is dimensionless — a ratio, not a value with units."
+/>
+
+<Formula
+  name="Moment (T1 SK1)"
+  equation="M = F \times d"
+  note="F = force in newtons (N). d = perpendicular distance from the force to the pivot/fixing, in metres (m). Result in newton-metres (N·m) — relevant whenever the question describes a cantilever or an off-centre load, not just a simply-supported beam."
+/>
+
+**Full working, every time:** write the formula first, then the substitution, then the result with units — the same three-step discipline from T1 SK5, now applied to every one of these in sequence within a single Section B answer. Skipping the formula line loses a method mark even if your final number is exactly right.
+
+</Section>
+
+<Section title="Error-carried-forward: one mistake doesn't sink the whole answer" icon="🔀" id="ecf">
+
+A multi-step Section B question often builds each step on the previous one's result — find the reaction, then use it to find the stress, then use that to find the FoS. If you make an arithmetic slip in step one, **error-carried-forward (ECF)** means every later step is still marked on its own method, using your (wrong) earlier number — not automatically marked wrong because the chain started from an error.
+
+**What this means for exam strategy:** never abandon a multi-part calculation because an early step feels uncertain or you suspect it's wrong. Keep applying the correct method to whatever number you have — the method marks for every later step are still available under ECF, and refusing to continue guarantees losing marks you could have kept.
+
+</Section>
+
+<WorkedExample title="A full Section B structures answer, method-marked line by line">
+
+**Question (abbreviated):** A shelf bracket's horizontal arm is fixed to a wall at one end only, 180 mm long, carrying a 45 N load at the free end. The arm's cross-section is 20 mm × 15 mm. The material fails at a stress of 30 N/mm². Calculate (a) the moment at the fixed end, (b) the stress in the arm, (c) the Factor of Safety, and (d) state which structural feature (T1 SK1) the fixing must be designed to resist.
+
+**(a) Moment [2 marks — method + accuracy]**
+$M = F \times d$ [method mark: correct formula]
+$M = 45\ \text{N} \times 0.18\ \text{m} = 8.1\ \text{N·m}$ [accuracy mark: correct substitution and result with units]
+
+**(b) Stress [2 marks]**
+$\text{Stress} = F/A$ [method mark]
+$\text{Stress} = 45\ \text{N} / (20 \times 15\ \text{mm}^2) = 45/300 = 0.15\ \text{N/mm}^2$ [accuracy mark]
+
+**(c) FoS [2 marks, ECF-eligible]**
+$\text{FoS} = \text{Failure stress} / \text{Working stress}$ [method mark — earned even if part (b)'s stress value was wrong, provided this formula is applied correctly to whatever value part (b) produced]
+$\text{FoS} = 30 / 0.15 = 200$ [accuracy mark]
+
+**(d) Structural feature [1 mark]**
+The fixing is a **cantilever** fixed end — it must resist both the reaction force AND the 8.1 N·m moment from part (a), unlike a simply-supported beam's two shared supports (T1 SK1). This is exactly the kind of connected reasoning — naming *why* the moment from part (a) matters for the joint, not just stating a joint type — that separates a top-band Section B answer from a collection of four correct but disconnected calculations.
+
+</WorkedExample>
+
+<Extension title="Taste beyond: how engineering exams are actually marked">
+
+The **method marks vs accuracy marks** split isn't arbitrary — it reflects how real engineers are judged too: a correct process applied under pressure that produces a wrong final number due to a slip is a fundamentally different (and less serious) failure than using the wrong method entirely. Mark schemes are built to detect and credit the difference. Professional engineers working under time pressure — in a design review, in a site visit — are trained the same way: show your method clearly enough that a colleague can check it and catch an arithmetic slip before it matters, rather than presenting only a final number that has to be trusted blind.
+
+</Extension>
+
+<Activity title="Full Section B practice, ECF drill, TA-prep, motor checkpoint" time="45 min" grouping="Individual, HOD circulating" materials={["A full Section B Structures question set (provided)", "Calculator", "Your breadboard circuit if demonstrating the motor checkpoint"]}>
+
+**0–10 min — Preview.** Recap Paper 4's format (Section A + Section B) and time allocation from the regular class.
+
+**10–28 min — Section B mastery.** Work through a full connected Section B question set (classify → forces/moment → stress → FoS → joint reasoning), showing full method-marked working at every step, in the style of the worked example above.
+
+**28–36 min — Exam technique taste.** Read the extension box. Practise deliberately continuing a calculation chain after a suspected early error, to build the ECF habit under low-stakes conditions.
+
+**36–45 min — TA prep + Challenge + motor checkpoint.** Read the TA prep box. Complete the challenge: solve a full Section B Structures question set under timed conditions, mark it to the scheme, and write a three-line improvement plan for your weakest area. **If you chose the motor option**, use part of this window to demonstrate your breadboard circuit working reliably for HOD sign-off before the session ends.
+</Activity>
+
+<Support title="TA prep: diagnosing Section A vs Section B losses">
+
+**After the test**, help peers diagnose exactly where marks were lost: Section A losses are usually a breadth-vocabulary problem (T1 SK5's precise-property-language territory); Section B losses are usually a method problem (missing or incomplete working, not usually wrong content knowledge).
+
+**Your tutoring cue:** *"In Section B, show me your method — even a wrong answer with a right method earns method marks."* This redirects a peer who's discouraged by a wrong final number toward checking whether the method itself (which is where most of the marks actually are) was sound.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student makes an arithmetic error in part (a) of a multi-part Section B question, then correctly applies the right method to that (wrong) number in parts (b) and (c). Under error-carried-forward, what happens to the marks for parts (b) and (c)?",
+    options: [
+      "Parts (b) and (c) automatically score zero, since they were built on an incorrect part (a)",
+      "Parts (b) and (c) can still earn their method marks, since the correct method was applied consistently to whatever value part (a) produced — only part (a)'s own accuracy mark is lost",
+      "The whole question is voided and cannot be marked at all",
+      "Only part (c) can be saved by ECF; part (b) is always lost once part (a) is wrong"
+    ],
+    answer: 1,
+    hint: "ECF checks whether the METHOD was correctly applied to the number you had — not whether that number was itself correct.",
+    explain: "Error-carried-forward means each later step is marked on whether the correct method was applied to the value available at that point — even if that value traces back to an earlier arithmetic slip. Part (a) loses its own accuracy mark for the wrong number, but parts (b) and (c) can still earn their method marks (and even their own accuracy marks, since they're 'correct' relative to the carried-forward number) as long as the method itself is sound throughout."
+  },
+  {
+    q: "Why should a student never abandon a multi-part Section B calculation just because an early step feels uncertain?",
+    options: [
+      "Because abandoning a question is against exam rules and results in disqualification",
+      "Because error-carried-forward means later steps can still earn their own method marks even if an earlier step was wrong — abandoning the calculation guarantees losing marks that were still recoverable",
+      "Because Section B questions cannot contain any errors by design",
+      "Because only the final part of a multi-part question is ever marked"
+    ],
+    answer: 1,
+    hint: "What marks does ECF make available for steps AFTER a suspected early mistake — and what happens to those marks if the student simply stops?",
+    explain: "Because of ECF, the method marks for every step after a suspected error remain available if the correct method is applied to whatever value is on hand — stopping the calculation early guarantees losing those recoverable marks. Continuing with sound method, even from an uncertain earlier result, is always the higher-scoring strategy than abandoning the question."
+  },
+  {
+    q: "A Section B answer correctly identifies a cantilever fixing must resist both a reaction force and a moment (part d in the worked example), and explicitly links this back to the 8.1 N·m moment calculated in part (a). Why does this connection matter for a top-band answer, beyond simply naming 'cantilever' as the fixing type?",
+    options: [
+      "It doesn't matter — naming the correct fixing type alone is always sufficient for full marks",
+      "It demonstrates the engineering chain (T1 SK1) as ONE connected argument rather than four separate, disconnected calculations that happen to share a page — which is what distinguishes a top-band response from a merely competent one",
+      "Referencing an earlier part's numerical answer is not permitted in Section B",
+      "This connection is only relevant for Paper 1, not Paper 4"
+    ],
+    answer: 1,
+    hint: "What was T1 SK1's central teaching point about treating structures as 'one connected engineering chain, not four separate lists'?",
+    explain: "T1 SK1's entire framing was that structures marks come from treating classify → forces → stress/FoS → join as one connected chain, where each stage's answer explains the next — not four isolated facts. Explicitly linking the joint reasoning back to the specific moment value calculated earlier demonstrates that connected understanding directly, which is exactly the kind of response mark schemes reward at the top band, beyond simply stating the correct terminology in isolation."
+  }
+]} />
+
+<Resources items={[
+  { label: "Your IGCSE — Paper 4 overview", route: "paper4", type: "Internal" },
+  { label: "Collins IGCSE D&T — §4.4 Electronics (p. 299)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
+  { label: "Collins IGCSE D&T — §4.2 Structures (p. 233)", type: "Textbook", href: "https://drive.google.com/open?id=1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9" },
+  { label: "Regular Week 10 — Paper 4 Past Paper — Graded M3", type: "Link", href: "/grade/11/term/2/week/10" },
+]} />

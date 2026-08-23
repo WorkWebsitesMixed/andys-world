@@ -1,0 +1,118 @@
+---
+term: '2'
+code: SK7
+order: 7
+mapsToWeek: 7
+title: "CAD/CAM 1: 2D CAD & laser"
+hook: "Manufacture-ready CAD"
+badges: ["key TA week"]
+masteryGoal: "produce accurate, manufacture-ready 2D CAD and understand the laser workflow in depth."
+tutorGoal: "prepare to be a CAD-station helper."
+---
+
+The regular class gives you the kerf-compensation rule as a fact: target slot width = material thickness minus 0.2 mm. This session shows you exactly why that rule exists — what the laser actually removes and why a slot drawn at nominal size ends up loose — and introduces the design principle that rule is one small instance of: designing for manufacture (DFM). It's a **key TA week**: you're a CAD-station helper today, and the fastest fixes are the ones you understand from first principles, not just as a memorised number.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 5</ExamLink> needs evidence of digital tools used to plan for manufacture — and a file that isn't kerf-compensated produces parts that don't fit, which is exactly the kind of avoidable error a CAD-station helper needs to catch before the machine runs, not after.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Kerf", definition: "The width of material the laser beam actually removes as it cuts — typically 0.1-0.3 mm for a school-scale CO2 laser on plywood or acrylic. It isn't a flaw to work around occasionally; it's a fixed physical property of every cut the laser makes." },
+  { term: "Design for manufacture (DFM)", definition: "Designing a product's geometry, tolerances, and joints specifically around how it will actually be made — not designing in the abstract and hoping manufacture cooperates. Kerf compensation is one small, concrete instance of DFM: designing the slot dimension around what the laser process actually does to it." },
+  { term: "Parametric CAD", definition: "CAD where dimensions are defined by variables and relationships (constraints) rather than fixed numbers — change one variable (e.g. material thickness) and every dependent dimension in the model updates automatically, including kerf-compensated slot widths." },
+  { term: "CAM toolpath", definition: "The actual path a machine's cutting tool follows to produce a part — for a laser, this is the vector path itself; for a CNC router or 3D printer, the toolpath is a separate calculated path (with more complexity: tool diameter, cut depth per pass, direction) generated from the CAD geometry, not identical to it." },
+]} />
+
+<Section title="Kerf compensation: why the rule works" icon="🔬" id="kerf-why">
+
+The regular class's rule (target slot width = material thickness − 0.2 mm) works because of exactly one physical fact: the laser beam has a real width, and as it traces a path, it removes that width of material from *both sides* of the drawn line, not just along the line itself.
+
+<KerfCompensationDiagram />
+
+Draw a slot at exactly 6 mm to fit a 6 mm tab, and the laser removes roughly 0.1 mm from each wall of the slot as it cuts — the slot opens up to roughly 6.2 mm, and the tab now sits loose. Draw the slot at 5.8 mm instead, and the same 0.1 mm-per-wall removal brings the real slot back to 6 mm — a snug fit. This is why the compensation value (0.2 mm total, split across both walls) needs to roughly match your *specific* laser's actual kerf, found by test-cutting a scrap piece — a different machine, power setting, or material can have a meaningfully different kerf, and the 0.2 mm figure is a starting point to verify, not a universal constant.
+
+</Section>
+
+<WorkedExample title="Verifying kerf on your own machine before committing to real parts">
+
+**The test:** cut a small strip with five slots, each drawn at a different width: 5.6, 5.7, 5.8, 5.9, 6.0 mm, into a scrap piece of your actual material. Test-fit a 6 mm tab into each slot.
+
+**Reading the result:** the slot that gives a snug (not loose, not forced) fit tells you your machine's actual working compensation for this material and thickness — if 5.8 mm is loose but 5.7 mm is snug, your machine's real kerf is slightly wider than the regular class's 0.2 mm default, and every slot dimension in your working file should use 5.7 mm instead.
+
+**Why this matters more than memorising 0.2 mm:** the number itself is machine- and material-specific. The *method* — test, measure, apply — is what transfers to any laser cutter you use in the future, including ones with a completely different kerf.
+
+</WorkedExample>
+
+<Extension title="Taste beyond: DFM, parametric CAD, and CAM toolpaths">
+
+**Design for manufacture (DFM)** is the general principle kerf compensation is one instance of: designing dimensions, tolerances, and geometry around the real behaviour of the process that will make the part, not around an idealised drawing. A DFM-aware designer asks "what will this process actually do to this dimension?" for every critical fit, not just slots — the same question extends to 3D-print tolerances (SK8) and working-drawing tolerances (SK9).
+
+**Parametric CAD** takes this further: instead of drawing a slot at a fixed 5.8 mm, a parametric model defines it as "material thickness − kerf," as variables. Change the material thickness variable from 6 mm to 9 mm, and every slot in the model updates automatically — genuinely useful when a design goes through several material or thickness changes during development, which yours likely has.
+
+**CAM toolpaths** matter more once cutting gets more complex than a laser's simple vector-follows-the-line behaviour — a CNC router, for instance, has to account for the cutting bit's own diameter (the toolpath must offset from the drawn line by the bit's radius) and cut in multiple depth passes for thick material, neither of which a laser needs to worry about.
+
+</Extension>
+
+<Activity title="Kerf verification, DFM thinking, TA-station rehearsal" time="45 min" grouping="Individual, HOD circulating as CAD helper" materials={["CAD application", "Scrap material matching your project's thickness", "Access to the laser cutter for a test strip"]}>
+
+**0–12 min — Preview & demo.** Recap vector cut vs raster engrave, kerf, and material settings from the regular class.
+
+**12–28 min — Precise CAD.** If a test strip hasn't been cut for your specific material yet, design and cut one (five slots, five widths). Update your working file's slot dimensions to match your verified value.
+
+**28–36 min — DFM taste.** Read the extension box. Note one other dimension in your design (beyond slots) where "what will the process actually do to this?" is worth asking.
+
+**36–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: design a slot-together part with kerf-compensated joints using your verified value, and test-cut it.
+</Activity>
+
+<Support title="TA prep: the fast CAD-station checks">
+
+**Common error to watch for:** wrong layer or colour assigned to a cut line, or a file drawn in the wrong units (px instead of mm) so every dimension is silently wrong.
+
+**Your tutoring cue:** *"Is this drawn to size and ready to cut?"* — a fast, direct question that prompts a peer to actually verify scale and layer assignment rather than assuming the file is correct because it looks right on screen.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A slot is drawn at exactly 6 mm to fit a 6 mm tab, with no kerf compensation. What actually happens when it's cut on a laser with a 0.1 mm kerf per wall?",
+    options: [
+      "The slot cuts at exactly 6 mm, because the laser follows the drawn line precisely",
+      "The slot ends up narrower than 6 mm, making the fit tighter than intended",
+      "The slot ends up wider than 6 mm (roughly 6.2 mm), because the laser removes material from both walls as it cuts, leaving the tab loose",
+      "The kerf only affects engraving, not cutting, so the slot is unaffected"
+    ],
+    answer: 2,
+    hint: "The laser removes material from BOTH walls of the slot as it cuts along each edge — what does that do to the gap between them?",
+    explain: "The laser beam has physical width and removes material from both sides of each cut line, including both walls of a slot. A slot drawn at exactly 6 mm ends up wider after cutting (roughly 6 mm + 2×0.1 mm = 6.2 mm here), because material was removed from each wall. This is precisely why kerf compensation draws the slot narrower than the target dimension in the file — so the extra material removed by the kerf brings the real, cut slot back to the intended 6 mm."
+  },
+  {
+    q: "Why is test-cutting a scrap strip with several slot widths a better practice than always using the regular class's default 0.2 mm kerf compensation value?",
+    options: [
+      "It isn't better — the 0.2 mm figure is a universal physical constant that applies to every laser cutter",
+      "Because the actual kerf varies by machine, power setting, and material, so verifying it directly on your specific setup gives a more reliable compensation value than assuming a generic default",
+      "Test-cutting is only necessary for materials thicker than 20 mm",
+      "The default value only matters for engraving, not for cutting slots"
+    ],
+    answer: 1,
+    hint: "Is kerf a fixed number for every laser cutter everywhere, or does it depend on the specific machine and material?",
+    explain: "Kerf width depends on the specific laser (power, focus, speed settings) and the specific material being cut — it is not a universal constant. The regular class's 0.2 mm is a reasonable starting point, but verifying it directly by test-cutting several slot widths on your actual machine and material gives a value you can trust for that specific setup, and the same test-and-verify method transfers to any laser cutter you use in future, unlike a memorised single number."
+  },
+  {
+    q: "How does parametric CAD change the workflow when a design's material thickness changes partway through development?",
+    options: [
+      "It has no effect — every dimension must still be manually re-drawn regardless of CAD approach",
+      "If slot widths are defined as a formula (material thickness minus kerf) rather than fixed numbers, changing the thickness variable automatically updates every dependent slot dimension in the model",
+      "Parametric CAD can only be used for 3D printing, never for laser-cut 2D parts",
+      "Parametric CAD eliminates the need for kerf compensation entirely"
+    ],
+    answer: 1,
+    hint: "What's the key difference between a slot drawn as a fixed number versus one drawn as a formula referencing another variable?",
+    explain: "In parametric CAD, a slot width defined as a relationship ('material thickness minus kerf') rather than a fixed number automatically recalculates whenever the material thickness variable changes — every dependent dimension across the whole model updates together. This is genuinely useful during development, when material choices or thicknesses often change more than once, since it avoids manually re-editing every single slot dimension by hand each time."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C5 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.6 Use of technology — CAD/CAM (p. 63)", type: "Textbook", href: "https://drive.google.com/open?id=1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0" },
+  { label: "Regular Week 7 — CAD/CAM 1: 2D Laser Cutting", type: "Link", href: "/grade/11/term/2/week/7" },
+]} />

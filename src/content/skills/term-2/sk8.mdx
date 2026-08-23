@@ -1,0 +1,122 @@
+---
+term: '2'
+code: SK8
+order: 8
+mapsToWeek: 8
+title: "CAD/CAM 2: 3D modelling/printing + working drawing"
+hook: "3D modelling & the first working drawing"
+badges: ["key TA week"]
+masteryGoal: "model parts in 3D and set up good prints, and begin a precise working drawing."
+tutorGoal: "prepare to help peers with 3D CAD and print setup."
+---
+
+The regular class's 3D-print-vs-laser table already tells you when to choose printing. This session gives you the reason orientation matters so much once you've made that choice — the exact mechanism behind SK7's "designing for the process" principle, now applied to a completely different manufacturing process with its own physical constraints. Another **key TA week**: you're helping peers avoid failed prints before they happen, not after.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 5</ExamLink> needs evidence of digital fabrication planning, and a print that fails from bad orientation wastes filament, machine time, and a session — exactly the kind of avoidable failure a bench helper who understands *why* orientation matters can catch before the print starts.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Overhang", definition: "A feature in a 3D-printed part with no material directly beneath it in the current build orientation. Printers build layer by layer, bottom to top — a layer needs the one below it to rest on. Steep overhangs (beyond roughly 45° from vertical) need support material; shallower ones often print fine unsupported." },
+  { term: "Support material", definition: "Extra, disposable structure the printer adds beneath an overhang so each layer has something to build on, removed (broken or dissolved away) after printing. Support material costs print time and filament, and leaves a rougher surface where it was attached." },
+  { term: "Build orientation", definition: "The direction a part is rotated relative to the print bed before slicing. The same part can need extensive support in one orientation and almost none in another — orientation is a design decision, not a fixed property of the model." },
+  { term: "Clearance fit (3D printing)", definition: "The extra gap deliberately added between two mating printed parts so they can move or slide relative to each other, since printed surfaces are never perfectly smooth or dimensionally exact straight off the printer. Typically 0.2-0.3 mm per side for a simple sliding fit on an FDM printer, verified by test — the same 'design around what the process actually does' logic as SK7's kerf compensation." },
+]} />
+
+<Section title="Orientation: the same DFM principle, a different process" icon="🖨️" id="orientation">
+
+SK7 established design for manufacture (DFM): design around what the process actually does, not around an idealised drawing. 3D printing's version of that principle is **orientation** — the same part, rotated differently before printing, can be easy or nearly impossible to print well.
+
+<PrintOrientationDiagram />
+
+A horizontal overhang with nothing beneath it forces the printer to build **support material** — a disposable scaffold, printed and then broken away, that costs time, filament, and leaves a rougher surface once removed. Rotating the same part so that feature builds up from the plate directly, rather than hanging in space, can eliminate the need for support entirely. Choosing orientation well is a real design decision, made before slicing, not something the slicer software fixes automatically.
+
+</Section>
+
+<Section title="Tolerances for printing: clearance, the same way kerf worked" icon="📏" id="print-tolerance">
+
+Printed parts, like laser-cut ones, don't come out exactly the size drawn — layer lines, minor dimensional drift, and the nozzle's own width all mean a part modelled at exactly 20.0 mm rarely measures exactly 20.0 mm off the printer. For two printed parts that need to slide or rotate against each other, this means adding a **clearance fit** — a small deliberate gap — the same "design around the real behaviour of the process" logic as SK7's kerf compensation, applied to a different manufacturing method with its own typical figure (roughly 0.2–0.3 mm per side, verified on your own printer, not assumed).
+
+</Section>
+
+<WorkedExample title="A switch bezel: choosing orientation and a tolerance fit">
+
+**The part:** a small bezel that a toggle switch snaps into, sitting proud of the product's front panel with a slight lip.
+
+**Orientation choice:** printed lip-down (flat against the plate), the lip itself is a slight overhang but shallow enough (under 45°) to print cleanly without support. Printed lip-up would leave the lip's underside entirely unsupported, needing scaffolding that would leave a rough surface exactly where the switch needs to snap in cleanly — the wrong choice for a functional fit surface.
+
+**Tolerance fit:** the switch's body measures 12.0 mm across. Modelling the bezel's opening at exactly 12.0 mm would likely need force-fitting or not fit at all once printed. Modelling it at 12.3 mm (0.15 mm clearance per side) is the starting assumption — verified by printing a test bezel first and adjusting if the fit is too loose or still too tight.
+
+**Documented decision:** "Bezel printed lip-down to keep the functional snap-fit surface support-free and clean. Opening modelled at 12.3 mm (0.3 mm total clearance) for the 12.0 mm switch body, verified by test print before committing to the final version."
+
+</WorkedExample>
+
+<Extension title="Taste beyond: assembly modelling, additive vs subtractive, and FEA revisited">
+
+**Assembly modelling** goes beyond single parts: multiple components are modelled together in one file, with their mating relationships (this face touches that face, this pin fits that hole) defined explicitly — so a change to one part's dimension flags automatically if it breaks the fit with another, rather than being discovered only once both parts are printed. **Additive manufacture** (3D printing — building up material layer by layer) and **subtractive manufacture** (laser cutting, CNC routing — removing material from a larger stock) are fundamentally different processes with different DFM rules: additive struggles with unsupported overhangs but can produce complex internal geometry impossible to cut; subtractive struggles with internal cavities but is fast and cheap for flat or simple 3D shapes. **FEA** (T2 SK4's taste-beyond) applies here too: before committing filament and time to a print, a stress simulation on the CAD model can reveal whether a thin printed feature will actually survive its intended load — the same "test cheaply before committing" principle, one process earlier in the pipeline.
+
+</Extension>
+
+<Activity title="Orientation planning, tolerance fit, working drawing start" time="45 min" grouping="Individual, HOD circulating as CAD/print helper" materials={["3D CAD application", "Slicer software", "A3 paper for the working drawing start"]}>
+
+**0–12 min — Preview & demo.** Recap sketch → extrude → modify, 3D-print vs laser, and print setup from the regular class.
+
+**12–28 min — Modelling + print setup.** Model your chosen 3D-print component. Before slicing, rotate it to test at least two orientations and compare support requirements — choose deliberately, not by default.
+
+**28–36 min — Manufacturing taste.** Read the extension box. Note whether your project has any component where assembly modelling (checking two parts' fit digitally before printing either) would have caught a problem earlier.
+
+**36–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: model a part with a designed clearance-fit tolerance and print-test it — does it need adjustment after the first print?
+</Activity>
+
+<Support title="TA prep: catching unprintable geometry before it wastes a print">
+
+**Common error to watch for:** a peer's model has a large unsupported overhang in their chosen orientation, or a moving-part fit modelled with zero clearance, and doesn't realise until the print fails or the parts won't move.
+
+**Your tutoring cue:** *"How will this print without collapsing?"* — asked while looking at the model rotated in its planned orientation, before slicing, not after.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A part has a horizontal arm sticking out to one side with nothing beneath it, printed in its default orientation. What is this feature called, and what does it require?",
+    options: [
+      "A fillet — it requires no special consideration",
+      "An overhang — it likely requires support material printed beneath it and removed afterward, since each layer needs something under it to build on",
+      "A chamfer — it automatically strengthens the part",
+      "A datum — it is used only for measurement, not for printing"
+    ],
+    answer: 1,
+    hint: "The feature has empty space directly below it in this orientation — what does layer-by-layer printing need to build over empty space?",
+    explain: "A feature with nothing directly beneath it in the current orientation is an overhang. Since 3D printers build up layer by layer, with each layer needing the one below it to rest on, an overhang beyond a certain angle (roughly 45° from vertical) needs support material — a disposable scaffold printed underneath it and removed after — or the feature will sag, print incorrectly, or fail entirely."
+  },
+  {
+    q: "Why might rotating a part to a different build orientation eliminate the need for support material, without changing the part's actual design at all?",
+    options: [
+      "It wouldn't — support requirements are a fixed property of the part's geometry, unrelated to orientation",
+      "Because whether a feature counts as an 'overhang' depends on which direction is 'up' relative to the build plate — rotating the part can turn an overhanging feature into one that builds up directly from the plate instead",
+      "Rotating a part always increases print time regardless of support needs",
+      "Support material is required for every 3D print regardless of orientation or geometry"
+    ],
+    answer: 1,
+    hint: "An 'overhang' is defined relative to the build direction — what happens to that definition if you rotate the whole part?",
+    explain: "Overhang is entirely relative to build orientation — the same geometric feature can have empty space beneath it in one orientation and be resting on material (or the plate) directly in another. Rotating the part before slicing, without changing its actual 3D shape at all, can turn a heavily-overhanging feature into one that builds up cleanly from the plate, which is exactly why orientation is treated as its own design decision rather than something the slicer alone should decide."
+  },
+  {
+    q: "A bezel's opening is modelled at exactly 12.0 mm to fit a switch that measures exactly 12.0 mm, with no clearance added. What is the most likely outcome after printing?",
+    options: [
+      "A perfect fit every time, since the dimensions match exactly",
+      "The opening will likely be too tight or the switch won't fit at all, because printed parts rarely come out at exactly their modelled dimension, and zero clearance leaves no margin for that variation",
+      "3D printers always print slightly larger than modelled, so the fit would be automatically loose",
+      "Clearance is only relevant for laser-cut parts, not 3D-printed ones"
+    ],
+    answer: 1,
+    hint: "This is the same underlying issue as SK7's kerf compensation, applied to a different manufacturing process — what happens when a fit is modelled with zero margin for the process's real-world variation?",
+    explain: "Printed dimensions rarely match the modelled dimension exactly, due to layer lines, minor dimensional drift, and nozzle width effects — a real physical variation, similar in spirit to a laser's kerf. Modelling a fit at exactly zero clearance leaves no margin for that variation, so the printed opening is likely to come out too tight, requiring force-fitting or failing to fit at all. A deliberate clearance fit (verified by test print) is the print-specific version of SK7's kerf-compensation discipline."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C5 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.6 Use of technology — CAD/CAM (p. 63)", type: "Textbook", href: "https://drive.google.com/open?id=1IccLpZ1MomlXZkaG4gbDzj4v7_B_JNy0" },
+  { label: "Regular Week 8 — CAD/CAM 2: 3D Print + Working Drawing", type: "Link", href: "/grade/11/term/2/week/8" },
+]} />

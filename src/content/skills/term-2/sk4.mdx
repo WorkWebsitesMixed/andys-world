@@ -1,0 +1,129 @@
+---
+term: '2'
+code: SK4
+order: 4
+mapsToWeek: 4
+title: "Modelling & prototyping 1 (C4)"
+hook: "Making to learn"
+badges: []
+masteryGoal: "use modelling to test my design and identify development problems rigorously."
+tutorGoal: "prepare to help peers treat model flaws as data."
+---
+
+The regular class teaches you to build a model and record what it reveals — genuinely valuable, and the core of C4 evidence. This session adds the question that decides whether a 30-minute model is well spent or wasted: what should you actually test first? Testing the easiest thing to test isn't the same as testing the thing most likely to reveal a real problem.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 4</ExamLink> rewards rigorous, evidenced development — and rigour starts with testing the right thing, not just testing *something*. A model that confirms what you already knew wastes the one chance a rough card build gives you to find a real problem cheaply.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Risk-based test priority", definition: "Testing your biggest uncertainty first — the assumption most likely to be wrong, and most costly if it is — rather than the easiest or most obvious thing to test. A model's value is highest when it tests something you're genuinely unsure about, not something you're already confident works." },
+  { term: "Rapid iteration", definition: "Cycling through build → test → change quickly and repeatedly within a single session, rather than perfecting one model slowly. Several rough, fast loops typically reveal more real problems than one careful, slow build." },
+  { term: "Finite Element Analysis (FEA)", definition: "Computer software that simulates how a design distributes stress under load, without physically building it — the CAD model is divided into a mesh of small elements, and the software calculates stress in each one, usually displayed as a colour map (blue = low stress, red = high stress). A digital equivalent of a physical load test, used heavily in professional engineering before a physical prototype is ever built." },
+]} />
+
+<Section title="What to test first: risk, not convenience" icon="🎯" id="test-first">
+
+Every design has several uncertainties — but they're not equally risky. Before building anything, ask: **which assumption, if wrong, would be the most expensive to discover late, and which one am I actually unsure about right now?** That's what the model should test first — not whatever happens to be easiest to build or check.
+
+| Uncertainty type | Example | Test priority |
+|---|---|---|
+| High risk, genuinely unsure | Will the base tip under an asymmetric load? | Test first — expensive to discover after manufacture |
+| Low risk, already confident | Does the LED light when the switch closes? | Test later, or trust the Term 1 breadboard result |
+| High risk, but not testable with a card model | Will the laser-cut joint really hold at full scale? | Note as a risk to test in Week 5/6, not this session |
+
+A student who spends the model session confirming the switch position (already tested in Term 1) instead of testing whether the untested base geometry is stable has tested the wrong thing — technically "did a test," but not the test that reduces the most risk.
+
+</Section>
+
+<Section title="Rapid iteration: several rough loops beat one careful build" icon="🔁" id="iteration">
+
+Given a fixed 45 minutes, a single, carefully-built model tested once produces one data point. The same time spent on two or three rough, fast build-test-change loops produces several — and each loop after the first is informed by what the previous one revealed, which a single careful build never gets the chance to be.
+
+**The habit:** build the roughest version that can answer the question you're testing (not a polished one), test it immediately, change one thing based on what you found, and re-test — repeating as many times as the session allows. Documenting each loop (what happened, why it matters, what changed) is what turns rapid iteration into C4 evidence rather than just fiddling.
+
+</Section>
+
+<WorkedExample title="Risk-prioritised, rapidly iterated model session">
+
+**Uncertainty audit (2 minutes):** the student lists three uncertainties — base stability under asymmetric load (untested, high risk), switch reachability (already checked informally, lower risk), overall proportions looking right (checked visually against the sketch, lowest risk). Base stability is the clear priority.
+
+**Loop 1 (12 min):** rough card frame, base footprint 150 mm. Loaded asymmetrically with one weight on one side — tips at a load well below the 4 kg spec. Development point recorded: tips, base too narrow.
+
+**Loop 2 (10 min):** same model, base widened to 210 mm with a scrap-card extension taped on. Re-tested with the same asymmetric load — holds. Development point recorded: widening the base to ~210 mm resolves the tipping, confirmed by re-test.
+
+**Loop 3 (8 min):** with the highest-risk uncertainty now resolved, remaining time tests the second-priority item (switch reachability) rather than re-confirming what loop 2 already settled.
+
+**Result:** three loops, two genuine problems investigated in priority order, each with a recorded before/after — far stronger C4 evidence than one slow, careful model that only tested proportions.
+
+</WorkedExample>
+
+<Extension title="Taste beyond: prototyping fidelity, and testing without building at all">
+
+Industry distinguishes **low-fidelity prototyping** (card, foam — fast, cheap, tests form and basic function, disposable) from **high-fidelity prototyping** (close to final materials and finish — slow, expensive, tests details a rough model can't). The rule of thumb: test the biggest uncertainties with the cheapest, fastest model that can answer the question, and save high-fidelity builds for questions only a near-final version can resolve. **Finite Element Analysis (FEA)** goes a step further: professional engineers often test a structure's stress distribution entirely inside CAD software, before any physical model exists at all, using a colour-coded stress map to spot a weak point that a physical model would only reveal by breaking. It's the same "test cheaply before committing" logic as a card model, just without needing to build anything physical first.
+
+</Extension>
+
+<Activity title="Risk audit, rapid iteration, TA-prep" time="45 min" grouping="Individual, HOD circulating" materials={["Card, foam board, masking tape", "Your chosen design sketch and specification", "Scissors, craft knife, cutting mat"]}>
+
+**0–10 min — Preview.** Recap why model, model types, and testing form/scale/stability from the regular class.
+
+**10–25 min — Test-driven development.** List your three biggest design uncertainties and rank them by risk (likelihood of being wrong × cost of discovering it late). Build the roughest model that can test your #1 priority.
+
+**25–35 min — Prototyping taste.** Read the extension box. Note which of your project's uncertainties, if any, could theoretically be tested with FEA instead of a physical model.
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: run at least one full build-test-change loop, documenting what happened, why it matters, and what you changed as a development point.
+</Activity>
+
+<Support title="TA prep: model flaws as data, not failure">
+
+**Common error to watch for:** a peer feels discouraged when their model breaks or tips, and treats it as a failed attempt rather than useful information.
+
+**Your tutoring cue:** *"What did making it reveal that drawing it didn't?"* — this reframes the flaw as the model doing its job, not the student doing something wrong.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student has three untested uncertainties: whether the base is stable (never tested), whether the LED lights (already confirmed working in Term 1's breadboard test), and whether the overall proportions look right (already checked by eye against the sketch). Which should the model test first?",
+    options: [
+      "The LED, because electronics are always the highest priority",
+      "The overall proportions, because that's the easiest thing to check",
+      "The base stability, because it is the genuinely untested, high-risk uncertainty — the other two are already reasonably confident",
+      "All three should be tested in exactly equal amounts of time regardless of risk"
+    ],
+    answer: 2,
+    hint: "Which uncertainty is the student actually UNSURE about, versus already fairly confident in from earlier testing?",
+    explain: "Risk-based test priority means testing the assumption you're most unsure about and that would be most costly to discover wrong later — not the easiest thing, and not something already reasonably confirmed. The LED was already tested in Term 1; the proportions were already checked visually. Base stability is the one genuine unknown, and discovering it's wrong after manufacture would be far more costly than discovering it now with a scrap of card."
+  },
+  {
+    q: "Why might three rapid, rough build-test-change loops in 45 minutes produce stronger C4 evidence than one careful, polished model built and tested once in the same time?",
+    options: [
+      "They don't — one careful model is always superior evidence",
+      "Because each loop after the first is informed by what the previous loop revealed, producing a documented sequence of genuine development (test, find a problem, change, re-test) rather than a single data point",
+      "Because rough models always look better in folder photographs than careful ones",
+      "Because C4 specifically requires exactly three attempts, no more and no fewer"
+    ],
+    answer: 1,
+    hint: "What does the word 'development' in C4 actually require evidence of — a single good result, or a process?",
+    explain: "C4 rewards development — the process of testing, finding a problem, changing the design in response, and re-testing to confirm the fix. A single careful model tested once shows only one data point, however well-built. Multiple rapid loops, each informed by the last, produce a genuine documented sequence of iteration — exactly the kind of evidence (before, change, after) that scores well, even though each individual model is rougher than one polished build would be."
+  },
+  {
+    q: "What does Finite Element Analysis (FEA) allow an engineer to do that a physical model cannot?",
+    options: [
+      "Test a structure's stress distribution using CAD software before any physical version is built, spotting weak points without needing to break a real model",
+      "Build a completely finished, market-ready product without any further testing",
+      "Replace the need for any physical prototype ever, at any stage of a project",
+      "Test electronic circuits, but never structural or mechanical designs"
+    ],
+    answer: 0,
+    hint: "FEA works entirely inside software, before anything physical exists — what does that let an engineer avoid?",
+    explain: "FEA simulates stress distribution across a CAD model using a computer, displaying results as a colour-coded stress map, entirely before any physical prototype is built. This lets engineers identify a weak point or an overstressed area without needing to physically break a model to find it — the same 'test cheaply before committing resources' logic as a card model, but without needing to build anything physical at all. It doesn't replace physical testing entirely (real materials and manufacturing still introduce variables), but it catches many problems earlier and more cheaply."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C4 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.3 Making (modelling and prototypes, p. 35)", type: "Textbook", href: "https://drive.google.com/open?id=14K9YQcmMVfNFtmTBxbJhUzBpJm4ogxmd" },
+  { label: "Regular Week 4 — Modelling & Prototyping (C4)", type: "Link", href: "/grade/11/term/2/week/4" },
+]} />

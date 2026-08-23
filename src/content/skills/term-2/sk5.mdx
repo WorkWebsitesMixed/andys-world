@@ -1,0 +1,131 @@
+---
+term: '2'
+code: SK5
+order: 5
+mapsToWeek: 5
+title: "Development by testing (C4)"
+hook: "Fair tests, hard data"
+badges: []
+masteryGoal: "design fair, objective tests, record data and iterate."
+tutorGoal: "prepare to help peers run fair tests and reliable circuits."
+---
+
+The regular class teaches objective testing and breadboards the standard LED circuit. This session adds the formal vocabulary of a genuinely fair test — controlling variables, not just "measuring something" — and opens an optional path some of you can take for the rest of the project: swapping the LED for a small DC motor. If you choose it, this session's breadboard work has a hard deadline: SK10, when it must be shown working reliably or you revert to the standard LED circuit.
+
+<Callout type="warn" title="The motor option — read before choosing" id="motor-option">
+  This is optional. Choosing it means your development log tracks a motor circuit instead of an LED from here on, and you must demonstrate it working reliably on breadboard at <strong>SK10</strong> for HOD sign-off. If it isn't working reliably by then, you revert to the standard LED circuit — the reversion itself still counts as valid C4 development evidence, so choosing the motor path and reverting later is not a failure, just a documented decision.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Independent variable", definition: "The one thing you deliberately change between a test and its re-test — the base width, the load position, the material. A fair test changes exactly one of these at a time." },
+  { term: "Dependent variable", definition: "What you measure as the result — whether it tips, the deflection in mm, the current drawn. This is the outcome the test is designed to observe." },
+  { term: "Controlled variable", definition: "Everything else that must stay exactly the same between the test and re-test — the load amount, the surface, the measurement method — so that any difference in the result can only be explained by the independent variable you changed." },
+  { term: "H-bridge / reversing switch", definition: "The extra circuitry a DC motor needs to run in both directions. A simple on/off switch only ever lets current flow one way through the motor, so it only ever spins one way. Reversing direction needs either a DPDT (double-pole double-throw) switch wired to reverse polarity, or an H-bridge circuit (common in motor driver ICs) that does the same electronically." },
+]} />
+
+<Section title="Fair testing, formally: three variables, not one measurement" icon="⚖️" id="fair-test">
+
+The regular class's fair-test rule ("same weight, same position, same surface each time") is the controlled-variables discipline stated informally. Naming the three variable types explicitly makes it checkable:
+
+| Variable type | Role | Example (base-width test) |
+|---|---|---|
+| Independent | The one thing you deliberately change | Base width: 150 mm, then 210 mm |
+| Dependent | What you measure as the outcome | Load at which the structure tips |
+| Controlled | Everything else, held identical | Same load object, same load position, same surface, same measurement method |
+
+A test that changes the base width AND swaps to a smoother table surface at the same time has two independent variables — if the result changes, you can't tell which change caused it. This is the single most common way a "fair test" quietly stops being fair, and it's worth checking explicitly before recording any result as evidence.
+
+</Section>
+
+<Section title="The motor option: why direction needs extra control" icon="🔋" id="motor">
+
+The standard project circuit (switch → resistor → LED) only ever needs current to flow one way — an LED is a diode, it only conducts in one direction anyway. A **DC motor** is different: current flowing one way spins it one direction, and current flowing the other way spins it the opposite direction. A simple on/off switch can only ever connect the battery one way round, so a motor wired like the standard LED circuit will only ever spin one direction, at one fixed speed (set by the battery voltage) — turning the switch off just stops it.
+
+**To reverse direction, you need one of:**
+- A **DPDT (double-pole double-throw) switch**, wired so flipping it reverses which battery terminal connects to which motor terminal.
+- An **H-bridge circuit** (usually a small driver IC on a breakout board) that does the same job electronically, and can also be controlled by a microcontroller rather than a manual switch.
+
+This is exactly the "what extra control would you need to reverse direction" question the challenge below asks you to answer from your own breadboard exploration, not from being told the answer first.
+
+</Section>
+
+<WorkedExample title="LED vs motor as an actuator — the comparison worth documenting">
+
+**LED (the standard circuit):** current-limited by a resistor (Term 1 calculation), only ever one direction (it's a diode), output is binary (lit or not) unless you add PWM for dimming — a much later topic. Simple, reliable, low risk.
+
+**DC motor (the option):** no current-limiting resistor needed in the same way (the motor's own winding resistance and the battery's capability set the current, though a stalled motor can still draw more current than expected), direction depends entirely on wiring polarity, and speed is roughly proportional to supply voltage on a simple circuit (no separate speed control without added electronics like PWM). Breadboarding it means directly observing: does it turn? Which way? How fast on your battery?
+
+**The documented comparison (development log entry):** "The LED gives a simple, reliable, binary output with well-understood current limiting from Term 1. The motor gives physical motion but needs an H-bridge or DPDT switch for direction control that the LED never required, and its speed is less precisely controllable on a simple circuit. I am choosing [LED / motor] because [a reason tied to the actual product function and user need]."
+
+</WorkedExample>
+
+<Extension title="Taste beyond: design of experiments and test rigs">
+
+Professional testing goes beyond a single fair test: **design of experiments (DoE)** is a formal method for testing multiple variables efficiently, changing several at once in a structured pattern rather than one at a time, then using statistics to work out which variable actually caused which effect — far faster than testing everything separately when there are many variables to check. **Test rigs and instrumentation** — jigs that hold a test specimen reliably in the same position every time, sensors that log data automatically rather than being read off a ruler by eye — are how industry makes a "fair test" fair at scale, removing human inconsistency from repeated measurements. Your card-model load test and DoE are the same underlying idea (control what you can, isolate what you're testing) at very different scales of rigour.
+
+</Extension>
+
+<Activity title="Fair test, breadboard (LED or motor), TA-prep" time="45 min" grouping="Individual, HOD circulating" materials={["Model from the regular class", "Breadboard kit: battery, switch, resistor, LED, OR DC motor + DPDT switch if choosing the motor option", "Weights and a rule"]}>
+
+**0–10 min — Preview.** Recap objective vs opinion, fair tests, load/stability from the regular class.
+
+**10–26 min — Fair testing and data.** Set up a structural test explicitly naming your independent, dependent, and controlled variables before running it. Breadboard your circuit (LED as standard, or begin the motor option if you've chosen it).
+
+**26–36 min — DoE taste.** Read the extension box. If you chose the motor option: wire it on breadboard, observe direction and rough speed on your battery, and note in one sentence what extra control (DPDT switch or H-bridge) you'd need to reverse it.
+
+**36–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: (a) design a repeatable load test with a data table, predict the result, then test it; (b) **motor option only:** document whether it turns, which way, and how fast — this is your C4 development evidence, and this breadboard must be working reliably by SK10.
+</Activity>
+
+<Support title="TA prep: one change, one measurement">
+
+**Common errors to watch for:** an unfair test (more than one thing changed between runs), LED polarity reversed, or — for the motor option — motor leads reversed (motor spins the "wrong" way, which is not a fault, just a wiring choice to note).
+
+**Your tutoring cue:** *"What is the ONE thing you changed, and what did you measure?"* — if a peer can't answer both halves cleanly, the test isn't fair yet.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A student tests base stability by widening the base from 150 mm to 210 mm AND switching from a wooden table to a smoother laminate surface in the same test. The structure now holds more load. What is the problem with this result?",
+    options: [
+      "There is no problem — the structure holds more load, so the test succeeded",
+      "Two independent variables changed at once (base width and surface), so it's impossible to tell which change caused the improvement — the test is not fair",
+      "The test needed a larger load to be valid",
+      "Surface type is a dependent variable, not a controlled one, so it doesn't affect fairness"
+    ],
+    answer: 1,
+    hint: "How many things changed between the first test and the re-test? A fair test changes exactly one.",
+    explain: "Changing both the base width and the surface at the same time means two independent variables changed simultaneously. If the result improves, you cannot tell whether it was the wider base, the smoother/different-friction surface, or some combination of both — the surface should have been a controlled variable (held identical) so that only the base width (the intended independent variable) could explain any change in the result."
+  },
+  {
+    q: "A student wires a DC motor to a battery through a simple on/off toggle switch, the same way the LED circuit is wired. What will happen when they want to reverse the motor's direction?",
+    options: [
+      "The motor will reverse automatically after running for a few seconds",
+      "Flipping the switch off and back on will reverse the direction",
+      "It won't reverse — a simple on/off switch only ever connects the battery one way round, so the motor will only ever spin in one fixed direction; reversing needs a DPDT switch or an H-bridge",
+      "DC motors cannot be wired to a switch at all and require a microcontroller"
+    ],
+    answer: 2,
+    hint: "What determines a DC motor's spin direction — and does a simple on/off switch change that?",
+    explain: "A DC motor's direction depends on which way current flows through it (its polarity), and a simple on/off switch only ever connects the battery the same way round every time it closes — it can turn the motor on or off, but never reverse it. Reversing direction requires deliberately swapping the polarity, which needs either a DPDT switch wired to cross the connections, or an H-bridge circuit that does the same job electronically. This is a genuine extra requirement the LED circuit never had, since an LED only ever needs one direction of current anyway."
+  },
+  {
+    q: "How does design of experiments (DoE) differ from the single fair test taught in the regular class?",
+    options: [
+      "DoE is identical to a single fair test, just with a different name",
+      "DoE changes multiple variables at once in a structured pattern and uses statistics to work out which variable caused which effect — more efficient than testing one variable at a time when there are many variables to investigate",
+      "DoE can only be used for electronic circuits, never for structural tests",
+      "DoE requires no controlled variables at all"
+    ],
+    answer: 1,
+    hint: "A single fair test isolates ONE variable per test run. What would you need to do differently to test many variables efficiently?",
+    explain: "A single fair test (changing one independent variable, holding everything else controlled) is simple and rigorous, but slow if there are many variables to investigate — you'd need a separate test for each one. Design of experiments deliberately varies several variables at once in a structured, planned pattern, then uses statistical analysis to separate out which variable caused which part of the result — far more efficient at scale, though it requires more sophisticated analysis than a simple before/after comparison."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C4 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.3 Making (p. 35)", type: "Textbook", href: "https://drive.google.com/open?id=14K9YQcmMVfNFtmTBxbJhUzBpJm4ogxmd" },
+  { label: "Collins IGCSE D&T — §4.4 Electronics (p. 299)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
+  { label: "Regular Week 5 — Development by Testing (C4)", type: "Link", href: "/grade/11/term/2/week/5" },
+]} />

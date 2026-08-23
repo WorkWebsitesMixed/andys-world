@@ -1,0 +1,126 @@
+---
+term: '2'
+code: SK6
+order: 6
+mapsToWeek: 6
+title: "Development 2 + sustainability (C4)"
+hook: "Resolving from evidence"
+badges: []
+masteryGoal: "resolve my development from evidence and apply the 6Rs / life-cycle thinking rigorously."
+tutorGoal: "prepare to help peers finalise development and sustainability."
+---
+
+Today's regular class closes C4 (worth 15 marks) and submits it for M2. This session applies the exact same standard you built for specifications in Term 1's SK6 — **traceability** — to something different: not a spec point this time, but every design change in your development story. It also extends the T1 SK3 embodied-energy calculation to a genuinely new question: what happens to your material at end of life, and can your design make that easier?
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 4</ExamLink> is worth 15 marks, submitted today for M2 alongside C3 — together 35% of your project. A development story where every change traces to a specific test result is exactly what separates a distinction C4 from a merely competent one.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Development traceability", definition: "The same standard as T1 SK6's specification traceability, applied to design changes: every refinement in your C4 story should trace backward to a specific test result or spec point, not to 'it seemed better this way.' A distinction-level development page survives the question 'what evidence made you change this?' for every single change." },
+  { term: "Circular economy", definition: "A model of production and use where materials stay in circulation — through reuse, repair, and recycling — rather than being extracted, used once, and discarded (the traditional 'linear economy'). Designing for the circular economy means designing the END of a product's life as deliberately as its use." },
+  { term: "Design for disassembly", definition: "Designing joints and fixings so a product can be taken apart at end of life, separating different materials for recycling rather than sending a glued, mixed-material product to landfill as one inseparable lump. KD (knock-down) fittings are a design-for-disassembly choice; permanent glue joints are not." },
+]} />
+
+<Section title="Traceability, applied to development" icon="🔗" id="traceable-dev">
+
+T1 SK6 established the traceability chain for specification points: research finding → spec point → test method. C4 needs the same discipline applied to a different chain: **test result → design change → re-test confirmation.**
+
+| Level | Example | The problem |
+|---|---|---|
+| Resolved, not traceable | "I widened the base because it looked more stable." | "Looked more stable" isn't evidence — where's the test that showed the original was unstable? |
+| Traceable | "I widened the base from 150 mm to 210 mm because the Week 5 asymmetric-load test showed tipping at 2.7 kg, below the 4 kg spec. Re-tested after widening: no tipping at 3.5 kg asymmetric." | The change traces to an exact test result, and the re-test confirms the fix worked. |
+
+Go through your own C4 pages and check every design change against this: can you name the exact test result that drove it? If the answer is "I just thought it needed it," that change isn't distinction-level evidence yet — even if the change itself was the right call.
+
+</Section>
+
+<Section title="Design for disassembly: the 6R the regular class covers, taken further" icon="♻️" id="disassembly">
+
+The regular class's sustainability table already lists "knock-down fittings allow disassembly and recyclable components at end of life" as one decision among several. **Design for disassembly** makes that its own deliberate design question, not just one line in a table: at end of life, can the different materials in your product actually be separated, or are they permanently bonded into one mixed-material lump that can only go to landfill?
+
+Revisit T1 SK1's joint-selection table with this lens: a corner block glued in place resists a moment well (SK1's structural reasoning), but it's now permanently bonded — good for strength, bad for disassembly. A KD fitting resists the same moment mechanically, without glue, and can be unscrewed at end of life. This is a genuine trade-off (T1 SK7's three-part annotation model applies directly): strength and ease-of-assembly vs disassembly and recyclability, and a distinction-level sustainability note names the trade-off explicitly rather than treating KD fittings as a free upgrade with no downside.
+
+</Section>
+
+<WorkedExample title="Extending T1 SK3's embodied energy calculation to end-of-life">
+
+T1 SK3 calculated embodied energy (mass × specific embodied energy) for making a component. End-of-life adds a second question: how much of that embodied energy can be *recovered* through recycling, versus lost to landfill?
+
+**Steel bracket arm (0.14 kg, ≈3.5 MJ embodied energy from T1 SK3):** steel is one of the most-recycled materials in the world, and recycling it recovers a large share of that embodied energy — a design that allows the steel to be separated out (not glued to other materials) means most of that 3.5 MJ isn't wasted at end of life.
+
+**Design-for-disassembly note:** "The steel bracket arm is joined with a KD (knock-down) fitting rather than adhesive, specifically so it can be separated from the timber backboard at end of life and sent to metal recycling rather than landfill as a mixed-material assembly. This trades a small amount of joint rigidity (KD fittings resist a moment slightly less stiffly than a glued corner block, per SK1's joint table) for recovering most of the material's embodied energy at end of life."
+
+This is what a genuinely distinction-level sustainability paragraph looks like: it names a specific number from earlier work (embodied energy), a specific design decision (KD fitting), and the specific trade-off it costs (slightly less joint rigidity) — not just "recyclable materials were used."
+
+</WorkedExample>
+
+<Extension title="Taste beyond: life-cycle assessment and the circular economy at product scale">
+
+A full **life-cycle assessment** (T1 SK3's taste-beyond topic) traces environmental impact across a product's entire life — extraction, manufacture, use, and disposal — not just the manufacturing stage the embodied-energy calculation covers. The **circular economy** is the design philosophy this points toward: instead of a one-way line from raw material to landfill, materials circulate — a disassembled product's steel becomes a new product's steel, its timber becomes another product's timber, indefinitely, rather than being extracted once and discarded once. Every design-for-disassembly decision you make this session is a small, concrete instance of designing for a circular economy rather than a linear one.
+
+</Extension>
+
+<Activity title="Traceability audit, disassembly redesign, TA-prep" time="45 min" grouping="Individual, HOD circulating" materials={["Your C4 development pages so far", "Your project notes from T1 SK1/SK3", "Pencil"]}>
+
+**0–10 min — Preview.** Recap resolving development, the 6Rs, and design for repair/recycle from the regular class.
+
+**10–25 min — Evidence-driven resolution.** Audit every design change on your C4 pages against the traceability table: can each one name the exact test result that drove it? Fix any that can't.
+
+**25–35 min — LCA taste.** Read the extension box. Note one stage of your product's life cycle (extraction, manufacture, use, disposal) you haven't yet considered in your folder.
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: do a mini life-cycle comparison of two material or joint choices for your product, plus one specific design-for-disassembly improvement, following the worked example's model.
+</Activity>
+
+<Support title="TA prep: 'what evidence drove this change?'">
+
+**Common error to watch for:** a peer's development page shows a nice final design but no evidence of what problem it fixed or why the change was made.
+
+**Your tutoring cue:** *"What evidence drove this change?"* — if they can't point to a specific test result, help them either find it (maybe it exists but wasn't written down) or generate it now with a quick re-test.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A development page says: 'I changed the joint to a corner block because it looked stronger.' What is missing to make this traceable, distinction-level C4 evidence?",
+    options: [
+      "Nothing — a strength-based reason is always sufficient justification for a joint change",
+      "A specific test result or calculation that shows the original joint was inadequate, and ideally a re-test confirming the corner block fixed the specific problem found",
+      "The corner block should be replaced with a KD fitting instead",
+      "The page needs a photograph, which is the only thing missing"
+    ],
+    answer: 1,
+    hint: "'Looked stronger' is an opinion. What would make this traceable back to evidence, the same standard from T1 SK6?",
+    explain: "'Looked stronger' is not traceable — there's no test result or calculation showing the original joint was actually inadequate, or that the corner block specifically resolved a known problem. Distinction-level C4 evidence names the exact test or finding that drove the change (e.g. 'the SK1 moment calculation showed the joint needed to resist 6 N·m, which a plain screw joint could not reliably do') and ideally a re-test confirming the fix worked."
+  },
+  {
+    q: "A design-for-disassembly improvement replaces a glued corner block with a KD (knock-down) fitting at a joint that resists a structural moment (as analysed in T1 SK1). What trade-off does a distinction-level sustainability note need to acknowledge?",
+    options: [
+      "None — KD fittings are strictly better than glued joints in every respect",
+      "That the KD fitting may resist the moment slightly less rigidly than a glued corner block, in exchange for allowing the joint to be disassembled and materials separated for recycling at end of life",
+      "That KD fittings cannot be used on any joint that carries a moment",
+      "That the change has no effect on strength or sustainability at all"
+    ],
+    answer: 1,
+    hint: "Every real design trade-off has a cost as well as a benefit — what does gluing give up when it's replaced by a mechanical fitting?",
+    explain: "This mirrors T1 SK7's three-part annotation model (feature + reason + trade-off): switching to a KD fitting for disassembly is a genuine sustainability improvement, but it isn't free — a mechanical fitting may not resist a moment quite as rigidly as a glued, wide-bearing corner block (SK1's joint reasoning). A distinction-level note states both the benefit (recyclability) and the honest cost (slightly reduced joint rigidity), rather than presenting the change as a strict, costless upgrade."
+  },
+  {
+    q: "How does the circular economy model differ from a traditional linear economy, in terms of what happens to a product's materials at end of life?",
+    options: [
+      "There is no difference — both models discard materials to landfill after first use",
+      "In a linear economy, materials are extracted, used once, and discarded; in a circular economy, materials are designed to be recovered and circulated back into new products, extending their use rather than ending it",
+      "A circular economy only applies to electronic components, never to structural materials like timber or steel",
+      "A circular economy means every product must be recycled, with no option for repair or reuse"
+    ],
+    answer: 1,
+    hint: "Think about the shape implied by the names: 'linear' (a straight line) versus 'circular' (a loop).",
+    explain: "A linear economy follows a one-way path: extract raw material, manufacture, use once, discard to landfill. A circular economy designs for materials to circulate — through reuse, repair, and recycling — so a disassembled product's steel or timber becomes input for a new product rather than waste. Design-for-disassembly decisions (like choosing a KD fitting over a permanent glue joint) are concrete, product-level instances of designing for a circular rather than linear material flow."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C4 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.9 Environment and sustainability (p. 101)", type: "Textbook", href: "https://drive.google.com/open?id=1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle" },
+  { label: "Regular Week 6 — Development 2 + Sustainability (C4) — Graded M2", type: "Link", href: "/grade/11/term/2/week/6" },
+]} />

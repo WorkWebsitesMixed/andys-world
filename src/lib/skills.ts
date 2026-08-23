@@ -46,12 +46,14 @@ export const SKILLS_TERMS: SkillsTermInfo[] = [
   {
     id: '2',
     label: 'Term 2',
-    eyebrow: 'Not yet written',
-    blurb: 'Design development, working drawings, manufacture and CAD — mapped to Term 2.',
-    intro: '',
-    taModel: '',
+    eyebrow: '10 sessions · SK1–SK10',
+    blurb: 'Paper 1 technique, idea development, testing, CAD/CAM and working drawings — engineering design practice previewed before W1–W10.',
+    intro:
+      'Same model as Term 1: a flipped preview of each week\'s design/develop topic, pushed to distinction level with a taste beyond, before the 18 train as near-peer TAs for the other 42. In Term 2 the regular class is a single 90-minute session with no bonus block, so SKILLS runs immediately before it. The shift of emphasis: Term 1\'s "taste beyond" spanned structures physics and sketching technique; Term 2\'s is engineering design practice — Paper 1 exam format (parts a and c), decision matrices, CAD/CAM workflows, design for manufacture, and working-drawing standards. Term 2 opens with two Paper 1 technique sessions (W1 and W3) before moving through design development and the CAD/CAM weeks, and closes with a full Paper 4 past-paper test. The high-leverage TA weeks are the Paper 1 sessions (W1, W3), the CAD sessions (W7, W8), and the Paper 4 test week (W10).',
+    taModel:
+      'Having previewed the topic, each SKILLS student joins that week\'s regular class as a near-peer tutor: circulating, prompting and checking the other students\' work using the tutoring cue on their card. The rule they are taught is ask, don\'t tell — guide a peer to the answer with a question rather than handing it over. In the Paper 1 and CAD weeks, this often means being the visible reference-quality exemplar in the room as much as an active tutor.',
     targetGradeTerm: 2,
-    status: 'planned',
+    status: 'active',
   },
   {
     id: '3',

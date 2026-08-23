@@ -1,0 +1,118 @@
+---
+term: '2'
+code: SK2
+order: 2
+mapsToWeek: 2
+title: "Idea development & selection (close C3)"
+hook: "Choosing like an engineer"
+badges: []
+masteryGoal: "select my design with an objective weighted evaluation and justify it to distinction standard."
+tutorGoal: "prepare to help peers evaluate by evidence, not preference."
+---
+
+The regular class's weighted evaluation matrix (score × weight, highest total wins) is genuinely objective — a real improvement over "I just like this one." This session adds the question a single matrix run never answers: how confident should you actually be in that winner? A decision that only wins because of how the weights happened to be set isn't as solid as one that wins no matter how you weight it.
+
+<Callout type="exam" title="Why this matters" id="why">
+  <ExamLink to="project">Component 2 Criterion 3</ExamLink> is worth 20 marks — the single largest design criterion — and a distinction-level selection needs to be traceable to spec points, the same "traceable" standard from Term 1's SK6 specification work, now applied to a design decision instead of a spec point.
+</Callout>
+
+<KeyTerms terms={[
+  { term: "Weighted score", definition: "Score × weight, summed across every specification point, for one idea. The formula behind the regular class's evaluation matrix, made explicit." },
+  { term: "Sensitivity check", definition: "Re-running a decision matrix with different (but still reasonable) weights to see whether the winning idea changes. If the winner stays the same across several plausible weightings, the decision is robust. If it flips easily, the original selection was more fragile than the single matrix run suggested." },
+  { term: "Pugh matrix", definition: "A concept-selection method (introduced in T1 SK8): pick a datum idea, score every alternative as better (+), the same (0), or worse (−) relative to it on each criterion. Faster to build than a weighted matrix and makes the comparison to a baseline explicit." },
+]} />
+
+<Section title="The weighted matrix, formalised" icon="🧮" id="weighted">
+
+<Formula
+  name="Weighted score for one idea"
+  equation="\text{Total} = \sum_{i} (\text{weight}_i \times \text{score}_i)"
+  note="Total = the idea's overall weighted score, summed across every specification point. weight_i = the importance assigned to specification point i (e.g. out of 10 total across all points). score_i = how well this idea meets point i, typically 0–3 (0 = fails, 3 = exceeds). Σ (sigma) means 'sum over every point i' — add up weight × score for every row, not just one."
+/>
+
+This is exactly what the regular class's matrix table computes row by row — writing it as one formula makes clear that changing a single weight changes every idea's total, which is exactly why a sensitivity check matters: the "winner" is a function of the weights you chose, not an absolute fact about the ideas.
+
+</Section>
+
+<WorkedExample title="Sensitivity check on the cyclist organiser matrix">
+
+Using T1's evaluation matrix (wall-mounted pegboard A: 27, freestanding tower B: 26, hanging frame C: 17) — A wins, but only by 1 point over B. That's close enough to check.
+
+**Re-weighting:** the original matrix weighted "holds 4 kg" at 3 and "easy to mount/unmount gear" at 3. Suppose the user, on reflection, cares more about ease of mounting/unmounting (daily use) than raw load capacity (rarely tested near the limit) — swap the weights: "holds 4 kg" drops to weight 2, "easy to mount/unmount" rises to weight 4.
+
+Recalculating just those two rows: Idea A — holds 4kg (3×2=6) + easy mount (2×4=8) = 14 (was 9+6=15). Idea B — holds 4kg (3×2=6) + easy mount (3×4=12) = 18 (was 9+9=18). With the other two rows unchanged (6+6=12 for both A and B), new totals: A = 26, B = 30 — **B now wins**.
+
+**What this tells you:** the original selection (A) was not robust — it depended on weighting load capacity above ease of use. A distinction-level justification would report this honestly: "Idea A wins under the original weighting, but the result is sensitive to how heavily ease-of-mounting is weighted against load capacity — I am selecting A because [a stated reason for why load capacity should be weighted higher for this specific user], not because the matrix gave a single unambiguous answer."
+
+</WorkedExample>
+
+<Extension title="Taste beyond: the Pugh matrix and weighted-objectives method in engineering">
+
+Real concept-selection in engineering rarely stops at one weighted matrix run. The **Pugh matrix** (T1 SK8) checks ideas against a baseline rather than in isolation — useful when you want to know "is this actually better than what already exists," not just "which of these three is best." The **weighted-objectives method** (what the regular class's matrix already is, formalised) is preferred when there's no natural baseline and every criterion needs its own explicit importance. Professional teams often run both: a Pugh matrix to narrow a wide field of concepts down to two or three strong candidates, then a weighted-objectives matrix for the final decision between those few — because a Pugh matrix is fast but coarse (+/0/−), while a weighted matrix is slower but more decisive between close alternatives.
+
+</Extension>
+
+<Activity title="Weighted selection, sensitivity check, TA-prep" time="45 min" grouping="Individual, HOD circulating" materials={["Your Term 1 idea sketches", "Your specification", "Calculator"]}>
+
+**0–10 min — Preview.** Recap developing vs generating ideas, and the regular class's evaluation-against-spec model.
+
+**10–25 min — Weighted selection.** Build your evaluation matrix: ideas as columns, 4–6 spec points as rows, weights assigned, scores 0–3, totals calculated.
+
+**25–35 min — Pugh-matrix taste.** Recap T1 SK8's Pugh matrix method. Note one reason you might prefer a Pugh matrix over a weighted matrix at an earlier stage of narrowing ideas down.
+
+**35–45 min — TA cue rehearsal + Challenge.** Read the TA prep box, then complete the challenge: run your weighted matrix, then a sensitivity check — change one or two weights plausibly and see whether the winner changes. Write one sentence reporting the result honestly, whichever way it goes.
+</Activity>
+
+<Support title="TA prep: evidence, not preference">
+
+**Common error to watch for:** a peer picks an idea first, then builds a matrix that happens to justify it — scores quietly nudged to fit the preferred outcome rather than assessed honestly.
+
+**Your tutoring cue:** *"Which spec points matter most, and which idea wins on them?"* — asked BEFORE scores are filled in, this forces the weighting decision to happen independently of which idea the peer already likes, which is the actual discipline an objective matrix depends on.
+
+</Support>
+
+<SelfCheck questions={[
+  {
+    q: "A weighted evaluation matrix gives Idea A a score of 27 and Idea B a score of 26 — a difference of only 1 point. What does a sensitivity check add that the single matrix run does not tell you?",
+    options: [
+      "Nothing — the matrix result is final and does not need checking",
+      "Whether the winning idea (A) still wins under other reasonable weightings, or whether the result is fragile and depends heavily on the exact weights chosen",
+      "The exact manufacturing cost of each idea",
+      "Whether the ideas are structurally different from each other"
+    ],
+    answer: 1,
+    hint: "A 1-point difference is close. What happens if you nudge the weights slightly?",
+    explain: "A close result (27 vs 26) is exactly the situation where a sensitivity check matters most: re-running the matrix with slightly different but still reasonable weights tells you whether the winner is robust (stays the same across plausible weightings) or fragile (flips to a different idea easily). This is genuinely useful information the single run doesn't provide — it tells you how much to trust the result."
+  },
+  {
+    q: "In the weighted score formula Total = Σ(weight_i × score_i), what does changing a single weight_i do to the calculation?",
+    options: [
+      "Nothing — weights are fixed constants that cannot be changed once set",
+      "It changes only that one specification point's contribution, leaving every idea's total exactly the same",
+      "It changes every idea's total, because every idea has a score for that same specification point, multiplied by the same weight",
+      "It only affects the idea that scored highest on that point"
+    ],
+    answer: 2,
+    hint: "The weight for a given specification point is the SAME across all ideas being compared — what happens to every idea's total when that shared number changes?",
+    explain: "Because every idea is scored against the same specification points with the same weights, changing one weight changes the weighted contribution of that point for every idea being compared — not just one. This is exactly why the 'winner' of a weighted matrix is a function of the chosen weights, not a fixed property of the ideas themselves, and why a sensitivity check (trying different plausible weights) is worth doing when the result is close."
+  },
+  {
+    q: "When would a Pugh matrix be more useful than a weighted-objectives matrix?",
+    options: [
+      "Never — a weighted matrix is always the superior method in every situation",
+      "When there is a natural baseline (an existing product, or 'what we currently do') and you want a fast, coarse comparison of several new concepts against it, before doing a more detailed weighted comparison between the strongest few",
+      "Only when there are exactly two ideas being compared",
+      "A Pugh matrix and a weighted matrix always produce identical results, so the choice makes no difference"
+    ],
+    answer: 1,
+    hint: "What does a Pugh matrix need that a weighted matrix doesn't — and what's it good at that a weighted matrix (slower, more granular) is not?",
+    explain: "A Pugh matrix needs a datum (baseline) to compare against and gives a fast but coarse comparison (+/0/−). This makes it well suited to quickly narrowing a wide field of concepts against an existing baseline before committing to the slower, more granular weighted-objectives matrix for a final decision between the strongest few candidates — professional teams often use both in sequence, for different jobs."
+  }
+]} />
+
+<Resources items={[
+  { label: "Component 2 Project — C3 criteria", route: "project", type: "Internal" },
+  { label: "Collins IGCSE D&T — §1.2 Design ideas and techniques (p. 20)", type: "Textbook", href: "https://drive.google.com/open?id=1G5_GlCOiLuFPLZbVGxUI94ZvgxcRGbj7" },
+  { label: "Collins IGCSE D&T — §1.4 Evaluation (p. 48)", type: "Textbook", href: "https://drive.google.com/open?id=11tjufYjFFxb4KBQe3iqqDFiU62aPjLDs" },
+  { label: "Regular Week 2 — Idea Development, Selection & Evaluation (C3)", type: "Link", href: "/grade/11/term/2/week/2" },
+]} />

@@ -1,0 +1,68 @@
+---
+/**
+ * Kerf compensation: an uncompensated slot drawn at the material's nominal
+ * thickness ends up too loose once the laser burns away extra width; a
+ * slot drawn slightly narrower (thickness minus kerf) ends up snug.
+ */
+const caption =
+  'A 6 mm tab meeting a slot drawn at exactly 6 mm: the laser’s kerf burns away extra material from both slot walls, leaving a loose, wobbly fit. The same tab meeting a slot drawn at 5.8 mm (kerf-compensated) ends up snug at the true 6 mm once cut.';
+---
+
+<figure class="diagram">
+  <svg viewBox="0 0 460 200" role="img" aria-labelledby="kc-t kc-d" class="dg">
+    <title id="kc-t">Kerf compensation: uncompensated vs compensated slot</title>
+    <desc id="kc-d">{caption}</desc>
+
+    <!-- ===== Panel A: no compensation (loose) ===== -->
+    <g>
+      <rect x="30" y="40" width="150" height="60" class="board" />
+      <rect x="70" y="40" width="24" height="60" class="slot-loose" />
+      <rect x="72" y="35" width="20" height="70" class="tab" />
+      <line x1="70" y1="115" x2="70" y2="128" class="dimline" />
+      <line x1="94" y1="115" x2="94" y2="128" class="dimline" />
+      <line x1="70" y1="122" x2="94" y2="122" class="dimline" />
+      <text x="82" y="140" text-anchor="middle" class="dim">slot drawn 6 mm</text>
+      <text x="105" y="40" text-anchor="start" class="lbl-warn">gap after kerf</text>
+      <text x="105" y="185" text-anchor="middle" class="lbl">No compensation — loose</text>
+    </g>
+
+    <!-- Divider -->
+    <line x1="228" y1="15" x2="228" y2="195" class="divider" />
+
+    <!-- ===== Panel B: compensated (snug) ===== -->
+    <g transform="translate(210 0)">
+      <rect x="30" y="40" width="150" height="60" class="board" />
+      <rect x="71" y="40" width="22" height="60" class="slot-snug" />
+      <rect x="72" y="35" width="20" height="70" class="tab" />
+      <line x1="71" y1="115" x2="71" y2="128" class="dimline" />
+      <line x1="93" y1="115" x2="93" y2="128" class="dimline" />
+      <line x1="71" y1="122" x2="93" y2="122" class="dimline" />
+      <text x="82" y="140" text-anchor="middle" class="dim">slot drawn 5.8 mm</text>
+      <text x="105" y="185" text-anchor="middle" class="lbl">Compensated — snug 6 mm fit</text>
+    </g>
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .diagram { margin-block: 1.75rem; }
+  .dg { width: 100%; height: auto; max-width: 460px; display: block; margin-inline: auto; }
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    text-align: center;
+    max-width: 38rem;
+    margin-inline: auto;
+  }
+  .board { fill: var(--bg-3); stroke: var(--text); stroke-width: 2; }
+  .slot-loose { fill: var(--bg-1); stroke: var(--warn, #f59e0b); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .slot-snug { fill: var(--bg-1); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3 3; }
+  .tab { fill: var(--accent-2-wash, var(--accent-wash)); stroke: var(--accent-2); stroke-width: 2; }
+  .dimline { stroke: var(--text-faint); stroke-width: 1; }
+  text { fill: var(--text-dim); font-family: var(--font-body); font-size: 12px; }
+  .dim { fill: var(--text-faint); font-size: 11px; }
+  .lbl { fill: var(--text); font-size: 12px; font-weight: 600; }
+  .lbl-warn { fill: var(--warn, #f59e0b); font-size: 11px; }
+  .divider { stroke: var(--line); stroke-width: 1; }
+</style>
