@@ -427,6 +427,96 @@ explains Paper 1, Paper 4 and the Project.
   recent session notes, or grep `open?id=` in any lesson file for the 28 covered IDs.
 - Old site to mine for images/quizzes: `../D&T Classes/D-T-Classes/` (+ `img/`).
 
+## 6a. SKILLS enrichment programme (added 2026-08-23)
+New top-level nav item, **`/skills`**, next to Extracurricular. SKILLS is the
+optional, ungraded near-peer TA / advanced-enrichment strand for ~18 advanced
+Grade 11 (Systems & Control) students — 45 min/week, before their regular
+slot, 1:1 mapped to that week's regular G11 topic. Not a course like Python/
+Mechatronics: every card previews and deepens the *same week's* regular G11
+class, then trains the group to TA it.
+
+- **Source docs (spec, not verbatim content):** `../Curriculum/Skills_2026-2027/
+  LaTeX_sources/SKILLS_Term{1,2,3}.tex` + `SKILLS_Revision.tex`. Each source
+  card is terse (Maps to / Preview / Deepen / Taste beyond / TA prep /
+  Challenge / Run sheet) — used as a spec to author full lesson-depth pages
+  from, per explicit user instruction ("populate the class in-depth like the
+  regular ones... define every formula term, explain concepts, add diagrams").
+- **Content model:** new `skills` collection in `content.config.ts` — frontmatter
+  `term` ('1'|'2'|'3'|'revision'), `code` (SK1, SR1…), `order`, `mapsToWeek`,
+  `title`/`hook`/`badges`, `masteryGoal`/`tutorGoal` (goal text WITHOUT the "By
+  the end of the session I will" stem — `SkillsGoals.astro` adds it, mirroring
+  how `learningGoal` works in the `lessons` collection). MDX body is the full
+  lesson content. Files: `src/content/skills/term-<n>/sk<n>.mdx`.
+- **Registry `src/lib/skills.ts`** (`SKILLS_TERMS`, parallel to `curriculum.ts`)
+  holds what isn't in the content: which terms exist, term-level framing copy
+  (the "at a glance" intro + TA model paragraph), and `targetGradeTerm` — which
+  G11 term a term's `mapsToWeek` resolves against (all currently `= term`, but
+  kept explicit since Revision may map differently later).
+- **Routes** in `url.ts`: `routes.skills()`, `skillsTerm(t)`, `skillsSession(t,
+  code)`. **Pages:** `/skills` (landing) → `/skills/term/[term]` (overview,
+  dynamic per `SKILLS_TERMS`, at-a-glance + card grid) → `/skills/term/[term]/
+  [code]` (one page per card, dynamic from the collection).
+- **New `SkillsLessonLayout.astro`** mirrors `LessonLayout.astro` exactly — same
+  `<LessonNav />` left-side scroll-spy menu, same MDX component library
+  (`KeyTerms`/`Section`/`WorkedExample`/`Activity`/`Support`/`Extension`/
+  `SelfCheck`/`Resources`/`Callout`/`Formula`/`ExamLink`/`WeekLink`/diagrams —
+  registered per-diagram, not the full G10/G12 set) so a SKILLS card reads and
+  behaves exactly like a regular class. New **`SkillsGoals.astro`** mirrors
+  `Goals.astro` (Mastery/Tutor goal panels instead of Learning/SEL).
+- **No Homework/Reflection on any SKILLS card** — explicit user instruction,
+  SKILLS is enrichment, not homework-bearing. `Support` is repurposed as the
+  "TA prep" tutoring-cue box; `Extension` is repurposed as "Taste beyond" —
+  both used as in-session content, never inside a homework section.
+- **Every `<Formula>` carries a full term-by-term glossary in its `note`**
+  (symbol + meaning + units for every variable), not just the substituted
+  numbers — a specific, repeated user instruction, applied retroactively to
+  T1 SK1/SK2 and forward to everything after.
+- **Curriculum threading across cards/terms** (deliberate, not incidental —
+  this is what makes "deepen" mean something beyond restating the regular
+  class): T1 SK1's engineering chain + cantilever/moment reasoning is reused
+  in T1 SK3 (rebar placement), T1 SK6 (traceability, introduced here) is reused
+  in T2 SK2/SK6, T1 SK3's embodied-energy formula is extended in T2 SK6
+  (design-for-disassembly), T2 SK7's kerf-compensation DFM logic is reused in
+  T2 SK8 (print-tolerance DFM), and T2 SK10 closes the term by running the
+  full T1 SK1 chain as one connected Paper 4 Section B answer. Worked examples
+  reuse the site's canonical running example (the cyclist gear organiser,
+  `project-examples.ts`) wherever the numbers carry over cleanly, so a number
+  introduced in one card (e.g. the 40 N / 150 mm / 6 N·m cantilever case from
+  T1 SK1) reappears correctly in later cards rather than being reinvented.
+- **New diagram components** (same house style as §4 — inline SVG, theme-aware
+  via CSS vars, `title`+`desc` for a11y — registered in both `LessonNav`'s
+  section list and `SkillsLessonLayout`'s MDX component map):
+  `CantileverDiagram`, `AntiMovementJointDiagram`, `StressStrainDiagram`,
+  `ReinforcedConcreteDiagram`, `KerfCompensationDiagram`,
+  `PrintOrientationDiagram`. Diagrams are added only where a genuinely new
+  *technical* concept needs one — the exam/process-skill cards (Paper 1
+  technique, specification writing, sketching annotation, ideation) have none,
+  matching how the regular curriculum itself only diagrams technical weeks.
+- **T2 SK5/SK10 carry the SKILLS-only DC motor option** (mentioned in passing
+  in §5's brief section, now fully authored): students who choose it at SK5
+  breadboard a DC motor instead of the standard LED, explore direction/speed,
+  and must get HOD sign-off on a reliable breadboard circuit at SK10 — a
+  `Callout type="warn"` on both cards flags this distinctly from the graded
+  exam content. Reverting to the LED circuit if not signed off still counts as
+  valid C4 development evidence (a design decision, not a failure) — this is
+  stated explicitly on both cards so it doesn't read as a penalty.
+- **Status: Term 1 (SK1–SK8) and Term 2 (SK1–SK10) fully authored and
+  deployed.** Term 3 and Revision are still placeholders — `SKILLS_TERMS`
+  entries exist with `status: 'planned'`, and `/skills/term/3` /
+  `/skills/term/revision` render a "not yet written" notice, same pattern as
+  an un-authored grade/term elsewhere on the site.
+- **Correction to a stale note in this file's earlier G11 restructure history:**
+  a prior session note described a different Term 2 sequence (development →
+  working-drawings → materials-testing → manufacture-moved-into-T2, etc.).
+  Verified 2026-08-23 against the live `t2-w1..w10.mdx` files: they match
+  `SKILLS_Term2.tex`'s week map exactly (W1 Paper 1 part a, W2 idea dev/C3,
+  W3 Paper 1 part c graded M1, W4–W6 modelling/testing/development C4 + M2,
+  W7–W8 CAD/CAM, W9 working drawings C5, W10 Paper 4 past paper M3) — that
+  earlier restructure note was either superseded or never fully applied to
+  T2. **Trust the live files over old restructure notes if they ever disagree
+  again** — this file accumulates history and doesn't always get corrected
+  when a plan changes.
+
 ## 7b. Extracurricular courses (added 2026-06-26)
 - **Python Programming** course added at `/course/python/` with 4 sprints × 27 weeks.
 - Architecture: new `sessions` content collection (`src/content/sessions/python/*.mdx`),
@@ -479,7 +569,17 @@ explains Paper 1, Paper 4 and the Project.
    broken push or a broken workflow; retrying mid-outage just repeats the same
    failure. A `git push` succeeding does **not** mean the Pages deploy ran —
    they're separate steps; check `gh run list` too.
-8. **MDX bare `{...}` outside a code span breaks the build.** Hit this twice —
+8. **SKILLS Term 3 + Revision — not yet built.** Term 1 (SK1–SK8) and Term 2
+   (SK1–SK10) are done (see §6a). Term 3 and Revision cards exist as
+   `status: 'planned'` placeholders in `SKILLS_TERMS` (`src/lib/skills.ts`) —
+   source content is in `../Curriculum/Skills_2026-2027/LaTeX_sources/
+   SKILLS_Term3.tex` and `SKILLS_Revision.tex`, same terse-spec-to-full-lesson
+   process as T1/T2. Before starting: T3's regular G11 curriculum is entirely
+   exam revision (per §7's restructure), so check the live `t3-w1..w10.mdx`
+   files against `SKILLS_Term3.tex`'s week map first, the same way §6a's
+   correction had to for T2 — don't assume the LaTeX doc's week-to-topic
+   table is current without checking.
+9. **MDX bare `{...}` outside a code span breaks the build.** Hit this twice —
    once from `Table~\ref{...}` in prose, once from a `<style>` block with real
    CSS braces (`{ display: grid; }`). MDX parses any `{...}` in body content as a
    JS expression, code fences and inline `` `code` `` spans excepted. Wrap
