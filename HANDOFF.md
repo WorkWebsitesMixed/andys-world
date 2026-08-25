@@ -537,6 +537,42 @@ class, then trains the group to TA it.
   - `src/pages/course/[courseId]/block/[blockId].astro` — new block page with prev/next navigation.
   - Source of truth for content: `../Curriculum/mechatronics_course/*.tex` files.
 
+## 7c. Mechatronics Block 1A rebuild — Da Vinci Paddle Boat (added 2026-08-25)
+Block 1A's original content (`block-1a.mdx`) was wrong, not just thin — it described a
+generic firmware stack (old `ledcSetup`/`ledcAttachPin` API, a generic L298N H-bridge, an
+ESP-NOW-first architecture) that didn't match the real board, driver, or firmware
+architecture this course actually uses. Rebuilt from a complete, accurate replacement
+curriculum authored in a separate Obsidian vault
+(`../davinci-paddle-boat/Course/Students/`) — session-by-session content for two student
+tracks (Tuesday whole-team, Thursday electronics-pair), deliberately written as scaffolded
+exercises (skeleton code + `TODO`s + progressive hints), not solved code.
+
+- **New `blockSessions` content collection** (`content.config.ts`) — one `.mdx` per
+  per-session page inside a block-structured course, `track: 'tuesday' | 'thursday' |
+  'shared'`, routed at `/course/[courseId]/block/[blockId]/session/[code]`. Files:
+  `src/content/block-sessions/<blockId>/<code>.mdx`.
+- **New `BlockSessionLayout.astro`** — same shape as `SkillsLessonLayout` (`LessonNav`,
+  `KeyTerms`/`Section`/`Activity`/`WorkedExample`/`Support`/`Callout`/`Resources`/
+  `Figure`/`WatchSee`), **no `SelfCheck`/`Reflection`/homework** — in-session content
+  only, same SKILLS precedent (§6a). Plain copy-button script on `pre` blocks (no Shiki —
+  short skeleton snippets, matching the block page's existing treatment).
+- **New `SessionLink.astro`** — inline cross-links between sessions (mirrors `WeekLink`).
+- 14 session pages: T1–T8 (Tuesday, whole team) and E1–E5 + E7 (Thursday, electronics
+  pair — E7 badged "Reserve — only if needed," a lake-day-triggered fallback for
+  Bluetooth range, not a scheduled session). Plus 4 shared reference pages: engineering
+  notebook guide, notebook template, test & validation plan, troubleshooting. The
+  notebook guide links two real external example notebooks (FIRST's sample guide, FTC
+  Team Duct Tape's template) named in the source planning doc.
+- **`block-1a.mdx` rewritten as a table of contents** — the real stack (ESP32-WROOM-32E +
+  onboard SS6625E driver, Bluepad32 Xbox-controller-over-Bluetooth, ESP-NOW correctly
+  demoted to reserve-only), the real weekly breakdown, links out to all 18 new pages.
+- **Nothing from the vault's `Course/Teacher/` answer keys or the original Phase 0–7
+  solution docs was published** — this is a public GitHub Pages site.
+- The block page (`src/pages/course/[courseId]/block/[blockId].astro`) now injects
+  `SessionLink` into its MDX component map (it previously took no components at all) so
+  `block-1a.mdx`'s TOC links resolve.
+- `npm run build`: 0 errors / 0 warnings throughout.
+
 ## 8. Open items / next steps
 1. **Grader URL — DONE (2026-08-10).** `examsUrl` in `src/lib/site.ts` now points at the
    production grader (`exam-grader/grader.html?src=...` Apps Script endpoint), not the preview.
