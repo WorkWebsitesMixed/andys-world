@@ -1,0 +1,75 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: tuesday
+code: T4
+order: 4
+title: "Design Deep-Dive — Hull, Wheels and Gears"
+hook: "Turn your paper sketch into real numbers, using the same file that generates the real cut files."
+sessionInfo: "Tuesday, Sep 8 · whole team, design trio leads · 1h"
+notebookOutput: "Design section draft (planos), mass budget started"
+draft: false
+---
+
+There is no single correct answer here. This session gives you the two hard constraints your design must satisfy and the tool to check them — the specific numbers are yours to choose and justify. A working reference design exists, but it's a worked *example*, not the target you're being asked to reproduce.
+
+<KeyTerms terms={[
+  { term: "Gear reduction", definition: "A small motor spins fast but weak; paddle wheels need to turn slower but with more force (torque). A gear reduction trades speed for torque: a small gear (the pinion, on the motor shaft) drives a bigger gear (on the paddle axle). Ratio = tooth-count ratio — a 12-tooth pinion driving a 24-tooth gear is 2:1." },
+  { term: "Module", definition: "The standard measure of gear tooth size. Bigger module = bigger, stronger teeth, but a bigger gear also takes up more room. It must match between two gears that mesh." },
+  { term: "Center distance", definition: "How far apart the pinion and paddle-gear shafts must be, fixed by module and tooth counts: center distance = module × (teeth₁ + teeth₂) ÷ 2." },
+]} />
+
+<Section title="Two constraints, checked two different ways" icon="⚖️" id="constraints">
+
+This is the part worth being precise about:
+
+1. **Total boat width** — hull beam + paddle wheels — has a **hard numeric limit** (300 mm) that the design file checks for you automatically. This depends on the beam width, the paddle-wheel gap, and the paddle-wheel width — **not** on the gear module or tooth count.
+2. **Gear train fit** — does the pinion/motor/axle arrangement physically fit inside the hull — has **no automatic check**. You verify it by *rendering the design and looking at it*. This is an honest gap in the tool, not something hidden from you.
+
+</Section>
+
+<Activity title="Your task" time="45 min" grouping="Whole team, design trio leads" materials={["Your T2 sketch", "Calculator", "OpenSCAD open on a laptop"]}>
+
+### Part A — the width budget (hard constraint, numeric)
+
+1. From your T2 sketch, read off your hull beam and your paddle wheel width/gap.
+2. **By hand**, compute total width using: `total_width = beam_top + 2×pw_gap + 2×pw_width`. Is it ≤ 300 mm? If not, what would you change — narrower beam, narrower wheels, or a smaller gap?
+3. Open the design's parameter file in a text editor. Find the beam-width, paddle-gap and paddle-width values near the top. **Change them to your own numbers.**
+4. Run the file in OpenSCAD (press **F5** to preview, or check the Console panel) and read the printed `TOTAL boat width with wheels = … mm` line. Does it match your hand calculation? If you instead see an assertion error ("Boat too wide"), that's the tool telling you your numbers don't fit — go back to step 2, not around it.
+
+### Part B — the gear train (mechanism fit, visual + hand-checked)
+
+1. Decide a reduction ratio. More reduction = more torque, slower paddle turn; a 1:1 or near-1:1 ratio wastes the point of gearing at all. There's no single right ratio without the motor's actual speed/torque numbers — a modest reduction (roughly 1.5:1 to 3:1) is a reasonable, defensible range. Pick tooth counts that give your ratio.
+2. Pick a module. Coarser teeth survive laser-cut wood better than fine ones, but a bigger module means a bigger gear taking up more internal space. There's no assert for this — you're making a judgment call, and you should be able to explain it.
+3. **By hand**, compute the center distance: `module × (pinion_teeth + paddle_teeth) / 2`.
+4. Edit the module and tooth-count values to your numbers, switch the gear-train file to render the full train, press **F5**. Confirm the printed center distance matches your hand calculation.
+5. **Look at the render.** Do the two gears' teeth actually mesh — interlocking cleanly, no gap, no overlap? A formula being internally consistent doesn't guarantee it *looks* right, and "does it look right" is a real engineering judgment, not a formality.
+6. Sanity-check the motor/axle arrangement fits inside the hull's internal length — eyeball this against the full assembly render. If the motor pocket looks too tight, that's real information for T5 — note it, don't just push forward.
+
+<Callout type="tip" title="Checkpoint — how to know it's working">
+The parameter file has your team's own numbers (not necessarily anyone else's), running it produces no assertion error, the gear render visibly meshes cleanly, and you can state — in your own words — why you picked your module and ratio, not just that you picked them.
+</Callout>
+
+### Mass budget (last 10–15 min)
+
+Using a kitchen/postal scale, weigh the printed proto parts from T3. Fill in the "estimated" column of the mass budget table (see the <SessionLink code="notebook-guide">Engineering Notebook — Student Guide</SessionLink>) — actuals come later once the wood parts exist.
+
+</Activity>
+
+<Support title="Hint 1 — I don't know where to start on the width budget">
+You already have the formula. Plug in your sketch's numbers first, on paper, before touching the file — if it doesn't fit on paper, it won't fit in OpenSCAD either, and you'll know exactly which number to change.
+</Support>
+
+<Support title={'Hint 2 — I don’t know what a "reasonable" module is'}>
+There's genuinely no formula that hands you this — it's a real tradeoff (tooth strength vs. size) that gets resolved empirically. A useful anchor: ask your teacher what module the laser cutter has actually cut cleanly in wood before, and treat that as your starting point rather than guessing from zero.
+</Support>
+
+<Support title="Hint 3 — still stuck on the arithmetic">
+Center distance is an average: multiply the module by the *sum* of both tooth counts, then divide by 2. If you're unsure your hand answer is right, that's exactly what the file's printed line is for — it's a second opinion, not a source of truth.
+</Support>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+Design wing: design evolution/planos (include **why** you chose your numbers, not just what they are), mass budget (estimated column). See the <SessionLink code="notebook-guide">Engineering Notebook — Student Guide</SessionLink>.
+
+</Section>

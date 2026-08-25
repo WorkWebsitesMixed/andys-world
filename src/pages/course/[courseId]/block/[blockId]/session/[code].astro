@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BlockSessionLayout from '../../../../../../layouts/BlockSessionLayout.astro';
+import { getCourse, getBlock } from '../../../../../../lib/courses';
+import { routes } from '../../../../../../lib/url';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = (async () => {
+  const entries = await getCollection('blockSessions', (s) => !s.data.draft);
+
+  return entries.map((session) => ({
+    params: {
+      courseId: session.data.courseId,
+      blockId: session.data.blockId,
+      code: session.data.code.toLowerCase(),
+    },
+    props: { session },
+  }));
+}) satisfies GetStaticPaths;
+
+const { session } = Astro.props as { session: Awaited<ReturnType<typeof getCollection<'blockSessions'>>>[number] };
+const { courseId, blockId, track, order } = session.data;
+
+const course = getCourse(courseId)!;
+const blockInfo = getBlock(course, blockId)!;
+
+const trackSiblings = (await getCollection('blockSessions', (s) => !s.data.draft))
+  .filter((s) => s.data.courseId === courseId && s.data.blockId === blockId && s.data.track === track)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const idx = trackSiblings.findIndex((s) => s.data.order === order);
+const prevSession = idx > 0 ? trackSiblings[idx - 1] : undefined;
+const nextSession = idx >= 0 && idx < trackSiblings.length - 1 ? trackSiblings[idx + 1] : undefined;
+
+const toLink = (s: (typeof trackSiblings)[number]) => ({
+  href: routes.blockSession(courseId, blockId, s.data.code),
+  label: `${s.data.code} — ${s.data.title}`,
+});
+---
+
+<BlockSessionLayout
+  session={session}
+  course={course}
+  blockInfo={blockInfo}
+  prev={prevSession ? toLink(prevSession) : undefined}
+  next={nextSession ? toLink(nextSession) : undefined}
+/>

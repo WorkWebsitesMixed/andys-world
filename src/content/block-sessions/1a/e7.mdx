@@ -1,0 +1,136 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: thursday
+code: E7
+order: 6
+title: "ESP-NOW Long-Range Link"
+hook: "Break past Bluetooth's range ceiling with a second ESP32 in your hand."
+sessionInfo: "Only scheduled if the lake day shows BLE's ~10–15 m range doesn't cover the real circuit — not a default part of the calendar"
+notebookOutput: "If run: why it was needed, and the range actually achieved with ESP-NOW"
+badges: ["Reserve — only if needed"]
+draft: false
+---
+
+Break past Bluetooth's range ceiling by adding a **second ESP32 in your hand** that reads the Xbox pad and relays commands to the boat over **ESP-NOW** (~100–200 m). You'll end with a handheld transmitter driving the boat at distances Bluetooth could never reach, with the same arming/failsafe you already built.
+
+<KeyTerms terms={[
+  { term: "ESP-NOW is connectionless", definition: "Unlike Bluetooth/Wi-Fi, it doesn't pair or hold a session — it fires small packets directly to another device's MAC address, no router, no IP. That's what gives it low latency and long range for almost no setup cost." },
+  { term: "Addressing", definition: "Every ESP32 has a unique MAC. You register the other device as a \"peer\" by its MAC, and both devices must agree on the same Wi-Fi channel (we use channel 1) or packets silently vanish." },
+  { term: "Your failsafe already covers this link for free", definition: "ESP-NOW has no \"disconnected\" event — the boat just stops receiving packets. But your E5 applyFailsafe already disarms on a stale stamp, so a boat that drifts out of range simply stops itself. No new safety code needed — reuse applyFailsafe from E5 verbatim." },
+  { term: "Radio coexistence", definition: "The handheld runs Bluetooth (for the pad) and Wi-Fi/ESP-NOW (to transmit) at the same time — the ESP32 time-shares its one radio between them. The boat gets simpler: it drops Bluepad32 entirely and only needs ESP-NOW." },
+]} />
+
+<Activity title="Your task — two firmwares" time="45 min" grouping="Electronics pair">
+
+### 1. Get the boat's MAC (given, not an exercise)
+
+Flash this once to the boat and copy the printed address:
+
+```cpp
+#include <WiFi.h>
+void setup(){ Serial.begin(115200); WiFi.mode(WIFI_STA);
+              Serial.print("BOAT MAC: "); Serial.println(WiFi.macAddress()); }
+void loop(){}
+```
+
+### 2. Handheld transmitter — fill in the send
+
+```cpp
+#include <Arduino.h>
+#include <Bluepad32.h>
+#include <WiFi.h>
+#include <esp_now.h>
+#include <esp_wifi.h>
+
+uint8_t BOAT_MAC[6] = { /* paste your boat's MAC bytes here */ };
+constexpr int RADIO_CHANNEL = 1;
+
+struct __attribute__((packed)) Packet {
+  float   throttle;
+  float   steer;
+  uint8_t flags;   // bit0 = armed/connected
+};
+
+ControllerPtr pad = nullptr;
+void onConnect(ControllerPtr c){ if(!pad) pad=c; }
+void onDisconnect(ControllerPtr c){ if(pad==c) pad=nullptr; }
+float deadzone(float v){ return fabs(v)<0.06f ? 0.f : v; }
+
+void setup(){
+  WiFi.mode(WIFI_STA); WiFi.disconnect();
+  esp_wifi_set_channel(RADIO_CHANNEL, WIFI_SECOND_CHAN_NONE);
+  esp_now_init();
+  esp_now_peer_info_t peer = {};
+  memcpy(peer.peer_addr, BOAT_MAC, 6);
+  peer.channel = RADIO_CHANNEL; peer.encrypt = false;
+  esp_now_add_peer(&peer);
+
+  BP32.setup(&onConnect, &onDisconnect);
+  BP32.enableVirtualDevice(false);
+  Console.println("\n[handheld] ready. Pair the Xbox pad (Sync).");
+}
+
+void loop(){
+  BP32.update();
+  Packet p{};
+  // TODO: if the pad is connected, fill p.throttle / p.steer the same way
+  // your E4 readController did (RT/LT and axisX, deadzoned), and set
+  // p.flags = 1. If not connected, leave p as all-zero / flags = 0.
+  // Then send it: esp_now_send(BOAT_MAC, (uint8_t*)&p, sizeof(p));
+  delay(20);
+}
+```
+
+### 3. Boat receiver — fill in the callback
+
+```cpp
+// ... same pin/PWM constants and PaddleDrive/Steering as E5 ...
+struct __attribute__((packed)) Packet { float throttle, steer; uint8_t flags; };
+
+volatile Command cmd;
+
+void onRecv(const esp_now_recv_info_t* info, const uint8_t* data, int len){
+  // TODO: if len == sizeof(Packet), copy the bytes into a local Packet,
+  // then fill cmd.throttle, cmd.steer, cmd.armed (from bit0 of flags),
+  // and cmd.stamp = millis().
+}
+
+// applyFailsafe() -- paste your E5 version, unchanged.
+```
+
+**Guiding question:** why must the `Packet` struct be byte-for-byte identical (same fields, same order, same `__attribute__((packed))`) on both the handheld and the boat? What would you observe if they drifted apart?
+
+<Callout type="tip" title="Checkpoint — how to know it's working">
+Both flashed, boat's MAC pasted correctly into the handheld, both on channel 1. Pair the pad to the **handheld** — squeezing RT should spin the **boat's** paddles. Turn the pad off → boat disarms. Turn the handheld off entirely → boat disarms via the stale-stamp failsafe within `FAILSAFE_MS`. Outdoors, walk the boat away and note where control actually starts to drop — that's your real usable range.
+</Callout>
+
+</Activity>
+
+<Support title="Hint 1">
+The handheld TODO is a direct copy of your E4 `readController` logic, just writing into a `Packet` instead of a `Command`, followed by one `esp_now_send` call.
+</Support>
+
+<Support title="Hint 2">
+The receive callback TODO is almost exactly your E5 `applyFailsafe`'s job in reverse — instead of computing whether to disarm, you're just recording what arrived. `memcpy(&p, data, sizeof(p))` extracts the struct.
+</Support>
+
+<Support title="Hint 3 — still stuck">
+If nothing arrives at all: print the boat's MAC again and character-by-character compare it to `BOAT_MAC[]` in the handheld source — a single wrong byte is the #1 cause of silent failure here.
+</Support>
+
+<Section title="Troubleshooting" icon="🩹" id="troubleshooting">
+
+Phase-specific traps — general tooling issues are in the <SessionLink code="troubleshooting">Troubleshooting — Common Issues</SessionLink> page.
+
+- **Boat never moves from the handheld:** MAC wrong, or channels differ between the two.
+- **Pad drops when Wi-Fi starts:** Bluetooth/Wi-Fi coexistence fighting — keep the send rate at 50 Hz or below.
+- **Short range / dropouts:** hold the handheld's antenna up and away from your body; a board with an external-antenna connector helps if available.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+If this session runs, note in the firmware section *why* it was needed (the lake day's measured BLE range) and the range you actually achieved with ESP-NOW.
+
+</Section>

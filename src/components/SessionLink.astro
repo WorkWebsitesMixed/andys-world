@@ -1,0 +1,26 @@
+---
+/**
+ * Inline link from one block session to another (or to a shared reference
+ * page) — e.g. "see [[Troubleshooting]]" in the source notes. Registered in
+ * BlockSessionLayout's MDX map, so sessions use it without importing:
+ *   <SessionLink code="E2">Drive the Paddle Motor</SessionLink>
+ */
+import { routes } from '../lib/url';
+
+interface Props {
+  code: string;
+  courseId?: string;
+  blockId?: string;
+}
+
+const { code, courseId = 'mechatronics', blockId = '1a' } = Astro.props;
+const href = routes.blockSession(courseId, blockId, code);
+---
+
+<a class="session-link" href={href}><slot /></a>
+
+<style>
+  .session-link {
+    border-bottom: 1px dashed currentColor;
+  }
+</style>

@@ -1,0 +1,61 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: tuesday
+code: T6
+order: 6
+title: "Float, Trim and Notebook Push"
+hook: "Confirm the boat actually floats level with a real measurement — and get the notebook judge-ready today."
+sessionInfo: "Tuesday, Sep 22 · whole team · 1h"
+notebookOutput: "Test Plan Stage 3 results, full notebook consolidation pass"
+draft: false
+---
+
+Confirm the boat actually floats level with everything aboard, using a real measurement technique (not "it looks fine") — and get the notebook into a state that could survive a judges' review today. This is the **last regular session before the lake day**, so anything broken here is still fixable; anything broken at the lake day mostly isn't.
+
+<Section title="Stage 1–2 recap if needed" icon="⏮️" id="recap">
+
+If T5 ran out of time on waterproofing verification (<SessionLink code="test-plan">Test Plan</SessionLink> Stage 2: pontoon float test, dry-box submersion, cable gland seal), finish and log it now — don't skip straight to Stage 3 with an unverified seal. A leak found here costs you a towel; a leak found at the lake costs you the boat.
+
+</Section>
+
+<Activity title="Stage 3 — static float with full payload" time="25 min" grouping="Whole team" materials={["A tub, sink or shallow pool big enough for the hull", "Ruler", "Straightedge or a level app"]}>
+
+You need a tub, sink, or shallow pool big enough for the hull — this doesn't need open water. Load the boat with **everything it will carry at the competition**: battery, motor, board, both switches, wiring — not a partial load, since a partially-loaded boat trims and floats differently than the real one.
+
+**1. Waterline and freeboard — the actual measurement.** With the boat floating and settled (give it 10–15 seconds to stop rocking), hold a ruler vertically at the **bow, midships, and stern** and measure from the waterline up to the gunwale (deck edge) at each point. Record all three numbers. The pass criterion is **≥15 mm freeboard at the lowest of the three points** — not an average, the *minimum*, since that's where water would come in first in a chop.
+
+**2. Trim — fore-aft and port-starboard.** Two checks:
+- **Fore-aft:** does the bow or stern sit noticeably lower? Compare your bow/stern freeboard numbers — a difference of more than a few mm is worth addressing.
+- **Port-starboard:** lay a straightedge or a phone with a level app flat across the deck, port to starboard. It should read close to level. A consistent lean is a mass-distribution problem, not a hull problem.
+
+**3. Paddle immersion depth.** With the boat settled, look at where the paddle blades sit relative to the water — the target is roughly **⅓ of the blade radius submerged at rest**. Too deep and you're dragging extra water for no thrust gain; too shallow and the blades slap instead of push. **This connects directly back to T4:** immersion depth is set by the paddle axle's height above the hull bottom in the parameter file — if it's visibly wrong here, that's a real design parameter to revisit, not something to shim around with tape. Note it in the notebook either way.
+
+**4. If something fails, fix the actual cause, don't mask it.** In order of how disruptive the fix is:
+- **Trim off / freeboard uneven:** move existing mass (battery position is usually the easiest lever) before adding anything new.
+- **Sitting low overall:** you're heavier than the design assumed — either remove non-essential mass or, if that's not possible, this is evidence for the mass budget section that your original estimate was optimistic (valuable, honest notebook content).
+- **Paddle immersion wrong:** flag for a T4 revisit before the lake day if there's any time left; otherwise document it as a known limitation.
+
+</Activity>
+
+<Section title="Notebook consolidation" icon="📓" id="notebook-consolidation">
+
+25 min, split by track, everyone contributes:
+
+- **Design trio** finalizes their section: planos, mass budget **actuals** (real weighed parts, not the T4 estimate), waterproofing plan as actually executed.
+- **Electronics pair** finalizes theirs: block diagram, pin map, power budget, firmware notes (modes implemented, parameters tuned, known issues — write these down honestly, an undocumented bug scores worse than a documented one).
+- **Whole team** checks the shared spine is current: a dated bitácora entry exists for every session so far, including this one.
+
+</Section>
+
+<Section title={'What "done" looks like'} icon="✅" id="done">
+
+A completed Stage 3 table with real measured numbers (not "looked fine"); either a passing float/trim or a specific, assigned fix before the lake day; and a notebook that, opened cold, would let a stranger understand who you are, what you built, and why.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+This session **is** a notebook session — see the <SessionLink code="notebook-guide">Engineering Notebook — Student Guide</SessionLink> in full, and log this session's Stage 3 results in the <SessionLink code="test-plan">Test Plan</SessionLink>.
+
+</Section>

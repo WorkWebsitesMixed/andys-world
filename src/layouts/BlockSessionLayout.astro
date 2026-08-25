@@ -1,0 +1,225 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PrevNext from '../components/PrevNext.astro';
+import LessonNav from '../components/LessonNav.astro';
+import type { BlockInfo, CourseInfo } from '../lib/courses';
+import { routes } from '../lib/url';
+
+// Components made available inside block-session MDX bodies without an
+// explicit import — a trimmed version of the SKILLS/lesson library: no
+// SelfCheck, no Reflection, no homework section (this is in-session content,
+// mirroring the SKILLS precedent).
+import KeyTerms from '../components/KeyTerms.astro';
+import WorkedExample from '../components/WorkedExample.astro';
+import Activity from '../components/Activity.astro';
+import Resources from '../components/Resources.astro';
+import Callout from '../components/Callout.astro';
+import Section from '../components/Section.astro';
+import Support from '../components/Support.astro';
+import SessionLink from '../components/SessionLink.astro';
+import Figure from '../components/Figure.astro';
+import WatchSee from '../components/WatchSee.astro';
+
+interface Props {
+  session: CollectionEntry<'blockSessions'>;
+  course: CourseInfo;
+  blockInfo: BlockInfo;
+  prev?: { href: string; label: string };
+  next?: { href: string; label: string };
+}
+
+const { session, course, blockInfo, prev, next } = Astro.props;
+const { courseId, blockId, track, code, title, hook, sessionInfo, notebookOutput, badges } = session.data;
+
+const { Content } = await render(session);
+
+const mdxComponents = {
+  KeyTerms,
+  WorkedExample,
+  Activity,
+  Resources,
+  Callout,
+  Section,
+  Support,
+  SessionLink,
+  Figure,
+  WatchSee,
+};
+
+const trackLabel = track === 'tuesday' ? 'Tuesday · whole team' : track === 'thursday' ? 'Thursday · electronics pair' : 'Reference';
+
+const crumbs = [
+  { label: 'Extracurricular', href: routes.extracurricular() },
+  { label: course.name, href: routes.course(courseId) },
+  { label: `${blockInfo.label}: ${blockInfo.name}`, href: routes.block(courseId, blockId) },
+  { label: code },
+];
+---
+
+<BaseLayout title={`${blockInfo.label} · ${code} — ${title}`} description={`${blockInfo.name} · ${code} — ${title}`}>
+  <LessonNav />
+
+  <article class="session container" data-lesson-root>
+    <Breadcrumbs items={crumbs} />
+
+    <header class="session-head">
+      <div class="meta">
+        <span class="pill track">{trackLabel}</span>
+        <span class="pill code">{code}</span>
+        {sessionInfo && <span class="pill dim">{sessionInfo}</span>}
+        {badges.map((b) => <span class="pill badge">{b}</span>)}
+      </div>
+      <h1 class="glow-text">{title}</h1>
+      <p class="hook">{hook}</p>
+      {notebookOutput && (
+        <p class="notebook-output"><strong>Notebook output:</strong> {notebookOutput}</p>
+      )}
+    </header>
+
+    <div class="session-body">
+      <Content components={mdxComponents} />
+    </div>
+
+    <PrevNext prev={prev} next={next} />
+  </article>
+</BaseLayout>
+
+<script>
+  // Inject copy buttons on all fenced code blocks in the session body —
+  // mirrors the mechatronics block page's client-side script.
+  document.querySelectorAll<HTMLElement>('.session-body pre').forEach((pre) => {
+    const btn = document.createElement('button');
+    btn.textContent = 'Copy';
+    btn.className = 'code-copy-btn';
+    btn.setAttribute('aria-label', 'Copy code');
+
+    pre.style.position = 'relative';
+    pre.appendChild(btn);
+
+    btn.addEventListener('click', () => {
+      const code = pre.querySelector('code');
+      const text = code ? code.textContent ?? '' : pre.textContent ?? '';
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+  });
+</script>
+
+<style>
+  .session {
+    max-width: var(--readw);
+    padding-block: 2rem 1rem;
+  }
+  .session-head { margin: 1.5rem 0 0.5rem; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+  }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+  .pill.track {
+    color: var(--accent-2);
+    border-color: var(--accent-2);
+    background: var(--accent-2-wash);
+  }
+  .pill.code { color: var(--accent); border-color: var(--accent); }
+  .pill.dim { opacity: 0.65; }
+  .pill.badge { color: var(--warn); border-color: var(--warn); }
+  .hook {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin: 0.2rem 0 0;
+  }
+  .notebook-output {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin: 0.6rem 0 0;
+  }
+  .session-body :global(> p:first-child) {
+    font-size: 1.08rem;
+    color: var(--text-dim);
+  }
+  .session-body {
+    counter-reset: sec;
+  }
+
+  /* Code blocks — same treatment as the block page (no Shiki; short skeletons) */
+  .session-body :global(pre) {
+    position: relative;
+    background: #0d1117;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #e6edf3;
+  }
+  .session-body :global(code:not(pre code)) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    color: var(--accent);
+  }
+  .session-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+  }
+  .session-body :global(th) {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--line-strong);
+    padding: 0.4rem 0.6rem;
+  }
+  .session-body :global(td) {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .session-body :global(tr:last-child td) { border-bottom: none; }
+
+  :global(.code-copy-btn) {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    background: transparent;
+    color: var(--text-faint);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  :global(.code-copy-btn:hover) { color: var(--text); }
+  :global(.code-copy-btn.copied) { color: var(--ok); border-color: var(--ok); }
+</style>

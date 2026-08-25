@@ -1,0 +1,64 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: shared
+code: troubleshooting
+order: 2
+title: "Troubleshooting — Common Issues"
+hook: "The stuff that shows up everywhere, so every session note can link here instead of repeating it."
+draft: false
+---
+
+Every session links back here instead of repeating this list. If something in a session has a trap specific to *that* phase (like the LEDC frequency limit in motor driving), it stays in that session's own Troubleshooting section — this page is for what shows up everywhere.
+
+<Section title="VS Code / PlatformIO" icon="💻" id="vscode">
+
+- **PlatformIO install hangs or fails on first run.** It downloads a Python-based core the first time — this can take several minutes on a slow connection. Let it finish; don't cancel and retry, that can leave a half-installed core. If it's genuinely stuck (>10 min, no network activity), close VS Code fully and reopen.
+- **No PlatformIO icon (ant/alien) in the sidebar after install.** Restart VS Code completely (not just reload window) — the extension needs a real restart to register.
+- **"pio: command not found" in a terminal.** You don't need the CLI directly — use the PlatformIO toolbar buttons (✓ Build, → Upload, 🔌 Monitor) at the bottom of VS Code.
+- **The Bluepad32 per-machine patch.** Every *fresh* PlatformIO install needs a one-time patch before the first Bluepad32 build succeeds. This is a **one-time-per-computer** fix — ask your teacher for the exact patch before <SessionLink code="E1">E1</SessionLink>, not once per project.
+- **Build succeeds but Upload fails / hangs on "Connecting…....".** Auto-reset didn't fire. **Hold BOOT, tap EN/RST, release BOOT**, then upload again. Try a different USB **cable** next — many phone-charging cables carry power only, no data lines.
+- **Port not found / permission denied on the serial port (Linux).** Add your user to the `dialout` group: `sudo usermod -aG dialout $USER`, then **log out and back in** (a new terminal isn't enough).
+- **No serial output, or garbage characters in the monitor.** The monitor baud rate doesn't match `Serial.begin()` in the code. Both must be **115200**.
+
+</Section>
+
+<Section title="Board / power" icon="🔋" id="power">
+
+- **Nothing happens, code compiled fine.** Work through in order: (1) board's physical ON/OFF switch — must be ON; (2) input voltage ≥ 6 V on the barrel jack (a 4×AA pack at ~4.8 V is under spec); (3) USB connected for logic/flashing *and* the jack connected for motor power — both should be plugged in together, they don't conflict.
+- **Board reboots or browns out the instant a motor spins.** The power supply is sagging under motor current draw — this is a supply problem, not a code bug. A stalled motor can pull well over 1 A. Use a stiffer supply (an 18650 pack, not a phone charger) or add a current limit for bench testing.
+- **Board resets in a loop / won't boot at all.** Something is pulling a strapping pin the wrong way at power-on. Disconnect anything wired to those pins and retry — our pin map avoids them deliberately, so this usually means a wiring mistake.
+- **Never feed battery voltage into the `3V3` or `5V` pins** — those are regulator *outputs*. Doing this kills the ESP32 instantly. Battery power goes only into the jack or `VIN`.
+
+</Section>
+
+<Section title="Bluetooth / gamepad" icon="🎮" id="bluetooth">
+
+- **Controller won't pair.** Charge it fully first — a low-battery pad can fail to advertise. Make sure no phone/PC is already paired to it (a controller can only actively connect to one host at a time — forget it elsewhere first).
+- **Pairs but no input shows up / stick values don't move.** Check you're reading the correct controller index if more than one pad is active, and that the pad isn't in a sleep state (tap a button to wake it).
+- **Works, then randomly disconnects.** Range (BLE is realistically ~10–15 m) or another 2.4 GHz device (Wi-Fi router, microwave) crowding the band. This is exactly the failure mode the failsafe (see <SessionLink code="E5">E5</SessionLink>) is designed to catch safely — if it doesn't recover cleanly, that's a real bug to flag, not just "flaky Bluetooth."
+
+</Section>
+
+<Section title="Motors / servos / wiring" icon="🔧" id="motors">
+
+- **Motor does nothing.** See the board/power checklist above first, then: is it plugged into the correct port? Does it spin when touched directly to a battery (rules out a dead motor)? Full walkthrough in <SessionLink code="E2">E2</SessionLink>.
+- **Servo jitters or twitches instead of holding position.** Usually a shared power rail sagging under motor current — servos are sensitive to supply noise. Try powering the servo from a separate/regulated source if it only jitters while the drive motor is also running.
+- **Only one direction works on the motor.** One of its two driver GPIOs isn't getting PWM — recheck the pin assignment and that both leads are seated in the same port.
+
+</Section>
+
+<Section title="OpenSCAD / laser cutter / 3D printer" icon="🖨️" id="fabrication">
+
+- **OpenSCAD render is blank or throws an assertion error.** The asserts in the parameter file are deliberate — they mean a dimension is out of spec (usually the 400×300 mm envelope). Read the assert message; it names which check failed.
+- **DXF imports into the laser software with the wrong scale or mirrored.** Check units (mm vs inch) on import — the most common cause of "my gears don't mesh" is a unit mismatch, not a design error. Confirm the DXF's real-world size against your parameter file before cutting.
+- **Kerf: cut parts don't mesh / are slightly too tight or loose.** The laser removes a sliver of material with every cut (the kerf, typically ~0.1–0.2 mm depending on machine and material). Gears cut exactly to their nominal profile often bind. Do a **test cut** of just the pinion pair on scrap before cutting the full gear train.
+- **3D print has poor layer adhesion or warps.** Check bed adhesion and that the part orientation matches what the part was designed for. This is a proto, not the competition part — reprint rather than fight a bad print.
+
+</Section>
+
+<Section title="When none of this fixes it" icon="🙋" id="last-resort">
+
+Try the specific session's own Troubleshooting section first (it covers traps particular to that step), then ask — bring what you tried, not just "it doesn't work."
+
+</Section>

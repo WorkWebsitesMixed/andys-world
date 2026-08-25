@@ -1,0 +1,139 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: thursday
+code: E2
+order: 2
+title: "Drive the Paddle Motor"
+hook: "Make a motor spin forward and reverse at controllable speed."
+sessionInfo: "Thursday, Sep 3 · electronics pair · 1h"
+notebookOutput: "Verifies the M0 pin map (GPIO 27/13) and starts the power-budget section"
+draft: false
+---
+
+Make a motor spin forward and reverse at controllable speed, driven by the board's onboard **SS6625E** driver and the ESP32's **LEDC** hardware PWM. You'll end with your bench TT motor smoothly ramping up forward, holding, ramping down, then doing the same in reverse, on a loop.
+
+<KeyTerms terms={[
+  { term: "H-bridge", definition: "Reverses a motor by reversing which way current flows through it. The onboard SS6625E gives you this as two GPIOs per motor port — for port M0, that's GPIO 27 and GPIO 13. PWM on 27 + LOW on 13 = forward; LOW on 27 + PWM on 13 = reverse; LOW on both = coast. So direction = which pin gets PWM; speed = how much duty that pin gets." },
+  { term: "PWM / duty cycle", definition: "Switching a pin on/off fast; the fraction of time it's on (duty cycle) is what the motor responds to. We use 5 kHz, 10-bit resolution (duty 0…1023) — the board's driver can't reliably follow much faster PWM (try 20 kHz and the motor may just sit there, looking like a wiring fault)." },
+  { term: "LEDC (Core-3.x, pin-based)", definition: "ledcAttach(pin, freq, bits) then ledcWrite(pin, duty). If you ever see ledcSetup(...) in an old tutorial, that's the 2.x API and won't compile here." },
+  { term: "Ramping", definition: "Changing duty gradually, not instantly, so you don't yank the gear train or spike current." },
+]} />
+
+<Section title="Wiring (given)" icon="🔌" id="wiring">
+
+TT motor into port **M0**. Power the board from the barrel jack at ~6 V (current-limited bench supply if you have one) — not the real 12 V yet. USB stays connected for flashing and the console. **ON/OFF switch must be ON.**
+
+</Section>
+
+<Activity title="Your task" time="35 min" grouping="Electronics pair">
+
+```cpp
+#include <Arduino.h>
+#include <Bluepad32.h>
+
+constexpr int PIN_DRIVE_A = 27;
+constexpr int PIN_DRIVE_B = 13;
+
+constexpr int   PWM_FREQ = 5000;
+constexpr int   PWM_BITS = 10;
+constexpr int   PWM_MAX  = (1 << PWM_BITS) - 1;
+constexpr float TEST_DUTY_CAP = 0.60f;   // don't overdrive the 3-6V TT motor on a 6V supply
+
+class PaddleDrive {
+public:
+  void begin() {
+    ledcAttach(PIN_DRIVE_A, PWM_FREQ, PWM_BITS);
+    ledcAttach(PIN_DRIVE_B, PWM_FREQ, PWM_BITS);
+    stop();
+  }
+
+  void set(float t) {
+    // TODO: t is -1..+1 (sign = direction, magnitude = speed).
+    // 1. constrain t to [-1, 1].
+    // 2. compute a duty 0..PWM_MAX from the MAGNITUDE of t.
+    // 3. if t >= 0: PWM on PIN_DRIVE_A, PIN_DRIVE_B held at 0 (forward).
+    //    if t <  0: PWM on PIN_DRIVE_B, PIN_DRIVE_A held at 0 (reverse).
+  }
+
+  void stop() { ledcWrite(PIN_DRIVE_A, 0); ledcWrite(PIN_DRIVE_B, 0); }
+};
+
+PaddleDrive drive;
+
+float approach(float applied, float target, float step) {
+  return applied + constrain(target - applied, -step, step);
+}
+
+void setup() {
+  Console.println("\n[E2] Motor bring-up. Keep the motor loose on the bench!");
+  drive.begin();
+}
+
+void loop() {
+  static float applied = 0.0f, target = 0.0f;
+  static int   phase = 0;
+  static unsigned long phaseStart = 0;
+  const float STEP = 0.02f;
+  const unsigned long HOLD_MS = 2000;
+
+  switch (phase) {
+    case 0: target =  TEST_DUTY_CAP; break;
+    case 1: target =  TEST_DUTY_CAP; break;
+    case 2: target =  0.0f;          break;
+    case 3: target = -TEST_DUTY_CAP; break;
+    case 4: target = -TEST_DUTY_CAP; break;
+    case 5: target =  0.0f;          break;
+  }
+
+  applied = approach(applied, target, STEP);
+  drive.set(applied);
+
+  bool reached = fabs(applied - target) < 0.001f;
+  if (phase == 1 || phase == 4) {
+    if (millis() - phaseStart > HOLD_MS) { phase = (phase + 1) % 6; phaseStart = millis(); }
+  } else if (reached) {
+    phase = (phase + 1) % 6; phaseStart = millis();
+    Console.printf("phase %d  applied=%.2f\n", phase, applied);
+  }
+  delay(20);
+}
+```
+
+**Guiding questions:**
+- Why must `PIN_DRIVE_B` be held at exactly 0 while `PIN_DRIVE_A` is PWMing forward — what goes wrong (electrically) if both pins carry PWM at once?
+- `fabs(t) * PWM_MAX` — why the magnitude and not `t` directly? What would happen for reverse if you didn't take the absolute value?
+
+<Callout type="tip" title="Checkpoint — how to know it's working">
+Motor loose, ~6 V supply, upload. It should **spin up forward over ~1 s, hold ~2 s, ramp down to stop, then repeat in reverse** — smoothly, not snapping. A faint 5 kHz whine while running is normal (that's the PWM switching); **silence with no motion** is the bad sign. If it spins the wrong way first, that's a wiring/lead-polarity thing, not a code bug — swap the two motor leads.
+</Callout>
+
+</Activity>
+
+<Support title="Hint 1 — I don't know how to structure set()">
+Three separate concerns, in order: clamp the input, compute one duty number from its size, then decide which of the two pins gets that duty and which gets 0. Write it as three small steps, not one clever line.
+</Support>
+
+<Support title="Hint 2 — exact functions to use">
+`constrain(t, -1.0f, 1.0f)` clamps. `(uint32_t)(fabs(t) * PWM_MAX)` gives the duty. An `if (t >= 0) { ... } else { ... }` picks which pin is active.
+</Support>
+
+<Support title="Hint 3 — still stuck">
+Ask: "for forward, which pin gets `ledcWrite(pin, duty)` and which gets `ledcWrite(pin, 0)`? For reverse, is it the same two pins with roles swapped?" If you can answer that in words, the code is a direct translation of the answer.
+</Support>
+
+<Section title="Troubleshooting" icon="🩹" id="troubleshooting">
+
+Phase-specific traps — general tooling issues are in the <SessionLink code="troubleshooting">Troubleshooting — Common Issues</SessionLink> page.
+
+- **Motor does nothing, code compiles:** board's ON/OFF switch ON? Input ≥ 6 V on the jack? `PWM_FREQ` still 5000 (not something faster)? Motor actually spins on a direct 3–6 V source (rules out a dead motor)? Seated in port **M0**, not M1–M3?
+- **Only one direction works:** one of the two GPIOs isn't reaching the motor port — double check both leads are seated and both pins are wired to M0.
+- **Motor stutters or resets the board:** inrush/stall pulling too much current — lower `TEST_DUTY_CAP` or use a stiffer/current-limited supply.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+Feeds the electronics wing's pin map (M0 = GPIO 27/13, verified) and the start of the power-budget section (note the current draw you observe, even roughly).
+
+</Section>

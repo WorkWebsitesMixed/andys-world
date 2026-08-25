@@ -1,0 +1,64 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: tuesday
+code: T7
+order: 7
+title: "Water Trials (Lake Day)"
+hook: "A dress rehearsal, not a debugging session."
+sessionInfo: "Late September, exact date TBD · whole team, school-approved trip"
+notebookOutput: "Test Plan Stage 4–6 results, run-time data"
+draft: false
+---
+
+This is a **dress rehearsal**, not a debugging session — everything Stage 0–3 gate-checked should already be solid by the time you're here, because there's little runway left before competition day to react to what this day reveals.
+
+<Section title="Before you leave school — go/no-go checklist" icon="✅" id="go-no-go">
+
+Do not travel to the lake with anything on this list still failing:
+
+- Arm switch kills the motor instantly (re-verify at school, don't assume it still holds after transport — connectors work loose).
+- Failsafe stops the boat within half a second of losing the controller.
+- Boat floats level with full payload, ≥15 mm freeboard at the lowest point (<SessionLink code="T6">T6</SessionLink> Stage 3).
+- Waterproofing has actually been **tested** (Stage 2 dry-box submersion), not just applied.
+- Batteries charged — boat pack **and** controller.
+- A printed or photographed copy of the <SessionLink code="test-plan">Test Plan</SessionLink> Stage 4–6 tables, so data gets logged on-site, not reconstructed from memory afterward.
+
+</Section>
+
+<Callout type="warn" title="Safety, on-site">
+This is a real open-water day with a group of students — treat it accordingly, on top of whatever your school's own field-trip safety protocol already requires:
+
+- Nobody wades in alone. Whoever retrieves the boat from the water has a second person watching from shore.
+- Bring a retrieval pole or a spare length of rope/net — don't plan on always being able to walk out and grab it by hand.
+- Check the weather and the specific spot beforehand — wind chop matters more to a small boat with 15 mm of freeboard than it does to you.
+- Agree on a **hand signal or shout for "cut power now"** before anyone drives the boat, so a problem can be stopped by anyone watching, not just whoever holds the controller.
+</Callout>
+
+<Section title="Running the tests — technique, not just the checklist" icon="🌊" id="running-the-tests">
+
+**Stage 4 — tethered water test (boat on a leash, shallow/recoverable water).** Tie a light line (long enough to not restrict normal maneuvering, short enough that you can always pull it back) to a point on the hull that won't affect trim. Test: forward drive under real load, steering authority (**completes a turn within ~2 boat lengths** — measure this roughly by eye against the boat's own length), reverse without swamping, and a **5-minute continuous run** — immediately after, touch the driver and motor (carefully) to confirm neither is too hot to touch comfortably.
+
+**Stage 5 — free RC run (open water, still recoverable).** Confirm control holds to your intended operating distance. Then **deliberately trigger the failsafe** — this is the one failure mode you genuinely cannot safety-test any other way: with the boat at a safe, recoverable distance, turn the **controller** off (not the boat) and time, with a phone stopwatch, how long until the boat stops. It should be well under a second, matching your bench failsafe setting. Don't skip this because it "already worked on the bench" — bench and lake conditions differ (interference, distance) and this is precisely the scenario the whole safety layer exists for. Finish with a figure-8 to check handling is predictable.
+
+**Stage 6 — autonomous MVP.** Flip to AUTO and confirm it ramps to cruise, holds (approximately) straight, and stops itself after the run time. Then, **while it's running autonomously**, confirm the RC override / arm-cut still works — flip the arm switch off and confirm an immediate stop. This is a real safety check on the actual failure mode ("the autonomous boat is heading somewhere bad, can we stop it"), not a formality.
+
+</Section>
+
+<Section title="Data to log — every run, no exceptions" icon="📋" id="data">
+
+Battery voltage start/end, run time, water temperature, observed speed, any issues, a photo or video, and **one specific thing you'd change next time**. Fill this in **at the lake**, not from memory afterward — specifics fade fast.
+
+</Section>
+
+<Section title="If BLE range is the problem" icon="📡" id="ble-range">
+
+If the boat loses control well before it should (compare against the range you actually measured on the bench in <SessionLink code="E1">E1</SessionLink>/<SessionLink code="E4">E4</SessionLink>), that's the trigger condition for <SessionLink code="E7">E7 — ESP-NOW Long-Range Link</SessionLink>. Note the distance where control actually dropped and flag it to your teacher for scheduling — don't try to diagnose or fix it on the spot.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+Attach the filled <SessionLink code="test-plan">Test Plan</SessionLink> tables for Stage 4–6, with photos/video and honest "what we'd change" notes — this is some of the highest-value bitácora content in the whole notebook, because it's evidence of real iteration under real conditions.
+
+</Section>

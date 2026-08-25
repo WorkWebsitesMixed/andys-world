@@ -108,4 +108,35 @@ const skills = defineCollection({
   }),
 });
 
-export const collections = { lessons, sessions, blocks, skills };
+/**
+ * The `blockSessions` collection. One .mdx file = one per-session page inside
+ * a block-structured extracurricular course (e.g. Mechatronics Block 1A's 14
+ * Tuesday/Thursday sessions, plus a handful of shared reference pages).
+ * Routing: /course/[courseId]/block/[blockId]/session/[code].
+ * Convention: src/content/block-sessions/<blockId>/<code>.mdx (lowercase code).
+ */
+const blockSessions = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/block-sessions' }),
+  schema: z.object({
+    courseId: z.string(),
+    blockId: z.string(),
+    /** 'shared' = a reference page (notebook guide, troubleshooting, …), not a dated session. */
+    track: z.enum(['tuesday', 'thursday', 'shared']),
+    /** Session code as used in the source docs, e.g. "T1", "E7". */
+    code: z.string(),
+    /** Position within its track, for ordering and prev/next. */
+    order: z.number().int(),
+    title: z.string(),
+    /** Short tagline shown under the title. */
+    hook: z.string(),
+    /** Session logistics line, e.g. "Tuesday, Aug 25 · whole team · 1h". */
+    sessionInfo: z.string().optional(),
+    /** What this session produces for the engineering notebook. */
+    notebookOutput: z.string().optional(),
+    /** Extra flags shown as pills, e.g. "Reserve — only if needed". */
+    badges: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { lessons, sessions, blocks, skills, blockSessions };

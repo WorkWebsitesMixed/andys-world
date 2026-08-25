@@ -1,0 +1,79 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: shared
+code: notebook-guide
+order: 1
+title: "Engineering Notebook — Student Guide"
+hook: "Who writes what, and when — so nothing gets missed and nothing gets duplicated."
+draft: false
+---
+
+The engineering notebook (cuaderno de ingeniería) is graded directly against the items below, straight from the challenge rubric. This page says **who** writes each item and **when**. The full fillable template is the <SessionLink code="notebook-template">Engineering Notebook Template</SessionLink> — use that as your working document; this page is the assignment map.
+
+<Section title="Does it need to be a special notebook?" icon="❓" id="format">
+
+No — there's no format requirement in the challenge rubric itself. The closest real-world equivalent, FIRST Robotics' engineering notebooks, explicitly allows either handwritten/bound **or** digital notebooks — the only thing that actually matters is that entries are **dated** and **can't be silently rewritten after the fact** (so a judge can trust the timeline is real, not backfilled the night before). Two options, either is fine:
+
+- **A plain bound notebook** (any school composition notebook — nothing special to buy). Write in pen, date every entry, and **cross out mistakes rather than erasing them** — a crossed-out wrong idea is evidence of iteration, which is exactly what the rubric rewards.
+- **A shared Google Doc or Sheet.** Zero new tools to learn, everyone can write at once, and its built-in version history already gives you the "can't be silently rewritten" property for free — open **File → Version history** to show a judge the real timeline if asked.
+
+Pick whichever the team will actually keep up with — a notebook that's current beats a fancier one that's a week behind. This guide's structure (who writes what, when) works identically either way.
+
+</Section>
+
+<Callout type="info" title="The rule">
+Some of this notebook is the whole team's, some is split by track. Don't silo more than the tables below say — the split is only for the technical deep-dive sections; everything else you build and revise together.
+</Callout>
+
+<Section title="Shared spine — everyone, together" icon="🧵" id="shared-spine">
+
+| Notebook item | Session | Notes |
+|---|---|---|
+| Team name | <SessionLink code="T1">T1</SessionLink> | Vote, don't default to the first idea |
+| Logo | T1 (start), polish anytime | Doesn't need to be final today |
+| Member IDs visible for competition | T1 → ongoing | Physical, worn on event day |
+| Member profiles/descriptions | T1 | One paragraph each: who you are, what you bring |
+| Challenge (desafío) analysis | T1 | What exactly are we being scored on? Read the rubric together |
+| Cronograma | T1, revise as needed | A real schedule with your actual session dates |
+| Concept alternatives (lluvia de ideas) | <SessionLink code="T2">T2</SessionLink> | At least 3 sketched options, not 1 |
+| Selection criteria + decision | T2 | Why this concept won, in your own words |
+| Bitácora (activity log) | **every session**, dated | The most-checked item — keep it honest, including failures |
+| Evidence of learning from failure | ongoing, esp. <SessionLink code="T8">T8</SessionLink> | A specific thing that broke and what you changed because of it |
+| Reflection | T8 | One thing you're proud of, one thing that surprised you |
+
+</Section>
+
+<Section title="Design wing — the trio leads, writes the section" icon="🛶" id="design-wing">
+
+| Notebook item | Session | Notes |
+|---|---|---|
+| Design evolution → planos | <SessionLink code="T4">T4</SessionLink> | Sketches → the verified parameter values you landed on, and why |
+| Mass budget | T4 → filled in with actuals at <SessionLink code="T5">T5</SessionLink>/<SessionLink code="T6">T6</SessionLink> | Estimate first, then weigh real parts |
+| Materials list + budget | T4 → T5 | What you actually used, not just what the CAD says |
+| Waterproofing plan | T5 | What you sealed, how, and how you tested it |
+
+</Section>
+
+<Section title="Electronics wing — the pair leads, writes the section" icon="🔌" id="electronics-wing">
+
+| Notebook item | Session | Notes |
+|---|---|---|
+| Block diagram (controller → drivers → motors; battery → regulation) | after <SessionLink code="E4">E4</SessionLink> | Draw it from what you actually built, not a generic diagram |
+| Pin map **as wired** | after E1–E4, mark each pin "verified" once tested | Copy from your own code, not from memory |
+| Power budget (battery V/mAh, peak current, expected run time) | after <SessionLink code="E2">E2</SessionLink> | Real measured current where you can, estimated otherwise |
+| Firmware section (version, modes implemented, parameters tuned, known issues) | after <SessionLink code="E5">E5</SessionLink> | Keep "known issues" honest — an unresolved bug documented well scores better than a hidden one |
+
+</Section>
+
+<Section title="Test results — everyone contributes" icon="🧪" id="test-results">
+
+Attach the filled <SessionLink code="test-plan">Test Plan</SessionLink> table for every stage you complete. Data to log **every** water test: battery voltage start/end, run time, water temperature, observed speed, issues, a photo or video, and one thing to change next time. This spans <SessionLink code="T5">T5</SessionLink> (Stage 0–2), <SessionLink code="T6">T6</SessionLink> (Stage 3), and <SessionLink code="T7">T7</SessionLink> (Stage 4–6).
+
+</Section>
+
+<Section title="Why it's split this way" icon="💭" id="why">
+
+The rubric doesn't actually score "the design trio wrote 12 paragraphs" — it scores whether the *team* can explain design reasoning, testing rigor, iteration, teamwork, and communication. Splitting the deep-dive writing lets each section get written by whoever actually did that work and can speak to it — but the shared spine keeps everyone able to answer for the *whole* boat if a judge asks, which the technical sections alone won't give you.
+
+</Section>

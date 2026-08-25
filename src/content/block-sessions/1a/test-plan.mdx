@@ -1,0 +1,100 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: shared
+code: test-plan
+order: 3
+title: "Test & Validation Plan"
+hook: "Progress from safe/dry to wet — never skip a stage to save time."
+draft: false
+---
+
+Each stage catches a failure class that is far more expensive to debug on the water. Referenced from <SessionLink code="T5">T5</SessionLink>, <SessionLink code="T6">T6</SessionLink>, and <SessionLink code="T7">T7</SessionLink>.
+
+<Section title="Stage 0 — Bench, powered but dry" icon="🔋" id="stage-0">
+
+No props in water.
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 0.1 | Continuity / no shorts before battery | Multimeter: no short across battery rails |
+| 0.2 | First power-up on current-limited supply | < 200 mA idle, no smoke, ESP32 boots |
+| 0.3 | Mode switch reads correctly | Serial log flips RC/AUTO with switch |
+| 0.4 | Arm switch kills motor | Motor stops instantly when disarmed |
+| 0.5 | Failsafe on input loss | Disconnect pad/serial → motor stops < 0.5 s |
+
+</Section>
+
+<Section title="Stage 1 — Actuators on the bench" icon="⚙️" id="stage-1">
+
+Boat on a stand.
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 1.1 | Paddle wheel direction | RT = forward paddle rotation, LT = reverse |
+| 1.2 | Throttle ramp | No current spike; smooth spin-up |
+| 1.3 | Rudder travel + centering | Symmetric L/R, returns to center, no binding |
+| 1.4 | Current draw at full throttle (free-spin) | Within motor + driver rating |
+
+</Section>
+
+<Section title="Stage 2 — Waterproofing" icon="💧" id="stage-2">
+
+No electronics inside.
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 2.1 | Pontoon float test (sealed, ballasted) | Floats level; no water ingress after 15 min |
+| 2.2 | Dry-box submersion (weighted, tissue inside) | Tissue dry after 10 min at rim depth |
+| 2.3 | Cable gland seal | No ingress with cables + silicone |
+
+</Section>
+
+<Section title="Stage 3 — Static float with full payload" icon="⚖️" id="stage-3">
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 3.1 | Waterline check with all mass aboard | Waterline below deck; ≥ 15 mm freeboard |
+| 3.2 | Trim / balance | Sits level fore-aft and port-starboard |
+| 3.3 | Paddle immersion depth | Blades dip ~⅓ radius at rest |
+
+</Section>
+
+<Section title="Stage 4 — Tethered water test" icon="🪢" id="stage-4">
+
+Pool/tub, boat on a leash.
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 4.1 | Forward drive under load | Boat moves forward, tracks reasonably straight |
+| 4.2 | Steering authority | Completes a turn within ~2 boat lengths |
+| 4.3 | Reverse | Moves astern without swamping |
+| 4.4 | Run-time / thermal | 5 min run, driver + motor not too hot to touch |
+
+</Section>
+
+<Section title="Stage 5 — Free RC run" icon="🌊" id="stage-5">
+
+Open, shallow, recoverable water.
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 5.1 | BLE/RC range | Control held to intended operating distance |
+| 5.2 | Failsafe on range loss | Boat stops (doesn't run away) when link drops |
+| 5.3 | Figure-8 handling | Predictable, controllable |
+
+</Section>
+
+<Section title="Stage 6 — Autonomous MVP" icon="🤖" id="stage-6">
+
+| # | Test | Pass criterion |
+|---|------|----------------|
+| 6.1 | Switch to AUTO starts timed run | Ramps to cruise, holds straight |
+| 6.2 | Auto run ends safely | Stops after RUN_MS, recoverable |
+| 6.3 | RC override / arm cut works in AUTO | Disarm stops boat immediately |
+
+</Section>
+
+<Callout type="info" title="Data to log every water test">
+Battery voltage start/end · run time · water temperature · observed speed · issues · photo/video · one thing to change next time.
+</Callout>

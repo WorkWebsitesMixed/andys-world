@@ -5,6 +5,7 @@ import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
 import { COURSES, getCourse, getBlock, type CourseInfo } from '../../../../lib/courses';
 import { routes } from '../../../../lib/url';
 import { getCollection, render } from 'astro:content';
+import SessionLink from '../../../../components/SessionLink.astro';
 
 export const getStaticPaths = (async () => {
   return COURSES
@@ -54,7 +55,7 @@ const nextBlock = idx < blocks.length - 1 ? blocks[idx + 1] : undefined;
 
     {Content ? (
       <div class="block-prose">
-        <Content />
+        <Content components={{ SessionLink }} />
       </div>
     ) : (
       <div class="placeholder">

@@ -1,0 +1,58 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: tuesday
+code: T5
+order: 5
+title: "Wood Cut, Assembly and Waterproofing"
+hook: "Cut the real competition hull, start waterproofing, and run the first bench-safety tests before water touches the boat."
+sessionInfo: "Tuesday, Sep 15 · whole team · 1h"
+notebookOutput: "Materials/budget actuals, Test Plan Stage 0–2 results"
+draft: false
+---
+
+Cut and assemble the real competition hull from the wood files finalized at T4, start waterproofing, and run the first bench-safety tests before any water touches the boat.
+
+<Callout type="tip" title="Why laser cutting and bench testing share a session">
+Laser cutting itself is fast once the files are ready — most of the wait is the machine running, not hands-on time. So it runs in parallel: while the cutter works through the gear/bulkhead/sheer files, the electronics pair runs Test Plan Stage 0 bench checks on the fully-wired board.
+</Callout>
+
+<Section title="Agenda (60 min)" icon="🗓️" id="agenda">
+
+**1. Laser safety briefing (5 min, mandatory).** Never open the lid mid-cut, no reaching near the beam path, ventilation on, know where the fire extinguisher is.
+
+**2. Cut the wood parts in LightBurn (start immediately, runs in background).** The cutter's bed is 900×1200 mm — every boat part is well under that, so the real task is *nesting* (fitting bulkhead/gear/sheer pieces onto as few sheets as possible), not fitting the bed.
+
+1. Regenerate the DXF files with T4's final numbers first, if you haven't already.
+2. **File → Import** each DXF into LightBurn.
+3. **Verify scale before anything else.** Click the paddle gear shape and read its diameter in LightBurn's size field. It should match your T4 numbers (pitch diameter ≈ module × teeth, plus the addendum — close to module × (teeth + 2)). If it's off by a factor (10×, or inches-vs-mm), the DXF import units are wrong — fix that before cutting anything, not after.
+4. **Arrange/nest the parts** on the canvas to minimize wasted sheet material — group parts that share a sheet thickness together.
+5. **Assign your Cut layer's speed/power** — use whatever settings your teacher has already tested for this material and thickness. **If this is the first time cutting this material/thickness, test-cut the pinion pair alone on scrap first** — a gear cut exactly to its nominal size often binds, because the laser removes a sliver of material (the kerf) with every pass. If the test pair doesn't mesh cleanly, open LightBurn's Cut Settings Editor and adjust the Kerf offset field, then re-test before committing the full sheet.
+6. **Frame the job first** (LightBurn's Frame button traces the job's outline at no power) to confirm the material is actually positioned under where you've arranged the cut — catches a mis-placed sheet before it becomes a ruined cut.
+7. Run it with ventilation on and someone watching the whole time — never leave a running laser cutter unattended.
+
+<Callout type="info" title="Kerf note for the notebook">
+Once you find a kerf value that works, write it down — both in LightBurn's saved settings and in your notebook. It's real, reusable process knowledge for next time.
+</Callout>
+
+**3. While the cutter runs — split by track:**
+- **Design trio:** assemble the wood bulkheads/hull frame as pieces come off the cutter. Compare fit against the printed proto from T3 — note any difference (wood kerf vs. plastic print tolerance behave differently).
+- **Electronics pair:** run Test Plan **Stage 0** (bench, dry) with the boat's real wiring: continuity check, first power-up on a current-limited supply, mode switch reads correctly in the serial log, arm switch kills the motor, failsafe on input loss. Record pass/fail for each — this is your first Test Plan table.
+
+**4. Waterproofing (remaining time, whole team).** Seal the electronics bay per your design (dry-box + lid, cable glands where wires exit). This doesn't need to be watertight-tested yet (that's next session) — get the sealing done so it can cure/set before T6.
+
+**5. Materials/budget actuals (last 10 min).** Update the notebook's materials list with what you *actually* used — wood sheet quantity, hardware, glue — against what the T4 estimate predicted.
+
+</Section>
+
+<Section title={'What "done" looks like'} icon="✅" id="done">
+
+Wood parts cut and a first assembly pass done (even if not glued permanently yet); Stage 0 bench tests logged with real pass/fail; waterproofing sealant applied and curing.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+Design wing (materials/budget actuals), electronics wing (block diagram should now show real wiring), and the <SessionLink code="test-plan">Test Plan</SessionLink> Stage 0 table.
+
+</Section>

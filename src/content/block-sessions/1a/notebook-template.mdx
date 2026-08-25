@@ -1,0 +1,115 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: shared
+code: notebook-template
+order: 4
+title: "Engineering Notebook Template"
+hook: "The fillable structure — use it as your working document."
+draft: false
+---
+
+Use this as your team's working document. The same structure adapts directly to a shared notebook or a bound one. See the <SessionLink code="notebook-guide">Engineering Notebook — Student Guide</SessionLink> to know *who* fills in each section and *when* — this page is the fillable template itself.
+
+<Section title="1. Project identity" icon="🪪" id="identity">
+
+- Project name / team / date
+- One-line goal
+- What is a paddle boat? Who was Leonardo da Vinci?
+
+</Section>
+
+<Section title="2. Requirements & constraints" icon="📏" id="requirements">
+
+| Requirement | Value | Source | Status |
+|-------------|-------|--------|--------|
+| Max length | 400 mm | challenge | |
+| Max width | 300 mm | challenge | |
+| Propulsion motors | 1 | challenge | |
+| Steering motors | 1 | challenge | |
+| Modes | Autonomous (switch) + RC (Xbox) | challenge | |
+| Material (final) | mostly wood | challenge | |
+
+</Section>
+
+<Section title="3. Concept selection" icon="💡" id="concept-selection">
+
+- Options considered (sketch each)
+- Decision matrix (simplicity / stability / buildability / cost / "wow")
+- Chosen concept + **why**
+- Vote + justify in one sentence each
+
+</Section>
+
+<Section title="4. Design — mechanical" icon="🛶" id="design-mechanical">
+
+- Hull dimensions and parameter snapshot
+- Paddle wheel geometry and expected immersion
+- Steering geometry
+- Waterproofing plan
+- Mass budget and estimated waterline
+
+### Mass budget (fill in)
+
+| Item | Est. mass (g) | Actual (g) |
+|------|---------------|-----------|
+| Pontoons ×2 | | |
+| Deck | | |
+| Dry-box + lid | | |
+| Battery | | |
+| Motors ×2 | | |
+| Electronics | | |
+| Ballast / foam | | |
+| **Total** | | |
+
+</Section>
+
+<Section title="5. Design — electronics" icon="🔌" id="design-electronics">
+
+- Block diagram (controller → drivers → motors; battery → regulation)
+- Pin map **as actually wired**, mark verified pins
+- Power budget: battery V/mAh, peak current, expected run time
+
+</Section>
+
+<Section title="6. Firmware" icon="💾" id="firmware">
+
+- Version / commit
+- Modes implemented
+- Parameters tuned (deadzone, slew, cruise, failsafe)
+- Known issues / TODO
+
+</Section>
+
+<Section title="7. Build log" icon="📅" id="build-log">
+
+Dated entries: date · what you did · what happened · what you changed. Keep it honest — failures are the most valuable entries.
+
+</Section>
+
+<Section title="8. Test results" icon="🧪" id="test-results">
+
+- Attach the filled <SessionLink code="test-plan">Test Plan</SessionLink> table for each stage.
+- Photos/video links, current and voltage logs.
+
+</Section>
+
+<Section title="9. Analysis & iteration" icon="🔍" id="analysis">
+
+- What worked / didn't
+- Root cause of each failure
+- Next-revision changes (with reasoning)
+
+</Section>
+
+<Section title="10. Reflection" icon="💬" id="reflection">
+
+- Biggest lesson
+- What you'd do differently
+- One thing I'm proud of, one thing that surprised me
+
+</Section>
+
+<Callout type="info" title="Rubric hooks">
+Design reasoning · testing rigor · iteration evidence · teamwork · communication. Score each 1–4 with a one-line justification.
+</Callout>

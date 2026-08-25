@@ -1,0 +1,68 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: tuesday
+code: T2
+order: 2
+title: "Brainstorm, Concept and Systems Overview"
+hook: "Generate real alternatives, then give the whole team a first look at the electronics."
+sessionInfo: "Tuesday, Sep 1 · whole team · 1h"
+notebookOutput: "Concept alternatives (lluvia de ideas), selection criteria, chosen concept"
+draft: false
+---
+
+Generate and honestly evaluate real alternatives — not rubber-stamp a pre-made answer — and give the whole team a first shared look at the electronics.
+
+<Section title="Brainstorm and concept selection" icon="✏️" id="brainstorm">
+
+### How to sketch — paper, on purpose
+
+Sketch on paper, not a tablet or CAD tool — it's faster, nobody has to learn software first, and it maps directly onto how the design actually gets built later: the "digital" step doesn't happen as illustration, it happens next session when sketch numbers become typed parameters that generate the real cut files.
+
+But make it an **engineering** sketch, not a doodle — two views, both drawn inside a scaled boundary so proportions are honest from the start:
+
+- **Top view:** draw a box 200 mm × 150 mm on paper (the real 400×300 mm limit at half scale — grid paper makes this easy). Inside it, sketch the hull outline, where the paddle wheel(s) sit, the axle line, and the rudder.
+- **Side view (profile):** a second box at the same scale, showing the hull's side profile, roughly where the waterline sits, and where the heavy parts (battery, motor) go — low in the hull is what keeps a boat stable.
+- **Label real numbers on the sketch**, even rough guesses: overall length, overall width *including* the wheels, and paddle wheel diameter, at minimum. A sketch with no numbers on it can't be checked against anything at T4 — that's the actual difference between an engineering sketch and a nice drawing.
+
+**Individually first (5 min):** everyone sketches at least one boat concept this way. No wrong answers yet.
+
+**Share and combine (10 min):** each person presents their sketch in one sentence. Group similar ideas. End with **at least 3 genuinely distinct concepts** on the board (e.g. twin paddle wheels on one axle vs. a single stern paddle wheel vs. a catamaran hull; rudder steering vs. differential thrust).
+
+**Score them (15 min):** build a decision matrix as a team — columns are the concepts, rows are these five criteria, 1–5 each:
+
+| Criterion | What it's really asking |
+|---|---|
+| Simplicity | Fewer moving parts to build and fail |
+| Stability | Won't tip; sits level with the motor/battery aboard |
+| Buildability | Can we actually cut/assemble this with our tools and time? |
+| Cost | Materials we have vs. need to buy |
+| "Wow" | Does it look like a da Vinci machine, not a plastic toy boat? |
+
+Add the scores, pick the winner **as a team vote**, and write **one sentence per criterion** justifying the choice — that justification is what actually gets graded, not the sketch itself.
+
+<Callout type="info" title="Where this usually lands">
+A monohull canoe with twin side paddle wheels on one shared axle, a wooden 2:1 gear reduction, and a stern rudder scores well on all five criteria — it also matches the historical da Vinci sketch. If your team's own matrix lands somewhere else, that's a real conversation to have, not a foregone conclusion.
+</Callout>
+
+</Section>
+
+<Section title="Systems overview" icon="🔍" id="systems">
+
+The electronics pair walks the rest of the team through the boat, physically, piece by piece — this is peer teaching, and it's the one deliberate touch point ensuring every student has handled the electronics at least once. **Keep it conceptual — no code, no soldering.** Cover:
+
+- The board: "this is the brain — it reads the controller and decides what the motors do."
+- The onboard motor driver: "this lets the small brain safely control the bigger motor."
+- The two actuators: "one motor makes the paddles spin, one servo turns the rudder."
+- The two switches (once wired, in a later session): "one picks radio-control vs. self-driving, one is a physical kill switch — like a car's parking brake."
+- Let each teammate hold the board and watch the pair pair the Xbox controller to it live, so they've seen it work with their own eyes.
+
+**Why this matters even though deep electronics is out of scope this cycle:** every student should be able to point at the boat during judging and say what each block does, even if only two of them can debug the code behind it. That's the whole goal of these 20 minutes — not competence, just literacy.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+Shared spine items 7–8 (concept alternatives, selection criteria/decision) — see the <SessionLink code="notebook-guide">Engineering Notebook — Student Guide</SessionLink>.
+
+</Section>

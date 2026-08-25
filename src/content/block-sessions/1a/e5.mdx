@@ -1,0 +1,151 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: thursday
+code: E5
+order: 5
+title: "Modes, Arming and Autonomous Mode"
+hook: "Add the safety layer, then fill it with a real autonomous run."
+sessionInfo: "Thursday, Sep 24 · electronics pair · 1h (~25 min switches/failsafe, ~25 min the planner, ~10 min verify)"
+notebookOutput: "The firmware section's core: modes implemented, parameters tuned, the physical-switch requirement"
+draft: false
+---
+
+Add the safety layer (mode switch, arm switch, link-loss failsafe), then fill it with a real autonomous run — flip the switch and the boat drives itself for a set time, then stops. This satisfies the challenge's **physical-switch autonomous mode** requirement. You'll end with the arm switch instantly killing the motor no matter what; turning the controller off stopping the boat within half a second; and flipping to AUTO making the boat ramp to cruise, run straight for ~15 s, and stop on its own.
+
+<KeyTerms terms={[
+  { term: "Reading a switch safely", definition: "An input pin with nothing connected floats — reads random noise. INPUT_PULLUP fixes this: the pin idles HIGH, and wiring the switch between the pin and GND makes a closed switch read LOW. On this board, wire switches to a header's signal pin and GND only — never its 5V pin (5V into a 3.3V GPIO destroys it)." },
+  { term: "Arming is a hardware gate", definition: "Independent of software. When the arm switch is off, the motor must go neutral no matter what any code or controller says. You arm last, disarm first." },
+  { term: "Failsafe: assume the link will drop", definition: "Every Command already carries a stamp (timestamp). Each loop, if the newest command is older than FAILSAFE_MS, force armed = false. One check catches both \"controller off\" and \"out of range.\"" },
+  { term: "Autonomous v0 is open-loop", definition: "Deliberately dumb: command actions blindly on a timer — \"go forward at cruise for N seconds\" — with no sensor feedback. It can't chase a bad reading into a wall, and it always stops itself. It will drift off a straight line without a compass/IMU — that's an honest, expected limitation, not a bug." },
+  { term: "The planner is just another Command source", definition: "Exactly like the pad was in E4. The actuators, ramp, arm switch, and failsafe don't change at all — that's the payoff of the architecture you've been building since E4." },
+]} />
+
+<Section title="Wiring (given)" icon="🔌" id="wiring">
+
+Two SPST switches, each between a signal pin and that header's GND: **mode switch on GPIO 26** (closed/LOW = AUTO, open/HIGH = RC), **arm switch on GPIO 32** (closed/LOW = ARMED, open/HIGH = disarmed).
+
+</Section>
+
+<Activity title="Your task" time="50 min" grouping="Electronics pair">
+
+You're extending your E4 code. Paste in your `PaddleDrive`, `Steering`, `Command`, and `readController` from E4 unchanged.
+
+```cpp
+constexpr int PIN_MODE_SWITCH = 26;
+constexpr int PIN_ARM_SWITCH  = 32;
+constexpr unsigned long FAILSAFE_MS = 500;
+
+enum Mode { MODE_RC, MODE_AUTO };
+
+Mode readMode() {
+  // TODO 1: return MODE_AUTO if the mode switch reads LOW, else MODE_RC.
+}
+
+void applyFailsafe(Command& c) {
+  // TODO 2: force c.armed = false if EITHER the newest command is older
+  // than FAILSAFE_MS, OR the arm switch reads HIGH (open = disarmed).
+}
+
+// ---- autonomous run parameters ----
+constexpr float         AUTO_CRUISE = 0.55f;
+constexpr unsigned long AUTO_RUN_MS = 15000;
+
+class AutoPlanner {
+public:
+  void arm()    { t0 = millis(); running = true; }
+  void disarm() { running = false; }
+
+  void poll(Command& c) {
+    // TODO 3: compute elapsed = millis() - t0. If `running` AND elapsed <
+    // AUTO_RUN_MS: set c.throttle = AUTO_CRUISE, c.steer = 0, c.armed = true.
+    // Otherwise: c.throttle = 0, c.armed = false. Either way, c.stamp = millis().
+  }
+private:
+  unsigned long t0 = 0;
+  bool running = false;
+};
+AutoPlanner planner;
+
+Command cmd; float applied = 0; unsigned long lastLoop = 0; Mode lastMode = MODE_RC;
+
+void setup() {
+  pinMode(PIN_MODE_SWITCH, INPUT_PULLUP);
+  pinMode(PIN_ARM_SWITCH,  INPUT_PULLUP);
+  pinMode(PIN_LED, OUTPUT);
+  drive.begin(); steer.begin();
+  BP32.setup(&onConnect, &onDisconnect);
+  BP32.forgetBluetoothKeys(); BP32.enableVirtualDevice(false);
+  lastLoop = millis();
+  Console.println("\n[E5] modes + arm + failsafe + autonomous. Boat on a stand!");
+}
+
+void loop() {
+  unsigned long now = millis();
+  float dt = (now - lastLoop) / 1000.f; lastLoop = now;
+  BP32.update();
+
+  Mode mode = readMode();
+  if (mode != lastMode) {
+    if (mode == MODE_AUTO) planner.arm(); else planner.disarm();
+    applied = 0; lastMode = mode;
+  }
+
+  if (mode == MODE_AUTO) planner.poll(cmd);
+  else if (!readController(cmd)) cmd.armed = false;
+
+  applyFailsafe(cmd);
+
+  float target = cmd.armed ? cmd.throttle * DUTY_CAP : 0.f;
+  applied += constrain(target - applied, -THROTTLE_SLEW * dt, THROTTLE_SLEW * dt);
+  drive.set(applied);
+  steer.set(cmd.armed ? cmd.steer : 0.f);
+
+  int blink = (mode == MODE_AUTO) ? (now / 150 % 2) : (now / 400 % 2);
+  digitalWrite(PIN_LED, cmd.armed ? HIGH : blink);
+  delay(10);
+}
+```
+
+**Guiding questions:**
+- `applyFailsafe` has two independent reasons to disarm. Why "independent" — what real failure does each one catch that the other wouldn't?
+- Why does `AutoPlanner::poll()` set `c.stamp = millis()` in **both** branches (running and finished), not just the running one? What would `applyFailsafe` do if it didn't?
+
+<Callout type="tip" title="Checkpoint — how to know it's working">
+Boat on a stand, wheels off the ground. **Arm gate:** mode on RC, pad paired, squeeze RT with arm switch **off** → nothing spins, LED blinking. Flip arm **on** → LED solid, RT now drives. **Failsafe:** while driving, turn the controller off → motor stops within ~½ second. **Autonomous:** flip to AUTO → paddles ramp to cruise on their own, run ~15 s, stop; LED speeds up its blink when idle in AUTO. **Instant disarm:** flip arm off mid-run → immediate stop, from either mode.
+</Callout>
+
+</Activity>
+
+<Support title="Hint 1 — TODO 1 and TODO 2 shape">
+`readMode` is one line: a ternary or if/else comparing `digitalRead(PIN_MODE_SWITCH)` to `LOW`. `applyFailsafe` computes two booleans (`stale`, `armOff`) and sets `c.armed = false` if either is true — it never sets `c.armed = true`, only ever takes it away.
+</Support>
+
+<Support title="Hint 2 — TODO 3 shape">
+This mirrors E2's ramp phases in spirit: one condition (`running && elapsed < AUTO_RUN_MS`) decides which of two command sets to write. Write the "go" case first, then the "stop" case — both end by stamping `millis()`.
+</Support>
+
+<Support title="Hint 3 — still stuck">
+If arming/failsafe work but AUTO does nothing: is `planner.arm()` actually being called on the mode-switch edge? Add a `Console.printf` inside `arm()` to confirm it fires. If AUTO runs but never stops: print `elapsed` each loop and check it's actually counting up past `AUTO_RUN_MS`.
+</Support>
+
+<Section title="Troubleshooting" icon="🩹" id="troubleshooting">
+
+Phase-specific traps — general tooling issues are in the <SessionLink code="troubleshooting">Troubleshooting — Common Issues</SessionLink> page.
+
+- **Switch reads random / does nothing:** not set to `INPUT_PULLUP`, or wired to the header's 5V pin instead of GND.
+- **Logic feels inverted:** with `INPUT_PULLUP`, closed = LOW — double check your `==LOW` vs `==HIGH` comparisons match the physical wiring.
+- **Motor won't stop on controller-off:** `FAILSAFE_MS` too large, or `stamp` isn't being refreshed on every fresh command — check `readController` sets it only on real data.
+- **Boat veers instead of straight in AUTO:** expected — that's open-loop drift, a feedback problem, not a bug. (Out of scope for this challenge cycle.)
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+This session produces the firmware section's core: modes implemented, parameters tuned (deadzone, slew, cruise throttle, failsafe timeout), and the physical-switch requirement the rubric explicitly scores. Note any known issues honestly — an undocumented bug scores worse than a documented one.
+
+</Section>
+
+<Callout type="info" title="Reserve, only if needed">
+If the lake day shows Bluetooth's range doesn't cover the real circuit, the next session is <SessionLink code="E7">E7 — ESP-NOW Long-Range Link</SessionLink>.
+</Callout>

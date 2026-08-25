@@ -1,0 +1,122 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: thursday
+code: E3
+order: 3
+title: "The Servo Rudder"
+hook: "Command the rudder servo — center it, sweep it, and map a clean steering value to a physical angle."
+sessionInfo: "Thursday, Sep 10 · electronics pair · 1h"
+notebookOutput: "Verifies the GPIO 25 pin map and the rudder geometry section's trim values"
+draft: false
+---
+
+Command the MG90S rudder servo — center it, sweep it port↔starboard, and map a clean **−1…+1 steering value** to a physical angle, using LEDC (no servo library). You'll end with the servo horn sweeping smoothly left↔center↔right on a loop, wrapped in a `Steering` class with the same `set(-1..1)` shape as E2's `PaddleDrive`.
+
+<KeyTerms terms={[
+  { term: "Closed-loop position device", definition: "A hobby servo (motor + gearbox + potentiometer + control circuit inside) — you command a target angle, not a speed, and it holds itself there." },
+  { term: "Pulse-width command", definition: "The command is a pulse repeated every ~20 ms (50 Hz); the width of the pulse encodes the angle — 1.0 ms ≈ full one way, 1.5 ms ≈ center, 2.0 ms ≈ full the other way, though real endpoints vary unit-to-unit (that's why you trim by eye)." },
+  { term: "Mechanical stop", definition: "Never command past it — the servo will buzz, draw stall current, heat up, and can strip its gears. Start with a conservative range and only widen it after seeing where the real rudder hits its limits." },
+  { term: "50 Hz / 16-bit LEDC", definition: "Generated at 50 Hz, 16-bit resolution (duty 0…65535). Converting a desired pulse width in microseconds to a duty value: duty = us × 65536 / 20000." },
+]} />
+
+<Section title="Wiring (given)" icon="🔌" id="wiring">
+
+MG90S 3-wire lead straight into the **GPIO 25** servo header (orange → signal, red → 5V, brown → GND) — nothing to solder. **Leave the horn unscrewed from the rudder for this session** so a mis-trim can't jam anything.
+
+</Section>
+
+<Activity title="Your task" time="35 min" grouping="Electronics pair">
+
+```cpp
+#include <Arduino.h>
+#include <Bluepad32.h>
+
+constexpr int PIN_STEER       = 25;
+constexpr int SERVO_FREQ      = 50;
+constexpr int SERVO_BITS      = 16;
+constexpr int SERVO_PERIOD_US = 20000;
+
+constexpr int STEER_CENTER_US = 1500;
+constexpr int STEER_RANGE_US  = 400;
+
+class Steering {
+public:
+  void begin() {
+    ledcAttach(PIN_STEER, SERVO_FREQ, SERVO_BITS);
+    center();
+  }
+
+  void set(float s) {
+    // TODO 1: clamp s to [-1, 1], then convert it to a pulse width in
+    // microseconds: STEER_CENTER_US + (s scaled by STEER_RANGE_US).
+    // Pass that microsecond value to writeMicroseconds().
+  }
+
+  void center() { writeMicroseconds(STEER_CENTER_US); }
+
+private:
+  void writeMicroseconds(int us) {
+    // TODO 2: convert `us` (a pulse width) into a 16-bit LEDC duty value
+    // using the formula in the concepts section above, and ledcWrite it
+    // to PIN_STEER. Watch for integer overflow — cast to a wide type
+    // (uint64_t) before multiplying us by 65536.
+  }
+};
+
+Steering steer;
+
+void setup() {
+  Console.println("\n[E3] Servo rudder. Horn NOT on the rudder yet!");
+  steer.begin();
+  delay(500);
+}
+
+void loop() {
+  static float s = 0.0f, dir = +1.0f;
+  s += dir * 0.02f;
+  if (s >=  1.0f) { s =  1.0f; dir = -1.0f; }
+  if (s <= -1.0f) { s = -1.0f; dir = +1.0f; }
+  steer.set(s);
+  Console.printf("steer=%+.2f\n", s);
+  delay(40);
+}
+```
+
+**Guiding questions:**
+- Why does `writeMicroseconds` need a *separate* private helper instead of putting the duty-conversion math directly in `set()`? (Hint: `center()` needs it too.)
+- If `STEER_RANGE_US` were 800 instead of 400, what would `set(1.0)` command in microseconds — and is that still inside the "standard band" from the concepts section?
+
+<Callout type="tip" title="Checkpoint — how to know it's working">
+Horn loose, jack powered, upload. The horn should **sweep left↔right smoothly**, console printing the value as it goes. Once you see the sweep: **fit the horn** so it points straight down the rudder line when the printed value passes through 0, screw it on, then check the ends — if it buzzes or hits a hard stop before `s = ±1`, **reduce `STEER_RANGE_US`** and re-test. Write down your final `STEER_CENTER_US` and `STEER_RANGE_US` — you'll reuse both in E4.
+</Callout>
+
+</Activity>
+
+<Support title="Hint 1 — the set() formula">
+You want: at `s = -1`, output `STEER_CENTER_US - STEER_RANGE_US`; at `s = 0`, output `STEER_CENTER_US`; at `s = +1`, output `STEER_CENTER_US + STEER_RANGE_US`. That's a single linear expression — `center + s * range` — cast to an `int`.
+</Support>
+
+<Support title="Hint 2 — the duty conversion">
+`(uint32_t)((uint64_t)us * (1UL << SERVO_BITS) / SERVO_PERIOD_US)` is the whole conversion — it's the `duty = us × 65536 / 20000` formula from the concepts section, written to avoid overflowing a 32-bit int mid-calculation.
+</Support>
+
+<Support title="Hint 3 — still stuck">
+Ask: "what two things does `set()` need to do — turn `s` into a microsecond pulse width, then hand that off to something that already knows how to output a pulse width?" That second something is `writeMicroseconds`, which you're also filling in — so `set()` should end with a single call to it.
+</Support>
+
+<Section title="Troubleshooting" icon="🩹" id="troubleshooting">
+
+Phase-specific traps — general tooling issues are in the <SessionLink code="troubleshooting">Troubleshooting — Common Issues</SessionLink> page.
+
+- **Servo doesn't move at all:** jack not powered (5V rail dead), or signal on the wrong header pin.
+- **Buzzing / hot / jitter at the ends:** commanding past the mechanical stop — lower `STEER_RANGE_US`.
+- **Moves the wrong way:** flip the sign in `set()`, or rotate the horn 180° on the spline.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+Feeds the electronics wing's pin map (GPIO 25, verified) and the design wing's rudder geometry section — your final trim values are what the physical linkage gets built around.
+
+</Section>

@@ -1,0 +1,58 @@
+---
+courseId: mechatronics
+blockId: 1a
+track: tuesday
+code: T3
+order: 3
+title: "Print and Assemble the Proto"
+hook: "Build day: a known-good, already-verified proto boat in your hands before any gear math."
+sessionInfo: "Wednesday, Sep 2 (no-class build day, ~5h) · whole team"
+notebookOutput: "Bitácora entry with photos — first physical test-fit"
+draft: false
+---
+
+Get a **known-good, already-verified** 3D-printed proto boat into your hands — hull, paddle wheels, gear train, mounts — before anyone is asked to reason abstractly about gear ratios. Concrete object first, math second.
+
+<Callout type="tip" title="Why this day exists here">
+This build uses existing, verified CAD exports — not values you'll derive (that's next session, T4). They're already confirmed to render as valid solids, fit the 400×300 mm envelope, and fit the printer bed in bow/stern halves. The point of today is hands-on assembly and a first real look at tolerances, not a design decision.
+</Callout>
+
+<Section title="Agenda (~5 hours — plan for breaks)" icon="🗓️" id="agenda">
+
+**1. Safety briefing (15 min, whole team, mandatory before anyone touches a machine).** 3D printer: don't touch the nozzle or bed while hot, hair tied back, no loose sleeves near moving parts. General shop safety for whatever hand tools you use to clean up prints (deburring, trimming supports).
+
+**2. Slice and start the print queue — Creality Print, on the K1C.**
+
+1. Open Creality Print, confirm the printer profile is set to **K1C** (bed 220×220×250 mm — this is why the hull is split into bow/stern halves, each well under that).
+2. Import the hull halves, both paddle wheels, the motor cradle, servo bracket, axle pillar, bay tray/lid, and both gears from the design exports.
+3. **Orientation, part by part:** hull halves flat-face down (most bed contact, no supports on the visible curve — check the reference assembly image if unsure which face that is); gears and mounts flat-face down, supports only where the slicer preview shows real overhangs; bay tray/lid open-side up if it has one, same reasoning as the hull.
+4. **Settings:** 0.2 mm layer height is fine for a fit-check proto (not the competition part — that's wood). 15–20% infill for the hull/mounts is enough for handling; bump to 30–40% for the gears and axle pillar, since those carry real mechanical load even on the bench.
+5. Run the printer's auto bed-leveling routine before the first print of the day — cheap insurance against a failed first layer wasting your limited session time.
+6. **Queue order matters:** start the largest parts (hull halves) first — they'll run long, possibly past this session, so let them run unattended if needed. Print the smaller parts (gears, mounts, bay tray/lid) while the room is actively staffed.
+
+**3. While prints run — split by track:**
+- **Design trio:** compare the physical parts against the reference render as they come off the printer. Start a rough materials/parts checklist in the notebook (seeds T4's materials list).
+- **Electronics pair:** dry-fit the board, driver, and wiring layout into the printed bay tray/lid — no permanent mounting yet, just confirm the board's hole spacing actually matches. Report back to the whole team whether it fit.
+
+**4. First assembly pass (remaining time, whole team).** Test-fit (don't glue) the hull halves, paddle wheels on the axle, the gear pair meshing, the motor and servo in their cradles/brackets. Everyone should physically handle every part at least once.
+
+**5. Photo-log for the notebook (15 min, end of session).** Photos of the test-fit, whatever gaps or misfits were found, and one sentence per issue on what to check or change before the wood cut.
+
+</Section>
+
+<Section title="What to watch for" icon="👀" id="watch-for">
+
+Report these, don't silently fix them:
+
+- Board hole spacing not matching the electronics bay.
+- Motor pocket dimensions — a placeholder until the real motor is in hand; note if the printed pocket looks oversized or undersized once you have it.
+- Any part that doesn't print as a clean solid (holes, warping, poor first-layer adhesion) — reprint rather than force a bad fit, this is a proto, not the competition part.
+- Support material that's hard to remove cleanly — a sign that part's orientation should change before it's ever reprinted.
+
+</Section>
+
+<Section title="Notebook" icon="📓" id="notebook">
+
+This is a bitácora entry, not a design-decision entry — dated, with photos, and honest about what didn't fit. That honesty is exactly what "evidence of learning from errors" rewards later. See the <SessionLink code="notebook-guide">Engineering Notebook — Student Guide</SessionLink>.
+
+</Section>

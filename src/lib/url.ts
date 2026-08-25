@@ -36,6 +36,8 @@ export const routes = {
   session: (c: string, s: number | string, w: number | string) =>
     url(`course/${c}/sprint/${s}/week/${w}`),
   block: (c: string, b: string) => url(`course/${c}/block/${b}`),
+  blockSession: (c: string, b: string, code: string) =>
+    url(`course/${c}/block/${b}/session/${code.toLowerCase()}`),
 
   /** SKILLS enrichment: term → 45-min card, e.g. term "1", code "sk1". */
   skills: () => url('skills'),
