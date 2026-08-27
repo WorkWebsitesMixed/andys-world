@@ -48,8 +48,19 @@ You will get these right by instinct. The notes that follow just give a name and
 <Formula
   name="Moment of a force"
   equation="\text{Moment} = \text{Force} \times \text{perpendicular distance}"
-  note="Distance is measured from the pivot, at right angles to the line of the force. Double the distance and you double the turning effect for the same force."
+  terms={[
+    { symbol: "\\text{Moment}", meaning: "the turning effect the force has about the pivot — how hard it tries to rotate the object, not how hard it pushes", unit: "N·m or N·mm" },
+    { symbol: "\\text{Force}", meaning: "the push or pull applied, converted from mass by multiplying kilograms by about 10", unit: "N" },
+    { symbol: "\\text{distance}", meaning: "how far the force acts from the pivot, measured at right angles to the line of the force. Keep every distance in the same unit as the answer you want", unit: "m or mm" },
+  ]}
+  note="Double the distance and you double the turning effect for the same force. That is why the units are a force multiplied by a length."
 />
+
+<Callout type="info" title="Where you'll see this">
+**Every door handle in the building is on the far edge, never next to the hinge.** That is not styling — it is the longest possible distance from the pivot, so the smallest possible force opens the door. Try pushing a door open two centimetres from its hinge and you will feel exactly what the formula says.
+
+Same principle: a long spanner undoes a tight bolt that a short one cannot, a wheelbarrow lets you lift a load that you could never carry because the wheel is the pivot and your hands are far from it, and a nutcracker, a pair of scissors and a bottle opener are all just two moments about a hinge.
+</Callout>
 
 For a structure that is not rotating, the moments must balance:
 
@@ -82,6 +93,14 @@ A beam 4 m long is supported at A (left) and B (right). A load of 600 N is appli
   equation="R_B \times 4\ \text{m} = 600\ \text{N} \times 1\ \text{m}"
   substitution="R_B = \frac{600\ \text{N}\cdot\text{m}}{4\ \text{m}}"
   result="R_B = 150\ \text{N}"
+  terms={[
+    { symbol: "R_A", meaning: "the reaction at support A — the upward force that support pushes back with", unit: "N" },
+    { symbol: "R_B", meaning: "the reaction at support B, the other support", unit: "N" },
+    { symbol: "W", meaning: "the total downward load on the beam", unit: "N" },
+    { symbol: "4\\ \\text{m}", meaning: "the span — the distance between the two supports, which is how far R_B acts from pivot A", unit: "m" },
+    { symbol: "1\\ \\text{m}", meaning: "how far the load sits from A, the pivot moments are taken about", unit: "m" },
+  ]}
+  note="Taking moments about A makes R_A act through the pivot, so its distance is zero and it drops out of the equation entirely — leaving one unknown."
 />
 
 <Formula
@@ -95,6 +114,12 @@ A beam 4 m long is supported at A (left) and B (right). A load of 600 N is appli
 <BeamReactionsDiagram />
 
 **The sanity check you should always run:** the support closer to the load always takes the bigger reaction. If your answer says otherwise, you have divided by the wrong distance.
+
+<Callout type="info" title="Where you'll see this">
+**Two people carrying a heavy box.** If the box slides towards one of you, that person suddenly takes more of the weight — and you can feel the change instantly, without doing any arithmetic. That is a beam on two supports, and you are the supports.
+
+The professional version is everywhere: the two brackets under a shelf, the piers under a bridge, the axles of a lorry (which is why weighbridges measure each axle separately), and the legs of a scaffold tower. Whenever a load sits between two supports, somebody has calculated how the two share it — and if they got it wrong, the nearer one fails first.
+</Callout>
 
 <Callout type="tip" title="Predict the reading, then read it · 22 min · groups of 4">
 A ruler bridges two kitchen scales. **Tare both scales with the ruler already resting on them**, or its own weight will show up in every reading.
@@ -140,6 +165,12 @@ Sketch three of them in your folder, each with one line on where it would work i
 </Callout>
 
 <MoreImages term="timber structural joints halving bridle mortise tenon" />
+
+<Callout type="info" title="Where you'll see this">
+**Every flatpack wardrobe you have ever assembled** is held together with KD fittings — the cam lock that you turn a half-turn with the little Allen key. They exist so the thing can be shipped flat and built in a bedroom, and so it can come apart again when you move. They are weaker than glue, and that is a deliberate trade.
+
+Turn over any older wooden chair and you will find mortise and tenon joints where the legs meet the rails, because that joint resists the bending you apply every time you lean back. The chair is a hundred years old and still holding. The flatpack one will not be, and both were correct decisions for their purpose.
+</Callout>
 
 </Section>
 

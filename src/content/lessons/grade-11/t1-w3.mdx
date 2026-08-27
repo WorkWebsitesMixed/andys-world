@@ -53,6 +53,12 @@ Copy this table.
 
 **Exam trap:** A cardboard box is a shell structure, not a frame. The faces carry the load. A box made of rods glued at the corners is a frame — the rods carry the load, the spaces do not.
 
+<Callout type="info" title="Where you'll see this">
+Walk out of school and you can classify almost everything you pass. The **frames**: a bicycle, scaffolding, an electricity pylon, the roof timbers of a house, a shopping trolley. The **shells**: a car body panel, a drinks can, a bike helmet, an aircraft fuselage, a plastic chair. The **mass**: a kerbstone, a brick wall, a dam, the concrete base a lamppost stands in.
+
+Where it gets interesting is the things that changed. Early cars had a separate steel frame with a body bolted on; almost every modern car is a shell, where the body panels themselves carry the load. That change made cars lighter and safer at the same time — the same amount of steel doing a better job because of where it was put.
+</Callout>
+
 <StructureTypesDiagram />
 
 <MoreImages term="frame shell mass structure examples" />
@@ -66,6 +72,12 @@ A square frame pushed over, then the same square with one diagonal added. Notice
 </Callout>
 
 This is why trusses, bicycle frames, scaffolding and roof structures are all triangulated. It is also the cheapest structural upgrade that exists: one extra member, no extra material thickness.
+
+<Callout type="info" title="Where you'll see this">
+Look at any **garden gate**. There is a diagonal brace running corner to corner, and it always runs *up* towards the hinge side. Without it the gate slowly racks into a parallelogram and starts catching on the ground — which is exactly the failure you can reproduce with a square frame in ten seconds.
+
+The same triangle is in the arm of a crane, the side of an electricity pylon, the frame of a bunk bed, the back of a folding chair, and the roof space above your head. Once you have seen it, scaffolding stops looking like a random pile of poles.
+</Callout>
 
 <TriangulationDiagram />
 
@@ -101,6 +113,12 @@ Take a thick paperback or a fat stack of paper and bend it into a curve. Watch t
 
 This is why an I-beam has flanges at the top and bottom: material near the neutral axis is barely working, so it is moved out to where the stress is highest. Same material, better geometry, far stiffer beam.
 
+<Callout type="info" title="Where you'll see this">
+**Floor joists are always on edge, never flat.** Same plank, same timber, turned through 90° — and it carries several times more load, because turning it moves the material away from the neutral axis. Try it with a ruler: bend it flat between two hands, then bend it on edge. It is the same ruler.
+
+This is also why steel beams over doorways and in building sites are I-shaped rather than solid rectangles: the middle of a beam is doing almost nothing, so the steel is taken out of there and put in the flanges where the stress is. Less material, stiffer beam, cheaper building.
+</Callout>
+
 <ForcesDiagram />
 
 </Section>
@@ -114,8 +132,19 @@ Copy this formula.
   equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
   substitution="\text{Stress} = \frac{500\ \text{N}}{50\ \text{mm}^2}"
   result="\text{Stress} = 10\ \text{N/mm}^2 = 10\ \text{MPa}"
+  terms={[
+    { symbol: "\\text{Stress}", meaning: "how hard the material itself is working — the share of the load carried by each square millimetre of cross-section", unit: "N/mm² (= MPa)" },
+    { symbol: "\\text{Force}", meaning: "the load pushing or pulling on the member, converted from mass by multiplying kilograms by about 10", unit: "N" },
+    { symbol: "\\text{Area}", meaning: "the cross-sectional area carrying that load — the area of the cut face if you sliced the member through", unit: "mm²" },
+  ]}
   note="A force of 500 N acting on a cross-section of 50 mm². Note that N/mm² and MPa are the same unit."
 />
+
+<Callout type="info" title="Where you'll see this">
+**Stiletto heels and snowshoes.** The same person, the same weight — but a stiletto puts it through roughly 1 cm² and dents a wooden floor, while a snowshoe spreads it over about 500 cm² and stays on top of the snow. The force never changed; only the area did.
+
+Same idea everywhere else: a rucksack with wide straps is comfortable and one with thin cords cuts into your shoulders. A drawing pin is sharp at one end so a small hand force becomes enormous stress at the point, and flat at the other so the same force stays comfortable on your thumb.
+</Callout>
 
 A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load — and it is part of why the paper tube outperformed the flat-folded strip.
 
@@ -138,8 +167,19 @@ Copy this formula and the three rearrangements.
   equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
   substitution="\text{FoS} = \frac{200\ \text{N}}{50\ \text{N}}"
   result="\text{FoS} = 4.0"
+  terms={[
+    { symbol: "\\text{FoS}", meaning: "how many times over the structure could carry its intended load before it fails — a pure ratio, so it never carries a unit", unit: "no unit" },
+    { symbol: "\\text{Failure Load}", meaning: "the load at which the structure actually breaks or permanently deforms. Found by testing one to destruction, or from published material data — never a guess", unit: "N" },
+    { symbol: "\\text{Working Load}", meaning: "the largest load the structure is designed to carry in normal use, decided by you from what the user will really put on it", unit: "N" },
+  ]}
   note="A shelf bracket that permanently deforms at 200 N, designed to carry 50 N, could take four times its working load before failing."
 />
+
+<Callout type="info" title="Where you'll see this">
+**Every lift you have ever been in.** The plate by the doors says something like "8 persons / 630 kg" — that is a working load. The cables and brake are built to hold several times it, and lift codes typically demand a FoS of around 10 or higher, because the consequence of failure is people.
+
+You will also find it on climbing rope (rated far above any climber's weight, because a fall loads it many times harder than hanging does), on the ladder in your garage, on a car jack, and on the weight limit sign at the entrance to a bridge or a car park. Every one of those numbers is a failure load divided by a factor somebody chose deliberately.
+</Callout>
 
 - $\text{FoS} = \dfrac{\text{Failure Load}}{\text{Working Load}}$
 - $\text{Working Load} = \dfrac{\text{Failure Load}}{\text{FoS}}$

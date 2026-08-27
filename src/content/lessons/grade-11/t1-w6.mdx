@@ -124,6 +124,12 @@ When it lights, measure the actual current with the multimeter and compare it wi
 <Formula
   name="Current-limiting resistor"
   equation="R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
+  terms={[
+    { symbol: "R", meaning: "the resistance of the current-limiting resistor you need to fit in series with the LED", unit: "Ω" },
+    { symbol: "V_{\\text{supply}}", meaning: "the battery voltage feeding the circuit", unit: "V" },
+    { symbol: "V_{\\text{LED}}", meaning: "the forward voltage the LED itself drops — a fixed property of that LED, roughly 2 V for red and green, 3.0–3.5 V for blue and white. It is subtracted because the LED has already used up that much of the supply", unit: "V" },
+    { symbol: "I_{\\text{LED}}", meaning: "the current you want flowing through the LED, normally 20 mA. Convert to amps before substituting — 20 mA is 0.020 A", unit: "A" },
+  ]}
   substitution="R = \frac{9\ \text{V} - 2\ \text{V}}{0.020\ \text{A}} = \frac{7\ \text{V}}{0.020\ \text{A}}"
   result="R = 350\ \Omega"
 />
@@ -167,6 +173,12 @@ From the E12 series: 390 Ω is the next value above 350 Ω.
 **LED not lighting?** Check: (1) LED polarity — the longer leg is the anode (positive); (2) switch correctly positioned in the circuit (gap in the circuit line); (3) resistor value correct; (4) battery connection secure; (5) all connections in the same numbered column or power rail.
 
 **LED burning out?** Check your resistor value. If you used a resistor much lower than the calculated value, the LED drew too much current. Replace the LED and use the correct resistor.
+
+<Callout type="info" title="Where you'll see this">
+**Open any device with an indicator light and there is a resistor next to the LED.** The standby light on a TV, the charging light on a laptop, the power light on a plug extension — every one of them has this calculation behind it, because an LED connected straight across a supply destroys itself in well under a second.
+
+It is also why USB-powered fairy lights and cheap phone chargers sometimes fail early: the resistor was chosen to make the LEDs look bright rather than to make them last.
+</Callout>
 
 **Setting up the circuit doctor:** build the six faulty circuits before the lesson and label them 1 to 6 only — no hint of the fault. The six worth using are a reversed LED, a missing resistor, the switch sitting across a rail instead of breaking the circuit, a lead one row out, a flat battery, and a resistor ten times too large so the LED is technically lit but barely visible. That last one is the best of the six, because "it works but it is wrong" is the hardest fault to see.
 

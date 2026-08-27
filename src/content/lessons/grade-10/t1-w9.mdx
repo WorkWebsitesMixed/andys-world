@@ -65,6 +65,12 @@ Warm the thermistor and find the temperature at which your motor starts. Record 
 Post both to the class board. Whose circuit triggers closest to a sensible fire-detection threshold — and what would you change to move yours towards it?
 </Callout>
 
+<Callout type="info" title="Where you'll see this">
+**A thermistor is why your kettle switches itself off, why the fridge stops cooling at the right temperature, and why a car dashboard can warn you the engine is overheating.** Anything that has to *know* a temperature rather than just survive one has a sensor like this inside it.
+
+The fire-detection version you are building is real: heat detectors in kitchens use exactly this principle, because a smoke detector over a cooker would be going off constantly. And the voltage divider around it turns up everywhere else too — the volume knob on a speaker is a variable divider, splitting the signal into the share you asked for.
+</Callout>
+
 </Section>
 
 <WorkedExample title="Tracing the voltage at the divider junction">
@@ -75,6 +81,12 @@ Post both to the class board. Whose circuit triggers closest to a sensible fire-
 <Formula
   name="Voltage divider"
   equation="V_{\text{out}} = V_{\text{in}} \times \frac{R_2}{R_1 + R_2}"
+  terms={[
+    { symbol: "V_{\\text{out}}", meaning: "the voltage at the junction between the two resistors — the signal fed to the transistor base", unit: "V" },
+    { symbol: "V_{\\text{in}}", meaning: "the supply voltage across the whole divider, here the 9 V battery", unit: "V" },
+    { symbol: "R_1", meaning: "the upper resistor, between the supply and the junction", unit: "Ω" },
+    { symbol: "R_2", meaning: "the lower resistor, between the junction and 0 V. Whichever component sits here is the one whose share of the voltage you are measuring", unit: "Ω" },
+  ]}
   substitution="V_{\text{out}} = 9\ \text{V} \times \frac{10{,}000\ \Omega}{10{,}000\ \Omega + 10{,}000\ \Omega}"
   result="V_{\text{out}} = 4.5\ \text{V}"
 />

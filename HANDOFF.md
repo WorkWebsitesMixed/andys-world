@@ -75,6 +75,13 @@ internal `<Section>`, so **only one per page**), `Resources`, `Reflection`,
 stretch), `WatchSee` (curated external video links), `ExamLink`, `WeekLink`
 (inline link to another week's page — e.g. a main session ↔ its paired B
 session), `ProjectExamples`.
+- **`Formula`** takes an optional **`terms`** array (`{symbol, meaning, unit?}`)
+  rendering a "where …" definition list under the working. Added 2026-08-27 after
+  Andy flagged that G11 T1 W3 used Stress and Failure Load without ever defining
+  them. Any formula introducing a new quantity carries it; repeat instances inside
+  a `WorkedExample` may omit it. Paired convention: a new concept or formula is
+  followed by a `<Callout type="info" title="Where you'll see this">` linking it to
+  something the student can go and look at today.
 - **`Figure`** (image + required alt) — `src` resolves through `url()`, so pass a
   path relative to `public/`, e.g. `src="images/tools/pillar-drill.jpg"`, no base
   prefix needed. Optional `credit`/`creditHref` render a linked attribution line

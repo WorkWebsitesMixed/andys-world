@@ -77,6 +77,34 @@ Only `equation` is required — drop `substitution`/`result` to state a formula 
 abstract. Paper 4 Section B gives method marks for the rearranged formula and the
 substituted values, so show all three stages whenever there are numbers.
 
+**Define every term.** A formula that introduces a new quantity must carry `terms`,
+which renders a "where …" list under the working — the way a textbook and a mark
+scheme both present it. `symbol` is TeX without delimiters so it matches the
+equation exactly; `unit` is optional but include it unless the quantity genuinely
+has none (write `"no unit"` for a ratio like FoS).
+
+```mdx
+<Formula
+  name="Stress"
+  equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
+  terms={[
+    { symbol: "\\text{Stress}", meaning: "the share of the load carried by each square millimetre of cross-section", unit: "N/mm² (= MPa)" },
+    { symbol: "\\text{Force}", meaning: "the load pushing or pulling on the member", unit: "N" },
+    { symbol: "\\text{Area}", meaning: "the cross-sectional area carrying that load", unit: "mm²" },
+  ]}
+/>
+```
+
+Repeat instances of the same formula inside a `<WorkedExample>` may omit `terms` —
+the symbols are already defined higher up the page, and repeating them three times
+is noise. Every symbol must be defined *somewhere* on its page.
+
+**Where you'll see this.** A new concept or formula should be followed by a
+`<Callout type="info" title="Where you'll see this">` giving two or three places a
+student meets it outside school — a door handle for moments, a stiletto heel for
+stress, a lift capacity plate for factor of safety. Concrete and everyday beats
+impressive: the test is whether they could go and look at it today.
+
 Conventions: `\text{…}` for words and units so they are upright, `\ ` for the thin gap
 before a unit (`200\ \text{N}`), `\times` for multiplication (never a letter `x`),
 `\frac{}{}` for division, and `{,}` for a thousands separator (`80{,}000`).

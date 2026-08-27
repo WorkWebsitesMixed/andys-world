@@ -70,6 +70,12 @@ Calculate $R = V/I$ from your own two readings and compare with the measured res
 <Formula
   name="Current-limiting resistor"
   equation="R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
+  terms={[
+    { symbol: "R", meaning: "the resistance of the current-limiting resistor fitted in series with the LED", unit: "Ω" },
+    { symbol: "V_{\\text{supply}}", meaning: "the battery voltage feeding the circuit", unit: "V" },
+    { symbol: "V_{\\text{LED}}", meaning: "the forward voltage the LED itself drops — about 2 V for red and green, 3.0–3.5 V for blue and white. Subtracted because the LED has already used that much of the supply", unit: "V" },
+    { symbol: "I_{\\text{LED}}", meaning: "the current you want through the LED, normally 20 mA. Convert to amps first — 20 mA is 0.020 A. This is the single most common place to lose the mark", unit: "A" },
+  ]}
   substitution="R = \frac{9\ \text{V} - 2\ \text{V}}{0.020\ \text{A}} = \frac{7\ \text{V}}{0.020\ \text{A}}"
   result="R = 350\ \Omega"
 />

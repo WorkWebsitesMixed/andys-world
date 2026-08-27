@@ -31,12 +31,29 @@ interface Props {
   result?: string;
   /** Plain-prose note under the formula — what the answer means. */
   note?: string;
+  /**
+   * Every term in the equation, defined. Rendered as a "where …" list under the
+   * working, the way a textbook and a mark scheme both present it.
+   *
+   *   terms={[
+   *     { symbol: "\\text{Stress}", meaning: "force carried by each square millimetre of cross-section", unit: "N/mm² (MPa)" },
+   *   ]}
+   *
+   * `symbol` is TeX without delimiters, so it matches the equation exactly.
+   * A formula whose terms are all defined elsewhere on the page may omit this,
+   * but a formula introducing a new quantity should never appear without it.
+   */
+  terms?: { symbol: string; meaning: string; unit?: string }[];
 }
 
-const { name, equation, substitution, result, note } = Astro.props;
+const { name, equation, substitution, result, note, terms } = Astro.props;
 
 const tex = (src: string) =>
   katex.renderToString(src, { displayMode: true, throwOnError: false, strict: false });
+
+// Term symbols sit inline in a list row, so they render in inline mode.
+const texInline = (src: string) =>
+  katex.renderToString(src, { displayMode: false, throwOnError: false, strict: false });
 
 const rows = [
   { key: 'formula', label: 'Formula', src: equation },
@@ -57,6 +74,22 @@ const rows = [
       ))
     }
   </div>
+  {terms && terms.length > 0 && (
+    <div class="formula__terms">
+      <p class="formula__where">where</p>
+      <dl>
+        {terms.map((t) => (
+          <div class="formula__term">
+            <dt set:html={texInline(t.symbol)} />
+            <dd>
+              {t.meaning}
+              {t.unit && <span class="formula__unit">{t.unit}</span>}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  )}
   {note && <p class="formula__note">{note}</p>}
 </figure>
 
@@ -125,6 +158,72 @@ const rows = [
   .formula__math :global(.katex) {
     font-size: 1.05em;
     color: var(--text);
+  }
+
+  .formula__terms {
+    margin-top: 0.75rem;
+    padding-top: 0.7rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .formula__where {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin: 0 0 0.4rem;
+  }
+
+  .formula__terms dl {
+    margin: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .formula__term {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .formula__term dt {
+    text-align: right;
+    color: var(--accent);
+  }
+
+  .formula__term dt :global(.katex) {
+    font-size: 0.95em;
+  }
+
+  .formula__term dd {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .formula__unit {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.05rem 0.4rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 34rem) {
+    .formula__term {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+    .formula__term dt {
+      text-align: left;
+    }
   }
 
   /* A long equation scrolls inside its own row rather than widening the page. */
