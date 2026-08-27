@@ -2,17 +2,21 @@
 grade: 11
 term: 1
 week: 3
-title: "Structures 1: The Breaking Lab"
-topic: "Structures — build, break, measure"
-learningGoal: "classify any structure as frame, shell or mass, explain why a triangulated frame is rigid, and calculate stress and factor of safety from a structure I broke myself"
-selGoal: "commit to a prediction out loud before each test, and treat being wrong as information rather than as embarrassment"
+title: "Structures 1: Forces, Stress & Safety"
+topic: "Structures — test it, then explain it"
+learningGoal: "classify any structure as frame, shell or mass, name the five forces acting on structures, and calculate stress and factor of safety showing every step"
+selGoal: "commit to a prediction before each test, and treat being wrong as information rather than as embarrassment"
 draft: false
 ---
 
-Today nothing gets explained to you before it gets tested. You will crush an egg, buckle a paper column, bend a foam beam until you can see the forces in it, and then build a bracket out of spaghetti and load it until it snaps. The number your bracket fails at is the number you will do the maths on — so break it honestly.
+Three sheets of the same A4 paper, folded three different ways. One of them will hold a stack of textbooks; one will collapse almost immediately. Same material, same mass — so whatever explains the difference cannot be the paper. That is the idea this whole session is built on, and you will meet it again every time a structure has to carry a load.
 
 <Callout type="exam" title="Why this matters" id="why">
-Structures is the theory backbone of the whole course and of your project. <ExamLink to="paper4">Paper 4 Section B</ExamLink> asks you to classify structures, name forces, and calculate stress and factor of safety — and it awards **method marks** for the formula and the substitution even when the arithmetic goes wrong. The fastest way to remember a formula is to have used it on something you watched fail.
+Structures is the theory backbone of the whole course and of your project. <ExamLink to="paper4">Paper 4 Section B</ExamLink> asks you to classify structures, name forces, and calculate stress and factor of safety — and it awards **method marks** for the formula and the substitution even when the arithmetic goes wrong. Write every stage down, always.
+</Callout>
+
+<Callout type="tip" title="How this session runs">
+Each idea comes in the same order: **a quick test, then the notes that explain it.** Everything in a bordered table or a `Formula` box goes into your notebook — those are the definitions and equations you are examined on. The tests are there so the notes mean something when you read them back.
 </Callout>
 
 <KeyTerms terms={[
@@ -20,6 +24,7 @@ Structures is the theory backbone of the whole course and of your project. <Exam
   { term: "Shell structure", definition: "A structure where the outer skin carries the load. The surface itself is the structural element — there is no internal frame. Examples: egg, car body panel, dome, tin can." },
   { term: "Mass structure", definition: "A solid structure where the whole volume of material is under compression. No internal cavity. Examples: dam wall, concrete foundation, brick wall, cliff." },
   { term: "Triangulation", definition: "Adding a diagonal member to a square frame to convert it into two triangles. A triangle cannot change shape without changing the length of one of its sides, so a triangulated frame cannot rack." },
+  { term: "Neutral axis", definition: "The layer inside a bent beam where the material is neither stretched nor squashed, and the bending stress is zero. It separates the compression face from the tension face." },
   { term: "Stress", definition: "Force divided by the cross-sectional area carrying it. Measured in N/mm² (identical to MPa). Two members carrying the same load can be under completely different stress if their cross-sections differ." },
   { term: "Factor of Safety (FoS)", definition: "The ratio of the load at which a structure fails to the maximum load it is designed to carry in use. FoS = Failure Load divided by Working Load. A FoS of 1 means the structure fails exactly at its working load — far too risky. Structural engineering uses 2 to 6 or higher." },
   { term: "Strut", definition: "A structural member under compression. It pushes back against the load trying to squash it. Columns and vertical posts are typically struts." },
@@ -28,7 +33,15 @@ Structures is the theory backbone of the whole course and of your project. <Exam
 
 <Section title="Types of structure" icon="🏗️" id="types">
 
+<Callout type="tip" title="Test first — the paper column challenge · 12 min">
+Three sheets of A4, three columns of the same height: one rolled into a **cylinder**, one folded into a **triangular tube**, one folded into a **square tube**. Tape each so it holds its shape.
+
+**Write your predicted ranking down before you load anything.** Then stack textbooks on each column one at a time until it buckles, and record how many each held. Same paper, same mass, three very different answers.
+</Callout>
+
 ### Frame, shell, and mass
+
+Copy this table.
 
 | Type | How load is carried | Key feature | Example |
 |---|---|---|---|
@@ -36,21 +49,21 @@ Structures is the theory backbone of the whole course and of your project. <Exam
 | Shell | Outer skin | Surface is the structural element | Egg, car bonnet, dome |
 | Mass | Entire volume | All material in compression | Dam, brick wall, concrete foundation |
 
-**Exam trap:** A cardboard box is a shell structure, not a frame. The faces carry the load. A box made of straws glued at the corners is a frame — the straws carry the load, the spaces do not.
+**Your paper columns were shells.** The load was carried by the skin of the tube, and there was nothing inside. That is exactly why the shape mattered so much: in a shell, the geometry of the surface *is* the structure.
+
+**Exam trap:** A cardboard box is a shell structure, not a frame. The faces carry the load. A box made of rods glued at the corners is a frame — the rods carry the load, the spaces do not.
 
 <StructureTypesDiagram />
 
 <MoreImages term="frame shell mass structure examples" />
 
-### The egg test, and why it works
-
-An egg is a shell structure. Squeezed end-to-end in a closed palm, an intact egg is extremely hard to break — the curved shell spreads your grip into pure compression, and eggshell is very strong in compression. Poke the same egg once with a fingertip at the side and it fails instantly, because a point load bends the shell, and eggshell is weak in bending.
-
-That single contrast is the whole idea of a shell: **the geometry decides which force the material has to face.** Change the geometry and you change the force, without changing the material at all.
-
 ### Triangulation: why triangles are rigid
 
 A triangle cannot be deformed without changing the length of one of its sides. A square frame can be **racked** — pushed into a parallelogram — without any side changing length at all. Adding one diagonal converts the square into two triangles, and the racking stops dead.
+
+<Callout type="tip" title="Watch the board demo · 3 min">
+A square frame pushed over, then the same square with one diagonal added. Notice what happens to the corner-to-corner distance when the square racks — that is the length the diagonal refuses to allow to change.
+</Callout>
 
 This is why trusses, bicycle frames, scaffolding and roof structures are all triangulated. It is also the cheapest structural upgrade that exists: one extra member, no extra material thickness.
 
@@ -62,6 +75,8 @@ This is why trusses, bicycle frames, scaffolding and roof structures are all tri
 
 ### The five forces
 
+Copy this table — all five, with the example.
+
 | Force | Direction | What it does | Example |
 |---|---|---|---|
 | Tension | Pulls apart along the axis | Stretches the member | Bottom chord of a truss, guy wire |
@@ -70,13 +85,19 @@ This is why trusses, bicycle frames, scaffolding and roof structures are all tri
 | Torsion | Twists around the axis | Rotates the cross-section | Driveshaft, screwdriver bit |
 | Bending | Combination of tension + compression | Curves the member | Loaded beam |
 
-### Seeing bending with your own eyes
+Your paper columns failed in **compression** — specifically by buckling, which is what a slender member in compression does before it ever gets close to being crushed.
 
-Bending is the force students most often get wrong in the exam, because it is really two forces at once. Station 3 makes it visible: draw a straight line along the side of a foam block, then bend the block into a curve.
+### Seeing bending, with a book
 
-- The line on the **top** face gets **shorter** — that face is in **compression**.
-- The line on the **bottom** face gets **longer** — that face is in **tension**.
-- Somewhere in the middle the line does not change length at all. That layer is the **neutral axis**, where bending stress is zero.
+Bending is the force most often got wrong in the exam, because it is really two forces at once.
+
+<Callout type="tip" title="Test it now · 4 min">
+Take a thick paperback or a fat stack of paper and bend it into a curve. Watch the page edges at the ends of the block.
+
+- The pages on the **inside** of the curve are pushed together — that face is in **compression**.
+- The pages on the **outside** slide forward and are stretched apart — that face is in **tension**.
+- Somewhere in the middle, one layer does neither. That is the **neutral axis**, where bending stress is zero.
+</Callout>
 
 This is why an I-beam has flanges at the top and bottom: material near the neutral axis is barely working, so it is moved out to where the stress is highest. Same material, better geometry, far stiffer beam.
 
@@ -84,9 +105,9 @@ This is why an I-beam has flanges at the top and bottom: material near the neutr
 
 </Section>
 
-<Section title="Stress and Factor of Safety" icon="📐" id="stress-fos">
+<Section title="Stress" icon="📐" id="stress">
 
-### Stress
+Copy this formula.
 
 <Formula
   name="Stress"
@@ -96,98 +117,118 @@ This is why an I-beam has flanges at the top and bottom: material near the neutr
   note="A force of 500 N acting on a cross-section of 50 mm². Note that N/mm² and MPa are the same unit."
 />
 
-A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load — and why the paper column in Station 2 survives so much more load as a tube than as a folded strip.
+A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load — and it is part of why the paper tube outperformed the flat-folded strip.
 
-### Factor of Safety
+**Converting mass to force:** loads are usually given as a mass in kg, but structures are calculated in newtons. Multiply by roughly 10 (strictly 9.81). A 2 kg load is about 20 N.
 
-**Example:** A shelf bracket permanently deforms at 200 N. It is designed to carry a maximum load of 50 N.
+<Callout type="tip" title="Apply it to your own column · 8 min">
+Take the column that held the most. Estimate the cross-sectional area of the **paper itself** — not the area of the circle it encloses. For a cylinder: measure the circumference in mm and multiply by the paper thickness (about 0.1 mm). Then convert the mass of books it held into newtons, and calculate the stress in the paper at the moment it failed.
+
+Your answer will be an estimate, and that is fine. An estimate you have stated clearly earns marks; a blank earns none.
+</Callout>
+
+</Section>
+
+<Section title="Factor of Safety" icon="🛟" id="fos">
+
+Copy this formula and the three rearrangements.
 
 <Formula
   name="Factor of safety"
   equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
   substitution="\text{FoS} = \frac{200\ \text{N}}{50\ \text{N}}"
   result="\text{FoS} = 4.0"
-  note="The bracket could carry four times its working load before failing."
+  note="A shelf bracket that permanently deforms at 200 N, designed to carry 50 N, could take four times its working load before failing."
 />
 
-For structures that affect human safety — buildings, bridges, lifting equipment — FoS values of 2.5 to 6 are typical. Aircraft run much lower (around 1.5) because every kilogram costs fuel, which is why aircraft parts are inspected and replaced on a schedule instead.
-
-**Converting mass to force:** loads are usually given as a mass in kg, but structures are calculated in newtons. Multiply by roughly 10 (strictly 9.81). A 2 kg load is about 20 N.
-
-</Section>
-
-<WorkedExample title="From a broken bracket to a judgement">
-
-This is exactly the sequence you will run on your own bracket in Phase 4.
-
-1. **Record the failure load.** The bracket held a cup that was filled with washers until it snapped. Final measured mass: 1.85 kg. Convert to force — $1.85 \times 10 \approx 18.5\ \text{N}$. That is the **failure load**.
-
-2. **State the working load.** The user this bracket is for wants to hang a 600 g bag from it. $0.6 \times 10 = 6\ \text{N}$. That is the **working load**.
-
-3. **Calculate the factor of safety.**
-
-    <Formula
-      equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
-      substitution="\text{FoS} = \frac{18.5\ \text{N}}{6\ \text{N}}"
-      result="\text{FoS} = 3.1"
-    />
-
-4. **Calculate the stress in the member that actually broke.** It was a spaghetti strut, four strands taped together, each strand about 1.8 mm diameter. Area of one strand is $\pi r^2 = \pi \times 0.9^2 \approx 2.5\ \text{mm}^2$, so four strands give about $10\ \text{mm}^2$.
-
-    <Formula
-      equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
-      substitution="\text{Stress} = \frac{18.5\ \text{N}}{10\ \text{mm}^2}"
-      result="\text{Stress} = 1.85\ \text{N/mm}^2"
-    />
-
-5. **Make the judgement.** A FoS of 3.1 is acceptable for a domestic product carrying a non-critical load. But note *where* it failed: if it failed at a **joint** rather than in a **member**, the FoS above describes the tape, not the spaghetti — and the honest design conclusion is "strengthen the joints", not "use more material".
-
-</WorkedExample>
-
-<Activity title="Predict, break, measure, calculate" time="90 min" grouping="Teams of 3–4; calculations written individually" materials={["Raw egg (teacher demo) + hand sanitiser", "Drinking straws and masking tape", "A4 paper and sticky tape", "Foam block or dense sponge with a line drawn along one side", "Dried spaghetti", "Plastic cup, string, washers or coins", "Digital kitchen scale", "Ruler and calculator", "Results sheet"]}>
-
-**Every phase starts with a prediction.** Write your guess down *before* the test and circle it. You are not marked on being right — you are marked on having committed.
-
-**Hook — the egg that will not break (0–8 min):** Predict how many of you can crush a raw egg end-to-end in a closed palm. Watch the demo. Then watch a single fingertip at the side of the shell do what a whole fist could not. Write one sentence: which force was the shell strong against, and which was it weak against?
-
-**Station 1 — racking (8–15 min):** Build a square from four straws taped at the corners. Push one corner sideways. Record what happens to the shape and to the side lengths. Now tape one diagonal straw across it and push again. Write the one-sentence rule you have just discovered.
-
-**Station 2 — the paper column (15–22 min):** You get three sheets of A4. Make three columns of the same height: one rolled into a cylinder, one folded into a triangular tube, one folded into a square tube. Predict the ranking before you load them. Stack textbooks on each until it buckles and record the number of books each held. Same material, same mass — different geometry.
-
-**Station 3 — seeing the neutral axis (22–30 min):** Take the foam block with the line drawn along its side. Bend it into a curve. Watch the line: shorter at the top, longer at the bottom, unchanged in the middle. Sketch the block bent, and label compression, tension and the neutral axis on your sketch.
-
-**Build (30–52 min):** In your team, build a bracket from spaghetti and masking tape that projects 150 mm out from the table edge and carries a cup hung at its tip. Design rules: you may use up to 20 strands and one metre of tape. Sketch your design and mark where you predict it will fail — and write down the load in kg you predict it will hold.
-
-**Break (52–65 min):** Hang the cup. Add washers steadily until the bracket fails. Weigh the cup and its contents at the moment of failure and record the mass in kg. Note **where** it actually broke and whether that matched your prediction. Post your result to the class scoreboard as an efficiency ratio: failure load in newtons divided by the mass of your bracket in grams.
-
-**Calculate — individually (65–85 min):** On your own results sheet, using your own team's numbers: (1) convert your failure mass to a failure load in newtons; (2) choose a realistic working load for a product a real person would use and justify it in one line; (3) calculate the factor of safety; (4) estimate the cross-sectional area of the member that broke and calculate the stress in it; (5) write one sentence stating whether your FoS is acceptable and what you would change first.
-
-**Scoreboard and exit ticket (85–90 min):** Compare efficiency ratios. The winning team explains their geometry in 30 seconds. Exit ticket: name the structure type of your bracket, and the one force that destroyed it.
-
-</Activity>
-
-<Support title="If a phase is not working">
-
-**FoS calculation strip:** — the same relationship, rearranged three ways.
 - $\text{FoS} = \dfrac{\text{Failure Load}}{\text{Working Load}}$
 - $\text{Working Load} = \dfrac{\text{Failure Load}}{\text{FoS}}$
 - $\text{Failure Load} = \text{Working Load} \times \text{FoS}$
 
-**Converting mass to force:** multiply kilograms by 10 to get newtons (strictly 9.81, but 10 is accepted and faster). 1.85 kg becomes 18.5 N. Always write the unit — an answer with no unit loses the mark even when the number is right.
+FoS is a **ratio**, so it has no unit — writing "FoS = 4.0 N" is wrong. Because it is a ratio, both loads only have to be in the *same* unit, so kg works as well as N.
 
-**Estimating the area of a spaghetti bundle:** one strand is about 1.8 mm across, so its area is roughly 2.5 mm². Multiply by the number of strands in the member that broke. An estimate that you have stated clearly is worth full marks; a blank is worth none.
+For structures that affect human safety — buildings, bridges, lifting equipment — FoS values of 2.5 to 6 are typical. Aircraft run much lower, around 1.5, because every kilogram costs fuel; that is why aircraft parts are inspected and replaced on a fixed schedule instead.
+
+</Section>
+
+<WorkedExample title="Three calculations in sequence">
+
+1. **FoS.** A shelf is designed to hold 30 kg (approximately 300 N). Testing shows it fails at 1,200 N.
+
+    <Formula
+      equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+      substitution="\text{FoS} = \frac{1200\ \text{N}}{300\ \text{N}}"
+      result="\text{FoS} = 4.0"
+      note="Adequate for a domestic shelf — a comfortable safety margin."
+    />
+
+2. **Working load from a required FoS.** The same design must be re-rated for a school, where a FoS of 6 is required.
+
+    <Formula
+      equation="\text{Working Load} = \frac{\text{Failure Load}}{\text{FoS}}"
+      substitution="\text{Working Load} = \frac{1200\ \text{N}}{6}"
+      result="\text{Working Load} = 200\ \text{N}"
+      note="Roughly 20 kg. Demanding a higher factor of safety does not change the shelf — it lowers what you are allowed to put on it."
+    />
+
+3. **Stress.** The vertical support of the bracket is 25 mm × 25 mm square timber, carrying 300 N in compression.
+
+    <Formula
+      equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
+      substitution="\text{Stress} = \frac{300\ \text{N}}{25 \times 25\ \text{mm}^2} = \frac{300}{625}"
+      result="\text{Stress} = 0.48\ \text{N/mm}^2"
+      note="Well within timber's compressive strength of about 30 N/mm² — this member is nowhere near its limit, so if the shelf fails it will fail somewhere else."
+    />
+
+</WorkedExample>
+
+<Activity title="Session runsheet" time="90 min" grouping="Tests in teams of 3–4; notes and calculations written individually" materials={["Three sheets of A4 paper per team", "Sticky tape", "A pile of textbooks for loading", "A thick paperback for the bending demo", "Ruler and calculator", "Notebook for definitions and formulas"]}>
+
+This is the whole session, theory included — not a separate activity bolted on the end. Roughly half of it is note-taking and worked calculation; the tests are short and exist to make the notes make sense.
+
+**Settle and predict (0–5 min):** The question is on the board: three columns from identical A4, which holds most? Write your predicted ranking in your notebook before anything else happens.
+
+**Paper column test (5–17 min):** In teams, build the three columns, then load each with textbooks until it buckles. Record how many each held next to your prediction.
+
+**Notes — types of structure (17–29 min):** Copy the frame / shell / mass table and the exam trap. Then the triangulation demo at the board, and the triangulation definition into your notes. Your columns were shells — be able to say why.
+
+**Notes — the five forces (29–41 min):** Copy the five-force table in full, with the example column. Identify which force destroyed your own column and write that sentence underneath.
+
+**Bending, tested (41–45 min):** Bend a thick paperback and watch the page edges. Sketch it, and label compression, tension and the neutral axis on your sketch.
+
+**Notes — stress (45–53 min):** Copy the stress formula and the worked substitution. Note that N/mm² and MPa are the same unit, and that kg is converted to N by multiplying by about 10.
+
+**Stress in your own column (53–61 min):** Estimate the cross-sectional area of the paper in your best column, convert the book mass to newtons, and calculate the stress at failure. Show formula, substitution, answer and unit.
+
+**Notes — factor of safety (61–71 min):** Copy the FoS formula and all three rearrangements. Work through the first two parts of the worked example with me. Note that FoS carries no unit.
+
+**Calculation practice (71–84 min):** Four problems, individually and in silence: two FoS from failure and working load, one working load from a required FoS, and one stress calculation. Every step written out.
+
+**Review and exit ticket (84–90 min):** Swap notebooks and check one calculation each. Exit ticket: name your column's structure type and the force that destroyed it.
+
+</Activity>
+
+<Support title="If you get stuck">
 
 **Structure classification — if uncertain:** Ask "does the skin or surface carry the load, or do separate members carry it?" If separate members (rods, beams, struts), it is a frame. If the surface itself carries the load, it is a shell. If it is solid throughout with all the material in compression, it is a mass.
 
-**Bracket keeps failing at the tape, not the spaghetti:** that is a real and reportable result, not a mistake. Note it as a joint failure, and say so in your conclusion — "the structure was limited by its joints" is a strong, mark-worthy engineering sentence.
+**Converting mass to force:** multiply kilograms by 10 to get newtons (strictly 9.81, but 10 is accepted and faster). 1.85 kg becomes 18.5 N. Always write the unit — an answer with no unit loses the mark even when the number is right.
 
-**Nothing has broken yet and time is running out:** stop loading, record the mass you reached, and write "did not fail at 3.2 kg — test stopped". A lower bound is usable data. Calculate the FoS as a minimum value.
+**Estimating the area of a paper column:** you need the area of the *paper*, not the area it encloses. For a cylinder, measure the circumference in mm and multiply by the paper thickness, about 0.1 mm for ordinary A4. A 210 mm circumference gives roughly 21 mm². State your assumption on the page.
+
+**"My stress answer looks like a strange number."** It probably is, and that is fine — paper is thin, so the areas are tiny and the stresses come out high. Marks here are for the method, not for landing on a textbook value.
+
+**"My columns all collapsed instantly."** Check the height is the same for all three and that the tape is holding the shape closed. A tube that springs open is not a tube. Load books one at a time and centrally — a book placed off-centre topples the column instead of buckling it.
+
+**Nothing has failed yet and time is running out:** stop, record the number of books you reached, and write "did not fail at 6 books — test stopped". A lower bound is usable data.
+
+**Which formula do I need?** If the question gives you two loads and asks how safe it is, that is FoS. If it gives you a force and an area, that is stress. If it gives you a FoS and asks what it can carry, rearrange to Working Load = Failure Load ÷ FoS.
 
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A team's spaghetti bracket fails when the hanging cup reaches a mass of 2.4 kg. They intend the product to carry a 0.8 kg load in use. What is the factor of safety?",
+    q: "A team's column fails when the books on it reach a mass of 2.4 kg. They intend the product to carry a 0.8 kg load in use. What is the factor of safety?",
     options: [
       "1.6 — subtract the working load from the failure load",
       "3.0 — divide the failure load by the working load; the units of mass cancel",
@@ -211,25 +252,25 @@ This is exactly the sequence you will run on your own bracket in Phase 4.
     explain: "All three have the same material and the same mass — only the geometry differs. A closed tube distributes material around a large perimeter, so it resists buckling in every direction. A flat strip has one very thin axis and buckles about it almost immediately. This is the same principle that puts the flanges of an I-beam far from the neutral axis."
   },
   {
-    q: "A square straw frame is pushed sideways and deforms into a parallelogram without any straw changing length. Adding one diagonal straw stops this completely. Why?",
+    q: "A structure's failure load is 5,000 N and it must be designed to a Factor of Safety of 5. What is its maximum working load?",
     options: [
-      "The diagonal adds mass, and the extra weight holds the frame down",
-      "Deforming the frame would now require the diagonal to change length, which it resists in tension or compression",
-      "The diagonal converts the frame into a shell structure",
-      "Four joints are unstable but five joints are always stable"
+      "25,000 N — multiply failure load by FoS",
+      "5,000 N — the working load equals the failure load",
+      "1,000 N — divide failure load by FoS",
+      "4,000 N — subtract FoS from failure load"
     ],
-    answer: 1,
-    hint: "Sketch the square racking over. What happens to the length of the corner-to-corner distance?",
-    explain: "Racking a square changes its diagonal length while leaving all four sides unchanged — which is why the square deforms freely. Once a diagonal member is fitted, racking would require that member to stretch or shorten, and it resists in tension or compression. The square becomes two triangles, and a triangle cannot change shape without changing a side length."
+    answer: 2,
+    hint: "Working Load = Failure Load / FoS.",
+    explain: "Working Load = Failure Load / FoS = 5,000 / 5 = 1,000 N. The FoS tells you how many times larger the failure load is than the working load. A FoS of 5 means the structure must withstand five times its working load before failing. Note what this means in practice: raising the required FoS does not make a structure stronger, it lowers what you are permitted to load onto it."
   }
 ]} />
 
 <Section title="Homework & extension" icon="🏠" id="homework">
 
-**Home task:** Finish the five calculations from Phase 7 if they are not complete, showing formula, substitution, answer and unit for each. Then read §4.2.1 (Basic structural concepts) and write definitions of **strut**, **tie** and **neutral axis** in your own words — not copied from the book. Finally, photograph one structure on your way home and classify it as frame, shell or mass with a one-sentence justification. Bring all of it to <WeekLink grade={11} term={1} week={4}>Week 4</WeekLink>, where we calculate beam reactions and you will need to be fluent in converting kg to N.
+**Home task:** Finish the four calculation problems if they are not complete, showing formula, substitution, answer and unit on every one. Then read §4.2.1 (Basic structural concepts) and write definitions of **strut**, **tie** and **neutral axis** in your own words — not copied from the book. Finally, photograph one structure on your way home and classify it as frame, shell or mass with a one-sentence justification. Bring all of it to <WeekLink grade={11} term={1} week={4}>Week 4</WeekLink>, where we calculate beam reactions and you will need to be fluent in converting kg to N.
 
-<Extension title="The efficiency league table">
-Real structural engineering is not about carrying the most load — it is about carrying the most load per gram. Take the class scoreboard data and rank every team by efficiency (failure load in N divided by structure mass in g). Then plot efficiency against the number of triangles in each design. Is there a relationship? Write 80 words on what the data suggests, and be honest if it suggests nothing — a null result that you have argued properly is a good answer.
+<Extension title="The efficiency question">
+Real structural engineering is not about carrying the most load — it is about carrying the most load per gram. Weigh one of your paper columns, then calculate its efficiency: failure load in newtons divided by its own mass in grams. Compare the three shapes. Then answer the harder question in 80 words: if the cylinder wins, why is almost every steel structure you can see built from I-beams and rectangular sections instead of tubes?
 </Extension>
 
 </Section>
@@ -241,4 +282,4 @@ Real structural engineering is not about carrying the most load — it is about 
   { label: "Collins IGCSE D&T — §4.2.10 Forces in structures (p. 269)", type: "Textbook", href: "https://drive.google.com/open?id=1F8bzARgbX_6J9CRumVRAswfFDgXfydHy" },
 ]} />
 
-<Reflection prompt="Your prediction before the bracket test and the load it actually held were probably different. Which way were you wrong — too optimistic or too cautious — and what does that tell you about how much safety margin you should design into your own project?" />
+<Reflection prompt="Your predicted ranking for the three columns and the actual result were probably not the same. Which way were you wrong, and what does that tell you about how much margin you should design into your own project?" />
