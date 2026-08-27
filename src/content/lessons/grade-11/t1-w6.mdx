@@ -11,6 +11,10 @@ draft: false
 
 Your project requires a switch-operated light circuit built into the structural product. Today you design it, calculate it, build it — and then you watch what happens to an LED when someone skips the calculation. The last half hour is fault-finding: six circuits, each broken in exactly one way, and three minutes each to work out why. That is the skill you will actually need in Term 3.
 
+<Callout type="tip" title="How this session runs">
+Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a bordered table or a `Formula` box goes into your notebook — those are the definitions and equations you are examined on.
+</Callout>
+
 <KeyTerms terms={[
   { term: "IPO (Input–Process–Output)", definition: "A model for describing any electronic system. Input: the component that senses or controls (the switch). Process: the component that manages the electrical flow (resistor or transistor). Output: the component that produces a visible or physical effect (LED, lamp, motor)." },
   { term: "LED (Light-Emitting Diode)", definition: "A semiconductor component that emits light when current flows through it in the forward direction. LEDs have a forward voltage (typically 2 V for red/green, 3.0–3.5 V for blue/white) and a maximum forward current (typically 20 mA)." },
@@ -62,6 +66,16 @@ Current is shown flowing from the positive terminal of the cell (+), through the
 
 For your project, you must choose a switch type and justify it in your specification. The justification should relate to the user: "A tilt switch was chosen because the product is a portable charging stand — when lifted, the tilt switch closes and the LED confirms the product is ready."
 
+<Callout type="tip" title="Circuit doctor · 17 min · in pairs, rotating">
+Six pre-built circuits, each with exactly one fault: reversed LED, missing resistor, switch in the wrong rail, a lead one row out, a flat battery, and a resistor ten times too large. Three minutes each.
+
+Record the fault **and the evidence that identified it** — a correct guess with no reasoning does not count. Fault-finding is what you will actually be doing in Term 3 when your project circuit does nothing.
+</Callout>
+
+<Callout type="tip" title="Switch feel test · 11 min · in pairs">
+Swap the toggle for a push-to-make, then a tilt switch if there is one. For each, note how the interaction changes for your user: does the light stay on when you let go? Does that suit them? Choose yours and record the reason.
+</Callout>
+
 </Section>
 
 <Section title="The current-limiting resistor calculation" icon="🔢" id="resistor">
@@ -84,6 +98,18 @@ Always convert mA to A before substituting. The result R is in ohms.
 After calculating R, choose the nearest standard resistor value **above** the calculated value (never below — you must not exceed the LED's current rating).
 
 Common standard resistor values (E12 series): 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000 Ω.
+
+<Callout type="tip" title="The sacrificial LED · 6 min · whole class demo">
+One demonstration, once. A red LED wired to 9 V through a 47 Ω resistor instead of the calculated 390 Ω. Watch how bright it goes, and how briefly.
+
+That is what the current-limiting resistor prevents, and it is why the calculation is not busywork.
+</Callout>
+
+<Callout type="tip" title="Build it · 20 min · in pairs, each building their own">
+From your own diagram — not a neighbour's breadboard. Battery to the power rails, switch in the circuit, calculated resistor in series, LED the right way round.
+
+When it lights, measure the actual current with the multimeter and compare it with the value you designed for.
+</Callout>
 
 </Section>
 
@@ -119,19 +145,19 @@ From the E12 series: 390 Ω is the next value above 350 Ω.
 
 <Activity title="Build it, break it, fix it" time="90 min" grouping="Pairs at the bench; circuit diagram and calculations individual" materials={["A4 paper for circuit diagram", "Calculator", "Breadboard", "9 V battery and clip", "Red, green and blue LEDs", "Various resistors (330, 390, 470 Ω, plus one 47 Ω for the demo)", "SPST toggle switch", "Push-to-make switch", "Tilt switch if available", "Pre-stripped wire leads", "Multimeter"]}>
 
-**Draw before you touch anything (0–18 min):** On A4, draw the complete switch-operated LED circuit with correct symbols: battery → switch → resistor → LED → back to battery. Label the battery terminals, every component, the IPO roles, and the direction of conventional current. Nobody gets components until their diagram is drawn — the diagram is the plan, and building without one is how the LEDs die.
+**Draw before you touch anything — individual (0–18 min):** On A4, draw the complete switch-operated LED circuit with correct symbols: battery → switch → resistor → LED → back to battery. Label the battery terminals, every component, the IPO roles, and the direction of conventional current. Nobody gets components until their diagram is drawn — the diagram is the plan, and building without one is how the LEDs die.
 
-**Resistor calculations (18–32 min):** Three calculations, all steps shown: red LED on 9 V (forward voltage 2 V, 20 mA); blue LED on 9 V (3.0 V, 20 mA); green LED on 6 V (2.1 V, 15 mA). Formula, unit conversion, substitution, result, then the nearest standard value.
+**Resistor calculations — individual (18–32 min):** Three calculations, all steps shown: red LED on 9 V (forward voltage 2 V, 20 mA); blue LED on 9 V (3.0 V, 20 mA); green LED on 6 V (2.1 V, 15 mA). Formula, unit conversion, substitution, result, then the nearest standard value.
 
-**The sacrificial LED (32–38 min):** One teacher demo, once. A red LED wired to 9 V through a 47 Ω resistor instead of the calculated 390 Ω. Watch how bright it goes, and how briefly. Now you know what the current-limiting resistor is actually preventing, and why the calculation is not busywork.
+**The sacrificial LED — whole class demo (32–38 min):** One teacher demo, once. A red LED wired to 9 V through a 47 Ω resistor instead of the calculated 390 Ω. Watch how bright it goes, and how briefly. Now you know what the current-limiting resistor is actually preventing, and why the calculation is not busywork.
 
-**Build (38–58 min):** From your own diagram, in pairs but each building your own: battery to the power rails, switch in the circuit, calculated resistor in series, LED the right way round. Test. When it lights, measure the actual current with the multimeter and compare it to the value you designed for.
+**Build — in pairs, each building their own (38–58 min):** From your own diagram, in pairs but each building your own: battery to the power rails, switch in the circuit, calculated resistor in series, LED the right way round. Test. When it lights, measure the actual current with the multimeter and compare it to the value you designed for.
 
-**Circuit doctor (58–75 min):** Your teacher has pre-built six circuits, each with exactly one fault: reversed LED, missing resistor, switch in the wrong rail, a lead in the wrong column, a flat battery, a resistor an order of magnitude too large. Rotate in pairs and diagnose each one in three minutes. Write the fault and the evidence that identified it. Fault-finding is what you will actually be doing in Term 3 when your project circuit does not work.
+**Circuit doctor — in pairs, rotating (58–75 min):** Your teacher has pre-built six circuits, each with exactly one fault: reversed LED, missing resistor, switch in the wrong rail, a lead in the wrong column, a flat battery, a resistor an order of magnitude too large. Rotate in pairs and diagnose each one in three minutes. Write the fault and the evidence that identified it. Fault-finding is what you will actually be doing in Term 3 when your project circuit does not work.
 
-**Switch feel test (75–86 min):** Swap the toggle for a push-to-make, then a tilt switch if there is one. For each, note how the interaction changes for the user — does the light stay on when you let go? Does that suit your person? Choose yours and record the reason.
+**Switch feel test — in pairs (75–86 min):** Swap the toggle for a push-to-make, then a tilt switch if there is one. For each, note how the interaction changes for the user — does the light stay on when you let go? Does that suit your person? Choose yours and record the reason.
 
-**Commit it to the brief (86–90 min):** Add your switch choice and its justification to your C1 brief, naming the user need it serves.
+**Commit it to the brief — individual (86–90 min):** Add your switch choice and its justification to your C1 brief, naming the user need it serves.
 </Activity>
 
 <Support title="Building and troubleshooting the breadboard circuit">
