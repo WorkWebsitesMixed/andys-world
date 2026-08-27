@@ -5,7 +5,7 @@ week: 9
 title: "Electronics III: Thermistors, Voltage Dividers & Workshop Safety"
 topic: "Thermistor sensing, voltage divider circuit, and makerspace induction"
 learningGoal: "explain how an NTC thermistor's resistance changes with temperature, connect a thermistor voltage divider to an NPN transistor switch, and demonstrate that the complete circuit activates the motor when the thermistor is warmed."
-selGoal: "work safely and patiently at the electronics bench, following every instruction from the technician before acting."
+selGoal: "share the bench fairly with my partner so we both build, and follow every technician instruction before acting."
 draft: false
 ---
 
@@ -100,16 +100,27 @@ You must correctly identify all safety symbols shown before you are signed off f
 
 </Section>
 
-<Activity title="Circuit building and safety induction" time="90 min (W session) + 45 min (B session)" grouping="Individual (circuit) / Group (safety)" materials={["NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "9 V batteries", "Fixed resistors (10 kΩ)", "Breadboards", "Pre-stripped leads", "Safety symbol flashcards"]}>
+<Activity title="Make the motor turn, then earn workshop access" time="90 min (W session) + 45 min (B session)" grouping="Pairs at the bench; safety induction as a whole group" materials={["NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "9 V batteries", "Fixed resistors (10 kΩ, 47 kΩ)", "Breadboards", "Pre-stripped leads", "Multimeters", "Cup of warm water and a cup of iced water", "Thermometer", "Safety symbol flashcards"]}>
+
 **W session:**
-1. Build the complete Firefighter Barbie circuit on a breadboard: thermistor voltage divider → base resistor → NPN transistor base → motor at collector. No soldering required.
-2. Test: warm the thermistor with your hand or breath. Does the motor activate? If not, check each connection methodically (see Support notes).
-3. Draw the complete, labelled circuit diagram: all components, all connections, IPO labels. Note the approximate temperature at which the motor triggered.
+
+1. **Prove the thermistor does what it claims — 12 min.** Before building anything, measure the thermistor's resistance with the multimeter at room temperature. Now hold it in a cup of warm water and measure again. Then iced water. Record all three. You will watch the resistance *fall* as temperature rises — which is what Negative Temperature Coefficient means, and you will never write it the wrong way round in an exam having seen the number drop in your own hand.
+
+2. **Build the full circuit — 35 min.** Thermistor voltage divider, base resistor, NPN transistor base, motor at the collector. No soldering. Work from your own Week 8 diagram.
+
+3. **Trigger-temperature challenge — 20 min.** Warm the thermistor and find the temperature at which your motor starts. Record it with the thermometer. Now change the fixed resistor from 10 kΩ to 47 kΩ and find the new trigger temperature. Post both to the class board. Whose circuit triggers closest to a sensible fire-detection threshold — and what would you change to move yours towards it?
+
+4. **Document it — 18 min.** Draw the complete labelled circuit: every component, every connection, IPO labels, and both trigger temperatures you measured.
+
+5. **Wrap — 5 min.** Pack down, components counted back in, boards cleared.
 
 **B session:**
-4. Safety-symbol matching exercise: correctly identify 10 symbols covering mandatory, prohibition, and warning categories.
-5. Makerspace walk-through: locate the emergency stop, the fire exit, the first-aid kit, and the PPE storage.
-6. Sign the makerspace safety code. Receive sign-off for Week 10 workshop access.
+
+6. **Safety symbol speed round — 15 min.** Ten symbols across mandatory, prohibition and warning categories, identified against the clock in teams. Then the harder half: for each symbol, name the specific hazard in *this* workshop that it applies to.
+
+7. **Makerspace walk-through — 20 min.** Locate the emergency stop, the fire exit, the first-aid kit and the PPE storage — and physically touch each one, because a location you have walked to is one you can find in a hurry.
+
+8. **Sign the code — 10 min.** Sign the makerspace safety code and receive sign-off for Week 10 workshop access. No signature, no workshop.
 </Activity>
 
 <Support title="Troubleshooting the circuit">
@@ -120,6 +131,17 @@ You must correctly identify all safety symbols shown before you are signed off f
 **Motor activates then stops immediately:** Check that the thermistor leads are securely in the breadboard — intermittent contact causes flickering.
 
 **Breadboard guide:** Holes in the same horizontal row on each side of the central channel are connected. The two long rails (red and blue) run the full length of the board.
+
+**Thermistor resistance readings to expect:** roughly 10 kΩ at room temperature, falling to around 4–5 kΩ in warm water and rising well above 20 kΩ in iced water. Have them write all three down before building anything — the falling number is the whole definition of NTC.
+
+**Warm water, not boiling.** Hand-hot is plenty and it keeps the thermometer readings in a sensible range. A cup of iced water for the other end of the scale.
+
+**Motor does not run at all:** check the battery rail polarity first, then the transistor orientation against the printed pinout, then that the motor is on the collector and not across the supply.
+
+**Motor runs constantly, even cold:** the base is being held on. Increase the fixed resistor — moving from 10 kΩ to 47 kΩ raises the trigger threshold, which is exactly the change they make deliberately in the challenge phase.
+
+**Motor flickers or cuts out:** thermistor legs are not seated in the breadboard. Intermittent contact looks like a mysterious fault and is almost always this.
+
 </Support>
 
 <SelfCheck questions={[

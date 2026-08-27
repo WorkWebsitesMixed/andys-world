@@ -5,7 +5,7 @@ week: 7
 title: "Electronics I: Circuits, Symbols & IPO"
 topic: "Circuit symbols, the IPO model, and series vs parallel"
 learningGoal: "draw a simple LED circuit using correct symbols, label it with the input-process-output model, and produce correct circuit drawings for both series and parallel configurations."
-selGoal: "work safely and patiently at the electronics bench, asking the technician before acting whenever I am unsure."
+selGoal: "build from my own diagram rather than copying a neighbour's board, and work safely at the bench, asking the technician before acting whenever I am unsure."
 draft: false
 ---
 
@@ -92,15 +92,27 @@ The bonus session is a Section A quick-fire covering both mechanisms (Weeks 4–
 
 </Section>
 
-<Activity title="Circuit drawing and IPO exercises" time="90 min (W session) + 45 min (B session)" grouping="Individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboard, cell holders, LEDs, switches, resistors (optional hands-on)"]}>
+<Activity title="Symbol pictionary and a circuit that lights" time="90 min (W session) + 45 min (B session)" grouping="Teams for the games; drawing and building individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors — one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
+
 **W session:**
-1. Complete your own circuit symbol reference sheet: draw all eight symbols neatly at a consistent size. Label each with name and function.
-2. Draw a switch → resistor → LED circuit with IPO labels.
-3. Draw a series circuit with two LEDs and a cell. Then draw a parallel circuit with the same two LEDs. Label which LEDs will be brighter and why.
+
+1. **Symbol pictionary — 12 min.** In teams. One person is shown a component name and must draw its correct BS symbol while the team names it — no words, no gestures. Wrong symbol scores nothing even if the team guesses right. Rotate until everyone has drawn three. You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
+
+2. **Your own reference sheet — 15 min.** All eight symbols, neatly, at a consistent size, each labelled with name and function. This one you keep.
+
+3. **Draw the circuit — 15 min.** Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the direction of conventional current.
+
+4. **Build it — 25 min.** In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right — which is a better check than anything I could write in red pen.
+
+5. **Series against parallel, tested — 20 min.** Build two LEDs in series, then the same two in parallel. Predict which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other — that is the answer to the reliability question the paper likes to ask.
+
+6. **Wrap — 3 min.** Pack down. Components counted back in.
 
 **B session:**
-4. Six Section A quick-fire questions: three on mechanisms (motion types, crank, cam) and three on electronics (symbols, IPO, series/parallel). Self-mark.
-5. Rewrite the two answers with the lowest marks, removing any generic words. Show what you changed.
+
+7. **Quick-fire six — 20 min.** Three mechanisms questions (motion types, crank, cam), three electronics (symbols, IPO, series and parallel). Self-mark.
+
+8. **Rewrite and prove it — 25 min.** Take your two lowest-scoring answers and rewrite them, removing every generic word, and show what you changed. Then swap with a partner and mark theirs against the scheme — spotting a vague word in someone else's writing is much easier than spotting it in your own, and it trains the eye.
 </Activity>
 
 <Support title="Scaffolds for circuit drawing">
@@ -109,6 +121,15 @@ The bonus session is a Section A quick-fire covering both mechanisms (Weeks 4–
 **Pre-drawn circuit diagram with blanks:** If the full drawing exercise is too open-ended, use the version where the circuit is printed and you add the IPO labels and complete the missing symbol.
 
 **Sentence frame for rewriting:** "[Component] converts [input] into [output] by [mechanism/process], which means [consequence for the circuit]."
+
+**Symbol pictionary rules that keep it quick:** the drawer gets fifteen seconds, no letters or words on the board, and a wrong symbol scores nothing even if the team shouts the right name. Run three rounds, rotate the drawer each time.
+
+**Before anyone touches a breadboard:** hold the room and show the rail layout once — the two long rails run the full length, and holes in the same short row are connected across. Most first-lesson failures are a lead one row out, not a faulty component.
+
+**LED will not light:** work the list in order — polarity (long leg is the anode), the switch actually breaking the circuit rather than sitting across a rail, resistor present, battery clip seated, and every lead in the correct column. Nine times in ten it is polarity or a lead one row off.
+
+**Series against parallel — make them predict first.** Write both predictions on the board before any circuit is connected. The parallel pair being brighter is the memorable part precisely because most of the room guesses wrong.
+
 </Support>
 
 <SelfCheck questions={[

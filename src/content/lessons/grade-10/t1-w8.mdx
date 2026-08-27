@@ -5,7 +5,7 @@ week: 8
 title: "Electronics II: Resistors, Ohm's Law & Transistors"
 topic: "Resistor calculations and the NPN transistor as a switch"
 learningGoal: "calculate the correct current-limiting resistor for an LED using V = IR rearranged, and draw an NPN transistor switch circuit that activates a motor when base current flows, correctly labelling base, collector, and emitter."
-selGoal: "stay with a multi-step calculation when it feels hard, writing every step before checking the answer."
+selGoal: "write my predicted value down before I measure, and stay with a multi-step calculation when it feels hard rather than jumping to the answer."
 draft: false
 ---
 
@@ -94,14 +94,25 @@ In the bonus session: a mixed Section A set on circuit symbols, IPO labelling, s
 
 </Section>
 
-<Activity title="Resistor calculations and transistor circuit drawing" time="90 min (W session) + 45 min (B session)" grouping="Individual" materials={["Resistors (various values)", "NPN transistors (BD139 or TIP120)", "Breadboards", "Formula strip", "A4 paper for circuit diagrams"]}>
+<Activity title="Measure first, calculate second" time="90 min (W session) + 45 min (B session)" grouping="Pairs at the bench; calculations individual" materials={["Resistors (various values, including a deliberately wrong low value)", "NPN transistors (BD139 or TIP120)", "Breadboards", "Multimeters — one per pair", "9 V batteries and LEDs", "Formula strip", "A4 paper for circuit diagrams"]}>
+
 **W session:**
-1. Complete three LED resistor calculations with different supply voltages and LED currents. Show every step: formula → convert mA to A → substitute → calculate R → choose nearest standard value.
-2. Draw the Firefighter Barbie transistor switch circuit: thermistor voltage divider feeding the base, motor at the collector, resistor between supply and collector. Label: base, collector, emitter, current direction, IPO.
+
+1. **Guess the resistor — 10 min.** Five resistors on the bench, colour bands showing. In pairs, read the bands and predict each value, write it down, then measure with the multimeter and score yourselves. The colour code is worth knowing and this is the fastest way to learn it.
+
+2. **Ohm's Law, measured before it is calculated — 25 min.** Build a simple resistor-and-battery circuit. Measure the voltage across the resistor and the current through it. Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it, and the formula is much harder to forget afterwards.
+
+3. **Three LED resistor calculations — 25 min.** Different supply voltages and LED currents. Every step shown: formula, convert mA to A, substitute, calculate, choose the nearest standard value. Then build one of them and measure the actual current to check your own arithmetic.
+
+4. **The transistor switch — 25 min.** Draw the Firefighter Barbie circuit: thermistor voltage divider feeding the base, motor at the collector, resistor between supply and collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout — getting this wrong is the single most common reason a circuit does nothing next week.
+
+5. **Wrap — 5 min.** Pack down and count components back in.
 
 **B session:**
-3. Mixed Section A set: symbol identification (six components), IPO labelling (one circuit), series/parallel identification, one resistor calculation.
-4. Units matching exercise: match current, voltage, resistance to their units; convert mA to A, kΩ to Ω for three given values.
+
+6. **Mixed Section A set — 25 min.** Symbol identification (six components), IPO labelling on one circuit, series and parallel identification, and one resistor calculation. Self-mark.
+
+7. **Units relay — 20 min.** Teams of four at the board, one conversion each, pen handed on: mA to A, kΩ to Ω, and back again. A wrong answer sends the team back a step. Units are free marks in the exam and they are only free if the conversion is automatic.
 </Activity>
 
 <Support title="Scaffolds for calculations and transistor circuit">
@@ -111,6 +122,15 @@ For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{
 **Partially completed transistor diagram:** If the full circuit drawing is too open, use the version with the transistor symbol and supply connections already drawn — add the base resistor, base connection from the voltage divider, motor symbol, and all labels.
 
 **Step-by-step calculation guide:** Formula → units conversion → substitution → arithmetic → standard value selection. Follow these five steps in order. Never skip the unit conversion step (mA to A is the most common error).
+
+**Multimeter setup for Ohm's Law:** voltage is measured *across* the resistor with the meter in parallel; current is measured *through* it with the meter in series, which means breaking the circuit to insert the meter. Show this once on the visualiser — the series/parallel distinction for meters is the part that is genuinely counter-intuitive.
+
+**Expect a few per cent disagreement** between calculated and measured resistance. Say so in advance, or the first pair to find it will assume they have done something wrong. Tolerance bands on cheap resistors are typically 5%.
+
+**Transistor pinout:** BD139 and TIP120 are not pin-compatible with the small-signal transistors students may have seen. Print the pinout for the exact part in the drawer and put it on the bench — a transistor in backwards is the single most common cause of a dead circuit in Week 9.
+
+**Blowing the LED is a demonstration, not an accident.** Do it once, deliberately, with a 47 Ω resistor and eye protection, and make the point that the calculation is what stands between a working product and that.
+
 </Support>
 
 <SelfCheck questions={[

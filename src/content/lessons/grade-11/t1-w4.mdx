@@ -2,179 +2,234 @@
 grade: 11
 term: 1
 week: 4
-title: "Types of Materials 1: Wood & Metal"
-topic: "Materials 1: Wood & Metal"
-learningGoal: "give one example each of hardwood, softwood and manufactured board; classify three metals as ferrous or non-ferrous; justify a material choice for a structural component using two working properties"
-selGoal: "when I make a material choice, write 'because...' before stopping — justify, do not just name"
+title: "Structures 2: Moments, Beams & Joints"
+topic: "Beam reactions and structural joints"
+learningGoal: "predict the reaction at each support of a loaded beam using moments, verify the prediction against a real measurement, and select a structural joint with a reason"
+selGoal: "write my prediction down before I measure, and report the real reading honestly even when it disagrees with my calculation"
 draft: false
 ---
 
-The question on Paper 4 will not say "name a wood." It will say "justify your choice of material for the vertical support, referring to two properties." The difference between a zero-mark answer and a full-mark answer is justification. This session gives you the vocabulary and the habits to justify any material choice in any context.
+Last week you broke things. Today you predict things — and then check whether the maths was telling the truth. A ruler resting on two kitchen scales is a real beam on two real supports, and the numbers on those displays are the reactions you are about to calculate. If your arithmetic is right, you can say what both scales will read *before* the weight goes on.
+
+<Callout type="exam" title="Why this matters" id="why">
+Beam reactions are the calculation <ExamLink to="paper4">Paper 4 Section B</ExamLink> returns to most often, and the mark scheme is generous to anyone who writes the method out: taking moments, substituting, and checking that the reactions sum to the total load are each creditable steps. Joints come up in both the written paper and your project, where the joining method is one of your open design decisions.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Hardwood", definition: "Timber from broad-leaved, slow-growing deciduous trees. Examples: oak, teak, mahogany, ash, beech. Generally denser and harder than softwoods, though 'hardwood' is a botanical category not a hardness guarantee (balsa is technically a hardwood)." },
-  { term: "Softwood", definition: "Timber from coniferous (cone-bearing), fast-growing trees. Examples: pine, spruce, larch, Douglas fir. Cheaper and more readily available than hardwood; lower density. Used in construction framing, furniture, your school workshop projects." },
-  { term: "Manufactured board", definition: "Engineered sheet material made from wood fibres, particles, or veneers bonded with adhesive. Examples: MDF (medium density fibreboard), plywood, chipboard (particleboard), OSB. Dimensionally stable, available in large sheets, no grain direction issues." },
-  { term: "Ferrous metal", definition: "A metal that contains iron as the primary element. Examples: mild steel, cast iron, stainless steel. Magnetic (except austenitic stainless steel). Susceptible to corrosion unless protected (galvanised, painted, or alloyed with chromium)." },
-  { term: "Working property", definition: "A measurable characteristic that describes how a material behaves when forces, heat, or processes are applied. Key working properties: hardness, toughness, ductility, malleability, tensile strength, compressive strength, density, thermal conductivity, electrical conductivity." },
+  { term: "Moment", definition: "The turning effect of a force about a point. Moment = Force × perpendicular distance from the pivot. Measured in newton-metres (N·m) or newton-millimetres (N·mm). A small force far from the pivot can outweigh a large force close to it." },
+  { term: "Simply supported beam", definition: "A beam resting on two supports, free to rotate at each end. The two supports share the total load between them, but not equally unless the load sits exactly halfway." },
+  { term: "Reaction", definition: "The upward force a support pushes back with. For a beam in equilibrium, the two reactions added together must exactly equal the total downward load — this is the check that catches most arithmetic errors." },
+  { term: "Equilibrium", definition: "The state where all forces balance and all moments balance, so nothing accelerates or rotates. Every structure you design must be in equilibrium — that is what 'it stays still' means in engineering language." },
+  { term: "Halving joint", definition: "Two members each notched halfway through their thickness so they overlap flush. Simple to cut, good in shear at the crossing point, weak in tension unless glued or pinned." },
+  { term: "Mortise and tenon", definition: "A rectangular peg (tenon) fitted into a matching rectangular hole (mortise). The classic furniture joint for a leg-to-rail connection: strong in bending and shear because of the large glued surface area." },
+  { term: "KD fitting", definition: "Knock-down fitting — a cam lock and bolt that assembles and disassembles without tools or glue. Used throughout flatpack furniture. Weaker than a glued joint but supports Reuse and Repair in the 6Rs." },
 ]} />
 
-<Section title="Wood families" icon="🌲" id="wood">
+<Section title="Moments — the turning effect" icon="⚖️" id="moments">
 
-### Hardwoods
+### The see-saw you already understand
 
-Hardwoods come from broad-leaved trees that typically take 50–200 years to reach harvestable size. This slower growth produces denser, more complex grain structure.
+Everyone knows that a small child can balance a much heavier adult on a see-saw by sitting further out. That intuition *is* the principle of moments, and you can use it as a sanity check on every calculation you do today.
 
-| Hardwood | Key properties | Common use |
-|---|---|---|
-| Oak | Hard, heavy, durable, attractive grain | Furniture, flooring, structural beams |
-| Teak | Naturally oily, highly rot-resistant, heavy | Outdoor furniture, boat decks |
-| Mahogany | Easy to work, stable, attractive colour | High-quality furniture, veneers |
-| Ash | Tough, flexible (high impact resistance) | Tool handles, sports equipment |
+<Formula
+  name="Moment of a force"
+  equation="\text{Moment} = \text{Force} \times \text{perpendicular distance}"
+  note="Distance is measured from the pivot, at right angles to the line of the force. Double the distance and you double the turning effect for the same force."
+/>
 
-### Softwoods
+For a structure that is not rotating, the moments must balance:
 
-Softwoods come from coniferous trees, harvested in 25–60 years. Their faster growth makes them cheaper and more available.
+$$\text{sum of clockwise moments} = \text{sum of anticlockwise moments}$$
 
-| Softwood | Key properties | Common use |
-|---|---|---|
-| Pine | Relatively easy to work, light, knotty | Furniture, construction framing |
-| Spruce | Light, good strength-to-weight ratio | Aircraft (historically), musical instruments |
-| Larch | Durable, more resin-resistant | Cladding, outdoor structures |
+### Why we take moments "about A"
 
-### Manufactured boards
+Here is the trick that makes beam problems easy. If you take moments about support **A**, then the reaction at A acts *through* the pivot — its distance is zero, so its moment is zero, and it vanishes from the equation entirely. One unknown disappears, and you can solve directly for the other.
 
-Manufactured boards are stable, flat, and available in large sheets — advantages over solid timber for workshop projects.
-
-| Board | Made from | Properties | Use |
-|---|---|---|---|
-| MDF | Wood fibres + resin binder | Very smooth surface, no grain direction, easy to machine, absorbs moisture | Furniture, shelving, laser cutting |
-| Plywood | Thin veneers glued with alternating grain | Strong in multiple directions, holds screws well, available in structural grades | Boxes, structural panels, aircraft |
-| Chipboard | Wood chips + resin | Cheap, heavy, poor edge quality, absorbs moisture | Budget shelving, kitchen carcasses |
-
-**For your project:** MDF is the most common choice for laser-cut structural parts — it cuts cleanly, machines easily, and is dimensionally consistent. Its weakness is moisture absorption — use it only for indoor products.
+That is the whole method. Pick the support you want to eliminate, take moments about it, solve for the other one, then use equilibrium to get the first one back.
 
 </Section>
 
-<Section title="Metals" icon="⚙️" id="metals">
+<Section title="Beam reactions" icon="🌉" id="beam-reactions">
 
-### Ferrous vs non-ferrous
+### The method, five steps
 
-| Category | Contains | Key characteristic | Examples |
-|---|---|---|---|
-| Ferrous | Iron | Magnetic; rusts unless protected | Mild steel, cast iron, stainless steel |
-| Non-ferrous | No iron | Non-magnetic; generally corrosion-resistant | Aluminium, copper, brass, titanium |
+1. Draw the beam. Mark supports A and B, and mark the load with its distance from A.
+2. Take moments about A: $R_B \times (\text{beam length}) = \text{Load} \times (\text{distance from A})$.
+3. Solve for $R_B$.
+4. Find $R_A$ using vertical equilibrium: $R_A = \text{Total load} - R_B$.
+5. **Check:** $R_A + R_B$ must equal the total load. If it does not, you have made an arithmetic slip — find it before moving on.
 
-### Key metals for your project context
+### Worked through
 
-**Mild steel:** Strong in both tension and compression; relatively cheap; easy to weld; rusts without protection (paint, galvanise, or powder-coat). Tensile strength approximately 400 MPa.
+A beam 4 m long is supported at A (left) and B (right). A load of 600 N is applied 1 m from A.
 
-**Aluminium:** Light (density 2.7 g/cm³ vs steel's 7.8 g/cm³); naturally oxidises to form a protective layer; cannot be welded without specialist equipment; anodised for colour and extra protection. Tensile strength approximately 270 MPa (pure) to 500 MPa (alloyed).
+<Formula
+  name="Moments about A"
+  equation="R_B \times 4\ \text{m} = 600\ \text{N} \times 1\ \text{m}"
+  substitution="R_B = \frac{600\ \text{N}\cdot\text{m}}{4\ \text{m}}"
+  result="R_B = 150\ \text{N}"
+/>
 
-**Stainless steel:** Contains at least 10.5% chromium — the chromium forms a passive oxide layer that prevents rust. Used where both strength and corrosion resistance are needed (kitchen appliances, medical instruments, architectural fixtures).
+<Formula
+  name="Vertical equilibrium"
+  equation="R_A = W - R_B"
+  substitution="R_A = 600\ \text{N} - 150\ \text{N}"
+  result="R_A = 450\ \text{N}"
+  note="Check: 450 + 150 = 600 N. The support nearer the load carries the larger share — which matches the see-saw intuition."
+/>
 
-### Working properties — the vocabulary of justification
+<BeamReactionsDiagram />
 
-| Property | Definition | How to use it in a justification |
-|---|---|---|
-| Hardness | Resistance to surface indentation or scratching | "I chose oak because its hardness means the surface will resist scratching from daily use." |
-| Toughness | Ability to absorb impact without fracturing | "Ash is tough — it absorbs the repeated impact of tool handles without cracking." |
-| Ductility | Ability to be drawn into a wire without breaking | "Copper's high ductility allows it to be drawn into thin wiring for the circuit." |
-| Malleability | Ability to be hammered/pressed into shape | "Aluminium's malleability allows it to be pressed into curved bracket forms." |
-| Tensile strength | Resistance to being pulled apart | "Mild steel's high tensile strength resists the tensile force in the bottom chord of the shelf bracket." |
-| Density | Mass per unit volume | "Aluminium's low density (2.7 g/cm³) keeps the product lightweight for a wall-mounted application." |
+**The sanity check you should always run:** the support closer to the load always takes the bigger reaction. If your answer says otherwise, you have divided by the wrong distance.
 
 </Section>
 
-<WorkedExample title="Justify mild steel vs aluminium for a shelf bracket vertical post">
+<Section title="Structural joints" icon="🔩" id="joints">
 
-**The question:** "Justify the choice of mild steel for the vertical support post of a wall-mounted shelf bracket. Refer to two working properties."
+A joint is where structures usually fail — as several of you discovered last week when the tape let go before the spaghetti did. Choosing a joint is choosing which force it will have to survive.
 
-**Full-mark answer:** "Mild steel has a tensile strength of approximately 400 MPa, which means the post can resist the bending force induced when the shelf is loaded without permanent deformation. Its high density (7.8 g/cm³) is not a disadvantage for this application because the post is wall-mounted and does not need to be lightweight. Mild steel can also be powder-coated to prevent corrosion in the indoor environment where the shelf will be used."
+| Joint | What it is | Load it handles well | Used for |
+|---|---|---|---|
+| Halving joint | Both members notched halfway, overlapping flush | Shear at the crossing point | Cross-frames, timber grids |
+| Bridle joint | One member slotted, the other tongued — a mechanical interlock | Tension and shear | Corners in timber frames |
+| Mortise and tenon | Rectangular peg into a matching hole | Bending and shear | Furniture legs to rails |
+| Dowel joint | Round pegs aligning two pieces | Shear | Furniture panels, carcass work |
+| KD fitting | Cam lock and bolt, no glue | Tension and compression | Flatpack furniture |
 
-**Why this scores:** it names a specific property (tensile strength), states the numerical value (400 MPa), and links it to the function (resisting bending under load). A second property (density) is mentioned with a contextual justification (indoor, wall-mounted). The answer uses technical vocabulary throughout.
+<StructuralJointsDiagram />
 
-**The generic version (zero marks):** "Mild steel is strong and durable, which makes it a good choice for the post."
+**For your project:** the joining method is an open design decision, and mixing methods is normal professional practice — KD fittings plus wood adhesive is a perfectly valid combination. What earns the mark is the *reason*: "dowels, because the load at this corner is shear and the joint will never need to come apart" beats "dowels, because they are strong".
+
+<MoreImages term="timber structural joints halving bridle mortise tenon" />
+
+</Section>
+
+<WorkedExample title="Predicting what the scales will read">
+
+This is the calculation you will run in Phase 3, before you are allowed to look at the displays.
+
+1. **Set up.** A 600 mm ruler bridges two kitchen scales. Scale A is at the left end, scale B at the right end, 600 mm apart. Both scales are tared to zero with the ruler already resting on them.
+
+2. **Place the load.** A 1 kg mass is placed 150 mm from scale A. Convert to force: $1 \times 10 = 10\ \text{N}$.
+
+3. **Take moments about A** to eliminate $R_A$.
+
+    <Formula
+      name="Moments about A"
+      equation="R_B \times 600 = 10 \times 150"
+      substitution="R_B = \frac{1{,}500\ \text{N}\cdot\text{mm}}{600\ \text{mm}}"
+      result="R_B = 2.5\ \text{N}"
+    />
+
+4. **Use equilibrium for the other reaction.**
+
+    <Formula
+      name="Vertical equilibrium"
+      equation="R_A = W - R_B"
+      substitution="R_A = 10\ \text{N} - 2.5\ \text{N}"
+      result="R_A = 7.5\ \text{N}"
+      note="Check: 7.5 + 2.5 = 10 N. Scale A carries three quarters of the load because the mass sits at one quarter of the span."
+    />
+
+5. **Convert back to what the display will actually show.** The scales read grams, not newtons — so divide by 10 and convert: scale A should read about **750 g**, scale B about **250 g**. Write both numbers down, *then* look.
+
+6. **Compare honestly.** Real readings will be a few grams out — friction at the supports, a ruler that is not weightless, scales rounding to the nearest gram. A 3% disagreement confirms the model. A 300% disagreement means you divided by the wrong distance.
+
 </WorkedExample>
 
-<Activity title="Properties table and justified choices" time="90 min" grouping="Individual" materials={["Pencil", "Ruler", "Material samples if available"]}>
+<Activity title="Predict the reading, then read it" time="90 min" grouping="Teams of 3–4; calculations written individually" materials={["Two digital kitchen scales per group (or one scale and one fixed support)", "Rulers or light timber battens, 400–600 mm", "Known masses — 500 g and 1 kg bags of rice, or full water bottles", "Calculator", "Card strips, scissors and glue for the joint puzzle", "Prediction and results sheet"]}>
 
-1. **(0–25 min) Properties comparison table.** Complete a table for six materials: oak, pine, MDF, mild steel, aluminium, copper. Columns: hardness (H/M/L), density (g/cm³ approximate), tensile strength (approximate MPa), corrosion resistance (Y/N), machinability in school workshop (H/M/L), typical cost (H/M/L). Use the textbook and today's notes.
+**The rule for the whole session:** the calculation goes on paper *before* anyone looks at a display. A prediction written after the measurement is worth nothing.
 
-2. **(25–55 min) Justify a material choice — three scenarios:**
-   - **Scenario A:** The horizontal shelf surface of your Component 2 project (must support 5 kg, will be seen, should look finished).
-   - **Scenario B:** The vertical support bracket (wall-mounted, must resist bending and compression, relatively hidden).
-   - **Scenario C:** The circuit mounting plate (holds the switch and LED, small panel, must be non-conductive or insulated).
-   For each, write: chosen material + two property justifications + one limitation of the choice.
+**Moments warm-up — the human see-saw (0–12 min):** Working from the see-saw intuition, answer three quick problems on the board: where must a 20 kg child sit to balance a 60 kg adult sitting 1 m from the pivot? Then two variations. No formula sheet — argue it out in your team first, then we name what you just did.
 
-3. **(55–75 min) Ferrous/non-ferrous sort.** Given 12 material names, classify each as ferrous or non-ferrous and give one reason for the classification. Then identify which three would be magnetic.
+**The method, modelled (12–25 min):** Take the five-step beam method down as a method card in your own handwriting. Work the 4 m / 600 N example through with me. Everybody writes the equilibrium check as step five — it is the step that catches errors, and it is a mark.
 
-4. **(75–90 min) Update your design brief.** Add one sentence to your C1 brief specifying your chosen material and justifying it with one working property.
+**Predict the scales (25–55 min):** Set your ruler across two tared scales. For each of three load positions — quarter span, midspan, and one-eighth span — calculate both reactions, convert them to the grams the displays should show, write both numbers down, and only then look. Record predicted and actual side by side, and calculate the percentage difference. Where the two disagree by more than about 10%, find the error in the working rather than blaming the equipment.
+
+**Explain the disagreement (55–65 min):** Every group has some disagreement between prediction and measurement. In your team, list every reason you can think of — the mass of the ruler itself, friction, scale resolution, the load not being exactly where you measured. Rank them by how much you think each one mattered. This is exactly the reasoning C7 evaluation asks for in your project.
+
+**Joint puzzle (65–82 min):** At your table are card strips cut to make five joints. Working in your team, assemble each and identify it. Then, for each joint, decide which of the five forces it resists best and test your answer by pulling, pushing and twisting it until it fails. Sketch three of the joints in your folder with a one-line note on where it would work in your own project.
+
+**Exit ticket (82–90 min):** One beam problem on the board, done individually and silently in five minutes: full method, both reactions, and the equilibrium check.
+
 </Activity>
 
-<Support title="Justification sentence framework">
+<Support title="If a phase is not working">
 
-**Template:** "[Material] was chosen for [component] because its [property name] means [consequence for the product]. Its [second property] also [links to function or user need]."
+**Beam reaction method card:**
+1. Draw the beam, mark supports A and B, mark the load with its position.
+2. Take moments about A: (RB × beam length) = (Load × distance from A).
+3. Solve for RB.
+4. Find RA = Total load − RB.
+5. Check: RA + RB must equal the total load.
 
-**Example:** "Oak was chosen for the shelf surface because its hardness means daily use (placing and removing textbooks) will not scratch or dent the surface. Its attractive grain also meets the user's aesthetic requirement for a natural-looking product."
+**"Which distance do I multiply by?"** The load is multiplied by its distance *from the pivot you chose*. The reaction you are solving for is multiplied by the *full span*. If you take moments about A, every distance is measured from A.
 
-**For non-ferrous metals:** Begin with "As a non-ferrous metal, [material] does not contain iron, which means it does not rust — an advantage for a product stored near a window."
+**"My two reactions do not add up to the load."** That is the check doing its job. Ninety per cent of the time the error is using the distance from the wrong end for the load. Re-measure from A and redo step 2.
+
+**"The scales disagree with my answer."** First check the obvious: did you tare the scales with the ruler already on them? An untared ruler adds its own weight to both readings. Then check whether the load is really where you think it is — measure to the centre of the mass, not its edge.
+
+**Reading the display in grams when the maths is in newtons:** work the whole calculation in newtons, then divide the answer by 10 to get kilograms and multiply by 1,000 for grams. Or simply do the whole calculation in grams — because the reactions are a ratio of the load, the units carry through unchanged.
+
+**Choosing a joint when they all look plausible:** ask two questions in order. Does this joint ever need to come apart again? If yes, KD fitting. If no, which force dominates here — shear across the joint, or bending trying to fold it? Shear points to a dowel or halving joint; bending points to a mortise and tenon.
+
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Which of the following is a manufactured board, not a natural timber?",
+    q: "A simply supported beam is 3 m long, supported at A (left) and B (right). A load of 900 N acts 1 m from A. What is the reaction at B?",
     options: [
-      "Oak — a hardwood from a broad-leaved deciduous tree",
-      "Pine — a softwood from a coniferous tree",
-      "MDF — medium density fibreboard made from wood fibres and resin binder",
-      "Teak — a dense hardwood naturally resistant to rot"
+      "900 N — B takes the full load when the load is to the left of centre",
+      "450 N — the load is always shared equally between two supports",
+      "300 N — moments about A give RB × 3 = 900 × 1, so RB = 300 N",
+      "600 N — the support further from the load takes the larger reaction"
     ],
     answer: 2,
-    hint: "Manufactured boards are engineered from processed wood fibres or veneers, not cut directly from a tree.",
-    explain: "MDF (medium density fibreboard) is a manufactured board — it is made by breaking wood down into fibres and rebonding them with a resin binder under pressure. Oak, pine, and teak are all natural timbers cut from trees. Manufactured boards have advantages over natural timber: no grain direction, dimensionally stable, available in large sheets."
+    hint: "Take moments about A so that the reaction at A drops out. RB × 3 = 900 × 1.",
+    explain: "Moments about A: RB × 3 = 900 × 1 = 900 N·m, so RB = 300 N. Then RA = 900 − 300 = 600 N, and the check gives 600 + 300 = 900 N. Note the pattern: the load sits one third of the way along, so the far support carries one third of it. The support nearer the load always takes the larger share."
   },
   {
-    q: "A designer chooses mild steel over aluminium for a heavy-load shelf bracket. Which pair of reasons best justifies this choice?",
+    q: "A group predicts scale A will read 750 g and scale B 250 g. The actual readings are 771 g and 262 g. The best conclusion is:",
     options: [
-      "Mild steel is cheaper and easier to laser-cut than aluminium",
-      "Mild steel has higher tensile strength (400 MPa vs 270 MPa) and is easier to weld for joining the bracket components",
-      "Mild steel is lighter than aluminium and does not need surface treatment",
-      "Mild steel is non-ferrous and therefore does not rust in humid environments"
+      "The calculation is wrong and must be redone from the start",
+      "The scales are faulty and should be replaced before continuing",
+      "The model is confirmed; the excess on both scales is largely the mass of the ruler itself, which the calculation ignored",
+      "The load was placed on the wrong side of the beam"
     ],
-    answer: 1,
-    hint: "Think about load-bearing (strength) and joining method (welding). Mild steel is ferrous, heavier, and does rust.",
-    explain: "Mild steel's higher tensile strength (approximately 400 MPa vs 270 MPa for pure aluminium) makes it better suited for a heavy-load bracket where bending resistance matters. It is also weldable with common MIG/TIG equipment, making fabrication of the bracket joints straightforward. Mild steel is not lighter than aluminium — it is approximately three times denser. It also rusts unless protected."
+    answer: 2,
+    hint: "Look at the direction of the error. Both readings are high, not one high and one low. What did the calculation leave out entirely?",
+    explain: "Both readings exceed the prediction, and they exceed it by a similar amount (21 g and 12 g, totalling 33 g). An error in the moment calculation would push one reading up and the other down, because the two reactions must still sum to the load. A uniform excess on both points to a downward force the model ignored — here, the self-weight of the ruler, which is shared between the supports. Recognising which errors are systematic and which are random is exactly what C7 evaluation credits."
   },
   {
-    q: "A material described as 'ductile' can be:",
+    q: "In your project you need to join a horizontal rail into a vertical leg. The joint will carry bending, and the product must never be dismantled. Which choice is best justified?",
     options: [
-      "Hammered into shape without fracturing — like gold beaten into a thin sheet",
-      "Drawn into a wire without breaking — like copper drawn into electrical cable",
-      "Cut cleanly without leaving rough edges — like MDF on a laser cutter",
-      "Bent repeatedly without work-hardening — like annealed aluminium strip"
+      "KD fitting, because it is the strongest joint available",
+      "Mortise and tenon, because its large glued surface resists the bending load and the product does not need to disassemble",
+      "Dowel joint, because dowels are used in all professional furniture",
+      "Halving joint, because it is the easiest to cut with school workshop tools"
     ],
     answer: 1,
-    hint: "Ductility is about being drawn into a wire. Drawing, not hammering.",
-    explain: "Ductility is specifically the ability to be drawn (pulled) into a wire without fracturing. Copper's high ductility is why it is used for electrical wiring — it can be drawn into very thin, consistent wire. Malleability is the ability to be hammered into shape. Machinability describes how cleanly a material cuts. Option D describes a related but different property (fatigue resistance in bending)."
+    hint: "Two facts are given: the dominant force, and whether it must come apart. Which joint matches both?",
+    explain: "The mortise and tenon is the classic leg-to-rail joint precisely because its long glued cheeks resist bending, and it is permanent. KD fittings are chosen for disassembly, not strength, so 'strongest' is simply wrong. 'Easiest to cut' and 'used in all professional furniture' are convenience and appeal-to-authority arguments, not structural reasons — the mark scheme wants the force named and linked to the choice."
   }
 ]} />
 
-<Section title="Homework" icon="🏠" id="homework">
+<Section title="Homework & extension" icon="🏠" id="homework">
 
-**Home task:** Read §3.1 (Types of materials) and §3.4 (Wood) in the Collins textbook. Write a materials justification for your own Component 2 project main structure — which material will you use, and why? Include at least two working properties.
+**Home task:** Complete four beam problems from the sheet, showing all five steps including the equilibrium check on each. Read §4.2.5 (Loads and reactions) and §4.2.6 (Moments). Then look at your own project concept and identify the single most heavily loaded member in it — sketch it as a simply supported beam, estimate the load your user will really put on it, and calculate both reactions. Bring that sketch to Week 5.
 
-<Extension title="Composite investigation">
-Research one use of a composite material (GRP, CFRP, or reinforced concrete) in a structural engineering context. Why was the composite chosen over the alternatives (steel, aluminium, plain concrete)? Explain the matrix and reinforcement of the composite and why the combination outperforms either constituent material alone. Write 100 words.
+<Extension title="Where should the support go?">
+For a 600 mm shelf carrying a 40 N load at its midpoint, the two supports do not have to sit at the very ends. Calculate the reactions for supports placed at 0 mm and 600 mm, then at 50 mm and 550 mm, then at 100 mm and 500 mm. Plot reaction against support position. What happens to the reactions as the supports move inwards, and what is the cost of that? Write 80 words — and note that this is precisely the calculation that decides where the brackets go on a real wall.
 </Extension>
 
 </Section>
 
 <Resources items={[
-  { label: "Collins IGCSE D&T — §3.1 Types of materials (p. 166)", type: "Textbook", href: "https://drive.google.com/open?id=1AkkrutnyjCg0mVjlA5QxY5YDsqeQzcJh" },
-  { label: "Collins IGCSE D&T — §3.4 Wood (p. 177)", type: "Textbook", href: "https://drive.google.com/open?id=18W7jfbqGnuZzPl2dYSFWuU6dgThP5KXk" },
-  { label: "Collins IGCSE D&T — §3.6 Metals (p. 188)", type: "Textbook", href: "https://drive.google.com/open?id=1MpzpONfpWrzmn62enkh_B4i6vtmMo29n" },
-  { label: "Collins IGCSE D&T — §4.2.7 Materials and structures (p. 251)", type: "Textbook", href: "https://drive.google.com/open?id=1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA" },
+  { label: "Collins IGCSE D&T — §4.2.5 Loads and reactions (p. 245)", type: "Textbook", href: "https://drive.google.com/open?id=1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a" },
+  { label: "Collins IGCSE D&T — §4.2.6 Moments (p. 248)", type: "Textbook", href: "https://drive.google.com/open?id=1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje" },
+  { label: "Collins IGCSE D&T — §4.2.9 Structural joints (p. 255)", type: "Textbook", href: "https://drive.google.com/open?id=1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B" },
+  { label: "Collins IGCSE D&T — §4.2.10 Forces in structures (p. 269)", type: "Textbook", href: "https://drive.google.com/open?id=1F8bzARgbX_6J9CRumVRAswfFDgXfydHy" },
 ]} />
 
-<Reflection prompt="For your Component 2 project, what is the strongest argument for your material choice — and what is the strongest argument against it? Write one sentence for each." />
+<Reflection prompt="Today the maths made a claim and a measuring instrument checked it. Where else in your project could you replace a guess with a prediction you could actually test — and what would you need in order to test it?" />

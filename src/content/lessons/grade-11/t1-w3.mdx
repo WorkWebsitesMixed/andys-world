@@ -2,20 +2,26 @@
 grade: 11
 term: 1
 week: 3
-title: "Structures: Everything in One Session"
-topic: "Structures"
-learningGoal: "classify any structure as frame, shell or mass; name the five forces acting on structures; calculate a beam reaction and a factor of safety; sketch three structural joints"
-selGoal: "when I get a calculation wrong, reread the question before changing my answer — the question usually contains the fix"
+title: "Structures 1: The Breaking Lab"
+topic: "Structures — build, break, measure"
+learningGoal: "classify any structure as frame, shell or mass, explain why a triangulated frame is rigid, and calculate stress and factor of safety from a structure I broke myself"
+selGoal: "commit to a prediction out loud before each test, and treat being wrong as information rather than as embarrassment"
 draft: false
 ---
 
-Structures is the theory backbone of the entire IGCSE course and of your Component 2 project. This session compresses everything — types of structure, forces, stress, factor of safety, beam reactions, and joints — into one 90-minute session with a diagnostic at the start and calculations practice at the end. It feels like a lot, but every concept here shows up in Paper 4 Section B.
+Today nothing gets explained to you before it gets tested. You will crush an egg, buckle a paper column, bend a foam beam until you can see the forces in it, and then build a bracket out of spaghetti and load it until it snaps. The number your bracket fails at is the number you will do the maths on — so break it honestly.
+
+<Callout type="exam" title="Why this matters" id="why">
+Structures is the theory backbone of the whole course and of your project. <ExamLink to="paper4">Paper 4 Section B</ExamLink> asks you to classify structures, name forces, and calculate stress and factor of safety — and it awards **method marks** for the formula and the substitution even when the arithmetic goes wrong. The fastest way to remember a formula is to have used it on something you watched fail.
+</Callout>
 
 <KeyTerms terms={[
   { term: "Frame structure", definition: "A structure made of individual members (rods, beams, or struts) connected at joints. The members carry the load; the spaces between them carry nothing. Examples: bicycle frame, roof truss, shelf bracket, Eiffel Tower." },
   { term: "Shell structure", definition: "A structure where the outer skin carries the load. The surface itself is the structural element — there is no internal frame. Examples: egg, car body panel, dome, tin can." },
   { term: "Mass structure", definition: "A solid structure where the whole volume of material is under compression. No internal cavity. Examples: dam wall, concrete foundation, brick wall, cliff." },
-  { term: "Factor of Safety (FoS)", definition: "The ratio of the load at which a structure fails to the maximum load it is designed to carry in use. FoS = Failure Load divided by Working Load. A FoS of 1 means the structure would fail exactly at its working load — far too risky. Structural engineering uses FoS of 2 to 6 or higher." },
+  { term: "Triangulation", definition: "Adding a diagonal member to a square frame to convert it into two triangles. A triangle cannot change shape without changing the length of one of its sides, so a triangulated frame cannot rack." },
+  { term: "Stress", definition: "Force divided by the cross-sectional area carrying it. Measured in N/mm² (identical to MPa). Two members carrying the same load can be under completely different stress if their cross-sections differ." },
+  { term: "Factor of Safety (FoS)", definition: "The ratio of the load at which a structure fails to the maximum load it is designed to carry in use. FoS = Failure Load divided by Working Load. A FoS of 1 means the structure fails exactly at its working load — far too risky. Structural engineering uses 2 to 6 or higher." },
   { term: "Strut", definition: "A structural member under compression. It pushes back against the load trying to squash it. Columns and vertical posts are typically struts." },
   { term: "Tie", definition: "A structural member under tension. It resists being pulled apart. The bottom chord of a roof truss is typically a tie." },
 ]} />
@@ -26,19 +32,27 @@ Structures is the theory backbone of the entire IGCSE course and of your Compone
 
 | Type | How load is carried | Key feature | Example |
 |---|---|---|---|
-| Frame | Members and joints | Spaces between members carry nothing | Bicycle frame, roof truss, your shelf project |
+| Frame | Members and joints | Spaces between members carry nothing | Bicycle frame, roof truss, your project |
 | Shell | Outer skin | Surface is the structural element | Egg, car bonnet, dome |
 | Mass | Entire volume | All material in compression | Dam, brick wall, concrete foundation |
 
-**Exam trap:** A cardboard box is a shell structure, not a frame. The faces carry the load. A box made of straws glued at the corners is a frame — the straws carry load, the spaces do not.
+**Exam trap:** A cardboard box is a shell structure, not a frame. The faces carry the load. A box made of straws glued at the corners is a frame — the straws carry the load, the spaces do not.
 
 <StructureTypesDiagram />
 
 <MoreImages term="frame shell mass structure examples" />
 
+### The egg test, and why it works
+
+An egg is a shell structure. Squeezed end-to-end in a closed palm, an intact egg is extremely hard to break — the curved shell spreads your grip into pure compression, and eggshell is very strong in compression. Poke the same egg once with a fingertip at the side and it fails instantly, because a point load bends the shell, and eggshell is weak in bending.
+
+That single contrast is the whole idea of a shell: **the geometry decides which force the material has to face.** Change the geometry and you change the force, without changing the material at all.
+
 ### Triangulation: why triangles are rigid
 
-A triangle cannot be deformed without changing the length of one of its sides. A square frame can be racked (pushed into a parallelogram) without changing side lengths. Adding a diagonal brace converts the square into two triangles — now rigid. This is why trusses, bicycle frames, and roof structures use triangulated geometry.
+A triangle cannot be deformed without changing the length of one of its sides. A square frame can be **racked** — pushed into a parallelogram — without any side changing length at all. Adding one diagonal converts the square into two triangles, and the racking stops dead.
+
+This is why trusses, bicycle frames, scaffolding and roof structures are all triangulated. It is also the cheapest structural upgrade that exists: one extra member, no extra material thickness.
 
 <TriangulationDiagram />
 
@@ -54,9 +68,17 @@ A triangle cannot be deformed without changing the length of one of its sides. A
 | Compression | Pushes together along the axis | Squashes the member | Column, strut, concrete wall |
 | Shear | Acts across the member | Cuts or slides layers | Bolt through a joint, scissors |
 | Torsion | Twists around the axis | Rotates the cross-section | Driveshaft, screwdriver bit |
-| Bending | Combination of tension + compression | Curves the member | Loaded beam (top face in compression, bottom in tension) |
+| Bending | Combination of tension + compression | Curves the member | Loaded beam |
 
-**On a loaded beam:** the top face is in compression (being squashed by the load); the bottom face is in tension (being stretched as the beam sags). The point in between where stress is zero is the **neutral axis**. This is why I-beams have flanges top and bottom — most of the material is placed where the stress is highest, away from the neutral axis.
+### Seeing bending with your own eyes
+
+Bending is the force students most often get wrong in the exam, because it is really two forces at once. Station 3 makes it visible: draw a straight line along the side of a foam block, then bend the block into a curve.
+
+- The line on the **top** face gets **shorter** — that face is in **compression**.
+- The line on the **bottom** face gets **longer** — that face is in **tension**.
+- Somewhere in the middle the line does not change length at all. That layer is the **neutral axis**, where bending stress is zero.
+
+This is why an I-beam has flanges at the top and bottom: material near the neutral axis is barely working, so it is moved out to where the stress is highest. Same material, better geometry, far stiffer beam.
 
 <ForcesDiagram />
 
@@ -74,11 +96,11 @@ A triangle cannot be deformed without changing the length of one of its sides. A
   note="A force of 500 N acting on a cross-section of 50 mm². Note that N/mm² and MPa are the same unit."
 />
 
-A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load.
+A thicker cross-section reduces stress for the same force. This is why structural members get wider at points of high load — and why the paper column in Station 2 survives so much more load as a tube than as a folded strip.
 
 ### Factor of Safety
 
-**Example:** A shelf bracket fails (permanently deforms) at 200 N. It is designed to carry a maximum load of 50 N.
+**Example:** A shelf bracket permanently deforms at 200 N. It is designed to carry a maximum load of 50 N.
 
 <Formula
   name="Factor of safety"
@@ -88,182 +110,126 @@ A thicker cross-section reduces stress for the same force. This is why structura
   note="The bracket could carry four times its working load before failing."
 />
 
-For structures that affect human safety (buildings, bridges), FoS values of 2.5–6 are typical.
+For structures that affect human safety — buildings, bridges, lifting equipment — FoS values of 2.5 to 6 are typical. Aircraft run much lower (around 1.5) because every kilogram costs fuel, which is why aircraft parts are inspected and replaced on a schedule instead.
+
+**Converting mass to force:** loads are usually given as a mass in kg, but structures are calculated in newtons. Multiply by roughly 10 (strictly 9.81). A 2 kg load is about 20 N.
 
 </Section>
 
-<Section title="Beam reactions" icon="⚖️" id="beam-reactions">
+<WorkedExample title="From a broken bracket to a judgement">
 
-### Simple supported beam
+This is exactly the sequence you will run on your own bracket in Phase 4.
 
-A simply supported beam rests on two supports (A and B). When a load W is applied at some point along the beam, the two supports share the reaction. The method:
+1. **Record the failure load.** The bracket held a cup that was filled with washers until it snapped. Final measured mass: 1.85 kg. Convert to force — $1.85 \times 10 \approx 18.5\ \text{N}$. That is the **failure load**.
 
-1. Take moments about support A to find reaction at B.
-2. Then use equilibrium (RA + RB = total load) to find RA.
+2. **State the working load.** The user this bracket is for wants to hang a 600 g bag from it. $0.6 \times 10 = 6\ \text{N}$. That is the **working load**.
 
-**Moments about A:** Sum of clockwise moments = Sum of anticlockwise moments. The reaction at B creates an anticlockwise moment about A.
+3. **Calculate the factor of safety.**
 
-Example: A beam 4 m long, supported at A (left) and B (right). A load of 600 N is applied 1 m from A.
+    <Formula
+      equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
+      substitution="\text{FoS} = \frac{18.5\ \text{N}}{6\ \text{N}}"
+      result="\text{FoS} = 3.1"
+    />
 
-The load turns the beam clockwise about A; the reaction at B turns it anticlockwise. At
-equilibrium the two are equal:
+4. **Calculate the stress in the member that actually broke.** It was a spaghetti strut, four strands taped together, each strand about 1.8 mm diameter. Area of one strand is $\pi r^2 = \pi \times 0.9^2 \approx 2.5\ \text{mm}^2$, so four strands give about $10\ \text{mm}^2$.
 
-<Formula
-  name="Moments about A"
-  equation="R_B \times 4\ \text{m} = 600\ \text{N} \times 1\ \text{m}"
-  substitution="R_B = \frac{600\ \text{N}\cdot\text{m}}{4\ \text{m}}"
-  result="R_B = 150\ \text{N}"
-/>
+    <Formula
+      equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
+      substitution="\text{Stress} = \frac{18.5\ \text{N}}{10\ \text{mm}^2}"
+      result="\text{Stress} = 1.85\ \text{N/mm}^2"
+    />
 
-<Formula
-  name="Vertical equilibrium"
-  equation="R_A = W - R_B"
-  substitution="R_A = 600\ \text{N} - 150\ \text{N}"
-  result="R_A = 450\ \text{N}"
-  note="Check: 450 + 150 = 600 N — the reactions equal the total load."
-/>
+5. **Make the judgement.** A FoS of 3.1 is acceptable for a domestic product carrying a non-critical load. But note *where* it failed: if it failed at a **joint** rather than in a **member**, the FoS above describes the tape, not the spaghetti — and the honest design conclusion is "strengthen the joints", not "use more material".
 
-<BeamReactionsDiagram />
-
-</Section>
-
-<Section title="Structural joints" icon="🔩" id="joints">
-
-| Joint | Sketch description | Load it handles | Used for |
-|---|---|---|---|
-| Halving joint | Two members notched halfway through, overlapping | Shear at crossing point | Cross-frames, timber grids |
-| Bridle joint | One member has a slot, the other a tongue — mechanical interlock | Tension and shear | Corners in timber frames |
-| Mortise and tenon | Tenon (rectangular peg) fits into mortise (rectangular hole) | Bending and shear | Furniture legs to rails |
-| Dowel joint | Round wooden pegs align two pieces | Shear | Furniture panels |
-| KD fitting | Cam lock and bolt — disassembles without tools | Tension and compression | Flatpack furniture |
-
-Joining method is one of your **open design decisions** for Component 2 — chosen for strength, disassembly, or aesthetics. Mixing methods is common practice: KD fittings plus wood adhesive is one valid combination.
-
-<StructuralJointsDiagram />
-
-<MoreImages term="timber structural joints halving bridle mortise tenon" />
-
-</Section>
-
-<WorkedExample title="Three calculations in sequence">
-
-**Q1 — FoS:** A shelf is designed to hold 30 kg (approximately 300 N). It fails at 1,200 N.
-
-<Formula
-  equation="\text{FoS} = \frac{\text{Failure Load}}{\text{Working Load}}"
-  substitution="\text{FoS} = \frac{1200\ \text{N}}{300\ \text{N}}"
-  result="\text{FoS} = 4.0"
-  note="Adequate for a domestic shelf — a FoS of 4 gives a comfortable safety margin."
-/>
-
-**Q2 — Stress:** The vertical support of the shelf bracket is 25 mm × 25 mm square section timber. The maximum compressive load is 300 N.
-
-<Formula
-  equation="\text{Stress} = \frac{\text{Force}}{\text{Area}}"
-  substitution="\text{Stress} = \frac{300\ \text{N}}{25 \times 25\ \text{mm}^2} = \frac{300}{625}"
-  result="\text{Stress} = 0.48\ \text{N/mm}^2"
-  note="Well within timber's compressive strength of about 30 N/mm²."
-/>
-
-**Q3 — Beam reaction:** The shelf (length 600 mm) is supported at the wall (A, left) and a bracket tip (B, right). A load of 400 N acts 200 mm from A.
-
-<Formula
-  name="Moments about A"
-  equation="R_B \times 600 = 400 \times 200"
-  substitution="R_B = \frac{80{,}000\ \text{N}\cdot\text{mm}}{600\ \text{mm}}"
-  result="R_B = 133\ \text{N}"
-/>
-
-<Formula
-  name="Vertical equilibrium"
-  equation="R_A = W - R_B"
-  substitution="R_A = 400\ \text{N} - 133\ \text{N}"
-  result="R_A = 267\ \text{N}"
-  note="Check: 267 + 133 = 400 N — the reactions balance the load."
-/>
 </WorkedExample>
 
-<Activity title="Structures diagnostic and four exercises" time="90 min" grouping="Individual" materials={["Graph paper or squared paper", "Ruler", "Calculator"]}>
+<Activity title="Predict, break, measure, calculate" time="90 min" grouping="Teams of 3–4; calculations written individually" materials={["Raw egg (teacher demo) + hand sanitiser", "Drinking straws and masking tape", "A4 paper and sticky tape", "Foam block or dense sponge with a line drawn along one side", "Dried spaghetti", "Plastic cup, string, washers or coins", "Digital kitchen scale", "Ruler and calculator", "Results sheet"]}>
 
-**Diagnostic quiz (0–10 min):** Teacher-led — 6 questions, no marks. Answers discussed immediately.
+**Every phase starts with a prediction.** Write your guess down *before* the test and circle it. You are not marked on being right — you are marked on having committed.
 
-**Exercise 1 (10–25 min) — Classify:** Given eight photographs of real structures (truss bridge, eggshell, stone wall, bicycle wheel, car bonnet, tent, concrete dam, roof truss) — classify each as frame, shell, or mass. Justify in one sentence each.
+**Hook — the egg that will not break (0–8 min):** Predict how many of you can crush a raw egg end-to-end in a closed palm. Watch the demo. Then watch a single fingertip at the side of the shell do what a whole fist could not. Write one sentence: which force was the shell strong against, and which was it weak against?
 
-**Exercise 2 (25–40 min) — Label forces:** On three given diagrams (loaded beam, roof truss, guy wire) — label each member or region with its force type (tension, compression, shear, bending). Use T, C, S, B labels.
+**Station 1 — racking (8–15 min):** Build a square from four straws taped at the corners. Push one corner sideways. Record what happens to the shape and to the side lengths. Now tape one diagonal straw across it and push again. Write the one-sentence rule you have just discovered.
 
-**Exercise 3 (40–65 min) — Calculations:** Complete four problems:
-- FoS given failure load and working load (two problems).
-- Working load given FoS and failure load (one problem).
-- Beam reaction for a simply supported beam with one point load.
-Show all working: formula, substitution, calculation, units.
+**Station 2 — the paper column (15–22 min):** You get three sheets of A4. Make three columns of the same height: one rolled into a cylinder, one folded into a triangular tube, one folded into a square tube. Predict the ranking before you load them. Stack textbooks on each until it buckles and record the number of books each held. Same material, same mass — different geometry.
 
-**Exercise 4 (65–85 min) — Joints:** Sketch three structural joints from the list (halving, bridle, mortise and tenon, dowel, KD fitting). For each: name, sketch (clear enough to identify the joint type), and one sentence on where it would be used in your Component 2 project.
+**Station 3 — seeing the neutral axis (22–30 min):** Take the foam block with the line drawn along its side. Bend it into a curve. Watch the line: shorter at the top, longer at the bottom, unchanged in the middle. Sketch the block bent, and label compression, tension and the neutral axis on your sketch.
 
-**Review (85–90 min):** Swap papers with a neighbour. Check one calculation each.
+**Build (30–52 min):** In your team, build a bracket from spaghetti and masking tape that projects 150 mm out from the table edge and carries a cup hung at its tip. Design rules: you may use up to 20 strands and one metre of tape. Sketch your design and mark where you predict it will fail — and write down the load in kg you predict it will hold.
+
+**Break (52–65 min):** Hang the cup. Add washers steadily until the bracket fails. Weigh the cup and its contents at the moment of failure and record the mass in kg. Note **where** it actually broke and whether that matched your prediction. Post your result to the class scoreboard as an efficiency ratio: failure load in newtons divided by the mass of your bracket in grams.
+
+**Calculate — individually (65–85 min):** On your own results sheet, using your own team's numbers: (1) convert your failure mass to a failure load in newtons; (2) choose a realistic working load for a product a real person would use and justify it in one line; (3) calculate the factor of safety; (4) estimate the cross-sectional area of the member that broke and calculate the stress in it; (5) write one sentence stating whether your FoS is acceptable and what you would change first.
+
+**Scoreboard and exit ticket (85–90 min):** Compare efficiency ratios. The winning team explains their geometry in 30 seconds. Exit ticket: name the structure type of your bracket, and the one force that destroyed it.
+
 </Activity>
 
-<Support title="Calculation and classification support">
+<Support title="If a phase is not working">
 
 **FoS calculation strip:** — the same relationship, rearranged three ways.
 - $\text{FoS} = \dfrac{\text{Failure Load}}{\text{Working Load}}$
 - $\text{Working Load} = \dfrac{\text{Failure Load}}{\text{FoS}}$
 - $\text{Failure Load} = \text{Working Load} \times \text{FoS}$
 
-**Beam reaction method card:**
-1. Draw the beam, mark supports A and B, mark load with position.
-2. Take moments about A: (RB x beam length) = (Load x distance from A).
-3. Solve for RB.
-4. Find RA = Total load - RB.
-5. Check: RA + RB must equal total load.
+**Converting mass to force:** multiply kilograms by 10 to get newtons (strictly 9.81, but 10 is accepted and faster). 1.85 kg becomes 18.5 N. Always write the unit — an answer with no unit loses the mark even when the number is right.
 
-**Structure classification — if uncertain:** Ask "does the skin/surface carry the load, or do separate members carry it?" If separate members (rods, beams, struts), it is a frame. If the surface itself carries the load, it is a shell. If it is solid throughout and all material is under compression, it is a mass.
+**Estimating the area of a spaghetti bundle:** one strand is about 1.8 mm across, so its area is roughly 2.5 mm². Multiply by the number of strands in the member that broke. An estimate that you have stated clearly is worth full marks; a blank is worth none.
+
+**Structure classification — if uncertain:** Ask "does the skin or surface carry the load, or do separate members carry it?" If separate members (rods, beams, struts), it is a frame. If the surface itself carries the load, it is a shell. If it is solid throughout with all the material in compression, it is a mass.
+
+**Bracket keeps failing at the tape, not the spaghetti:** that is a real and reportable result, not a mistake. Note it as a joint failure, and say so in your conclusion — "the structure was limited by its joints" is a strong, mark-worthy engineering sentence.
+
+**Nothing has broken yet and time is running out:** stop loading, record the mass you reached, and write "did not fail at 3.2 kg — test stopped". A lower bound is usable data. Calculate the FoS as a minimum value.
+
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "A simply supported beam is 3 m long, supported at A (left) and B (right). A load of 900 N acts 1 m from A. What is the reaction at B?",
+    q: "A team's spaghetti bracket fails when the hanging cup reaches a mass of 2.4 kg. They intend the product to carry a 0.8 kg load in use. What is the factor of safety?",
     options: [
-      "900 N — B takes the full load when A is to the left",
-      "450 N — the load is shared equally between both supports",
-      "300 N — moment of 900 N x 1 m about A, divided by beam length 3 m",
-      "600 N — moment of 900 N x 2 m about B, divided by beam length 3 m"
-    ],
-    answer: 2,
-    hint: "Take moments about A: RB x 3 = 900 x 1. Solve for RB.",
-    explain: "Moments about A: RB x 3 = 900 x 1 = 900 N·m. RB = 900 / 3 = 300 N. Then RA = 900 - 300 = 600 N. Check: 600 + 300 = 900 N (correct). The support closer to the load (A) takes the larger reaction."
-  },
-  {
-    q: "On a loaded horizontal beam, the top face is in compression and the bottom face is in tension. The zone between them where stress is zero is called:",
-    options: [
-      "The shear plane — where shear stress acts horizontally through the beam",
-      "The neutral axis — the layer where bending stress transitions from compression to tension",
-      "The factor of safety line — the reserve capacity built into the beam",
-      "The torsion zone — where twisting forces are balanced"
+      "1.6 — subtract the working load from the failure load",
+      "3.0 — divide the failure load by the working load; the units of mass cancel",
+      "24 N — convert the failure mass to newtons and stop there",
+      "0.33 — divide the working load by the failure load"
     ],
     answer: 1,
-    hint: "The top is compressed, the bottom is stretched — where is the transition?",
-    explain: "The neutral axis is the zone in the beam cross-section where bending stress is zero — the transition from compression (top, being squashed) to tension (bottom, being stretched). I-beams concentrate material at the top and bottom flanges because that is where the highest bending stress occurs, far from the neutral axis."
+    hint: "FoS is a ratio of two loads. Does it matter whether both are in kg or both in N?",
+    explain: "FoS = Failure Load / Working Load = 2.4 / 0.8 = 3.0. Because FoS is a ratio, the units cancel — so as long as both loads are in the same unit, kg works as well as N. FoS is a pure number and carries no unit, which is why writing 'FoS = 3.0 N' would be wrong."
   },
   {
-    q: "A structure's failure load is 5,000 N. It has a Factor of Safety of 5. What is its maximum working load?",
+    q: "Three columns are made from identical A4 sheets: a cylinder, a triangular tube, and a flat folded strip. The flat strip collapses under far less load. The best structural explanation is:",
     options: [
-      "25,000 N — multiply failure load by FoS",
-      "5,000 N — the working load equals the failure load",
-      "1,000 N — divide failure load by FoS",
-      "4,000 N — subtract FoS from failure load"
+      "The flat strip is made of weaker paper because folding damages the fibres",
+      "The flat strip is a mass structure while the tubes are frame structures",
+      "The tubes place material further from the centre, resisting buckling; the flat strip bends about its thin axis almost immediately",
+      "The tubes are heavier, and heavier structures always carry more load"
     ],
     answer: 2,
-    hint: "Working Load = Failure Load / FoS.",
-    explain: "Working Load = Failure Load / FoS = 5,000 / 5 = 1,000 N. The FoS tells you how many times larger the failure load is than the working load. A FoS of 5 means the structure must be able to bear five times the working load before it fails."
+    hint: "The material and its mass are identical in all three. What is different is where that material sits.",
+    explain: "All three have the same material and the same mass — only the geometry differs. A closed tube distributes material around a large perimeter, so it resists buckling in every direction. A flat strip has one very thin axis and buckles about it almost immediately. This is the same principle that puts the flanges of an I-beam far from the neutral axis."
+  },
+  {
+    q: "A square straw frame is pushed sideways and deforms into a parallelogram without any straw changing length. Adding one diagonal straw stops this completely. Why?",
+    options: [
+      "The diagonal adds mass, and the extra weight holds the frame down",
+      "Deforming the frame would now require the diagonal to change length, which it resists in tension or compression",
+      "The diagonal converts the frame into a shell structure",
+      "Four joints are unstable but five joints are always stable"
+    ],
+    answer: 1,
+    hint: "Sketch the square racking over. What happens to the length of the corner-to-corner distance?",
+    explain: "Racking a square changes its diagonal length while leaving all four sides unchanged — which is why the square deforms freely. Once a diagonal member is fitted, racking would require that member to stretch or shorten, and it resists in tension or compression. The square becomes two triangles, and a triangle cannot change shape without changing a side length."
   }
 ]} />
 
-<Section title="Homework" icon="🏠" id="homework">
+<Section title="Homework & extension" icon="🏠" id="homework">
 
-**Home task:** Complete any calculation exercises not finished in class. Read §4.2.1 (Basic structural concepts) and §4.2.5 (Loads and reactions) and write definitions of strut, tie, and neutral axis in your own words.
+**Home task:** Finish the five calculations from Phase 7 if they are not complete, showing formula, substitution, answer and unit for each. Then read §4.2.1 (Basic structural concepts) and write definitions of **strut**, **tie** and **neutral axis** in your own words — not copied from the book. Finally, photograph one structure on your way home and classify it as frame, shell or mass with a one-sentence justification. Bring all of it to <WeekLink grade={11} term={1} week={4}>Week 4</WeekLink>, where we calculate beam reactions and you will need to be fluent in converting kg to N.
 
-<Extension title="Triangulation investigation">
-Build a square frame from four drinking straws (tape at corners). Test its rigidity — does it rack? Now add a diagonal straw across one corner and retest. Photograph or sketch the result. Explain in 60 words why the triangle is rigid while the square is not, referring to member lengths and angles.
+<Extension title="The efficiency league table">
+Real structural engineering is not about carrying the most load — it is about carrying the most load per gram. Take the class scoreboard data and rank every team by efficiency (failure load in N divided by structure mass in g). Then plot efficiency against the number of triangles in each design. Is there a relationship? Write 80 words on what the data suggests, and be honest if it suggests nothing — a null result that you have argued properly is a good answer.
 </Extension>
 
 </Section>
@@ -271,10 +237,8 @@ Build a square frame from four drinking straws (tape at corners). Test its rigid
 <Resources items={[
   { label: "Collins IGCSE D&T — §4.2.1 Basic concepts of structures (p. 233)", type: "Textbook", href: "https://drive.google.com/open?id=1dDiQ-HseIGaaSNXSRY6NdY90g6zknfA9" },
   { label: "Collins IGCSE D&T — §4.2.3 Strengthening frames (p. 240)", type: "Textbook", href: "https://drive.google.com/open?id=1VZxHyfQSVJ7gRHJKGGP6iqu79lFyD1-Y" },
-  { label: "Collins IGCSE D&T — §4.2.5 Loads and reactions (p. 245)", type: "Textbook", href: "https://drive.google.com/open?id=1ro9aMRRNi8TQGiaHy9j5RDPFRFA-Tx4a" },
-  { label: "Collins IGCSE D&T — §4.2.6 Moments (p. 248)", type: "Textbook", href: "https://drive.google.com/open?id=1e3dmXYTnyRjMvjOFcIt2VCy3uff84sje" },
-  { label: "Collins IGCSE D&T — §4.2.9 Structural joints (p. 255)", type: "Textbook", href: "https://drive.google.com/open?id=1-nU5gNwNy5HQGrwKguZsejRuDo7Rwu0B" },
+  { label: "Collins IGCSE D&T — §4.2.7 Materials and structures (p. 251)", type: "Textbook", href: "https://drive.google.com/open?id=1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA" },
   { label: "Collins IGCSE D&T — §4.2.10 Forces in structures (p. 269)", type: "Textbook", href: "https://drive.google.com/open?id=1F8bzARgbX_6J9CRumVRAswfFDgXfydHy" },
 ]} />
 
-<Reflection prompt="Which of the five forces (tension, compression, shear, torsion, bending) appears most in your Component 2 project, and where? Draw a quick sketch of your product and label the dominant force on each main member." />
+<Reflection prompt="Your prediction before the bracket test and the load it actually held were probably different. Which way were you wrong — too optimistic or too cautious — and what does that tell you about how much safety margin you should design into your own project?" />

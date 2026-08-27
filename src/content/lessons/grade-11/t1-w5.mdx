@@ -2,192 +2,215 @@
 grade: 11
 term: 1
 week: 5
-title: "Types of Materials 2: Composites, Plastics & Sustainability"
-topic: "Materials 2: Composites & Sustainability"
-learningGoal: "explain why concrete is reinforced with steel; identify two composites and state their matrix and reinforcement; apply three of the 6Rs to your own project design"
-selGoal: "ask whether my project does enough for sustainability — and plan one specific change if the answer is no"
+title: "Materials: The Testing Carousel"
+topic: "Woods, metals, composites and plastics"
+learningGoal: "identify a material from its physical behaviour, classify woods, metals, composites and plastics correctly, and justify a material choice for my own project using two named working properties"
+selGoal: "test a material before I judge it, and change my mind out loud when the evidence contradicts what I assumed"
 draft: false
 ---
 
-Concrete is everywhere — in the floor you walked on to get here, in the beams holding up the school roof. But plain concrete would not survive: it needs steel. Understanding why is understanding composite design. And once you see how composites solve single-material limitations, you see that sustainability is just the same logic applied across time: design for what happens to the product after its first use.
+You cannot learn materials from a table. You learn them by picking things up — by feeling that aluminium is startlingly light for a metal, that MDF has no grain to split along, that a plastic ruler goes white where you bend it before it snaps. Today the room becomes six testing stations. The properties table gets filled in *after* you have handled everything, from your own evidence.
+
+<Callout type="exam" title="Why this matters" id="why">
+Material questions in <ExamLink to="paper4">Paper 4</ExamLink> and annotations in <ExamLink to="paper1">Paper 1</ExamLink> are marked on one thing: did you name a **specific working property** and link it to a **consequence for the product**? "Strong" earns zero every single time. "High compressive strength, so the shelf will not crush under the load" earns the mark. Handling the material is what makes the specific word available to you under exam pressure.
+</Callout>
 
 <KeyTerms terms={[
-  { term: "Composite material", definition: "A material made from two or more constituent materials with different properties that, combined, produce better properties than either constituent alone. Composites have a matrix (the binding phase) and a reinforcement (the strengthening phase)." },
-  { term: "Matrix", definition: "The continuous binding phase in a composite material that holds the reinforcement in place and transfers stress between reinforcing elements. Examples: polyester resin (in GRP), epoxy resin (in CFRP), cement (in reinforced concrete)." },
-  { term: "Reinforcement", definition: "The discontinuous or fibrous phase in a composite that provides strength. Examples: glass fibres (in GRP), carbon fibres (in CFRP), steel bars (in reinforced concrete). The reinforcement carries the tensile load that the matrix alone cannot bear." },
-  { term: "Thermoplastic", definition: "A plastic that softens when heated and re-solidifies when cooled, repeatedly. This means it can be remoulded, recycled by melting, and joined by heat welding. Examples: PET, polypropylene, ABS, acrylic (PMMA), PVC." },
-  { term: "Thermoset", definition: "A plastic that undergoes an irreversible chemical change when cured (set). Once set, it cannot be re-melted or recycled by heat. Examples: epoxy resin, polyester resin, melamine formaldehyde, Bakelite." },
-  { term: "6Rs of sustainability", definition: "Six strategies for reducing the environmental impact of a product across its lifecycle: Rethink (question whether the product is needed), Reduce (use less material or energy), Reuse (design for multiple uses or users), Recycle (use recyclable materials, design for disassembly), Refuse (avoid unsustainable materials/processes), Repair (design so components can be fixed)." },
+  { term: "Hardwood", definition: "Timber from broad-leaved, slow-growing deciduous trees. Examples: oak, teak, mahogany, ash, beech. Generally denser and harder than softwoods, though 'hardwood' is a botanical category, not a hardness guarantee — balsa is technically a hardwood." },
+  { term: "Softwood", definition: "Timber from coniferous, fast-growing trees. Examples: pine, spruce, larch, Douglas fir. Cheaper and more readily available than hardwood, and lower in density. Used in construction framing and most school workshop projects." },
+  { term: "Manufactured board", definition: "Engineered sheet material made from wood fibres, particles or veneers bonded with adhesive. Examples: MDF, plywood, chipboard, OSB. Dimensionally stable, available in large sheets, and with no grain direction to split along." },
+  { term: "Ferrous metal", definition: "A metal containing iron as its main element. Examples: mild steel, cast iron, stainless steel. Magnetic (except austenitic stainless) and prone to rust unless protected by galvanising, painting, or alloying with chromium." },
+  { term: "Working property", definition: "A measurable characteristic describing how a material behaves when forces, heat or processes are applied: hardness, toughness, ductility, malleability, tensile strength, compressive strength, density, thermal and electrical conductivity." },
+  { term: "Composite material", definition: "A material made from two or more constituents with different properties that together perform better than either alone. Every composite has a matrix (the continuous binding phase) and a reinforcement (the discrete strengthening phase)." },
+  { term: "Thermoplastic", definition: "A plastic that softens when heated and re-solidifies when cooled, repeatedly. It can be remoulded, recycled by melting, and welded with heat. Examples: PET, polypropylene, ABS, acrylic, PVC." },
+  { term: "Thermoset", definition: "A plastic that undergoes an irreversible chemical change when cured. Once set it cannot be re-melted or reshaped, which makes it heat-resistant but very hard to recycle. Examples: epoxy resin, melamine, Bakelite." },
 ]} />
 
-<Section title="Reinforced concrete" icon="🏛️" id="concrete">
+<Section title="Woods" icon="🌳" id="woods">
 
-### Why concrete needs reinforcement
+### Three families, one decision
 
-Plain concrete is strong in **compression** — a compressive strength of around 30 MPa — but weak in **tension** (tensile strength less than 5 MPa, roughly 10% of its compressive strength). A loaded horizontal beam has:
+| Family | Comes from | Typical examples | Why you would choose it |
+|---|---|---|---|
+| Hardwood | Broad-leaved deciduous trees | Oak, beech, ash, mahogany | Hard-wearing surfaces, visible grain, durability |
+| Softwood | Coniferous trees | Pine, spruce, Douglas fir | Cheap, light, easy to work — structural framing |
+| Manufactured board | Fibres or veneers plus adhesive | MDF, plywood, chipboard | Large stable sheets, no grain, laser-cuts cleanly |
 
-- **Top face: compression** (the load pushes down, squashing the top)
-- **Bottom face: tension** (the beam sags, stretching the bottom)
+**The trap worth knowing:** hardwood and softwood are *botanical* categories, not hardness measurements. Balsa is a hardwood and you can dent it with a thumbnail. Yew is a softwood and it is harder than several hardwoods. Never justify a choice with "it is a hardwood, so it is hard" — name the actual property.
 
-If the bottom face of a plain concrete beam is in tension and concrete cannot resist tension, the beam cracks and fails at the bottom.
-
-**Solution:** Steel reinforcing bars (rebar) are embedded in the concrete where the tension occurs — typically in the lower zone of a horizontal beam. Steel has high tensile strength (approximately 400 MPa). The concrete handles the compression; the steel handles the tension. Together they outperform either material alone.
-
-### Pre-stressed concrete
-
-A further refinement: steel cables are tensioned (put under tension) before the concrete is poured. When the tension is released after curing, the cables try to shorten, putting the concrete beam into compression. This pre-existing compression counters the tension from loads — allowing longer spans or thinner beams.
+**For your project:** manufactured board is usually the right answer for laser-cut parts, because it has no grain direction to split along and comes in perfectly flat sheets. Timber strip is usually right for framing members that carry load along their length.
 
 </Section>
 
-<Section title="Composites" icon="⚡" id="composites">
+<Section title="Metals" icon="🔩" id="metals">
 
-### GRP — Glass-Reinforced Plastic
+### Ferrous or non-ferrous
 
-| Element | Material | Role |
-|---|---|---|
-| Matrix | Polyester or epoxy resin | Binds the glass fibres, transfers shear between layers |
-| Reinforcement | Woven glass fibre cloth or mat | Carries tensile loads; resists cracking |
+The division is simple: **ferrous metals contain iron**, non-ferrous metals do not. That one fact predicts two others — ferrous metals are usually magnetic, and they rust. It is why the magnet at Station 2 sorts the tray in about fifteen seconds.
 
-**Properties:** Corrosion-resistant (useful for boat hulls and outdoor applications), relatively light (density around 1.8 g/cm³), mouldable into complex curved forms, lower tensile strength than CFRP but much cheaper.
+| Metal | Class | Density (g/cm³) | Notable property |
+|---|---|---|---|
+| Mild steel | Ferrous | 7.9 | High tensile strength, cheap, rusts readily |
+| Cast iron | Ferrous | 7.2 | Excellent in compression, brittle in tension |
+| Stainless steel | Ferrous | 7.9 | Chromium content resists corrosion |
+| Aluminium | Non-ferrous | 2.7 | About one third the density of steel; self-protecting oxide layer |
+| Copper | Non-ferrous | 8.9 | Outstanding electrical and thermal conductivity, very ductile |
+| Brass | Non-ferrous (alloy) | 8.5 | Machines beautifully, corrosion resistant, decorative |
 
-**Used in:** Boat hulls, wind turbine blades, car body panels (classic/specialist cars), bath tubs, canoes.
+**The density surprise:** most people are genuinely startled by an aluminium block the first time they pick one up, because it looks like steel and weighs a third as much. That is the moment the number 2.7 becomes memorable. It is also the entire reason aircraft are built from it.
 
-### CFRP — Carbon Fibre Reinforced Plastic
+<MetalProcessesDiagram />
 
-| Element | Material | Role |
-|---|---|---|
-| Matrix | Epoxy resin | Binds fibres, transfers load, protects from impact |
-| Reinforcement | Woven carbon fibre | Carries tensile loads; very high stiffness-to-weight |
+</Section>
 
-**Properties:** Exceptional tensile strength (up to 3,500 MPa for the fibre), very low density (approximately 1.6 g/cm³), extremely stiff. Expensive — manufacturing is labour-intensive. Cannot be welded or repaired easily.
+<Section title="Composites" icon="🧬" id="composites">
 
-**Used in:** Aerospace structures, Formula 1 chassis, bicycle frames, racing cars, high-performance prosthetics.
+### Matrix and reinforcement
+
+A composite always has two jobs split between two materials. The **matrix** is continuous — it fills the space, holds everything in position, and passes load between the reinforcing elements. The **reinforcement** is discrete — fibres, strands or bars — and it carries the tensile load the matrix could never take alone.
+
+| Composite | Matrix | Reinforcement | What the pairing achieves |
+|---|---|---|---|
+| Reinforced concrete | Cement | Steel bars | Concrete is superb in compression, hopeless in tension; the steel supplies the tension |
+| GRP (fibreglass) | Polyester resin | Glass fibres | Strong, light, mouldable into complex curved shells |
+| CFRP (carbon fibre) | Epoxy resin | Carbon fibres | Very high strength-to-weight; expensive, hard to repair |
+| Plywood | Adhesive | Wood veneers at 90° | Cross-grain layers cancel each other's splitting weakness |
+
+**Why concrete needs steel, in one sentence:** concrete can take roughly ten times more compression than tension, so any concrete beam would crack on its underside — the tension face — under its own load. Steel bars are cast into exactly that face.
 
 </Section>
 
 <Section title="Plastics" icon="♻️" id="plastics">
 
-### Thermoplastics — key examples for IGCSE
+### The one distinction that matters
 
-| Name (abbreviation) | Properties | Common use |
+| | Thermoplastic | Thermoset |
 |---|---|---|
-| Polypropylene (PP) | Flexible, chemical resistant, living hinge possible | Packaging, storage boxes, chairs |
-| ABS | Tough, impact resistant, good surface finish | LEGO bricks, phone cases, 3D printing |
-| Acrylic (PMMA) | Clear, scratch-resistant, laser-cuts well | Signage, display cases, protective covers |
-| PET | Clear, tough, recyclable (code 1) | Drinks bottles, food trays |
+| Heat it | Softens, can be reshaped | Chars and degrades; will not soften |
+| Reshape it | Yes, repeatedly | No, never |
+| Recycle by melting | Yes | No |
+| Examples | PET, PP, ABS, acrylic, PVC | Epoxy, melamine, Bakelite, polyester resin |
 
-### Thermosets — key examples
+The reason thermoplastics can be remelted is that their long molecular chains are only tangled together, not chemically bonded to each other. Heat lets the chains slide. Thermosets form permanent cross-links between the chains during curing — an irreversible chemical change — so there is nothing left to slide.
 
-| Name | Properties | Common use |
-|---|---|---|
-| Epoxy resin | Very strong adhesive, two-part, heat-resistant once cured | Structural adhesive, CFRP matrix, coatings |
-| Polyester resin | Cheaper than epoxy, used with glass fibre | GRP boat hulls, garden furniture |
-| Melamine formaldehyde | Hard, heat-resistant surface | Kitchen worktop laminates, crockery |
+**The sustainability consequence:** this is why a thermoset is a hard choice to justify in your project. It cannot be recycled by melting, which puts it in direct conflict with the Recycle and Reuse strategies you will audit for homework.
 
 </Section>
 
-<Section title="The 6Rs and your project" icon="🌿" id="sustainability">
+<WorkedExample title="Turning a test result into a mark-worthy justification">
 
-Apply the 6Rs to your Component 2 project now — before you manufacture. Each one represents a design decision.
+Station 4 gives you an aluminium strip and a mild steel strip of identical size. Here is how the observation becomes an exam answer.
 
-| R | Question to ask | Example for your project |
-|---|---|---|
-| Rethink | Does this product need to exist? Could the user's problem be solved another way? | Could a hook on the wall solve the problem instead of a whole shelf? |
-| Reduce | Can I use less material without losing structural integrity? | Reduce shelf thickness from 18 mm MDF to 12 mm if the load test allows. |
-| Reuse | Could the product be used by someone else, or in a different context later? | Design the product to be wall-mounted with removable hooks — adaptable. |
-| Recycle | Can the materials be separated and recycled at end of life? | Use KD fittings so the product disassembles; then wood goes to wood recycling, metal fixings to metal recycling. |
-| Refuse | Are any materials or processes avoidable on sustainability grounds? | Refuse solvent-based varnishes (VOC emissions) — use water-based varnish instead. |
-| Repair | Can a broken part be replaced without replacing the whole product? | Design so that the shelf surface can be replaced without dismantling the whole structure. |
+1. **Observe, specifically.** "The aluminium strip is noticeably lighter than the steel strip of the same size, and it bends more easily under hand pressure. Neither is attracted to the magnet — wait, the steel is. The aluminium is not."
 
-</Section>
+2. **Name the property, not the impression.** Lighter for the same volume means lower **density** — about 2.7 g/cm³ against 7.9. Not attracted to the magnet means **non-ferrous**, so it will not rust.
 
-<WorkedExample title="Applying the 6Rs to a shelf organiser">
+3. **Attach a number or a comparison.** "Aluminium has a density of approximately 2.7 g/cm³, roughly one third that of mild steel."
 
-A student is designing a timber shelf organiser with an acrylic front panel and a switch-operated LED. The 6Rs analysis:
+4. **State the consequence for the product.** "…which means the moving arm of the product can be lifted repeatedly by the user without fatigue."
 
-**Reduce:** The original design uses 18 mm MDF throughout. After load testing, 12 mm MDF is sufficient for the horizontal shelf — this reduces material use by one-third for that component.
+5. **Assemble the sentence.** *"Aluminium was chosen for the lifting arm because its density of approximately 2.7 g/cm³ — around one third that of mild steel — keeps the arm light enough for the user to raise one-handed. As a non-ferrous metal it also will not rust in the damp garage where the product is stored."*
 
-**Reuse:** The organiser is designed with a modular system — the shelf heights can be reconfigured using KD cam fittings. When the user no longer needs a guitar-cable organiser, the same structure becomes a book shelf.
+6. **Check it against the generic-word rule.** No "strong", no "good", no "durable". Two named properties, each with a consequence tied to this user. That is a two-mark answer in both papers.
 
-**Repair:** The LED is connected with a plug connector, not soldered in permanently. If the LED fails, it can be unplugged and replaced without dismantling the product.
-
-This analysis becomes a paragraph in C4 (development) of the Component 2 folder.
 </WorkedExample>
 
-<Activity title="Composite identification and 6Rs project review" time="90 min" grouping="Individual" materials={["Pencil", "Ruler", "Your C1 design brief from Week 1"]}>
+<Activity title="Six stations, then the table" time="90 min" grouping="Teams of 3–4 rotating; table and justification written individually" materials={["Sample sets: oak, pine, MDF, plywood offcuts", "Sample sets: mild steel, aluminium, copper, brass offcuts", "One strong magnet per station", "Digital kitchen scale and ruler for density work", "Assorted plastic items — PET bottle, acrylic offcut, melamine chip, ABS part", "Broken reinforced concrete or GRP sample if available", "Blank properties table and justification sheet"]}>
 
-1. **(0–20 min) Composite matching.** Complete the table: for each composite (GRP, CFRP, reinforced concrete, plywood), identify the matrix, the reinforcement, one mechanical property advantage over constituent materials, and one current use.
+**Ground rule:** the properties table stays face down until Phase 7. Everything in it has to come from something you did.
 
-2. **(20–40 min) Plastic classification.** Given ten plastic items (photographs provided), classify each as thermoplastic or thermoset. For each thermoplastic, name a recycling advantage; for each thermoset, explain why it cannot be recycled by melting.
+**Blind identification (0–12 min):** Six numbered samples per team, no labels. Handle them, weigh them, scratch them against each other, flex them, tap them and listen. Write your best guess for each and, more importantly, the evidence that led to it. Guesses cost nothing; unevidenced guesses cost the point.
 
-3. **(40–70 min) 6Rs project audit.** For your own Component 2 project design (use your brief from Week 1 as reference), complete a 6Rs table: for each R, write one specific action you could take to make your product more sustainable. If you cannot think of an action for a particular R, write "N/A — [reason why this R does not apply]."
+**Station 1 — density by measurement (12–24 min):** Measure and weigh a block of each material and calculate density in g/cm³. Rank your results, then compare against the published figures. Which material surprised you most, and by how much?
 
-4. **(70–85 min) Specification update.** Add at least two sustainability-based specification points to your C2 folder draft: one for material choice and one for end-of-life design. Each point must include a test or measure.
+**Station 2 — the magnet sort (24–32 min):** Twelve metal samples, one magnet. Sort into ferrous and non-ferrous in under a minute, then write down what else each classification tells you about corrosion behaviour. Find the sample that breaks the rule and explain why austenitic stainless steel is non-magnetic despite containing iron.
 
-5. **(85–90 min) Reflection.** Write two sentences: the single change you made to your design as a result of the 6Rs audit, and what it cost you (material cost, complexity, or aesthetics).
+**Station 3 — hardness and grain (32–44 min):** Scratch each timber sample with a coin, always with the same pressure, and rank them by resistance. Then try to split each one along its length with gentle thumb pressure at a corner. Note which manufactured boards have no grain to split along, and what that means for a laser-cut part.
+
+**Station 4 — the same shape, different metals (44–54 min):** Identical strips of aluminium and mild steel. Compare mass, bend each by hand, apply the magnet. Then write the two-property justification sentence for a product component using the worked-example structure.
+
+**Station 5 — the plastics sort (54–64 min):** Ten plastic items to classify as thermoplastic or thermoset by reasoning about how each was made and what it does in service. For each thermoplastic, name its recycling route; for each thermoset, explain why melting is not available.
+
+**Station 6 — composites, pulled apart (64–74 min):** Examine the broken samples. Identify the matrix and the reinforcement in each, and find the surface where the reinforcement was doing the work. Explain in one line why removing the reinforcement would change how the sample failed, not just how much load it took.
+
+**Build the table and commit (74–90 min):** Now turn the properties table over and complete it individually, using your measured data wherever you have it. Then write one paragraph naming the material you will use for the main structure of your own project, justified with two named working properties and a consequence for your user. Add it to your C1 brief before you leave.
+
 </Activity>
 
-<Support title="Composite and 6Rs prompts">
+<Support title="If a phase is not working">
 
-**For the composite table:** If you cannot remember which is matrix and which is reinforcement, ask: "Which material is continuous (fills the space) and which is discrete (strands or bars)?" The continuous material is the matrix; the discrete element is the reinforcement.
+**Justification template:** "[Material] was chosen for [component] because its [named property, with a value or comparison] means [consequence for the product or user]. Its [second property] also [links to function, context or user need]."
 
-**For the 6Rs audit:** Do not say "I will use recycled materials" for Recycle unless you can name a specific material and source. "I will use FSC-certified timber (sustainably managed forests)" is a specific, evidenced statement.
+**Worked model:** "Oak was chosen for the shelf surface because its hardness means daily use — placing and removing heavy items — will not dent or scratch it. Its attractive grain also meets the user's stated preference for a natural-looking product."
 
-**For sustainability spec points:** Template: "The product must [sustainability criterion] so that [environmental benefit]. This will be tested by [specific check]." Example: "The product must use water-based varnish only so that VOC emissions during application are minimised. This will be verified by checking the product's safety data sheet."
+**For non-ferrous metals, a sentence starter:** "As a non-ferrous metal, [material] contains no iron, which means it will not rust — an advantage for a product stored [where the user actually keeps it]."
+
+**Calculating density:** density = mass ÷ volume. Measure the block in centimetres, multiply length × width × height for the volume in cm³, weigh it in grams, then divide. The answer is in g/cm³ and can be compared directly with the published table.
+
+**"I cannot tell these two timbers apart."** Look at the end grain rather than the face. Softwoods show wide, clearly separated growth rings; hardwoods show tighter, denser rings and often visible pores. Weight for the same size is the other reliable clue.
+
+**"My measured density does not match the book."** Expected, and worth saying so. Timber varies with moisture content, offcuts have paint or varnish on them, and a ruler measurement of a rough offcut carries real error. Report your value, state the published one, and give the most likely reason for the gap — that is an evaluation mark, not a failure.
+
+**Five generic words to hunt out of your writing:** strong, durable, good, nice, cheap. Each has a specific replacement: high tensile strength, corrosion resistant, appropriate for the load, meets the user's stated aesthetic preference, low material cost per unit.
+
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "Why is concrete reinforced with steel bars in a loaded horizontal beam?",
+    q: "A student writes: 'I chose aluminium because it is a strong metal and looks good.' Which rewrite would earn marks?",
     options: [
-      "To increase the compressive strength of the beam — concrete compresses well but steel adds more",
-      "Because concrete is weak in tension and steel bars in the lower zone of the beam carry the tensile stress",
-      "To reduce the weight of the beam — steel rebar is lighter than concrete per unit volume",
-      "To prevent cracking in the upper face of the beam where compressive stress is highest"
+      "'I chose aluminium because it is a very strong and durable metal that looks good in this product.'",
+      "'I chose aluminium because it has a density of about 2.7 g/cm³, a third that of steel, so the user can lift the arm one-handed; being non-ferrous it also will not rust in a damp garage.'",
+      "'I chose aluminium because it is the best material for this job and is widely used in industry.'",
+      "'I chose aluminium because it is a non-ferrous metal.'"
     ],
     answer: 1,
-    hint: "Think about which face of a sagging beam is in tension — top or bottom?",
-    explain: "A loaded horizontal beam sags in the middle. The top face is compressed (concrete handles this well — compressive strength ~30 MPa). The bottom face is in tension. Plain concrete is weak in tension (tensile strength ~3–5 MPa). Steel rebar embedded in the lower zone of the beam carries the tensile stress that concrete cannot. The result is a composite that handles both compression and tension."
+    hint: "The mark scheme wants a named property with a value or comparison, plus a consequence for this specific user or product.",
+    explain: "Only the second option names properties (density, non-ferrous) with a figure and a comparison, and ties each to a consequence for this user. The first just stacks more generic words. The third is an appeal to authority with no property at all. The fourth names a real classification but stops before the consequence — it would earn at most a partial mark, because the examiner cannot see why it matters here."
   },
   {
-    q: "A material is described as a thermoplastic. What does this mean for its recyclability?",
+    q: "Why can a thermoplastic be recycled by melting when a thermoset cannot?",
     options: [
-      "It cannot be recycled — the chemical curing process is irreversible",
-      "It can be recycled by melting and remoulding, because it softens reversibly when heated",
-      "It can only be recycled by mechanical grinding into particles, not by heat",
-      "It must be mixed with a hardener before recycling, like epoxy resin"
+      "Thermoplastics are softer materials, so less heat energy is needed to process them",
+      "Thermoplastic chains are tangled but not chemically bonded to each other, so heat lets them slide; thermoset curing creates permanent cross-links, an irreversible chemical change",
+      "Thermosets are always filled with reinforcing fibres that block the melting process",
+      "Thermoplastics are made from oil and thermosets are made from plant resins"
     ],
     answer: 1,
-    hint: "Thermo = heat; plastic = mouldable. Thermoplastics can be reshaped by heat repeatedly.",
-    explain: "Thermoplastics soften and re-flow when heated, then re-solidify when cooled. This process is reversible, so thermoplastics can be melted down and remoulded — making them recyclable. Thermosets (epoxy, polyester resin) undergo an irreversible chemical change when cured, so they cannot be recycled by melting. This is a key sustainability distinction between the two plastic families."
+    hint: "The difference is what happens between the molecular chains during curing, not how hard the finished material feels.",
+    explain: "Thermoplastic chains are held together only by weak intermolecular forces, so heating lets them slide past one another and the material can be reshaped over and over. Curing a thermoset forms permanent covalent cross-links between chains — a one-way chemical reaction. There is nothing left to slide, so the material chars rather than softens. Hardness is unrelated: acrylic is a hard thermoplastic."
   },
   {
-    q: "Which of the 6Rs best describes designing a product with KD (knock-down) fittings so that it can be disassembled at end of life?",
+    q: "In reinforced concrete, why are the steel bars positioned near the underside of a beam rather than in the middle?",
     options: [
-      "Rethink — questioning whether the product needs to exist at all",
-      "Refuse — refusing to use unsustainable materials or processes",
-      "Recycle — enabling materials to be separated and recycled when the product is no longer used",
-      "Reduce — using less material in the product's construction"
+      "The underside is easier to reach during construction",
+      "Steel is denser than concrete, so placing it low keeps the beam stable",
+      "The underside of a loaded beam is the tension face, and concrete is weak in tension while steel is strong in it",
+      "It protects the steel from rain falling on the top surface"
     ],
     answer: 2,
-    hint: "KD fittings allow the product to be taken apart — what happens to the separated materials?",
-    explain: "Using KD fittings so the product disassembles at end of life is a Recycle strategy. Once disassembled, timber components can go to wood recycling, metal fittings to metal recycling, and acrylic panels to plastic recycling — none of which would be possible if the product were glued together permanently. Reduce is about using less material; Refuse is about avoiding harmful materials; Rethink is about questioning the need for the product."
+    hint: "Think back to the foam beam in Week 3. Which face stretched?",
+    explain: "A loaded beam is in compression on its top face and tension on its bottom face — the neutral axis sits between them. Concrete handles compression roughly ten times better than tension, so the top face is fine unaided while the bottom face would crack. The steel reinforcement goes exactly where the tension is. This is the clearest example of a composite splitting one job between two materials by geometry."
   }
 ]} />
 
-<Section title="Homework" icon="🏠" id="homework">
+<Section title="Homework & extension" icon="🏠" id="homework">
 
-**Home task:** Read §3.5 (Composites) and §1.9 (Environment and sustainability) in the Collins textbook. Write a 100-word paragraph explaining which of the 6Rs is hardest to apply to your specific project design and why.
+**Home task — the 6Rs audit of your own project.** For each of the six Rs — Rethink, Reduce, Reuse, Recycle, Refuse, Repair — write one **specific** action you could take on your own design. Specific means naming a material and a source: "FSC-certified pine from a managed forest" counts, "I will use sustainable materials" does not. Then write two sustainability specification points for your folder, one about material choice and one about end-of-life, each including a test or measure. These two points are assessed inside M2 in Week 8, so they are not optional. Finally, read §3.1 (Types of materials), §3.5 (Composites) and §1.9 (Environment and sustainability).
 
-<Extension title="Carbon footprint comparison">
-Research the approximate carbon footprint (CO2 equivalent per kg) of three materials: timber (FSC certified), mild steel, and aluminium. Rank them from lowest to highest carbon footprint. Does the ranking change if you account for the product's weight (i.e., how much of each material is needed for the same structural performance)? Write 80 words.
+<Extension title="The honest carbon comparison">
+Pick two materials you could realistically use for the same part of your project — say MDF and aluminium. Research the approximate embodied energy of each in MJ per kg, multiply by the mass you would actually use, and compare the totals. Then complicate your own answer: how long would the product have to last for the higher-energy material to be the better environmental choice? Write 120 words. The interesting finding is usually that the lighter-footprint material is not the one you expected.
 </Extension>
 
 </Section>
 
 <Resources items={[
+  { label: "Collins IGCSE D&T — §3.1 Types of materials (p. 166)", type: "Textbook", href: "https://drive.google.com/open?id=1AkkrutnyjCg0mVjlA5QxY5YDsqeQzcJh" },
+  { label: "Collins IGCSE D&T — §3.4 Wood (p. 177)", type: "Textbook", href: "https://drive.google.com/open?id=18W7jfbqGnuZzPl2dYSFWuU6dgThP5KXk" },
   { label: "Collins IGCSE D&T — §3.5 Composites (p. 184)", type: "Textbook", href: "https://drive.google.com/open?id=16PSGhJVNQvk7AxcWBNJRRLdpMDbPS0AO" },
+  { label: "Collins IGCSE D&T — §3.6 Metals (p. 188)", type: "Textbook", href: "https://drive.google.com/open?id=1MpzpONfpWrzmn62enkh_B4i6vtmMo29n" },
+  { label: "Collins IGCSE D&T — §4.2.7 Materials and structures (p. 251)", type: "Textbook", href: "https://drive.google.com/open?id=1cJCvpI53e9LJY_ycyeRIG0S7Ak8hGRKA" },
   { label: "Collins IGCSE D&T — §1.9 Environment and sustainability (p. 101)", type: "Textbook", href: "https://drive.google.com/open?id=1k3Ooy_QCo_S8UGoC1oQQ2f-8D_zDKHle" },
 ]} />
 
-<Reflection prompt="Which of the 6Rs will have the biggest positive impact on your project — and which will be hardest for you to implement? Why does that tension exist?" />
+<Reflection prompt="Which material surprised you most today, and what had you assumed about it beforehand? Assumptions about materials are the ones that quietly wreck a design — name one you have just had corrected." />
