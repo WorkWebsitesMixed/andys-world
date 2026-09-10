@@ -4,19 +4,25 @@ term: 1
 week: 4
 title: "Structures 2: Moments, Beams & Joints"
 topic: "Beam reactions and structural joints"
-learningGoal: "predict the reaction at each support of a loaded beam using moments, verify the prediction against a real measurement, and select a structural joint with a reason"
+learningGoal: "predict the reaction at a support of a loaded beam using moments, verify the prediction against a real measurement, and select a structural joint with a reason"
 selGoal: "write my prediction down before I measure, and report the real reading honestly even when it disagrees with my calculation"
 draft: false
 ---
 
-Last week you broke things. Today you predict things — and then check whether the maths was telling the truth. A ruler resting on two kitchen scales is a real beam on two real supports, and the numbers on those displays are the reactions you are about to calculate. If your arithmetic is right, you can say what both scales will read *before* the weight goes on.
+Last week you broke things. Today you predict things — and then check whether the maths was telling the truth. A ruler resting on a kitchen scale is a real beam on a real support, and the number on that display is a reaction you are about to calculate. If your arithmetic is right, you can say what the scale will read *before* the weight goes on.
+
+<Callout type="tip" title="The one idea, in one sentence" id="big-idea">
+**Each support carries the share of the load nearest to it.** Everything else today — the formula, the five-step method, the scales, even the joints — is evidence for that sentence. If you leave with nothing else, leave with that.
+</Callout>
 
 <Callout type="exam" title="Why this matters" id="why">
 Beam reactions are the calculation <ExamLink to="paper4">Paper 4 Section B</ExamLink> returns to most often, and the mark scheme is generous to anyone who writes the method out: taking moments, substituting, and checking that the reactions sum to the total load are each creditable steps. Joints come up in both the written paper and your project, where the joining method is one of your open design decisions.
 </Callout>
 
 <Callout type="tip" title="How this session runs">
-Each idea comes in the same order: **a quick test, then the notes that explain it.** Everything in a bordered table or a `Formula` box goes into your notebook — those are the definitions and equations you are examined on. Each test says whether it is individual, in pairs, or in a group of 4.
+Twenty minutes of theory together at the board, then **the room becomes four stations** and your group rotates through all of them. Every station has one job and one thing you must leave holding — they are listed on the card at each table.
+
+**The rule for the whole session:** the calculation goes on paper *before* anyone looks at a display. A prediction written after the measurement is worth nothing.
 </Callout>
 
 <KeyTerms terms={[
@@ -24,26 +30,13 @@ Each idea comes in the same order: **a quick test, then the notes that explain i
   { term: "Simply supported beam", definition: "A beam resting on two supports, free to rotate at each end. The two supports share the total load between them, but not equally unless the load sits exactly halfway." },
   { term: "Reaction", definition: "The upward force a support pushes back with. For a beam in equilibrium, the two reactions added together must exactly equal the total downward load — this is the check that catches most arithmetic errors." },
   { term: "Equilibrium", definition: "The state where all forces balance and all moments balance, so nothing accelerates or rotates. Every structure you design must be in equilibrium — that is what 'it stays still' means in engineering language." },
-  { term: "Halving joint", definition: "Two members each notched halfway through their thickness so they overlap flush. Simple to cut, good in shear at the crossing point, weak in tension unless glued or pinned." },
-  { term: "Mortise and tenon", definition: "A rectangular peg (tenon) fitted into a matching rectangular hole (mortise). The classic furniture joint for a leg-to-rail connection: strong in bending and shear because of the large glued surface area." },
-  { term: "KD fitting", definition: "Knock-down fitting — a cam lock and bolt that assembles and disassembles without tools or glue. Used throughout flatpack furniture. Weaker than a glued joint but supports Reuse and Repair in the 6Rs." },
 ]} />
 
 <Section title="Moments — the turning effect" icon="⚖️" id="moments">
 
 ### The see-saw you already understand
 
-Everyone knows that a small child can balance a much heavier adult on a see-saw by sitting further out. That intuition *is* the principle of moments, and you can use it as a sanity check on every calculation you do today.
-
-<Callout type="tip" title="Warm-up — the human see-saw · 10 min · groups of 4">
-Three problems on the board, argued out in your group before anyone writes a formula.
-
-1. A 20 kg child balances a 60 kg adult sitting 1 m from the pivot. Where must the child sit?
-2. The adult moves to 1.5 m. Now where does the child go?
-3. Two children, 25 kg and 35 kg, sit on the same side at 2 m and 1 m. One adult of 70 kg balances them — how far out?
-
-You will get these right by instinct. The notes that follow just give a name and a formula to something you can already do.
-</Callout>
+Everyone knows that a small child can balance a much heavier adult on a see-saw by sitting further out. That intuition *is* the principle of moments, and you can use it as a sanity check on every calculation you do today. Station 3 puts it in your hands with a ruler and a pile of coins — but you already have the idea, and the notes below only give it a name.
 
 <Formula
   name="Moment of a force"
@@ -121,30 +114,112 @@ A beam 4 m long is supported at A (left) and B (right). A load of 600 N is appli
 The professional version is everywhere: the two brackets under a shelf, the piers under a bridge, the axles of a lorry (which is why weighbridges measure each axle separately), and the legs of a scaffold tower. Whenever a load sits between two supports, somebody has calculated how the two share it — and if they got it wrong, the nearer one fails first.
 </Callout>
 
-<Callout type="tip" title="Predict the reading, then read it · 22 min · groups of 4">
-A ruler bridges two kitchen scales. **Tare both scales with the ruler already resting on them**, or its own weight will show up in every reading.
-
-For each of three load positions — quarter span, midspan, and one-eighth span — do this in order:
-
-1. Calculate both reactions using the five-step method.
-2. Convert them to the grams the displays should show.
-3. **Write both numbers down.**
-4. Only then look at the scales.
-
-Record predicted and actual side by side and work out the percentage difference. Where the two disagree by more than about 10%, the error is in the working, not the equipment — find it.
-</Callout>
-
-<Callout type="tip" title="Explain the disagreement · 8 min · groups of 4">
-Every group's prediction and measurement will differ a little. List every reason you can think of — the mass of the ruler itself, friction at the supports, the scale rounding to the nearest gram, the load not sitting exactly where you measured — then rank them by how much you think each one mattered.
-
-Watch the *direction* of the error. If both scales read high, something you left out is pushing down on both. If one reads high and the other low, the moment calculation is wrong. This is precisely the reasoning C7 evaluation asks for in your project.
-</Callout>
-
 </Section>
+
+<Stations
+  groups={['Group A', 'Group B', 'Group C', 'Group D']}
+  time="10 min"
+  signal="rotate on the bell — the bell includes your move, so be at the next table inside 60 seconds"
+  id="rotation"
+>
+
+Four tables, four jobs, forty minutes. Your group does all four in the order printed against your name below, so nobody waits for equipment and nobody meets another group at a table.
+
+Take your **capture sheet** with you — it has one box per station, and the box is what you fill. An empty box at the end of the rotation is the only way to get this session wrong.
+
+<Station
+  n={1}
+  title="What will the scale read?"
+  time="10 min"
+  grouping="Split into two trios — one scale each"
+  kit={[
+    'One kitchen scale and one wooden block of the same height, per trio',
+    'A 600 mm ruler or light timber batten',
+    'A 1 kg mass — a bag of rice or a full water bottle',
+    'Half-completed prediction slips',
+  ]}
+  leaveWith="Three predicted-and-actual pairs, and one sentence on which direction your error went"
+>
+
+The ruler bridges the scale (support **A**) and the block (support **B**). **Tare the scale with the ruler already resting on it** — otherwise the ruler's own weight lands in every reading you take.
+
+The prediction slip has the calculation already set up with gaps in it. For each of three load positions — **150 mm**, **300 mm** and **450 mm** from A — work in this order:
+
+1. Fill the gaps in the slip and get $R_A$ in newtons.
+2. Convert it to the grams the display should show: divide by 10, then multiply by 1,000.
+3. **Write the number down.**
+4. Only then look at the scale.
+
+You only measure $R_A$ here, because you only have one scale. That is not a limitation — it is the more interesting experiment. Watch what happens to $R_A$ as the load walks from 150 mm out to 450 mm, and check it against the sentence at the top of this page.
+
+When both trios have three readings, put your two tables side by side. Where you disagree, one of you has measured to the edge of the rice bag instead of its centre.
+
+</Station>
+
+<Station
+  n={2}
+  title="Exam-style beams"
+  time="10 min"
+  grouping="Individually, at the same table"
+  kit={['Four problem cards', 'Answers printed on the reverse of each card', 'Calculator']}
+  leaveWith="Four problems worked and self-marked, with step 5 written out on every one"
+>
+
+Four problems, hardest last. Card 1 is worked for you — read it, do not copy it. Card 2 is half-worked and you finish it. Cards 3 and 4 are yours from a blank page.
+
+**Turn the card over only after you have written your answer.** Marking your own work is the point of the station; checking before you commit is not.
+
+Every problem needs the equilibrium check written out, even when you are certain. It is one line, it catches most errors, and in the real paper it is a mark on its own.
+
+</Station>
+
+<Station
+  n={3}
+  title="Moments, made physical"
+  time="10 min"
+  grouping="Pairs"
+  kit={['A ruler and a pencil to pivot it on', 'A pile of identical coins or washers', 'A small ruler for measuring distances']}
+  leaveWith="Three balance-point predictions with the measured position written next to each"
+>
+
+Balance the ruler on the pencil and find its centre first — mark it, because every distance is measured from there.
+
+Now, three times over, **predict before you place**:
+
+1. Two coins sit 8 cm to the left. How far right must **five** coins go to balance? Predict, then test.
+2. Five coins sit 4 cm to the left. Where do **two** coins go? Predict, then test.
+3. Three coins at 6 cm left and two coins at 9 cm left, balanced by **six** coins on the right. Where? Predict, then test.
+
+Write the predicted distance and the measured distance side by side every time. When they disagree, the usual culprit is the ruler's own centre — you measured from the end, not from the balance point.
+
+</Station>
+
+<Station
+  n={4}
+  title="Joints: build, break, classify"
+  time="10 min"
+  grouping="Pairs"
+  kit={['Pre-cut card strips for three joints', 'Scissors and glue stick', 'The blank joint table on your capture sheet']}
+  leaveWith="Three rows of the joint table filled in from what you saw, and one sketch"
+>
+
+Three joints, not five: a **halving joint**, a **mortise and tenon**, and a **KD fitting**. Between them they cover the whole range — permanent and good in shear, permanent and good in bending, and demountable.
+
+Build all three, then destroy all three. Pull them apart, push them together, and twist them. For each one, fill your row of the table:
+
+- Which force did it resist best — shear, or bending?
+- Which force killed it?
+- Would you ever need to take this joint apart again?
+
+Then sketch **one** of them into your folder with a single line saying where it would work in your own project — **naming the force, not the adjective.** "Dowels, because the load at this corner is shear and it never needs to come apart" earns the mark. "Dowels, because they are strong" earns nothing.
+
+</Station>
+
+</Stations>
 
 <Section title="Structural joints" icon="🔩" id="joints">
 
-A joint is where structures usually fail — as several of you discovered last week when the tape let go before the spaghetti did. Choosing a joint is choosing which force it will have to survive.
+We fill this table in together after the rotation, from what Station 4 actually found — do not copy it before then. A joint is where structures usually fail, as several of you discovered last week when the tape let go before the spaghetti did. Choosing a joint is choosing which force it will have to survive.
 
 | Joint | What it is | Load it handles well | Used for |
 |---|---|---|---|
@@ -154,15 +229,15 @@ A joint is where structures usually fail — as several of you discovered last w
 | Dowel joint | Round pegs aligning two pieces | Shear | Furniture panels, carcass work |
 | KD fitting | Cam lock and bolt, no glue | Tension and compression | Flatpack furniture |
 
+<KeyTerms terms={[
+  { term: "Halving joint", definition: "Two members each notched halfway through their thickness so they overlap flush. Simple to cut, good in shear at the crossing point, weak in tension unless glued or pinned." },
+  { term: "Mortise and tenon", definition: "A rectangular peg (tenon) fitted into a matching rectangular hole (mortise). The classic furniture joint for a leg-to-rail connection: strong in bending and shear because of the large glued surface area." },
+  { term: "KD fitting", definition: "Knock-down fitting — a cam lock and bolt that assembles and disassembles without tools or glue. Used throughout flatpack furniture. Weaker than a glued joint but supports Reuse and Repair in the 6Rs." },
+]} />
+
 <StructuralJointsDiagram />
 
-**For your project:** the joining method is an open design decision, and mixing methods is normal professional practice — KD fittings plus wood adhesive is a perfectly valid combination. What earns the mark is the *reason*: "dowels, because the load at this corner is shear and the joint will never need to come apart" beats "dowels, because they are strong".
-
-<Callout type="tip" title="Joint puzzle · 9 min · in pairs">
-Card strips at your table make up five joints. Assemble each one and identify it from the table above. Then pull, push and twist each until it fails, and decide which of the five forces it resists best.
-
-Sketch three of them in your folder, each with one line on where it would work in your own project — naming the force, not the adjective.
-</Callout>
+**For your project:** the joining method is an open design decision, and mixing methods is normal professional practice — KD fittings plus wood adhesive is a perfectly valid combination. What earns the mark is the *reason*: the force named, and linked to the choice.
 
 <MoreImages term="timber structural joints halving bridle mortise tenon" />
 
@@ -174,66 +249,70 @@ Turn over any older wooden chair and you will find mortise and tenon joints wher
 
 </Section>
 
-<WorkedExample title="Predicting what the scales will read">
+<WorkedExample title="Predicting what the scale will read">
 
-This is the calculation you will run in Phase 3, before you are allowed to look at the displays.
+This is the calculation on your Station 1 slip, at three levels. The first is done for you, the second has gaps, the third is yours.
 
-1. **Set up.** A 600 mm ruler bridges two kitchen scales. Scale A is at the left end, scale B at the right end, 600 mm apart. Both scales are tared to zero with the ruler already resting on them.
+**The set-up, the same every time.** A 600 mm ruler bridges a kitchen scale at A (left) and a block at B (right), 600 mm apart. The scale is tared to zero with the ruler already resting on it. A 1 kg mass gives a load of $1 \times 10 = 10\ \text{N}$.
 
-2. **Place the load.** A 1 kg mass is placed 150 mm from scale A. Convert to force: $1 \times 10 = 10\ \text{N}$.
+### Level 1 — worked for you · load at 150 mm from A
 
-3. **Take moments about A** to eliminate $R_A$.
+<Formula
+  name="Moments about A"
+  equation="R_B \times 600 = 10 \times 150"
+  substitution="R_B = \frac{1{,}500\ \text{N}\cdot\text{mm}}{600\ \text{mm}}"
+  result="R_B = 2.5\ \text{N}"
+/>
 
-    <Formula
-      name="Moments about A"
-      equation="R_B \times 600 = 10 \times 150"
-      substitution="R_B = \frac{1{,}500\ \text{N}\cdot\text{mm}}{600\ \text{mm}}"
-      result="R_B = 2.5\ \text{N}"
-    />
+<Formula
+  name="Vertical equilibrium"
+  equation="R_A = W - R_B"
+  substitution="R_A = 10\ \text{N} - 2.5\ \text{N}"
+  result="R_A = 7.5\ \text{N}"
+  note="Check: 7.5 + 2.5 = 10 N. Scale A carries three quarters of the load because the mass sits at one quarter of the span."
+/>
 
-4. **Use equilibrium for the other reaction.**
+**Convert to the display.** $7.5\ \text{N} \div 10 = 0.75\ \text{kg} = $ **750 g**. Write it down, *then* look.
 
-    <Formula
-      name="Vertical equilibrium"
-      equation="R_A = W - R_B"
-      substitution="R_A = 10\ \text{N} - 2.5\ \text{N}"
-      result="R_A = 7.5\ \text{N}"
-      note="Check: 7.5 + 2.5 = 10 N. Scale A carries three quarters of the load because the mass sits at one quarter of the span."
-    />
+### Level 2 — fill the gaps · load at 300 mm from A
 
-5. **Convert back to what the display will actually show.** The scales read grams, not newtons — so divide by 10 and convert: scale A should read about **750 g**, scale B about **250 g**. Write both numbers down, *then* look.
+Moments about A: $R_B \times 600 = 10 \times \rule{2em}{0.4pt}$ , so $R_B = \rule{2em}{0.4pt}\ \text{N}$.
 
-6. **Compare honestly.** Real readings will be a few grams out — friction at the supports, a ruler that is not weightless, scales rounding to the nearest gram. A 3% disagreement confirms the model. A 300% disagreement means you divided by the wrong distance.
+Equilibrium: $R_A = 10 - \rule{2em}{0.4pt} = \rule{2em}{0.4pt}\ \text{N}$.
+
+Check: $R_A + R_B = \rule{2em}{0.4pt}\ \text{N}$. Display should read $\rule{3em}{0.4pt}$ g.
+
+*You should find the load sits exactly at midspan, so the two supports share it equally — the one case where the answer is the obvious one.*
+
+### Level 3 — from blank · load at 450 mm from A
+
+All five steps, your own page. Then predict the reading before you look, and notice that this answer is the mirror of Level 1 — the load is now three quarters of the way along, so A takes only a quarter.
+
+**Comparing honestly.** Real readings will be a few grams out — friction at the support, a ruler that is not perfectly straight, the scale rounding to the nearest gram. A 3% disagreement confirms the model. A 300% disagreement means you divided by the wrong distance.
 
 </WorkedExample>
 
-<Activity title="Session runsheet" time="90 min" grouping="Tests in groups of 4 and pairs; notes and calculations individual" materials={["Two digital kitchen scales per group", "Rulers or light timber battens, 400–600 mm", "Known masses — 500 g and 1 kg bags of rice, or full water bottles", "Calculator", "Card strips, scissors and glue for the joint puzzle", "Notebook for definitions and formulas", "Prediction and results sheet"]}>
+<Activity title="Session runsheet" time="85 min" grouping="Anchor and consolidation whole class; four stations in groups of 5–6" materials={["2 digital kitchen scales", "2 wooden blocks the same height as the scale platform", "2 rulers or light battens, 600 mm", "2 known masses — 1 kg bags of rice or full water bottles", "6 rulers + pencils + coins for the moments station", "Pre-cut card strips, scissors and glue for the joints station", "Printed capture sheet, prediction slips and problem cards", "Calculator"]}>
 
-This is the whole session, theory included. About a third of it is note-taking and worked method; the scales work doubles as your calculation practice, because every reading is a calculation you did first.
+Twenty-two students, four groups of five or six, four stations. About a quarter of the session is direct teaching; the rest is you doing the thing.
 
-**The rule for the whole session:** the calculation goes on paper *before* anyone looks at a display. A prediction written after the measurement is worth nothing.
+**Settle and predict — individual (0–4 min):** The see-saw question is on the board. Write your answer before any discussion, in silence. No formula yet — you are proving to yourself that you already have the intuition.
 
-**Settle and predict — individual (0–4 min):** The see-saw question is on the board. Write your answer before any discussion.
+**Anchor: moments and the beam method — whole class (4–24 min):** The moment formula and the equilibrium statement. Then the sentence that makes every beam problem solvable — the reaction at A acts through the pivot, so its moment is zero and one unknown disappears. Then the five-step method card, gaps filled in as we work the 4 m / 600 N example together. Everybody writes step five.
 
-**Human see-saw warm-up — groups of 4 (4–14 min):** Three balance problems, argued out in your group. No formula yet — you are proving to yourself that you already have the intuition.
+**Move to stations (24–26 min):** Find your group's first table from the route list. Capture sheets travel with you.
 
-**Notes on moments — individual (14–26 min):** Copy the moment formula and the equilibrium statement. Then the reason we take moments about A: the reaction at A acts through the pivot, so its moment is zero and one unknown disappears. That single sentence is what makes every beam problem solvable.
+**The rotation — four stations (26–66 min):** Ten minutes each, rotating on the bell. The bell includes your move. One box on the capture sheet per station.
 
-**Notes on the beam method — individual (26–36 min):** Copy the five steps as a method card in your own handwriting, and work the 4 m / 600 N example through with me. Everybody writes step five, the equilibrium check — it is the step that catches errors and it is a mark.
+**Consolidate the joint table — whole class (66–76 min):** We fill the table in from what Station 4 found, not from a slide. Then the big idea restated, and a show of hands on where your three scale readings sat against your three predictions.
 
-**Predict the scales — groups of 4 (36–58 min):** Three load positions. Calculate, convert to grams, write it down, then look. Record predicted against actual and the percentage difference.
+**Exit ticket — individual (76–83 min):** One beam problem on the board, silently: full method, both reactions, and the equilibrium check.
 
-**Explain the disagreement — groups of 4 (58–66 min):** List every reason your numbers and the displays differ, then rank them. Watch whether both readings are high or one is high and one low — that tells you which kind of error you have.
-
-**Notes on structural joints — individual (66–76 min):** Copy the joint table in full: name, what it is, the load it handles, and what it is used for. Add the sentence about naming the force rather than the adjective.
-
-**Joint puzzle — in pairs (76–85 min):** Assemble the five card joints, identify each, then break them and record which force each resists best. Sketch three into your folder.
-
-**Exit ticket — individual (85–90 min):** One beam problem on the board, silently, in five minutes: full method, both reactions, and the equilibrium check.
+**Pack down (83–85 min):** Scales tared and off, coins back in the tub, card scrap in the bin.
 
 </Activity>
 
-<Support title="If a phase is not working">
+<Support title="If a station is not working">
 
 **Beam reaction method card:**
 1. Draw the beam, mark supports A and B, mark the load with its position.
@@ -246,9 +325,13 @@ This is the whole session, theory included. About a third of it is note-taking a
 
 **"My two reactions do not add up to the load."** That is the check doing its job. Ninety per cent of the time the error is using the distance from the wrong end for the load. Re-measure from A and redo step 2.
 
-**"The scales disagree with my answer."** First check the obvious: did you tare the scales with the ruler already on them? An untared ruler adds its own weight to both readings. Then check whether the load is really where you think it is — measure to the centre of the mass, not its edge.
+**"The scale disagrees with my answer."** First check the obvious: did you tare the scale with the ruler already on it? An untared ruler adds its own weight to every reading. Then check whether the load is really where you think it is — measure to the centre of the mass, not its edge. Then check the block is the same height as the scale platform; a sloping beam is not the beam you calculated.
+
+**"My reading is high on all three positions by about the same amount."** That is the ruler, not your maths — see the second self-check question below, which is exactly this situation.
 
 **Reading the display in grams when the maths is in newtons:** work the whole calculation in newtons, then divide the answer by 10 to get kilograms and multiply by 1,000 for grams. Or simply do the whole calculation in grams — because the reactions are a ratio of the load, the units carry through unchanged.
+
+**The ruler will not balance at Station 3:** find and mark the ruler's own centre before you put any coins on it. Every distance is measured from that mark, not from the end of the ruler.
 
 **Choosing a joint when they all look plausible:** ask two questions in order. Does this joint ever need to come apart again? If yes, KD fitting. If no, which force dominates here — shear across the joint, or bending trying to fold it? Shear points to a dowel or halving joint; bending points to a mortise and tenon.
 
@@ -268,16 +351,16 @@ This is the whole session, theory included. About a third of it is note-taking a
     explain: "Moments about A: RB × 3 = 900 × 1 = 900 N·m, so RB = 300 N. Then RA = 900 − 300 = 600 N, and the check gives 600 + 300 = 900 N. Note the pattern: the load sits one third of the way along, so the far support carries one third of it. The support nearer the load always takes the larger share."
   },
   {
-    q: "A group predicts scale A will read 750 g and scale B 250 g. The actual readings are 771 g and 262 g. The best conclusion is:",
+    q: "A trio forgets to tare the scale with the ruler on it. They predict scale A will read 750 g, 500 g and 250 g for loads at 150 mm, 300 mm and 450 mm. They actually read 771 g, 521 g and 271 g. What does the pattern tell them?",
     options: [
-      "The calculation is wrong and must be redone from the start",
-      "The scales are faulty and should be replaced before continuing",
-      "The model is confirmed; the excess on both scales is largely the mass of the ruler itself, which the calculation ignored",
-      "The load was placed on the wrong side of the beam"
+      "The moment calculation is wrong and all three must be redone",
+      "The scale is faulty and should be swapped before continuing",
+      "The excess is a constant 21 g at every position — the ruler's own weight, whose share of RA does not change because its centre stays at midspan",
+      "The load was measured from the wrong end of the ruler"
     ],
     answer: 2,
-    hint: "Look at the direction of the error. Both readings are high, not one high and one low. What did the calculation leave out entirely?",
-    explain: "Both readings exceed the prediction, and they exceed it by a similar amount (21 g and 12 g, totalling 33 g). An error in the moment calculation would push one reading up and the other down, because the two reactions must still sum to the load. A uniform excess on both points to a downward force the model ignored — here, the self-weight of the ruler, which is shared between the supports. Recognising which errors are systematic and which are random is exactly what C7 evaluation credits."
+    hint: "Subtract each prediction from each reading. Is the error growing, shrinking, or staying put? What is on the beam that the calculation ignored entirely — and does its position change when the rice bag moves?",
+    explain: "All three readings are exactly 21 g high. An error in the moment calculation would grow or shrink as the load moves, because the reaction itself changes; a constant offset cannot come from there. The ruler's centre of mass sits at midspan, 300 mm from each support, so its contribution to RA is always half its weight — the same 21 g no matter where the rice bag goes. The ruler weighs about 42 g. Taring would have removed it. Recognising which errors are systematic and which are random is exactly what C7 evaluation credits."
   },
   {
     q: "In your project you need to join a horizontal rail into a vertical leg. The joint will carry bending, and the product must never be dismantled. Which choice is best justified?",

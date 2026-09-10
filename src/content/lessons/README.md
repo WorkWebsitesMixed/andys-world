@@ -35,6 +35,13 @@ Content blocks (each renders its own titled section):
 `<KeyTerms terms={[{term,definition}]} />` ·
 `<WorkedExample title="…"> …ordered list… </WorkedExample>` ·
 `<Activity title="…" time="…" grouping="…" materials={[…]}> … </Activity>` ·
+`<Stations groups={[…]} time="…" signal="…"> …<Station>s… </Stations>` (station
+rotation; each group's route through the stations is derived from `groups`, so a
+group never waits for equipment or meets another group — pass `count` only when
+there are more stations than groups) ·
+`<Station n={1} title="…" time="…" grouping="…" kit={[…]} leaveWith="…"> … </Station>`
+(one station; `leaveWith` names the artefact the student must carry away — a station
+without one is a place to drift) ·
 `<SelfCheck questions={[{q,options,answer,hint,explain}]} />` (answer = 0-based index;
 give **both** a `hint` shown on a wrong answer and an `explain` shown when correct) ·
 `<Resources items={[{label,href?,type?}]} />` ·

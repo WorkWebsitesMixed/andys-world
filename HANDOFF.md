@@ -82,6 +82,14 @@ session), `ProjectExamples`.
   a `WorkedExample` may omit it. Paired convention: a new concept or formula is
   followed by a `<Callout type="info" title="Where you'll see this">` linking it to
   something the student can go and look at today.
+- **`Stations` / `Station`** — a station-rotation block, added 2026-09-09 for
+  G11 T1 W4 (22 students, 2 kitchen scales, 4 stations). `Stations` derives each
+  group's route from a `groups` array and publishes it as a table, because the
+  minutes a rotation loses are the ones after the signal while groups work out
+  where to go. `Station` carries `n`, `time`, `grouping`, `kit` and `leaveWith`,
+  the last naming the artefact the student must leave holding. **G11 T1 W5 still
+  fakes its six stations with `Callout type="tip" title="Station 1 — …"`** and is
+  the obvious next candidate to move across.
 - **`Figure`** (image + required alt) — `src` resolves through `url()`, so pass a
   path relative to `public/`, e.g. `src="images/tools/pillar-drill.jpg"`, no base
   prefix needed. Optional `credit`/`creditHref` render a linked attribution line
