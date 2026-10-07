@@ -4,6 +4,7 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeNotebook from './src/lib/rehypeNotebook.mjs';
 
 // Andy's World deploys as a GitHub Pages *project* site:
 //   https://WorkWebsitesMixed.github.io/andys-world
@@ -20,6 +21,7 @@ export default defineConfig({
   // For the equation → substitution → result pattern, use <Formula> instead.
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [[rehypeKatex, { throwOnError: false, strict: false }]],
+    // rehypeNotebook labels lesson tables as notebook content (see the plugin's header).
+    rehypePlugins: [[rehypeKatex, { throwOnError: false, strict: false }], rehypeNotebook],
   },
 });

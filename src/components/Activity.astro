@@ -9,12 +9,25 @@ interface Props {
   grouping?: string;
   /** Optional materials list. */
   materials?: string[];
+  /**
+   * "Today's plan" mode (pilot). The block is meant to sit near the top of the
+   * lesson, so students see the whole run-sheet before the theory. The section
+   * heading becomes "Today's plan" and the lesson-specific title is shown as a
+   * bold line inside it. Without `plan` the block renders exactly as before.
+   */
+  plan?: boolean;
 }
 
-const { title = 'Activity', time, grouping, materials } = Astro.props;
+const { title = 'Activity', time, grouping, materials, plan = false } = Astro.props;
 ---
 
-<Section title={title} navLabel="Activity" icon="🛠️" id="activity">
+<Section
+  title={plan ? "Today's plan" : title}
+  navLabel={plan ? "Today's plan" : 'Activity'}
+  icon={plan ? '📋' : '🛠️'}
+  id="activity"
+>
+  {plan && <p class="plan-title">{title}</p>}
   {(time || grouping) && (
     <div class="meta">
       {time && <span class="chip">⏱ {time}</span>}
@@ -35,6 +48,10 @@ const { title = 'Activity', time, grouping, materials } = Astro.props;
 </Section>
 
 <style>
+  .plan-title {
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+  }
   .meta {
     display: flex;
     flex-wrap: wrap;

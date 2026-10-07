@@ -14,6 +14,10 @@ const { terms } = Astro.props;
 ---
 
 <Section title="Key terms" icon="🔑" id="key-terms">
+  {/* Homework: students write these down BEFORE class. The rose colour is
+      different from the cream notebook blocks (tables, formulas) so the two kinds
+      of copying are told apart; the label makes the cue work without colour. */}
+  <p class="nb-tag nb-tag--prep"><span aria-hidden="true">✎</span><span>Write these in your notebook before class</span></p>
   <dl class="terms">
     {terms.map((t) => (
       <div class="row">
@@ -31,13 +35,14 @@ const { terms } = Astro.props;
     grid-template-columns: minmax(7rem, 12rem) 1fr;
     gap: 0.5rem 1rem;
     padding: 0.7rem 0.9rem;
-    border: 1px solid var(--line);
+    border: 1px solid var(--prep-line);
+    border-left: 4px solid var(--prep-edge);
     border-radius: var(--radius-sm);
-    background: var(--bg-1);
+    background: var(--prep-wash);
   }
   dt {
     font-family: var(--font-mono);
-    color: var(--accent);
+    color: var(--prep-ink);
     font-weight: 600;
   }
   dd { margin: 0; color: var(--text-dim); }

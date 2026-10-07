@@ -1,0 +1,43 @@
+---
+/**
+ * A block of lesson prose that students copy into their notebook.
+ *
+ * Tables and <Formula> boxes are marked as notebook content automatically. Some
+ * things worth copying are neither: a rule written in a sentence ("always choose
+ * the nearest standard value above"), a formula written inline, or a short list of
+ * steps. Wrap those in <Notebook> so they get the same cream box, gold edge and
+ * "Copy into your notebook" label as the tables (the .nb styles live in
+ * src/styles/global.css).
+ *
+ *   <Notebook title="Ohm's Law">
+ *   $V = I \times R$ ...
+ *   </Notebook>
+ *
+ * Keep a blank line after the opening tag and before the closing one, so MDX parses
+ * the inside as Markdown (lists, maths and bold all work).
+ */
+interface Props {
+  /** Optional heading inside the box, e.g. the name of the rule. */
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="nb nb-prose">
+  <p class="nb-tag"><span aria-hidden="true">✎</span><span>Copy into your notebook</span></p>
+  {title && <p class="nb-title">{title}</p>}
+  <div class="nb-body"><slot /></div>
+</div>
+
+<style>
+  .nb-title {
+    margin: 0 0 0.4rem;
+    font-family: var(--font-head);
+    font-weight: 600;
+    color: var(--text);
+  }
+  /* Tighten the Markdown spacing inside the box so it does not float away from the edge. */
+  .nb-body :global(> :first-child) { margin-top: 0; }
+  .nb-body :global(> :last-child) { margin-bottom: 0.4rem; }
+</style>

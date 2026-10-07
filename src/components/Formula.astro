@@ -63,6 +63,9 @@ const rows = [
 ---
 
 <figure class="formula">
+  {/* Same label and colours as the notebook tables (.nb-tag lives in global.css),
+      so every "copy this down" block on a lesson page reads as one family. */}
+  <p class="nb-tag"><span aria-hidden="true">✎</span><span>Copy into your notebook</span></p>
   {name && <figcaption class="formula__name">{name}</figcaption>}
   <div class="formula__rows">
     {
@@ -97,10 +100,10 @@ const rows = [
   .formula {
     margin: 1.25rem 0;
     padding: 0.9rem 1rem;
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--accent);
+    border: 1px solid var(--note-line);
+    border-left: 4px solid var(--note-edge);
     border-radius: var(--radius-sm);
-    background: var(--bg-1);
+    background: var(--note-wash);
   }
 
   .formula__name {
@@ -128,7 +131,7 @@ const rows = [
 
   /* The answer line is the one students are marked on — give it the accent wash. */
   .formula__row[data-row='result'] {
-    background: var(--accent-wash);
+    background: color-mix(in srgb, var(--note-edge) 20%, transparent);
   }
 
   .formula__label {
@@ -141,7 +144,7 @@ const rows = [
   }
 
   .formula__row[data-row='result'] .formula__label {
-    color: var(--accent);
+    color: var(--note-ink);
   }
 
   /* KaTeX sets its own display margins; we control spacing from the row. */
@@ -163,7 +166,7 @@ const rows = [
   .formula__terms {
     margin-top: 0.75rem;
     padding-top: 0.7rem;
-    border-top: 1px dashed var(--line);
+    border-top: 1px dashed var(--note-line);
   }
 
   .formula__where {
@@ -190,7 +193,7 @@ const rows = [
 
   .formula__term dt {
     text-align: right;
-    color: var(--accent);
+    color: var(--note-ink);
   }
 
   .formula__term dt :global(.katex) {

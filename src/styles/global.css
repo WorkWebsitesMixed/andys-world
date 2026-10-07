@@ -49,6 +49,26 @@
   --accent-2: #6d3df0;
   --accent-2-wash: rgba(109, 61, 240, 0.08);
 
+  /* --- Notebook content (tables + formulas) ---------------------------------
+     Cream "paper" with a gold edge: the one visual cue for "copy this into your
+     notebook". Deliberately not amber/green/red, so it cannot be mistaken for
+     the feedback colours below, and not cyan/violet, which carry sections and SEL.
+     --note-ink is for the small label text (≥7:1 on --note-wash). */
+  --note-wash: #fff7d9;
+  --note-stripe: rgba(107, 78, 0, 0.06);
+  --note-line: #e3cf8a;
+  --note-edge: #c99a00;
+  --note-ink: #5e4400;
+
+  /* --- Prep content (Key terms) ----------------------------------------------
+     Sage green: "write these down before class". A different hue from the notebook
+     cream so the two kinds of copying are told apart at a glance, and a quiet one
+     that sits well beside the cream (the first try, rose, clashed with it). */
+  --prep-wash: #eaf3ea;
+  --prep-line: #b7d2ba;
+  --prep-edge: #3f7a4d;
+  --prep-ink: #245236;
+
   /* --- Feedback (tuned for white: each ≥5:1) ------------------------------ */
   --ok: #0f7a52;
   --warn: #9a6100;
@@ -98,6 +118,17 @@
   --accent-2: #b98cff;
   --accent-2-wash: rgba(185, 140, 255, 0.10);
 
+  /* Notebook (cream) and prep (rose), re-tuned for near-black. */
+  --note-wash: rgba(255, 214, 102, 0.09);
+  --note-stripe: rgba(255, 214, 102, 0.05);
+  --note-line: rgba(255, 214, 102, 0.30);
+  --note-edge: #ffd666;
+  --note-ink: #ffd666;
+  --prep-wash: rgba(143, 212, 162, 0.09);
+  --prep-line: rgba(143, 212, 162, 0.32);
+  --prep-edge: #8fd4a2;
+  --prep-ink: #8fd4a2;
+
   /* Feedback colours are per-theme: these are tuned for near-black and would
      drop to ~1.5:1 on white, so they must not leak into the light default. */
   --ok: #4ce0a6;
@@ -132,6 +163,17 @@
 
   --accent-2: #e0bbff;
   --accent-2-wash: rgba(224, 187, 255, 0.18);
+
+  /* Notebook and prep: brighter again, with a heavier wash so the box is visible. */
+  --note-wash: rgba(255, 224, 138, 0.15);
+  --note-stripe: rgba(255, 224, 138, 0.08);
+  --note-line: #b89a3a;
+  --note-edge: #ffe08a;
+  --note-ink: #ffe08a;
+  --prep-wash: rgba(170, 235, 185, 0.15);
+  --prep-line: #7fb78d;
+  --prep-edge: #b4f0c2;
+  --prep-ink: #b4f0c2;
 
   /* Brighter than the dark theme's, so they stay legible on pure black. */
   --ok: #6effc4;
@@ -306,6 +348,47 @@ thead th {
 }
 tbody tr:nth-child(even) {
   background: var(--bg-1);
+}
+
+/* Notebook blocks. A rehype plugin (src/lib/rehypeNotebook.mjs) wraps every table in
+   a lesson in <div class="nb nb-table"> with a label; Formula and KeyTerms render the
+   same tag themselves. The box colour, the edge and the pencil label are all cues, so
+   the signal survives colour-blindness and the high-contrast theme. */
+.nb {
+  margin-block: 1.25rem;
+  padding: 0.55rem 0.9rem 0.25rem;
+  border: 1px solid var(--note-line);
+  border-left: 4px solid var(--note-edge);
+  border-radius: var(--radius-sm);
+  background: var(--note-wash);
+}
+.nb > table {
+  margin-block: 0.4rem 0.6rem;
+}
+.nb th,
+.nb td {
+  border-color: var(--note-line);
+}
+.nb thead th {
+  background: transparent;
+}
+.nb tbody tr:nth-child(even) {
+  background: var(--note-stripe);
+}
+.nb-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--note-ink);
+}
+.nb-tag--prep {
+  color: var(--prep-ink);
 }
 
 :focus-visible {
