@@ -5,7 +5,7 @@ week: 7
 title: "Electronics I: Circuits, Symbols & IPO"
 topic: "Circuit symbols, the IPO model, and series vs parallel"
 learningGoal: "draw a simple LED circuit using correct symbols, label it with the input-process-output model, and produce correct circuit drawings for both series and parallel configurations."
-selGoal: "build from my own diagram rather than copying a neighbour's board, and work safely at the bench, asking the technician before acting whenever I am unsure."
+selGoal: "when my partner's circuit does not light, ask what they were trying to make it do before I say what is wrong, so I fix their problem and not mine."
 draft: false
 ---
 
@@ -16,8 +16,23 @@ Electronics starts from zero this week. You do not need any prior knowledge — 
 </Callout>
 
 <Callout type="tip" title="How this session runs">
-Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a bordered table or a `Formula` box goes into your notebook — those are the definitions and equations you are examined on.
+Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label (tables and formulas) goes into your notebook. The green Key terms box is for you to copy down before class. Those are the definitions and equations you are examined on.
 </Callout>
+
+<Activity plan title="Symbol pictionary and a circuit that lights" time="90 min" grouping="Groups of 4 for the games; drawing and building individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors — one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
+
+1. **Symbol pictionary — groups of 4, 12 min.** In groups of 4. One person is shown a component name and must draw its correct BS symbol while the team names it — no words, no gestures. Wrong symbol scores nothing even if the team guesses right. Rotate until everyone has drawn three. You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
+
+2. **Your own reference sheet — individual, 15 min.** All eight symbols, neatly, at a consistent size, each labelled with name and function. This one you keep.
+
+3. **Draw the circuit — individual, 15 min.** Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the direction of conventional current.
+
+4. **Build it — in pairs, each building their own, 25 min.** In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right — which is a better check than anything I could write in red pen.
+
+5. **Series against parallel, tested — in pairs, 20 min.** Build two LEDs in series, then the same two in parallel. Predict which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other — that is the answer to the reliability question the paper likes to ask.
+
+6. **Wrap — whole class, 3 min.** Pack down. Components counted back in.
+</Activity>
 
 <KeyTerms terms={[
   { term: "Circuit symbol", definition: "A standardised diagram shape representing one component. Symbols follow BS/IEC conventions so any engineer anywhere in the world can read the same circuit diagram." },
@@ -44,17 +59,13 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
 
 Draw each symbol on your reference sheet. Size them consistently. A symbol that is too small or distorted will not be credited in an exam.
 
-### Conventional current and conductors
+<Notebook title="Conventional current and conductors">
 
 Current flows from positive to negative terminal in a circuit diagram (conventional direction). The wire (conductor) allows current to flow; the plastic insulation around it prevents current leaking to unwanted paths.
 
+</Notebook>
+
 In the Firefighter Barbie circuit: the battery provides the EMF; current flows through the circuit to the motor or LED.
-
-<Callout type="tip" title="Symbol pictionary · 12 min · groups of 4">
-One person is shown a component name and must draw its correct BS symbol while the group names it — no words, no gestures, fifteen seconds. A wrong symbol scores nothing even if the group guesses right. Rotate until everyone has drawn three.
-
-You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
-</Callout>
 
 </Section>
 
@@ -78,7 +89,7 @@ The IPO model helps you see that each component has a role in the system — not
 
 <Section title="Series vs parallel circuits" icon="🔧" id="series-parallel">
 
-### Series circuit
+<Notebook title="Series circuit">
 
 All components in one single loop. The same current flows through every component.
 
@@ -86,7 +97,9 @@ All components in one single loop. The same current flows through every componen
 
 **If one breaks:** The circuit is open and nothing works.
 
-### Parallel circuit
+</Notebook>
+
+<Notebook title="Parallel circuit">
 
 Components in separate branches. The supply voltage appears across every branch.
 
@@ -94,17 +107,7 @@ Components in separate branches. The supply voltage appears across every branch.
 
 **If one branch breaks:** Other branches continue to work.
 
-### Exam practice — Section A quick-fire
-
-The bonus session is a Section A quick-fire covering both mechanisms (Weeks 4–5) and electronics (this week). For each question: name the specific component or motion type, give a reason using technical language, and never leave an answer blank.
-
-**Rewriting exercise:** "A crank is used to change the motor's movement" → rewrite to name the exact input motion type, the output motion type, and the connecting mechanism component that makes the conversion.
-
-<Callout type="tip" title="Series against parallel, tested · 20 min · in pairs">
-Build two LEDs in series, then the same two in parallel. **Predict which will be brighter before you connect anything**, then look.
-
-Then pull one LED out of each circuit and record what happens to the other. That is the answer to the reliability question the paper likes to ask.
-</Callout>
+</Notebook>
 
 <Callout type="info" title="Where you'll see this">
 **Old Christmas tree lights were wired in series** — which is why one dead bulb killed the whole string and you had to test them one at a time. Modern sets are wired in parallel so a failure takes out one bulb and nothing else.
@@ -113,29 +116,6 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
 </Callout>
 
 </Section>
-
-<Activity title="Symbol pictionary and a circuit that lights" time="90 min (W session) + 45 min (B session)" grouping="Groups of 4 for the games; drawing and building individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors — one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
-
-**W session:**
-
-1. **Symbol pictionary — groups of 4, 12 min.** In groups of 4. One person is shown a component name and must draw its correct BS symbol while the team names it — no words, no gestures. Wrong symbol scores nothing even if the team guesses right. Rotate until everyone has drawn three. You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
-
-2. **Your own reference sheet — individual, 15 min.** All eight symbols, neatly, at a consistent size, each labelled with name and function. This one you keep.
-
-3. **Draw the circuit — individual, 15 min.** Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the direction of conventional current.
-
-4. **Build it — in pairs, each building their own, 25 min.** In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right — which is a better check than anything I could write in red pen.
-
-5. **Series against parallel, tested — in pairs, 20 min.** Build two LEDs in series, then the same two in parallel. Predict which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other — that is the answer to the reliability question the paper likes to ask.
-
-6. **Wrap — whole class, 3 min.** Pack down. Components counted back in.
-
-**B session:**
-
-7. **Quick-fire six — individual, 20 min.** Three mechanisms questions (motion types, crank, cam), three electronics (symbols, IPO, series and parallel). Self-mark.
-
-8. **Rewrite and prove it — individual, then in pairs, 25 min.** Take your two lowest-scoring answers and rewrite them, removing every generic word, and show what you changed. Then swap with a partner and mark theirs against the scheme — spotting a vague word in someone else's writing is much easier than spotting it in your own, and it trains the eye.
-</Activity>
 
 <Support title="Scaffolds for circuit drawing">
 **Symbol reference card:** Keep it visible at all times. In the exam, you do not have this card — so practise drawing each symbol from memory at least twice this session.
@@ -196,6 +176,25 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
 <Section title="Homework & extension" icon="🏠" id="homework">
 
 **Home task:** List all components the Firefighter Barbie circuit will need and write one sentence for each explaining what it does. Use the IPO model — label each component as input, process, or output, and explain why.
+
+**Quick-fire six (self-marked):** Answer these without notes, then check against the answers in the support box below.
+1. Name the motion produced by the pendulum of a clock.
+2. State the input and output motion of a slider-crank.
+3. Name the cam profile that produces rise, dwell and fall.
+4. Name the component whose symbol is a circle with an M inside.
+5. In the IPO model of the Firefighter Barbie circuit, name the input component.
+6. Two LEDs are connected in parallel across a 9 V battery. Compare the brightness of each with a single LED on the same battery, and give the reason.
+
+<Support title="Quick-fire six: check your answers">
+1. Oscillating (it swings through an arc about a pivot).
+2. Input rotary, output reciprocating.
+3. A pear cam.
+4. A motor.
+5. The thermistor.
+6. Each is the same brightness as a single LED, because in a parallel circuit each branch has the full supply voltage across it.
+
+Rewrite any answer you got wrong using the specific term, not a general word like "moves" or "changes". For every one you missed, write the correct answer in full.
+</Support>
 
 <Extension title="Breadboard exploration">
 Wire two LEDs in series on a breadboard, then rearrange them in parallel using the same battery. Observe the brightness change. Measure the voltage across each LED with a voltmeter if available. Record your observations in your folder: what did you predict before wiring, and did the result match?

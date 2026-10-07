@@ -2,39 +2,60 @@
 grade: 10
 term: 1
 week: 8
-title: "Electronics II: Resistors, Ohm's Law & Transistors"
-topic: "Resistor calculations and the NPN transistor as a switch"
-learningGoal: "calculate the correct current-limiting resistor for an LED using V = IR rearranged, and draw an NPN transistor switch circuit that activates a motor when base current flows, correctly labelling base, collector, and emitter."
-selGoal: "write my predicted value down before I measure, and stay with a multi-step calculation when it feels hard rather than jumping to the answer."
+title: "Electronics II: Ohm's Law, Transistors & Thermistors"
+topic: "Resistor calculations, the NPN transistor switch, and thermistor sensing"
+learningGoal: "calculate the correct current-limiting resistor for an LED, explain how an NTC thermistor's resistance changes with temperature, and build a thermistor and NPN transistor circuit that switches a motor on when the thermistor is warmed."
+selGoal: "when a measurement or calculation goes wrong, treat it as information about the circuit and not a verdict on me, and write down what I will try next."
 draft: false
 ---
 
-The circuit is more than wires and components — it is a set of precise decisions. Too much current burns the LED. Too little base current and the transistor never switches on. This week you learn the calculation behind each decision and draw the transistor switch circuit that is the brain of the Firefighter Barbie system.
+The circuit is more than wires and components: it is a set of precise decisions. Too much current burns the LED. Too little base current and the transistor never switches on. Today you learn the calculation behind each decision, add the thermistor that senses heat, and wire the voltage divider that feeds the transistor, so that by the end of the lesson warming the thermistor in your hand starts the motor.
 
 <Callout type="exam" title="Show every step in a calculation" id="why">
-  Paper 1 Section A sometimes includes a resistor calculation. Examiners award marks for each correct step, not just the final answer. Write the formula, substitute the values, calculate, and state the unit. Even if you make an arithmetic error, you can still earn marks for the correct method.
+  Paper 1 Section A sometimes includes a resistor calculation, and regularly asks: "Describe how an NTC thermistor responds to a rise in temperature." Examiners award marks for each correct step, not just the final answer: write the formula, substitute the values, calculate, and state the unit. For the thermistor, the answer must use the phrase **Negative Temperature Coefficient** and state that resistance **decreases** as temperature **increases**. Answers that say resistance increases, or omit the direction of change, earn zero.
 </Callout>
 
 <Callout type="tip" title="How this session runs">
-Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a bordered table or a `Formula` box goes into your notebook — those are the definitions and equations you are examined on.
+Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label (tables and formulas) goes into your notebook. The green Key terms box is for you to copy down before class. Those are the definitions and equations you are examined on.
 </Callout>
+
+<Activity plan title="Measure first, calculate second, then make the motor turn" time="90 min" grouping="Pairs at the bench; calculation and drawing individual" materials={["Resistors (various values, including a deliberately wrong low value)", "Fixed resistors (10 kΩ, 47 kΩ)", "NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "Breadboards", "Pre-stripped leads", "Multimeters — one per pair", "9 V batteries and LEDs", "Cup of warm water and a cup of iced water", "Thermometer", "Formula strip", "A4 paper for circuit diagrams", "Installation guide", "Mechanism planning template (oficio, 2 sheets)"]}>
+
+1. **Guess the resistor — in pairs, 8 min.** Five resistors on the bench, colour bands showing. Read the bands and predict each value, write it down, then measure with the multimeter and score yourselves. The colour code is worth knowing and this is the fastest way to learn it.
+
+2. **Ohm's Law, measured before it is calculated — in pairs, 17 min.** Build a simple resistor-and-battery circuit. Measure the voltage across the resistor and the current through it. Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it.
+
+3. **One LED resistor calculation — individual, 10 min.** Supply 9 V, LED forward voltage 2 V, LED current 20 mA, or the values your teacher gives your pair. Every step shown: formula, convert mA to A, substitute, calculate, choose the nearest standard value. Then check it against the worked example.
+
+4. **Prove the thermistor does what it claims — in pairs, 10 min.** Before building anything, measure the thermistor's resistance with the multimeter at room temperature. Hold it in a cup of warm water and measure again. Then iced water. Record all three. You will watch the resistance *fall* as temperature rises.
+
+5. **Draw it, then build it — individual drawing, then in pairs, 30 min.** In the first 8 minutes, draw the Firefighter Barbie circuit from your own understanding: thermistor voltage divider feeding the base through a base resistor, NPN transistor, motor at the collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout — getting this wrong is the single most common reason a circuit does nothing. Build from your own diagram, not your neighbour's. No soldering.
+
+6. **Trigger-temperature challenge — in pairs, 10 min.** Warm the thermistor and find the temperature at which your motor starts. Record it with the thermometer. If time allows, change the fixed resistor from 10 kΩ to 47 kΩ and find the new trigger temperature. Post your results to the class board.
+
+7. **Wrap — whole class, 5 min.** Pack down, components counted back in, boards cleared. Hand out the installation guide and the two-sheet mechanism planning template: they are the home task for next time.
+</Activity>
 
 <KeyTerms terms={[
   { term: "Ohm's Law", definition: "The relationship between voltage, current, and resistance: V = I × R. Rearranged: I = V / R and R = V / I. V in volts, I in amperes, R in ohms." },
   { term: "Current-limiting resistor", definition: "A resistor placed in series with an LED to prevent excess current that would burn the LED. Calculated using R = (Vsupply − VLED) / ILED." },
-  { term: "NPN transistor", definition: "A three-terminal semiconductor switch. Terminals: base (control input), collector (connected to supply via output device), emitter (connected to 0 V). A small base current switches the transistor ON, allowing a large collector-to-emitter current." },
-  { term: "Base current", definition: "The small current flowing into the base terminal of an NPN transistor that triggers it to switch on. In the Firefighter Barbie circuit, the thermistor voltage divider provides this base current when temperature rises sufficiently." },
+  { term: "NPN transistor", definition: "A three-terminal semiconductor switch. Terminals: base (control input), collector (connected to supply via the output device), emitter (connected to 0 V). A small base current switches the transistor ON, allowing a large collector-to-emitter current." },
+  { term: "NTC thermistor", definition: "A resistor whose resistance decreases as temperature increases. NTC = Negative Temperature Coefficient. Used as the heat sensor in the Firefighter Barbie circuit." },
+  { term: "Voltage divider", definition: "Two resistors in series across a supply. The voltage at the junction between them is a fraction of the supply, determined by the ratio of the two resistances. It converts the thermistor's resistance change into a voltage change that drives the transistor base." },
+  { term: "Base threshold", definition: "The minimum voltage at the transistor base required to switch it on: approximately 0.6–0.7 V for a silicon NPN transistor (BD139 or TIP120 — both rated for the current a stalled gearmotor draws)." },
 ]} />
 
 <Section title="Ohm's Law and the current-limiting resistor" icon="🔧" id="ohms-law">
 
-### Ohm's Law: $V = I \times R$
+<Notebook title="Ohm's Law">
 
 Three forms — one formula, three rearrangements:
 
 - $V = I \times R$ (find voltage if you know current and resistance)
 - $I = \dfrac{V}{R}$ (find current if you know voltage and resistance)
 - $R = \dfrac{V}{I}$ (find resistance if you know voltage and current) ← most used in this project
+
+</Notebook>
 
 ### Calculating a current-limiting resistor for an LED
 
@@ -44,19 +65,13 @@ An LED has two critical values:
 
 The resistor must drop the remaining voltage above the LED's forward voltage:
 
-**R = (Vsupply − VLED) / ILED**
+<Notebook title="Current-limiting resistor">
+
+$$R = \dfrac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$$
 
 After calculating R, always choose the **nearest standard resistor value above** the calculated value. Standard values follow the E12 or E24 series (common values: 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000 Ω...).
 
-<Callout type="tip" title="Guess the resistor · 10 min · in pairs">
-Five resistors, colour bands showing. Read the bands and predict each value, write it down, then measure with the multimeter and score yourselves.
-</Callout>
-
-<Callout type="tip" title="Ohm's Law, measured before it is calculated · 25 min · in pairs">
-Build a simple resistor-and-battery circuit. Measure the voltage **across** the resistor (meter in parallel) and the current **through** it (meter in series, which means breaking the circuit).
-
-Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it.
-</Callout>
+</Notebook>
 
 </Section>
 
@@ -86,6 +101,77 @@ From the E12 series: 390 Ω is the next value above 350 Ω.
 **Answer:** Use a 390 Ω resistor. This keeps the LED current just below 20 mA (safe), with no risk of burning the LED.
 </WorkedExample>
 
+<Section title="The NTC thermistor and the voltage divider" icon="🌡️" id="thermistor">
+
+### NTC thermistor behaviour
+
+NTC stands for **Negative Temperature Coefficient** — as temperature rises, resistance falls.
+
+| Temperature | Thermistor resistance | Effect on circuit |
+|---|---|---|
+| Cold (room temp) | High (e.g. 10,000 Ω) | Low voltage at divider junction — transistor OFF — motor stopped |
+| Warm (hand or breath) | Medium (e.g. 3,000 Ω) | Rising voltage at junction |
+| Hot (fire conditions) | Low (e.g. 500 Ω) | High voltage at junction — transistor switches ON — motor runs |
+
+### The voltage divider: how it converts resistance to voltage
+
+Connect the thermistor in series with a fixed resistor between the supply (+9 V) and 0 V. Take the output voltage from the junction between the two components:
+
+<Notebook title="Voltage divider">
+
+$$V_{\text{junction}} = V_{\text{supply}} \times \dfrac{R_{\text{fixed}}}{R_{\text{thermistor}} + R_{\text{fixed}}}$$
+
+As temperature rises: Rthermistor decreases → denominator decreases → junction voltage increases → eventually exceeds the base threshold → transistor ON → motor runs.
+
+</Notebook>
+
+**Choosing the fixed resistor:** Match it to approximately the thermistor's resistance at the trigger temperature. A 10 kΩ fixed resistor with a 10 kΩ thermistor gives exactly half the supply voltage at room temperature. As the thermistor warms and its resistance drops below the fixed resistor value, the junction voltage rises.
+
+### The same idea with light
+
+An **LDR (Light Dependent Resistor)** works on the same principle but responds to light: resistance decreases as light increases. The same voltage divider and transistor circuit applies — only the sensing element changes. If you understand the thermistor circuit, you understand the LDR circuit.
+
+<Callout type="info" title="Where you'll see this">
+**A thermistor is why your kettle switches itself off, why the fridge stops cooling at the right temperature, and why a car dashboard can warn you the engine is overheating.** Anything that has to *know* a temperature rather than just survive one has a sensor like this inside it.
+
+The fire-detection version you are building is real: heat detectors in kitchens use exactly this principle, because a smoke detector over a cooker would be going off constantly. And the voltage divider around it turns up everywhere else too — the volume knob on a speaker is a variable divider, splitting the signal into the share you asked for.
+</Callout>
+
+</Section>
+
+<WorkedExample title="Tracing the voltage at the divider junction">
+**Circuit:** 9 V battery, 10 kΩ fixed resistor in series with a 10 kΩ NTC thermistor.
+
+**At room temperature (thermistor = 10 kΩ):**
+
+<Formula
+  name="Voltage divider"
+  equation="V_{\text{out}} = V_{\text{in}} \times \frac{R_2}{R_1 + R_2}"
+  terms={[
+    { symbol: "V_{\\text{out}}", meaning: "the voltage at the junction between the two resistors — the signal fed to the transistor base", unit: "V" },
+    { symbol: "V_{\\text{in}}", meaning: "the supply voltage across the whole divider, here the 9 V battery", unit: "V" },
+    { symbol: "R_1", meaning: "the upper resistor, between the supply and the junction", unit: "Ω" },
+    { symbol: "R_2", meaning: "the lower resistor, between the junction and 0 V. Whichever component sits here is the one whose share of the voltage you are measuring", unit: "Ω" },
+  ]}
+  substitution="V_{\text{out}} = 9\ \text{V} \times \frac{10{,}000\ \Omega}{10{,}000\ \Omega + 10{,}000\ \Omega}"
+  result="V_{\text{out}} = 4.5\ \text{V}"
+/>
+
+Transistor base threshold ≈ 0.7 V — but 4.5 V is much higher than 0.7 V, so why isn't the transistor already on? Because there is a **base resistor** (typically 10–47 kΩ) between the junction and the base, which limits base current so the transistor stays in the linear region rather than saturating at room temperature.
+
+**At elevated temperature (thermistor = 1 kΩ):**
+
+<Formula
+  name="Voltage divider"
+  equation="V_{\text{out}} = V_{\text{in}} \times \frac{R_2}{R_1 + R_2}"
+  substitution="V_{\text{out}} = 9\ \text{V} \times \frac{10{,}000\ \Omega}{1{,}000\ \Omega + 10{,}000\ \Omega}"
+  result="V_{\text{out}} = 8.2\ \text{V}"
+  note="The transistor is now fully saturated — motor at full speed."
+/>
+
+In practice, the trigger point is set by the value of the base resistor and the transistor's gain. For this project, hand warmth (≈35°C) should be sufficient to trigger the motor.
+</WorkedExample>
+
 <Section title="The NPN transistor as a switch" icon="🔧" id="transistor">
 
 ### The three terminals
@@ -94,63 +180,50 @@ From the E12 series: 390 Ω is the next value above 350 Ω.
 - **Collector (C):** Connected to the positive supply via the output device (motor or LED). When the transistor is on, current flows from collector to emitter through the output device.
 - **Emitter (E):** Connected to 0 V (the negative rail). Current exits the transistor here.
 
-### Switching action
+<Notebook title="Transistor switching action">
 
-- **Transistor OFF (base current = 0):** No path from collector to emitter. Output device (motor) receives no current. Motor stops.
-- **Transistor ON (base current flows):** Transistor conducts from collector to emitter. Current flows through the motor. Motor runs.
+- **Transistor OFF (base current = 0):** No path from collector to emitter. The motor receives no current and stops.
+- **Transistor ON (base current flows):** The transistor conducts from collector to emitter. Current flows through the motor and the motor runs.
 
 **Key point:** A very small base current (microamps) controls a much larger collector current (milliamps or more). The transistor amplifies the control signal.
+
+</Notebook>
 
 <TransistorSwitchDiagram />
 
 ### Applied to Firefighter Barbie
 
-The thermistor voltage divider (covered in Week 9) provides the base voltage. When temperature rises:
-- Thermistor resistance falls → junction voltage rises → reaches base threshold → transistor switches on → motor runs → crank opens the door.
-
-### Exam practice — Section A units drill
-
-In the bonus session: a mixed Section A set on circuit symbols, IPO labelling, series/parallel, and component identification. Then a units-matching exercise: pair each quantity (current, voltage, resistance) with its unit (A, V, Ω) and its sub-multiples (mA, kΩ).
+When temperature rises: thermistor resistance falls → junction voltage rises → reaches the base threshold → transistor switches on → motor runs → crank opens the door.
 
 </Section>
 
-<Activity title="Measure first, calculate second" time="90 min (W session) + 45 min (B session)" grouping="Pairs at the bench; calculations individual" materials={["Resistors (various values, including a deliberately wrong low value)", "NPN transistors (BD139 or TIP120)", "Breadboards", "Multimeters — one per pair", "9 V batteries and LEDs", "Formula strip", "A4 paper for circuit diagrams"]}>
-
-**W session:**
-
-1. **Guess the resistor — in pairs, 10 min.** Five resistors on the bench, colour bands showing. In pairs, read the bands and predict each value, write it down, then measure with the multimeter and score yourselves. The colour code is worth knowing and this is the fastest way to learn it.
-
-2. **Ohm's Law, measured before it is calculated — in pairs, 25 min.** Build a simple resistor-and-battery circuit. Measure the voltage across the resistor and the current through it. Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it, and the formula is much harder to forget afterwards.
-
-3. **Three LED resistor calculations — individual, 25 min.** Different supply voltages and LED currents. Every step shown: formula, convert mA to A, substitute, calculate, choose the nearest standard value. Then build one of them and measure the actual current to check your own arithmetic.
-
-4. **The transistor switch — individual, at the bench in pairs, 25 min.** Draw the Firefighter Barbie circuit: thermistor voltage divider feeding the base, motor at the collector, resistor between supply and collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout — getting this wrong is the single most common reason a circuit does nothing next week.
-
-5. **Wrap — whole class, 5 min.** Pack down and count components back in.
-
-**B session:**
-
-6. **Mixed Section A set — individual, 25 min.** Symbol identification (six components), IPO labelling on one circuit, series and parallel identification, and one resistor calculation. Self-mark.
-
-7. **Units relay — groups of 4, 20 min.** Groups of 4 at the board, one conversion each, pen handed on: mA to A, kΩ to Ω, and back again. A wrong answer sends the team back a step. Units are free marks in the exam and they are only free if the conversion is automatic.
-</Activity>
-
-<Support title="Scaffolds for calculations and transistor circuit">
+<Support title="Scaffolds for calculations, the transistor circuit and troubleshooting">
 **Formula strip** — keep on your desk: $V = IR$ · $I = \frac{V}{R}$ · $R = \frac{V}{I}$.
 For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$, not plain $\frac{V}{I}$.
 
-**Partially completed transistor diagram:** If the full circuit drawing is too open, use the version with the transistor symbol and supply connections already drawn — add the base resistor, base connection from the voltage divider, motor symbol, and all labels.
-
 **Step-by-step calculation guide:** Formula → units conversion → substitution → arithmetic → standard value selection. Follow these five steps in order. Never skip the unit conversion step (mA to A is the most common error).
+
+**Units card:** mA to A: divide by 1,000 (20 mA = 0.020 A). kΩ to Ω: multiply by 1,000 (4.7 kΩ = 4,700 Ω).
+
+**Partially completed transistor diagram:** If the full circuit drawing is too open, use the version with the transistor symbol and supply connections already drawn — add the base resistor, the base connection from the voltage divider, the motor symbol, and all labels.
 
 **Multimeter setup for Ohm's Law:** voltage is measured *across* the resistor with the meter in parallel; current is measured *through* it with the meter in series, which means breaking the circuit to insert the meter. Show this once on the visualiser — the series/parallel distinction for meters is the part that is genuinely counter-intuitive.
 
 **Expect a few per cent disagreement** between calculated and measured resistance. Say so in advance, or the first pair to find it will assume they have done something wrong. Tolerance bands on cheap resistors are typically 5%.
 
-**Transistor pinout:** BD139 and TIP120 are not pin-compatible with the small-signal transistors students may have seen. Print the pinout for the exact part in the drawer and put it on the bench — a transistor in backwards is the single most common cause of a dead circuit in Week 9.
+**Transistor pinout:** BD139 and TIP120 are not pin-compatible with the small-signal transistors students may have seen. Print the pinout for the exact part in the drawer and put it on the bench — a transistor in backwards is the single most common cause of a dead circuit.
 
 **Blowing the LED is a demonstration, not an accident.** Do it once, deliberately, with a 47 Ω resistor and eye protection, and make the point that the calculation is what stands between a working product and that.
 
+**Thermistor resistance readings to expect:** roughly 10 kΩ at room temperature, falling to around 4–5 kΩ in warm water and rising well above 20 kΩ in iced water. Warm water, not boiling: hand-hot is plenty and keeps the thermometer readings in a sensible range.
+
+**Motor does not run at all:** check the battery rail polarity first, then the transistor orientation against the printed pinout, then that the motor is on the collector and not across the supply.
+
+**Motor runs constantly, even cold:** the base is being held on. Increase the base resistor or the fixed resistor — moving from 10 kΩ to 47 kΩ raises the trigger threshold, which is exactly the change made deliberately in the trigger-temperature challenge.
+
+**Motor flickers or cuts out:** thermistor legs are not seated in the breadboard. Intermittent contact looks like a mysterious fault and is almost always this.
+
+**Breadboard guide:** holes in the same short row on each side of the central channel are connected. The two long rails run the full length of the board.
 </Support>
 
 <SelfCheck questions={[
@@ -167,37 +240,41 @@ For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{
     explain: "R = (9 − 2) / 0.020 = 7 / 0.020 = 350 Ω. The nearest standard resistor value above 350 Ω is 390 Ω. Using a value above the calculated figure keeps the LED current safely below its rated maximum."
   },
   {
-    q: "In an NPN transistor switch circuit, what happens when a small current flows into the base?",
+    q: "An NTC thermistor is placed in a warm environment. What happens to its resistance?",
     options: [
-      "The transistor blocks current from collector to emitter — the motor stops",
-      "The transistor conducts from collector to emitter — the motor runs",
-      "The transistor conducts from emitter to base — current reverses",
-      "The resistor heats up and the LED turns off"
-    ],
-    answer: 1,
-    hint: "The base is the control input. A small base current switches the transistor ON.",
-    explain: "When base current flows into the NPN transistor, the transistor switches ON and allows a much larger current to flow from collector to emitter. This current flows through the motor, making it run. When base current is zero, the transistor is OFF and the motor stops."
-  },
-  {
-    q: "A resistor is marked 4.7 kΩ. What is this value in ohms?",
-    options: [
-      "47 Ω",
-      "470 Ω",
-      "4,700 Ω",
-      "47,000 Ω"
+      "It increases — more thermal energy means more electrical resistance",
+      "It stays the same — thermistors only respond to light, not temperature",
+      "It decreases — NTC stands for Negative Temperature Coefficient",
+      "It drops to zero instantly when any heat is applied"
     ],
     answer: 2,
-    hint: "The prefix k means kilo = ×1,000.",
-    explain: "4.7 kΩ = 4.7 × 1,000 = 4,700 Ω. Similarly, 20 mA = 20 × 0.001 = 0.020 A (m = milli = ×0.001). Always convert to base units before substituting into Ohm's Law."
+    hint: "NTC = Negative Temperature Coefficient. The coefficient of resistance with temperature is negative — they move in opposite directions.",
+    explain: "NTC (Negative Temperature Coefficient) means resistance decreases as temperature increases. As the thermistor warms, its resistance falls, which raises the voltage at the divider junction and eventually triggers the transistor."
+  },
+  {
+    q: "In the Firefighter Barbie voltage divider, as temperature rises, what happens to the voltage at the junction between the thermistor and the fixed resistor?",
+    options: [
+      "The voltage decreases because the thermistor resistance increases as temperature rises",
+      "The voltage stays constant — the battery sets all voltages in the circuit",
+      "The voltage increases because the thermistor resistance falls, so a larger fraction of the supply appears across the fixed resistor",
+      "The voltage increases because the battery gets warmer and produces more EMF"
+    ],
+    answer: 2,
+    hint: "Use the formula: junction voltage = Vsupply × Rfixed / (Rthermistor + Rfixed). What happens when Rthermistor decreases?",
+    explain: "As temperature rises, Rthermistor decreases. In the formula, a smaller Rthermistor means a smaller denominator, which makes the fraction larger — so junction voltage increases. When it exceeds the base threshold, the transistor switches on and the motor runs."
   }
 ]} />
 
 <Section title="Homework & extension" icon="🏠" id="homework">
 
-**Home task:** (1) Complete one further resistor calculation: supply 6 V, LED forward voltage 2 V, LED current 15 mA. Show all steps. (2) Draw the complete Firefighter Barbie transistor switch circuit from memory, including: battery, thermistor, fixed resistor, NPN transistor (base/collector/emitter labelled), motor. Bring both to Week 9.
+**Home task:** (1) Complete two further resistor calculations, showing all steps: supply 6 V, LED forward voltage 2 V, LED current 15 mA; and supply 9 V, blue LED forward voltage 3 V, LED current 20 mA. (2) Draw the complete Firefighter Barbie circuit from memory, with every component named and labelled (battery, thermistor, fixed resistor, base resistor, NPN transistor with base, collector and emitter, motor), plus the trigger temperature or temperatures you measured. Check it against the circuit you built. (3) **Plan your mechanism.** Take the mechanism planning template (two sheets) and the installation guide, and complete **Part A** of the guide at home. Bring both to the installation lesson, because that lesson only has 30 minutes to install and test.
 
 <Extension title="Why transistors replaced relays">
 Research one reason why transistors replaced mechanical relays in modern electronics control circuits. Consider: speed of switching, size, power consumption, reliability. Write 50 words in your folder, with one specific comparison (e.g., "A transistor can switch in under 1 microsecond; a relay takes approximately 10 milliseconds").
+</Extension>
+
+<Extension title="LDR comparison">
+Describe what would happen if you replaced the thermistor with an LDR in the Firefighter Barbie circuit. In what condition would the motor activate — dark or bright? Would this still work as a fire detector? Write 60 words in your folder, including which type of sensor (thermistor or LDR) is more appropriate for this application and why.
 </Extension>
 
 </Section>
@@ -205,6 +282,7 @@ Research one reason why transistors replaced mechanical relays in modern electro
 <Resources items={[
   { label: "Collins IGCSE D&T — §4.4.4 Resistors (p. 316)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
   { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
+  { label: "Collins IGCSE D&T — §4.4.7 Transducers (p. 326)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
 ]} />
 
-<Reflection prompt="How does the transistor 'make the decision' to open the door? Describe the chain from rising temperature to spinning motor in four steps — without looking at your notes." />
+<Reflection prompt="How does the transistor 'make the decision' to open the door? Describe the chain from rising temperature to spinning motor in four steps — without looking at your notes. And if something went wrong at the bench today, what did you write down that you would try next?" />
