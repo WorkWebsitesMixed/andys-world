@@ -1,10 +1,25 @@
 ---
 /**
- * Display preferences popover: theme, text spacing, calm mode.
- * Choices apply instantly to <html> data-attributes and persist in
- * localStorage (device-local — no account, no data leaves the browser).
- * Pre-paint application happens via the inline script in BaseLayout.
+ * Display preferences popover: theme, reading support, calm mode.
+ *
+ * Every choice applies instantly to <html> as a data-attribute and persists in
+ * localStorage (device-local: no account, no data leaves the browser). The inline
+ * script in BaseLayout re-applies the saved values before first paint, and the CSS
+ * for each attribute lives in src/styles/global.css.
+ *
+ * READING SUPPORT is deliberately limited to things that have been tested in
+ * published studies with readers who have dyslexia (typeface class, size, spacing,
+ * line length, background colour, reading ruler, read-aloud). The evidence, and the
+ * things that were left out because the evidence is missing or negative, is on the
+ * "Reading support" page, linked from the panel.
+ *
+ * Two features need script beyond a data-attribute:
+ *   - the reading ruler: a band that follows the pointer;
+ *   - read aloud: the browser's own speech synthesis, one block of text at a time,
+ *     highlighting the block being spoken.
  */
+import { url } from '../lib/url';
+const evidenceHref = url('reading-support');
 ---
 
 <div class="display-settings">
@@ -27,16 +42,86 @@
         <button type="button" data-pref="theme" data-value="light">Light</button>
         <button type="button" data-pref="theme" data-value="dark">Dark</button>
         <button type="button" data-pref="theme" data-value="contrast">High&nbsp;contrast</button>
+        <button type="button" data-pref="theme" data-value="warm">Warm</button>
       </div>
+      <p class="ds-hint">Warm is a peach background with black text.</p>
     </fieldset>
 
-    <fieldset>
-      <legend>Text spacing</legend>
-      <div class="seg" role="group" aria-label="Text spacing">
-        <button type="button" data-pref="spacing" data-value="normal">Normal</button>
-        <button type="button" data-pref="spacing" data-value="roomy">Roomy</button>
+    <div class="ds-group">
+      <p class="ds-group-title">Reading support</p>
+
+      <div class="ds-presets">
+        <button type="button" class="ds-action" data-preset="dyslexia">Dyslexia-friendly settings</button>
+        <button type="button" class="ds-action ds-quiet" data-preset="reset">Reset</button>
       </div>
-    </fieldset>
+      <p class="ds-hint">
+        The first button turns on the Warm theme, easy-read type, large text and wide spacing.
+        Everything below can also be set one at a time.
+        <a href={evidenceHref}>Why these settings?</a>
+      </p>
+
+      <fieldset>
+        <legend>Typeface</legend>
+        <div class="seg" role="group" aria-label="Typeface">
+          <button type="button" data-pref="font" data-value="standard">Standard</button>
+          <button type="button" data-pref="font" data-value="easy">Easy-read</button>
+        </div>
+        <p class="ds-hint">Plain sans-serif type with no italics.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Text size</legend>
+        <div class="seg" role="group" aria-label="Text size">
+          <button type="button" data-pref="size" data-value="normal">Normal</button>
+          <button type="button" data-pref="size" data-value="large">Large</button>
+          <button type="button" data-pref="size" data-value="xlarge">Extra&nbsp;large</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Text spacing</legend>
+        <div class="seg" role="group" aria-label="Text spacing">
+          <button type="button" data-pref="spacing" data-value="normal">Normal</button>
+          <button type="button" data-pref="spacing" data-value="wide">Wide</button>
+          <button type="button" data-pref="spacing" data-value="xwide">Extra&nbsp;wide</button>
+        </div>
+        <p class="ds-hint">Letters and words are spaced out together.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Line length</legend>
+        <div class="seg" role="group" aria-label="Line length">
+          <button type="button" data-pref="lines" data-value="normal">Normal</button>
+          <button type="button" data-pref="lines" data-value="short">Short lines</button>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Reading ruler</legend>
+        <div class="seg" role="group" aria-label="Reading ruler">
+          <button type="button" data-pref="ruler" data-value="off">Off</button>
+          <button type="button" data-pref="ruler" data-value="underline">Underline</button>
+          <button type="button" data-pref="ruler" data-value="shade">Shade</button>
+          <button type="button" data-pref="ruler" data-value="bar">Bar</button>
+        </div>
+        <p class="ds-hint">Follows your mouse or finger. Try each style: people prefer different ones.</p>
+      </fieldset>
+
+      <fieldset data-tts-group>
+        <legend>Read aloud</legend>
+        <div class="seg" role="group" aria-label="Read aloud">
+          <button type="button" data-tts="start">Read this page</button>
+          <button type="button" data-tts="stop">Stop</button>
+        </div>
+        <div class="seg ds-speed" role="group" aria-label="Reading speed">
+          <button type="button" data-tts-rate="1">Normal speed</button>
+          <button type="button" data-tts-rate="0.8">Slower</button>
+        </div>
+        <p class="ds-hint" data-tts-status aria-live="polite">
+          Uses your device's voice. Starts at the top of what you can see.
+        </p>
+      </fieldset>
+    </div>
 
     <fieldset>
       <legend>Calm mode</legend>
@@ -73,14 +158,17 @@
     position: absolute;
     right: 0;
     top: calc(100% + 0.6rem);
-    width: 16rem;
+    width: min(21rem, 92vw);
+    /* The panel is long now: it scrolls inside itself instead of running off the screen. */
+    max-height: calc(100vh - var(--header-h, 64px) - 1.5rem);
+    overflow-y: auto;
     z-index: 60;
     display: grid;
     gap: 1rem;
     padding: 1rem;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: color-mix(in srgb, var(--bg-1) 92%, transparent);
+    background: color-mix(in srgb, var(--bg-1) 96%, transparent);
     backdrop-filter: blur(12px);
     box-shadow: var(--shadow);
   }
@@ -96,6 +184,36 @@
     text-transform: uppercase;
     color: var(--text-faint);
   }
+
+  .ds-group {
+    display: grid;
+    gap: 0.9rem;
+    padding: 0.8rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--bg-2);
+  }
+  .ds-group-title {
+    margin: 0;
+    font-family: var(--font-head);
+    font-weight: 600;
+    color: var(--text);
+  }
+  .ds-presets { display: flex; gap: 0.4rem; }
+  .ds-action {
+    flex: 1 1 auto;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    background: var(--accent-wash);
+    color: var(--accent);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .ds-action:hover { background: var(--accent); color: var(--accent-ink); }
+  .ds-quiet { flex: 0 0 auto; border-color: var(--line-strong); background: transparent; color: var(--text-dim); }
 
   .seg {
     display: flex;
@@ -121,8 +239,10 @@
     border-color: var(--accent);
     background: var(--accent-wash);
   }
+  .ds-speed { margin-top: 0.3rem; }
 
   .ds-hint { margin: 0.5rem 0 0; font-size: 0.78rem; color: var(--text-faint); }
+  .ds-hint a { color: var(--accent); text-decoration: underline; }
 
   @media (max-width: 680px) {
     .ds-label { display: none; }
@@ -130,12 +250,30 @@
 </style>
 
 <script>
-  type PrefKey = 'theme' | 'spacing' | 'calm';
-  const DEFAULTS: Record<PrefKey, string> = { theme: 'light', spacing: 'normal', calm: '0' };
+  // ------------------------------------------------------------------------
+  // Preferences: one data-attribute on <html> per setting, mirrored to localStorage.
+  // ------------------------------------------------------------------------
+  type PrefKey = 'theme' | 'spacing' | 'calm' | 'font' | 'size' | 'lines' | 'ruler';
+
+  // A value equal to its default removes the attribute (except theme, which is
+  // always written so a stored choice survives).
+  const DEFAULTS: Record<PrefKey, string> = {
+    theme: 'light',
+    spacing: 'normal',
+    calm: '0',
+    font: 'standard',
+    size: 'normal',
+    lines: 'normal',
+    ruler: 'off',
+  };
   const STORAGE: Record<PrefKey, string> = {
     theme: 'aw:theme',
     spacing: 'aw:spacing',
     calm: 'aw:calm',
+    font: 'aw:font',
+    size: 'aw:size',
+    lines: 'aw:lines',
+    ruler: 'aw:ruler',
   };
 
   const root = document.documentElement;
@@ -144,9 +282,13 @@
   const panel = document.querySelector<HTMLElement>('[data-ds-panel]');
 
   if (wrap && toggle && panel) {
-    const current = (key: PrefKey): string =>
-      root.getAttribute(`data-${key}`) ?? DEFAULTS[key];
+    /** Current value of a preference, treating the legacy spacing name "roomy" as "wide". */
+    const current = (key: PrefKey): string => {
+      const v = root.getAttribute(`data-${key}`) ?? DEFAULTS[key];
+      return key === 'spacing' && v === 'roomy' ? 'wide' : v;
+    };
 
+    /** Mark the pressed button in every segmented control. */
     const reflect = () => {
       panel.querySelectorAll<HTMLButtonElement>('button[data-pref]').forEach((btn) => {
         const key = btn.dataset.pref as PrefKey;
@@ -154,6 +296,7 @@
       });
     };
 
+    /** Set one preference: the attribute, the stored value, and the buttons. */
     const apply = (key: PrefKey, value: string) => {
       if (value === DEFAULTS[key] && key !== 'theme') {
         root.removeAttribute(`data-${key}`);
@@ -172,6 +315,25 @@
       );
     });
 
+    // Presets. The dyslexia preset turns on only settings backed by the studies
+    // listed on the evidence page. The reading ruler and short lines stay a personal
+    // choice, because the studies found that people prefer different styles.
+    const PRESETS: Record<string, Partial<Record<PrefKey, string>>> = {
+      dyslexia: { theme: 'warm', font: 'easy', size: 'large', spacing: 'wide' },
+      reset: { font: 'standard', size: 'normal', spacing: 'normal', lines: 'normal', ruler: 'off' },
+    };
+    panel.querySelectorAll<HTMLButtonElement>('button[data-preset]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const preset = PRESETS[btn.dataset.preset as string];
+        Object.entries(preset).forEach(([k, v]) => apply(k as PrefKey, v as string));
+        // Leaving the warm theme on "reset" would keep the colour; go back to light.
+        if (btn.dataset.preset === 'reset' && current('theme') === 'warm') apply('theme', 'light');
+      });
+    });
+
+    // ----------------------------------------------------------------------
+    // Panel open / close
+    // ----------------------------------------------------------------------
     const open = () => {
       panel.hidden = false;
       toggle.setAttribute('aria-expanded', 'true');
@@ -193,12 +355,157 @@
         toggle.focus();
       }
     };
-
     toggle.addEventListener('click', (e) => {
       e.stopPropagation();
       panel.hidden ? open() : close();
     });
 
     reflect();
+
+    // ----------------------------------------------------------------------
+    // Reading ruler: a fixed band that follows the pointer. The CSS decides what it
+    // looks like for each style; this only creates it and tells it where the pointer is.
+    // Until the pointer has moved it sits at 40 % of the screen height.
+    // ----------------------------------------------------------------------
+    const ruler = document.createElement('div');
+    ruler.className = 'reading-ruler';
+    ruler.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ruler);
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        if (root.hasAttribute('data-ruler')) root.style.setProperty('--ruler-y', `${e.clientY}px`);
+      },
+      { passive: true },
+    );
+
+    // ----------------------------------------------------------------------
+    // Read aloud: the browser's speech synthesis, one block of text at a time.
+    // Blocks are headings, paragraphs, list items and definitions in the lesson body
+    // that are visible, and that do not contain another such block (so a paragraph
+    // inside a list item is read once). The block being spoken is highlighted.
+    // ----------------------------------------------------------------------
+    const synth: SpeechSynthesis | undefined = 'speechSynthesis' in window ? window.speechSynthesis : undefined;
+    const ttsGroup = panel.querySelector<HTMLElement>('[data-tts-group]');
+    const ttsStatus = panel.querySelector<HTMLElement>('[data-tts-status]');
+    const BLOCKS = 'h2, h3, p, li, dt, dd';
+
+    if (!synth || !ttsGroup) {
+      ttsGroup?.setAttribute('hidden', '');
+    } else {
+      let blocks: HTMLElement[] = [];
+      let index = 0;
+      let reading = false;
+      let rate = 1;
+      // Each utterance carries the token it was started with. Cancelling speech makes some
+      // browsers fire 'end' for the cancelled utterance; the token lets us ignore that, so a
+      // cancel (Stop, or a change of speed) never advances to the next block by mistake.
+      let token = 0;
+
+      const say = (text: string) => {
+        if (ttsStatus) ttsStatus.textContent = text;
+      };
+
+      /** The block's text as it should be spoken. Maths is read from its MathML (the
+       *  visible KaTeX copy and the TeX source are dropped, or it would be read twice). */
+      const spokenText = (el: HTMLElement): string => {
+        const copy = el.cloneNode(true) as HTMLElement;
+        copy.querySelectorAll('.katex-html, annotation, .nb-tag, svg, button').forEach((n) => n.remove());
+        return (copy.textContent ?? '').replace(/\s+/g, ' ').trim();
+      };
+
+      /** An English voice if the device has one; the speech engine picks otherwise. */
+      const pickVoice = (): SpeechSynthesisVoice | undefined => {
+        const voices = synth.getVoices().filter((v) => v.lang.toLowerCase().startsWith('en'));
+        return voices.find((v) => v.lang === 'en-US') ?? voices.find((v) => v.lang === 'en-GB') ?? voices[0];
+      };
+
+      const collect = (): HTMLElement[] => {
+        const body = document.querySelector('.lesson-body');
+        if (!body) return [];
+        return Array.from(body.querySelectorAll<HTMLElement>(BLOCKS)).filter(
+          (el) => el.offsetParent !== null && !el.querySelector(BLOCKS) && spokenText(el).length > 0,
+        );
+      };
+
+      const clearMark = () =>
+        document.querySelectorAll('.tts-current').forEach((n) => n.classList.remove('tts-current'));
+
+      const stop = () => {
+        reading = false;
+        token++;
+        synth.cancel();
+        clearMark();
+        say('Stopped.');
+      };
+
+      const speakAt = (i: number) => {
+        if (!reading) return;
+        if (i >= blocks.length) {
+          stop();
+          say('Finished.');
+          return;
+        }
+        index = i;
+        const mine = ++token;
+        const el = blocks[i];
+        clearMark();
+        el.classList.add('tts-current');
+        el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        const u = new SpeechSynthesisUtterance(spokenText(el));
+        const voice = pickVoice();
+        if (voice) u.voice = voice;
+        u.lang = voice?.lang ?? 'en-US';
+        u.rate = rate;
+        u.onend = () => {
+          if (mine === token) speakAt(i + 1);
+        };
+        u.onerror = (ev) => {
+          // "canceled" and "interrupted" are our own stop; anything else ends the reading.
+          if (mine === token && ev.error !== 'canceled' && ev.error !== 'interrupted') {
+            reading = false;
+            clearMark();
+            say('The device could not read this aloud.');
+          }
+        };
+        synth.speak(u);
+      };
+
+      const start = () => {
+        token++;
+        synth.cancel();
+        blocks = collect();
+        if (blocks.length === 0) {
+          say('There is no lesson text on this page to read.');
+          return;
+        }
+        // Begin at the first block whose bottom edge is below the sticky header.
+        const headerH = 80;
+        const first = blocks.findIndex((el) => el.getBoundingClientRect().bottom > headerH);
+        reading = true;
+        say('Reading… use Stop to end.');
+        speakAt(first === -1 ? 0 : first);
+      };
+
+      panel.querySelector<HTMLButtonElement>('[data-tts="start"]')?.addEventListener('click', start);
+      panel.querySelector<HTMLButtonElement>('[data-tts="stop"]')?.addEventListener('click', stop);
+      panel.querySelectorAll<HTMLButtonElement>('button[data-tts-rate]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          rate = Number(btn.dataset.ttsRate);
+          panel
+            .querySelectorAll<HTMLButtonElement>('button[data-tts-rate]')
+            .forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+          // A change of speed applies from the next block, so restart the current one.
+          if (reading) {
+            synth.cancel();
+            speakAt(index);
+          }
+        });
+      });
+      panel.querySelector('button[data-tts-rate="1"]')?.setAttribute('aria-pressed', 'true');
+
+      // Do not leave the device talking after the student navigates away.
+      window.addEventListener('pagehide', () => synth.cancel());
+    }
   }
 </script>

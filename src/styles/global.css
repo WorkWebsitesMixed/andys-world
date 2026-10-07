@@ -185,15 +185,177 @@
 /* Drop the decorative grid in high-contrast — keep it uncluttered. */
 :root[data-theme='contrast'] body::before { display: none; }
 
-/* Roomy text spacing — better tracking for dyslexia / reading difficulty. */
-:root[data-spacing='roomy'] body {
-  line-height: 1.95;
-  letter-spacing: 0.03em;
-  word-spacing: 0.06em;
+/* ===========================================================================
+   READING SUPPORT -- every rule below comes from a published study; the evidence
+   page (src/pages/reading-support.astro) lists the sources and their limits.
+   Each preference is a data-attribute on <html>, set by DisplaySettings and applied
+   before first paint by the inline script in BaseLayout.
+   =========================================================================== */
+
+/* Easy-read type. Sans-serif, roman (upright) type read faster and with shorter
+   fixations than serif, proportional or italic type in an eye-tracking study of 48
+   readers with dyslexia (Rello & Baeza-Yates 2013). Special "dyslexia fonts" gave
+   no advantage over ordinary fonts in three studies, so none is used. System fonts
+   only: Verdana and Arial were among the best-performing fonts, and nothing is
+   downloaded. Italics are switched off because they reduced readability; emphasis
+   becomes bold instead. Maths keeps its italics (that is notation, not emphasis). */
+:root[data-font='easy'] {
+  --font-body: Verdana, 'DejaVu Sans', Arial, Helvetica, sans-serif;
+  --font-head: Verdana, 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+:root[data-font='easy'] :is(em, i, cite, dfn, address, var):not(.katex *) {
+  font-style: normal;
+  font-weight: 700;
+}
+/* The intro paragraph is set in a dimmed colour; full contrast reads better. */
+:root[data-font='easy'] .lesson-body > p:first-child { color: var(--text); }
+
+/* Text size. Readability and comprehension rose steadily with font size up to 18 pt
+   in a study of 104 readers (Rello, Pielot & Marcos 2016). 18 pt is 24 px, so
+   "Extra large" is 150 % of a 16 px base and "Large" is the step halfway. Sizes in
+   this site are rem-based, so scaling the root scales everything. */
+:root[data-size='large'] { font-size: 125%; }
+:root[data-size='xlarge'] { font-size: 150%; }
+
+/* Spacing. Wider letter spacing helped children with dyslexia in several studies
+   (Zorzi et al. 2012; Perea et al. 2012; the benefit of the "Dyslexie" font was
+   traced to its spacing by Marinus et al. 2016). Galliussi et al. 2020 found that
+   widening letters without widening the gaps between words slowed reading, so the
+   two always move together here:
+     wide        letters +0.07 em, words +0.27 em   (the matched pair Galliussi tested)
+     extra wide  letters +0.18 em (about Zorzi's +2.5 pt on 14 pt), words +0.50 em
+   "roomy" is the old name for "wide", kept so saved preferences still work. */
+:root[data-spacing='roomy'] body,
+:root[data-spacing='wide'] body {
+  line-height: 1.8;
+  letter-spacing: 0.07em;
+  word-spacing: 0.27em;
+}
+:root[data-spacing='xwide'] body {
+  line-height: 1.9;
+  letter-spacing: 0.18em;
+  word-spacing: 0.5em;
 }
 :root[data-spacing='roomy'] p,
-:root[data-spacing='roomy'] li {
+:root[data-spacing='roomy'] li,
+:root[data-spacing='wide'] p,
+:root[data-spacing='wide'] li,
+:root[data-spacing='xwide'] p,
+:root[data-spacing='xwide'] li {
   margin-block: 0.9rem;
+}
+
+/* Short lines. Very short lines (a few words) raised reading speed and comprehension
+   for readers with dyslexia who have a narrow visual attention span (Schneps et al.
+   2013, on a small e-reader). A web page cannot go down to two words, so this narrows
+   running text to about 28 em (roughly 45 characters), which is an extrapolation of
+   that finding, not a tested setting. It is optional for that reason. */
+:root[data-lines='short'] .lesson-body :is(p, li, dd) {
+  max-width: 28em;
+}
+
+/* Larger text makes the header's links wider in pixels than the bar, which pushed the
+   Display button off the screen (the one control a reader who needs large text must
+   still reach). At the larger sizes the bar may grow taller and its links wrap. */
+:root[data-size='large'] .site-header .bar,
+:root[data-size='xlarge'] .site-header .bar {
+  height: auto;
+  min-height: var(--header-h);
+  flex-wrap: wrap;
+  padding-block: 0.4rem;
+}
+:root[data-size='large'] .site-header .nav,
+:root[data-size='xlarge'] .site-header .nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 0.3rem;
+}
+
+/* The floating "On this page" index only appears when the screen is wide enough for it
+   beside a 52 rem column. Larger text makes that column wider in pixels, so the index
+   would sit on top of the text; it is hidden at the larger sizes instead. */
+:root[data-size='large'] .lesson-nav,
+:root[data-size='xlarge'] .lesson-nav {
+  display: none !important;
+}
+
+/* Warm background. Peach, orange and yellow backgrounds gave faster reading than
+   blue, blue-grey or green ones for 341 readers, 89 of them with dyslexia (Rello &
+   Bigham 2017). Their best performer was peach #EDD1B0 with black text, so the page
+   and its reading surfaces use that peach and near-black text. Raised cards are a
+   lighter peach so they still read as cards. All text colours keep at least 4.5:1. */
+:root[data-theme='warm'] {
+  --bg: #edd1b0;
+  --bg-1: #f5e4cd;
+  --bg-2: #f5e4cd;
+  --bg-3: #e2c39c;
+  --line: #cfae86;
+  --line-strong: #a98a63;
+
+  --text: #111111;
+  --text-dim: #352a1d;
+  --text-faint: #4d3f2b;
+
+  --accent: #075d70;
+  --accent-bright: #0a7488;
+  --accent-deep: #075d70;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(7, 93, 112, 0.22);
+  --accent-wash: rgba(7, 93, 112, 0.09);
+
+  --accent-2: #5a2fd0;
+  --accent-2-wash: rgba(90, 47, 208, 0.09);
+
+  --ok: #0b6a45;
+  --warn: #7f4f00;
+  --bad: #a8223a;
+
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 8px 24px rgba(60, 40, 20, 0.12);
+  color-scheme: light;
+}
+/* The decorative grid is quieter on a coloured page. */
+:root[data-theme='warm'] body::before { opacity: 0.1; }
+
+/* Reading ruler. A band that follows the pointer so the eyes keep their place in the
+   line. Digital rulers improved reading speed and comprehension for readers with and
+   without dyslexia, most for those with dyslexia, in a study of 177 readers (Niklaus
+   et al., CHI 2023); no single style suited everyone, so three are offered. The element
+   is created by DisplaySettings' script and never takes pointer events. */
+.reading-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--ruler-y, 40vh);
+  z-index: 55;
+  pointer-events: none;
+  display: none;
+  transform: translateY(-50%);
+}
+:root[data-ruler='underline'] .reading-ruler {
+  display: block;
+  height: 0;
+  border-top: 3px solid var(--accent);
+}
+:root[data-ruler='bar'] .reading-ruler {
+  display: block;
+  height: 2.2em;
+  background: rgba(120, 120, 120, 0.22);
+}
+/* "Shade": a clear window with the rest of the screen dimmed around it. */
+:root[data-ruler='shade'] .reading-ruler {
+  display: block;
+  height: 2.6em;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.32);
+}
+
+/* Read aloud. The block being spoken is highlighted and kept in view. Text-to-speech
+   and read-aloud tools improved reading comprehension for students with reading
+   difficulties (meta-analysis of 22 studies, g = 0.35; Wood et al. 2018). */
+.tts-current {
+  background: var(--accent-wash);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Calm mode — remove the grid, glow and motion to reduce distraction. */

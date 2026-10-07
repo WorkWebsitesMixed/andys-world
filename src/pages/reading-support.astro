@@ -1,0 +1,255 @@
+---
+/**
+ * "Reading support: what the research says" -- the evidence behind the reading
+ * settings in the Display panel (src/components/DisplaySettings.astro) and the CSS
+ * rules in src/styles/global.css.
+ *
+ * Rules for this page:
+ *   - Only claims that a source supports. Where a study found no effect, or a mixed
+ *     one, the page says so in the same plain words as the positive results.
+ *   - Every link was opened and its title checked before it was added. A few
+ *     publishers (ACM, Wiley, Sage) refuse automated checks, so those papers are cited
+ *     in full with a verified summary page instead of a doubtful link.
+ *   - Settings that no study supports are listed under "Left out", with the reason.
+ * Not part of the lesson content model: plain BaseLayout, no section navigator.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+/** One row per setting. `claim` is what the studies found; `limit` is what they do not show. */
+const settings = [
+  {
+    name: 'Easy-read type (sans-serif, upright, no italics)',
+    claim:
+      'In an eye-tracking study of 48 readers with dyslexia, sans-serif, monospaced and upright (roman) type improved reading compared with serif, proportional and italic type. Italic type was consistently worse. Helvetica, Courier, Arial, Verdana and CMU were the fonts that did best on both performance and preference.',
+    limit:
+      'The effects were stronger for how long the eyes rested on each word than for total reading time. We offer Verdana-style sans-serif type and remove italics; we do not use monospaced type.',
+    refs: ['rello2013'],
+  },
+  {
+    name: 'Text size',
+    claim:
+      'With 104 readers, readability and comprehension improved steadily with larger type up to 18 points (24 px). Line spacing mattered less: only the smallest and largest spacings gave poorer comprehension.',
+    limit:
+      'Participants were between 14 and 54 years old and the study measured on-screen reading. The largest size here is 150 % of the normal size, which is 18 points.',
+    refs: ['rello2016'],
+  },
+  {
+    name: 'Text spacing (letters and words together)',
+    claim:
+      'In a study of 74 French and Italian children with dyslexia, widening the spacing between letters by 2.5 points on 14-point text roughly doubled accuracy and raised reading speed by more than 20 %, and children without dyslexia did not read faster with the wider spacing. A second study traced the benefit of the Dyslexie font to its spacing, which gave about a 7 % faster reading speed in 39 low-progress readers.',
+    limit:
+      'The results are not uniform. A later study of 128 children found that widening letters without also widening the gaps between words slowed reading. For that reason letter spacing and word spacing always move together in this site, using the pair of values that study tested (letters +0.07 em, words +0.27 em) for "Wide" and an extra-large setting in the range of the first study for "Extra wide". The effects reported are modest, and that last study did not find the clear spacing benefit the first one did.',
+    refs: ['zorzi2012', 'marinus2016', 'galliussi2020', 'perea2012'],
+  },
+  {
+    name: 'Short lines',
+    claim:
+      'In 103 high-school students with dyslexia, reading text on a small device that showed only a few words per line improved speed for some readers and comprehension for others. The authors conclude it is the short lines, not the device, that help.',
+    limit:
+      'That study used lines of only a few words. A web page cannot go that short, so "Short lines" narrows the text to about 45 characters, which is an extension of the finding and has not been tested as such. It is optional for that reason.',
+    refs: ['schneps2013'],
+  },
+  {
+    name: 'Warm background (peach)',
+    claim:
+      'With 341 readers, 89 of them with dyslexia, warm backgrounds (peach, orange, yellow) gave better reading performance than cool ones (blue, blue-grey, green). People with and without dyslexia showed the same pattern. The warm theme uses their peach (#EDD1B0) with black text.',
+    limit:
+      'This is evidence about which background colours read faster on screen. It is not evidence that a colour treats dyslexia (see "Left out").',
+    refs: ['rello2017'],
+  },
+  {
+    name: 'Reading ruler',
+    claim:
+      'In a study of 91 readers with dyslexia and 86 without, digital rulers that follow the pointer improved reading speed and comprehension for many readers, with the largest gains among those with dyslexia.',
+    limit:
+      'No single ruler style suited everyone, which is why Underline, Shade and Bar are all offered. Try each.',
+    refs: ['niklaus2023'],
+  },
+  {
+    name: 'Read aloud',
+    claim:
+      'A meta-analysis of 22 studies found that text-to-speech and other read-aloud tools improved reading comprehension for students with reading difficulties, with an average effect size of 0.35 (95 % confidence interval 0.14 to 0.56).',
+    limit:
+      'The authors say more studies are needed. The voice and its quality come from your own device, and we highlight the block being read, which the review did not test separately.',
+    refs: ['wood2018'],
+  },
+];
+
+/** Settings that are deliberately absent, with the evidence for leaving them out. */
+const leftOut = [
+  {
+    name: 'Special "dyslexia fonts" (OpenDyslexic, Dyslexie and similar)',
+    why: 'A study of OpenDyslexic found no improvement in reading rate or accuracy for individual students or for the group, and none of the participants said they preferred it. A study of 128 children found no effect of a dyslexia-friendly letterform. In the Dyslexie study the small advantage disappeared once ordinary Arial was given the same spacing. The spacing helped, not the letter shapes.',
+    refs: ['wery2017', 'galliussi2020', 'marinus2016'],
+  },
+  {
+    name: 'Coloured overlays and tinted filters as a treatment',
+    why: 'A review of the research on coloured overlays as a remedy for reading difficulty calls the evidence inconclusive. The UK College of Optometrists’ evidence review of individually prescribed coloured filters says there is no evidence of a causal link between the visual condition they target and dyslexia, that most people with dyslexia do not have that condition, and that optometrists should not claim to treat dyslexia with them. The warm background above is a separate, narrower claim: some background colours were faster to read for everyone, in a direct test.',
+    refs: ['uccula2014', 'optometrists'],
+  },
+];
+
+/** Full citations. `link` is a page that was opened and checked; `note` explains a missing link. */
+const sources: Record<string, { cite: string; link?: string; linkLabel?: string; note?: string }> = {
+  zorzi2012: {
+    cite: 'Zorzi, M., Barbiero, C., Facoetti, A., et al. (2012). Extra-large letter spacing improves reading in dyslexia. Proceedings of the National Academy of Sciences, 109(28), 11455–11459.',
+    link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3396504/',
+  },
+  perea2012: {
+    cite: 'Perea, M., Panadero, V., Moret-Tatay, C., & Gómez, P. (2012). The effects of inter-letter spacing in visual-word recognition: Evidence with young normal readers and developmental dyslexics. Learning and Instruction, 22(6), 420–430. (Cited only as another study of the same question in Spanish-speaking children; its results are not summarised here.)',
+    link: 'https://producciocientifica.uv.es/documentos/5ec9e7f8299952559ddd3c1c',
+    linkLabel: 'Record at the Universitat de València',
+  },
+  marinus2016: {
+    cite: 'Marinus, E., Mostard, M., Segers, E., Schubert, T. M., Madelaine, A., & Wheldall, K. (2016). A special font for people with dyslexia: Does it work and, if so, why? Dyslexia, 2016.',
+    link: 'https://researchers.mq.edu.au/en/publications/a-special-font-for-people-with-dyslexia-does-it-work-and-if-so-wh/',
+    linkLabel: 'Record at Macquarie University',
+  },
+  galliussi2020: {
+    cite: 'Galliussi, J., Perondi, L., Chia, G., Gerbino, W., & Bernardis, P. (2020). Inter-letter spacing, inter-word spacing, and font with dyslexia-friendly features: testing text readability in people with and without dyslexia. Annals of Dyslexia, 70, 141–152.',
+    link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7188700/',
+  },
+  wery2017: {
+    cite: 'Wery, J. J., & Diliberto, J. A. (2017). The effect of a specialized dyslexia font, OpenDyslexic, on reading rate and accuracy. Annals of Dyslexia, 67(2).',
+    link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5629233/',
+  },
+  rello2013: {
+    cite: 'Rello, L., & Baeza-Yates, R. (2013). Good fonts for dyslexia. Proceedings of the 15th International ACM SIGACCESS Conference on Computers and Accessibility (ASSETS).',
+    link: 'https://editingresearch.byu.edu/2020/05/28/which-fonts-are-best-for-dyslexia/',
+    linkLabel: 'Summary of the study (the paper itself is behind ACM)',
+  },
+  rello2016: {
+    cite: 'Rello, L., Pielot, M., & Marcos, M.-C. (2016). Make it big! The effect of font size and line spacing on online readability. Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems.',
+    link: 'https://editingresearch.byu.edu/?p=10398',
+    linkLabel: 'Summary of the study (the paper itself is behind ACM)',
+  },
+  rello2017: {
+    cite: 'Rello, L., & Bigham, J. P. (2017). Good background colors for readers: A study of people with and without dyslexia. Proceedings of the 19th International ACM SIGACCESS Conference on Computers and Accessibility (ASSETS).',
+    link: 'https://www.changedyslexia.org/publications/pdfs/2017-ASSETS-Good%20Background%20Colors.pdf',
+    linkLabel: 'The paper (PDF from the authors)',
+  },
+  schneps2013: {
+    cite: 'Schneps, M. H., Thomson, J. M., Chen, C., Sonnert, G., & Pomplun, M. (2013). E-readers are more effective than paper for some with dyslexia. PLOS ONE, 2013, e75634.',
+    link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3776763/',
+  },
+  niklaus2023: {
+    cite: 'Niklaus, A. G., Cai, T., Bylinskii, Z., Wallace, S., et al. (2023). Digital reading rulers: Evaluating inclusively designed rulers for readers with dyslexia and without. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems.',
+    link: 'https://research.adobe.com/publication/digital-reading-rulers-evaluating-inclusively-designed-rulers-for-readers-with-dyslexia-and-without',
+    linkLabel: 'Record at Adobe Research',
+  },
+  wood2018: {
+    cite: 'Wood, S. G., Moxley, J. H., Tighe, E. L., & Wagner, R. K. (2018). Does use of text-to-speech and related read-aloud tools improve reading comprehension for students with reading disabilities? A meta-analysis. Journal of Learning Disabilities, 51(1), 73–84.',
+    link: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5494021/',
+  },
+  uccula2014: {
+    cite: 'Uccula, A., Enna, M., & Mulatti, C. (2014). Colors, colored overlays, and reading skills. Frontiers in Psychology, 5, 833.',
+    link: 'https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2014.00833/full',
+  },
+  optometrists: {
+    cite: 'College of Optometrists. Using evidence in practice: Precision tinted lenses (guidance by Prof. Bruce Evans).',
+    link: 'https://www.college-optometrists.org/COO/media/Media/Documents/Guidance/Using%20Evidence%20in%20Practice/Precision-Tinted-Lenses.pdf',
+    linkLabel: 'Guidance document (PDF)',
+  },
+};
+
+// Number each source once, in the order it is first cited, so the notes read 1, 2, 3...
+const order: string[] = [];
+const cited = [...settings.flatMap((s) => s.refs), ...leftOut.flatMap((s) => s.refs)];
+cited.forEach((k) => {
+  if (!order.includes(k)) order.push(k);
+});
+const n = (k: string) => order.indexOf(k) + 1;
+---
+
+<BaseLayout
+  title="Reading support"
+  description="What the research says about each reading setting in the Display panel, what it does not show, and what was left out."
+>
+  <div class="page-narrow container rs">
+    <header class="hero">
+      <span class="eyebrow">Reading support</span>
+      <h1 class="glow-text">What the research says</h1>
+      <p class="lede muted">
+        Every setting under <strong>Display → Reading support</strong> comes from a published study that tested it
+        with readers who have dyslexia. This page says what each study found, how far it goes, and what was left
+        out because the evidence is missing or negative.
+      </p>
+      <p class="muted">
+        Please read these as tools to try, not as a treatment. The effects in the studies are modest, and the
+        studies also found that people differ: pick what helps you. If reading is hard for you, tell your teacher
+        and the learning-support team, because these settings do not replace their help.
+      </p>
+    </header>
+
+    <section class="rs-section">
+      <h2>The settings, and the evidence</h2>
+      <div class="rs-list">
+        {settings.map((s) => (
+          <article class="rs-card">
+            <h3>{s.name}</h3>
+            <p><strong>What was found.</strong> {s.claim}</p>
+            <p class="limit"><strong>What it does not show.</strong> {s.limit}</p>
+            <p class="refs">Sources: {s.refs.map((r, i) => (<><a href={`#src-${r}`}>[{n(r)}]</a>{i < s.refs.length - 1 ? ' ' : ''}</>))}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="rs-section">
+      <h2>Left out, and why</h2>
+      <div class="rs-list">
+        {leftOut.map((s) => (
+          <article class="rs-card">
+            <h3>{s.name}</h3>
+            <p>{s.why}</p>
+            <p class="refs">Sources: {s.refs.map((r, i) => (<><a href={`#src-${r}`}>[{n(r)}]</a>{i < s.refs.length - 1 ? ' ' : ''}</>))}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="rs-section">
+      <h2>Sources</h2>
+      <ol class="sources">
+        {order.map((k) => (
+          <li id={`src-${k}`}>
+            {sources[k].cite}
+            {sources[k].link && (
+              <> <a href={sources[k].link} rel="noopener">{sources[k].linkLabel ?? 'Open the article'}</a></>
+            )}
+            {sources[k].note && <> <em>{sources[k].note}</em></>}
+          </li>
+        ))}
+      </ol>
+      <p class="muted">
+        Every link above was opened and its title checked. Some publishers (ACM, Wiley, Sage) refuse automatic
+        checks, so for those papers the page cites the full reference and links to a checked summary instead.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero { margin: 1.5rem 0 1rem; }
+  .hero h1 { margin: 0.4rem 0 0.6rem; }
+  .rs-section {
+    margin-block: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+  .rs-section:first-of-type { margin-top: 2.5rem; padding-top: 0; border-top: none; }
+  .rs-section h2 { font-size: 1.55rem; margin-bottom: 1rem; }
+  .rs-list { display: grid; gap: 1rem; }
+  .rs-card {
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-1);
+  }
+  .rs-card h3 { margin: 0 0 0.5rem; }
+  .rs-card p { margin: 0.5rem 0; }
+  .rs-card .limit { color: var(--text-dim); }
+  .rs-card .refs { font-size: 0.9rem; color: var(--text-faint); }
+  .sources { padding-left: 1.4rem; display: grid; gap: 0.7rem; }
+  .sources li { scroll-margin-top: calc(var(--header-h) + 20px); }
+</style>
