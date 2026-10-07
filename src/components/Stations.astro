@@ -1,0 +1,138 @@
+---
+import Section from './Section.astro';
+
+/**
+ * A station rotation: the shell around a set of <Station> cards.
+ *
+ * Its job beyond grouping is the route table. In a rotation the commonest lost
+ * minutes are the ones after the signal, when four groups work out where they
+ * are supposed to go — so each group's whole route is published up front and
+ * derived here rather than typed by hand.
+ */
+interface Props {
+  title?: string;
+  id?: string;
+  /** Group names. Each group's route is derived as a rotation of the stations. */
+  groups?: string[];
+  /** Number of stations. Defaults to the number of groups. */
+  count?: number;
+  /** Shared time per station, e.g. "10 min". */
+  time?: string;
+  /** How the rotation is signalled, e.g. "rotate on the bell". */
+  signal?: string;
+}
+
+const { title = 'The rotation', id = 'stations', groups, count, time, signal } = Astro.props;
+
+const n = count ?? groups?.length ?? 0;
+
+// Group i starts at station i+1 and cycles: 1→2→3→4, 2→3→4→1, and so on. Every
+// station is occupied in every slot, and no group ever meets another.
+const routes =
+  groups && n > 0
+    ? groups.map((name, i) => ({
+        name,
+        stops: Array.from({ length: n }, (_, k) => ((i + k) % n) + 1),
+      }))
+    : [];
+---
+
+<Section title={title} icon="🔄" id={id} navLabel="Rotation">
+  {(time || signal) && (
+    <p class="rot-meta">
+      {time && <span class="chip">⏱ {time} per station</span>}
+      {signal && <span class="chip">🔔 {signal}</span>}
+    </p>
+  )}
+
+  <slot name="intro" />
+
+  {routes.length > 0 && (
+    <div class="routes">
+      <span class="eyebrow">Where your group goes</span>
+      <ul class="route-list">
+        {routes.map((r) => (
+          <li class="route">
+            <span class="rt-name">{r.name}</span>
+            <span class="rt-stops">
+              {r.stops.map((s, i) => (
+                <>
+                  {i > 0 && <span class="rt-arrow" aria-hidden="true">→</span>}
+                  <span class="rt-stop">{s}</span>
+                </>
+              ))}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <slot />
+</Section>
+
+<style>
+  .rot-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+
+  .routes {
+    margin-block: 1.25rem;
+    padding: 0.9rem 1.1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--accent-wash);
+  }
+
+  .route-list {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+  }
+  .route {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+  }
+
+  .rt-name {
+    min-width: 5.5rem;
+    font-weight: 600;
+  }
+  .rt-stops {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .rt-stop {
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .rt-arrow {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+</style>

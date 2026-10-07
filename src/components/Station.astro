@@ -1,0 +1,143 @@
+---
+/**
+ * One station in a rotation. Always used inside <Stations>, which supplies the
+ * heading, the timing and the per-group route table.
+ *
+ * A station card carries three things a wall poster would: what to do, what is
+ * on the table, and the artefact you must walk away with. The last one is the
+ * focus device — a station without a named output is a place to drift.
+ */
+interface Props {
+  /** Station number, used for the badge and the anchor id. */
+  n: number;
+  title: string;
+  /** e.g. "10 min". Omit to inherit the rotation's shared timing. */
+  time?: string;
+  /** e.g. "Trios", "Groups of 5-6". */
+  grouping?: string;
+  /** What is physically on the table. */
+  kit?: string[];
+  /** The artefact the student must leave the station holding. */
+  leaveWith?: string;
+}
+
+const { n, title, time, grouping, kit, leaveWith } = Astro.props;
+---
+
+<section class="station" id={`station-${n}`}>
+  <header class="st-head">
+    <span class="st-n" aria-hidden="true">{n}</span>
+    <h3 class="st-title">{title}</h3>
+  </header>
+
+  {(time || grouping) && (
+    <p class="st-meta">
+      {time && <span class="chip">⏱ {time}</span>}
+      {grouping && <span class="chip">👥 {grouping}</span>}
+    </p>
+  )}
+
+  <div class="st-body"><slot /></div>
+
+  {kit && kit.length > 0 && (
+    <div class="st-kit">
+      <span class="eyebrow">On the table</span>
+      <ul>{kit.map((k) => <li>{k}</li>)}</ul>
+    </div>
+  )}
+
+  {leaveWith && (
+    <p class="st-leave">
+      <span class="eyebrow">You leave with</span>
+      <span class="st-leave-text">{leaveWith}</span>
+    </p>
+  )}
+</section>
+
+<style>
+  .station {
+    margin-block: 1.5rem;
+    padding: 1.15rem 1.3rem 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-2);
+  }
+
+  .st-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  /* The station number is the thing a student scans the room for, so it gets
+     the same solid badge treatment as a section ordinal. */
+  .st-n {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  /* Beats `.sec-body h3` from the enclosing Section — a station title heads a
+     card, not a subsection of prose. */
+  .st-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .st-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.75rem 0 0;
+  }
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+
+  .st-body { margin-top: 0.9rem; }
+  .st-body :global(p) { margin-block: 0.7rem; }
+  .st-body :global(p:first-child) { margin-top: 0; }
+  .st-body :global(p:last-child) { margin-bottom: 0; }
+  .st-body :global(ol),
+  .st-body :global(ul) { padding-left: 1.4rem; margin-block: 0.7rem; }
+  .st-body :global(li) { margin-block: 0.3rem; }
+
+  .st-kit {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--bg-1);
+  }
+  .st-kit ul { margin: 0.35rem 0 0; padding-left: 1.3rem; }
+  .st-kit :global(li) { margin-block: 0.25rem; }
+
+  /* The output line closes the card, tinted so it reads as the station's
+     contract rather than more instructions. */
+  .st-leave {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0.9rem 0 0;
+    padding: 0.65rem 0.9rem;
+    border-left: 3px solid var(--ok);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--bg-1);
+  }
+  .st-leave-text { font-weight: 600; }
+</style>
