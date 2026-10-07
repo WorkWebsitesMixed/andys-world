@@ -360,53 +360,6 @@
   border-radius: 4px;
 }
 
-/* Calm mode -- a visibly quieter page for readers who find the normal one busy. It turns off every
-   decorative layer instead of only the grid: background effects, glow, shadows, blur, smooth scrolling,
-   animation, the emoji in headings and callouts, and the strongest colours (accents are muted; the cream
-   notebook boxes and the sage key-terms boxes keep their colours, because those carry meaning). */
-:root[data-calm='1'] body::before,
-:root[data-calm='1'] body::after {
-  display: none;
-}
-:root[data-calm='1'] .glow-text { text-shadow: none; }
-:root[data-calm='1'] {
-  --shadow: none;
-  --accent-glow: transparent;
-  scroll-behavior: auto;
-}
-:root[data-calm='1'] .site-header,
-:root[data-calm='1'] .ds-panel {
-  backdrop-filter: none;
-  background: var(--bg);
-}
-:root[data-calm='1'] .sec-icon,
-:root[data-calm='1'] .callout .ic {
-  display: none;
-}
-/* Muted accents for each theme (the default light, then dark, warm and high contrast). */
-:root[data-calm='1'] {
-  --accent: #2f6f7d; --accent-bright: #3b8494; --accent-deep: #2f6f7d; --accent-wash: rgba(47, 111, 125, 0.07);
-  --accent-2: #5f4f9a; --accent-2-wash: rgba(95, 79, 154, 0.07);
-}
-:root[data-calm='1'][data-theme='dark'] {
-  --accent: #8bbfcc; --accent-bright: #a6d0da; --accent-deep: #6ea6b5; --accent-wash: rgba(139, 191, 204, 0.09);
-  --accent-2: #b7a6e0; --accent-2-wash: rgba(183, 166, 224, 0.09);
-}
-:root[data-calm='1'][data-theme='warm'] {
-  --accent: #3f6670; --accent-bright: #4f7a85; --accent-deep: #3f6670; --accent-wash: rgba(63, 102, 112, 0.09);
-  --accent-2: #5f4f9a; --accent-2-wash: rgba(95, 79, 154, 0.08);
-}
-:root[data-calm='1'][data-theme='contrast'] {
-  --accent: #9fe3ea; --accent-bright: #c8f0f4; --accent-deep: #9fe3ea; --accent-wash: rgba(159, 227, 234, 0.14);
-  --accent-2: #d9c9f0; --accent-2-wash: rgba(217, 201, 240, 0.16);
-}
-:root[data-calm='1'] *,
-:root[data-calm='1'] *::before,
-:root[data-calm='1'] *::after {
-  animation-duration: 0.001ms !important;
-  transition-duration: 0.001ms !important;
-}
-
 /* --- Reset-ish ------------------------------------------------------------ */
 *,
 *::before,

@@ -1,6 +1,6 @@
 ---
 /**
- * Display preferences popover: theme, reading support, calm mode.
+ * Display preferences popover: theme and reading support.
  *
  * Every choice applies instantly to <html> as a data-attribute and persists in
  * localStorage (device-local: no account, no data leaves the browser). The inline
@@ -122,15 +122,6 @@ const evidenceHref = url('reading-support');
         </p>
       </fieldset>
     </div>
-
-    <fieldset>
-      <legend>Calm mode</legend>
-      <div class="seg" role="group" aria-label="Calm mode">
-        <button type="button" data-pref="calm" data-value="0">Off</button>
-        <button type="button" data-pref="calm" data-value="1">On</button>
-      </div>
-      <p class="ds-hint">A quieter page: no background effects, glow, shadows, blur, animation or decorative icons, and softer colours.</p>
-    </fieldset>
   </div>
 </div>
 
@@ -253,14 +244,13 @@ const evidenceHref = url('reading-support');
   // ------------------------------------------------------------------------
   // Preferences: one data-attribute on <html> per setting, mirrored to localStorage.
   // ------------------------------------------------------------------------
-  type PrefKey = 'theme' | 'spacing' | 'calm' | 'font' | 'size' | 'lines' | 'ruler';
+  type PrefKey = 'theme' | 'spacing' | 'font' | 'size' | 'lines' | 'ruler';
 
   // A value equal to its default removes the attribute (except theme, which is
   // always written so a stored choice survives).
   const DEFAULTS: Record<PrefKey, string> = {
     theme: 'light',
     spacing: 'normal',
-    calm: '0',
     font: 'standard',
     size: 'normal',
     lines: 'normal',
@@ -269,7 +259,6 @@ const evidenceHref = url('reading-support');
   const STORAGE: Record<PrefKey, string> = {
     theme: 'aw:theme',
     spacing: 'aw:spacing',
-    calm: 'aw:calm',
     font: 'aw:font',
     size: 'aw:size',
     lines: 'aw:lines',
