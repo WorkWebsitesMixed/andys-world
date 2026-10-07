@@ -96,35 +96,37 @@
 
 /* Light theme — for readers who find dark backgrounds hard (e.g. astigmatism). */
 /* Dark — the original near-black identity, now opt-in via the Aa Display menu. */
+/* Dark: a soft slate, not black. The surfaces step up in lightness (page, card, raised) so cards read as
+   cards, and the accent is a calmer cyan. High contrast stays pure black on purpose, so the two differ. */
 :root[data-theme='dark'] {
-  --bg: #06090e;
-  --bg-1: #0b1018;
-  --bg-2: #111824;
-  --bg-3: #18222f;
-  --line: #1f2c3a;
-  --line-strong: #2c3e52;
+  --bg: #141a24;
+  --bg-1: #1b2330;
+  --bg-2: #212b3a;
+  --bg-3: #2b3647;
+  --line: #2f3b4f;
+  --line-strong: #46566f;
 
-  --text: #e7eef5;
-  --text-dim: #9fb0c0;
-  --text-faint: #7b8ca0;
+  --text: #e8eef6;
+  --text-dim: #b4c1d1;
+  --text-faint: #8fa0b5;
 
-  --accent: #34e0ff;        /* electric cyan: reads only on a near-black surface */
-  --accent-bright: #7df0ff;
-  --accent-deep: #0bb6d6;
-  --accent-ink: #04222a;
-  --accent-glow: rgba(52, 224, 255, 0.35);
-  --accent-wash: rgba(52, 224, 255, 0.08);
+  --accent: #4cc7de;
+  --accent-bright: #8be2f2;
+  --accent-deep: #2fb4cc;
+  --accent-ink: #06242c;
+  --accent-glow: rgba(76, 199, 222, 0.28);
+  --accent-wash: rgba(76, 199, 222, 0.10);
 
   --accent-2: #b98cff;
   --accent-2-wash: rgba(185, 140, 255, 0.10);
 
-  /* Notebook (cream) and prep (rose), re-tuned for near-black. */
-  --note-wash: rgba(255, 214, 102, 0.09);
+  /* Notebook (cream) and prep (sage), re-tuned for the dark surfaces. */
+  --note-wash: rgba(255, 214, 102, 0.075);
   --note-stripe: rgba(255, 214, 102, 0.05);
   --note-line: rgba(255, 214, 102, 0.30);
   --note-edge: #ffd666;
   --note-ink: #ffd666;
-  --prep-wash: rgba(143, 212, 162, 0.09);
+  --prep-wash: rgba(143, 212, 162, 0.075);
   --prep-line: rgba(143, 212, 162, 0.32);
   --prep-edge: #8fd4a2;
   --prep-ink: #8fd4a2;
@@ -135,8 +137,8 @@
   --warn: #ffcf6b;
   --bad: #ff6b81;
 
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset,
-            0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+            0 8px 24px rgba(0, 0, 0, 0.30);
 
   color-scheme: dark;
 }
@@ -358,13 +360,45 @@
   border-radius: 4px;
 }
 
-/* Calm mode — remove the grid, glow and motion to reduce distraction. */
+/* Calm mode -- a visibly quieter page for readers who find the normal one busy. It turns off every
+   decorative layer instead of only the grid: background effects, glow, shadows, blur, smooth scrolling,
+   animation, the emoji in headings and callouts, and the strongest colours (accents are muted; the cream
+   notebook boxes and the sage key-terms boxes keep their colours, because those carry meaning). */
 :root[data-calm='1'] body::before,
 :root[data-calm='1'] body::after {
   display: none;
 }
-:root[data-calm='1'] .glow-text {
-  text-shadow: none;
+:root[data-calm='1'] .glow-text { text-shadow: none; }
+:root[data-calm='1'] {
+  --shadow: none;
+  --accent-glow: transparent;
+  scroll-behavior: auto;
+}
+:root[data-calm='1'] .site-header,
+:root[data-calm='1'] .ds-panel {
+  backdrop-filter: none;
+  background: var(--bg);
+}
+:root[data-calm='1'] .sec-icon,
+:root[data-calm='1'] .callout .ic {
+  display: none;
+}
+/* Muted accents for each theme (the default light, then dark, warm and high contrast). */
+:root[data-calm='1'] {
+  --accent: #2f6f7d; --accent-bright: #3b8494; --accent-deep: #2f6f7d; --accent-wash: rgba(47, 111, 125, 0.07);
+  --accent-2: #5f4f9a; --accent-2-wash: rgba(95, 79, 154, 0.07);
+}
+:root[data-calm='1'][data-theme='dark'] {
+  --accent: #8bbfcc; --accent-bright: #a6d0da; --accent-deep: #6ea6b5; --accent-wash: rgba(139, 191, 204, 0.09);
+  --accent-2: #b7a6e0; --accent-2-wash: rgba(183, 166, 224, 0.09);
+}
+:root[data-calm='1'][data-theme='warm'] {
+  --accent: #3f6670; --accent-bright: #4f7a85; --accent-deep: #3f6670; --accent-wash: rgba(63, 102, 112, 0.09);
+  --accent-2: #5f4f9a; --accent-2-wash: rgba(95, 79, 154, 0.08);
+}
+:root[data-calm='1'][data-theme='contrast'] {
+  --accent: #9fe3ea; --accent-bright: #c8f0f4; --accent-deep: #9fe3ea; --accent-wash: rgba(159, 227, 234, 0.14);
+  --accent-2: #d9c9f0; --accent-2-wash: rgba(217, 201, 240, 0.16);
 }
 :root[data-calm='1'] *,
 :root[data-calm='1'] *::before,
