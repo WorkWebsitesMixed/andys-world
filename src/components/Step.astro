@@ -1,0 +1,117 @@
+---
+/**
+ * One numbered step of "Today's plan" (pilot: G11 T1 W6).
+ *
+ * Why: the plan names activities ("Draw before you touch anything") while the
+ * sections below are named by topic ("Circuit symbols and the IPO model"), so a
+ * student could not tell which box belongs to which step. Each step now says
+ * which section supports it, and each of those sections says which step it
+ * belongs to (Section's `step` prop). Topic titles stay, because students revise
+ * by topic, not by lesson step.
+ *
+ * The word "Step" is always written out: sections already carry a numbered
+ * circle, and two bare number series on one page would be confused.
+ *
+ * Usage, inside <Activity plan>:
+ *   <Step n={1} title="Draw before you touch anything" who="individual"
+ *         time="0–18 min" see="symbols">…what to do…</Step>
+ * `see` = space-separated ids of the sections (or Need-a-hand boxes) that help;
+ * `note` = what to say when no section applies (a teacher demo, your brief).
+ * The script below fills each link with the section's live number and title, so
+ * nothing is typed twice; without JavaScript the link still jumps there.
+ */
+interface Props {
+  n: number;
+  title: string;
+  who?: string;
+  time?: string;
+  see?: string;
+  note?: string;
+}
+
+const { n, title, who, time, see, note } = Astro.props;
+const refs = see ? see.split(/\s+/).filter(Boolean) : [];
+---
+
+<div class="plan-step" id={`step-${n}`} data-step={n} data-step-title={title}>
+  <p class="step-head">
+    <span class="step-n">Step {n}</span>
+    <strong class="step-title">{title}</strong>
+    {(who || time) && <span class="step-meta">{[who, time && `(${time})`].filter(Boolean).join(' ')}</span>}
+  </p>
+  <div class="step-body"><slot /></div>
+  {(refs.length > 0 || note) && (
+    <p class="step-see">
+      <span aria-hidden="true">↓</span>
+      {refs.map((id, i) => (
+        <>
+          {i > 0 && ' and '}
+          <a class="step-ref" href={`#${id}`} data-ref={id}>see below</a>
+        </>
+      ))}
+      {note && <span class="step-note">{refs.length ? ` · ${note}` : note}</span>}
+    </p>
+  )}
+</div>
+
+<script>
+  // Fill every "see below" link with the target's real number and title, and
+  // every section's "Step n" label with that step's name. Runs once per page
+  // (Astro bundles a component script a single time however often it is used).
+  function fill() {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.lesson-section'));
+    document.querySelectorAll<HTMLAnchorElement>('a.step-ref').forEach((a) => {
+      const target = document.getElementById(a.dataset.ref ?? '');
+      if (!target) return;
+      if (target.classList.contains('lesson-section')) {
+        const num = sections.indexOf(target) + 1;
+        const title = target.querySelector('.sec-title > span:last-child')?.textContent?.trim();
+        a.textContent = `Section ${num}: ${title ?? ''}`.trim();
+      } else if (target.tagName === 'DETAILS') {
+        const title = target.querySelector('.aid-title')?.textContent?.trim();
+        a.textContent = `the “${title}” box`;
+        // a closed Need-a-hand box would hide what the link points to
+        a.addEventListener('click', () => { (target as HTMLDetailsElement).open = true; });
+      }
+    });
+    document.querySelectorAll<HTMLElement>('[data-step-label]').forEach((label) => {
+      const ref = label.dataset.stepLabel ?? '';
+      const single = /^\d+$/.test(ref)
+        ? document.querySelector<HTMLElement>(`.plan-step[data-step="${ref}"]`)
+        : null;
+      const name = single?.dataset.stepTitle;
+      if (name) label.textContent = `Step ${ref} · ${name}`;
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fill);
+  else fill();
+</script>
+
+<style>
+  .plan-step {
+    margin-block: 1.1rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--line-strong);
+  }
+  .step-head { margin: 0 0 0.3rem; }
+  .step-n {
+    display: inline-block;
+    margin-right: 0.45rem;
+    padding: 0.05rem 0.55rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    vertical-align: 0.1em;
+  }
+  .step-meta { color: var(--text-dim); margin-left: 0.3rem; }
+  .step-body :global(p) { margin-block: 0.3rem; }
+  .step-see {
+    margin: 0.35rem 0 0;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+  }
+  .step-see a { font-weight: 600; }
+</style>

@@ -9,15 +9,20 @@ interface Props {
   variant: 'support' | 'extension';
   /** Optional badge rendered after the title (e.g. "optional"). */
   flagText?: string;
+  /** Anchor id, so a plan step can link to this box (see Step.astro). */
+  id?: string;
+  /** Plan step(s) this box supports, e.g. "4–5"; shown as a badge. */
+  step?: string;
 }
 
-const { title, icon, variant, flagText } = Astro.props;
+const { title, icon, variant, flagText, id, step } = Astro.props;
 ---
 
-<details class:list={['aid', `v-${variant}`]}>
+<details class:list={['aid', `v-${variant}`]} id={id}>
   <summary>
     <span class="aid-ic" aria-hidden="true">{icon}</span>
     <span class="aid-title">{title}</span>
+    {step && <span class="aid-flag">{/^\d+$/.test(step) ? `Step ${step}` : `Steps ${step}`}</span>}
     {flagText && <span class="aid-flag">{flagText}</span>}
     <span class="aid-chevron" aria-hidden="true"></span>
   </summary>

@@ -11,9 +11,16 @@ interface Props {
   navLabel?: string;
   /** Visual accent: cyan (default) or violet for affective/SEL blocks. */
   variant?: 'cyan' | 'violet';
+  /**
+   * Which step(s) of "Today's plan" this section supports, e.g. "1" or "6–7"
+   * (see Step.astro). Shown as a small label above the title, linked back to
+   * the step; Step's script adds the step's name. Omit for reference sections.
+   */
+  step?: string;
 }
 
-const { title, icon, id, navLabel, variant = 'cyan' } = Astro.props;
+const { title, icon, id, navLabel, variant = 'cyan', step } = Astro.props;
+const firstStep = step?.match(/\d+/)?.[0];
 
 // Stable anchor id (from the title when not given) so the section navigator
 // can link to every section.
@@ -26,6 +33,11 @@ const slug =
 ---
 
 <section class:list={['lesson-section', `v-${variant}`]} id={slug} data-section={navLabel ?? title}>
+  {step && (
+    <a class="sec-step" href={`#step-${firstStep}`}>
+      Today's plan · <span data-step-label={step}>{/^\d+$/.test(step) ? `Step ${step}` : `Steps ${step}`}</span>
+    </a>
+  )}
   <h2 class="sec-title">
     {icon && <span class="sec-icon" aria-hidden="true">{icon}</span>}
     <span>{title}</span>
@@ -52,6 +64,18 @@ const slug =
     padding-top: 0;
     border-top: none;
   }
+
+  /* "Today's plan · Step 1 · …": which plan step this section belongs to */
+  .sec-step {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+  .sec-step:hover { color: var(--accent); text-decoration: underline; }
 
   .sec-title {
     display: flex;

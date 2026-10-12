@@ -8,11 +8,15 @@ import DisclosureBlock from './DisclosureBlock.astro';
 
 interface Props {
   title?: string;
+  /** Anchor id, so a plan step can link here. */
+  id?: string;
+  /** Plan step(s) this box supports, e.g. "4–5". */
+  step?: string;
 }
 
-const { title = 'Need a hand?' } = Astro.props;
+const { title = 'Need a hand?', id, step } = Astro.props;
 ---
 
-<DisclosureBlock variant="support" icon="🤝" title={title}>
+<DisclosureBlock variant="support" icon="🤝" title={title} id={id} step={step}>
   <slot />
 </DisclosureBlock>

@@ -3,12 +3,14 @@ import Section from './Section.astro';
 
 interface Props {
   title?: string;
+  /** Plan step(s) this example supports (see Section's `step`). */
+  step?: string;
 }
 
-const { title = 'Worked example' } = Astro.props;
+const { title = 'Worked example', step } = Astro.props;
 ---
 
-<Section title={title} navLabel="Worked example" icon="📐" id="worked-example">
+<Section title={title} navLabel="Worked example" icon="📐" id="worked-example" step={step}>
   <div class="worked">
     <slot />
   </div>
