@@ -5,12 +5,15 @@ interface Props {
   title?: string;
   /** Plan step(s) this example supports (see Section's `step`). */
   step?: string;
+  /** Anchor id for plan links. Defaults to "worked-example"; set it when a lesson
+   *  has two worked examples, so the page does not carry a duplicate id. */
+  id?: string;
 }
 
-const { title = 'Worked example', step } = Astro.props;
+const { title = 'Worked example', step, id = 'worked-example' } = Astro.props;
 ---
 
-<Section title={title} navLabel="Worked example" icon="📐" id="worked-example" step={step}>
+<Section title={title} navLabel="Worked example" icon="📐" id={id} step={step}>
   <div class="worked">
     <slot />
   </div>

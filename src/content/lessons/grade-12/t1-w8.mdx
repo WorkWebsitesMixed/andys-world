@@ -15,6 +15,44 @@ Block B begins. For the next five weeks you'll learn to write documents in **LaT
   The Chemistry lab report currently written in Word has three persistent quality problems: chemical formulae written as plain text (`H2O` instead of H₂O), figure numbers that go out of sync when figures are reordered, and a manually formatted reference list. LaTeX solves all three automatically. You write instructions; LaTeX handles the layout.
 </Callout>
 
+<Activity plan title="Why LaTeX, then your first document" time="60 min" grouping="Pairs for the first two steps; individual after that" materials={["Laptop", "Overleaf (browser)", "Chemistry lab report content sheet", "Your Chemistry lab report in Word or Google Docs"]}>
+
+<Step n={1} title="Find the problems in your own report" who="in pairs" time="0–8 min" see="why-latex">
+
+Open your Chemistry lab report in Word or Google Docs. Find three things that are hard to keep right by hand: a chemical formula, a figure or table number you typed yourself, and the reference list. Write down, for each one, what happens when you add a new figure at the top or change the order of the references.
+
+</Step>
+
+<Step n={2} title="LaTeX, Word or Docs? Decide and defend" who="in pairs" time="8–18 min" see="why-latex when-not">
+
+Your teacher gives you six situations (a 40-page thesis with many equations, a birthday invitation, a lab report with twelve figures, a poster for the science fair, a letter to the principal, a paper with a co-author who only uses comments and tracked changes). For each, pick the tool and give one reason. There is no single right answer, but there is always a reason.
+
+</Step>
+
+<Step n={3} title="Read the skeleton" who="individual" time="18–26 min" see="lesson">
+
+Study the skeleton of a LaTeX document. Find the preamble, the body and the line that starts the document. Say what `\section{}` and `\textbf{}` do before you type anything.
+
+</Step>
+
+<Step n={4} title="Write the Introduction in Overleaf" who="individual" time="26–55 min" see="lesson worked-example survival">
+
+1. Open the Overleaf project link your teacher shares. Compile it to confirm the PDF renders.
+2. In the body, write the Introduction section of the Chemistry lab report using `\section{}`, `\subsection{}` if needed, and text formatting commands.
+3. Add a paragraph break between the context and the aim.
+4. Compile. Fix any errors in the log before calling done.
+5. **Do not** attempt chemical formulae yet — leave them as plain text.
+
+</Step>
+
+<Step n={5} title="Answer the reflection" who="individual" time="55–60 min" note="the reflection prompt at the end of the page.">
+
+Write two sentences: one thing LaTeX did better than your Word report, and one thing that was harder.
+
+</Step>
+
+</Activity>
+
 <KeyTerms terms={[
   { term: "LaTeX", definition: "A markup language and typesetting system. You write instructions in a text editor; LaTeX compiles them into a professionally laid-out PDF." },
   { term: "Overleaf", definition: "A browser-based LaTeX editor — no installation needed. You write in the left pane and click Compile to see the PDF in the right pane." },
@@ -23,7 +61,39 @@ Block B begins. For the next five weeks you'll learn to write documents in **LaT
   { term: "Compile", definition: "The step that converts your LaTeX source code into a PDF. Unlike Word, changes are not visible until you compile." },
 ]} />
 
-<Section title="LaTeX document structure" icon="💻" id="lesson">
+<Section title="Why bother? LaTeX against Word and Google Docs" icon="💡" id="why-latex" step="1–2">
+
+### Where LaTeX is used
+
+LaTeX is how most scientific and mathematical writing is produced. Journals and conferences in mathematics, physics, computer science and engineering publish LaTeX templates for authors. Many university theses and dissertations are written in it. Textbooks with a lot of equations are often typeset with it. Preprint servers such as arXiv accept LaTeX source files. When you write a lab report in LaTeX you are using the same tool a researcher uses to write a paper, with the same file format.
+
+### What it does for you that a word processor does not
+
+| What you need | In Word or Google Docs | In LaTeX |
+|---|---|---|
+| A chemical formula or an equation | Insert a special object, or type `H2O` and format each digit by hand | `\ce{H2O}` or `$E = mc^2$`: the same command everywhere, always typeset correctly |
+| Figure and table numbers | Numbered by hand, or by a feature you have to remember to update | Numbered automatically; `\ref{}` updates every mention when you reorder |
+| Reference list | Typed by hand, or by a plug-in | Built from one `.bib` file; the style is changed in one line |
+| A long document | Layout drifts as you edit; headings and the table of contents need care | Headings, contents and numbering are generated from the structure |
+| Changing the layout or the template | Restyle by hand, often breaking something | Change one line or load a different template |
+| What is stored | A binary file that only the right program opens faithfully | Plain text: any computer opens it, and version control tools can show exactly what changed |
+| Cost | Word is paid; Google Docs is free but online | Free |
+
+The idea behind all of this is that **you describe the structure and LaTeX does the layout**. In a word processor you are both author and typesetter at the same time. Separating those jobs is what makes long, technical documents stay consistent.
+
+### The honest version: when Word or Docs is the better choice
+
+<Callout type="info" title="Use the right tool" id="when-not">
+LaTeX has a learning curve, and you do not see the page as you type. For a quick letter, an invitation, a poster or anything where the visual layout is the point, Word, Docs or a design tool is faster. Google Docs is also much better when several people are commenting and suggesting changes at once. Choose LaTeX when the document is long, technical, full of equations, figures or citations, or when it has to stay correct while it changes.
+</Callout>
+
+### What this means for you
+
+You will write the Chemistry lab report in LaTeX over the next weeks. The skills carry on: if you study science, engineering or mathematics, the reports and papers you write at university are very likely to use it, and you will already know the commands. If you do something else, you will still have learned to separate content from layout, which is useful in any tool.
+
+</Section>
+
+<Section title="LaTeX document structure" icon="💻" id="lesson" step="3">
 
 ### The skeleton every document starts with
 
@@ -82,7 +152,7 @@ When the PDF doesn't build, Overleaf shows a red error panel. Click it to see th
 
 </Section>
 
-<WorkedExample title="Writing the Introduction section">
+<WorkedExample title="Writing the Introduction section" step="4">
 Your teacher shares an Overleaf project link. Open it. The preamble is already set. You need to write the Introduction section of the Chemistry lab report.
 
 In the body, add:
@@ -102,16 +172,7 @@ The `\ce{}` command for the formula comes from the `mhchem` package — that's W
 
 Click **Compile** (Ctrl+Enter). Check the PDF. Fix any errors shown in the log.
 </WorkedExample>
-
-<Activity title="Write the Introduction in Overleaf" time="50 min" grouping="Individual" materials={["Laptop", "Overleaf (browser)", "Chemistry lab report content sheet"]}>
-1. Open the Overleaf project link your teacher shares. Compile it to confirm the PDF renders.
-2. In the body, write the Introduction section of the Chemistry lab report using `\section{}`, `\subsection{}` if needed, and text formatting commands.
-3. Add a paragraph break between the context and the aim.
-4. Compile. Fix any errors in the log before calling done.
-5. **Do not** attempt chemical formulae yet — leave them as plain text.
-</Activity>
-
-<Support title="LaTeX first-session survival guide">
+<Support title="LaTeX first-session survival guide" id="survival" step="4">
 If the PDF won't compile:
 
 1. Click the error panel in Overleaf.

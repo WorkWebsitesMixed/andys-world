@@ -25,17 +25,42 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
 
 <Activity plan title="M2 quiz, then specification and Spec Court" time="90 min" grouping="Individual for M2 and writing; pairs and groups of 4 for the games" materials={["Exam paper (M2)", "Black pen for M2 (no pencil)", "Pencil and red pen", "Bounty hunt answer cards", "Mark scheme extracts", "Your C1 design brief from Week 1", "Your C1 pages and C2 research (parts A to E of the C2 guide)", "C2 guide", "Your 6Rs audit from Week 5", "Ruler for measuring an existing product"]}>
 
-**M2 quiz — individual, exam conditions (0–20 min):** Exam conditions. No notes, no discussion, no assistance. This one is silent and it is yours.
+<Step n={1} title="M2 quiz" who="individual, exam conditions" time="0–20 min" see="quiz-format">
 
-**Be the examiner — in pairs (20–35 min):** Swap M2 papers. Using the real mark scheme, mark your partner's paper as an examiner would, writing the mark and the reason beside each answer. For every question below full marks, circle the exact word or phrase that lost it. Hand the paper back and read what was written about yours.
+Exam conditions. No notes, no discussion, no assistance. This one is silent and it is yours.
 
-**Bounty hunt — groups of 4 (35–42 min):** Hunt the generic words on the six answer cards, which I wrote to contain the usual traps. A specific replacement that is wrong scores minus two. The five biggest offenders (strong, durable, good, better, appropriate) are worth double. Cards 3 and 6 also hide an error in the working, worth 2 points each.
+</Step>
 
-**Specification writing — individual (42–66 min):** Write at least six specification points using the three-part template: criterion, measure, justification. Draw on your conclusions page (what you will take forward) and on a measured number from a real product wherever you can. Cover load, dimensions, aesthetics, material and sustainability, safety, and the circuit. For each point, underline the measure and circle the justification. If you cannot do both, the point is not finished.
+<Step n={2} title="Be the examiner" who="in pairs" time="20–35 min" see="generic-words">
 
-**Spec Court — in pairs (66–80 min):** Adversarial on purpose. Hand your specification to your partner, who designs in words the worst possible product that still passes every point. Every loophole they find is a point to them and a tightening for you. Swap and prosecute theirs.
+Swap M2 papers. Using the real mark scheme, mark your partner's paper as an examiner would, writing the mark and the reason beside each answer. For every question below full marks, circle the exact word or phrase that lost it. Hand the paper back and read what was written about yours.
 
-**Tighten and submit — individual (80–90 min):** Fix every loophole found against you. Then run the submission checklist: named user, three or more function points, six or more specification points, a measure on each, a justification on each. Fix anything missing now, because the folder is collected as you leave.
+</Step>
+
+<Step n={3} title="Bounty hunt" who="groups of 4" time="35–42 min" see="generic-words worked-example">
+
+Hunt the generic words on the six answer cards, which I wrote to contain the usual traps. A specific replacement that is wrong scores minus two. The five biggest offenders (strong, durable, good, better, appropriate) are worth double. Cards 3 and 6 also hide an error in the working, worth 2 points each.
+
+</Step>
+
+<Step n={4} title="Specification writing" who="individual" time="42–66 min" see="specification">
+
+Write at least six specification points using the three-part template: criterion, measure, justification. Draw on your conclusions page (what you will take forward) and on a measured number from a real product wherever you can. Cover load, dimensions, aesthetics, material and sustainability, safety, and the circuit. For each point, underline the measure and circle the justification. If you cannot do both, the point is not finished.
+
+</Step>
+
+<Step n={5} title="Spec Court" who="in pairs" time="66–80 min" see="specification scaffolds">
+
+Adversarial on purpose. Hand your specification to your partner, who designs in words the worst possible product that still passes every point. Every loophole they find is a point to them and a tightening for you. Swap and prosecute theirs.
+
+</Step>
+
+<Step n={6} title="Tighten and submit" who="individual" time="80–90 min" see="specification">
+
+Fix every loophole found against you. Then run the submission checklist: named user, three or more function points, six or more specification points, a measure on each, a justification on each. Fix anything missing now, because the folder is collected as you leave.
+
+</Step>
+
 </Activity>
 
 <KeyTerms terms={[
@@ -49,7 +74,7 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
   { term: "Justification", definition: "The research evidence or reasoning that explains why a specification point exists. Without justification, a specification point is just an opinion. A justified point links directly to user research: 'The user stated that...' or 'Measurement of existing product showed...'" },
 ]} />
 
-<Section title="The M2 quiz format" icon="🎯" id="quiz-format">
+<Section title="The M2 quiz format" icon="🎯" id="quiz-format" step="1">
 
 ### What Section A looks like
 
@@ -69,7 +94,7 @@ Same format, shorter version: 8–10 questions covering T1 W1–W6 content. 20 m
 
 </Section>
 
-<Section title="The no-generic-words rule" icon="✏️" id="generic-words">
+<Section title="The no-generic-words rule" icon="✏️" id="generic-words" step="2–3">
 
 ### Why generic words earn zero
 
@@ -96,7 +121,7 @@ For every generic word in an answer, ask:
 
 </Section>
 
-<WorkedExample title="Rewriting vague answers into mark-worthy ones">
+<WorkedExample title="Rewriting vague answers into mark-worthy ones" step="3">
 
 **Q: Explain why mild steel is a suitable material for a structural shelf bracket.**
 
@@ -118,7 +143,7 @@ Vague: "The shelf must be strong enough."
 Rewritten: "The product must support a static vertical load of at least 5 kg for 24 hours without permanent deformation, as tested by applying a 5 kg deadweight, because the user stores textbooks with a measured total mass of 4.3 kg."
 </WorkedExample>
 
-<Section title="Writing a measurable, justified specification (C2)" icon="📋" id="specification">
+<Section title="Writing a measurable, justified specification (C2)" icon="📋" id="specification" step="4–6">
 
 ### Where your evidence comes from
 
@@ -158,7 +183,7 @@ Every product you own was signed off against a list like the one you are writing
 
 </Section>
 
-<Support title="Rewrite scaffolds and specification troubleshooting">
+<Support title="Rewrite scaffolds and specification troubleshooting" id="scaffolds" step="3–5">
 
 **Three-step rewrite frame:**
 1. Name the specific property: "[material] has high/low [property name]..."

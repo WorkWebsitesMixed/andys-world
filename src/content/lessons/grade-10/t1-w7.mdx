@@ -21,17 +21,42 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
 
 <Activity plan title="Symbol pictionary and a circuit that lights" time="90 min" grouping="Groups of 4 for the games; drawing and building individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors — one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
 
-1. **Symbol pictionary — groups of 4, 12 min.** In groups of 4. One person is shown a component name and must draw its correct BS symbol while the team names it — no words, no gestures. Wrong symbol scores nothing even if the team guesses right. Rotate until everyone has drawn three. You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
+<Step n={1} title="Symbol pictionary" who="groups of 4" time="0–12 min" see="symbols">
 
-2. **Your own reference sheet — individual, 15 min.** All eight symbols, neatly, at a consistent size, each labelled with name and function. This one you keep.
+In groups of 4. One person is shown a component name and must draw its correct BS symbol while the team names it — no words, no gestures. Wrong symbol scores nothing even if the team guesses right. Rotate until everyone has drawn three. You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
 
-3. **Draw the circuit — individual, 15 min.** Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the direction of conventional current.
+</Step>
 
-4. **Build it — in pairs, each building their own, 25 min.** In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right — which is a better check than anything I could write in red pen.
+<Step n={2} title="Your own reference sheet" who="individual" time="12–27 min" see="symbols scaffolds">
 
-5. **Series against parallel, tested — in pairs, 20 min.** Build two LEDs in series, then the same two in parallel. Predict which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other — that is the answer to the reliability question the paper likes to ask.
+All eight symbols, neatly, at a consistent size, each labelled with name and function. This one you keep.
 
-6. **Wrap — whole class, 3 min.** Pack down. Components counted back in.
+</Step>
+
+<Step n={3} title="Draw the circuit" who="individual" time="27–42 min" see="symbols worked-example">
+
+Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the direction of conventional current.
+
+</Step>
+
+<Step n={4} title="Build it" who="in pairs, each building their own" time="42–67 min" see="scaffolds">
+
+In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right — which is a better check than anything I could write in red pen.
+
+</Step>
+
+<Step n={5} title="Series against parallel, tested" who="in pairs" time="67–87 min" see="series-parallel">
+
+Build two LEDs in series, then the same two in parallel. Predict which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other — that is the answer to the reliability question the paper likes to ask.
+
+</Step>
+
+<Step n={6} title="Wrap" who="whole class" time="87–90 min" note="Pack down; the homework is at the end of the page.">
+
+Pack down. Components counted back in.
+
+</Step>
+
 </Activity>
 
 <KeyTerms terms={[
@@ -42,7 +67,7 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
   { term: "Parallel circuit", definition: "Components connected in separate branches. Each branch has the full supply voltage across it. If one branch fails, others continue working." },
 ]} />
 
-<Section title="Circuit symbols and conventions" icon="🔧" id="symbols">
+<Section title="Circuit symbols and conventions" icon="🔧" id="symbols" step="1–3">
 
 ### The eight symbols you must know
 
@@ -69,7 +94,7 @@ In the Firefighter Barbie circuit: the battery provides the EMF; current flows t
 
 </Section>
 
-<WorkedExample title="Labelling a circuit with IPO">
+<WorkedExample title="Labelling a circuit with IPO" step="3">
 **Circuit:** Cell → switch → resistor → LED → back to cell.
 
 <CircuitDiagram />
@@ -87,7 +112,7 @@ In the Firefighter Barbie circuit: the battery provides the EMF; current flows t
 The IPO model helps you see that each component has a role in the system — not just a name.
 </WorkedExample>
 
-<Section title="Series vs parallel circuits" icon="🔧" id="series-parallel">
+<Section title="Series vs parallel circuits" icon="🔧" id="series-parallel" step="5">
 
 <Notebook title="Series circuit">
 
@@ -117,7 +142,7 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
 
 </Section>
 
-<Support title="Scaffolds for circuit drawing">
+<Support title="Scaffolds for circuit drawing" id="scaffolds" step="2–4">
 **Symbol reference card:** Keep it visible at all times. In the exam, you do not have this card — so practise drawing each symbol from memory at least twice this session.
 
 **Pre-drawn circuit diagram with blanks:** If the full drawing exercise is too open-ended, use the version where the circuit is printed and you add the IPO labels and complete the missing symbol.

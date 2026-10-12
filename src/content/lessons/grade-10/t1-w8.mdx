@@ -21,19 +21,48 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
 
 <Activity plan title="Measure first, calculate second, then make the motor turn" time="90 min" grouping="Pairs at the bench; calculation and drawing individual" materials={["Resistors (various values, including a deliberately wrong low value)", "Fixed resistors (10 kΩ, 47 kΩ)", "NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "Breadboards", "Pre-stripped leads", "Multimeters — one per pair", "9 V batteries and LEDs", "Cup of warm water and a cup of iced water", "Thermometer", "Formula strip", "A4 paper for circuit diagrams", "Installation guide", "Mechanism planning template (oficio, 2 sheets)"]}>
 
-1. **Guess the resistor — in pairs, 8 min.** Five resistors on the bench, colour bands showing. Read the bands and predict each value, write it down, then measure with the multimeter and score yourselves. The colour code is worth knowing and this is the fastest way to learn it.
+<Step n={1} title="Guess the resistor" who="in pairs" time="0–8 min" see="ohms-law">
 
-2. **Ohm's Law, measured before it is calculated — in pairs, 17 min.** Build a simple resistor-and-battery circuit. Measure the voltage across the resistor and the current through it. Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it.
+Five resistors on the bench, colour bands showing. Read the bands and predict each value, write it down, then measure with the multimeter and score yourselves. The colour code is worth knowing and this is the fastest way to learn it.
 
-3. **One LED resistor calculation — individual, 10 min.** Supply 9 V, LED forward voltage 2 V, LED current 20 mA, or the values your teacher gives your pair. Every step shown: formula, convert mA to A, substitute, calculate, choose the nearest standard value. Then check it against the worked example.
+</Step>
 
-4. **Prove the thermistor does what it claims — in pairs, 10 min.** Before building anything, measure the thermistor's resistance with the multimeter at room temperature. Hold it in a cup of warm water and measure again. Then iced water. Record all three. You will watch the resistance *fall* as temperature rises.
+<Step n={2} title="Ohm's Law, measured before it is calculated" who="in pairs" time="8–25 min" see="ohms-law">
 
-5. **Draw it, then build it — individual drawing, then in pairs, 30 min.** In the first 8 minutes, draw the Firefighter Barbie circuit from your own understanding: thermistor voltage divider feeding the base through a base resistor, NPN transistor, motor at the collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout — getting this wrong is the single most common reason a circuit does nothing. Build from your own diagram, not your neighbour's. No soldering.
+Build a simple resistor-and-battery circuit. Measure the voltage across the resistor and the current through it. Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it.
 
-6. **Trigger-temperature challenge — in pairs, 10 min.** Warm the thermistor and find the temperature at which your motor starts. Record it with the thermometer. If time allows, change the fixed resistor from 10 kΩ to 47 kΩ and find the new trigger temperature. Post your results to the class board.
+</Step>
 
-7. **Wrap — whole class, 5 min.** Pack down, components counted back in, boards cleared. Hand out the installation guide and the two-sheet mechanism planning template: they are the home task for next time.
+<Step n={3} title="One LED resistor calculation" who="individual" time="25–35 min" see="ohms-law worked-r">
+
+Supply 9 V, LED forward voltage 2 V, LED current 20 mA, or the values your teacher gives your pair. Every step shown: formula, convert mA to A, substitute, calculate, choose the nearest standard value. Then check it against the worked example.
+
+</Step>
+
+<Step n={4} title="Prove the thermistor does what it claims" who="in pairs" time="35–45 min" see="thermistor">
+
+Before building anything, measure the thermistor's resistance with the multimeter at room temperature. Hold it in a cup of warm water and measure again. Then iced water. Record all three. You will watch the resistance *fall* as temperature rises.
+
+</Step>
+
+<Step n={5} title="Draw it, then build it" who="individual drawing, then in pairs" time="45–75 min" see="thermistor worked-divider transistor scaffolds">
+
+In the first 8 minutes, draw the Firefighter Barbie circuit from your own understanding: thermistor voltage divider feeding the base through a base resistor, NPN transistor, motor at the collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout — getting this wrong is the single most common reason a circuit does nothing. Build from your own diagram, not your neighbour's. No soldering.
+
+</Step>
+
+<Step n={6} title="Trigger-temperature challenge" who="in pairs" time="75–85 min" see="thermistor scaffolds">
+
+Warm the thermistor and find the temperature at which your motor starts. Record it with the thermometer. If time allows, change the fixed resistor from 10 kΩ to 47 kΩ and find the new trigger temperature. Post your results to the class board.
+
+</Step>
+
+<Step n={7} title="Wrap" who="whole class" time="85–90 min" note="Pack down; the installation guide and the mechanism template are your home task.">
+
+Pack down, components counted back in, boards cleared. Hand out the installation guide and the two-sheet mechanism planning template: they are the home task for next time.
+
+</Step>
+
 </Activity>
 
 <KeyTerms terms={[
@@ -45,7 +74,7 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
   { term: "Base threshold", definition: "The minimum voltage at the transistor base required to switch it on: approximately 0.6–0.7 V for a silicon NPN transistor (BD139 or TIP120 — both rated for the current a stalled gearmotor draws)." },
 ]} />
 
-<Section title="Ohm's Law and the current-limiting resistor" icon="🔧" id="ohms-law">
+<Section title="Ohm's Law and the current-limiting resistor" icon="🔧" id="ohms-law" step="1–3">
 
 <Notebook title="Ohm's Law">
 
@@ -75,7 +104,7 @@ After calculating R, always choose the **nearest standard resistor value above**
 
 </Section>
 
-<WorkedExample title="Calculating R for an LED in the Firefighter Barbie circuit">
+<WorkedExample title="Calculating R for an LED in the Firefighter Barbie circuit" id="worked-r" step="3">
 **Given:** Supply voltage = 9 V. LED forward voltage = 2 V. LED current = 20 mA.
 
 **Step 1 — Convert mA to A** before substituting: $20\ \text{mA} = 0.020\ \text{A}$.
@@ -101,7 +130,7 @@ From the E12 series: 390 Ω is the next value above 350 Ω.
 **Answer:** Use a 390 Ω resistor. This keeps the LED current just below 20 mA (safe), with no risk of burning the LED.
 </WorkedExample>
 
-<Section title="The NTC thermistor and the voltage divider" icon="🌡️" id="thermistor">
+<Section title="The NTC thermistor and the voltage divider" icon="🌡️" id="thermistor" step="4–6">
 
 ### NTC thermistor behaviour
 
@@ -139,7 +168,7 @@ The fire-detection version you are building is real: heat detectors in kitchens 
 
 </Section>
 
-<WorkedExample title="Tracing the voltage at the divider junction">
+<WorkedExample title="Tracing the voltage at the divider junction" id="worked-divider" step="4–5">
 **Circuit:** 9 V battery, 10 kΩ fixed resistor in series with a 10 kΩ NTC thermistor.
 
 **At room temperature (thermistor = 10 kΩ):**
@@ -172,7 +201,7 @@ Transistor base threshold ≈ 0.7 V — but 4.5 V is much higher than 0.7 V, so 
 In practice, the trigger point is set by the value of the base resistor and the transistor's gain. For this project, hand warmth (≈35°C) should be sufficient to trigger the motor.
 </WorkedExample>
 
-<Section title="The NPN transistor as a switch" icon="🔧" id="transistor">
+<Section title="The NPN transistor as a switch" icon="🔧" id="transistor" step="5">
 
 ### The three terminals
 
@@ -197,7 +226,7 @@ When temperature rises: thermistor resistance falls → junction voltage rises �
 
 </Section>
 
-<Support title="Scaffolds for calculations, the transistor circuit and troubleshooting">
+<Support title="Scaffolds for calculations, the transistor circuit and troubleshooting" id="scaffolds" step="3–6">
 **Formula strip** — keep on your desk: $V = IR$ · $I = \frac{V}{R}$ · $R = \frac{V}{I}$.
 For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$, not plain $\frac{V}{I}$.
 

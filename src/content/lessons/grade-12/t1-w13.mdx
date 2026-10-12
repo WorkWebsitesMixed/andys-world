@@ -54,6 +54,40 @@ There's no prior B session to retrieve from this week — this is a baseline che
   }
 ]} />
 
+<Activity plan title="Devices, storage and memory, then short answers" time="45 min" grouping="Individual" materials={["Paper or notebook", "This lesson's key terms"]}>
+
+<Step n={1} title="Why this matters for the exam" who="whole class" time="0–4 min" see="why">
+
+Read the exam note: which parts of this topic are asked, and what an answer needs to contain.
+
+</Step>
+
+<Step n={2} title="Build today's topic" who="individual" time="4–17 min" see="topic">
+
+Work through input devices, output devices, storage types and RAM against ROM. Each time, ask what is captured or kept, and why.
+
+</Step>
+
+<Step n={3} title="Weak answer to improved answer" who="in pairs" time="17–24 min" see="worked-example">
+
+Compare a weak answer with an improved one and say what the improved one adds.
+
+</Step>
+
+<Step n={4} title="Short-answer practice" who="individual" time="24–41 min" see="topic">
+
+Answer each in full sentences: no single-word answers score marks on Paper 1. Do not check the mark scheme until you have attempted all three.
+
+</Step>
+
+<Step n={5} title="Check against the mark scheme" who="individual" time="41–45 min" see="mark-scheme">
+
+Mark your answers and note one thing you would add next time.
+
+</Step>
+
+</Activity>
+
 <KeyTerms terms={[
   { term: "Input device", definition: "Hardware that captures data from the outside world and converts it into a form the computer can process — e.g. keyboard, mouse, scanner, microphone, barcode reader." },
   { term: "Output device", definition: "Hardware that presents processed data to the user — e.g. monitor (soft copy), printer (hard copy), speakers (audio)." },
@@ -62,7 +96,7 @@ There's no prior B session to retrieve from this week — this is a baseline che
   { term: "ROM (Read-Only Memory)", definition: "Non-volatile memory that holds the boot instructions the computer needs to start up, before an operating system has loaded." },
 ]} />
 
-<Section title="Building today's topic" icon="💬" id="topic">
+<Section title="Building today's topic" icon="💬" id="topic" step="2 and 4">
 
 ### Input devices — beyond keyboard and mouse
 
@@ -95,7 +129,7 @@ Nothing survives — that's the volatile/non-volatile distinction, and it's the 
 
 </Section>
 
-<WorkedExample title="Weak answer → improved answer (input devices)">
+<WorkedExample title="Weak answer → improved answer (input devices)" step="3">
 **Question:** "A shop uses a device to read barcodes on products at the checkout. Describe how this device works."
 
 Weak: *"A scanner is used to put pictures into a computer."*
@@ -105,15 +139,7 @@ Improved: *"A barcode reader captures the pattern of black and white lines print
 The improvement earns marks by naming the **specific device** for the scenario (not a generic scanner), stating **exactly what it captures** (the barcode pattern), and explaining **what happens to the data** (converted to a code, used to look something up) — not just that data "goes into the computer."
 </WorkedExample>
 
-<Activity title="Short-answer practice" time="17 min" grouping="Individual" materials={["Paper or notebook", "This lesson's key terms"]}>
-Answer each in full sentences — no single-word answers score marks on Paper 1. Don't check the mark scheme until you've genuinely attempted all three.
-
-1. A user says their laptop "lost everything" after a power cut while a document was open but unsaved. Explain why this happened, using the term *volatile* in your answer.
-2. Name a suitable storage device for backing up a school's entire student record archive, and justify your choice with one advantage.
-3. State one advantage of solid-state storage over magnetic storage, and explain **why** that advantage exists (not just what it is).
-</Activity>
-
-<Support title="Mark scheme — check your answers">
+<Support title="Mark scheme — check your answers" id="mark-scheme" step="5">
 1. The laptop lost the document because it was held in **RAM**, which is **volatile** — its contents are lost the instant power is removed. Only work that had already been saved to non-volatile storage (the hard disk or SSD) survives a power cut.
 2. **Magnetic hard disk** — high capacity at low cost per GB, which suits a large archive where speed matters less than storing a lot of data affordably. (A solid-state answer with "fast access, no moving parts" is also creditable if the scenario justifies needing speed.)
 3. Solid-state storage has **no moving parts**, so it is more robust against physical shock and generally faster, because there is no read head that needs to physically move to locate data — unlike a magnetic disk, where the head must seek to the correct track before it can read.

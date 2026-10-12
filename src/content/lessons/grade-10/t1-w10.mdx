@@ -21,17 +21,42 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
 
 <Activity plan title="Safety induction, install, test, and demo day" time="90 min" grouping="Whole group and pairs for the induction; individual build with technician rotation; testing in pairs" materials={["Safety symbol flashcards", "Building façades", "Mechanism kit (door leaf, cam blanks, crank arms, rods, stop blocks, rubber bands, M3 hardware, zip ties)", "Installation guide", "Your completed mechanism planning template", "Breadboard circuit from Week 8", "Protractor or angle-measuring app", "Stopwatch", "Hairdryer or warm water for triggering"]}>
 
-1. **Safety induction — groups of 4, then pairs, then individual, 15 min (0–15).** Safety symbol speed round (6 min), the makerspace scavenger hunt in pairs (7 min), then sign the makerspace safety code (2 min). No signature, no workshop.
+<Step n={1} title="Safety induction" who="groups of 4, then pairs, then individual" time="0–15 min" see="safety">
 
-2. **Install — individual, technician rotation, 30 min (15–45).** Fit your mechanism and circuit into the façade, following Part B of the installation guide and the plan you made on your template at home. Work through the technician rotation. While you wait your turn, prepare your test evidence page template — results table headings, space for the annotated sketch — so that no waiting time is dead time.
+Safety symbol speed round (6 min), the makerspace scavenger hunt in pairs (7 min), then sign the makerspace safety code (2 min). No signature, no workshop.
 
-3. **Test properly — in pairs, 20 min (45–65).** One operates, one records. Trigger the thermistor and measure three things: the door opening angle with a protractor, the activation time with a stopwatch, and a room-temperature control check that it stays shut when it should. Run it three times and record all three sets — a single result is an anecdote, three is data.
+</Step>
 
-4. **Demo day — individual, to the whole class, 12 min (65–77).** Every working façade gets thirty seconds in front of the class. Trigger it live. If it fails live, say what you think went wrong. Then the class votes for the best diagnosed failure of the day.
+<Step n={2} title="Install" who="individual, technician rotation" time="15–45 min" see="installation install-guide">
 
-5. **Test evidence page — individual, 8 min (77–85).** Annotated sketch or photograph, your results table, and conclusions written against your specification points.
+Fit your mechanism and circuit into the façade, following Part B of the installation guide and the plan you made on your template at home. Work through the technician rotation. While you wait your turn, prepare your test evidence page template — results table headings, space for the annotated sketch — so that no waiting time is dead time.
 
-6. **Term review — individual, 5 min (85–90).** Read back the personal goal you wrote in Week 1. Did it happen? Write one honest sentence either way, then set one focus for Term 2 on a sticky note for your folder.
+</Step>
+
+<Step n={3} title="Test properly" who="in pairs" time="45–65 min" see="installation worked-example">
+
+One operates, one records. Trigger the thermistor and measure three things: the door opening angle with a protractor, the activation time with a stopwatch, and a room-temperature control check that it stays shut when it should. Run it three times and record all three sets — a single result is an anecdote, three is data.
+
+</Step>
+
+<Step n={4} title="Demo day" who="individual, to the whole class" time="65–77 min" note="Show your work live; if it fails, say what you think went wrong.">
+
+Every working façade gets thirty seconds in front of the class. Trigger it live. If it fails live, say what you think went wrong. Then the class votes for the best diagnosed failure of the day.
+
+</Step>
+
+<Step n={5} title="Test evidence page" who="individual" time="77–85 min" see="worked-example">
+
+Annotated sketch or photograph, your results table, and conclusions written against your specification points.
+
+</Step>
+
+<Step n={6} title="Term review" who="individual" time="85–90 min" note="Read your Week 1 goal back and set one focus for Term 2.">
+
+Read back the personal goal you wrote in Week 1. Did it happen? Write one honest sentence either way, then set one focus for Term 2 on a sticky note for your folder.
+
+</Step>
+
 </Activity>
 
 <KeyTerms terms={[
@@ -42,7 +67,7 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
   { term: "Safety symbol categories", definition: "Mandatory (blue circle — you must do this), Prohibition (red circle with diagonal bar — you must not do this), Warning (yellow triangle — a hazard is present)." },
 ]} />
 
-<Section title="Workshop safety and makerspace induction" icon="🦺" id="safety">
+<Section title="Workshop safety and makerspace induction" icon="🦺" id="safety" step="1">
 
 <Notebook title="Safety symbol categories">
 
@@ -68,7 +93,7 @@ You must correctly identify all safety symbols shown before you are signed off f
 
 </Section>
 
-<Section title="Installation and testing" icon="🔧" id="installation">
+<Section title="Installation and testing" icon="🔧" id="installation" step="2–3">
 
 ### Integrating the mechanism and circuit
 
@@ -107,7 +132,7 @@ After testing, produce a test evidence page in your folder:
 
 </Section>
 
-<WorkedExample title="What a results table looks like">
+<WorkedExample title="What a results table looks like" step="3 and 5">
 | Test | Method | Result | Specification met? |
 |---|---|---|---|
 | Motor activates at elevated temperature | Warm thermistor by hand | Motor activated after approximately 10 seconds | Yes |
@@ -118,7 +143,7 @@ After testing, produce a test evidence page in your folder:
 Note that "partially met" is an honest, valid result. A test that always passes regardless of performance is not a real test.
 </WorkedExample>
 
-<Support title="Installation and testing guide">
+<Support title="Installation and testing guide" id="install-guide" step="2–3">
 **T-slot motor mounting:** The façade deck gives you four T-slots to bolt the motor cradle into — not one fixed position. Pick the slot and depth that suit your mechanism, then tighten fully. A motor that moves will misalign the whole mechanism. Note: the cradle holds the motor shaft **horizontal**, while the door hinges on a **vertical** axis — a cam takes drive straight off the cradle, but a crank needs you to solve that geometry change yourself.
 
 **Door angle measurement:** Use a protractor or angle-measuring app. Place one arm along the closed-door position and measure the angle to the fully open position.

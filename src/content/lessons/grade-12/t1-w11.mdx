@@ -15,13 +15,35 @@ Today you write. The template is ready, the packages are loaded, the six section
   Two teachers are in the room today. **ICT teacher:** format questions — compile errors, package commands, figure sizing, table alignment. **Chemistry teacher:** content questions — what to write in Discussion, how to interpret a result, whether a conclusion is scientifically supported. Going to the wrong teacher slows you down.
 </Callout>
 
+<Activity plan title="Write the full lab report" time="80 min" grouping="Individual" materials={["Laptop", "Overleaf project", "Experiment summary sheet", "Lab photos (already uploaded)", "refs.bib starter file"]}>
+
+<Step n={1} title="Check what each section needs" who="individual" time="0–8 min" see="content">
+
+Read what goes in each of the six sections and decide the order you will write them in.
+
+</Step>
+
+<Step n={2} title="Write the six sections, compiling after each" who="individual" time="8–68 min" see="content worked-example writing-blocks">
+
+Compile after completing each section. Do not wait until the end to discover a cascade of errors. If you are stuck on a sentence, use the worked example and the writing-blocks box.
+
+</Step>
+
+<Step n={3} title="Progress checkpoint" who="whole class" time="68–80 min" note="Finish compiling and save the project.">
+
+Say which sections are complete. Incomplete sections become homework: you must arrive at Week 12 with a fully compiled document.
+
+</Step>
+
+</Activity>
+
 <KeyTerms terms={[
   { term: "Substantially complete", definition: "All six sections have content — none is empty. Some sections may still need polishing, but every section has been started." },
   { term: "Incomplete section", definition: "A section heading with no content below it. An incomplete document cannot be peer-reviewed next week." },
   { term: "Progress checkpoint", definition: "At 80 minutes: you state which sections are complete and which are unfinished. Incomplete sections become homework." },
 ]} />
 
-<Section title="What to write in each section" icon="💻" id="content">
+<Section title="What to write in each section" icon="💻" id="content" step="1–2">
 
 Use this as your in-session reference. Your teacher has provided: (1) a one-page experiment summary with data and observations, (2) lab photos uploaded to Overleaf, (3) a starter `.bib` file with three references.
 
@@ -65,7 +87,7 @@ Use this as your in-session reference. Your teacher has provided: (1) a one-page
 
 </Section>
 
-<WorkedExample title="From a rough note to a Discussion sentence">
+<WorkedExample title="From a rough note to a Discussion sentence" step="2">
 **Rough note from your observation:** "mass went down — oxygen came out"
 
 **First draft:** "The mass decreased because oxygen was released."
@@ -82,13 +104,7 @@ The oxygen escaped from the open test tube, reducing the total mass of the syste
 This earns marks by: (1) cross-referencing the data table with `\ref{}`, (2) using `\ce{}` for the balanced equation, and (3) explaining the mechanism (open system → gas escapes → mass decreases).
 </WorkedExample>
 
-<Activity title="Write the full lab report" time="80 min" grouping="Individual" materials={["Laptop", "Overleaf project", "Experiment summary sheet", "Lab photos (already uploaded)", "refs.bib starter file"]}>
-Write all six sections. Compile after completing each section — don't wait until the end to discover a cascade of errors.
-
-At the 80-minute mark, your teacher will ask: "Which sections are complete?" Incomplete sections become homework — you must arrive at Week 12 with a fully compiled document.
-</Activity>
-
-<Support title="Common writing blocks and how to break them">
+<Support title="Common writing blocks and how to break them" id="writing-blocks" step="2">
 **Stuck on Discussion:** re-read your Results table. Pick one row of data. Ask "why did this value change?" That question is your Discussion sentence starter.
 
 **Can't write the aim:** try this frame: "This experiment investigates [the reaction/property] of [substance] by [method], in order to [scientific purpose]."

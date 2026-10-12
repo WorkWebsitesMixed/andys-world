@@ -15,13 +15,41 @@ The lab report is almost done. Today you review someone else's work with a struc
   A second pair of eyes finds errors you're blind to in your own work. Reviewing someone else's LaTeX also forces you to read the source code critically — and you'll spot in their document the same mistakes hiding in yours. The checklist prevents the review from being vague.
 </Callout>
 
+<Activity plan title="Peer review, corrections and submission" time="85 min" grouping="Pairs for the review; individual for corrections and submission" materials={["Laptop", "Partner's Overleaf project link (view-only)", "Printed or shared checklist", "Feedback sheet"]}>
+
+<Step n={1} title="Peer review" who="in pairs" time="0–30 min" see="checklist">
+
+Open your partner's Overleaf project and read the compiled PDF alongside the source code. Work through the 10-item checklist. For every "Fix needed", note the section name and the specific issue on the feedback sheet, then return it to your partner.
+
+</Step>
+
+<Step n={2} title="Corrections" who="individual" time="30–70 min" see="corrections correction-guide worked-example">
+
+Fix every item your reviewer flagged, in priority order: compile errors, missing `\ce{}`, missing cross-references, bibliography issues, empty sections.
+
+</Step>
+
+<Step n={3} title="Export and submit" who="individual" time="70–82 min" see="submission">
+
+Download the PDF, rename it exactly as the guide says, submit it, and open the submitted file once to confirm it renders.
+
+</Step>
+
+<Step n={4} title="Closing reflection" who="individual" time="82–85 min" note="The prompt is in the last section of the page.">
+
+Write your closing reflection for Block B.
+
+</Step>
+
+</Activity>
+
 <KeyTerms terms={[
   { term: "Peer review", definition: "Structured feedback from another student using a fixed checklist. The goal is to find specific, correctable errors — not to grade the work." },
   { term: "Orphan heading", definition: "A section heading followed immediately by another heading with no text between them. Always write at least one sentence after each heading." },
   { term: "PDF export", definition: "The final step: Overleaf → Menu → Download → PDF. File named exactly as specified." },
 ]} />
 
-<Section title="The peer review checklist" icon="💻" id="checklist">
+<Section title="The peer review checklist" icon="💻" id="checklist" step="1">
 
 Share your Overleaf project with your partner (view-only access: Share → Anyone with the link → Viewer). Your partner uses this checklist to review your document. Write all feedback on a single sheet — section by section, not just a summary.
 
@@ -42,7 +70,7 @@ For any item marked "Fix needed": write the section name and what specifically i
 
 </Section>
 
-<Section title="Corrections phase" icon="💻" id="corrections">
+<Section title="Corrections phase" icon="💻" id="corrections" step="2">
 
 You have 40 minutes to fix every item your reviewer flagged. Priority order:
 
@@ -56,7 +84,7 @@ Both teachers circulate. Technical format questions → ICT teacher. Content que
 
 </Section>
 
-<Section title="Export and submit" icon="💻" id="submission">
+<Section title="Export and submit" icon="💻" id="submission" step="3">
 
 When your document compiles cleanly and all checklist items pass:
 
@@ -69,7 +97,7 @@ Do not submit the `.tex` file. The PDF is the deliverable.
 
 </Section>
 
-<WorkedExample title="Turning checklist feedback into a specific fix">
+<WorkedExample title="Turning checklist feedback into a specific fix" step="2">
 **Feedback received:** "Check 2 — Figure 2 has no label."
 
 **Source code (before):**
@@ -92,14 +120,7 @@ Then in the text (Methods section), add a sentence using `Figure~\ref{fig:appara
 Compile twice and confirm the figure number in the text matches the figure number in the PDF.
 </WorkedExample>
 
-<Activity title="Peer review session" time="30 min" grouping="Pairs" materials={["Laptop", "Partner's Overleaf project link (view-only)", "Printed or shared checklist", "Feedback sheet"]}>
-1. Open your partner's Overleaf project. Read the compiled PDF alongside the source code.
-2. Work through the 10-item checklist. For every "Fix needed": note the section name and the specific issue on the feedback sheet.
-3. Return the feedback sheet to your partner.
-4. Begin your own corrections.
-</Activity>
-
-<Support title="Correction guide for common checklist failures">
+<Support title="Correction guide for common checklist failures" id="correction-guide" step="2">
 **Check 1 — plain-text formulae still showing:** search (`Ctrl+F`) in the Overleaf source for `O2`, `CO2`, `H2O` etc. Replace each with `\ce{O2}`, `\ce{CO2}`, `\ce{H2O}`.
 
 **Check 3 — figure not cross-referenced:** search for every `\label{fig:...}` in your document. For each one, search the text for `\ref{fig:...}` — if it's missing, add a sentence in the relevant section.
@@ -148,7 +169,7 @@ Compile twice and confirm the figure number in the text matches the figure numbe
   }
 ]} />
 
-<Section title="Closing reflection — Block B" icon="🏠" id="homework">
+<Section title="Closing reflection — Block B" icon="🏠" id="homework" step="4">
 
 Block B ends here. Submit your PDF today.
 

@@ -15,6 +15,34 @@ Today both the ICT teacher and the Chemistry teacher are in the room. The ICT te
   A lab report that is perfectly formatted but scientifically empty earns low marks. A lab report with excellent scientific content buried in broken LaTeX is also penalised. Today you get both standards at once, from both teachers, in the same session — so you can't miss either.
 </Callout>
 
+<Activity plan title="Map the lab report template" time="60 min" grouping="Whole class with both teachers; then individual or pair" materials={["Laptop", "Overleaf project from W8–W9", "Lab report content sheet"]}>
+
+<Step n={1} title="Who owns which question" who="whole class" time="0–5 min" see="who-to-ask">
+
+The ICT teacher owns the format and the Chemistry teacher owns the content. Know which question goes to whom before you start.
+
+</Step>
+
+<Step n={2} title="The template, section by section" who="whole class, both teachers" time="5–20 min" see="template">
+
+Walk through the six sections of the template once, with both teachers, and note what each section must contain.
+
+</Step>
+
+<Step n={3} title="From structure to content" who="in pairs" time="20–30 min" see="worked-example">
+
+Follow the worked example that connects each LaTeX structure to the Chemistry content it carries.
+
+</Step>
+
+<Step n={4} title="Section mapping exercise" who="individual or pair" time="30–60 min" see="template who-to-ask">
+
+Open your Overleaf project and add the six `\section{}` headings (Introduction through References). Under each one, write a LaTeX comment (`%`) saying what the Chemistry teacher expects there, and note which command you will use for its main content (table, figure, `\ce{}`, `\cite{}`). This gives you a skeleton with reminders before you write for real next week.
+
+</Step>
+
+</Activity>
+
 <KeyTerms terms={[
   { term: "Section", definition: "A major division of the lab report (Introduction, Materials & Methods, Results, etc.). Created with \\section{} in LaTeX." },
   { term: "In-text citation", definition: "A short marker in the body (e.g. [1]) that points to a full reference in the bibliography. Inserted with \\cite{key}." },
@@ -22,7 +50,7 @@ Today both the ICT teacher and the Chemistry teacher are in the room. The ICT te
   { term: "Cross-reference", definition: "A reference to a figure or table by its label: 'as shown in Figure~\\ref{fig:setup}'. Updates automatically when figures are renumbered." },
 ]} />
 
-<Section title="The lab report template: section by section" icon="💻" id="template">
+<Section title="The lab report template: section by section" icon="💻" id="template" step="2 and 4">
 
 ### Section 1 — Introduction
 
@@ -101,7 +129,7 @@ Today both the ICT teacher and the Chemistry teacher are in the room. The ICT te
 
 </Section>
 
-<WorkedExample title="Connecting the LaTeX structure to the Chemistry content">
+<WorkedExample title="Connecting the LaTeX structure to the Chemistry content" step="3">
 The Results section of a well-structured lab report:
 
 ```latex
@@ -131,15 +159,7 @@ A steady decrease in mass was observed throughout the reaction
 Notice: data only, no interpretation, both the table and figure are cross-referenced in the text.
 </WorkedExample>
 
-<Activity title="Section mapping exercise" time="30 min" grouping="Individual or pair" materials={["Laptop", "Overleaf project from W8–W9", "Lab report content sheet"]}>
-Open your Overleaf project. Add the six `\section{}` headings to your document body (Introduction through References). Under each heading:
-1. Write one bullet point in a LaTeX comment (`%`) stating what the Chemistry teacher expects in that section.
-2. Note which LaTeX command you'll use for that section's main content (table, figure, `\ce{}`, `\cite{}`, etc.).
-
-This gives you a skeleton with embedded reminders before you write for real next week.
-</Activity>
-
-<Support title="Which teacher to ask for which question">
+<Support title="Which teacher to ask for which question" id="who-to-ask" step="1 and 4">
 - **LaTeX syntax, compile error, package issue, figure not showing, table misaligned** → ICT teacher.
 - **What to write in Discussion, whether a conclusion is scientifically valid, how to cite this source, what counts as a result** → Chemistry teacher.
 

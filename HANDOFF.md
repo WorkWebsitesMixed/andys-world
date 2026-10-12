@@ -12,6 +12,44 @@
 - **Build check:** `npm run build` (runs `astro check` + build) — keep it at
   **0 errors / 0 warnings / 0 hints**. `npm run dev` to preview locally.
 
+## 0b. Latest session (2026-10-07) — Term 1 re-plan, published
+- **Work now happens on `main`** (branch `replan-t1-w9-12` is retired; its commits are all in `main`). `main` is ahead of
+  `origin/main` by local commits that are NOT pushed; push only when Andrés asks. The unfinished homework-submission
+  feature is in the working tree (staged/modified, uncommitted) and must not be swept into commits: commit with a
+  throwaway index (`GIT_INDEX_FILE`) naming only the files you changed.
+- **Today's plan with numbered steps** (`Step` component, `step` prop on Section, WorkedExample, Support) is now on every
+  lesson still to teach in T1: G10 w7, w8, w10; G11 w6, w7, w9, w10; G12 w8-w13. G12 w8 also gained the "Why bother?
+  LaTeX against Word and Google Docs" section. `WorkedExample` takes an optional `id` for pages with two examples.
+  Not done: G10/G11/G12 T2 and T3, and the content fixes listed for G11 w6 (group-of-4 claim in the opening callout,
+  C1/C2 guide hand-out step, measuring current, breadboard row/column wording).
+- **Rollback point:** tag `pre-replan-2026-10-06` (site and Vault).
+- **Re-plan decisions:** see memory `term1-replan-2026-10.md`. Week 13 is never planned. G10 w8 holds old w8+w9 (w9 is a
+  pointer page); G11 w7 holds old w7+w8, G11 w10 holds w9+w10, G11 w9 is an M1 revision page. Student pages never say
+  lessons were merged. G10 M2 = 5 Nov mock (30%), project 40%; G11 w7 quiz = M2.
+- **UI added:** "Today's plan" (`Activity` with `plan`), `Notebook` component, beige = copy to notebook, sage = Key terms
+  (`src/lib/rehypeNotebook.mjs`). Display popover: Light/Dark/High contrast/Warm themes plus reading support (typeface,
+  size, spacing, line length, ruler, read aloud) with evidence page `/reading-support`. Dark theme is now soft slate.
+  **Calm mode was removed** (it did nothing noticeable).
+- **SEL goals** aligned with Periodo 1 for G10, G11, G12 T1, written verb-first to read after "By the end of this class I will".
+- **Deliberately NOT published / not committed:** homework-submission feature (staged: `package.json`, `package-lock.json`,
+  `SubmitHomework.astro`, `content.config.ts`, `LessonLayout.astro`, `tools/homework-submissions/*`), untracked
+  `public/about/` and `src/pages/about.astro`. Commit the rest through a throwaway index (`GIT_INDEX_FILE`) so the staged
+  work is not swept in.
+- **Vault** (`~/Documents/Vault`): commits `9426f1e`, `127e5c0`, `6e55fcf` are local, not pushed. Lesson notes come from
+  `_scripts/lessons/generate_lesson_notes.py`; handouts from `build_handouts.py`; materials from `materials.yaml`.
+- **Exams** (`~/Documents/Marymount/exams/`): G11 M2 quiz (3 sets), G10 M2 mock (1 set), G11 project mock Paper 1; each
+  folder has PDFs, `.tex`, config CSV, rubric PNG and its own `HANDOFF.md`. Generators in `exams/_scripts/`.
+  All configs have `exam_active=false` until the day; figures must be attached by hand in exam-grader.
+- **Mechanism kit** (G10 firefighter facade): `class_materials/10th_grade/firefighter_barbie_facade/` (template PDF, kit
+  DXF/SVG/py/md). Andrés tests one physical kit on 2026-10-08 before the series is cut.
+- **Schedule fix (Vault, uncommitted):** the school week number is not the curriculum week after the re-plan, so
+  `_scripts/schedule/config.yaml` has a `lesson_overrides` section ("<class> <date>": lesson stem) that wins over
+  `week_binding`; `generate_schedule.py` applies it. Mapping: G10 = w7 (Oct 14-16), w8 (Oct 21-23), w10 (Oct 28-30);
+  G11 A/B = w6 (Oct 19), w7 (Oct 26), w10 (Nov 3); G11 C = w6 (Oct 13), w9 revision (Oct 20), w7 M2 quiz (Oct 27), w10 (Nov 5).
+  Verified with Gandalf's `build_brief` for Oct 13, 14 and 20. Handouts reach Gandalf through the `## Prep` tasks.
+- **Open items:** test each exam in exam-grader IGCSE mode; check reading ruler and read-aloud in a browser; G10 T2/T3
+  still use old M labels; buy list needs pair counts and a multimeter decision; push the Vault when ready.
+
 ## 1. What it is
 A **student-facing** teaching website for **Andrés Forero** ("Andy's World"),
 Head of Design & Technology at **Marymount School, Medellín**. Hosts D&T class
