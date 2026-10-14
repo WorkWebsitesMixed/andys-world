@@ -10,6 +10,7 @@ draft: false
 ---
 
 import CircuitSymbolsDiagram from '../../../components/diagrams/CircuitSymbolsDiagram.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 Electronics starts from zero this week. You do not need any prior knowledge: every symbol and idea is introduced before you use it. By the end of the session you will have rescued an LED: you will have read resistors by their colours, calculated the resistor that protects the LED, drawn the circuit with the correct symbols, built it, and had it tested at a clinic desk. The Firefighter Barbie circuit uses these same symbols and the same calculation later in the project.
 
@@ -24,7 +25,7 @@ Each part of the session says whether it is **individual, in pairs, or in a grou
 
 
 <Callout type="info" title="If you missed this lesson" id="absent">
-Do these four things at home and you are caught up. **1.** Download the colour card from Resources and print it, or keep it open on your screen. **2.** Read the three sections below in order: symbols, the colour code, Ohm's law. **3.** Work the worked example on paper with the card closed, then answer the self-check. **4.** Do the Quick-fire six in the homework section. Bring your answers to the next lesson and ask about anything that did not work. The videos in Resources cover each topic in a few minutes; if a video draws the resistor as a zigzag, that is the American symbol, so use the rectangle.
+Do these four things at home and you are caught up. **1.** Download the colour card from Resources and print it, or keep it open on your screen. **2.** Read the three sections below in order: symbols, the colour code, Ohm's law. **3.** Work the worked example on paper with the card closed, then answer the self-check. **4.** Do the Quick-fire six in the homework section. Bring your answers to the next lesson and ask about anything that did not work. Each section has a short video under its title, opened with a button; if a video draws the resistor as a zigzag, that is the American symbol, so use the rectangle.
 </Callout>
 
 <Activity plan title="The LED rescue" time="90 min" grouping="Whole class to start; groups of 4 for the games; pairs for the rescue" materials={["Resistor colour code and Ohm's law card", "Circuit symbol match cards", "Circuit symbol reference card", "LED rescue sheet", "7.4 V battery pack (2 × 18650 in a holder, with leads)", "Breadboards, switches, jumper leads", "LEDs in six colours", "Resistor bin (220 to 1.2 kΩ)", "Multimeter", "Safety glasses"]}>
@@ -90,6 +91,8 @@ Disconnect the battery pack first, then pack down. Components counted back in. F
 
 <Section title="Circuit symbols and conventions" icon="🔧" id="symbols" step="2–3">
 
+<VideoEmbed id="YoGkLiF-UCE" title="Circuit symbols" channel="GCSE Physics Explained" minutes={6} extras={[{ id: "_uSoPnUfjNg", title: "AQA GCSE Physics: standard circuit diagram symbols", channel: "The Science Break", minutes: 7 }, { id: "T7GfoBimQ3A", title: "Conventional current v electron flow", channel: "vt.physics", minutes: 2 }]} />
+
 ### The eight symbols you must know
 
 Copy these onto your reference card. They are the BS/IEC symbols that the exam papers use.
@@ -139,6 +142,8 @@ The IPO model helps you see that each component has a role in the system, not ju
 
 <Section title="Reading a resistor: the colour code" icon="🎨" id="colour-code" step="4">
 
+<VideoEmbed id="md1GLYibkKA" title="How to read resistor colour codes" channel="Engineer4Free" minutes={7} extras={[{ id: "BUV8P9E2Qqk", title: "Resistor colour code examples", channel: "Engineer4Free", minutes: 6 }]} />
+
 ### Four bands, four jobs
 
 A resistor is too small to print a number on, so its value is painted as coloured bands. Hold it with the **gold or silver band on the right** and read from the left.
@@ -165,6 +170,8 @@ Resistors come in standard steps called the E12 series: 10, 12, 15, 18, 22, 27, 
 </Section>
 
 <Section title="Ohm's law and the LED resistor" icon="🔧" id="ohms-law" step="5–6">
+
+<VideoEmbed id="YbbOJrRgRkQ" title="Ohm's law (V = IR) explained in 3 minutes" channel="The Private Tutor" minutes={3} extras={[{ id: "KowLX_jdjr0", title: "Using Ohm's law V = IR, GCSE Physics", channel: "vt.physics", minutes: 1 }]} />
 
 <Notebook title="Ohm's law">
 
@@ -224,6 +231,8 @@ Today's supply is the **7.4 V battery pack**: two 18650 cells in series. A fully
 </WorkedExample>
 
 <Section title="The LED rescue" icon="🛟" id="rescue" step="6">
+
+<VideoEmbed id="W6mixXsn-Vc" title="How to use a breadboard (the board shown may be larger than yours)" channel="LeftyMaker" minutes={4} extras={[{ id: "yQ2-yVXFMeE", title: "How to build a simple LED circuit", channel: "Quick Start Workbook", minutes: 5 }]} />
 
 ### How the rescue works
 
@@ -343,15 +352,6 @@ Your 15 mA LED (2 V) is connected to the 7.4 V pack, but by mistake you fit a 22
 
 <Resources items={[
   { label: "Resistor colour code and Ohm's law card (colour, print one)", type: "Download", href: "g10/electronics-w7/resistor-colour-code-and-ohms-law-card.pdf" },
-  { label: "Circuit symbols (GCSE Physics Explained, 6 min)", type: "Video", href: "https://www.youtube.com/watch?v=YoGkLiF-UCE" },
-  { label: "AQA GCSE Physics: standard circuit diagram symbols (The Science Break, 7 min)", type: "Video", href: "https://www.youtube.com/watch?v=_uSoPnUfjNg" },
-  { label: "Conventional current v electron flow (vt.physics, 2 min)", type: "Video", href: "https://www.youtube.com/watch?v=T7GfoBimQ3A" },
-  { label: "How to use a breadboard (LeftyMaker, 4 min; the board shown may be larger than yours)", type: "Video", href: "https://www.youtube.com/watch?v=W6mixXsn-Vc" },
-  { label: "How to read resistor colour codes (Engineer4Free, 7 min)", type: "Video", href: "https://www.youtube.com/watch?v=md1GLYibkKA" },
-  { label: "Resistor colour code examples (Engineer4Free, 6 min)", type: "Video", href: "https://www.youtube.com/watch?v=BUV8P9E2Qqk" },
-  { label: "Ohm's law (V = IR) explained in 3 minutes (The Private Tutor, 3 min)", type: "Video", href: "https://www.youtube.com/watch?v=YbbOJrRgRkQ" },
-  { label: "Using Ohm's law V = IR, GCSE Physics (vt.physics, 1 min)", type: "Video", href: "https://www.youtube.com/watch?v=KowLX_jdjr0" },
-  { label: "How to build a simple LED circuit (Quick Start Workbook, 5 min)", type: "Video", href: "https://www.youtube.com/watch?v=yQ2-yVXFMeE" },
   { label: "Collins IGCSE D&T — §4.4.1 Basic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
   { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/open?id=1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK" },
 ]} />

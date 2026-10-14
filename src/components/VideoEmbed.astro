@@ -1,0 +1,161 @@
+---
+/**
+ * VideoEmbed: one curated YouTube video shown right under a section title,
+ * hidden until the student asks for it.
+ *
+ * How it works
+ *   - Closed by default: only a button is rendered, so the page loads nothing
+ *     from YouTube until someone opens it (no cookies, no third-party request).
+ *   - "Watch the video" opens a 16:9 player inside the lesson; the same button
+ *     now reads "Hide the video" and closes it. Closing removes the player, so
+ *     playback stops.
+ *   - The player is the privacy-enhanced youtube-nocookie.com embed, created
+ *     on first open by the script below.
+ *   - A plain "Open on YouTube" link is always there: it is the fallback when a
+ *     network blocks the embed, and works with JavaScript off.
+ *   - `extras` are further videos on the same topic, shown as small links.
+ *
+ * Videos are hand-picked: the title, channel and length were checked against
+ * the YouTube page, the content is reviewed by the teacher (see HANDOFF.md).
+ * Used from MDX with a local import, like CircuitSymbolsDiagram.
+ */
+interface Video {
+  /** The YouTube video id, the part after `v=`. */
+  id: string;
+  title: string;
+  channel: string;
+  /** Length in minutes, rounded, shown so students know the cost. */
+  minutes: number;
+}
+
+interface Props extends Video {
+  /** Other videos on the same topic, listed as small links. */
+  extras?: Video[];
+}
+
+const { id, title, channel, minutes, extras = [] } = Astro.props;
+const watchUrl = `https://www.youtube.com/watch?v=${id}`;
+// Unique per video on the page so aria-controls always points at its own panel.
+const panelId = `video-${id}`;
+---
+
+<aside class="video-embed" data-video-id={id}>
+  <div class="ve-row">
+    <button
+      type="button"
+      class="ve-toggle"
+      aria-expanded="false"
+      aria-controls={panelId}
+      data-show="Watch the video"
+      data-hide="Hide the video"
+    >
+      <span class="ve-icon" aria-hidden="true">▶</span>
+      <span class="ve-label">Watch the video</span>
+    </button>
+    <span class="ve-meta">{title} · {channel} · {minutes} min</span>
+    <a class="ve-link" href={watchUrl} target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a>
+  </div>
+  <div class="ve-panel" id={panelId} hidden></div>
+  {extras.length > 0 && (
+    <p class="ve-extras">
+      <span>Also:</span>
+      {extras.map((v) => (
+        <a href={`https://www.youtube.com/watch?v=${v.id}`} target="_blank" rel="noopener noreferrer">
+          {v.title} ({v.channel}, {v.minutes} min) ↗
+        </a>
+      ))}
+    </p>
+  )}
+</aside>
+
+<style>
+  .video-embed {
+    margin-block: 0.25rem 1.25rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--bg-1);
+  }
+  .ve-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.9rem;
+  }
+  .ve-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--bg-3);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .ve-toggle:hover,
+  .ve-toggle:focus-visible { border-color: var(--accent); }
+  .ve-toggle[aria-expanded='true'] .ve-icon { transform: rotate(90deg); }
+  .ve-icon { display: inline-block; font-size: 0.8em; transition: transform 0.15s; }
+  .ve-meta { color: var(--text-dim); font-size: 0.9rem; }
+  .ve-link { margin-left: auto; font-size: 0.85rem; }
+  .ve-panel { margin-top: 0.75rem; }
+  .ve-panel[hidden] { display: none; }
+  /* 16:9 box so the player scales with the column and never overflows. */
+  .ve-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+  .ve-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius);
+  }
+  .ve-extras {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.9rem;
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+  }
+</style>
+
+<script>
+  // One delegated listener covers every VideoEmbed on the page. The player is
+  // built on first open and removed on close, so a hidden video never plays.
+  document.addEventListener('click', (event) => {
+    const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('.ve-toggle');
+    if (!btn) return;
+    const box = btn.closest<HTMLElement>('.video-embed');
+    const panel = box?.querySelector<HTMLElement>('.ve-panel');
+    const id = box?.dataset.videoId;
+    if (!box || !panel || !id) return;
+
+    const opening = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(opening));
+    const label = btn.querySelector<HTMLElement>('.ve-label');
+    if (label) label.textContent = opening ? btn.dataset.hide ?? 'Hide the video' : btn.dataset.show ?? 'Watch the video';
+
+    if (opening) {
+      panel.innerHTML = '';
+      const frame = document.createElement('div');
+      frame.className = 've-frame';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0`;
+      iframe.title = 'YouTube video player';
+      iframe.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      frame.appendChild(iframe);
+      panel.appendChild(frame);
+      panel.hidden = false;
+    } else {
+      panel.hidden = true;
+      panel.innerHTML = ''; // removing the iframe stops playback
+    }
+  });
+</script>

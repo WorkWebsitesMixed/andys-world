@@ -9,6 +9,8 @@ selGoal: "treat a measurement or calculation that goes wrong as information abou
 draft: false
 ---
 
+import VideoEmbed from '../../../components/VideoEmbed.astro';
+
 The circuit is more than wires and components: it is a set of precise decisions. Last week you made one of them with Ohm's law, the LED resistor. Today you first see what happens when components share a supply, in series and in parallel, then add the thermistor that senses heat and wire the voltage divider that feeds the transistor, so that by the end of the lesson warming the thermistor in your hand starts the motor.
 
 <Callout type="exam" title="Show every step in a calculation" id="why">
@@ -66,6 +68,8 @@ Pack down, components counted back in, boards cleared. Hand out the installation
 
 <Section title="Series vs parallel circuits" icon="🔧" id="series-parallel" step="1">
 
+<VideoEmbed id="Dq6zbNWB0VI" title="Series and parallel circuits" channel="Patrick Haney" minutes={5} extras={[{ id: "D-A511tgfyo", title: "Comparing series and parallel circuits", channel: "The Physics Classroom", minutes: 9 }]} />
+
 <Notebook title="Series circuit">
 
 All components in one single loop. The same current flows through every component.
@@ -113,6 +117,8 @@ Last week's colour card has the triangle, the four steps and a worked example. T
 
 <Section title="The NTC thermistor and the voltage divider" icon="🌡️" id="thermistor" step="4–6">
 
+<VideoEmbed id="D2SWOVWMdU8" title="Basics of NTC and PTC thermistors" channel="Digi-Key" minutes={4} extras={[{ id: "RaPkzarY4eY", title: "What is a thermistor and how does it work? NTC against PTC", channel: "DwyerOmega", minutes: 1 }]} />
+
 ### NTC thermistor behaviour
 
 NTC stands for **Negative Temperature Coefficient** — as temperature rises, resistance falls.
@@ -124,6 +130,8 @@ NTC stands for **Negative Temperature Coefficient** — as temperature rises, re
 | Hot (fire conditions) | Low (e.g. 500 Ω) | High voltage at junction — transistor switches ON — motor runs |
 
 ### The voltage divider: how it converts resistance to voltage
+
+<VideoEmbed id="8ZjYM0dcc9c" title="What is a potential or voltage divider circuit" channel="ElectronicsNotes" minutes={3} extras={[{ id: "62m72WPtgPI", title: "Voltage dividers theory, National 5 Physics", channel: "Mr Smith's Physics online", minutes: 7 }]} />
 
 Connect the thermistor in series with a fixed resistor between the supply (+9 V) and 0 V. Take the output voltage from the junction between the two components:
 
@@ -183,6 +191,8 @@ In practice, the trigger point is set by the value of the base resistor and the 
 </WorkedExample>
 
 <Section title="The NPN transistor as a switch" icon="🔧" id="transistor" step="5">
+
+<VideoEmbed id="jZJQoFfZlsI" title="How a transistor can act as a switch, on a breadboard" channel="Simple Electronic Projects" minutes={4} extras={[{ id: "XacWmambbVM", title: "Transistor working explained in 5 minutes", channel: "Projects with Fun", minutes: 6 }]} />
 
 ### The three terminals
 
@@ -302,14 +312,6 @@ Describe what would happen if you replaced the thermistor with an LDR in the Fir
 </Section>
 
 <Resources items={[
-  { label: "Series and parallel circuits (Patrick Haney, 5 min)", type: "Video", href: "https://www.youtube.com/watch?v=Dq6zbNWB0VI" },
-  { label: "Comparing series and parallel circuits (The Physics Classroom, 9 min)", type: "Video", href: "https://www.youtube.com/watch?v=D-A511tgfyo" },
-  { label: "What is a thermistor and how does it work? NTC against PTC (DwyerOmega, 1 min)", type: "Video", href: "https://www.youtube.com/watch?v=RaPkzarY4eY" },
-  { label: "Basics of NTC and PTC thermistors (Digi-Key, 4 min)", type: "Video", href: "https://www.youtube.com/watch?v=D2SWOVWMdU8" },
-  { label: "What is a potential or voltage divider circuit (ElectronicsNotes, 3 min)", type: "Video", href: "https://www.youtube.com/watch?v=8ZjYM0dcc9c" },
-  { label: "Voltage dividers theory, National 5 Physics (Mr Smith's Physics online, 7 min)", type: "Video", href: "https://www.youtube.com/watch?v=62m72WPtgPI" },
-  { label: "How a transistor can act as a switch, on a breadboard (Simple Electronic Projects, 4 min)", type: "Video", href: "https://www.youtube.com/watch?v=jZJQoFfZlsI" },
-  { label: "Transistor working explained in 5 minutes (Projects with Fun, 6 min)", type: "Video", href: "https://www.youtube.com/watch?v=XacWmambbVM" },
   { label: "Collins IGCSE D&T — §4.4.4 Resistors (p. 316)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
   { label: "Collins IGCSE D&T — §4.4.5 Transistors (p. 320)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },
   { label: "Collins IGCSE D&T — §4.4.7 Transducers (p. 326)", type: "Textbook", href: "https://drive.google.com/open?id=11abfrvJq0PTKwTeZbQvGvsXXAowOTOZY" },

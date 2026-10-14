@@ -66,7 +66,11 @@
   rescue sheets, `led_rescue_teacher_key.pdf` (teacher only). Vault notes and handout notes regenerated and registered.
   The colour card (side 1) also draws the 400-point breadboard (84 x 56 mm, rails continuous, 30 strips of 5 per side);
   the lesson has a 3-minute board tour at the start of the rescue. Four multimeters run as clinic desks.
-  To decide: videos for absent students (candidates listed in the session, unwatched) are not added yet; protected cells or
+  Videos: `src/components/VideoEmbed.astro` puts one YouTube video under the title of the section that teaches the topic,
+  hidden behind a "Watch the video" / "Hide the video" button (youtube-nocookie, player removed on hide, "Open on YouTube"
+  fallback, extra videos as small links). Used in G10 w7 (symbols, colour code, Ohm, rescue) and w8 (series/parallel,
+  thermistor, divider, transistor). Titles/channels/lengths checked on the YouTube pages; content NOT reviewed by Andrés yet.
+  To decide: protected cells or
   an inline fuse on each pack; whether w8 should move to the 7.4 V pack too.
 - **Open items:** test each exam in exam-grader IGCSE mode; check reading ruler and read-aloud in a browser; G10 T2/T3
   still use old M labels; buy list needs pair counts and a multimeter decision; push the Vault when ready.
