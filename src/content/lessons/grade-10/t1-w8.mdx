@@ -2,62 +2,50 @@
 grade: 10
 term: 1
 week: 8
-title: "Electronics II: Ohm's Law, Transistors & Thermistors"
-topic: "Resistor calculations, the NPN transistor switch, and thermistor sensing"
-learningGoal: "calculate the correct current-limiting resistor for an LED, explain how an NTC thermistor's resistance changes with temperature, and build a thermistor and NPN transistor circuit that switches a motor on when the thermistor is warmed."
+title: "Electronics II: Series, Parallel, Transistors & Thermistors"
+topic: "Series and parallel circuits, the NPN transistor switch, and thermistor sensing"
+learningGoal: "explain how series and parallel circuits differ, explain how an NTC thermistor's resistance changes with temperature, and build a thermistor and NPN transistor circuit that switches a motor on when the thermistor is warmed."
 selGoal: "treat a measurement or calculation that goes wrong as information about the circuit and not a verdict on me, and write down what I will try next"
 draft: false
 ---
 
-The circuit is more than wires and components: it is a set of precise decisions. Too much current burns the LED. Too little base current and the transistor never switches on. Today you learn the calculation behind each decision, add the thermistor that senses heat, and wire the voltage divider that feeds the transistor, so that by the end of the lesson warming the thermistor in your hand starts the motor.
+The circuit is more than wires and components: it is a set of precise decisions. Last week you made one of them with Ohm's law, the LED resistor. Today you first see what happens when components share a supply, in series and in parallel, then add the thermistor that senses heat and wire the voltage divider that feeds the transistor, so that by the end of the lesson warming the thermistor in your hand starts the motor.
 
 <Callout type="exam" title="Show every step in a calculation" id="why">
   Paper 1 Section A sometimes includes a resistor calculation, and regularly asks: "Describe how an NTC thermistor responds to a rise in temperature." Examiners award marks for each correct step, not just the final answer: write the formula, substitute the values, calculate, and state the unit. For the thermistor, the answer must use the phrase **Negative Temperature Coefficient** and state that resistance **decreases** as temperature **increases**. Answers that say resistance increases, or omit the direction of change, earn zero.
 </Callout>
 
 <Callout type="tip" title="How this session runs">
-Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label (tables and formulas) goes into your notebook. The green Key terms box is for you to copy down before class. Those are the definitions and equations you are examined on.
+Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label (tables and formulas) goes into your notebook. The green Key terms box is for you to copy down before class. Those are the definitions and equations you are examined on. Keep last week's colour card on your desk: today you will use it for the resistors.
 </Callout>
 
-<Activity plan title="Measure first, calculate second, then make the motor turn" time="90 min" grouping="Pairs at the bench; calculation and drawing individual" materials={["Resistors (various values, including a deliberately wrong low value)", "Fixed resistors (10 kΩ, 47 kΩ)", "NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "Breadboards", "Pre-stripped leads", "Multimeters — one per pair", "9 V batteries and LEDs", "Cup of warm water and a cup of iced water", "Thermometer", "Formula strip", "A4 paper for circuit diagrams", "Installation guide", "Mechanism planning template (oficio, 2 sheets)"]}>
+<Activity plan title="Series and parallel, then make the motor turn" time="90 min" grouping="Pairs at the bench; drawing individual" materials={["Two LEDs and a resistor per circuit", "Fixed resistors (10 kΩ, 47 kΩ)", "NTC thermistors (10 kΩ)", "NPN transistors (BD139 or TIP120)", "DC motors", "Breadboards", "Pre-stripped leads", "Multimeters — one per pair", "9 V batteries and LEDs", "Cup of warm water and a cup of iced water", "Thermometer", "Formula strip", "A4 paper for circuit diagrams", "Installation guide", "Mechanism planning template (oficio, 2 sheets)"]}>
 
-<Step n={1} title="Guess the resistor" who="in pairs" time="0–8 min" see="ohms-law">
+<Step n={1} title="Series against parallel, tested" who="in pairs" time="0–18 min" see="series-parallel">
 
-Five resistors on the bench, colour bands showing. Read the bands and predict each value, write it down, then measure with the multimeter and score yourselves. The colour code is worth knowing and this is the fastest way to learn it.
-
-</Step>
-
-<Step n={2} title="Ohm's Law, measured before it is calculated" who="in pairs" time="8–25 min" see="ohms-law">
-
-Build a simple resistor-and-battery circuit. Measure the voltage across the resistor and the current through it. Calculate $R = V/I$ from your own two readings and compare with the measured resistance. They will agree to within a few per cent. You have now verified Ohm's Law rather than been told it.
+Build two LEDs in series, then the same two in parallel. Write your prediction of which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other. That is the answer to the reliability question the paper likes to ask.
 
 </Step>
 
-<Step n={3} title="One LED resistor calculation" who="individual" time="25–35 min" see="ohms-law worked-r">
-
-Supply 9 V, LED forward voltage 2 V, LED current 20 mA, or the values your teacher gives your pair. Every step shown: formula, convert mA to A, substitute, calculate, choose the nearest standard value. Then check it against the worked example.
-
-</Step>
-
-<Step n={4} title="Prove the thermistor does what it claims" who="in pairs" time="35–45 min" see="thermistor">
+<Step n={2} title="Prove the thermistor does what it claims" who="in pairs" time="18–28 min" see="thermistor">
 
 Before building anything, measure the thermistor's resistance with the multimeter at room temperature. Hold it in a cup of warm water and measure again. Then iced water. Record all three. You will watch the resistance *fall* as temperature rises.
 
 </Step>
 
-<Step n={5} title="Draw it, then build it" who="individual drawing, then in pairs" time="45–75 min" see="thermistor worked-divider transistor scaffolds">
+<Step n={3} title="Draw it, then build it" who="individual drawing, then in pairs" time="28–68 min" see="thermistor worked-divider transistor scaffolds">
 
-In the first 8 minutes, draw the Firefighter Barbie circuit from your own understanding: thermistor voltage divider feeding the base through a base resistor, NPN transistor, motor at the collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout — getting this wrong is the single most common reason a circuit does nothing. Build from your own diagram, not your neighbour's. No soldering.
+In the first 8 minutes, draw the Firefighter Barbie circuit from your own understanding: thermistor voltage divider feeding the base through a base resistor, NPN transistor, motor at the collector. Label base, collector and emitter, the current direction, and the IPO roles. Then find the three legs on a real transistor and identify which is which from the datasheet pinout, because getting this wrong is the single most common reason a circuit does nothing. Build from your own diagram, not your neighbour's.
 
 </Step>
 
-<Step n={6} title="Trigger-temperature challenge" who="in pairs" time="75–85 min" see="thermistor scaffolds">
+<Step n={4} title="Trigger-temperature challenge" who="in pairs" time="68–83 min" see="thermistor scaffolds">
 
 Warm the thermistor and find the temperature at which your motor starts. Record it with the thermometer. If time allows, change the fixed resistor from 10 kΩ to 47 kΩ and find the new trigger temperature. Post your results to the class board.
 
 </Step>
 
-<Step n={7} title="Wrap" who="whole class" time="85–90 min" note="Pack down; the installation guide and the mechanism template are your home task.">
+<Step n={5} title="Wrap" who="whole class" time="83–90 min" note="Pack down; the installation guide and the mechanism template are your home task.">
 
 Pack down, components counted back in, boards cleared. Hand out the installation guide and the two-sheet mechanism planning template: they are the home task for next time.
 
@@ -68,67 +56,60 @@ Pack down, components counted back in, boards cleared. Hand out the installation
 <KeyTerms terms={[
   { term: "Ohm's Law", definition: "The relationship between voltage, current, and resistance: V = I × R. Rearranged: I = V / R and R = V / I. V in volts, I in amperes, R in ohms." },
   { term: "Current-limiting resistor", definition: "A resistor placed in series with an LED to prevent excess current that would burn the LED. Calculated using R = (Vsupply − VLED) / ILED." },
+  { term: "Series circuit", definition: "Components connected in one single loop. The same current flows through every component. If one component fails, the whole circuit breaks." },
+  { term: "Parallel circuit", definition: "Components connected in separate branches. Each branch has the full supply voltage across it. If one branch fails, the others continue working." },
   { term: "NPN transistor", definition: "A three-terminal semiconductor switch. Terminals: base (control input), collector (connected to supply via the output device), emitter (connected to 0 V). A small base current switches the transistor ON, allowing a large collector-to-emitter current." },
   { term: "NTC thermistor", definition: "A resistor whose resistance decreases as temperature increases. NTC = Negative Temperature Coefficient. Used as the heat sensor in the Firefighter Barbie circuit." },
   { term: "Voltage divider", definition: "Two resistors in series across a supply. The voltage at the junction between them is a fraction of the supply, determined by the ratio of the two resistances. It converts the thermistor's resistance change into a voltage change that drives the transistor base." },
   { term: "Base threshold", definition: "The minimum voltage at the transistor base required to switch it on: approximately 0.6–0.7 V for a silicon NPN transistor (BD139 or TIP120 — both rated for the current a stalled gearmotor draws)." },
 ]} />
 
-<Section title="Ohm's Law and the current-limiting resistor" icon="🔧" id="ohms-law" step="1–3">
+<Section title="Series vs parallel circuits" icon="🔧" id="series-parallel" step="1">
 
-<Notebook title="Ohm's Law">
+<Notebook title="Series circuit">
 
-Three forms — one formula, three rearrangements:
+All components in one single loop. The same current flows through every component.
 
-- $V = I \times R$ (find voltage if you know current and resistance)
-- $I = \dfrac{V}{R}$ (find current if you know voltage and resistance)
-- $R = \dfrac{V}{I}$ (find resistance if you know voltage and current) ← most used in this project
+**Consequence:** If you add more components, each one shares the total supply voltage, so each gets less voltage. Two LEDs in series: each gets about half the supply voltage, so they are dimmer than a single LED.
+
+**With Ohm's law:** the resistances add, $R_{\text{total}} = R_1 + R_2$, so the current $I = \dfrac{V}{R_{\text{total}}}$ falls.
+
+**If one breaks:** The circuit is open and nothing works.
+
+</Notebook>
+
+<Notebook title="Parallel circuit">
+
+Components in separate branches. The supply voltage appears across every branch.
+
+**Consequence:** Each branch gets the full supply voltage regardless of how many branches there are. Two LEDs in parallel: each gets full voltage, so they are as bright as a single LED. Total current from the battery doubles.
+
+**With Ohm's law:** each branch has its own current $I = \dfrac{V}{R}$, and the battery supplies the sum of the branch currents.
+
+**If one branch breaks:** Other branches continue to work.
 
 </Notebook>
 
-### Calculating a current-limiting resistor for an LED
+<Callout type="info" title="Where you'll see this">
+**Old Christmas tree lights were wired in series**, which is why one dead bulb killed the whole string and you had to test them one at a time. Modern sets are wired in parallel so a failure takes out one bulb and nothing else.
 
-An LED has two critical values:
-- **Forward voltage (VLED):** the voltage it drops when operating (typically 2 V for red/green, 3.5 V for blue/white).
-- **Forward current (ILED):** the current it needs to operate at full brightness (typically 20 mA = 0.020 A).
-
-The resistor must drop the remaining voltage above the LED's forward voltage:
-
-<Notebook title="Current-limiting resistor">
-
-$$R = \dfrac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$$
-
-After calculating R, always choose the **nearest standard resistor value above** the calculated value. Standard values follow the E12 or E24 series (common values: 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 820, 1000 Ω...).
-
-</Notebook>
+Your house is parallel for the same reason: switching off a lamp does not turn off the fridge. Series wiring survives where you *want* one failure to stop everything: a safety interlock on a machine guard, or the emergency stop button on the workshop wall, which is deliberately in series with everything it protects.
+</Callout>
 
 </Section>
 
-<WorkedExample title="Calculating R for an LED in the Firefighter Barbie circuit" id="worked-r" step="3">
-**Given:** Supply voltage = 9 V. LED forward voltage = 2 V. LED current = 20 mA.
+<Section title="Ohm's law, the quick recall" icon="🔧" id="ohms-law" step="3">
 
-**Step 1 — Convert mA to A** before substituting: $20\ \text{mA} = 0.020\ \text{A}$.
+<Notebook title="Ohm's Law and the LED resistor">
 
-**Step 2 — Formula, substitution, result:**
+- $V = I \times R$, $\; I = \dfrac{V}{R}$, $\; R = \dfrac{V}{I}$
+- LED resistor: $R = \dfrac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$, then the **next standard value up**.
 
-<Formula
-  name="Current-limiting resistor"
-  equation="R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
-  terms={[
-    { symbol: "R", meaning: "the resistance of the current-limiting resistor fitted in series with the LED", unit: "Ω" },
-    { symbol: "V_{\\text{supply}}", meaning: "the battery voltage feeding the circuit", unit: "V" },
-    { symbol: "V_{\\text{LED}}", meaning: "the forward voltage the LED itself drops — about 2 V for red and green, 3.0–3.5 V for blue and white. Subtracted because the LED has already used that much of the supply", unit: "V" },
-    { symbol: "I_{\\text{LED}}", meaning: "the current you want through the LED, normally 20 mA. Convert to amps first — 20 mA is 0.020 A. This is the single most common place to lose the mark", unit: "A" },
-  ]}
-  substitution="R = \frac{9\ \text{V} - 2\ \text{V}}{0.020\ \text{A}} = \frac{7\ \text{V}}{0.020\ \text{A}}"
-  result="R = 350\ \Omega"
-/>
+</Notebook>
 
-**Step 3 — Choose nearest standard value above 350 Ω:**
-From the E12 series: 390 Ω is the next value above 350 Ω.
+Last week's colour card has the triangle, the four steps and a worked example. Today's calculations are the base resistor and the divider, so keep it on the desk.
 
-**Answer:** Use a 390 Ω resistor. This keeps the LED current just below 20 mA (safe), with no risk of burning the LED.
-</WorkedExample>
+</Section>
 
 <Section title="The NTC thermistor and the voltage divider" icon="🌡️" id="thermistor" step="4–6">
 
@@ -227,6 +208,8 @@ When temperature rises: thermistor resistance falls → junction voltage rises �
 </Section>
 
 <Support title="Scaffolds for calculations, the transistor circuit and troubleshooting" id="scaffolds" step="3–6">
+**Series against parallel:** write both predictions before any circuit is connected. The parallel pair being brighter is the memorable part, because most people guess wrong.
+
 **Formula strip** — keep on your desk: $V = IR$ · $I = \frac{V}{R}$ · $R = \frac{V}{I}$.
 For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$, not plain $\frac{V}{I}$.
 
@@ -236,13 +219,7 @@ For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{
 
 **Partially completed transistor diagram:** If the full circuit drawing is too open, use the version with the transistor symbol and supply connections already drawn — add the base resistor, the base connection from the voltage divider, the motor symbol, and all labels.
 
-**Multimeter setup for Ohm's Law:** voltage is measured *across* the resistor with the meter in parallel; current is measured *through* it with the meter in series, which means breaking the circuit to insert the meter. Show this once on the visualiser — the series/parallel distinction for meters is the part that is genuinely counter-intuitive.
-
-**Expect a few per cent disagreement** between calculated and measured resistance. Say so in advance, or the first pair to find it will assume they have done something wrong. Tolerance bands on cheap resistors are typically 5%.
-
 **Transistor pinout:** BD139 and TIP120 are not pin-compatible with the small-signal transistors students may have seen. Print the pinout for the exact part in the drawer and put it on the bench — a transistor in backwards is the single most common cause of a dead circuit.
-
-**Blowing the LED is a demonstration, not an accident.** Do it once, deliberately, with a 47 Ω resistor and eye protection, and make the point that the calculation is what stands between a working product and that.
 
 **Thermistor resistance readings to expect:** roughly 10 kΩ at room temperature, falling to around 4–5 kΩ in warm water and rising well above 20 kΩ in iced water. Warm water, not boiling: hand-hot is plenty and keeps the thermometer readings in a sensible range.
 
@@ -267,6 +244,18 @@ For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{
     answer: 2,
     hint: "Use R = (Vsupply − VLED) / ILED. Remember to convert 20 mA to 0.020 A before dividing.",
     explain: "R = (9 − 2) / 0.020 = 7 / 0.020 = 350 Ω. The nearest standard resistor value above 350 Ω is 390 Ω. Using a value above the calculated figure keeps the LED current safely below its rated maximum."
+  },
+  {
+    q: "Two LEDs are connected in parallel across a 9 V battery. How does each LED's brightness compare to a single LED connected to the same 9 V battery?",
+    options: [
+      "Each LED is dimmer because the current is shared between them",
+      "Each LED is the same brightness, because in parallel each branch receives the full supply voltage",
+      "Each LED is brighter because more total current flows from the battery",
+      "One LED is bright and the other is dim"
+    ],
+    answer: 1,
+    hint: "In a parallel circuit, each branch has the same voltage across it as the supply.",
+    explain: "In a parallel circuit, each branch receives the full supply voltage (9 V). So each LED has 9 V across it, the same as a single LED connected to 9 V, and each is equally bright. The total current from the battery increases, but each branch's current is unchanged."
   },
   {
     q: "An NTC thermistor is placed in a warm environment. What happens to its resistance?",
@@ -297,6 +286,10 @@ For the LED resistor, always use $R = \frac{V_{\text{supply}} - V_{\text{LED}}}{
 <Section title="Homework & extension" icon="🏠" id="homework">
 
 **Home task:** (1) Complete two further resistor calculations, showing all steps: supply 6 V, LED forward voltage 2 V, LED current 15 mA; and supply 9 V, blue LED forward voltage 3 V, LED current 20 mA. (2) Draw the complete Firefighter Barbie circuit from memory, with every component named and labelled (battery, thermistor, fixed resistor, base resistor, NPN transistor with base, collector and emitter, motor), plus the trigger temperature or temperatures you measured. Check it against the circuit you built. (3) **Plan your mechanism.** Take the mechanism planning template (two sheets) and the installation guide, and complete **Part A** of the guide at home. Bring both to the installation lesson, because that lesson only has 30 minutes to install and test.
+
+<Extension title="Breadboard exploration">
+Wire two LEDs in series on a breadboard, then rearrange them in parallel using the same battery. Measure the voltage across each LED with a multimeter. Record your observations in your folder: what did you predict before wiring, and did the result match?
+</Extension>
 
 <Extension title="Why transistors replaced relays">
 Research one reason why transistors replaced mechanical relays in modern electronics control circuits. Consider: speed of switching, size, power consumption, reliability. Write 50 words in your folder, with one specific comparison (e.g., "A transistor can switch in under 1 microsecond; a relay takes approximately 10 milliseconds").

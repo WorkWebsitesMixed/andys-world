@@ -47,6 +47,27 @@
   `week_binding`; `generate_schedule.py` applies it. Mapping: G10 = w7 (Oct 14-16), w8 (Oct 21-23), w10 (Oct 28-30);
   G11 A/B = w6 (Oct 19), w7 (Oct 26), w10 (Nov 3); G11 C = w6 (Oct 13), w9 revision (Oct 20), w7 M2 quiz (Oct 27), w10 (Nov 5).
   Verified with Gandalf's `build_brief` for Oct 13, 14 and 20. Handouts reach Gandalf through the `## Prep` tasks.
+- **Homework submission, decision (2026-10-14):** Andrés chose option 3 of five: a submit button inside each lesson that
+  uploads to Drive through an Apps Script web app, one folder per student and week (the staged WIP in `SubmitHomework.astro`
+  and `tools/homework-submissions/`). Options not taken: Classroom, Google Form with upload, shared Drive folders, e-mail.
+  Not yet decided or tested: whether students sign in with a school-domain or a personal Google account (this decides
+  whether upload works), then finish, test with real accounts, and only then commit. Still uncommitted.
+- **G11 materials review sheet (published, `245f8e1`):** `class_materials/11th/materials_review/` holds the 4-page sheet
+  (`.tex`/`.pdf`) and a teacher-only answer key (`materials_review_answers.*`); the PDF is linked from G11 w5 and w6
+  Resources (`public/g11/materials/materials-review.pdf`). OCR of the Collins chapters is in
+  `Vault/03-Resources/teaching/textbook/collins-igcse-dt/extracted/` (script `extract_ocr.py`, tesseract in the conda
+  env `ocr`); Paper 4 past-paper text and a question index are in `class_materials/past_papers_0445/_extracted/`.
+- **G10 w7/w8 reworked (2026-10-14, NOT yet committed or pushed):** w7 is now "Symbols, Resistors & Ohm's Law": opening
+  sacrificed-LED demo, symbol match cards, draw the eight symbols, resistor detective (colour code), Ohm's law, the LED
+  rescue (client sheets, 7.4 V pack, clinic desks for 4 multimeters), pictionary to close. Series/parallel moved to w8 with
+  the thermistor and transistor. Supply in w7 is the 7.4 V pack (2 x 18650); w8 still uses 9 V. New component
+  `src/components/diagrams/CircuitSymbolsDiagram.astro` (imported in the MDX). Handouts and teacher key (LaTeX) are in
+  `class_materials/10th_grade/electronics_w7/`: colour card (also on the site, `public/g10/electronics-w7/`), match cards,
+  rescue sheets, `led_rescue_teacher_key.pdf` (teacher only). Vault notes and handout notes regenerated and registered.
+  The colour card (side 1) also draws the 400-point breadboard (84 x 56 mm, rails continuous, 30 strips of 5 per side);
+  the lesson has a 3-minute board tour at the start of the rescue. Four multimeters run as clinic desks.
+  To decide: videos for absent students (candidates listed in the session, unwatched) are not added yet; protected cells or
+  an inline fuse on each pack; whether w8 should move to the 7.4 V pack too.
 - **Open items:** test each exam in exam-grader IGCSE mode; check reading ruler and read-aloud in a browser; G10 T2/T3
   still use old M labels; buy list needs pair counts and a multimeter decision; push the Vault when ready.
 

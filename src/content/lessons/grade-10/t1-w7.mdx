@@ -2,66 +2,78 @@
 grade: 10
 term: 1
 week: 7
-title: "Electronics I: Circuits, Symbols & IPO"
-topic: "Circuit symbols, the IPO model, and series vs parallel"
-learningGoal: "draw a simple LED circuit using correct symbols, label it with the input-process-output model, and produce correct circuit drawings for both series and parallel configurations."
+title: "Electronics I: Symbols, Resistors & Ohm's Law"
+topic: "Circuit symbols, the resistor colour code, Ohm's law and the LED resistor"
+learningGoal: "draw a simple LED circuit using correct symbols, read a resistor's value from its colour code, and calculate, choose and test the resistor that protects an LED."
 selGoal: "ask what my partner was trying to make their circuit do before I say what is wrong, so that I fix their problem and not mine"
 draft: false
 ---
 
 import CircuitSymbolsDiagram from '../../../components/diagrams/CircuitSymbolsDiagram.astro';
 
-Electronics starts from zero this week. You do not need any prior knowledge — every symbol and concept is introduced before you draw or build anything. By the end of the session you will have a reference sheet of the eight circuit symbols that you drew yourself, an LED circuit that you drew first and then built, and a tested answer to which is brighter, series or parallel. The Firefighter Barbie circuit uses these same symbols later in the project.
+Electronics starts from zero this week. You do not need any prior knowledge: every symbol and idea is introduced before you use it. By the end of the session you will have rescued an LED: you will have read resistors by their colours, calculated the resistor that protects the LED, drawn the circuit with the correct symbols, built it, and had it tested at a clinic desk. The Firefighter Barbie circuit uses these same symbols and the same calculation later in the project.
 
 <Callout type="exam" title="IPO and specific language" id="why">
-  Paper 1 Section A regularly asks you to label a circuit using the input-process-output model and to name the function of each component. Generic answers — "it makes the circuit work" — earn zero. You must name the component, state what it does, and use the correct technical term: thermistor, transistor, motor — never "sensor thing" or "switch part."
+  Paper 1 Section A regularly asks you to label a circuit using the input-process-output model and to name the function of each component, and it asks for the value of a current-limiting resistor with every step shown. Generic answers, such as "it makes the circuit work", earn zero. Name the component, state what it does, and use the correct technical term: thermistor, transistor, motor, never "sensor thing" or "switch part".
 </Callout>
 
 <Callout type="tip" title="How this session runs">
-Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label (tables and formulas) goes into your notebook. The green Key terms box is for you to copy down before class. Those are the definitions and equations you are examined on.
+Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label is also printed on your **colour card**, so you do not need to copy it down: your time goes into thinking, drawing and building. The green Key terms box holds the definitions and equations you are examined on.
 </Callout>
 
-<Activity plan title="Symbols, a circuit that lights, and the symbol pictionary" time="90 min" grouping="Whole class to start; drawing individual; building and testing in pairs; pictionary in groups of 4" materials={["Circuit symbol card (in the section below)", "A4 paper for your reference sheet and circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors, one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
 
-<Step n={1} title="Meet the symbols" who="whole class" time="0–12 min" see="symbols">
 
-Your teacher goes through the eight symbols on the card in the section below. For each one, say its name and its job out loud before you draw anything. Notice two things: the resistor is a plain rectangle, and the long line on a cell is the positive side.
+<Callout type="info" title="If you missed this lesson" id="absent">
+Do these four things at home and you are caught up. **1.** Download the colour card from Resources and print it, or keep it open on your screen. **2.** Read the three sections below in order: symbols, the colour code, Ohm's law. **3.** Work the worked example on paper with the card closed, then answer the self-check. **4.** Do the Quick-fire six in the homework section. Bring your answers to the next lesson and ask about anything that did not work.
+</Callout>
 
-</Step>
+<Activity plan title="The LED rescue" time="90 min" grouping="Whole class to start; groups of 4 for the games; pairs for the rescue" materials={["Resistor colour code and Ohm's law card", "Circuit symbol match cards", "Circuit symbol reference card", "LED rescue sheet", "7.4 V battery pack (2 × 18650 in a holder, with leads)", "Breadboards, switches, jumper leads", "LEDs in six colours", "Resistor bin (220 to 1.2 kΩ)", "Multimeter", "Safety glasses"]}>
 
-<Step n={2} title="Your own reference sheet" who="individual" time="12–27 min" see="symbols scaffolds">
+<Step n={1} title="The LED that did not make it" who="whole class" time="0–5 min" note="Watch the demonstration, then answer one question: what was missing?">
 
-All eight symbols, copied from the card, neatly, at a consistent size, each labelled with name and function. Copy from the card, not from the internet: American diagrams draw some symbols differently and will confuse you. This sheet is yours to keep.
-
-</Step>
-
-<Step n={3} title="Draw the circuit" who="individual" time="27–42 min" see="symbols worked-example">
-
-Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the direction of conventional current.
+Your teacher connects a small LED straight to the battery pack. There is one flash and then nothing. Your mission for the rest of the lesson: make sure that never happens to a product you design.
 
 </Step>
 
-<Step n={4} title="Build it" who="in pairs, each building their own" time="42–62 min" see="scaffolds">
+<Step n={2} title="Symbol match-up" who="groups of 4" time="5–15 min" see="symbols">
 
-In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right, which is a better check than anything a teacher could write in red pen.
-
-</Step>
-
-<Step n={5} title="Series against parallel, tested" who="in pairs" time="62–80 min" see="series-parallel">
-
-Build two LEDs in series, then the same two in parallel. Write your prediction of which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other. That is the answer to the reliability question the paper likes to ask.
+Shuffle the 24 cards face up. Race to build eight triples: a symbol, its name and its job. When the team agrees, check your triples against the symbol card in the section below.
 
 </Step>
 
-<Step n={6} title="Symbol pictionary" who="groups of 4" time="80–88 min" see="symbols">
+<Step n={3} title="Draw the eight symbols" who="individual" time="15–23 min" see="symbols scaffolds">
 
-Close your reference sheet. One person is shown a component name and has fifteen seconds to draw its BS symbol while the team names it. No letters, no words, no gestures. A wrong symbol scores nothing even if the team shouts the right name. Rotate the drawer each round and run three rounds. You will not have a card in the exam, so this is the same skill under mild pressure, and by now you have drawn every symbol twice and used four of them on a breadboard.
+On your reference card, draw each of the eight symbols yourself, about 20 mm wide, same size. Look at the symbol card as often as you need to. Copy from the card, not from the internet: American diagrams draw some symbols differently.
 
 </Step>
 
-<Step n={7} title="Wrap" who="whole class" time="88–90 min" note="Pack down; the homework is at the end of the page.">
+<Step n={4} title="Resistor detective" who="in pairs" time="23–33 min" see="colour-code">
 
-Pack down. Components counted back in.
+Part 1 of your rescue sheet. Decode four resistors from their colours using your colour card, then work the reverse: write the colours for a value. One point per correct answer. Say each value out loud as ohms **and** kilohms.
+
+</Step>
+
+<Step n={5} title="Ohm's law in three moves" who="whole class" time="33–39 min" see="ohms-law worked-r">
+
+Your teacher works one calculation on the board while you follow it on the card. Predict before the number appears: will the resistor be bigger or smaller if the LED needs less current?
+
+</Step>
+
+<Step n={6} title="LED rescue" who="in pairs" time="39–74 min" see="rescue ohms-law worked-r scaffolds">
+
+First, a three-minute board tour: your teacher shows the 400-point breadboard (side 1 of your colour card has the same drawing). Then your client's order is on your rescue sheet. Draw the circuit, calculate the resistor, choose it from the bin by its colours, build it, then take your board to a clinic desk and measure. You score points for the drawing, the calculation, the LED lighting, and the measured current being within 20% of the client's target. Four multimeters serve the whole class, so build first and visit a desk when you are ready.
+
+</Step>
+
+<Step n={7} title="Symbol pictionary" who="groups of 4" time="74–84 min" see="symbols">
+
+Close your cards. One person is shown a component name and has fifteen seconds to draw its BS symbol while the team names it. No letters, no words, no gestures. A wrong symbol scores nothing even if the team shouts the right name. Rotate the drawer and run three rounds. You will not have a card in the exam, so this is the same skill under mild pressure, and by now you have drawn every symbol twice.
+
+</Step>
+
+<Step n={8} title="Wrap" who="whole class" time="84–90 min" note="Pack the batteries down first; the homework is at the end of the page.">
+
+Disconnect the battery pack first, then pack down. Components counted back in. Final scores on the board.
 
 </Step>
 
@@ -71,15 +83,16 @@ Pack down. Components counted back in.
   { term: "Circuit symbol", definition: "A standardised diagram shape representing one component. Symbols follow BS/IEC conventions so any engineer anywhere in the world can read the same circuit diagram." },
   { term: "Conventional current", definition: "The direction of current flow in a circuit diagram: from the positive terminal of the cell, through the circuit, to the negative terminal. (Electrons actually move the other way, but convention uses positive-to-negative.)" },
   { term: "IPO (Input–Process–Output)", definition: "A model for describing any system. Input: the sensor or trigger. Process: the decision or control circuit. Output: the device that does the work. Applied to Firefighter Barbie: thermistor (input) → transistor circuit (process) → motor (output)." },
-  { term: "Series circuit", definition: "Components connected in one single loop. The same current flows through every component. If one component fails, the whole circuit breaks." },
-  { term: "Parallel circuit", definition: "Components connected in separate branches. Each branch has the full supply voltage across it. If one branch fails, others continue working." },
+  { term: "Ohm's law", definition: "The relationship between voltage, current and resistance: V = I × R. Rearranged: I = V / R and R = V / I. V in volts, I in amperes, R in ohms." },
+  { term: "Current-limiting resistor", definition: "A resistor placed in series with an LED to prevent excess current that would burn the LED. Calculated using R = (Vsupply − VLED) / ILED, then rounded up to the next standard value." },
+  { term: "Tolerance", definition: "How far the real value of a resistor may differ from the value shown by its colours. A gold fourth band means ±5%." },
 ]} />
 
-<Section title="Circuit symbols and conventions" icon="🔧" id="symbols" step="1–3">
+<Section title="Circuit symbols and conventions" icon="🔧" id="symbols" step="2–3">
 
 ### The eight symbols you must know
 
-Copy these onto your reference sheet. They are the BS/IEC symbols that the exam papers use.
+Copy these onto your reference card. They are the BS/IEC symbols that the exam papers use.
 
 <CircuitSymbolsDiagram />
 
@@ -94,9 +107,9 @@ The same eight in words:
 | LED | Diode triangle with a bar, two arrows pointing away | Emits light when current flows in forward direction |
 | Motor | Circle with M inside | Converts electrical energy to rotational mechanical energy |
 | Thermistor | Resistor rectangle with a diagonal line through it | Resistance changes with temperature |
-| NPN transistor | Circle with base, collector, emitter lines | Amplifies or switches current — controlled by base current |
+| NPN transistor | Circle with base, collector, emitter lines | Amplifies or switches current, controlled by base current |
 
-Draw each symbol on your reference sheet. Size them consistently. A symbol that is too small or distorted will not be credited in an exam.
+Draw each symbol on your reference card. Size them consistently. A symbol that is too small or distorted will not be credited in an exam.
 
 <Notebook title="Conventional current and conductors">
 
@@ -104,97 +117,186 @@ Current flows from positive to negative terminal in a circuit diagram (conventio
 
 </Notebook>
 
-In the Firefighter Barbie circuit: the battery provides the EMF; current flows through the circuit to the motor or LED.
-
 </Section>
 
-<WorkedExample title="Labelling a circuit with IPO" step="3">
+<WorkedExample title="Labelling a circuit with IPO" id="worked-example" step="6">
 **Circuit:** Cell → switch → resistor → LED → back to cell.
 
 <CircuitDiagram />
 
 **IPO labelling:**
-- **Input:** Switch (the human trigger — on/off control)
+- **Input:** Switch (the human trigger: on/off control)
 - **Process:** Resistor (limits current to protect the LED)
-- **Output:** LED (produces light — the visible result)
+- **Output:** LED (produces light, the visible result)
 
 **Applied to Firefighter Barbie:**
-- **Input:** Thermistor (detects heat — changes resistance as temperature rises)
-- **Process:** Transistor circuit (makes the switching decision — turns on when base voltage exceeds threshold)
-- **Output:** DC motor (converts electrical energy to rotation — drives the crank or cam mechanism)
+- **Input:** Thermistor (detects heat, changes resistance as temperature rises)
+- **Process:** Transistor circuit (makes the switching decision, turns on when base voltage exceeds threshold)
+- **Output:** DC motor (converts electrical energy to rotation, drives the crank or cam mechanism)
 
-The IPO model helps you see that each component has a role in the system — not just a name.
+The IPO model helps you see that each component has a role in the system, not just a name.
 </WorkedExample>
 
-<Section title="Series vs parallel circuits" icon="🔧" id="series-parallel" step="5">
+<Section title="Reading a resistor: the colour code" icon="🎨" id="colour-code" step="4">
 
-<Notebook title="Series circuit">
+### Four bands, four jobs
 
-All components in one single loop. The same current flows through every component.
+A resistor is too small to print a number on, so its value is painted as coloured bands. Hold it with the **gold or silver band on the right** and read from the left.
 
-**Consequence:** If you add more components, each one shares the total supply voltage — each component gets less voltage. Two LEDs in series: each gets half the supply voltage, so they are dimmer than a single LED.
+<Notebook title="Reading a four-band resistor">
 
-**If one breaks:** The circuit is open and nothing works.
+- **Band 1 and band 2:** the first two digits (black 0, brown 1, red 2, orange 3, yellow 4, green 5, blue 6, violet 7, grey 8, white 9).
+- **Band 3:** the multiplier (brown ×10, red ×100, orange ×1 000, yellow ×10 000).
+- **Band 4:** the tolerance (gold ±5%, silver ±10%).
+- **Example:** yellow, violet, red, gold = 47 × 100 = 4 700 Ω = 4.7 kΩ, ±5%.
+
+</Notebook>
+
+The full colour table and the standard values are on your colour card. You do not need to memorise them today: you will use the card until you do not need it.
+
+### Units: the mistake that costs marks every year
+
+1 kΩ = 1 000 Ω and 1 MΩ = 1 000 000 Ω. Convert to ohms **before** you substitute into a formula. Paper 4 asks for conversions such as 5 kΩ, 0.27 kΩ and 3 MΩ in ohms.
+
+### You cannot buy every value
+
+Resistors come in standard steps called the E12 series: 10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82, then the same numbers ×10, ×100, ×1 000. A calculated 360 Ω does not exist in the shop, so you take the **next value up**: 390 Ω.
+
+</Section>
+
+<Section title="Ohm's law and the LED resistor" icon="🔧" id="ohms-law" step="5–6">
+
+<Notebook title="Ohm's law">
+
+Three forms, one formula:
+
+- $V = I \times R$ (find voltage if you know current and resistance)
+- $I = \dfrac{V}{R}$ (find current if you know voltage and resistance)
+- $R = \dfrac{V}{I}$ (find resistance if you know voltage and current)
 
 </Notebook>
 
-<Notebook title="Parallel circuit">
+### Calculating a current-limiting resistor for an LED
 
-Components in separate branches. The supply voltage appears across every branch.
+An LED has two critical values:
+- **Forward voltage (VLED):** the voltage it drops when operating (about 2 V for red, yellow and green, about 3 V for blue and white).
+- **Forward current (ILED):** the current it needs to light safely (typically 10 to 20 mA; 15 mA is a good design value).
 
-**Consequence:** Each branch gets the full supply voltage regardless of how many branches there are. Two LEDs in parallel: each gets full voltage, so they are as bright as a single LED. Total current from the battery doubles.
+The resistor must drop the remaining voltage above the LED's forward voltage:
 
-**If one branch breaks:** Other branches continue to work.
+<Notebook title="Current-limiting resistor">
+
+$$R = \dfrac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}$$
+
+After calculating R, always choose the **nearest standard resistor value above** the calculated value, then check the real current with $I = \dfrac{V_{\text{supply}} - V_{\text{LED}}}{R}$.
 
 </Notebook>
+
+Today's supply is the **7.4 V battery pack**: two 18650 cells in series. A fully charged pack reads about 8.4 V, so always check that the current is still safe at the top of the range.
+
+</Section>
+
+<WorkedExample title="Calculating R for an LED" id="worked-r" step="5–6">
+**Given:** Supply voltage = 7.4 V. LED forward voltage = 2 V. LED current = 8 mA.
+
+**Step 1: convert mA to A** before substituting: $8\ \text{mA} = 0.008\ \text{A}$.
+
+**Step 2: formula, substitution, result:**
+
+<Formula
+  name="Current-limiting resistor"
+  equation="R = \frac{V_{\text{supply}} - V_{\text{LED}}}{I_{\text{LED}}}"
+  terms={[
+    { symbol: "R", meaning: "the resistance of the current-limiting resistor fitted in series with the LED", unit: "Ω" },
+    { symbol: "V_{\\text{supply}}", meaning: "the battery voltage feeding the circuit", unit: "V" },
+    { symbol: "V_{\\text{LED}}", meaning: "the forward voltage the LED itself drops: about 2 V for red, yellow and green, about 3 V for blue and white. Subtracted because the LED has already used that much of the supply", unit: "V" },
+    { symbol: "I_{\\text{LED}}", meaning: "the current you want through the LED. Convert to amps first: 8 mA is 0.008 A. This is the single most common place to lose the mark", unit: "A" },
+  ]}
+  substitution="R = \frac{7.4\ \text{V} - 2\ \text{V}}{0.008\ \text{A}} = \frac{5.4\ \text{V}}{0.008\ \text{A}}"
+  result="R = 675\ \Omega"
+/>
+
+**Step 3: choose the nearest standard value above 675 Ω.** From the E12 series that is 680 Ω.
+
+**Step 4: check the current.** $I = \dfrac{5.4\ \text{V}}{680\ \Omega} = 7.9\ \text{mA}$, just below the 8 mA wanted. On a fully charged 8.4 V pack it is 9.4 mA, still inside the 20% the clinic allows.
+
+**Answer:** use a 680 Ω resistor. Colours: blue, grey, brown, gold.
+</WorkedExample>
+
+<Section title="The LED rescue" icon="🛟" id="rescue" step="6">
+
+### How the rescue works
+
+Every pair has a different client. The sheet tells you the product, the LED colour, its forward voltage and the current the client wants. The supply is always the 7.4 V pack.
+
+1. **Draw** the circuit with the correct symbols: cell or battery, switch, resistor, LED. Label input, process, output and the direction of conventional current.
+2. **Calculate** with every step written: formula, substitution with units, result, standard value, predicted current.
+3. **Choose** the resistor from the bin by reading its colours. The bin has decoys on purpose, and two of them would overdrive your LED.
+4. **Build** from your own diagram, with the pack unplugged. Connect the pack last.
+5. **Clinic:** take the board to a clinic desk. Measure the resistance out of the circuit, the voltage across it and the current through the loop, and compare $V \div I$ with the number you read from the colours.
 
 <Callout type="info" title="Where you'll see this">
-**Old Christmas tree lights were wired in series** — which is why one dead bulb killed the whole string and you had to test them one at a time. Modern sets are wired in parallel so a failure takes out one bulb and nothing else.
+**Every LED in everything you own has a resistor like this one.** The status light on a charger, the standby light on a television and the glow on a phone case are all an LED with a resistor chosen by exactly this calculation. Choosing the wrong one is not a theory mistake: too small and the light dies in a flash, as you saw at the start; too large and it is so dim nobody notices it is on.
+</Callout>
 
-Your house is parallel for the same reason: switching off a lamp does not turn off the fridge. Series wiring survives where you *want* one failure to stop everything — a safety interlock on a machine guard, or the emergency stop button on the workshop wall, which is deliberately in series with everything it protects.
+<Callout type="exam" title="Battery pack rules">
+Two 18650 cells can deliver far more current than a 9 V battery if the rails touch. Build with the pack unplugged, connect it last and disconnect it first. Never lay a bare lead across both rails, and tell your teacher at once if anything gets warm.
 </Callout>
 
 </Section>
 
-<Support title="Scaffolds for circuit drawing" id="scaffolds" step="2–4">
-**Symbol reference card:** keep it open while you draw your sheet and your circuit. In the exam you will not have it, which is why the pictionary at the end is done with the sheet closed.
+<Support title="Scaffolds for circuit drawing and building" id="scaffolds" step="3–6">
+**Symbol reference card:** keep the symbol card open while you draw. In the exam you will not have it, which is why the pictionary at the end is done with everything closed.
 
 **Pre-drawn circuit diagram with blanks:** if drawing the whole circuit is too open-ended, ask for the version where the circuit is printed and you add the IPO labels and the missing symbol.
 
 **Sentence frame for rewriting:** "[Component] converts [input] into [output] by [mechanism/process], which means [consequence for the circuit]."
 
-**Before you touch a breadboard:** the two long rails run the full length of the board, and holes in the same short row are connected across. Most first-lesson failures are a lead one row out, not a faulty component.
+**Stuck on the calculation:** work the four steps in order and do not skip the first. Write what you know, convert mA to A, substitute, calculate, then go up to the next standard value. The three most common errors are forgetting to subtract the LED voltage, using mA instead of A, and rounding down.
 
-**LED will not light:** work through this list in order. Polarity (the long leg is the anode). The switch actually breaking the circuit rather than sitting across a rail. Resistor present. Battery clip seated. Every lead in the correct column. Nine times in ten it is polarity or a lead one row off.
+**Before you touch a breadboard:** your board has 400 holes. The four long rails (red + and blue −) run the full length, and each strip of five holes on either side of the channel is joined inside. The two halves are not joined to each other. Side 1 of your colour card draws all of this with an example circuit. Most first-lesson failures are a lead one strip out, not a faulty component.
 
-**Series against parallel:** write both predictions before any circuit is connected. The parallel pair being brighter is the memorable part, because most people guess wrong.
+**LED will not light:** work through this list in order. Polarity (the long leg is the anode). The switch actually breaking the circuit rather than sitting across a rail. Resistor present. Battery clip seated. Every lead in the correct strip. Nine times in ten it is polarity or a lead one strip out.
 
+**At the clinic desk:** voltage is measured *across* the part with the meter in parallel; current is measured *through* it with the meter in series, which means opening the circuit to put the meter in the gap. Never put the meter on its current range straight across the battery.
 </Support>
 
 <SelfCheck questions={[
   {
-    q: "In the Firefighter Barbie circuit, which component is the INPUT in the IPO model?",
+    q: "In the circuit you drew (cell, switch, resistor, LED), which component is the OUTPUT in the IPO model?",
     options: [
-      "The DC motor",
-      "The transistor",
-      "The thermistor",
-      "The battery"
+      "The switch",
+      "The resistor",
+      "The LED",
+      "The cell"
     ],
     answer: 2,
-    hint: "The input senses a change in the environment and sends a signal to the rest of the circuit.",
-    explain: "The thermistor is the input — it detects the rise in temperature and responds by changing its resistance. The transistor is the process (makes the switching decision) and the motor is the output (does the work). The battery provides power but is not part of the IPO classification."
+    hint: "The output is the part that does the visible work.",
+    explain: "The LED is the output: it produces the light. The switch is the input (the human trigger) and the resistor is the process (it limits the current). The cell supplies the energy but is not part of the IPO classification."
   },
   {
-    q: "Two LEDs are connected in parallel across a 9 V battery. How does each LED's brightness compare to a single LED connected to the same 9 V battery?",
+    q: "A resistor has the bands yellow, violet, orange, gold. What is its value?",
     options: [
-      "Each LED is dimmer because the current is shared between them",
-      "Each LED is the same brightness — in parallel, each branch receives the full supply voltage",
-      "Each LED is brighter because more total current flows from the battery",
-      "One LED is bright and the other is dim"
+      "470 Ω",
+      "4 700 Ω",
+      "47 000 Ω",
+      "4.7 MΩ"
+    ],
+    answer: 2,
+    hint: "Digits 4 and 7, then the multiplier for orange.",
+    explain: "Yellow is 4, violet is 7, orange is ×1 000. So 47 × 1 000 = 47 000 Ω = 47 kΩ, with a tolerance of ±5% from the gold band."
+  },
+  {
+    q: "An LED has a forward voltage of 2 V and needs 15 mA. The supply is 7.4 V. What is the calculated resistor value, and which standard value should you use?",
+    options: [
+      "27 Ω, use 27 Ω",
+      "360 Ω, use the next standard value up, 390 Ω",
+      "360 Ω, use the nearest value below, 330 Ω",
+      "493 Ω, use 470 Ω"
     ],
     answer: 1,
-    hint: "In a parallel circuit, each branch has the same voltage across it as the supply.",
-    explain: "In a parallel circuit, each branch receives the full supply voltage (9 V). So each LED has 9 V across it — the same as a single LED connected to 9 V. Brightness depends on voltage, so each LED is equally bright. The total current from the battery increases, but each branch's current is unchanged."
+    hint: "R = (Vsupply − VLED) / ILED. Convert 15 mA to 0.015 A before dividing.",
+    explain: "R = (7.4 − 2.0) / 0.015 = 5.4 / 0.015 = 360 Ω. 360 Ω is not a standard value, and rounding down would let more than 15 mA flow, so you take the next value up: 390 Ω."
   },
   {
     q: "An exam answer states: 'The resistor makes the circuit work.' What is wrong with this answer?",
@@ -212,36 +314,37 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
 
 <Section title="Homework & extension" icon="🏠" id="homework">
 
-**Home task:** List all components the Firefighter Barbie circuit will need and write one sentence for each explaining what it does. Use the IPO model — label each component as input, process, or output, and explain why.
+**Home task:** List all components the Firefighter Barbie circuit will need and write one sentence for each explaining what it does. Use the IPO model: label each component as input, process, or output, and explain why.
 
 **Quick-fire six (self-marked):** Answer these without notes, then check against the answers in the support box below.
 1. Name the component whose symbol is a plain rectangle, and state its job.
 2. On the symbol for a cell, which line is positive?
-3. Two LEDs are in series and one is removed. State what happens to the other, and why.
-4. Name the component whose symbol is a circle with an M inside.
-5. In the IPO model of the Firefighter Barbie circuit, name the input component.
-6. Two LEDs are connected in parallel across a 9 V battery. Compare the brightness of each with a single LED on the same battery, and give the reason.
+3. Write 4.7 kΩ and 0.27 kΩ in ohms.
+4. A resistor is brown, black, red, gold. State its value and tolerance.
+5. Name the component whose symbol is a circle with an M inside.
+6. Calculate the resistor for an LED of 2 V and 20 mA on a 7.4 V supply. State the standard value you would use.
 
 <Support title="Quick-fire six: check your answers">
 1. A resistor; it limits the current.
 2. The long thin line.
-3. It goes out, because a series circuit is one loop and removing a component breaks it.
-4. A motor.
-5. The thermistor.
-6. Each is the same brightness as a single LED, because in a parallel circuit each branch has the full supply voltage across it.
+3. 4 700 Ω and 270 Ω.
+4. 1 000 Ω = 1 kΩ, with a tolerance of ±5%.
+5. A motor.
+6. R = (7.4 − 2) / 0.020 = 5.4 / 0.020 = 270 Ω. 270 Ω is a standard value, so use 270 Ω.
 
 Rewrite any answer you got wrong using the specific term, not a general word like "moves" or "changes". For every one you missed, write the correct answer in full.
 </Support>
 
-<Extension title="Breadboard exploration">
-Wire two LEDs in series on a breadboard, then rearrange them in parallel using the same battery. Observe the brightness change. Measure the voltage across each LED with a voltmeter if available. Record your observations in your folder: what did you predict before wiring, and did the result match?
+<Extension title="What if the resistor is too small?">
+Your 15 mA LED (2 V) is connected to the 7.4 V pack, but by mistake you fit a 220 Ω resistor. Calculate the current that flows and compare it with the 15 mA the LED wants. In two sentences, explain why the LED you saw at the start of the lesson flashed and went dark.
 </Extension>
 
 </Section>
 
 <Resources items={[
+  { label: "Resistor colour code and Ohm's law card (colour, print one)", type: "Download", href: "g10/electronics-w7/resistor-colour-code-and-ohms-law-card.pdf" },
   { label: "Collins IGCSE D&T — §4.4.1 Basic concepts (p. 299)", type: "Textbook", href: "https://drive.google.com/open?id=1mZSNX1ai9OxE7I57sOQYha39x81vGBww" },
   { label: "Collins IGCSE D&T — §4.4.2 Circuit building techniques (p. 305)", type: "Textbook", href: "https://drive.google.com/open?id=1w4y5J-elyj-w3FlNNUaIBB3lQ-ZXxBeK" },
 ]} />
 
-<Reflection prompt="What does input-process-output mean for the Firefighter Barbie circuit? Could I name each part without looking at my notes — and explain in one sentence why each stage is necessary?" />
+<Reflection prompt="Which step of the calculation would I get wrong first, and what will I check to catch it? Could I read a resistor's value from its colours without the card, and explain in one sentence why the LED needs one?" />
