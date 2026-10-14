@@ -1,0 +1,181 @@
+---
+/**
+ * CircuitSymbolsDiagram — the eight BS/IEC circuit symbols a student draws on
+ * their reference sheet (G10 T1 W7), one card each: drawing, name, job.
+ *
+ * Why it exists: students who search the web for "circuit symbols" meet the
+ * American set (zigzag resistor, different battery and switch drawings) and
+ * mix the two standards. This card is the single source they copy from, in
+ * the form the Cambridge papers use.
+ *
+ * All drawings share one 120 x 80 box with terminals at the left and right
+ * edge on y = 40, so the cards line up and a student can compare sizes.
+ * Theme-aware inline SVG: colours come from the site's CSS variables.
+ */
+interface Symbol {
+  id: string;
+  name: string;
+  job: string;
+  note?: string;
+}
+
+// Order matches the table in the lesson so the two can be read together.
+const symbols: Symbol[] = [
+  { id: 'cell', name: 'Cell', job: 'Single power source', note: 'Long line is positive (+), short thick line is negative' },
+  { id: 'battery', name: 'Battery', job: 'Two or more cells in series, higher voltage', note: 'Cells alternate long and short' },
+  { id: 'switch', name: 'Switch (open)', job: 'Breaks the circuit when open', note: 'A gap you can see' },
+  { id: 'resistor', name: 'Resistor', job: 'Limits the current', note: 'A plain rectangle. The zigzag is the American symbol' },
+  { id: 'led', name: 'LED', job: 'Emits light when current flows the right way', note: 'Arrows point away from the diode' },
+  { id: 'motor', name: 'Motor', job: 'Electrical energy into rotary motion', note: 'Circle with an M' },
+  { id: 'thermistor', name: 'Thermistor', job: 'Resistance changes with temperature', note: 'Resistor rectangle with a diagonal line' },
+  { id: 'npn', name: 'NPN transistor', job: 'Switch or amplifier, controlled through the base', note: 'Arrow on the emitter points out' },
+];
+---
+
+<figure class="symbols">
+  <ul class="grid">
+    {symbols.map((s) => (
+      <li class="card">
+        <svg viewBox="0 0 120 80" role="img" aria-label={`${s.name} circuit symbol`} class="sym">
+          {/* Every symbol sits on a wire from x = 0 to 120 at y = 40, broken where the part is drawn. */}
+          {s.id === 'cell' && (
+            <g>
+              <line x1="0" y1="40" x2="52" y2="40" class="w" />
+              <line x1="68" y1="40" x2="120" y2="40" class="w" />
+              <line x1="52" y1="18" x2="52" y2="62" class="m" />
+              <line x1="68" y1="28" x2="68" y2="52" class="m thick" />
+              <text x="40" y="22" class="t">+</text>
+            </g>
+          )}
+          {s.id === 'battery' && (
+            <g>
+              <line x1="0" y1="40" x2="38" y2="40" class="w" />
+              <line x1="82" y1="40" x2="120" y2="40" class="w" />
+              <line x1="38" y1="18" x2="38" y2="62" class="m" />
+              <line x1="50" y1="28" x2="50" y2="52" class="m thick" />
+              <line x1="70" y1="18" x2="70" y2="62" class="m" />
+              <line x1="82" y1="28" x2="82" y2="52" class="m thick" />
+              <text x="26" y="22" class="t">+</text>
+            </g>
+          )}
+          {s.id === 'switch' && (
+            <g>
+              <line x1="0" y1="40" x2="30" y2="40" class="w" />
+              <line x1="90" y1="40" x2="120" y2="40" class="w" />
+              <circle cx="30" cy="40" r="3" class="n" />
+              <circle cx="90" cy="40" r="3" class="n" />
+              <line x1="30" y1="40" x2="84" y2="18" class="m" />
+            </g>
+          )}
+          {s.id === 'resistor' && (
+            <g>
+              <line x1="0" y1="40" x2="30" y2="40" class="w" />
+              <line x1="90" y1="40" x2="120" y2="40" class="w" />
+              <rect x="30" y="28" width="60" height="24" class="m box" />
+            </g>
+          )}
+          {s.id === 'led' && (
+            <g>
+              <line x1="0" y1="40" x2="42" y2="40" class="w" />
+              <line x1="78" y1="40" x2="120" y2="40" class="w" />
+              <polygon points="42,24 42,56 78,40" class="m box" />
+              <line x1="78" y1="22" x2="78" y2="58" class="m" />
+              <line x1="62" y1="16" x2="74" y2="4" class="a" marker-end="url(#sym-arrow)" />
+              <line x1="76" y1="22" x2="88" y2="10" class="a" marker-end="url(#sym-arrow)" />
+            </g>
+          )}
+          {s.id === 'motor' && (
+            <g>
+              <line x1="0" y1="40" x2="40" y2="40" class="w" />
+              <line x1="80" y1="40" x2="120" y2="40" class="w" />
+              <circle cx="60" cy="40" r="20" class="m box" />
+              <text x="60" y="47" text-anchor="middle" class="t big">M</text>
+            </g>
+          )}
+          {s.id === 'thermistor' && (
+            <g>
+              <line x1="0" y1="40" x2="30" y2="40" class="w" />
+              <line x1="90" y1="40" x2="120" y2="40" class="w" />
+              <rect x="30" y="28" width="60" height="24" class="m box" />
+              <line x1="22" y1="64" x2="38" y2="64" class="m" />
+              <line x1="38" y1="64" x2="86" y2="16" class="m" />
+            </g>
+          )}
+          {s.id === 'npn' && (
+            <g>
+              <line x1="0" y1="40" x2="46" y2="40" class="w" />
+              <circle cx="66" cy="40" r="26" class="m" />
+              <line x1="46" y1="22" x2="46" y2="58" class="m thick" />
+              <line x1="46" y1="33" x2="66" y2="20" class="m" />
+              <line x1="66" y1="20" x2="66" y2="4" class="w" />
+              <line x1="46" y1="47" x2="66" y2="60" class="m" />
+              <line x1="66" y1="60" x2="66" y2="76" class="w" />
+              <polygon points="66,60 54,56 60,50" class="fill" />
+              <text x="72" y="12" class="t small">collector</text>
+              <text x="72" y="77" class="t small">emitter</text>
+              <text x="0" y="32" class="t small">base</text>
+            </g>
+          )}
+        </svg>
+        <div class="name">{s.name}</div>
+        <div class="job">{s.job}</div>
+        <div class="note">{s.note}</div>
+      </li>
+    ))}
+  </ul>
+
+  <svg width="0" height="0" aria-hidden="true">
+    <defs>
+      <marker id="sym-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="fill-accent" />
+      </marker>
+    </defs>
+  </svg>
+
+  <figcaption>
+    The eight BS/IEC symbols. Copy these, not symbols from a search engine: American
+    diagrams draw the resistor as a zigzag and are not what the exam uses.
+  </figcaption>
+</figure>
+
+<style>
+  .symbols { margin-block: 1.5rem; }
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+    gap: 0.75rem;
+  }
+  .card {
+    background: var(--bg-3);
+    border: 1px solid var(--border, var(--text-faint));
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.6rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .sym { width: 100%; height: auto; display: block; }
+  .w { stroke: var(--text); stroke-width: 2; fill: none; }
+  .m { stroke: var(--text); stroke-width: 2.5; stroke-linejoin: round; fill: none; }
+  .m.thick { stroke-width: 5; }
+  .box { fill: var(--bg); }
+  .n { fill: var(--text); }
+  .a { stroke: var(--accent); stroke-width: 2; fill: none; }
+  .fill { fill: var(--text); }
+  .fill-accent { fill: var(--accent); }
+  .t { fill: var(--text-dim); font-family: var(--font-body); font-size: 14px; font-weight: 700; }
+  .t.big { font-size: 20px; fill: var(--text); }
+  .t.small { font-size: 9px; font-weight: 400; }
+  .name { font-weight: 700; color: var(--text); }
+  .job { font-size: 0.9rem; color: var(--text-dim); }
+  .note { font-size: 0.82rem; color: var(--text-faint); }
+  figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+    max-width: 38rem;
+  }
+</style>

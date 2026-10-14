@@ -9,7 +9,9 @@ selGoal: "ask what my partner was trying to make their circuit do before I say w
 draft: false
 ---
 
-Electronics starts from zero this week. You do not need any prior knowledge — every symbol and concept is introduced before you draw or build anything. By the end of the session you will have a circuit symbol reference sheet you made yourself and an understanding of how the Firefighter Barbie circuit's three main stages connect as a system.
+import CircuitSymbolsDiagram from '../../../components/diagrams/CircuitSymbolsDiagram.astro';
+
+Electronics starts from zero this week. You do not need any prior knowledge — every symbol and concept is introduced before you draw or build anything. By the end of the session you will have a reference sheet of the eight circuit symbols that you drew yourself, an LED circuit that you drew first and then built, and a tested answer to which is brighter, series or parallel. The Firefighter Barbie circuit uses these same symbols later in the project.
 
 <Callout type="exam" title="IPO and specific language" id="why">
   Paper 1 Section A regularly asks you to label a circuit using the input-process-output model and to name the function of each component. Generic answers — "it makes the circuit work" — earn zero. You must name the component, state what it does, and use the correct technical term: thermistor, transistor, motor — never "sensor thing" or "switch part."
@@ -19,17 +21,17 @@ Electronics starts from zero this week. You do not need any prior knowledge — 
 Each part of the session says whether it is **individual, in pairs, or in a group of 4**, both here and in the section it belongs to. Everything in a cream box with a pencil label (tables and formulas) goes into your notebook. The green Key terms box is for you to copy down before class. Those are the definitions and equations you are examined on.
 </Callout>
 
-<Activity plan title="Symbol pictionary and a circuit that lights" time="90 min" grouping="Groups of 4 for the games; drawing and building individual" materials={["Circuit symbol reference card", "A4 paper for circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors — one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
+<Activity plan title="Symbols, a circuit that lights, and the symbol pictionary" time="90 min" grouping="Whole class to start; drawing individual; building and testing in pairs; pictionary in groups of 4" materials={["Circuit symbol card (in the section below)", "A4 paper for your reference sheet and circuit drawings", "Breadboards, cell holders, LEDs, switches, resistors, one set per pair", "Mini whiteboards if available", "Timer visible to the room"]}>
 
-<Step n={1} title="Symbol pictionary" who="groups of 4" time="0–12 min" see="symbols">
+<Step n={1} title="Meet the symbols" who="whole class" time="0–12 min" see="symbols">
 
-In groups of 4. One person is shown a component name and must draw its correct BS symbol while the team names it — no words, no gestures. Wrong symbol scores nothing even if the team guesses right. Rotate until everyone has drawn three. You will not have a reference card in the exam, so drawing from memory under mild pressure is exactly the right practice.
+Your teacher goes through the eight symbols on the card in the section below. For each one, say its name and its job out loud before you draw anything. Notice two things: the resistor is a plain rectangle, and the long line on a cell is the positive side.
 
 </Step>
 
 <Step n={2} title="Your own reference sheet" who="individual" time="12–27 min" see="symbols scaffolds">
 
-All eight symbols, neatly, at a consistent size, each labelled with name and function. This one you keep.
+All eight symbols, copied from the card, neatly, at a consistent size, each labelled with name and function. Copy from the card, not from the internet: American diagrams draw some symbols differently and will confuse you. This sheet is yours to keep.
 
 </Step>
 
@@ -39,19 +41,25 @@ Switch, resistor, LED, cell, drawn correctly and labelled with IPO roles and the
 
 </Step>
 
-<Step n={4} title="Build it" who="in pairs, each building their own" time="42–67 min" see="scaffolds">
+<Step n={4} title="Build it" who="in pairs, each building their own" time="42–62 min" see="scaffolds">
 
-In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right — which is a better check than anything I could write in red pen.
-
-</Step>
-
-<Step n={5} title="Series against parallel, tested" who="in pairs" time="67–87 min" see="series-parallel">
-
-Build two LEDs in series, then the same two in parallel. Predict which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other — that is the answer to the reliability question the paper likes to ask.
+In pairs, on a breadboard, from the diagram you just drew. Not optional, and not copied from a neighbour's board. When it lights, you have proved your own diagram was right, which is a better check than anything a teacher could write in red pen.
 
 </Step>
 
-<Step n={6} title="Wrap" who="whole class" time="87–90 min" note="Pack down; the homework is at the end of the page.">
+<Step n={5} title="Series against parallel, tested" who="in pairs" time="62–80 min" see="series-parallel">
+
+Build two LEDs in series, then the same two in parallel. Write your prediction of which will be brighter *before* you connect, then look. Draw both circuits and write one sentence explaining the brightness difference in terms of the voltage across each LED. Then pull one LED out of each circuit and record what happens to the other. That is the answer to the reliability question the paper likes to ask.
+
+</Step>
+
+<Step n={6} title="Symbol pictionary" who="groups of 4" time="80–88 min" see="symbols">
+
+Close your reference sheet. One person is shown a component name and has fifteen seconds to draw its BS symbol while the team names it. No letters, no words, no gestures. A wrong symbol scores nothing even if the team shouts the right name. Rotate the drawer each round and run three rounds. You will not have a card in the exam, so this is the same skill under mild pressure, and by now you have drawn every symbol twice and used four of them on a breadboard.
+
+</Step>
+
+<Step n={7} title="Wrap" who="whole class" time="88–90 min" note="Pack down; the homework is at the end of the page.">
 
 Pack down. Components counted back in.
 
@@ -71,15 +79,21 @@ Pack down. Components counted back in.
 
 ### The eight symbols you must know
 
+Copy these onto your reference sheet. They are the BS/IEC symbols that the exam papers use.
+
+<CircuitSymbolsDiagram />
+
+The same eight in words:
+
 | Component | Symbol description | Function |
 |---|---|---|
 | Cell (single) | Long thin line (positive) + short thick line (negative) | Single power source |
 | Battery | Multiple cell symbols in series | Multiple cells providing higher voltage |
 | Switch (open) | Line with a gap and a lever | Breaks the circuit when open |
-| Resistor | Rectangle | Limits current flow |
-| LED | Diode triangle with two arrows pointing outward | Emits light when current flows in forward direction |
+| Resistor | Plain rectangle (not a zigzag) | Limits current flow |
+| LED | Diode triangle with a bar, two arrows pointing away | Emits light when current flows in forward direction |
 | Motor | Circle with M inside | Converts electrical energy to rotational mechanical energy |
-| Thermistor | Resistor rectangle with a diagonal arrow | Resistance changes with temperature |
+| Thermistor | Resistor rectangle with a diagonal line through it | Resistance changes with temperature |
 | NPN transistor | Circle with base, collector, emitter lines | Amplifies or switches current — controlled by base current |
 
 Draw each symbol on your reference sheet. Size them consistently. A symbol that is too small or distorted will not be credited in an exam.
@@ -143,19 +157,17 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
 </Section>
 
 <Support title="Scaffolds for circuit drawing" id="scaffolds" step="2–4">
-**Symbol reference card:** Keep it visible at all times. In the exam, you do not have this card — so practise drawing each symbol from memory at least twice this session.
+**Symbol reference card:** keep it open while you draw your sheet and your circuit. In the exam you will not have it, which is why the pictionary at the end is done with the sheet closed.
 
-**Pre-drawn circuit diagram with blanks:** If the full drawing exercise is too open-ended, use the version where the circuit is printed and you add the IPO labels and complete the missing symbol.
+**Pre-drawn circuit diagram with blanks:** if drawing the whole circuit is too open-ended, ask for the version where the circuit is printed and you add the IPO labels and the missing symbol.
 
 **Sentence frame for rewriting:** "[Component] converts [input] into [output] by [mechanism/process], which means [consequence for the circuit]."
 
-**Symbol pictionary rules that keep it quick:** the drawer gets fifteen seconds, no letters or words on the board, and a wrong symbol scores nothing even if the team shouts the right name. Run three rounds, rotate the drawer each time.
+**Before you touch a breadboard:** the two long rails run the full length of the board, and holes in the same short row are connected across. Most first-lesson failures are a lead one row out, not a faulty component.
 
-**Before anyone touches a breadboard:** hold the room and show the rail layout once — the two long rails run the full length, and holes in the same short row are connected across. Most first-lesson failures are a lead one row out, not a faulty component.
+**LED will not light:** work through this list in order. Polarity (the long leg is the anode). The switch actually breaking the circuit rather than sitting across a rail. Resistor present. Battery clip seated. Every lead in the correct column. Nine times in ten it is polarity or a lead one row off.
 
-**LED will not light:** work the list in order — polarity (long leg is the anode), the switch actually breaking the circuit rather than sitting across a rail, resistor present, battery clip seated, and every lead in the correct column. Nine times in ten it is polarity or a lead one row off.
-
-**Series against parallel — make them predict first.** Write both predictions on the board before any circuit is connected. The parallel pair being brighter is the memorable part precisely because most of the room guesses wrong.
+**Series against parallel:** write both predictions before any circuit is connected. The parallel pair being brighter is the memorable part, because most people guess wrong.
 
 </Support>
 
@@ -185,16 +197,16 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
     explain: "In a parallel circuit, each branch receives the full supply voltage (9 V). So each LED has 9 V across it — the same as a single LED connected to 9 V. Brightness depends on voltage, so each LED is equally bright. The total current from the battery increases, but each branch's current is unchanged."
   },
   {
-    q: "An exam answer states: 'A crank is used to change the motor's movement.' What is wrong with this answer?",
+    q: "An exam answer states: 'The resistor makes the circuit work.' What is wrong with this answer?",
     options: [
-      "It is too long — exam answers should be one word only",
       "It is correct and would earn full marks on a mark scheme",
-      "It uses generic language — 'change the movement' does not name the specific motion types converted",
-      "It should mention the voltage of the motor"
+      "It is too long, exam answers should be one word only",
+      "It is generic: it does not say what the resistor does to the current or why that matters",
+      "It should mention the colour bands of the resistor"
     ],
     answer: 2,
-    hint: "Exam answers must use precise technical vocabulary — name the input motion type and the output motion type.",
-    explain: "A full-credit answer names both motion types: 'A crank converts the motor's rotary motion into the reciprocating motion that pushes the door open through the connecting rod.' Generic words like 'change' or 'movement' earn zero marks on a Paper 1 Section A mark scheme."
+    hint: "Name the specific job of the component, and what it protects.",
+    explain: "A full-credit answer names the job and the consequence: 'The resistor limits the current through the LED so that the LED is not damaged.' Phrases like 'makes it work' earn zero on a Paper 1 Section A mark scheme."
   }
 ]} />
 
@@ -203,17 +215,17 @@ Your house is parallel for the same reason: switching off a lamp does not turn o
 **Home task:** List all components the Firefighter Barbie circuit will need and write one sentence for each explaining what it does. Use the IPO model — label each component as input, process, or output, and explain why.
 
 **Quick-fire six (self-marked):** Answer these without notes, then check against the answers in the support box below.
-1. Name the motion produced by the pendulum of a clock.
-2. State the input and output motion of a slider-crank.
-3. Name the cam profile that produces rise, dwell and fall.
+1. Name the component whose symbol is a plain rectangle, and state its job.
+2. On the symbol for a cell, which line is positive?
+3. Two LEDs are in series and one is removed. State what happens to the other, and why.
 4. Name the component whose symbol is a circle with an M inside.
 5. In the IPO model of the Firefighter Barbie circuit, name the input component.
 6. Two LEDs are connected in parallel across a 9 V battery. Compare the brightness of each with a single LED on the same battery, and give the reason.
 
 <Support title="Quick-fire six: check your answers">
-1. Oscillating (it swings through an arc about a pivot).
-2. Input rotary, output reciprocating.
-3. A pear cam.
+1. A resistor; it limits the current.
+2. The long thin line.
+3. It goes out, because a series circuit is one loop and removing a component breaks it.
 4. A motor.
 5. The thermistor.
 6. Each is the same brightness as a single LED, because in a parallel circuit each branch has the full supply voltage across it.
