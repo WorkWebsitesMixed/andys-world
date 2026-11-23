@@ -5,7 +5,7 @@ week: 5
 title: "Development by Testing (C4)"
 topic: "Design Development"
 learningGoal: "run an objective load or stability test on my model and build my light circuit on a breadboard, recording objective results and at least one design change they call for"
-selGoal: "record an unflattering test result honestly — treat it as data, not as failure"
+selGoal: "take an active role in keeping the breadboard station fair for everyone: share the kit, wait my turn and help the next person reset it"
 draft: false
 ---
 
@@ -22,7 +22,7 @@ Last week you built a model and found problems visually. Today you find problems
   { term: "Breadboarding", definition: "Building a temporary version of an electronic circuit on a solderless breadboard, allowing components to be inserted and removed without soldering. Used to confirm a circuit works before committing it to the permanent product." },
 ]} />
 
-<Section title="Testing your structure and your circuit" icon="🔬" id="testing">
+<Section title="Testing your structure and your circuit" icon="🔬" id="testing" step="1–2">
 
 ### Setting up a structural test
 
@@ -49,7 +49,7 @@ Connect them in series on the breadboard. Operate the switch — the LED should 
 
 </Section>
 
-<WorkedExample title="Testing a cyclist gear organiser — two iterations">
+<WorkedExample title="Testing a cyclist gear organiser — two iterations" step="1">
 
 **Test 1 — Load, 4 kg static:** Three 1.5 kg water bottles placed on the horizontal member at height 200 mm. Result: structure held without tipping, deflection at top = 3 mm. Passes the load spec.
 
@@ -60,26 +60,36 @@ Connect them in series on the breadboard. Operate the switch — the LED should 
 **Circuit test:** Toggle switch → 470Ω resistor → red LED on 9 V supply. LED lit on first attempt. Switch operates cleanly.
 </WorkedExample>
 
-<Activity title="Load test + breadboard" time="90 min" grouping="Individual (technician supervises breadboard station)" materials={["Model from Week 4", "Weights (water bottles or book set)", "Ruler / tape measure", "Breadboard kit: battery, switch, resistor, LED", "Camera (phone)"]}>
+<Activity plan title="Load test + breadboard" time="90 min" grouping="Individual (technician supervises breadboard station)" materials={["Model from Week 4", "Weights (water bottles or book set)", "Ruler / tape measure", "Breadboard kit: battery, switch, resistor, LED", "Camera (phone)"]}>
 
-**Load or stability test (0–45 min):**
+<Step n={1} title="Load or stability test" who="individual" time="0–45 min" see="testing worked-example help">
+
 1. State your test: spec point, weight, position, pass/fail criterion.
 2. Set up and run the test. Photograph the result.
 3. Record: does it pass or fail? By how much?
 4. If it fails, make one design change and re-test. Record before and after.
 
-**Breadboard the circuit (45–75 min):**
-5. Using your Term 1 circuit diagram and resistor calculation, build the circuit on a breadboard.
-6. Operate the switch. Does the LED light?
-7. If not: check LED polarity, check connections, check resistor is not open-circuit.
-8. Note which switch type you chose for your product and confirm it operates as expected in the physical test.
+</Step>
 
-**Record and tidy (75–90 min):**
-9. Write up your test-results table: spec point / test condition / result / pass? / change made.
-10. Note any changes the results call for in your final product.
+<Step n={2} title="Breadboard the circuit" who="individual, technician supervises the station" time="45–75 min" see="testing">
+
+1. Using your Term 1 circuit diagram and resistor calculation, build the circuit on a breadboard. Only one kit per station, so agree the turns with the people waiting and hand the kit over reset.
+2. Operate the switch. Does the LED light?
+3. If not: check LED polarity, check connections, check the resistor is not open-circuit.
+4. Note which switch type you chose for your product and confirm it operates as expected in the physical test.
+
+</Step>
+
+<Step n={3} title="Record and tidy" who="individual" time="75–90 min">
+
+1. Write up your test-results table: spec point / test condition / result / pass? / change made.
+2. Note any changes the results call for in your final product.
+
+</Step>
+
 </Activity>
 
-<Support title="Test not giving clear results?">
+<Support title="Test not giving clear results?" id="help" step="1">
 
 **Result is ambiguous — hard to say pass or fail?** Go back to your specification. The spec point should have a measurable standard. If it says "must feel stable", revise it: "must not tip when 5 kg is applied at the outermost point". Now you have a pass/fail.
 

@@ -5,14 +5,14 @@ week: 7
 title: "CAD/CAM 1: 2D Laser Cutting"
 topic: "CAD/CAM"
 learningGoal: "produce a laser-ready 2D vector file of at least two parts of my product, applying correct line types and nested layout, ready to cut in Week 8 or 9"
-selGoal: "persist through a software problem — identify what I don't know, find a solution, and not wait for the teacher to rescue me"
+selGoal: "name the frustration I feel when the software does not cooperate, and find a solution before I ask the teacher"
 draft: false
 ---
 
 This week you move from drawing on paper to drawing for a machine. The laser cutter follows the vector paths you create — so every line you draw is an instruction to the machine. Get the file right this week and the cutter does the precise work. Get it wrong and the machine cuts the wrong parts.
 
 <Callout type="exam" title="Why this matters" id="why">
-  CAD/CAM evidence is required for <ExamLink to="project">Component 2</ExamLink> criterion **C5 (working drawings and plans), worth 15 marks**. The mark scheme asks for evidence that you used digital tools to plan and communicate your design. A screen-captured CAD file plus a photo of a laser-cut part is the standard evidence for this.
+  CAD/CAM evidence is required for <ExamLink to="project">Component 2</ExamLink> criterion **C5 (working drawings and plans), worth 10 marks**. The mark scheme asks for evidence that you used digital tools to plan and communicate your design. A screen-captured CAD file plus a photo of a laser-cut part is the standard evidence for this.
 </Callout>
 
 <KeyTerms terms={[
@@ -22,7 +22,7 @@ This week you move from drawing on paper to drawing for a machine. The laser cut
   { term: "Kerf", definition: "The width of material removed by the laser beam — typically 0.1–0.3 mm for a 60 W CO2 laser on plywood. Joints designed to fit exactly on-screen will be 0.1–0.3 mm too loose in reality. Designers compensate by making slot widths slightly smaller in the file." },
 ]} />
 
-<Section title="Designing for the laser cutter" icon="💻" id="laser">
+<Section title="Designing for the laser cutter" icon="💻" id="laser" step="2">
 
 <Figure src="images/tools/laser-cutter.jpg" alt="A compact desktop laser cutter and engraver, the scale a school workshop would have" caption="A laser cutter — desktop scale, like the one in your makerspace." width="22rem" credit="Jason7825, public domain, via Wikimedia Commons" creditHref="https://commons.wikimedia.org/wiki/File:Laser_Engraving_Machine.jpg" />
 
@@ -52,7 +52,7 @@ For laser-cut joints (finger joints, slotted connections):
 
 </Section>
 
-<WorkedExample title="Nesting two parts for a gear organiser base">
+<WorkedExample title="Nesting two parts for a gear organiser base" step="3">
 
 **Parts to cut:** Base panel (200 × 150 mm) and two side uprights (200 × 80 mm each) from 6 mm birch ply.
 
@@ -63,24 +63,35 @@ For laser-cut joints (finger joints, slotted connections):
 **Cut lines:** All outlines in red (#FF0000), 0.001 pt stroke. Slot openings at the top of each upright for the horizontal member: slot width = 5.8 mm (6 mm material minus 0.2 mm kerf compensation).
 </WorkedExample>
 
-<Activity title="CAD file — two parts ready to cut" time="90 min" grouping="Individual at CAD stations" materials={["CAD application (Inkscape / Illustrator / Fusion 360)", "Working sketch from folder", "Sheet size specifications from teacher", "Calipers or rule for measuring existing material"]}>
+<Activity plan title="CAD file — two parts ready to cut" time="90 min" grouping="Individual at CAD stations" materials={["CAD application (Inkscape / Illustrator / Fusion 360)", "Working sketch from folder", "Sheet size specifications from teacher", "Calipers or rule for measuring existing material"]}>
 
-**Setup (0–15 min):**
+<Step n={1} title="Setup" who="individual at CAD stations" time="0–15 min" see="laser">
+
 1. Open your CAD application. Set document units to mm and canvas size to your sheet dimensions.
-2. Measure your actual material with calipers. Note the exact thickness — this controls slot dimensions.
+2. Measure your actual material with calipers. Note the exact thickness: it controls slot dimensions.
 
-**Draw parts (15–70 min):**
-3. Draw at least two parts of your product: typically the main structural panels or the base.
-4. Add any internal slots or holes. Apply kerf compensation to slot widths.
-5. Assign all cut lines to the cut layer/colour.
+</Step>
 
-**Nest and check (70–90 min):**
-6. Arrange both parts on the sheet with 5 mm clearance. No overlaps.
-7. Use the dimension tool to verify key dimensions match your design.
-8. Save as SVG or DXF. Screenshot the nested layout and put it in your folder as C5 evidence.
+<Step n={2} title="Draw the parts" who="individual" time="15–70 min" see="laser worked-example help">
+
+1. Draw at least two parts of your product: typically the main structural panels or the base.
+2. Add any internal slots or holes. Apply kerf compensation to slot widths.
+3. Assign all cut lines to the cut layer/colour.
+4. When the software stops you, write the feeling it causes (annoyed, lost, rushed), then find what you do not know and look for the fix before you call the teacher.
+
+</Step>
+
+<Step n={3} title="Nest and check" who="individual" time="70–90 min" see="worked-example">
+
+1. Arrange both parts on the sheet with 5 mm clearance. No overlaps.
+2. Use the dimension tool to verify key dimensions match your design.
+3. Save as SVG or DXF. Screenshot the nested layout and put it in your folder as C5 evidence.
+
+</Step>
+
 </Activity>
 
-<Support title="Software not cooperating?">
+<Support title="Software not cooperating?" id="help" step="2">
 
 **Lines not cutting correctly?** The most common issue is stroke weight. In Inkscape: select all cut lines, open Object then Fill and Stroke, set stroke to 0.001 pt and the correct cut colour. Thick strokes (e.g. 1 mm) may be interpreted as engrave or ignored by the laser software.
 

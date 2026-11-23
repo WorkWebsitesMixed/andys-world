@@ -5,7 +5,7 @@ week: 6
 title: "OnShape III: Full Assembly & Engineering Drawing"
 topic: "Multi-component assembly, mate connectors, and exporting a dimensioned drawing"
 learningGoal: "create a multi-component OnShape assembly of the desk organizer with at least 3 components, apply mate connectors to position components correctly, and export a dimensioned 2-view engineering drawing to PDF."
-selGoal: "manage the 90 minutes independently, using the step-by-step guide without waiting to be told what to do at each step."
+selGoal: "stop at the 70-minute mark to check how I have used my time, and write what I will change next week and what I cannot control, such as a slow device"
 draft: false
 ---
 
@@ -15,6 +15,10 @@ The engineering drawing you produce today is the document your workshop session 
   Working drawings (C5 in IGCSE Component 2) are assessed in Grade 11. Grade 10 is the practice run. An engineering drawing earns marks only if it is dimensioned, has correct views, and matches what was actually made. Today you produce that document for real — your printed drawing goes straight into the project folder.
 </Callout>
 
+<Callout type="exam" title="Moment 2: your folder is handed in at the end of today" id="graded">
+  **Hand in your project folder at the end of this lesson.** It is 20% of the term grade and, with Quiz 1 and Quiz 2 (5% each), makes up Moment 2 (30%). The teacher marks: design brief, specification (6+ measurable justified points), material selection table, development sketches, and the OnShape engineering drawing printout. Two markers (your teacher and a drawing colleague) assess it and standardise their marks. You get the folder back in Week 7.
+</Callout>
+
 <KeyTerms terms={[
   { term: "Assembly (OnShape)", definition: "A workspace that links separate Part Studio components into a single combined view. Each component retains its own part studio and can be edited independently; the assembly shows how they fit together spatially. The assembly is what you would see if all components were placed together on a real bench." },
   { term: "Mate connector (Fastened)", definition: "A Fastened mate in OnShape fixes two components in a specific positional relationship so they cannot move relative to each other. It is the equivalent of a permanent joint — once a Fastened mate is applied, the two components behave as one rigid body." },
@@ -22,7 +26,7 @@ The engineering drawing you produce today is the document your workshop session 
   { term: "Third-angle projection", definition: "The drawing convention where each view is placed on the same side as the direction you are looking from — front view in the middle, right-side view to the right, plan (top view) above. Identified by the BS/ISO third-angle symbol. Used in the UK, USA and at Marymount." },
 ]} />
 
-<Section title="Building the OnShape assembly" icon="💻" id="assembly">
+<Section title="Building the OnShape assembly" icon="💻" id="assembly" step="1–2">
 
 ### Step-by-step
 
@@ -46,7 +50,7 @@ The engineering drawing you produce today is the document your workshop session 
 
 </Section>
 
-<WorkedExample title="Assembling three parts in OnShape">
+<WorkedExample title="Assembling three parts in OnShape" step="1">
 
 **Parts:** base panel (18 mm pine, 280 mm × 180 mm) + two side panels (3 mm acrylic, 180 mm × 150 mm).
 
@@ -58,26 +62,39 @@ The engineering drawing you produce today is the document your workshop session 
 6. Three key dimensions added: total height (150 + 18 = 168 mm), total width (280 mm), base thickness (18 mm).
 </WorkedExample>
 
-<Activity title="OnShape assembly + engineering drawing" time="90 min" grouping="Individual" materials={["Student device with browser access to onshape.com", "Printer (for final 10 min)", "Folder for drawing printout"]}>
+<Activity plan title="OnShape assembly + engineering drawing" time="90 min" grouping="Individual" materials={["Student device with browser access to onshape.com", "Printer (for final 10 min)", "Folder for drawing printout"]}>
 
-**Assembly (0–70 min):**
-1. Build the full desk organizer assembly in OnShape — all components from your making plan.
+<Step n={1} title="Build the assembly" who="individual" time="0–70 min" see="assembly worked-example help">
+
+1. Build the full desk organizer assembly in OnShape, with all components from your making plan.
 2. Apply Fastened mates to position every component correctly.
 3. Orbit and inspect: do all components sit in the correct position relative to each other?
 
-**Engineering drawing (70–85 min):**
-4. Create a new drawing from the assembly.
-5. Add front and side views.
-6. Dimension every component (minimum: overall height, overall width, base thickness, side panel thickness).
-7. Complete the title block.
-8. Export to PDF.
+At 70 minutes, stop for one minute. Write how you have used your time so far, one thing you will change next week, and one thing you cannot control.
 
-**Print + file (85–90 min):**
-9. Print one copy (or save as PDF and send to teacher for printing).
-10. File the printed drawing in your project folder — this is the document you use for making in Week 7.
+</Step>
+
+<Step n={2} title="Engineering drawing" who="individual" time="70–85 min" see="assembly">
+
+1. Create a new drawing from the assembly.
+2. Add front and side views.
+3. Dimension every component (minimum: overall height, overall width, base thickness, side panel thickness).
+4. Complete the title block.
+5. Export to PDF.
+
+</Step>
+
+<Step n={3} title="Print and hand in" who="individual" time="85–90 min">
+
+1. Print **two** copies (or save as PDF and send to your teacher for printing).
+2. Put one copy in your project folder and keep the other: it is the document you use at the bench in Week 7.
+3. Hand in your complete folder for Moment 2.
+
+</Step>
+
 </Activity>
 
-<Support title="If your assembly is not fitting together correctly">
+<Support title="If your assembly is not fitting together correctly" id="help" step="1">
 
 Check the mate connector direction. A Fastened mate works by aligning two mate connectors — if the connector axes point in opposite directions, the parts will overlap instead of aligning. Click Flip on one of the connectors to reverse its direction.
 </Support>

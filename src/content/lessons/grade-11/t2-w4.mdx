@@ -5,7 +5,7 @@ week: 4
 title: "Modelling & Prototyping (C4)"
 topic: "Design Development"
 learningGoal: "make a quick 3D model of my chosen structure and identify at least two design problems it reveals, recording them as development points with sketched fixes"
-selGoal: "treat my model's flaws as useful information — name at least one thing the model taught me that drawing alone did not"
+selGoal: "recognise the point where my model frustrated me, name the feeling, and turn it into one development point with a sketched fix"
 draft: false
 ---
 
@@ -22,7 +22,7 @@ You selected your design last week. Now you build a quick version of it to find 
   { term: "Ergonomics", definition: "How well a product fits the human body and the human action required to use it. A model lets you test ergonomics by actually picking it up, placing things on it, and operating the switch as your user would." },
 ]} />
 
-<Section title="Why model before making" icon="🔧" id="modelling">
+<Section title="Why model before making" icon="🔧" id="modelling" step="1–2">
 
 ### What drawing cannot tell you
 
@@ -53,7 +53,7 @@ For each problem the model reveals, write a development point with three parts:
 
 </Section>
 
-<WorkedExample title="A card model of a cyclist gear organiser reveals two problems">
+<WorkedExample title="A card model of a cyclist gear organiser reveals two problems" step="3">
 
 **Build:** A rough card frame — two vertical side panels, three horizontal pegs, a rectangular base. Assembly with masking tape, approx 1:1 scale.
 
@@ -64,22 +64,32 @@ For each problem the model reveals, write a development point with three parts:
 **Development points:** Two problems found in 20 minutes of building. Neither would have appeared from the plan drawing alone.
 </WorkedExample>
 
-<Activity title="Build, break, fix" time="90 min" grouping="Individual (technician supports)" materials={["Card, foam board, corrugated card", "Masking tape, PVA", "Scissors, craft knife, cutting mat", "Your chosen design sketch and specification"]}>
+<Activity plan title="Build, break, fix" time="90 min" grouping="Individual (technician supports)" materials={["Card, foam board, corrugated card", "Masking tape, PVA", "Scissors, craft knife, cutting mat", "Your chosen design sketch and specification"]}>
 
-**Model briefing (0–15 min):**
-1. Decide what scale and what type of model best tests your design's main uncertainties. Plan it in two minutes, then start cutting — do not over-plan the model itself.
+<Step n={1} title="Model briefing" who="individual" time="0–15 min" see="modelling">
 
-**Build (15–70 min):**
-2. Construct a rough model of your structure. Prioritise the structural skeleton first (load-bearing frame), then add the main features (pegs, shelves, circuit position).
-3. As you build, note anything that is fiddly or does not fit — these are development points in the making.
+Decide what scale and what type of model best tests your design's main uncertainties. Plan it in two minutes, then start cutting. Do not over-plan the model itself.
 
-**Test and record (70–90 min):**
-4. Load the model with the actual weight your spec requires (use water bottles, books, or weights). Does it hold? Does it tip? Does it flex?
-5. Operate the switch position as your user would. Is it accessible?
-6. Record at least two development points: what happened, why it matters, what you will change.
+</Step>
+
+<Step n={2} title="Build" who="individual, technician supports" time="15–70 min" see="modelling worked-example help">
+
+1. Construct a rough model of your structure. Prioritise the structural skeleton first (load-bearing frame), then add the main features (pegs, shelves, circuit position).
+2. As you build, note anything fiddly or that does not fit. These are development points in the making. When something frustrates you, write the feeling next to it.
+
+</Step>
+
+<Step n={3} title="Test and record" who="individual" time="70–90 min" see="worked-example">
+
+1. Load the model with the actual weight your spec requires (water bottles, books or weights). Does it hold? Does it tip? Does it flex?
+2. Operate the switch position as your user would. Is it accessible?
+3. Record at least two development points: what happened, why it matters, what you will change.
+
+</Step>
+
 </Activity>
 
-<Support title="Model not coming together?">
+<Support title="Model not coming together?" id="help" step="2">
 
 **Structure too floppy?** Real structures are rigid because of triangulation. Add a diagonal brace across any rectangular panel and the floppy rectangle becomes rigid in seconds — the same principle works in card.
 

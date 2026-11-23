@@ -5,14 +5,14 @@ week: 8
 title: "CAD/CAM 2: 3D Print + Working Drawing"
 topic: "CAD/CAM"
 learningGoal: "export or prepare a 3D-printable STL file for one component and produce a third-angle orthographic working drawing with at least three views and full dimensions"
-selGoal: "choose which component to 3D print and justify the choice — not everything should be 3D printed, and explaining why this one is shows design thinking"
+selGoal: "agree the 3D printer queue order with my group fairly, by need (deadline and part size) and not by who asked first"
 draft: false
 ---
 
 Two tools, one session. The first half you prepare a 3D model for printing — a component your laser cutter cannot make easily (curves, brackets, custom fittings). The second half you produce an orthographic working drawing of your main product: the technical communication document that tells a manufacturer exactly what to make.
 
 <Callout type="exam" title="Why this matters" id="why">
-  <ExamLink to="project">Component 2</ExamLink> criterion **C5 (working drawings and plans, 15 marks)** requires evidence of both digital fabrication planning (CAD) and technical drawing (orthographic projection). Today you produce direct evidence for both halves of C5. A working drawing that is incomplete or missing critical dimensions is one of the most common reasons strong projects score poorly on C5.
+  <ExamLink to="project">Component 2</ExamLink> criterion **C5 (working drawings and plans, 10 marks)** requires evidence of both digital fabrication planning (CAD) and technical drawing (orthographic projection). Today you produce direct evidence for both halves of C5. A working drawing that is incomplete or missing critical dimensions is one of the most common reasons strong projects score poorly on C5.
 </Callout>
 
 <KeyTerms terms={[
@@ -22,7 +22,7 @@ Two tools, one session. The first half you prepare a 3D model for printing — a
   { term: "Hidden detail line", definition: "A dashed line on a working drawing used to show a feature that is behind or inside the object from the current view direction. Hidden detail lines allow a drawing to communicate features that would otherwise require a section view." },
 ]} />
 
-<Section title="3D printing a component" icon="🖨️" id="print">
+<Section title="3D printing a component" icon="🖨️" id="print" step="1">
 
 <Figure src="images/tools/3d-printer.jpg" alt="A 3D printer nozzle depositing melted plastic layer by layer onto the print bed" caption="An FDM 3D printer mid-print." width="22rem" credit="HRostamani, CC BY-SA 4.0, via Wikimedia Commons" creditHref="https://commons.wikimedia.org/wiki/File:3D_Printing_an_Object_using_FDM_Printer.jpg" />
 
@@ -48,7 +48,7 @@ In Fusion 360 or Tinkercad:
 
 </Section>
 
-<Section title="Working drawing — orthographic projection" icon="📐" id="drawing">
+<Section title="Working drawing — orthographic projection" icon="📐" id="drawing" step="2">
 
 ### What a working drawing must include
 
@@ -66,7 +66,7 @@ Draw front view first: this is the view that shows the most information — usua
 
 </Section>
 
-<WorkedExample title="Working drawing checklist for a gear organiser">
+<WorkedExample title="Working drawing checklist for a gear organiser" step="2">
 
 **Front view:** Width 150 mm, height 280 mm. Shows peg positions with dimensions (first peg at 60 mm height, 80 mm spacing). Circuit panel visible on lower-left face.
 
@@ -77,22 +77,30 @@ Draw front view first: this is the view that shows the most information — usua
 **Checklist:** Title block complete | Third-angle symbol present | All three views drawn | Overall dimensions on all views | Peg detail dimensions | Hidden detail line for cable channel | Scale 1:2 noted
 </WorkedExample>
 
-<Activity title="STL prep + working drawing" time="90 min" grouping="Individual" materials={["CAD application (Fusion 360 / Tinkercad)", "Slicer software (Cura / PrusaSlicer)", "A3 cartridge paper or CAD working drawing template", "Pencil, technical pen, ruler, set square, compass"]}>
+<Activity plan title="STL prep + working drawing" time="90 min" grouping="Individual" materials={["CAD application (Fusion 360 / Tinkercad)", "Slicer software (Cura / PrusaSlicer)", "A3 cartridge paper or CAD working drawing template", "Pencil, technical pen, ruler, set square, compass"]}>
 
-**3D print setup (0–35 min):**
-1. Choose your print component and justify the choice in one sentence (why laser cut would not work for this part).
-2. Open in 3D CAD. Verify dimensions match your working design.
-3. Export STL, open in slicer, screenshot the preview. Print to queue if machine is available.
+<Step n={1} title="3D print setup" who="individual, then group for the queue" time="0–35 min" see="print">
 
-**Working drawing (35–90 min):**
-4. Set up your A3 sheet. Draw a title block at the bottom right (product name, scale, date, your name).
-5. Draw the front view at scale 1:2 (or 1:1 if the product fits). Lightly block out proportions before adding lines.
-6. Project up to the top view and sideways to the side view using 45-degree guide lines.
-7. Dimension all views. Add the third-angle projection symbol.
-8. Check the working-drawing checklist (see Worked Example above).
+1. Choose your print component and justify the choice in one sentence (why laser cutting would not work for this part).
+2. Open it in 3D CAD. Verify the dimensions match your working design.
+3. Export the STL, open it in the slicer and screenshot the preview.
+4. The printer is shared. With your group, agree the queue order by need (deadline, part size), not by who asked first, then send your file to the queue if the machine is available.
+
+</Step>
+
+<Step n={2} title="Working drawing" who="individual" time="35–90 min" see="drawing worked-example help">
+
+1. Set up your A3 sheet. Draw a title block at the bottom right (product name, scale, date, your name).
+2. Draw the front view at scale 1:2 (or 1:1 if the product fits). Lightly block out proportions before adding lines.
+3. Project up to the top view and sideways to the side view using 45-degree guide lines.
+4. Dimension all views. Add the third-angle projection symbol.
+5. Check the working-drawing checklist in the worked example.
+
+</Step>
+
 </Activity>
 
-<Support title="Orthographic drawing going wrong?">
+<Support title="Orthographic drawing going wrong?" id="help" step="2">
 
 **Views not lining up?** The critical rule: the front and top views share the same horizontal extent (same width). The front and side views share the same vertical extent (same height). Use light projection lines to enforce this before you add any detail.
 

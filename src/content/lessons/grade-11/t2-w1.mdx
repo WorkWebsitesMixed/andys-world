@@ -5,7 +5,7 @@ week: 1
 title: "Paper 1 Post-Mock: Part (a) Function Points"
 topic: "Exam Skill"
 learningGoal: "describe the fixed seven-part structure of Paper 1 and write four valid, specific function points for a given structural product within a 6-minute timer"
-selGoal: "reframe my Term 1 mock errors as useful data — annotate one mistake and one strength before starting any new practice"
+selGoal: "name the situation in my Term 1 mock that frustrated me most and the feeling it caused, and write one thing I will do differently next time"
 draft: false
 ---
 
@@ -22,7 +22,7 @@ Term 2 opens by returning your Term 1 Paper 1 mock. The first twenty minutes are
   { term: "Post-mock remediation", definition: "Reviewing a graded test to identify exactly where marks were lost and what specific habit to change. Remediation is the fastest way to improve on the next attempt." },
 ]} />
 
-<Section title="The Paper 1 template" icon="📝" id="template">
+<Section title="The Paper 1 template" icon="📝" id="template" step="2">
 
 ### Seven parts, every time
 
@@ -44,7 +44,7 @@ A function point answers: *what must this product do?* It must be **specific** (
 
 </Section>
 
-<WorkedExample title="Upgrading weak function points for a cyclist gear organiser">
+<WorkedExample title="Upgrading weak function points for a cyclist gear organiser" step="2">
 
 | # | Weak version | Strong version |
 |---|-------------|----------------|
@@ -56,24 +56,35 @@ A function point answers: *what must this product do?* It must be **specific** (
 **The upgrade rule:** Read your function point and ask "could this apply to a kitchen shelf?" If yes, it is too generic — add a user or context detail.
 </WorkedExample>
 
-<Activity title="Post-mock review + timed part (a)" time="90 min" grouping="Individual" materials={["Returned Term 1 mock script", "New context sheet from teacher", "Mark scheme extract"]}>
+<Activity plan title="Post-mock review + timed part (a)" time="90 min" grouping="Individual" materials={["Returned Term 1 mock script", "New context sheet from teacher", "Mark scheme extract"]}>
 
-**Post-mock review (0–20 min):**
+<Step n={1} title="Post-mock review" who="individual" time="0–20 min">
+
 1. Collect your returned Term 1 M3 mock script.
 2. On the script, mark ✓ one thing you did correctly and ✗ one answer where you lost marks you should not have.
 3. For the ✗ answer write one sentence: "Next time I will ____."
+4. Beside it, name the situation that frustrated you most in the mock and the feeling it caused (rushed, blank, annoyed, worried).
 
-**Timed part (a) (20–50 min):**
-4. Teacher issues a new context (a structural product brief you have not seen before).
-5. Set a 6-minute timer. Write four function points. Stop at 6 minutes.
-6. Self-mark against the criteria: each point must be specific and testable to score.
+</Step>
 
-**Review and target-setting (50–90 min):**
-7. Discuss common patterns from the Term 1 mock: which errors appeared most often?
-8. Write your one Paper 1 improvement target for this term and put it in your folder.
+<Step n={2} title="Timed part (a)" who="individual, timed" time="20–50 min" see="template worked-example help">
+
+1. Your teacher issues a new context (a structural product brief you have not seen before).
+2. Set a 6-minute timer. Write four function points. Stop at 6 minutes.
+3. Self-mark against the criteria: each point must be specific and testable to score.
+
+</Step>
+
+<Step n={3} title="Review and target" who="whole class, then individual" time="50–90 min">
+
+1. Discuss common patterns from the Term 1 mock: which errors appeared most often?
+2. Write your one Paper 1 improvement target for this term and put it in your folder.
+
+</Step>
+
 </Activity>
 
-<Support title="Struggling with function points?">
+<Support title="Struggling with function points?" id="help" step="2">
 
 **Can't think of four different points?** Use these four categories: (1) what does it hold or support? (2) how does the user access or operate it? (3) what safety or stability condition must it meet? (4) what does the circuit feature do for the user?
 

@@ -5,7 +5,7 @@ week: 4
 title: "Making Processes I: Marking Out, Cutting & OnShape"
 topic: "Measuring, marking, cutting, and introduction to parametric CAD"
 learningGoal: "mark out at least two components accurately from my design dimensions, name the correct tool for each cut type, demonstrate safe use of a tenon saw or acrylic scriber to make one straight cut, and create a new OnShape document with a dimensioned 2D rectangle representing one desk organizer component."
-selGoal: "stop and ask before using any machine or tool I have not been explicitly demonstrated; and persist through at least two failed OnShape attempts before asking for help."
+selGoal: "notice what I do when a cut or a sketch goes wrong, and name one thing I can change next time and one thing I cannot control"
 draft: false
 ---
 
@@ -22,7 +22,7 @@ From this session onwards, your folder decisions become physical material. Befor
   { term: "Parametric CAD", definition: "Computer-Aided Design where dimensions are entered as editable numbers, not just drawn. In OnShape, a sketch becomes 'fully constrained' when every line has a defined dimension and position — all lines turn black. A parametric model updates automatically if you change a dimension." },
 ]} />
 
-<Section title="Marking out and cutting tools" icon="🔧" id="tools">
+<Section title="Marking out and cutting tools" icon="🔧" id="tools" step="1">
 
 | Operation | Tool | Material | Safety note |
 |-----------|------|----------|-------------|
@@ -54,7 +54,7 @@ From this session onwards, your folder decisions become physical material. Befor
 
 </Section>
 
-<WorkedExample title="Marking out a 150 × 100 mm rectangle in pine">
+<WorkedExample title="Marking out a 150 × 100 mm rectangle in pine" step="1">
 
 1. **Select datum edge:** the straightest long edge of your pine off-cut. Check it with the try square.
 2. **Mark width (150 mm):** place steel rule on the datum, mark at 150 mm with a pencil cross.
@@ -64,24 +64,34 @@ From this session onwards, your folder decisions become physical material. Befor
 6. **Secure and cut:** hold the piece in the bench vice. Tenon saw starts on the pull stroke (pulling back creates the kerf on the correct side of the line).
 </WorkedExample>
 
-<Activity title="Marking out + OnShape introduction" time="90 min" grouping="Individual (technician rotation at machines)" materials={["Pine off-cut", "Marking gauge", "Try square", "Steel rule", "Pencil", "Tenon saw or acrylic scriber + sample", "Student device with browser access to onshape.com"]}>
+<Activity plan title="Marking out + OnShape introduction" time="90 min" grouping="Individual (technician rotation at machines)" materials={["Pine off-cut", "Marking gauge", "Try square", "Steel rule", "Pencil", "Tenon saw or acrylic scriber + sample", "Student device with browser access to onshape.com"]}>
 
-**Workshop — marking and cutting (0–72 min):**
+<Step n={1} title="Mark out and cut" who="individual, technician rotation" time="0–72 min" see="tools worked-example">
+
 1. Mark out at least two desk organizer components on your chosen material(s), working from your making plan.
-2. Make one straight cut using the tenon saw (pine) or the scribe-and-break method (acrylic) — supervised by the technician.
-3. After the cut: check the dimension against your making plan. Note any discrepancy.
+2. Make one straight cut using the tenon saw (pine) or the scribe-and-break method (acrylic), supervised by the technician.
+3. After the cut, check the dimension against your making plan. Note any difference. If something went wrong, write what you can change next time (your grip, your line) and what you cannot (the age of the saw, the grain of the wood).
 
-**Safety check (72–75 min):**
-4. Return all tools to their correct position. Sweep sawdust into the waste bin. Check that the bench vice is released.
+</Step>
 
-**OnShape — first sketch (75–90 min):**
-5. Log in at onshape.com; create a new document called "Desk Organizer."
-6. Start a new sketch on the Front plane; use the Rectangle tool to draw a rectangle.
-7. Add dimensions: type the width and height from your making plan. Confirm all lines are black (fully constrained).
-8. Screenshot your completed sketch.
+<Step n={2} title="Put the workshop back" who="individual" time="72–75 min">
+
+Return all tools to their correct position. Sweep sawdust into the waste bin. Check that the bench vice is released.
+
+</Step>
+
+<Step n={3} title="Your first OnShape sketch" who="individual" time="75–90 min" see="onshape">
+
+1. Log in at onshape.com and create a new document called "Desk Organizer".
+2. Start a new sketch on the Front plane and draw a rectangle with the Rectangle tool.
+3. Add dimensions: type the width and height from your making plan. Confirm all lines are black (fully constrained).
+4. Screenshot your completed sketch.
+
+</Step>
+
 </Activity>
 
-<Support title="OnShape quick-start">
+<Support title="OnShape quick-start" id="onshape" step="3">
 
 **If all lines are blue/grey:** you have not fully dimensioned the sketch. Add dimensions to any remaining blue lines using the Dimension tool (D key).
 

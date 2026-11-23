@@ -5,7 +5,7 @@ week: 5
 title: "Joining Techniques, Development Sketches & OnShape 3D"
 topic: "Temporary and permanent joining, design development, and extruding a 3D solid in OnShape"
 learningGoal: "distinguish temporary from permanent joining methods, sketch and annotate two different joining methods for my desk organizer, produce two design development sketches showing different construction approaches, and extrude my W4 OnShape sketch to the correct thickness to produce a 3D solid."
-selGoal: "justify my joining choice using technical criteria, share my reasoning with a partner, and incorporate at least one piece of their feedback."
+selGoal: "ask a partner to explain their joining choice before I give feedback, and change at least one thing in my own justification after hearing a view that differs from mine"
 draft: false
 ---
 
@@ -15,6 +15,10 @@ The difference between a temporary and a permanent joint is not just how it look
   Paper 3 joining questions always ask for justification: "Why is PVA not suitable for joining acrylic to pine?" or "Give one advantage of a temporary joint over a permanent joint." Today you practise giving technical justifications — not just naming the join.
 </Callout>
 
+<Callout type="exam" title="Quiz 2 today: part of Moment 2 (30% of the term grade)" id="graded">
+  **The first 15 minutes of this lesson are Quiz 2** (weeks 3–5: material selection, specification and joining), taken on a device. Quiz 2 is worth 5% of the term grade, like Quiz 1 in Week 3. Your project folder, handed in at the end of Week 6, makes up the other 20% of Moment 2.
+</Callout>
+
 <KeyTerms terms={[
   { term: "Temporary joint", definition: "A joint that can be assembled and disassembled without damaging the components. Examples: machine screws and nuts, wood screws (can be removed), knock-down (KD) fittings (cam-lock and barrel nut). Temporary joints allow repair and disassembly — relevant to Repair and Reuse in the 6Rs." },
   { term: "Permanent joint — adhesive", definition: "A joint where components are bonded with adhesive and cannot be separated without damage. PVA (polyvinyl acetate) bonds wood-to-wood only. Contact adhesive bonds most surfaces including wood-to-acrylic and acrylic-to-acrylic. Epoxy resin bonds dissimilar materials. Never use PVA on polymer surfaces — it does not form a bond with acrylic." },
@@ -22,7 +26,7 @@ The difference between a temporary and a permanent joint is not just how it look
   { term: "Extrude (CAD)", definition: "The operation that converts a 2D sketch face into a 3D solid by specifying a depth. In OnShape: select the sketch face → Extrude → enter depth in mm. The result is a 3D solid with the profile of the sketch and the depth you specified." },
 ]} />
 
-<Section title="Joining method selection" icon="🔧" id="joining">
+<Section title="Joining method selection" icon="🔧" id="joining" step="2">
 
 | Joint type | Bond type | Works on | Key advantage | Key limitation |
 |-----------|-----------|---------|--------------|----------------|
@@ -42,7 +46,7 @@ For the desk organizer:
 
 </Section>
 
-<WorkedExample title="Justifying a joining choice in the folder">
+<WorkedExample title="Justifying a joining choice in the folder" step="2">
 
 **Component:** acrylic side panel bonded to pine frame.
 
@@ -57,26 +61,49 @@ For the desk organizer:
 This is the format for a folder justification: chosen join + technical reason + rejected alternative + reason for rejection.
 </WorkedExample>
 
-<Activity title="Join sketches + development sketches + OnShape extrude" time="90 min" grouping="Individual" materials={["Join samples set (screw, bolt, KD fitting, PVA, contact adhesive, epoxy)", "A4 folder pages", "Student device"]}>
+<Activity plan title="Join sketches + development sketches + OnShape extrude" time="90 min" grouping="Individual" materials={["Join samples set (screw, bolt, KD fitting, PVA, contact adhesive, epoxy)", "A4 folder pages", "Student device"]}>
 
-**Join sketches (0–45 min):**
+<Step n={1} title="Quiz 2" who="individual, on a device" time="0–15 min" note="Weeks 3–5: selection, specification and joining. Counts toward Moment 2.">
+
+Your teacher opens the quiz. Work alone, answer every question, and close it when you are done.
+
+</Step>
+
+<Step n={2} title="Join sketches" who="individual" time="15–45 min" see="joining worked-example contact">
+
 1. Sketch and annotate two joining methods for your desk organizer:
    - One wood-to-wood join (label: materials being joined, join type, assembly direction)
-   - One acrylic-to-frame join (label: materials, join type, why this adhesive not another)
+   - One acrylic-to-frame join (label: materials, join type, why this adhesive and not another)
 2. Add a justification sentence for each: "I chose ___ because ___ [technical reason]. I rejected ___ because ___."
 
-**Development sketches (45–65 min):**
-3. Produce two development sketches showing two alternative frame constructions — each annotated with material, join type, and an approximate dimension. These are design thinking sketches, not finished drawings.
-4. Peer feedback (65–70 min): a partner reads both development sketches and gives one comment: "The clearer of the two is ___ because ___."
+</Step>
 
-**OnShape — extrude (70–90 min):**
-5. Open your W4 OnShape document. Select the sketch face.
-6. Extrude to the thickness of the component (e.g. 18 mm for a pine base panel).
-7. Apply at least one Fillet to a top edge (radius: 3 mm).
-8. Orbit the view; screenshot for the folder.
+<Step n={3} title="Development sketches" who="individual" time="45–65 min">
+
+Produce two development sketches showing two alternative frame constructions, each annotated with material, join type and an approximate dimension. These are design thinking sketches, not finished drawings.
+
+</Step>
+
+<Step n={4} title="Peer feedback" who="pairs" time="65–70 min">
+
+1. Your partner explains **their** joining choice to you first. Listen, then ask one question.
+2. Read each other's development sketches and give one comment: "The clearer of the two is ___ because ___."
+3. Change at least one thing in your own justification after what you heard, and note what you changed.
+
+</Step>
+
+<Step n={5} title="OnShape: extrude" who="individual" time="70–90 min">
+
+1. Open your Week 4 OnShape document. Select the sketch face.
+2. Extrude to the thickness of the component (for example 18 mm for a pine base panel).
+3. Apply at least one Fillet to a top edge (radius 3 mm).
+4. Orbit the view and screenshot it for the folder.
+
+</Step>
+
 </Activity>
 
-<Support title="Contact adhesive — safe use">
+<Support title="Contact adhesive — safe use" id="contact" step="2">
 
 Contact adhesive contains solvent. **Ventilate the room before using.** Apply to both surfaces, allow to dry until tacky (not wet — approximately 5–10 minutes), then press together only once. The bond is immediate on contact and cannot be repositioned. If you press too early (when still wet), the bond is weak.
 </Support>
